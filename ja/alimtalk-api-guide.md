@@ -94,7 +94,7 @@ Content-Type: application/json;charset=UTF-8
 | ---------------------- | ------- | ---- | ---------------------------------------- |
 | senderKey              | String  | O    | 発信キー                            |
 | templateCode           | String  | O    | 登録した送信テンプレートコード(最大20桁)                    |
-| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>최대 30일 이후까지 예약 가능 |
+| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>最大30日後まで予約可能 |
 | senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
 | createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)|
 | recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
@@ -108,13 +108,13 @@ Content-Type: application/json;charset=UTF-8
 | -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
-| - buttons              | List    | X    | 버튼 추가 정보 |
+| - buttons              | List    | X    | ボタン追加情報 |
 | -- ordering            | Integer | X    |	ボタン順序(ボタンがある場合は必須) |
-| -- chatExtra           | String  | X    |	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    |	BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | X    |	BT(Bot切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
@@ -258,9 +258,9 @@ Content-Type: application/json;charset=UTF-8
 | -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド、最大500文字)        |
 | -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド、最大500文字)       |
 | -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド、最大500文字)   |
-| -- chatExtra           | String  | X    |	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    |	BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | X    |	BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | X    |	Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -268,7 +268,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
@@ -457,9 +457,9 @@ Content-Type: application/json;charset=UTF-8
 | --- linkPc                  | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | --- schemeIos               | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | --- schemeAndroid           | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| --- chatExtra               | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| --- chatEvent               | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| --- target                  | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| --- chatExtra               | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| --- chatEvent               | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| --- target                  | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | -- senderGroupingKey        | String  | 発信グルーピングキー                            |
 | -- recipientGroupingKey     | String  | 受信者グルーピングキー                           |
 | - totalCount                | Integer | 総個数                              |
@@ -601,10 +601,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| -- chatExtra           | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| - messageOption        | Object  |	メッセージオプション                                         |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -705,13 +705,13 @@ Content-Type: application/json;charset=UTF-8
 | -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
-| - buttons              | List    | X    | 버튼 추가 정보 |
+| - buttons              | List    | X    | ボタン追加情報 |
 | -- ordering            | Integer | X    |	ボタン順序(ボタンがある場合は必須) |
-| -- chatExtra           | String  | X    |	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    |	BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | X    |	BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | X    |	Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
@@ -856,9 +856,9 @@ Content-Type: application/json;charset=UTF-8
 | -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド、最大500文字)        |
 | -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド、最大500文字)       |
 | -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド、最大500文字)   |
-| -- chatExtra           | String  | X    |	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    |	BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | X    |	BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | X    |	Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -866,7 +866,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
@@ -1052,9 +1052,9 @@ Content-Type: application/json;charset=UTF-8
 | --- linkPc                  | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | --- schemeIos               | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | --- schemeAndroid           | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| --- chatExtra               | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| --- chatEvent               | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| --- target                  | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| --- chatExtra               | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| --- chatEvent               | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| --- target                  | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
 | -- senderGroupingKey        | String  | 発信グルーピングキー                            |
 | -- recipientGroupingKey     | String  | 受信者グルーピングキー                           |
 | - totalCount                | Integer | 総個数                              |
@@ -1199,10 +1199,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| -- chatExtra           | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
+| -- chatEvent           | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- target              | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| - messageOption        | Object  |	メッセージオプション                                         |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -2069,6 +2069,11 @@ Content-Type: application/json;charset=UTF-8
 | - resultCode    | Integer | 結果コード |
 | - resultMessage | String  | 結果メッセージ |
 | - isSuccessful  | Boolean | 成否 |
+
+* 承認されたテンプレートを削除する時、NHN Cloud内でのみ削除されます。(3日間未送信のテンプレートのみ削除可能)
+* 承認されたテンプレートの場合、カカオトークBizメッセージの制約のため、カカオ内部データは削除できません。
+* カカオに残っているテンプレートは1年間使っていないと休眠処理され、休眠状態が1年間続くと削除処理されます。 (カカオでテンプレートが休眠に切り替わるときや、削除されるときは担当者に通知が送信されます。)
+
 
 ### テンプレートの問い合わせをする
 #### リクエスト
