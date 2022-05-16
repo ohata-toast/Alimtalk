@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2022.05.24.
+* [API]お知らせトークテンプレート削除改善
+    * 差し戻されたテンプレート以外に、他の状態のテンプレートも削除ができるように改善されました。
+    * 詳細については、 [APIガイド](./alimtalk-api-guide/#_50)を参照してください。
+
 ### 2022.04.26.
 * [API] SMS代替送信時、共用フィールド追加
     * お知らせトーク/カカともへのメッセージをSMSで代替送信時、 statsId、senderGroupingKey、recipientGroupingKeyフィールドを追加するように改善しました。
