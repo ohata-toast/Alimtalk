@@ -14,6 +14,7 @@
 | Common  | false     | -1009      | Uploading attached files failed                              |
 | Common  | false     | -1016      | Message is not found                                         |
 | Common  | false     | -1017      | Sending in excess of daily volume failed                     |
+| Common  | false     | -1027      | Sender profile is blocked                                    |
 | Common  | false     | -2017      | Plus Friend does not exist                                   |
 | Common  | false     | -2018      | Invalid button parameter                                     |
 | Common  | false     | -2019      | Failed due to template body with above 1,000 characters      |
@@ -72,6 +73,7 @@
 | Common  | false     | -8003      | Deleting image failed                                        |
 | Common  | false     | -8005      | No Plus Friend is registered in project to upload images     |
 | Common  | false     | -8006      | Authentication message not included in Template, when sending an authentication message       |
+| Common  | false     | -8008      | Banned word was included in message content , when sending an message       |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
 | Common  | false     | -9998      | API does not exist                                           |
