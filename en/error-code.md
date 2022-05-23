@@ -14,6 +14,7 @@
 | Common  | false     | -1009      | Uploading attached files failed                              |
 | Common  | false     | -1016      | Message is not found                                         |
 | Common  | false     | -1017      | Sending in excess of daily volume failed                     |
+| Common  | false     | -1027      | Sender profile is blocked                                    |
 | Common  | false     | -2017      | Plus Friend does not exist                                   |
 | Common  | false     | -2018      | Invalid button parameter                                     |
 | Common  | false     | -2019      | Failed due to template body with above 1,000 characters      |
@@ -39,11 +40,11 @@
 | Common  | false     | -3009      | Button name does not exist.                                  |
 | Common  | false     | -3010      | Template body does not match.                                |
 | Common  | false     | -3011      | Template button does not match.                              |
-| Common  | false     | -3012      | Unavailable to modify template (either approved or returned)           |
+| Common  | false     | -3012      | Unavailable to modify template (either approved or rejected)           |
 | Common  | false     | -3013      | Template under modification exists                           |
 | Common  | false     | -3014      | Invalid button type                         |
 | Common  | false     | -3015      | Plus Friend with CBT deactivated                  |
-| Common  | false     | -3016      | Reguires templateTitle and templateSubtitle, for Emphasized templates            |
+| Common  | false     | -3016      | Requires templateTitle and templateSubtitle for Emphasized templates            |
 | Common  | false     | -3017      | Unable to use replacement variable for templateSubtitle            |
 | Common  | false     | -3018      | Requires templateExtra for Extra Information-type templates           |
 | Common  | false     | -3019      | Requires templateAd for Ad-included-type templates           |
@@ -52,6 +53,7 @@
 | Common  | false     | -3022      | Unable to use replacement variable for templateAd                  |
 | Common  | false     | -3023      | Unable to include url link for templateAd                   |
 | Common  | false     | -3024      | CA-type button can be registration only for Ad-included or Mixed Purposes-type templates       |
+| Common  | false     | -3034      | Only templates that have not been sent for 3 days can be deleted       |
 | Common  | false     | -3100      | Unavailable to inquire of template                           |
 | Common  | false     | -4003      | Query range exceeding a month                                |
 | Common  | false     | -4004      | Appkey does not exist                                        |
@@ -72,6 +74,7 @@
 | Common  | false     | -8003      | Deleting image failed                                        |
 | Common  | false     | -8005      | No Plus Friend is registered in project to upload images     |
 | Common  | false     | -8006      | Authentication message not included in Template, when sending an authentication message       |
+| Common  | false     | -8008      | Banned word was included in message content , when sending an message       |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
 | Common  | false     | -9998      | API does not exist                                           |
@@ -174,7 +177,7 @@
 	</tr>
 	<tr>
 		<td>3005</td>
-		<td>Message is delievered but receipt is not confirmed (Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
+		<td>Message is delivered but receipt is not confirmed (Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
 	</tr>
 	<tr>
 		<td>3006</td>
@@ -214,7 +217,7 @@
 	</tr>
 	<tr>
 		<td>3018</td>
-		<td>Unable to send messages<br>1. KakaoTalk user who has withdrwan <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users (for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
+		<td>Unable to send messages<br>1. KakaoTalk user who has withdrawn <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users (for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
 	</tr>
 	<tr>
 		<td>3022</td>
@@ -242,7 +245,7 @@
 	</tr>
 	<tr>
 		<td>3028</td>
-		<td>Message highlited title does not match template </td>
+		<td>Message highlighted title does not match template </td>
 	</tr>
 	<tr>
 		<td>3029</td>
@@ -266,7 +269,7 @@
 	</tr>
 	<tr>
 		<td>3034</td>
-		<td>Message is not consitent with template </td>
+		<td>Message is not consistent with template </td>
 	</tr>
 	<tr>
 		<td>3040</td>
