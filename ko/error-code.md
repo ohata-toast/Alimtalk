@@ -53,12 +53,12 @@
 | 공통      | false     | -3016      | 강조 표기형 템플릿은 templateTitle, templateSubtitle 필수 필드            |
 | 공통      | false     | -3017      | templateSubtitle 은 치환 변수를 사용 불가            |
 | 공통      | false     | -3018      | 부가 정보형 템플릿은 templateExtra 필수 필드           |
-| 공통      | false     | -3019      | 광고 추가형 템플릿은 templateAd 필수 필드           |
+| 공통      | false     | -3019      | 채널 추가형 템플릿은 templateAd 필수 필드           |
 | 공통      | false     | -3020      | 복합형 템플릿은 templateExtra, templateAd 필수 필드   |
 | 공통      | false     | -3021      | templateExtra은 치환 변수를 사용 불가               |
 | 공통      | false     | -3022      | templateAd은 치환 변수를 사용 불가                  |
 | 공통      | false     | -3023      | templateAd은 url link 포함 불가                   |
-| 공통      | false     | -3024      | AC 타입 버튼은 광고 추가형 복합형 템플릿만 등록 가능       |
+| 공통      | false     | -3024      | AC 타입 버튼은 채널 추가형 복합형 템플릿만 등록 가능       |
 | 공통      | false     | -3034      | 삭제할 템플릿이 3일이내 발송 이력이 있을 경우             |
 | 공통      | false     | -3100      | 템플릿 문의 가능한 상태가 아닐 경우                     |
 | 공통      | false     | -4003      | 조회 범위는 한 달 초과                            |
