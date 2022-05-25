@@ -1,4 +1,17 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### May 24, 2022
+* [API] Improved the deletion of AlimTalk templates
+    * Made improvements so that templates in a status other than the rejected status can be deleted.
+    * For details, refer to the [API Guide](./alimtalk-api-guide/#delete-templates).
+* [Console] Changes to Ad Included/Mixed Purposes Templates
+    * Due to the change of KakaoTalk BizMessage policy, in the case of Ad Included/Mixed Purposes template, the Add Channel button and templateAd are fixed.
+
+### April 26, 2022
+* [API] Added public fields for SMS alternative delivery
+    * Made improvements so that the statsId, senderGroupingKey, and recipientGroupingKey fields are added when resending SMS messages for AlimTalk/FriendTalk.
+* [API] Improved validation of template for AlimTalk full text delivery
+    * Improved validation to allow whitespaces for template replacement when sending AlimTalk full text.
+
 ### Mar 29, 2022
 * [Console] Changed the base date for backup of AlimTalk delivery results
     * The base date for backup of AlimTalk delivery results has been changed from 180 days to 90 days.
@@ -373,7 +386,7 @@ Delivery body text
 #### More Features
 * [Console] Register multiple Plus friends
     - Previously, only 1 Plus friend could be added at a time. Now, multiple Plus friends can be added at a time.
-* [Console] When a template is rejected, provides the reason.
+* [Console] When a template is rejected, provides the reason in the template details.
 * [API] Added the delivery API field as now multiple Plus friends can be added at a time
     - Added 12 plusFriendId fields to requestBody.
     - The message will be sent to the Plus friend ID who was added first when plusFriendId is left empty.
