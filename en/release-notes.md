@@ -3,6 +3,8 @@
 * [API] Improved the deletion of AlimTalk templates
     * Made improvements so that templates in a status other than the rejected status can be deleted.
     * For details, refer to the [API Guide](./alimtalk-api-guide/#delete-templates).
+* [Console] Changes to Ad Included/Mixed Purposes Templates
+    * Due to the change of KakaoTalk BizMessage policy, in the case of Ad Included/Mixed Purposes template, the Add Channel button and templateAd are fixed.
 
 ### April 26, 2022
 * [API] Added public fields for SMS alternative delivery
