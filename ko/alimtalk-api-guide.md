@@ -1735,7 +1735,7 @@ curl -X GET \
 [URL]
 
 ```
-POST  /alimtalk/v2.2/appkeys/{appkey}/template/categories
+GET  /alimtalk/v2.2/appkeys/{appkey}/template/categories
 Content-Type: application/json;charset=UTF-8
 ```
 

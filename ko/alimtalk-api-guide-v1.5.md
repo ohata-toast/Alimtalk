@@ -1694,7 +1694,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v1.5/appkeys/{appkey}/template/categories
+GET  /alimtalk/v1.5/appkeys/{appkey}/template/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
