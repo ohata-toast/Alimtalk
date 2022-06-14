@@ -1770,7 +1770,7 @@ https://api-alimtalk.cloud.toast.com/alimtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}
 [URL]
 
 ```
-POST  /alimtalk/v2.2/appkeys/{appkey}/template/categories
+GET  /alimtalk/v2.2/appkeys/{appkey}/template/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
