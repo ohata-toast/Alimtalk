@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### June 14, 2022
+* [Console] Changes to Ad Included/Mixed Purposes Templates
+    * Due to the change of KakaoTalk BizMessage policy, in the case of Ad Included/Mixed Purposes template, the Add Channel button and templateAd are fixed.
+
 ### May 24, 2022
 * [API] Improved the deletion of AlimTalk templates
     * Made improvements so that templates in a status other than the rejected status can be deleted.
