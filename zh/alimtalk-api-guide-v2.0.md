@@ -1300,7 +1300,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/template/categories
+GET  /alimtalk/v2.0/appkeys/{appkey}/template/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
