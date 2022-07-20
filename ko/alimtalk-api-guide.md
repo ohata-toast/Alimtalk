@@ -48,7 +48,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -192,7 +192,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -351,7 +351,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -497,7 +497,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -641,7 +641,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -784,7 +784,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -940,7 +940,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -1086,7 +1086,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -1221,7 +1221,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -1279,7 +1279,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -1753,7 +1753,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 #### 응답
 ```
@@ -1820,7 +1820,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1874,6 +1874,10 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+* 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 등록 시, templateAd 값이 고정 됩니다.
+* 채널추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 등록 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
+* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여, 등록해야 합니다.
+
 
 #### 응답
 ```
@@ -1918,7 +1922,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1970,6 +1974,9 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+* 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, templateAd 값이 고정 됩니다.
+* 채널추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
+* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여, 수정해야 합니다.
 
 #### 응답
 ```
@@ -2060,7 +2067,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -2119,7 +2126,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -2181,7 +2188,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -2342,7 +2349,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -2484,7 +2491,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request parameter]
 
@@ -2546,7 +2553,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 
 [Request body]
@@ -2601,7 +2608,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 
 [Request body]
