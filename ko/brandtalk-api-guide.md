@@ -42,7 +42,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -151,7 +151,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -267,7 +267,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -375,7 +375,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request parameter]
 
@@ -442,12 +442,12 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |templateCode|	String |	O | 템플릿 코드 (최대 20자) |
 |templateName|	String |	O | 템플릿명 (최대 150자) |
-|messageType| String | X |템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
-|contentType| String | X |텍스트 유형 (F: 고정형, V: 변수형) |
+|messageType| String | O |템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
+|contentType| String | O |텍스트 유형 (F: 고정형, V: 변수형) |
 |unsubscribeContent|	String |	O | 무료수신거부 전화번호/인증번호 |
 |templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
-|templateImageLink | String |	X | 템플릿 이미지 링크 |
-|image | String |	X | 이미지 URL |
+|templateImageLink | String |	O | 템플릿 이미지 링크 |
+|image | File |	O | 이미지 파일 |
 | buttons[i].type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
 | buttons[i].name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 | buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
@@ -531,7 +531,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
