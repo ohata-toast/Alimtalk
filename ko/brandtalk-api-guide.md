@@ -539,16 +539,9 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |templateCode|	String|	X |	템플릿 코드|
 |templateName|	String|	X |	템플릿 이름|
-|kakaoStatus| String |	X | 템플릿 상태 코드|
+|kakaoStatus| String |	X | 템플릿 상태(A:정상, R:대기(발송전), S:중단)|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
-
-|템플릿 상태 코드| 설명|
-|---|---|
-| TSC01 | 요청 |
-| TSC02 | 검수중 |
-| TSC03 | 승인 |
-| TSC04 | 반려 |
 
 [예시]
 ```
