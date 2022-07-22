@@ -450,10 +450,10 @@ Content-Type: application/json;charset=UTF-8
 |image | File |	O | 이미지 파일 |
 | buttons[i].type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
 | buttons[i].name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-| buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-| buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-| buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+| buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드)|
+| buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드) |
+| buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+| buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
 | buttons[i].bizFormId | String | X |	버튼 클릭 시 실행할 비즈니스폼ID |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
