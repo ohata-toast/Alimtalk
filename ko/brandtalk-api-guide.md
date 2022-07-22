@@ -533,16 +533,6 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter]
-
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|templateCode|	String|	X |	템플릿 코드|
-|templateName|	String|	X |	템플릿 이름|
-|kakaoStatus| String |	X | 템플릿 상태(A:정상, R:대기(발송전), S:중단)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
-
 [예시]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}"
