@@ -1516,7 +1516,7 @@ https://api-alimtalk.cloud.toast.com/alimtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}
 | -- fileId | String | 添付ファイルID |
 | -- templateCode |	String | テンプレートコード(最大20文字) |
 | -- templateExtra | String | テンプレート付加情報(テンプレートメッセージタイプが[付加情報型/複合型]の場合は必須) |
-| -- templateAd | String | テンプレート内の受信同意リクエストまたは簡単な広告文言(テンプレートメッセージタイプが[広告追加型/複合型]の場合は必須) |
+| -- templateAd | String | テンプレート内の受信同意リクエストまたは簡単な広告文言 |
 | -- tempalteTitle| String | テンプレートタイトル(最大50文字、Android：2行、23文字以上省略処理、IOS：2行、27文字以上省略処理) |
 | -- templateSubtitle| String | テンプレート補助文言(最大50文字、Android：18文字以上省略処理、IOS：21文字以上省略処理) |
 | -- autoSendYn | String | 自動送信を行うかどうか |
@@ -1735,7 +1735,7 @@ https://api-alimtalk.cloud.toast.com/alimtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}
 | - tempalteTitle| String | テンプレートタイトル(最大50文字、Android：2行、23文字以上省略処理、IOS：2行、27文字以上省略処理) |
 | - templateSubtitle| String | テンプレート補助文言(最大50文字、Android：18文字以上省略処理、IOS：21文字以上省略処理) |
 | - templateExtra | String | テンプレート付加情報(テンプレートメッセージタイプが[付加情報型/複合型]の場合は必須) |
-| - templateAd | String | テンプレート内の受信同意リクエストまたは簡単な広告文言(テンプレートメッセージタイプが[広告追加型/複合型]の場合は必須) |
+| - templateAd | String | テンプレート内の受信同意リクエストまたは簡単な広告文言 |
 | - requestDate | String | リクエスト日 |
 | - receiveDate | String | 受信日 |
 | - createDate | String | 作成日 |
@@ -1867,7 +1867,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1893,10 +1892,9 @@ Content-Type: application/json;charset=UTF-8
 | templateCode    | String  | O    | テンプレートコード(最大20文字)                           |
 | templateName    | String  | O    | テンプレート名(最大150文字)                             |
 | templateContent | String  | O    | テンプレート本文(最大1000文字)                         |
-| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 |templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | templateExtra     | String  | X  | テンプレート付加情報 |
-| templateAd        | String  | X  | テンプレート内の受信同意または簡単な広告文句 |
 |tempalteTitle      | String  | X  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 |templateSubtitle   | String  | X  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 |templateImageName  | String  |	X  | 画像名（アップロードされたファイル名） |
@@ -1966,7 +1964,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1991,10 +1988,9 @@ Content-Type: application/json;charset=UTF-8
 | --------------- | ------- | ---- | ---------------------------------------- |
 | templateName    | String  | O    | テンプレート名(最大150文字)                             |
 | templateContent | String  | O    | テンプレート本文(最大1000文字)                         |
-| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | templateExtra   | String  | X    |テンプレート付加情報 |
-| templateAd      | String  | X    | テンプレート内の受信同意または簡単な広告文句 |
 | tempalteTitle| String | X| テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 | templateSubtitle| String | X| テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 | templateImageName  | String  |	X  | 画像名（アップロードされたファイル名） |
@@ -2322,7 +2318,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateSubtitle  | String  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 | -- templateImageName | String  | 画像名（アップロードされたファイル名） |
 | -- templateImageUrl  | String  | 画像のURL |
-| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | -- templateExtra     | String  | テンプレート付加情報 |
 | -- templateAd        | String  | テンプレート内の受信同意または簡単な広告文句 |
 | -- buttons           | List    | ボタンリスト                            |
@@ -2459,7 +2455,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateSubtitle  | String  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 | -- templateImageName | String  | 画像名（アップロードされたファイル名） |
 | -- templateImageUrl  | String  | 画像のURL |
-| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | -- templateExtra     | String  | テンプレート付加情報 |
 | -- templateAd        | String  | テンプレート内の受信同意または簡単な広告文句 |
 | -- buttons           | List    | ボタンリスト                            |

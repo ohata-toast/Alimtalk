@@ -1484,7 +1484,7 @@ curl -X GET \
 | -- fileId | String | Attachment ID |
 | -- templateCode | String | Template code (up to 20 characters) |
 | -- templateExtra | String | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-| -- templateAd | String | Request for consent of receiving within template or simple ad phrases (Required, if template message type is [Ad Included/Mixed Purposes] |
+| -- templateAd | String | Request for consent of receiving within template or simple ad phrases |
 | -- tempalteTitle| String | Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | -- templateSubtitle| String | Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | -- autoSendYn | String | Auto sending or not |
@@ -1703,7 +1703,7 @@ curl -X GET \
 | - tempalteTitle| String | Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | - templateSubtitle| String | Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | - templateExtra | String | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-| - templateAd | String | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes] |
+| - templateAd | String | Request for consent of receiving within template or simple ad phrases |
 | - requestDate | String | Date of request |
 | - receiveDate | String | Date of receiving |
 | - createDate | String | Date of creation |
@@ -1834,7 +1834,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1863,7 +1862,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X |Types of template message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String| X| Types of emphasized template (NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required <br>IMAGE: templateImageName and templateImageUrl fields are required|
 |templateExtra | String | X | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-|templateAd | String | X | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes]) |
 |tempalteTitle| String | X| Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 |templateImageName | String |   X | Image name (name of uploaded file) |
@@ -1933,7 +1931,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1961,7 +1958,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X | Types of template message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String| X| Types of emphasized template (NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required <br>IMAGE: templateImageName and templateImageUrl fields are required|
 |templateExtra | String | X | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-|templateAd | String | X | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes] |
 |tempalteTitle| String | X| Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 |templateImageName | String |   X | Image name (name of uploaded file) |
