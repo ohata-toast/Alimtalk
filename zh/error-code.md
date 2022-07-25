@@ -40,11 +40,11 @@
 | Common  | false     | -3009      | Button name does not exist.                                  |
 | Common  | false     | -3010      | Template body does not match.                                |
 | Common  | false     | -3011      | Template button does not match.                              |
-| Common  | false     | -3012      | Unavailable to modify template (either approved or returned)           |
+| Common  | false     | -3012      | Unavailable to modify template (either approved or rejected)           |
 | Common  | false     | -3013      | Template under modification exists                           |
 | Common  | false     | -3014      | Invalid button type                         |
 | Common  | false     | -3015      | Plus Friend with CBT deactivated                  |
-| Common  | false     | -3016      | Reguires templateTitle and templateSubtitle, for Emphasized templates            |
+| Common  | false     | -3016      | Requires templateTitle and templateSubtitle for Emphasized templates            |
 | Common  | false     | -3017      | Unable to use replacement variable for templateSubtitle            |
 | Common  | false     | -3018      | Requires templateExtra for Extra Information-type templates           |
 | Common  | false     | -3019      | Requires templateAd for Ad-included-type templates           |
@@ -67,6 +67,13 @@
 | Common  | false     | -4103      | Start/End time value of delivery request is unavailable for queries |
 | Common  | false     | -4200      | Invalid alternative delivery message                                       |
 | Common  | false     | -5000      | Invalid recipient number                                     |
+| Common | false     | -6000      | 고정형(F) 내용 유형은 변수를 포함할 수 없음            |
+| Common | false     | -6001      | 변수형(V) 내용 유형은 반드시 변수를 포함해야 함         |
+| Common | false     | -6002      | 변수는 총 20개 이상 포함할 수 없음                   |
+| Common | false     | -6003      | 변수는 영문/숫자/특수문자('-', '')만 사용할 수 있으며 20자 이내로만 가능 |
+| Common | false     | -6004      | 와이드형(W) 메시지 타입은 본문 76자 이내, 버튼 1개까지 가능 |
+| Common | false     | -6005      | 채널 추가(AC) 타입 버튼은 이미지형(I) 메시지 타입일 경우, 첫 번째 순서에 위치해야 합니다.<br>와이드형(W) 메시지 타입일 경우, 마지막에 위치해야 합니다.|
+| Common | false     | -6006      | 비지니스폼(BF) 타입 버튼은 bizFormId 값이 반드시 존재해야 합니다.<br>이미지형(I) 메시지 타입일 경우, 첫 번째 순서에 위치해야 합니다.<br>와이드형(W) 메시지 타입일 경우, 마지막에 위치해야 합니다.<br>이미지형(I) 메시지 타입이면서 채널 추가(AC) 타입 버튼과 같이 사용할 경우, 두 번째에 위치해야 합니다.<br>와이드형(W) 메시지 타입이면서 채널 추가(AC) 타입 버튼과 같이 사용할 경우, 첫 번째에 위치해야 합니다.|
 | Common  | false     | -7000      | Vendor request API failed                                    |
 | Common  | false     | -8000      | Image sequence (imageSeq) is missing                         |
 | Common  | false     | -8001      | Image file is not normal                                     |
@@ -81,7 +88,7 @@
 | Common  | false     | -9999      | Error in system                                              |
 
 
-## Delivery Result Codes
+## AlimTalk/FriendTalk Delivery Result Codes
 
 <table class="table table-striped table-hover">
 <thead>
@@ -177,7 +184,7 @@
 	</tr>
 	<tr>
 		<td>3005</td>
-		<td>Message is delievered but receipt is not confirmed (Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
+		<td>Message is delivered but receipt is not confirmed (Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
 	</tr>
 	<tr>
 		<td>3006</td>
@@ -217,7 +224,7 @@
 	</tr>
 	<tr>
 		<td>3018</td>
-		<td>Unable to send messages<br>1. KakaoTalk user who has withdrwan <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users (for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
+		<td>Unable to send messages<br>1. KakaoTalk user who has withdrawn <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users (for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
 	</tr>
 	<tr>
 		<td>3022</td>
@@ -245,7 +252,7 @@
 	</tr>
 	<tr>
 		<td>3028</td>
-		<td>Message highlited title does not match template </td>
+		<td>Message highlighted title does not match template </td>
 	</tr>
 	<tr>
 		<td>3029</td>
@@ -269,7 +276,7 @@
 	</tr>
 	<tr>
 		<td>3034</td>
-		<td>Message is not consitent with template </td>
+		<td>Message is not consistent with template </td>
 	</tr>
 	<tr>
 		<td>3040</td>
@@ -404,6 +411,167 @@
 	<tr>
 		<td>E999</td>
 		<td>Other errors </td>
+	</tr>
+</tbody>
+</table>
+
+## 브랜드톡 발송 결과 코드
+
+<table class="table table-striped table-hover">
+<thead>
+	<tr>
+		<th>코드값</th>
+		<th>의미</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>A0000</td>
+		<td>성공</td>
+	</tr>
+  <tr>
+		<td>A1001</td>
+		<td>Request Body가 JSON형식이 아님</td>
+	</tr>
+  <tr>
+		<td>A1003</td>
+		<td>발신 프로필 키가 유효하지 않음</td>
+	</tr>
+  <tr>
+		<td>A1004</td>
+		<td>Request Body(JSON)에서 name을 찾을 수 없음</td>
+	</tr>
+	<tr>
+		<td>A1006</td>
+		<td>삭제된 발신프로필</td>
+	</tr>
+	<tr>
+		<td>A1007</td>
+		<td>차단 상태의 발신프로필</td>
+	</tr>
+	<tr>
+		<td>A1021</td>
+		<td>차단 상태의 카카오톡 채널</td>
+	</tr>
+	<tr>
+		<td>A1022</td>
+		<td>닫힘 상태의 카카오톡 채널</td>
+	</tr>
+  <tr>
+		<td>A1023</td>
+		<td>삭제된 카카오톡 채널</td>
+	</tr>
+  <tr>
+		<td>A1024</td>
+		<td>삭제대기 상태의 카카오톡 채널</td>
+	</tr>
+	<tr>
+		<td>A1025</td>
+		<td>메시지차단 상태의 카카오톡 채널</td>
+	</tr>
+	<tr>
+		<td>A1030</td>
+		<td>잘못된 파라메터 요청</td>
+	</tr>
+	<tr>
+		<td>A1033</td>
+		<td>템플릿 타입과 메시지타입 불일치</td>
+	</tr>
+	<tr>
+		<td>A2040</td>
+		<td>동보발송 요청이 진행중이라서 타겟팅 값을 사용할 수 없음</td>
+	</tr>
+	<tr>
+		<td>A3000</td>
+		<td>예기치 않은 오류 발생</td>
+	</tr>
+	<tr>
+		<td>A3006</td>
+		<td>내부 시스템 오류로 메시지 전송 실패</td>
+	</tr>
+	<tr>
+		<td>A3008</td>
+		<td>전화번호 오류</td>
+	</tr>
+	<tr>
+		<td>A3010</td>
+		<td>Json 파싱 오류</td>
+	</tr>
+	<tr>
+		<td>A3011</td>
+		<td>메시지가 존재하지 않음</td>
+	</tr>
+	<tr>
+		<td>A3013</td>
+		<td>메시지가 비어 있음</td>
+	</tr>
+	<tr>
+		<td>A3014</td>
+		<td>메시지 길이 제한 오류(템플릿별 제한 길이 또는 1000자 초과)</td>
+	</tr>
+	<tr>
+		<td>A3015</td>
+		<td>템플릿을 찾을 수 없음</td>
+	</tr>
+	<tr>
+		<td>A3016</td>
+		<td>메시지 내용이 변수와 일치하지 않음</td>
+	</tr>
+	<tr>
+		<td>A3018</td>
+		<td>메시지를 전송할 수 없음</td>
+	</tr>
+	<tr>
+		<td>A3020</td>
+		<td>메시지 확인 정보를 찾을 수 없음</td>
+	</tr>
+	<tr>
+		<td>A3022</td>
+		<td>메시지 발송 가능한 시간이 아님(브랜드톡/마케팅 메시지는 08시부터 20시까지 발송 가능)</td>
+	</tr>
+	<tr>
+		<td>A3024</td>
+		<td>메시지에 포함된 이미지를 전송할 수 없음</td>
+	</tr>
+	<tr>
+		<td>A3027</td>
+		<td>버튼이 변수와 일치하지 않음</td>
+	</tr>
+	<tr>
+		<td>A3031</td>
+		<td>텍스트 유형 불일치</td>
+	</tr>
+	<tr>
+		<td>A4000</td>
+		<td>메시지 전송 결과를 찾을 수 없음</td>
+	</tr>
+	<tr>
+		<td>A4001</td>
+		<td>알 수 없는 메시지 상태</td>
+	</tr>
+	<tr>
+		<td>A9998</td>
+		<td>시스템에 문제가 발생하여 담당자가 확인하고 있는 경우</td>
+	</tr>
+	<tr>
+		<td>A9999</td>
+		<td>시스템에 문제가 발생하여 담당자가 확인하고 있는 경우</td>
+	</tr>
+	<tr>
+		<td>B7013</td>
+		<td>발송 제약 시간(20:50~익일 08:00) 에러</td>
+	</tr>
+	<tr>
+		<td>B7014</td>
+		<td>메시지 유효 시간 초과 에러</td>
+	</tr>
+	<tr>
+		<td>B7015</td>
+		<td>메시지 길이 제한 오류</td>
+	</tr>
+	<tr>
+		<td>B7017</td>
+		<td>내부 시스템 오류로 메시지 전송 실패</td>
 	</tr>
 </tbody>
 </table>

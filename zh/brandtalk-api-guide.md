@@ -42,7 +42,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -151,7 +151,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -267,7 +267,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -375,7 +375,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request parameter]
 
@@ -442,12 +442,12 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |templateCode|	String |	O | 템플릿 코드 (최대 20자) |
 |templateName|	String |	O | 템플릿명 (최대 150자) |
-|messageType| String | X |템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
-|contentType| String | X |텍스트 유형 (F: 고정형, V: 변수형) |
+|messageType| String | O |템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
+|contentType| String | O |텍스트 유형 (F: 고정형, V: 변수형) |
 |unsubscribeContent|	String |	O | 무료수신거부 전화번호/인증번호 |
 |templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
-|templateImageLink | String |	X | 템플릿 이미지 링크 |
-|image | String |	X | 이미지 URL |
+|templateImageLink | String |	O | 템플릿 이미지 링크 |
+|image | File |	O | 이미지 파일 |
 | buttons[i].type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
 | buttons[i].name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 | buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
@@ -464,11 +464,11 @@ Content-Type: application/json;charset=UTF-8
 * 인증번호는 숫자 1~10자리 입니다.
 
 * 이미지형은 버튼 수 최대 5개, 와이드형은 버튼 수 최대 2개까지 가능
-* AC 버튼이 포함된 경우, 이미지형은 첫번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
+* AC 버튼이 포함된 경우, 이미지형은 첫 번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
 * AC 버튼은 버튼명이 "채널 추가"로 고정
 * contentType이 변수형(V)인 경우 링크(linkMo, linkPc, schemeAndroid, schemeIos)에 변수 입력 가능.
-* BF 버튼만 포함된 경우, 이미지형은 첫번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
-* AC 버튼과 BF 버튼이 동시에 쓰일 경우 BF 버튼은, 이미지형은 두번째 버튼 / 와이드형은 첫번째 버튼의 순서대로 입력
+* BF 버튼만 포함된 경우, 이미지형은 첫 번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
+* AC 버튼과 BF 버튼이 동시에 쓰일 경우 BF 버튼은, 이미지형은 두번째 버튼 / 와이드형은 첫 번째 버튼의 순서대로 입력
 * BF 버튼은 버튼명이 "톡에서 예약하기", "톡에서 설문하기", "톡에서 응모하기" 중 택1하여 사용하여야 함
 * BF 버튼 링크는 카카오 for 비즈니스에서 생성한 비즈니스폼 ID로 등록이 가능하며, 아래 조건이 유효해야 함
   1) 비즈니스폼 등록 관리자와 채널 관리자가 일치하여야 함 (관리자 권한 무관)
@@ -531,24 +531,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
-
-[Query parameter]
-
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|templateCode|	String|	X |	템플릿 코드|
-|templateName|	String|	X |	템플릿 이름|
-|kakaoStatus| String |	X | 템플릿 상태 코드|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
-
-|템플릿 상태 코드| 설명|
-|---|---|
-| TSC01 | 요청 |
-| TSC02 | 검수중 |
-| TSC03 | 승인 |
-| TSC04 | 반려 |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
