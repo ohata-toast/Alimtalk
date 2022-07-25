@@ -1,11 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 ### 2022.07.26
 * [Console] 브랜드톡 기능 출시
-    * 카카오의 CBT 기능인 브랜드톡 기능이 출시 되었습니다.
-    * CBT 기능이 활성화 된 발신 프로필만 사용 가능합니다.
-* [API] 알림톡 템플릿 등록/수정 시, templateAd 필드 삭제
-    * 알림톡 템플릿 등록/수정 시, templateAd 필드 삭제되었습니다.
-    * 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 등록 시, templateAd 값이 고정 됩니다.
+    * 카카오의 CBT 기능인 브랜드톡 기능이 출시되었습니다.
+    * CBT 기능이 활성화된 발신 프로필만 사용 가능합니다.
+* [API] 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제
+    * 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제되었습니다.
+    * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
 
 ### 2022.06.14.
 * [Console] 채널 추가형/복합형 템플릿 변경 사항
