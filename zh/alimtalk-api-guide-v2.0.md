@@ -50,7 +50,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Note](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request body]
 
@@ -181,7 +181,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request Body]
 
@@ -332,7 +332,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Query parameter] No. 1 or (2, 3) is conditionally required
 
@@ -481,7 +481,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Example]
 ```
@@ -616,7 +616,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request body]
 
@@ -741,7 +741,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request Body]
 
@@ -888,7 +888,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Query parameter] No. 1 or (2, 3) is conditionally required
 
@@ -1037,7 +1037,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Example]
 ```
@@ -1166,7 +1166,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Query parameter]
 
@@ -1224,7 +1224,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Query parameter]
 
@@ -1318,7 +1318,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 #### Response
 ```
@@ -1387,7 +1387,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request Body]
 
@@ -1399,7 +1399,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "securityFlag": Boolean,
@@ -1426,7 +1425,6 @@ Content-Type: application/json;charset=UTF-8
 | templateMessageType | String  | X        | Types of Template Message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String  | X        | Types of Emphasized Template (NONE: Basic, TEXT: Emphasized, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required |
 | templateExtra       | String  | X        | Additional Template Information (Required, if template message type is[Ad Included/Mixed Purposes])                             |
-| templateAd          | String  | X        | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes]) |
 |tempalteTitle        | String  | X        | Template Title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle    | String   | X        | Auxiliary Template Phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | securityFlag    | Boolean | X        | Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending (default: false) |
@@ -1486,7 +1484,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request Body]
 
@@ -1497,7 +1495,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "securityFlag": Boolean,
@@ -1523,7 +1520,6 @@ Content-Type: application/json;charset=UTF-8
 | templateMessageType | String  | X        | Types of Template Message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String  | X        | Types of Emphasized Template (NONE: Basic, TEXT: Emphasized, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required |
 | templateExtra       | String  | X        | Additional Template Information (Required, if template message type is[Ad Included/Mixed Purposes])                             |
-| templateAd          | String  | X        | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes] |
 |tempalteTitle| String | X| Template Title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary Template Phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | securityFlag    | Boolean | X        | Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending (default: false) |
@@ -1627,7 +1623,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Request Body]
 
@@ -1684,7 +1680,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Note](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -1744,7 +1740,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Query parameter]
 
@@ -1896,7 +1892,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O        | Can be created on console.  |
 
 [Example]
 ```

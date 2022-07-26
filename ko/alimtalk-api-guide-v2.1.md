@@ -47,7 +47,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -176,7 +176,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -327,7 +327,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -467,7 +467,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -605,7 +605,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
 
@@ -733,7 +733,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -881,7 +881,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter] 1번 or (2번, 3번) 조건 필수
 
@@ -1021,7 +1021,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -1150,7 +1150,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -1208,7 +1208,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -1309,7 +1309,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 #### 응답
 ```
@@ -1376,7 +1376,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1388,7 +1388,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1417,7 +1416,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X |템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형, default: BA) |
 |templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수|
 |templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|templateAd | String | X | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구(템플릿 메시지 유형이 [채널 추가형/복합형]일 경우 필수) |
 |tempalteTitle| String | X| 템플릿 제목 (최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
 |templateSubtitle| String | X| 템플릿 보조 문구 (최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
@@ -1476,7 +1474,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1487,7 +1485,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1515,7 +1512,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
 |templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수|
 |templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|templateAd | String | X | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구(템플릿 메시지 유형이 [채널 추가형/복합형]일 경우 필수) |
 |tempalteTitle| String | X| 템플릿 제목 (최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
 |templateSubtitle| String | X| 템플릿 보조 문구 (최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
@@ -1616,7 +1612,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1673,7 +1669,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
 
@@ -1733,7 +1729,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
 
@@ -1894,7 +1890,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [예시]
 ```
@@ -2036,7 +2032,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request parameter]
 
@@ -2098,7 +2094,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 
 [Request body]
@@ -2153,7 +2149,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 
 [Request body]

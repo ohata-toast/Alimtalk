@@ -48,7 +48,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request body]
 
@@ -194,7 +194,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -353,7 +353,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter] No. 1 or (2, 3) is conditionally required
 
@@ -499,7 +499,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Example]
 ```
@@ -643,7 +643,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request body]
 
@@ -786,7 +786,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -942,7 +942,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter] No. 1 or (2, 3) is conditionally required
 
@@ -1088,7 +1088,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Example]
 ```
@@ -1223,7 +1223,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -1281,7 +1281,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -1484,7 +1484,7 @@ curl -X GET \
 | -- fileId | String | Attachment ID |
 | -- templateCode | String | Template code (up to 20 characters) |
 | -- templateExtra | String | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-| -- templateAd | String | Request for consent of receiving within template or simple ad phrases (Required, if template message type is [Ad Included/Mixed Purposes] |
+| -- templateAd | String | Request for consent of receiving within template or simple ad phrases |
 | -- tempalteTitle| String | Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | -- templateSubtitle| String | Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | -- autoSendYn | String | Auto sending or not |
@@ -1703,7 +1703,7 @@ curl -X GET \
 | - tempalteTitle| String | Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | - templateSubtitle| String | Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | - templateExtra | String | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-| - templateAd | String | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes] |
+| - templateAd | String | Request for consent of receiving within template or simple ad phrases  |
 | - requestDate | String | Date of request |
 | - receiveDate | String | Date of receiving |
 | - createDate | String | Date of creation |
@@ -1755,7 +1755,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 #### Response
 ```
@@ -1822,7 +1822,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -1834,7 +1834,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1863,7 +1862,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X |Types of template message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String| X| Types of emphasized template (NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required <br>IMAGE: templateImageName and templateImageUrl fields are required|
 |templateExtra | String | X | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-|templateAd | String | X | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes]) |
 |tempalteTitle| String | X| Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 |templateImageName | String |   X | Image name (name of uploaded file) |
@@ -1878,6 +1876,9 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String | X |PC web link (optional for the WL type, up to 500 characters) |
 |-schemeIos | String | X |  iOS app link (required for the AL type, up to 500 characters) |
 |-schemeAndroid | String | X |  Android app link (required for the AL type, up to 500 characters) |
+* 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
+* 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
+* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여 등록해야 합니다.
 
 #### Response
 ```
@@ -1922,7 +1923,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -1933,7 +1934,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "templateImageName" : String,
@@ -1961,7 +1961,6 @@ Content-Type: application/json;charset=UTF-8
 |templateMessageType| String | X | Types of template message (BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 |templateEmphasizeType| String| X| Types of emphasized template (NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required <br>IMAGE: templateImageName and templateImageUrl fields are required|
 |templateExtra | String | X | Additional template information (Required, if template message type is[Ad Included/Mixed Purposes]) |
-|templateAd | String | X | Request for consent of receiving within template or simple ad phrases (Required, if template message type is[Ad Included/Mixed Purposes] |
 |tempalteTitle| String | X| Template title (No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary template phrase (No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 |templateImageName | String |   X | Image name (name of uploaded file) |
@@ -1976,6 +1975,9 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String | X |PC web link (optional for the WL type, up to 500 characters) |
 |-schemeIos | String | X |  iOS app link (required for the AL type, up to 500 characters) |
 |-schemeAndroid | String | X |  Android app link (required for the AL type, up to 500 characters) |
+* 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, templateAd 값이 고정됩니다.
+* 채널 추가형(AD)과 복합형(MI) 메시지 유형 템플릿 수정 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
+* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여, 수정해야 합니다.
 
 #### Response
 ```
@@ -2062,7 +2064,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -2121,7 +2123,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request Body]
 
@@ -2183,7 +2185,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -2344,7 +2346,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Example]
 ```
@@ -2486,7 +2488,7 @@ Content-Type: multipart/form-data
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request parameter]
 
@@ -2548,7 +2550,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 
 [Request body]
@@ -2603,7 +2605,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 
 [Request body]

@@ -1778,7 +1778,6 @@ Content-Type: application/json;charset=UTF-8
   "templateMessageType": String,
   "templateEmphasizeType" : String,
   "templateExtra": String,
-  "templateAd": String,
   "templateTitle" : String,
   "templateSubtitle" : String,
   "securityFlag": Boolean,
@@ -1802,10 +1801,9 @@ Content-Type: application/json;charset=UTF-8
 | templateCode    | String  | O    | テンプレートコード(最大20文字)                           |
 | templateName    | String  | O    | テンプレート名(最大150文字)                             |
 | templateContent | String  | O    | テンプレート本文(最大1000文字)                         |
-| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtra フィールド必須」 |
 |templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | templateExtra     | String  | X  | テンプレート付加情報 |
-| templateAd        | String  | X  | テンプレート内の受信同意または簡単な広告文句 |
 |tempalteTitle      | String  | X  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 |templateSubtitle   | String  | X  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 |securityFlag| Boolean | X| セキュリティテンプレートかどうか<br>OTPなどのセキュリティメッセージの場合、設定<br>発信当時のメインデバイスを除くすべてのデバイスにメッセージテキストミノチュル(default: false) |
@@ -1896,10 +1894,9 @@ Content-Type: application/json;charset=UTF-8
 | --------------- | ------- | ---- | ---------------------------------------- |
 | templateName    | String  | O    | テンプレート名(最大150文字)                             |
 | templateContent | String  | O    | テンプレート本文(最大1000文字)                         |
-| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | templateExtra   | String  | X    |テンプレート付加情報 |
-| templateAd      | String  | X    | テンプレート内の受信同意または簡単な広告文句 |
 | tempalteTitle| String | X| テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 | templateSubtitle| String | X| テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 |securityFlag| Boolean | X| セキュリティテンプレートかどうか<br>OTPなどのセキュリティメッセージの場合、設定<br>発信当時のメインデバイスを除くすべてのデバイスにメッセージテキストミノチュル(default: false) |
@@ -2208,7 +2205,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateEmphasizeType| String| テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | -- tempalteTitle     | String  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 | -- templateSubtitle  | String  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
-| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | -- templateExtra     | String  | テンプレート付加情報 |
 | -- templateAd        | String  | テンプレート内の受信同意または簡単な広告文句 |
 | -- buttons           | List    | ボタンリスト                            |
@@ -2334,7 +2331,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateEmphasizeType| String| テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
 | -- tempalteTitle     | String  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 | -- templateSubtitle  | String  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
-| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>AD：templateAdフィールド必須、グループテンプレート使用不可<br>MI：templateExtra、templateAdフィールド必須」 |
+| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
 | -- templateExtra     | String  | テンプレート付加情報 |
 | -- templateAd        | String  | テンプレート内の受信同意または簡単な広告文句 |
 | -- buttons           | List    | ボタンリスト                            |
