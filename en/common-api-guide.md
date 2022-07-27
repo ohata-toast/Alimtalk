@@ -46,7 +46,7 @@
 
 | Name | Type | Max. Length | Required | Description |
 |---|---|---|---|---|
-| statsType | String | - | Required | Statistics type<br/>NORMAL: basic, MINUTELY: by minute, HOURLY: by hour, DAILY: by day, BY_DAY: by hour |
+| statsType | String | - | Required | Statistics type<br/>NORMAL: basic, MINUTELY: by minute, HOURLY: by hour, DAILY: daily, BY_DAY: by day |
 | from | String | - | Required | Start date of statistics search<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | Required | End date of statistics search<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | Optional | When retrieving statistics data, set whether to provide the data in tree form |
@@ -112,7 +112,7 @@
 
 | Name | Type | Max. Length | Required | Description |
 |---|---|---|---|---|
-| statsType | String | - | Required | Statistics type<br/>NORMAL: basic, MINUTELY: by minute, HOURLY: by hour, DAILY: by day, BY_DAY: by hour |
+| statsType | String | - | Required | Statistics type<br/>NORMAL: basic, MINUTELY: by minute, HOURLY: by hour, DAILY: daily, BY_DAY: by day |
 | from | String | - | Required | Start date of statistics search<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | Required | End date of statistics search<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | Optional | When retrieving statistics data, set whether to provide the data in tree form |
