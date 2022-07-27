@@ -46,8 +46,8 @@
 
 | 이름 | 타입 | 최대 길이 | 필수 | 설명 |
 |---|---|---|---|---|
-| statsType | String | - | 필수 | 통계 구분<br/>NORMAL:기본, MINUTELY:분별, HOURLY:시간별, DAILY:일별, BY_DAY:시간별, DAY:요일별 |
-| from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss | 
+| statsType | String | - | 필수 | 통계 구분<br/>NORMAL:기본, MINUTELY:분별, HOURLY:시간별, DAILY:일별, BY_DAY:시간별 |
+| from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 필수 | 통계 검색 종료 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | 옵션 | 통계 데이터 조회 시, 트리 형태로 제공할 지 설정 |
 | extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
@@ -112,8 +112,8 @@
 
 | 이름 | 타입 | 최대 길이 | 필수 | 설명 |
 |---|---|---|---|---|
-| statsType | String | - | 필수 | 통계 구분<br/>NORMAL:기본, MINUTELY:분별, HOURLY:시간별, DAILY:일별, BY_DAY:시간별, DAY:요일별 |
-| from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss | 
+| statsType | String | - | 필수 | 통계 구분<br/>NORMAL:기본, MINUTELY:분별, HOURLY:시간별, DAILY:일별, BY_DAY:시간별 |
+| from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 필수 | 통계 검색 종료 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | 옵션 | 통계 데이터 조회 시, 트리 형태로 제공할 지 설정 |
 | extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
