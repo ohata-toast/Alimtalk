@@ -117,7 +117,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
-| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
+| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
 * <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
@@ -271,7 +271,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
-| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
+| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
 * <b>本文とボタンに置換が完了したデータを入れてください。</b>
 * <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
@@ -714,7 +714,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
-| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
+| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
 * <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
@@ -869,7 +869,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
-| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大10文字) |
+| statsId                | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
 * <b>本文とボタンに置換が完了したデータを入れてください。</b>
 * <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
