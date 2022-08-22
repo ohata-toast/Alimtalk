@@ -46,8 +46,8 @@
 
 |値| タイプ | 最大長さ | 必須 | 説明 |
 |---|---|---|---|---|
-| statsType | String | - | 必須 | 統計区分<br/>NORMAL：基本、MINUTELY：分別、HOURLY：時間別、DAILY：日別、BY_DAY：時間別、DAY：曜日別 |
-| from | String | - | 必須 | 統計検索開始日<br/>yyyy-MM-dd HH:mm:ss | 
+| statsType | String | - | 必須 | 統計区分<br/>NORMAL：基本、MINUTELY：分別、HOURLY：時間別、DAILY：日別、BY_DAY：時間別 |
+| from | String | - | 必須 | 統計検索開始日<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 必須 | 統計検索終了日<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | オプション | 統計データ照会時、ツリー形式で提供するか設定 |
 | extra1s | List<String> | - | オプション | 下位商品区分<br/> ALIMTALK、ALIMTALK_AUTH、FRIENDTALK |
@@ -112,8 +112,8 @@
 
 |値| タイプ | 最大長さ | 必須 | 説明 |
 |---|---|---|---|---|
-| statsType | String | - | 必須 | 統計区分<br/>NORMAL：基本、MINUTELY：分別、HOURLY：時間別、DAILY：日別、BY_DAY：時間別、DAY：曜日別 |
-| from | String | - | 必須 | 統計検索開始日<br/>yyyy-MM-dd HH:mm:ss | 
+| statsType | String | - | 必須 | 統計区分<br/>NORMAL：基本、MINUTELY：分別、HOURLY：時間別、DAILY：日別、BY_DAY：時間別 |
+| from | String | - | 必須 | 統計検索開始日<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 必須 | 統計検索終了日<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | オプション | 統計データ照会時、ツリー形式で提供するか設定 |
 | extra1s | List<String> | - | オプション | 下位商品区分<br/> ALIMTALK、ALIMTALK_AUTH、FRIENDTALK |
