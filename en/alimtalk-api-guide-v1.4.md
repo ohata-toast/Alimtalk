@@ -1452,7 +1452,6 @@ Content-Type: application/json;charset=UTF-8
 | ------------------- | ------- | -------- | ------------------------------------------------------------ |
 | plusFriendId        | String  | X        | PlusFriend ID                                                |
 | status              | String  | X        | Status code of PlusFriend  (YSC02: Ready for token authenticated, YSC03: Normally registered) |
-| isSearchKakaoStatus | boolean | X        | Query of Kakao status (null for Kakao status-related fields (e.g. kakaoStatus or kakaoProfileStatus) if it is false) Default: True |
 
 #### Response
 

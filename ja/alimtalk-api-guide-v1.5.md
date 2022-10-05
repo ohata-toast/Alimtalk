@@ -1599,7 +1599,6 @@ Content-Type: application/json;charset=UTF-8
 | ------------------- | ------- | ---- | ---------------------------------------- |
 | plusFriendId        | String  | X    | プラスフレンドID                                 |
 | status              | String  | X    | プラスフレンドステータスコード <br>(YSC02：トークン認証待機中、YSC03：正常登録) |
-| isSearchKakaoStatus | boolean | X    | カカオステータスを照会するかどうか(falseの場合、カカオステータス関連フィールド(kakaoStatus、kakaoProfileStatusなど) null値)<br>default値：true |
 | pageNum        | Integer | X    | ページ番号(基本：1) |
 | pageSize       | Integer | X    | 照会件数(基本：15、最大: 1000) |
 
