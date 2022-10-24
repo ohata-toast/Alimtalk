@@ -1,4 +1,10 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2022.10.25
+* [API] 발신프로필 조회 API isSearchKakaoStatus 필드 삭제
+    * 발신프로필 조회 API에서 isSearchKakaoStatus 필드를 삭제하였고, 준실시간 카카오 상태 조회가 가능하도록 개선하였습니다. (6시간 주기로 상태 동기화)
+* [API] 알림톡 치환 발송 요청 API buttons 필드 개선
+    * 알림톡 치환 발송 요청 API 호출 시, 지정한 ordering의 버튼만 입력해도 정상 발송되도록 개선되었습니다.
+
 ### 2022.08.23
 * [Console] 알림톡 템플릿 채널추가형(AD)과 복합형(MI) 메시지 유형의 templateAd 일괄 변경
     * 카카오 정책에 따라, "채널 추가하고 이 채널의 광고와 마케팅 메시지를 카카오톡으로 받기" 로 일괄 변경 됩니다.

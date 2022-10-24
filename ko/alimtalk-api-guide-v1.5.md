@@ -1608,7 +1608,6 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |plusFriendId|	String|	X | 플러스친구 ID |
 |status|	String|	X | 플러스친구 상태 코드 <br>(YSC02: 토큰 인증 대기중, YSC03: 정상 등록)|
-|isSearchKakaoStatus|	boolean| X | 카카오 상태 조회 여부(false일 경우, 카카오 상태 관련 필드 (kakaoStatus, kakaoProfileStatus 등) null값)<br>default값 : true |
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
 
