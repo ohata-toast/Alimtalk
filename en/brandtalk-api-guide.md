@@ -17,9 +17,9 @@
 </tbody>
 </table>
 
-## 일반 메시지
+## General Messages
 
-### 메시지 치환 발송 요청
+### Request of Sending Replaced Messages
 
 [URL]
 
@@ -30,9 +30,9 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	Unique appkey|
 
 [Header]
 ```
@@ -40,9 +40,9 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | Can be created on console. [[참고](./sender-console-guide/#x-secret-key)] |
 
 [Request body]
 
@@ -63,29 +63,29 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|senderKey|	String|	O | 발신 키 (40자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드 (최대 20자) |
-|requestDate| String | X| 요청 일시 (yyyy-MM-dd HH:mm:ss)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
-|senderGroupingKey| String | X| 발신 그룹핑 키 (최대 100자) |
-|createUser| String | X| 등록자 (콘솔에서 발송 시 사용자 UUID로 저장)|
-|recipientList|	List|	O|	수신자 리스트 (최대 1000명) |
-|- recipientNo|	String|	O|	수신번호 (최대 15자) |
-|- templateParameter|	Object|	X|	템플릿 파라미터<br>(템플릿에 치환할 변수 포함 시, 필수) |
-|-- key|	String|	X |	치환 키(#{key})|
-|-- value| String |	X |	치환 키에 매핑되는 Value값|
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
+|senderKey| String| O | Sender key (40 characters) |
+|templateCode|  String| O | Registered delivery template code (up to 20 characters) |
+|requestDate| String | X| Date and time of request (yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|senderGroupingKey| String | X| Sender's grouping key (up to 100 characters) |
+|createUser| String | X| Registrant (saved as user UUID when sending from console)|
+|recipientList| List|   O|  List of recipients (up to 1000 persons) |
+|- recipientNo| String| O|  Recipient number (up to 15 characters) |
+|- templateParameter|   Object| X|  Template parameter<br>(required, if it includes a variable to be replaced for template) |
+|-- key|    String| X | Replacement key (#{key})|
+|-- value| String | X | Value which is mapped for replacement key|
+|- recipientGroupingKey|    String| X|  Recipient grouping key (up to 100 characters) |
 
-* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
-* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
+* <b>Request date and time can be set up to 90 days since a point of calling.</b>
+* <b> Delivery restricted during night (20:50~08:00 on the following day)</b>
 
-[예시]
+[Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/messages -d '{"senderKey":"{발신 키}","templateCode":"{템플릿 코드}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{수신번호}","templateParameter":{"{치환자 필드}":"{치환 데이터}"}}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/messages -d '{"senderkey":"{Sender key}","templateCode":"{template code}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{recipient number}","templateParameter":{"{replaced field}":"{replacement data}"}}]}'
 ```
 
-#### 응답
+#### Response
 
 ```
 {
@@ -110,25 +110,25 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|message|	Object|	본문 영역|
-|- requestId | String |	요청 아이디 |
-|- senderGroupingKey | String |	발신 그룹핑 키 |
-|- sendResults | Object | 발송 요청 결과 |
-|-- recipientSeq | Integer | 수신자 시퀀스 번호 |
-|-- recipientNo | String | 수신 번호 |
-|-- resultCode | Integer | 발송 요청 결과 코드 |
-|-- resultMessage | String | 발송 요청 결과 메시지 |
-|-- recipientGroupingKey | String | 수신자 그룹핑 키 |
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
+|message|   Object| Body area|
+|- requestId | String | Request ID |
+|- senderGroupingKey | String | Sender's grouping key |
+|- sendResults | Object | Result of delivery request |
+|-- recipientSeq | Integer | Recipient sequence number |
+|-- recipientNo | String | Recipient number |
+|-- resultCode | Integer | Result code of delivery request |
+|-- resultMessage | String | Result message of delivery request |
+|-- recipientGroupingKey | String | Recipient's grouping key |
 
-### 메시지 리스트 조회
+### List Messages
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -139,9 +139,9 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|    String| Unique appkey|
 
 [Header]
 ```
@@ -149,33 +149,33 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] No. 1 or (2, 3) is conditionally required
 
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|requestId|	String|	조건 필수 (1번) | 요청 아이디 |
-|startRequestDate|	String|	조건 필수 (2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm)|
-|endRequestDate|	String| 조건 필수 (2번) |	발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
-|startCreateDate|  String| 조건 필수 (3번) | 등록 날짜 시작값(yyyy-MM-dd HH:mm)|
-|endCreateDate|  String| 조건 필수 (3번) | 등록 날짜 끝값(yyyy-MM-dd HH:mm) |
-|recipientNo|	String|	X |	수신번호 |
-|senderKey|	String|	X |	발신 키 |
-|templateCode|	String|	X |	템플릿 코드|
-|senderGroupingKey| String | X| 발신 그룹핑 키 |
-|recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
-|messageStatus| String |	X | 요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
-|resultCode| String |	X | 발송 결과 ( BRC01 -> 성공, BRC02 -> 실패 )	|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|requestId| String| Conditionally required (no.1) | Request ID |
+|startRequestDate|  String| Conditionally required (no.2) | Start date of delivery request (yyyy-MM-dd HH:mm)|
+|endRequestDate|    String| Conditionally required (no.2) |    End date of delivery request (yyyy-MM-dd HH:mm) |
+|startCreateDate|  String| Conditionally required (no.3) | Start date of registration (mm:HH dd-MM-yyyy)|
+|endCreateDate|  String| Conditionally required (no.3) | End date of registration (mm:HH dd-MM-yyyy) |
+|recipientNo|   String| X | Recipient number |
+|senderKey| String| X | Sender key |
+|templateCode|  String| X | Template code|
+|senderGroupingKey| String | X| Sender's grouping key |
+|recipientGroupingKey|  String| X|  Recipient's grouping key |
+|messageStatus| String |    X | Request status (COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled)   |
+|resultCode| String |   X | Delivery result (BRC01 -> Successful, BRC02 ->Failed)   |
+|pageNum|   Integer|    X|  Page number (default: 1)|
+|pageSize|  Integer|    X|  Number of queries (default: 15, max : 1000)|
 
-* 90일 이전 발송 요청 데이터는 조회되지 않습니다.
-* 발송 요청 일시의 범위는 최대 30일입니다.
+* Cannot query data requested for delivery which are dated before 90 days.
+* The maximum available days for delivery request is 30 days.
 
-#### 응답
+#### Response
 ```
 {
   "header" : {
@@ -209,40 +209,40 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|messageSearchResultResponse|	Object|	본문 영역|
-|- messages | List |	메시지 리스트 |
-|-- requestId | String |	요청 아이디 |
-|-- recipientSeq | Integer |	수신자 시퀀스 번호 |
-|-- plusFriendId | String |	플러스친구 ID |
-|-- senderKey    | String | 발신 키    |
-|-- templateCode | String |	템플릿 코드 |
-|-- recipientNo | String |	수신 번호 |
-|-- requestDate | String |	요청 일시 |
-|-- createDate | String | 등록 일시 |
-|-- receiveDate | String |	수신 일시 |
-|-- content | String |	본문 |
-|-- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
-|-- resultCode | String |	수신 결과 코드 |
-|-- resultCodeName | String |	수신 결과 코드명 |
-|-- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
-|-- senderGroupingKey | String | 발신 그룹핑 키 |
-|-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
+|messageSearchResultResponse|   Object| Body area|
+|- messages | List |    List of messages |
+|-- requestId | String |    Request ID |
+|-- recipientSeq | Integer |    Recipient sequence number |
+|-- plusFriendId | String | PlusFriend ID |
+|-- senderKey    | String | Sender Key    |
+|-- templateCode | String | Template code |
+|-- recipientNo | String |  Recipient number |
+|-- content | String |  Body message |
+|-- requestDate | String |  Date and time of request |
+|-- createDate | String | Registered date and time |
+|-- receiveDate | String |  Date and time of receiving |
+|-- messageStatus | String |    Request status (COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled ) |
+|-- resultCode | String |   Result code of receiving |
+|-- resultCodeName | String |   Result code name of receiving |
+|-- createUser | String | Registrant (saved as user UUID when sending from console) |
+|-- senderGroupingKey | String | Sender's grouping key |
+|-- recipientGroupingKey | String | Recipient's grouping key |
+|- totalCount | Integer | Total Count |
 
-[예시]
+[Example]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/messages?startRequestDate=2018-05-01%20:00&endRequestDate=2018-05-30%20:59"
 ```
 
-### 메시지 단건 조회
+### Get Messages
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -253,11 +253,11 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Typ| Description|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
-|requestId|	String|	요청 아이디 |
-|recipientSeq|	Integer|	수신자 시퀀스 번호 |
+|appkey|    String| Unique appkey |
+|requestId| String| Request ID |
+|recipientSeq|  Integer|    Recipient sequence number |
 
 [Header]
 ```
@@ -265,9 +265,9 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [예시]
 ```
@@ -316,42 +316,41 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|message|	Object|	메시지|
-|- requestId | String |	요청 아이디 |
-|- recipientSeq | Integer |	수신자 시퀀스 번호 |
-|- plusFriendId | String |	플러스친구 ID |
-|- senderKey    | String |  발신 키    |
-|- templateCode | String |	템플릿 코드 |
-|- recipientNo | String |	수신 번호 |
-|- requestDate | String |	요청 일시 |
-|- createDate | String | 등록 일시 |
-|- receiveDate | String |	수신 일시 |
-|- content | String |	본문 |
-|- buttons | List |	버튼 리스트 |
-|-- name | String |	버튼 이름 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
-|-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId|	String|	버튼 클릭 시 실행할 비즈니스폼ID |
-|- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
-|- resultCode | String |	수신 결과 코드 |
-|- resultCodeName | String |	수신 결과 코드명 |
-|- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
-|- senderGroupingKey | String | 발신 그룹핑 키 |
-|- recipientGroupingKey | String |	수신자 그룹핑 키 |
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
+|message|   Object| Message|
+|- requestId | String | Request ID |
+|- recipientSeq | Integer | Recipient sequence number |
+|- plusFriendId | String |  PlusFriend ID |
+|- senderKey    | String |  Sender Key    |
+|- templateCode | String |  Template code |
+|- recipientNo | String |   Recipient number |
+|- content | String |   Body message |
+|- requestDate | String |   Date and time of request |
+|- receiveDate | String |   Date and time of receiving |
+|- createDate | String | Registered date and time |
+|- buttons | List | List of buttons |
+|-- name | String | Button name |
+|-- type | String | Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+|-- linkMo | String |   Mobile web link (required for the WL type) |
+|-- linkPc | String |   PC web link (optional for the WL type) |
+|-- schemeIos | String |    iOS app link (required for the AL type) |
+|-- schemeAndroid | String |    Android app link (required for the AL type) |
+|-- bizFormId|	String|	Business Form (required for the BF type) |
+|- resultCode | String |    Result code of receiving |
+|- resultCodeName | String |    Result code name of receiving |
+|- createUser | String | Registrant (saved as user UUID when sending from console) |
+|- senderGroupingKey | String | Sender's grouping key |
+|- recipientGroupingKey | String |  Recipient grouping key |
 
-## 메시지
-### 메시지 발송 취소
+## Messages
+### Cancel Sending Messages
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -362,10 +361,10 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|appkey|	String|	고유의 앱키|
-|requestId| String| 요청 ID|
+|appkey|    String| Unique appkey|
+|requestId| String| Request ID|
 
 [Header]
 ```
@@ -373,17 +372,15 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter]
 
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|recipientSeq|	String|	X | 수신자 시퀀스 번호<br>(입력하지 않으면 요청 ID의 모든 발송 건을 취소) |
-
-* 일반/인증 메시지 모두 동일한 API로 취소할 수 있습니다.
+|recipientSeq|  String| X | Recipient sequence number<br>(to cancel all deliveries of request ID, if the value is left blank) |
 
 #### 응답
 ```
@@ -396,22 +393,22 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
 
 [예시]
 ```
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
 ```
 
-## 템플릿
+## Templates
 
-### 템플릿 등록
-#### 요청
+### Register Templates
+#### Request
 [URL]
 
 ```
@@ -421,10 +418,10 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
-|senderKey|	String|	발신 키 |
+|appkey|    String| Unique appkey |
+|senderKey| String| Sender Key |
 
 [Header]
 ```
@@ -432,29 +429,29 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request parameter]
 
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|templateCode|	String |	O | 템플릿 코드 (최대 20자) |
-|templateName|	String |	O | 템플릿명 (최대 150자) |
-|messageType| String | X |템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
-|contentType| String | X |텍스트 유형 (F: 고정형, V: 변수형) |
+|templateCode|  String |    O | Template code (up to 20 characters) |
+|templateName|  String |    O | Template name (up to 150 characters) |
+|messageType| String | X |Types of template message (I: Image type, W: Wide Image type) |
+|contentType| String | X |Types of template text (F: Fixed content, V: Variable content) |
 |unsubscribeContent|	String |	O | 무료수신거부 전화번호/인증번호 |
-|templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
-|templateImageLink | String |	X | 템플릿 이미지 링크 |
+|templateContent|	String |	O | Template body (up to 1000 characters) |
+|templateImageLink | String |	X | Template Image Link |
 |image | String |	X | 이미지 URL |
-| buttons[i].type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
-| buttons[i].name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-| buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-| buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-| buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| buttons[i].bizFormId | String | X |	버튼 클릭 시 실행할 비즈니스폼ID |
+| buttons[i].type|	String |	X | Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+| buttons[i].name| String |	X |	Button name (up to 14 characters) |
+| buttons[i].linkMo| String |	X |	Mobile web link (required for the WL type) |
+| buttons[i].linkPc | String |	X |PC web link (optional for the WL type) |
+| buttons[i].schemeAndroid | String | X |	Android app link (required for the AL type) |
+| buttons[i].schemeIos | String | X |	iOS app link (required for the AL type) |
+| buttons[i].bizFormId | String | X |	Business Form (required for the BF type) |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
 * 변수명은 최대 20자 이내 한/영/숫자/허용된 특수기호('-', '_')로만 입력 가능
@@ -486,7 +483,7 @@ Content-Type: application/json;charset=UTF-8
     * 제한사이즈 : 가로 500px 이상. 가로:세로 비율 2:1 이상 1:1 이하.
     * 파일형식 및 크기 : jpg, png / 최대 2MB
 
-#### 응답
+#### Response
 ```
 {
   "header" : {
@@ -497,16 +494,16 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
 
-### 템플릿 조회
+### List Templates
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -517,11 +514,11 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
-|senderKey|	String|	발신 키 |
-|templateCode|	String|	템플릿 코드 |
+|appkey|    String| Unique appkey|
+|senderKey| String| Sender Key |
+|templateCode|  String| Template code |
 
 [Header]
 ```
@@ -529,33 +526,16 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter]
-
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|templateCode|	String|	X |	템플릿 코드|
-|templateName|	String|	X |	템플릿 이름|
-|kakaoStatus| String |	X | 템플릿 상태 코드|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
-
-|템플릿 상태 코드| 설명|
-|---|---|
-| TSC01 | 요청 |
-| TSC02 | 검수중 |
-| TSC03 | 승인 |
-| TSC04 | 반려 |
-
-[예시]
+[Example]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brandtalk/v2.2/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}"
 ```
 
-#### 응답
+#### Response
 ```
 
 {
@@ -593,31 +573,31 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |  Type| Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|template|	Object|	본문 영역|
-|- plusFriendId | String |	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명 |
-|- senderKey    | String | 발신 키 |
-|- templateCode | String |	템플릿 코드 |
-|- templateName | String |	템플릿명 |
-|- messageType| String | 템플릿 메시지 유형 (I: 이미지형, W: 와이드형) |
-|- contentType| String | 텍스트 유형 (F: 고정형, V: 변수형) |
-|- templateContent | String |	템플릿 본문 |
+|header|    Object| Header area|
+|- resultCode|  Integer|    Result code|
+|- resultMessage|   String| Result message|
+|- isSuccessful|    Boolean| Successful or not|
+|template|	Object| Body area|
+|- plusFriendId | String |	PlusFriend ID |
+|- senderKey    | String | Sender Key    |
+|- templateCode | String |	Template code |
+|- templateName | String |	Template name |
+|- messageType| String | Types of template message (I: Image type, W: Wide Image type) |
+|- contentType| String | Types of template text (F: Fixed content, V: Variable content) |
+|- templateContent | String |	Template body |
 |- unsubscribeContent | String | 무료수신거부 전화번호/인증번호 |
-|- templateImageLink | String | 템플릿 이미지 링크 |
-|- templateImageUrl | String |	이미지 URL |
-|- buttons | List |	버튼 리스트 |
-|-- name | String |	버튼 이름 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
-|-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId | String |	버튼 클릭 시 실행할 비즈니스폼ID |
-|- kakaoStatus | String | 템플릿 상태(A:정상, R:대기(발송전), S:중단) |
-|- createDate | String | 생성일자 |
-|- updateDate | String | 수정일자 |
+|- templateImageLink | String | Template Image Link |
+|- templateImageUrl | String |	Template Image URL |
+|- buttons | List |	List of buttons |
+|-- name | String |	Button name |
+|-- type | String |	Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+|-- linkMo | String |	Mobile web link (required for the WL type) |
+|-- linkPc | String |	PC web link (optional for the WL type) |
+|-- schemeAndroid | String |	Android app link (required for the AL type) |
+|-- schemeIos | String |	iOS app link (required for the AL type) |
+|-- bizFormId | String |	Business Form (required for the BF type) |
+|- kakaoStatus | String | Status code of Kakao Template (A: Normal, R: 대기(발송전), S: Blocked) |
+|- createDate | String | Date of creation |
+|- updateDate | String | Date of modification |
