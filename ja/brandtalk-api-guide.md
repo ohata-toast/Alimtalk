@@ -303,7 +303,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "linkPc": String,
           "schemeAndroid": String,
           "schemeIos": String,
-          "bizFormId": String
+          "bizFormId": Integer
         }
       ],
       "messageStatus" :  String,
@@ -340,7 +340,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
 |-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId|	String|	버튼 클릭 시 실행할 비즈니스폼ID |
+|-- bizFormId|	Integer|	버튼 클릭 시 실행할 비즈니스폼ID |
 |- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |- resultCode | String |	수신 결과 코드 |
 |- resultCodeName | String |	수신 결과 코드명 |
@@ -454,7 +454,7 @@ Content-Type: application/json;charset=UTF-8
 | buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
 | buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 | buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| buttons[i].bizFormId | String | X |	버튼 클릭 시 실행할 비즈니스폼ID |
+| buttons[i].bizFormId | Integer | X |	버튼 클릭 시 실행할 비즈니스폼ID |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
 * 변수명은 최대 20자 이내 한/영/숫자/허용된 특수기호('-', '_')로만 입력 가능
@@ -583,7 +583,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                 "linkPc": String,
                 "schemeAndroid": String,
                 "schemeIos": String,
-                "bizFormId": String
+                "bizFormId": Integer
             }
         ],
         "kakaoStatus": String,
@@ -617,7 +617,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
 |-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId | String |	버튼 클릭 시 실행할 비즈니스폼ID |
+|-- bizFormId | Integer |	버튼 클릭 시 실행할 비즈니스폼ID |
 |- kakaoStatus | String | 템플릿 상태(A:정상, R:대기(발송전), S:중단) |
 |- createDate | String | 생성일자 |
 |- updateDate | String | 수정일자 |
