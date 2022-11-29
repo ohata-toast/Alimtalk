@@ -303,7 +303,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "linkPc": String,
           "schemeAndroid": String,
           "schemeIos": String,
-          "bizFormId": String
+          "bizFormId": Integer
         }
       ],
       "messageStatus" :  String,
@@ -340,7 +340,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |   PC web link (optional for the WL type) |
 |-- schemeIos | String |    iOS app link (required for the AL type) |
 |-- schemeAndroid | String |    Android app link (required for the AL type) |
-|-- bizFormId|	String|	Business Form (required for the BF type) |
+|-- bizFormId|	Integer|	Business Form (required for the BF type) |
 |- resultCode | String |    Result code of receiving |
 |- resultCodeName | String |    Result code name of receiving |
 |- createUser | String | Registrant (saved as user UUID when sending from console) |
@@ -451,7 +451,7 @@ Content-Type: application/json;charset=UTF-8
 | buttons[i].linkPc | String |	X |PC web link (optional for the WL type) |
 | buttons[i].schemeAndroid | String | X |	Android app link (required for the AL type) |
 | buttons[i].schemeIos | String | X |	iOS app link (required for the AL type) |
-| buttons[i].bizFormId | String | X |	Business Form (required for the BF type) |
+| buttons[i].bizFormId | Integer | X |	Business Form (required for the BF type) |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
 * 변수명은 최대 20자 이내 한/영/숫자/허용된 특수기호('-', '_')로만 입력 가능
@@ -563,7 +563,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                 "linkPc": String,
                 "schemeAndroid": String,
                 "schemeIos": String,
-                "bizFormId": String
+                "bizFormId": Integer
             }
         ],
         "kakaoStatus": String,
@@ -597,7 +597,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |	PC web link (optional for the WL type) |
 |-- schemeAndroid | String |	Android app link (required for the AL type) |
 |-- schemeIos | String |	iOS app link (required for the AL type) |
-|-- bizFormId | String |	Business Form (required for the BF type) |
+|-- bizFormId | Integer |	Business Form (required for the BF type) |
 |- kakaoStatus | String | Status code of Kakao Template (A: Normal, R: 대기(발송전), S: Blocked) |
 |- createDate | String | Date of creation |
 |- updateDate | String | Date of modification |
