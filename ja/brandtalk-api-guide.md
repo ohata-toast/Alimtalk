@@ -303,7 +303,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "linkPc": String,
           "schemeAndroid": String,
           "schemeIos": String,
-          "bizFormId": String
+          "bizFormId": Integer
         }
       ],
       "messageStatus" :  String,
@@ -340,7 +340,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
 |-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId|	String|	버튼 클릭 시 실행할 비즈니스폼ID |
+|-- bizFormId|	Integer|	버튼 클릭 시 실행할 비즈니스폼ID |
 |- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |- resultCode | String |	수신 결과 코드 |
 |- resultCodeName | String |	수신 결과 코드명 |
@@ -454,37 +454,37 @@ Content-Type: application/json;charset=UTF-8
 | buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
 | buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 | buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| buttons[i].bizFormId | String | X |	버튼 클릭 시 실행할 비즈니스폼ID |
+| buttons[i].bizFormId | Integer | X |	버튼 클릭 시 실행할 비즈니스폼ID |
 
-* contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
-* 변수명은 최대 20자 이내 한/영/숫자/허용된 특수기호('-', '_')로만 입력 가능
-* 최대 20개의 변수명 입력 가능 (중복 제외)
-* 무료수신거부 전화번호에 인증번호가 없는 경우 (예: 080-1111-2222)
-* 무료수신거부 전화번호에 인증번호가 있는 경우는 / 로 구분해서 입력 (예: 080-1111-2222/12345)
-* 인증번호는 숫자 1~10자리 입니다.
+* contentTypeが変数型(V)の場合、テンプレート内容(templateContent)に変数入力可能
+* 変数名は最大20文字以内、韓国語/英字/数字/許可された特殊記号('-', '_')のみ入力可能
+* 最大20個の変数名を入力可能(重複除外)
+* 無料受信拒否電話番号に認証番号がない場合(例：080-1111-2222)
+* 無料受信拒否電話番号に認証番号がある場合は /で区切って入力(例：080-1111-2222/12345)
+* 認証番号は数字1～10桁です。
 
-* 이미지형은 버튼 수 최대 5개, 와이드형은 버튼 수 최대 2개까지 가능
-* AC 버튼이 포함된 경우, 이미지형은 첫번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
-* AC 버튼은 버튼명이 "채널 추가"로 고정
-* contentType이 변수형(V)인 경우 링크(linkMo, linkPc, schemeAndroid, schemeIos)에 변수 입력 가능.
-* BF 버튼만 포함된 경우, 이미지형은 첫번째 버튼 / 와이드형은 마지막 버튼의 순서대로 입력
-* AC 버튼과 BF 버튼이 동시에 쓰일 경우 BF 버튼은, 이미지형은 두번째 버튼 / 와이드형은 첫번째 버튼의 순서대로 입력
-* BF 버튼은 버튼명이 "톡에서 예약하기", "톡에서 설문하기", "톡에서 응모하기" 중 택1하여 사용하여야 함
-* BF 버튼 링크는 카카오 for 비즈니스에서 생성한 비즈니스폼 ID로 등록이 가능하며, 아래 조건이 유효해야 함
-  1) 비즈니스폼 등록 관리자와 채널 관리자가 일치하여야 함 (관리자 권한 무관)
-  2) 비즈니스폼 상태가 작성완료 / 실행 이고, 종료일이 등록일보다 미래여야 함
-  3) 비즈니스폼 내 채널 추가 옵션이 있을 경우, 메시지 발송 채널과 일치하여야 함
+* イメージ型はボタン数最大5個、ワイド型はボタン数最大2個まで可能
+* ACボタンが含まれる場合、イメージ型は最初のボタン / ワイド型は最後のボタンの順序通りに入力
+* ACボタンはボタン名が""チャンネル追加""に固定
+* contentTypeが変数型(V)の場合、リンク(linkMo, linkPc, schemeAndroid, schemeIos)に変数入力可能。
+* BFボタンのみ含まれる場合、イメージ型は最初のボタン / ワイド型は最後のボタンの順序通りに入力
+* ACボタンとBFボタンが同時に使われる場合のBFボタンは、イメージ型は2番目のボタン / ワイド型は最初のボタンの順序通りに入力
+* BFボタンはボタン名が""トークで予約する"", ""トークでアンケートする"", ""トークで応募する""のいずれか1つを使用しなければならない
+* BFボタンリンクはカカオforビジネスで作成したビジネスフォームIDで登録が可能で、以下の条件が有効でなければならない
+  1)ビジネスフォーム登録管理者とチャンネル管理者が一致していること(管理者権限は無関係)
+  2)ビジネスフォーム状態が作成完了 / 実行であり、終了日が登録日より先でなければならない
+  3)ビジネスフォーム内チャンネル追加オプションがある場合、メッセージ送信チャンネルと一致しなければならない
 
-* image 상세
-  * 기본 이미지 정책
-    * 권장사이즈 : 800px * 400px
-    * 제한사이즈 : 가로 500px 이상. 가로:세로 비율 2:1 이상 3:4 이하.
-    * 지원파일 : jpg.png / 최대 2MB
+* image詳細
+  * 基本イメージポリシー
+    * 推奨サイズ： 800px * 400px
+    * 制限サイズ：横500px以上。縦：縦比率2：1以上3：4以下。
+    * サポートファイル： jpg.png / 最大2MB
 
-  * 와이드 말풍선 이미지 정책
-    * 권장 사이즈 : 800px * 600px
-    * 제한사이즈 : 가로 500px 이상. 가로:세로 비율 2:1 이상 1:1 이하.
-    * 파일형식 및 크기 : jpg, png / 최대 2MB
+  * ワイド吹き出しイメージポリシー
+    * 推奨サイズ： 800px * 600px
+    * 制限サイズ：横500px以上。横：縦比率2：1以上1：1以下。
+    * ファイル形式およびサイズ： jpg, png / 最大2MB"
 
 #### 응답
 ```
@@ -583,7 +583,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                 "linkPc": String,
                 "schemeAndroid": String,
                 "schemeIos": String,
-                "bizFormId": String
+                "bizFormId": Integer
             }
         ],
         "kakaoStatus": String,
@@ -617,7 +617,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
 |-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- bizFormId | String |	버튼 클릭 시 실행할 비즈니스폼ID |
+|-- bizFormId | Integer |	버튼 클릭 시 실행할 비즈니스폼ID |
 |- kakaoStatus | String | 템플릿 상태(A:정상, R:대기(발송전), S:중단) |
 |- createDate | String | 생성일자 |
 |- updateDate | String | 수정일자 |
