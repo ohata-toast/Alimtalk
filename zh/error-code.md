@@ -218,7 +218,7 @@
 	</tr>
 	<tr>
 		<td>3014</td>
-		<td>Unknown message status</td>
+		<td>Error of length restriction in message</td>
 	</tr>
 	<tr>
 		<td>3015</td>

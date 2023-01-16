@@ -24,3 +24,15 @@ To send KakaoTalk Bizmessages, a Plus Friend must be registered first. Plus Frie
 * Refers to the status of KakaoTalk business ID.
 * May be blocked if Plus Friend is not in use for a long time.
 * If status is not normal, send request to NHN Cloud Customer Center, along with the Plus Friend ID, for the release of blockage.
+
+### Restrictions for first user
+Sending Profiles that do not meet certain criteria are subject to first user restrictions to prevent abuse, which limits some features.
+#### Restriction items for first user
+1. Restriction on the daily amount of sending.
+2. Unable to add as a member to Group Profile
+3. When template variable is replaced and if the difference is greater than 14 characters, process it as message sending failure
+
+#### Release Criteria for first User Restrictions
+1. First user restriction is to be automatically lifted, when a newly registered Sending Profile and if Sending profile with the first user restriction lifted is existing in the same project.
+2. If there are more than 10 charging normally Sending Templates within a month of restriction creation of the first user Sending Profile, the restriction will be automatically lifted the next day.
+3. Other than that, if you need to release the first user restriction, please contact us separately.
