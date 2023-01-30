@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2023.01.31
+* [API] 브랜드톡 기능 종료
+    * 카카오 CBT 종료로 인해, 브랜드톡 기능이 종료되었습니다.
+
 ### 2022.11.29
 *[Console] First User Restrictions on Sending Profile
     * Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
@@ -21,7 +25,7 @@
 * [Console] Launched Brandtalk feature
     * The BrandTalk feature which is Kakao’s CBT feature is launched.
     *Only Sending Profile with the CBT feature activated is available to use.
-* [API] Delete templateAd Field, when registering/modifying Notification Template 
+* [API] Delete templateAd Field, when registering/modifying Notification Template
     * [API] templateAd Field was Deleted, when registering/modifying Notification Template
     * When registering Channel Addition (AD) or Multiple(MI) Message Type Template, templateAd value is to be fixed.
 
