@@ -1,4 +1,14 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2023.01.31
+* [API] 브랜드톡 기능 종료
+    * 카카오 CBT 종료로 인해, 브랜드톡 기능이 종료되었습니다.
+
+### 2022.11.29
+*[Console] First User Restrictions on Sending Profile
+    * Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
+      1. Unable to add as a member to Group Profile
+      2. When the template variable is replaced, and if the difference is greater than 14 characters, process it as message sending failure
+
 ### 2022.10.25
 * [API] 발신프로필 조회 API isSearchKakaoStatus 필드 삭제
     * 발신프로필 조회 API에서 isSearchKakaoStatus 필드를 삭제하였고, 준실시간 카카오 상태 조회가 가능하도록 개선하였습니다. (6시간 주기로 상태 동기화)
