@@ -15,8 +15,8 @@
 | Common  | false     | -1016      | Message is not found                                         |
 | Common  | false     | -1017      | Sending in excess of daily volume failed                     |
 | Common  | false     | -1027      | Sender profile is blocked                                    |
-| Common  | false     | -1028      | 템플릿 변수가 치환될 때 그 차이가 14개 글자를 초과하는 부분이 있는 경우(최초 사용자 제한)        |
-| Common  | false     | -1029      | 그룹 프로필에 멤버로 추가할 수 없는 경우(최초 사용자 제한)                      |
+| Common  | false     | -1028      | When template variable is replaced, and if the difference is greater than 14 characters (Frist user restrictions)         |
+| Common  | false     | -1029      | When unable to add as a new member to Group Profile (Frist user restrictions)                      |
 | Common  | false     | -2017      | Plus Friend does not exist                                   |
 | Common  | false     | -2018      | Invalid button parameter                                     |
 | Common  | false     | -2019      | Failed due to template body with above 1,000 characters      |
@@ -211,7 +211,7 @@
 	</tr>
 	<tr>
 		<td>3014</td>
-		<td>Unknown message status</td>
+		<td>Error of length restriction in message</td>
 	</tr>
 	<tr>
 		<td>3015</td>

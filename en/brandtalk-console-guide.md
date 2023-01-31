@@ -1,40 +1,39 @@
 ## Notification > KakaoTalk Bizmessage > 브랜드톡 > 콘솔 사용 가이드
 
-## 브랜드톡 일반 발송
+## BrandTalk Normal Sending
+This is Brandtalk sending screen.
 
-브랜드톡 발송 화면입니다.
+Select Plus Friend and retrieve registered Template.
+Plus Friends can be found on **Notification > KakaoTalk Bizmessage > Manage Plus Friends** tab.
+Templates can be managed on **Notification > KakaoTalk Bizmessage > Brand Talk > Templates** tab.
 
-플러스친구를 선택한 후 등록된 템플릿을 불러옵니다.
-플러스친구는 **Notification > KakaoTalk Bizmessage > 플러스친구 관리** 탭에서 확인할 수 있습니다.
-템플릿은 **Notification > KakaoTalk Bizmessage > 브랜드톡 > 템플릿** 탭에서 관리할 수 있습니다.
+On **Normal Sending** tab below, input the replacement key value that exists in the template and input the receiver number.
 
-하단 **일반 발송**탭에서 템플릿에 존재하는 치환키값을 입력한 후 수신자 번호를 입력합니다.
+After completing the entry, click the **Send** button on the right to send it immediately.
 
-입력 완료 후 오른쪽 **발송** 버튼을 클릭하여 즉시 전송합니다.
+## Sending Result Inquiry
 
-## 발송 결과 조회
+Can enquire the results of sending via Normal Sending.
+**Registration date**, **Sending date** can be checked by selecting only either of the two, which is a pre-requisite.
+To find out more about each sending message, click on the search results item and **Detail Inquiry** window will appear.
 
-일반 발송을 통한 발송 결과를 조회할 수 있습니다.
-**등록 일시**, **발신 일시**는 둘 중 하나만 선택하여 조회가 가능하며, 이는 필수 조건입니다.
-각 발송 메시지의 자세한 내용을 확인하려면 검색 결과 항목을 클릭 시 **상세 조회** 창이 나타납니다.
+### Cancel Sending
 
-### 발송 취소
+During normal sending, it is possible to cancel the pre-scheduled sending that have requested the date and time of the sending request in the future.
+If enquire Pre-scheduled Sending Request, can check through check box to the left of the request ID.
+Check box appears only for un-cancelled pre-scheduled requests.
+Select the check box for the request you want to cancel and press the **Cancel Select Schedule** button at the top to cancel the request.
+Can select and cancel the entire list through the Check Box in the Search List Header.
 
-일반 발송 중, 발신 요청 일시를 미래로 요청한 예약 발송의 경우 취소가 가능합니다.
-예약 발신 요청을 조회하면 요청 ID 좌측에 체크 박스를 확인할 수 있습니다.
-체크 박스는 취소되지 않은 예약 요청에만 나타납니다.
-취소를 원하는 요청의 체크 박스를 선택한 후 상단의 **선택 예약 취소** 버튼을 누르면 해당 요청이 취소됩니다.
-조회 목록 머리글에 있는 체크 박스를 통해 해당 목록 전체 선택 및 취소가 가능합니다
+## Template
 
-## 템플릿
+### Register Template
 
-### 템플릿 등록
+**Can register a template by clicking on the **Register Template** button.
 
-**템플릿 등록** 버튼을 클릭해 템플릿을 등록할 수 있습니다.
-
-* 템플릿 코드는 20글자 이내의 영문, 숫자만 등록할 수 있습니다.
-* 템플릿명은 150글자까지 등록할 수 있습니다.
-* 템플릿 내용은 한/영 구분 없이 변수 및 URL 포함 1,000자까지 등록할 수 있습니다.
-* 버튼 링크 URL은 500자까지 등록할 수 있습니다.
-* 템플릿 치환자는 #{치환자}와 같이 등록하면 됩니다.
-* 버튼 링크에 치환자를 사용할 때 http:// 또는 https:// 프로토콜을 반드시 입력해야 합니다. 예) http://#{URL} 또는 https://#{URL}
+* Template code can only be registered in English and numbers up to 20 characters.
+* The template name can be registered up to 150 characters.
+* Template content can be registered up to 1,000 characters, including variables and URLs, either in Korean or English.
+* Button link URL can be registered up to 500 characters long.
+* Template Replacement can be registered with #{ReplacementItem}.
+* Have to enter the http:// or https:// protocol when using ReplacementItem for Button Link. e.g.) http://#{URL} or https://#{URL}
