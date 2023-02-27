@@ -1,27 +1,34 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
-### 2023.01.31
-* [API] 브랜드톡 기능 종료
-    * 카카오 CBT 종료로 인해, 브랜드톡 기능이 종료되었습니다.
+### February 28, 2023
+* [Console] Improved displaying the total number of delivery results
+    * Improved so that, when the number of delivery results exceeds 10,000, the total number of cases appears as '9,999+'.
+* [Console] Improved recipient confirmation time when sending in bulk
+    * Improved so that, when specifying the reservation time for bulk delivery, recipients can be confirmed before the reservation time.
 
-### 2022.11.29
+
+### January 31, 2023
+* [API] Ended Brandtalk feature
+    * Brandtalk feature ended after Kakao's CBT feature ended
+
+### November 29, 2022
 *[Console] First User Restrictions on Sending Profile
     * Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
       1. Unable to add as a member to Group Profile
       2. When the template variable is replaced, and if the difference is greater than 14 characters, process it as message sending failure
 
-### 2022.10.25
+### October 25, 2022
 * [API] Delete Sending Profile enquiry API isSearchKakaoStatus field
     * isSearchKakaoStatus field was deleted from Sending Profile enquiry API and it has been improved to available for semi-real-time Kakao status enquiry. (Synchronize status at 6-hour intervals)
 * [API] API buttons Field Improved for Notification Talk Replacement Request
     * When requesting Notification Talk Replacement, it has been improved to normally send just by entering the button for the specified ordering.
 
-### 2022.08.23
+### Augutst 23, 2022
 * [Console] TemplateAd whole Change for Notification Talk Template Channel Addition (AD) and Multiple (MI) Message Type
     * In accordance with Kakao policy, it is to be changed as a whole Add a channel and receive ads and marketing messages for this channel via Kakao Talk .
 * [API] When sending, add Statistics ID Length Validation Test
     * StatsId field length validation test is added when sending.
 
-### 2022.07.26
+### July 26, 2022
 * [Console] Launched Brandtalk feature
     * The BrandTalk feature which is Kakao’s CBT feature is launched.
     *Only Sending Profile with the CBT feature activated is available to use.

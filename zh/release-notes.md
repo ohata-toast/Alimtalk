@@ -1,41 +1,40 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
-### 2023.01.31
-* [API] 브랜드톡 기능 종료
-    * 카카오 CBT 종료로 인해, 브랜드톡 기능이 종료되었습니다.
+### February 28, 2023
+* [Console] Improved displaying the total number of delivery results
+    * Improved so that, when the number of delivery results exceeds 10,000, the total number of cases appears as '9,999+'.
+* [Console] Improved recipient confirmation time when sending in bulk
+    * Improved so that, when specifying the reservation time for bulk delivery, recipients can be confirmed before the reservation time.
 
-### 2022.11.29
+
+### January 31, 2023
+* [API] Ended Brandtalk feature
+    * Brandtalk feature ended after Kakao's CBT feature ended
+
+### November 29, 2022
 *[Console] First User Restrictions on Sending Profile
     * Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
       1. Unable to add as a member to Group Profile
       2. When the template variable is replaced, and if the difference is greater than 14 characters, process it as message sending failure
 
-### 2022.10.25
-* [API] 발신프로필 조회 API isSearchKakaoStatus 필드 삭제
-    * 발신프로필 조회 API에서 isSearchKakaoStatus 필드를 삭제하였고, 준실시간 카카오 상태 조회가 가능하도록 개선하였습니다. (6시간 주기로 상태 동기화)
-* [API] 알림톡 치환 발송 요청 API buttons 필드 개선
-    * 알림톡 치환 발송 요청 API 호출 시, 지정한 ordering의 버튼만 입력해도 정상 발송되도록 개선되었습니다.
+### October 25, 2022
+* [API] Delete Sending Profile enquiry API isSearchKakaoStatus field
+    * isSearchKakaoStatus field was deleted from Sending Profile enquiry API and it has been improved to available for semi-real-time Kakao status enquiry. (Synchronize status at 6-hour intervals)
+* [API] API buttons Field Improved for Notification Talk Replacement Request
+    * When requesting Notification Talk Replacement, it has been improved to normally send just by entering the button for the specified ordering.
 
-### 2022.08.23
-* [Console] 알림톡 템플릿 채널추가형(AD)과 복합형(MI) 메시지 유형의 templateAd 일괄 변경
-    * 카카오 정책에 따라, "채널 추가하고 이 채널의 광고와 마케팅 메시지를 카카오톡으로 받기" 로 일괄 변경 됩니다.
-* [API] 발송 시, 통계 ID 길이 유효성 검사 추가
-    * 발송 시 사용되는 statsId 필드 길이 유효성 검사가 추가되었습니다.
-
-### 2022.07.26
-* [Console] 브랜드톡 기능 출시
-    * 카카오의 CBT 기능인 브랜드톡 기능이 출시되었습니다.
-    * CBT 기능이 활성화된 발신 프로필만 사용 가능합니다.
-* [API] 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제
-    * 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제되었습니다.
-    * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
+### Augutst 23, 2022
+* [Console] TemplateAd whole Change for Notification Talk Template Channel Addition (AD) and Multiple (MI) Message Type
+    * In accordance with Kakao policy, it is to be changed as a whole Add a channel and receive ads and marketing messages for this channel via Kakao Talk .
+* [API] When sending, add Statistics ID Length Validation Test
+    * StatsId field length validation test is added when sending.
 
 ### July 26, 2022
-* [Console] 브랜드톡 기능 출시
-    * 카카오의 CBT 기능인 브랜드톡 기능이 출시되었습니다.
-    * CBT 기능이 활성화된 발신 프로필만 사용 가능합니다.
-* [API] 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제
-    * 알림톡 템플릿 등록/수정 시 templateAd 필드 삭제되었습니다.
-    * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
+* [Console] Launched Brandtalk feature
+    * The BrandTalk feature which is Kakao’s CBT feature is launched.
+    *Only Sending Profile with the CBT feature activated is available to use.
+* [API] Delete templateAd Field, when registering/modifying Notification Template
+    * [API] templateAd Field was Deleted, when registering/modifying Notification Template
+    * When registering Channel Addition (AD) or Multiple(MI) Message Type Template, templateAd value is to be fixed.
 
 ### June 14, 2022
 * [Console] Changes to Ad Included/Mixed Purposes Templates
