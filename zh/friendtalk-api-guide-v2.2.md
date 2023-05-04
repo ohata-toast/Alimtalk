@@ -1,4 +1,4 @@
-## Notification > KakaoTalk Bizmessage > FriendTalk > API v2.3 Guide
+## Notification > KakaoTalk Bizmessage > FriendTalk > API v2.2 Guide
 
 ## FriendTalk
 
@@ -17,7 +17,7 @@
 </tbody>
 </table>
 
-## Overview of v2.3 API
+## Overview of v2.2 API
 1. Added FriendTalk mass delivery query API.
 2. Added `chatExtra`, `chatEvent`, and `target` fields to the buttons field when sending messages.
 3. Added `chatExtra`, `chatEvent`, and `target` fields to the buttons field when querying messages.
@@ -28,7 +28,7 @@
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/messages
+POST  /friendtalk/v2.2/appkeys/{appkey}/messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -46,7 +46,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request body]
 
@@ -133,7 +133,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages -d '{"plusFriendId":"@Plus Friend","requestDate":"yyyy-MM-dd HH:mm","recipientList":[{"recipientNo":"010-0000-0000","imageSeq":1,"imageLink":"https://toast.com","content":"message","buttons":[{"ordering":1,"type":"WL","name":"button1","linkMo":"https://toast.com","linkPc":"https://toast.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/messages -d '{"plusFriendId":"@Plus Friend","requestDate":"yyyy-MM-dd HH:mm","recipientList":[{"recipientNo":"010-0000-0000","imageSeq":1,"imageLink":"https://toast.com","content":"message","buttons":[{"ordering":1,"type":"WL","name":"button1","linkMo":"https://toast.com","linkPc":"https://toast.com"}]}]}'
 ```
 
 #### Response
@@ -184,7 +184,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/messages
+GET  /friendtalk/v2.2/appkeys/{appkey}/messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -202,7 +202,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter] No.1 or (2, 3) is conditionally required
 
@@ -287,7 +287,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages?startRequestDate=2018-05-01%2000:00&endRequestDate=2018-05-30%2023:59"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/messages?startRequestDate=2018-05-01%2000:00&endRequestDate=2018-05-30%2023:59"
 ```
 
 #### Status of Resending
@@ -306,7 +306,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}/{recipientSeq}
+GET  /friendtalk/v2.2/appkeys/{appkey}/messages/{requestId}/{recipientSeq}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -324,7 +324,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -335,7 +335,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}/{recipientSeq}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/messages/{requestId}/{recipientSeq}"
 ```
 
 #### Response
@@ -442,7 +442,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-DELETE  /friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}
+DELETE  /friendtalk/v2.2/appkeys/{appkey}/messages/{requestId}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -461,7 +461,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -491,7 +491,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
 ```
 
 ### Query Updated Message Results
@@ -501,7 +501,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/message-results
+GET  /friendtalk/v2.2/appkeys/{appkey}/message-results
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -519,7 +519,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -590,7 +590,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
 ```
 
 ### List Mass Delivery Requests
@@ -598,7 +598,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### Request
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages
+GET /friendtalk/v2.2/appkeys/{appKey}/mass-messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -636,7 +636,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-'https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages?requestId='"${REQUEST_ID}" \
+'https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -728,7 +728,7 @@ curl -X GET \
 #### Request
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages/{requestId}/recipients
+GET /friendtalk/v2.2/appkeys/{appKey}/mass-messages/{requestId}/recipients
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -765,7 +765,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-'https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients?requestId='"${REQUEST_ID}" \
+'https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -819,7 +819,7 @@ curl -X GET \
 #### Request
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages/{requestId}/recipients/{recipientSeq}
+GET /friendtalk/v2.2/appkeys/{appKey}/mass-messages/{requestId}/recipients/{recipientSeq}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -856,7 +856,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-'https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients/${RECIPIENT_SEQ}?requestId='"${REQUEST_ID}" \
+'https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients/${RECIPIENT_SEQ}?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -954,7 +954,7 @@ curl -X GET \
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/images
+POST  /friendtalk/v2.2/appkeys/{appkey}/images
 Content-Type: multipart/form-data
 ```
 
@@ -972,7 +972,7 @@ Content-Type: multipart/form-data
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request parameter]
 
@@ -983,7 +983,7 @@ Content-Type: multipart/form-data
 
 [Example]
 ```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images" -F "image=@friend-ricecake02.jpeg"
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/images" -F "image=@friend-ricecake02.jpeg"
 ```
 
 #### Response
@@ -1021,7 +1021,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/images
+GET  /friendtalk/v2.2/appkeys/{appkey}/images
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1039,7 +1039,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -1050,7 +1050,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images?pageNum=1&pageSize=15"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/images?pageNum=1&pageSize=15"
 ```
 
 #### Response
@@ -1101,7 +1101,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-DELETE  /friendtalk/v2.3/appkeys/{appkey}/images
+DELETE  /friendtalk/v2.2/appkeys/{appkey}/images
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1119,7 +1119,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -1129,7 +1129,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images?imageSeq=1,2,3"
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/images?imageSeq=1,2,3"
 ```
 
 #### Response
@@ -1158,7 +1158,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/failback/appkey
+POST  /friendtalk/v2.2/appkeys/{appkey}/failback/appkey
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1176,7 +1176,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 
 [Request body]
@@ -1193,7 +1193,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/failback/appkey -d '{"resendAppKey": "smsAppKey"}
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/failback/appkey -d '{"resendAppKey": "smsAppKey"}
 ```
 
 #### Response
@@ -1213,7 +1213,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/failback
+POST  /friendtalk/v2.2/appkeys/{appkey}/failback
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1231,7 +1231,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 
 [Request body]
@@ -1254,7 +1254,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/failback/appkey -d '{"senderKey": "9e0afe2c12aaaaaaaaaa7520052880b555f1a60a","isResend": true,"resendSendNo": "01012341234", "resendUnsubscribeNo": "0801234567" }
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appkey}/failback/appkey -d '{"senderKey": "9e0afe2c12aaaaaaaaaa7520052880b555f1a60a","isResend": true,"resendSendNo": "01012341234", "resendUnsubscribeNo": "0801234567" }
 ```
 
 #### Response
