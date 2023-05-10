@@ -19,7 +19,9 @@
 
 ## Overview of v2.3 API
 1. 알림톡 바로 연결, 아이템리스트, 톡 비즈 플러그인, 대표 링크, 비즈니스폼 버튼 기능이 추가되었습니다.
-2. 친구톡 와이드 아이템리스트, 케러셀 피드형, 쿠폰, 비즈니스폼 버튼 기능이 추가되었습니다.
+2. 알림톡 아이템 하이라이트 이미지 등록 API가 추가되었습니다.
+3. 알림톡 플러그인 등록/수정/삭제/조회 API가 추가되었습니다.
+4. 메시지 리스트 조회 API에서 buttons 필드가 삭제되었습니다.
 
 ## 일반 메시지
 
@@ -713,7 +715,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
+|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
@@ -1434,7 +1436,7 @@ curl -X GET \
 | - createUser | String | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
 | - buttons | List |	버튼 리스트 |
 | -- ordering | Integer |	버튼 순서 |
-| -- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
+| -- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 | -- name | String |	버튼 이름 |
 | -- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 | -- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
@@ -1655,7 +1657,7 @@ Content-Type: application/json;charset=UTF-8
 |categoryCode| String | X | 템플릿 카테고리 코드 (템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가[광고 추가/복합형만]) |
+|- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
@@ -1820,7 +1822,7 @@ Content-Type: application/json;charset=UTF-8
 |categoryCode| String | X | 템플릿 카테고리 코드 (템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가[광고 추가/복합형만]) |
+|- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
@@ -2191,7 +2193,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateImageUrl | String |	이미지 URL |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
+|--- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
@@ -2375,7 +2377,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateImageUrl | String |	이미지 URL |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
+|--- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
