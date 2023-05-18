@@ -1397,8 +1397,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
             "imageSeq" : Integer,
             "imageUrl" : String,
             "imageName" : String,
-            "wide": String,
-            "createDate" : String
+            "imageType": String,
+            "createUser" : String
         }
     ],
     "totalCount" : Integer
