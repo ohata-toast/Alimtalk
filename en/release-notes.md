@@ -1,4 +1,10 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+
+### May 30, 2023
+* [Console] Added New Features for AlimTalk/FriendTalk (v2.3)
+    * Added Quick Reply, Item List type, Talk Biz plugin, Main Link, and Business Form button.
+    * Added FriendTalk wide item list, carousel feed, coupon, and business form button features.
+
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
     * Improved so that, when the number of delivery results exceeds 10,000, the total number of cases appears as '9,999+'.
