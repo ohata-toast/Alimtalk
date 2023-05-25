@@ -4,6 +4,9 @@
 * [Console] Added New Features for AlimTalk/FriendTalk (v2.3)
     * Added Quick Reply, Item List type, Talk Biz plugin, Main Link, and Business Form button.
     * Added FriendTalk wide item list, carousel feed, coupon, and business form button features.
+* [Console] Improved the identity verification process
+  * Improved so that you only have to authenticate yourself once within the same organization on the SMS console.
+
 
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
