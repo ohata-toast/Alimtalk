@@ -1668,7 +1668,7 @@ Content-Type: application/json;charset=UTF-8
 
 | Value           | Type    | Description       |
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	Sender Key |
 |templateCode|	String|	Template code |
 
