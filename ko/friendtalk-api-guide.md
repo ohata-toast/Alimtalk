@@ -1343,6 +1343,136 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- imageUrl | String |	이미지 URL |
 |- imageName | String |	이미지명(업로드한 파일명) |
 
+### 와이드 아이템리스트 이미지 등록
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+[Request parameter]
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|image|	File|	O |	이미지 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images" -F "image=@friend-ricecake02.jpeg"
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "image": {
+      "imageSeq" : Integer,
+      "imageUrl" : String,
+      "imageName" : String
+    }
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|image|	Object|	본문 영역|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|- imageUrl | String |	이미지 URL |
+|- imageName | String |	이미지명(업로드한 파일명) |
+
+### 캐러셀 이미지 등록
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/carousel/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+[Request parameter]
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|image|	File|	O |	이미지 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "image": {
+      "imageSeq" : Integer,
+      "imageUrl" : String,
+      "imageName" : String
+    }
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|image|	Object|	본문 영역|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|- imageUrl | String |	이미지 URL |
+|- imageName | String |	이미지명(업로드한 파일명) |
+
 
 ### 이미지 조회
 #### 요청
@@ -1374,6 +1504,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
+|imageTypes|	String|	X| - IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> IMAGE, WIDE_IMAGE (default) |
 |pageNum|	Integer|	X|	페이지 번호(기본: 1)|
 |pageSize|	Integer|	X|	조회 건수(기본: 15)|
 
@@ -1397,8 +1528,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
             "imageSeq" : Integer,
             "imageUrl" : String,
             "imageName" : String,
-            "wide": String,
-            "createDate" : String
+            "imageType": String,
+            "createUser" : String
         }
     ],
     "totalCount" : Integer

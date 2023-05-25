@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### May 30, 2023
+* [Console] Improved the identity verification process
+    * Improved so that you only have to authenticate yourself once within the same organization on the SMS console.
+
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
     * Improved so that, when the number of delivery results exceeds 10,000, the total number of cases appears as '9,999+'.
