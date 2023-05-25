@@ -784,7 +784,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
-[위와 동일](#메시지-치환-발송-요청)
+[위와 동일](./sender-console-guide/#_2)
 
 ### 메시지 전문 발송 요청
 
@@ -812,7 +812,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
-[위와 동일](#메시지-전문-발송-요청)
+[위와 동일](./sender-console-guide/#_4)
 
 ### 메시지 리스트 조회
 
@@ -842,7 +842,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Query parameter]
-[위와 동일](#메시지-리스트-조회)
+[위와 동일](./sender-console-guide/#_6)
 
 ### 메시지 단건 조회
 
@@ -879,7 +879,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 #### 응답
-[위와 동일](#메시지-단건-조회)
+[위와 동일](./sender-console-guide/#_9)
 
 ## 메시지
 ### 메시지 발송 취소

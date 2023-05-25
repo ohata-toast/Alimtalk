@@ -785,7 +785,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
 
 [Request body]
-[Same as the above](#메시지-치환-발송-요청)
+[Same as the above](./sender-console-guide/#request-of-sending-replaced-messages)
 
 ### Request of Sending Full Text
 
@@ -813,7 +813,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
 
 [Request Body]
-[Same as the above](#메시지-전문-발송-요청)
+[Same as the above](./sender-console-guide/#request-of-sending-full-text)
 
 ### List Messages
 
@@ -843,7 +843,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
 
 [Query parameter]
-[Same as the above](#메시지-리스트-조회)
+[Same as the above](./sender-console-guide/#list-messages)
 
 ### Get Messages
 
@@ -880,7 +880,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 #### Response
-[Same as the above](#메시지-단건-조회)
+[Same as the above](./sender-console-guide/#get-messages)
 
 ## Message
 ### Cancel Sending Messages
