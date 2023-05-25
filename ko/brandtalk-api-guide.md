@@ -32,7 +32,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -141,7 +141,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -255,7 +255,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -338,8 +338,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- bizFormId|	Integer|	버튼 클릭 시 실행할 비즈니스폼ID |
 |- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |- resultCode | String |	수신 결과 코드 |
@@ -423,7 +423,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |senderKey|	String|	발신 키 |
 
 [Header]
@@ -452,8 +452,8 @@ Content-Type: application/json;charset=UTF-8
 | buttons[i].name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 | buttons[i].linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드)|
 | buttons[i].linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드) |
-| buttons[i].schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
-| buttons[i].schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
+| buttons[i].schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
+| buttons[i].schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
 | buttons[i].bizFormId | Integer | X |	버튼 클릭 시 실행할 비즈니스폼ID |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
@@ -519,7 +519,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -598,8 +598,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, MD:메시지 전달, AC: 채널 추가, BF: 비지니스 폼) |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- bizFormId | Integer |	버튼 클릭 시 실행할 비즈니스폼ID |
 |- kakaoStatus | String | 템플릿 상태(A:정상, R:대기(발송전), S:중단) |
 |- createDate | String | 생성일자 |

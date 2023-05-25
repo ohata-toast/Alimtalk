@@ -38,7 +38,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -120,7 +120,7 @@ Content-Type: application/json;charset=UTF-8
 |-- ordering            | Integer  | X        |	버튼 순서 (버튼이 있는 경우 필수)|
 |-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-|-- relayId|	String|	X| 플러그인 실행시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달 받을 값 |
+|-- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
 |-- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
@@ -131,8 +131,8 @@ Content-Type: application/json;charset=UTF-8
 |-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
 |messageOption | Object |	X | 메시지 옵션 |
-|- price | Integer |	X | message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액 (모먼트 광고에 해당) |
-|- currencyType | String |	X| message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액의 통화단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
+|- price | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액 (모먼트 광고에 해당) |
+|- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
@@ -199,7 +199,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -319,38 +319,38 @@ Content-Type: application/json;charset=UTF-8
 |--- title | String | X | 타이틀 (최대 6자) |
 |--- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|--- title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-|--- description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-|--- imageUrl | String | X | 썸네일 이미지 주소 |
-|- templateRepresentLink | Object | X| 대표링크 |
+|--- title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+|--- description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+|--- imageUrl | String | X | 섬네일 이미지 주소 |
+|- templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |- buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-- ordering|	Integer|	X |	버튼 순서 (버튼이 있는 경우 필수)|
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- bizFormId|	Integer|	X |	비즈니스폼 ID (BF 타입일 경우 필수) |
 |-- pluginId|	String|	X |	플러그인 ID (최대 24자) |
-|-- relayId|	String|	X| 플러그인 실행시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달 받을 값 |
+|-- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
 |-- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- quickReplies|	List |	X | 바로연결 리스트 (최대 5개) |
 |-- ordering|	Integer|	X |	바로연결 순서 (바로연결이 있는 경우 필수)|
-|-- type| String |	X |	바로연결 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+|-- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 |-- name| String |	X |	바로연결 이름 (바로연결이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-- pluginId|	String|	X |	플러그인 ID (최대 24자) |
 |-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
@@ -361,8 +361,8 @@ Content-Type: application/json;charset=UTF-8
 |-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
 |- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
 | messageOption | Object |	X | 메시지 옵션 |
-|- price | Integer |	X | message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액 (모먼트 광고에 해당) |
-|- currencyType | String |	X| message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액의 통화단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
+|- price | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액 (모먼트 광고에 해당) |
+|- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
@@ -432,7 +432,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -551,7 +551,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -694,14 +694,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- title | String | X | 타이틀 (최대 6자) |
 |--- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|--- title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-|--- description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-|--- imageUrl | String | X | 썸네일 이미지 주소 |
-|- templateRepresentLink | Object | X| 대표링크 |
+|--- title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+|--- description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+|--- imageUrl | String | X | 섬네일 이미지 주소 |
+|- templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |- requestDate | String |	요청 일시 |
 |- receiveDate | String |	수신 일시 |
 |- createDate | String | 등록 일시 |
@@ -715,33 +715,33 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- bizFormId|	Integer|	X |	비즈니스폼 ID (BF 타입일 경우 필수) |
 |-- pluginId|	String|	X |	플러그인 ID (최대 24자) |
-|-- relayId|	String|	X| 플러그인 실행시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달 받을 값 |
+|-- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
 |-- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- quickReplies|	List |	X | 바로연결 리스트 (최대 5개) |
 |-- ordering|	Integer|	X |	바로연결 순서 (바로연결이 있는 경우 필수)|
-|-- type| String |	X |	바로연결 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+|-- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 |-- name| String |	X |	바로연결 이름 (바로연결이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-- pluginId|	String|	X |	플러그인 ID (최대 24자) |
 |-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- messageOption | Object |	메시지 옵션 |
-|-- price | Integer |	message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액 (모먼트 광고에 해당) |
-|-- currencyType | String |	message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액의 통화단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
+|-- price | Integer |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액 (모먼트 광고에 해당) |
+|-- currencyType | String |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용 (모먼트 광고에 해당) |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
 
@@ -771,7 +771,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -799,7 +799,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -829,7 +829,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -859,7 +859,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -1415,14 +1415,14 @@ curl -X GET \
 | --- title | String | X | 타이틀 (최대 6자) |
 | --- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 | - templateItemHighlight | Object | X| 아이템 하이라이트 |
-| --- title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-| --- description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-| --- imageUrl | String | X | 썸네일 이미지 주소 |
-| - templateRepresentLink | Object | X| 대표링크 |
+| --- title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| --- description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| --- imageUrl | String | X | 섬네일 이미지 주소 |
+| - templateRepresentLink | Object | X| 대표 링크 |
 | -- linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 | -- linkPc | String |	X |PC 웹 링크  (최대 500자) |
-| -- schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-| -- schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+| -- schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 | - requestDate | String | 요청 날짜 |
 | - receiveDate | String | 수신 날짜 |
 | - createDate | String | 생성 날짜 |
@@ -1436,33 +1436,33 @@ curl -X GET \
 | - createUser | String | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
 | - buttons | List |	버튼 리스트 |
 | -- ordering | Integer |	버튼 순서 |
-| -- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| -- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 | -- name | String |	버튼 이름 |
 | -- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 | -- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-| -- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-| -- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+| -- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+| -- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 | -- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 | -- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 | -- bizFormId|	Integer|	X |	비즈니스폼 ID (BF 타입일 경우 필수) |
 | -- pluginId|	String|	X |	플러그인 ID (최대 24자) |
-| -- relayId|	String|	X| 플러그인 실행시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달 받을 값 |
+| -- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
 | -- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 | -- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 | -- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 | - quickReplies|	List |	X | 바로연결 리스트 (최대 5개) |
 | -- ordering|	Integer|	X |	바로연결 순서 (바로연결이 있는 경우 필수)|
-| -- type| String |	X |	바로연결 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+| -- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 | -- name| String |	X |	바로연결 이름 (바로연결이 있는 경우 필수, 최대 14자)|
 | -- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 | -- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-| -- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| -- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+| -- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 | -- pluginId|	String|	X |	플러그인 ID (최대 24자) |
 | -- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 | - messageOption | Boolean | 메시지 옵션 |
-| -- price | Integer |	message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액(모먼트 광고에 해당) |
-| -- currencyType | String |	message(사용자에게 전달될 메시지) 내 포함된 가격/금액/결제금액의 통화단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
+| -- price | Integer |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
+| -- currencyType | String |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
 ## 템플릿
 
@@ -1479,7 +1479,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 
 [Header]
 ```
@@ -1545,7 +1545,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |senderKey|	String|	발신 키 |
 
 [Header]
@@ -1643,36 +1643,36 @@ Content-Type: application/json;charset=UTF-8
 | -- title | String | X | 타이틀 (최대 6자) |
 | -- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |templateItemHighlight | Object | X| 아이템 하이라이트 |
-| - title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-| - description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-| - imageUrl | String | X | 썸네일 이미지 주소 |
-|templateRepresentLink | Object | X| 대표링크 |
+| - title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| - description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| - imageUrl | String | X | 섬네일 이미지 주소 |
+|templateRepresentLink | Object | X| 대표 링크 |
 | - linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 | - linkPc | String |	X |PC 웹 링크  (최대 500자) |
-| - schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-| - schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+| - schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+| - schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
 |templateImageUrl | String |	X | 이미지 URL |
 |securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
 |categoryCode| String | X | 템플릿 카테고리 코드 (템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |-bizFormId|	Integer|	X |	비즈니스폼 ID (BF 타입일 경우 필수) |
 |- pluginId|	String|	X |	플러그인 ID (최대 24자) |
 |quickReplies|	List |	X | 바로연결 리스트 (최대 5개) |
 | - ordering|	Integer|	X |	바로연결 순서 (바로연결이 있는 경우 필수)|
-| - type| String |	X |	바로연결 타입(WL:웹링크, AL:앱링크, BK:봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+| - type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 | - name| String |	X |	바로연결 이름 (바로연결이 있는 경우 필수, 최대 14자)|
 | - linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 | - linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-| - schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-| - schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 | - pluginId|	String|	X |	플러그인 ID (최대 24자) |
 
 * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
@@ -1711,7 +1711,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1808,26 +1808,26 @@ Content-Type: application/json;charset=UTF-8
 | -- title | String | X | 타이틀 (최대 6자) |
 | -- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |templateItemHighlight | Object | X| 아이템 하이라이트 |
-| - title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-| - description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-| - imageUrl | String | X | 썸네일 이미지 주소 |
-|templateRepresentLink | Object | X| 대표링크 |
+| - title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| - description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| - imageUrl | String | X | 섬네일 이미지 주소 |
+|templateRepresentLink | Object | X| 대표 링크 |
 | - linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 | - linkPc | String |	X |PC 웹 링크  (최대 500자) |
-| - schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-| - schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+| - schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+| - schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
 |templateImageUrl | String |	X | 이미지 URL |
 |securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
 |categoryCode| String | X | 템플릿 카테고리 코드 (템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 
 * 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, templateAd 값이 고정됩니다.
 * 채널 추가형(AD)과 복합형(MI) 메시지 유형 템플릿 수정 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
@@ -1864,7 +1864,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1910,7 +1910,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1969,7 +1969,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -2032,7 +2032,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 
 [Header]
@@ -2181,24 +2181,24 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- title | String | X | 타이틀 (최대 6자) |
 |--- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|-- title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-|-- description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-|-- imageUrl | String | X | 썸네일 이미지 주소 |
-|-templateRepresentLink | Object | X| 대표링크 |
+|-- title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+|-- description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+|-- imageUrl | String | X | 섬네일 이미지 주소 |
+|-templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |-- templateImageName | String | 이미지명(업로드한 파일명) |
 |-- templateImageUrl | String |	이미지 URL |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2231,7 +2231,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |templateCode|	String|	템플릿 코드 |
 
@@ -2365,24 +2365,24 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- title | String | X | 타이틀 (최대 6자) |
 |--- description | String | X | 디스크립션 (변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
 |- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|-- title | String | X | 타이틀 (최대 30자, 썸네일 이미지가 있을 경우 21자) |
-|-- description | String | X | 디스크립션 (최대 19자, 썸네일 이미지가 있을 경우 13자) |
-|-- imageUrl | String | X | 썸네일 이미지 주소 |
-|-templateRepresentLink | Object | X| 대표링크 |
+|-- title | String | X | 타이틀 (최대 30자, 섬네일 이미지가 있을 경우 21자) |
+|-- description | String | X | 디스크립션 (최대 19자, 섬네일 이미지가 있을 경우 13자) |
+|-- imageUrl | String | X | 섬네일 이미지 주소 |
+|-templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크 (최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (최대 500자) |
 |-- templateImageName | String | 이미지명(업로드한 파일명) |
 |-- templateImageUrl | String |	이미지 URL |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2414,7 +2414,7 @@ Content-Type: multipart/form-data
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 
 [Header]
 ```
@@ -2475,7 +2475,7 @@ Content-Type: multipart/form-data
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 
 [Header]
 ```
@@ -2536,7 +2536,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 
 [Header]
@@ -2561,9 +2561,9 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|pluginType|	String |	O | 플러그인 타입 (SECURE_IMAGE : 보안이미지전송, ONE_TIME_PROFILE:개인정보이용) |
+|pluginType|	String |	O | 플러그인 타입 (SECURE_IMAGE: 보안 이미지 전송, ONE_TIME_PROFILE: 개인정보이용) |
 |pluginId|	String |	O | 플러그인 아이디 |
-|callbackUrl|	String |	O | 플러그인 버튼 클릭 시, 수신받을 콜백 url |
+|callbackUrl|	String |	O | 플러그인 버튼 클릭 시, 수신받을 콜백 URL |
 
 #### 응답
 ```
@@ -2596,7 +2596,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |pluginId|	String|	플러그인 아이디 |
 
@@ -2621,8 +2621,8 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|pluginType|	String |	O | 플러그인 타입 (SECURE_IMAGE : 보안이미지전송, ONE_TIME_PROFILE:개인정보이용) |
-|callbackUrl|	String |	O | 플러그인 버튼 클릭 시, 수신받을 콜백 url |
+|pluginType|	String |	O | 플러그인 타입 (SECURE_IMAGE: 보안 이미지 전송, ONE_TIME_PROFILE: 개인정보이용) |
+|callbackUrl|	String |	O | 플러그인 버튼 클릭 시, 수신받을 콜백 URL |
 
 #### 응답
 ```
@@ -2655,7 +2655,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 |pluginId|	String|	플러그인 아이디 |
 
@@ -2700,7 +2700,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |senderKey|	String|	발신 키 |
 
 [Header]
@@ -2743,9 +2743,9 @@ Content-Type: application/json;charset=UTF-8
 |- isSuccessful|	Boolean| 성공 여부|
 |plugins|	List |	플러그인 리스트 |
 |- pluginId|	String|	플러그인 아이디|
-|- pluginType|	String| 플러그인 타입 (SECURE_IMAGE : 보안이미지전송, ONE_TIME_PROFILE:개인정보이용) |
+|- pluginType|	String| 플러그인 타입 (SECURE_IMAGE: 보안 이미지 전송, ONE_TIME_PROFILE: 개인정보이용) |
 |- pluginTypeName|	String| 플러그인 이름 |
-|- callbackUrl|	String|	플러그인 버튼 클릭 시, 수신받을 콜백 url |
+|- callbackUrl|	String|	플러그인 버튼 클릭 시, 수신받을 콜백 URL |
 |- modifiable|	Boolean| 수정 가능 여부 |
 |- deletable|	Boolean| 삭제 가능 여부 |
 
@@ -2763,7 +2763,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -2818,7 +2818,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```

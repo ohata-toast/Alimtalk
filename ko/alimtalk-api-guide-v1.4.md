@@ -36,7 +36,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -156,7 +156,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -215,12 +215,12 @@ Content-Type: application/json;charset=UTF-8
 |- content|	String|	O|	내용 (최대 1000자) |
 |- buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-- ordering|	Integer|	X |	버튼 순서 (버튼이 있는 경우 필수)|
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
@@ -296,7 +296,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -395,12 +395,12 @@ Content-Type: application/json;charset=UTF-8
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서 |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -514,12 +514,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- resultCodeName | String |	수신 결과 코드명 |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
 
@@ -549,7 +549,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -668,7 +668,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -727,12 +727,12 @@ Content-Type: application/json;charset=UTF-8
 |- content|	String|	O|	내용 (최대 1000자) |
 |- buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-- ordering|	Integer|	X |	버튼 순서 (버튼이 있는 경우 필수)|
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
@@ -805,7 +805,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -904,12 +904,12 @@ Content-Type: application/json;charset=UTF-8
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서 |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -943,7 +943,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -1023,12 +1023,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- resultCodeName | String |	수신 결과 코드명 |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
 
@@ -1201,7 +1201,7 @@ Content-Type: application/json;charset=UTF-8
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -1228,7 +1228,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1310,7 +1310,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1369,7 +1369,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 
 [Header]
@@ -1426,7 +1426,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId| String | 플러스친구 ID |
 
 [Header]
@@ -1525,7 +1525,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1636,7 +1636,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |plusFriendId|	String|	플러스친구 ID |
 
 [Header]
@@ -1677,12 +1677,12 @@ Content-Type: application/json;charset=UTF-8
 |templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 
 #### 응답
 ```
@@ -1715,7 +1715,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1755,12 +1755,12 @@ Content-Type: application/json;charset=UTF-8
 |templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
 |buttons|	List |	X | 버튼 리스트 (최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
 |-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
 
 #### 응답
 ```
@@ -1793,7 +1793,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1835,7 +1835,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1894,7 +1894,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1991,12 +1991,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateContent | String |	템플릿 본문 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2023,7 +2023,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -2105,12 +2105,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateContent | String |	템플릿 본문 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeIos | String |	iOS 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크 (AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2137,7 +2137,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -2192,7 +2192,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
