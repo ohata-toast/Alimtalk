@@ -21,12 +21,12 @@
 ### Statistics Search - Event Based
 * Statistics collected based on the time when the event occurs.
 * Statistics are collected based on the following times:
-    * Request count (REQUESTED): Time when the scheduled delivery is registered
-    * Delivery count (SENT): Time of delivery to the vendor (scheduled delivery time)
-    * Success count (RECEIVED): Delivery result successful (receiving time)
-    * Failure count (SENT_FAILED): When the delivery request fails or when the delivery result fails
-    * Alternative delivery request count (RESENT): Time when the alternative delivery is requested
-    * Alternative delivery failure count (RESENT_FAILED): Time when the alternate delivery request fails
+    * Request count(REQUESTED): Time when the scheduled delivery is registered
+    * Delivery count(SENT): Time of delivery to the vendor(scheduled delivery time)
+    * Success count(RECEIVED): Delivery result successful(receiving time)
+    * Failure count(SENT_FAILED): When the delivery request fails or when the delivery result fails
+    * Alternative delivery request count(RESENT): Time when the alternative delivery is requested
+    * Alternative delivery failure count(RESENT_FAILED): Time when the alternate delivery request fails
 
 ### Get Statistics Information
 
@@ -53,11 +53,11 @@
 | extra1s | List<String> | - | Optional | Sub-product type<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
 | extra2s | List<String> | - | Optional | senderKey |
 | eventTypes | List<String> | - | Optional | Event type<br/> REQUESTED, SENT, RECEIVED, SENT_FAILED, RESENT, RESENT_FAILED |
-| eventCategory | String | - | Optional | Event list (Currently only `MESSAGE` is supported)<br/> MESSAGE |
-| templateCodes | List<String> | - | Optional | Template code list (FriendTalk unsupported) |
+| eventCategory | String | - | Optional | Event list(Currently only `MESSAGE` is supported)<br/> MESSAGE |
+| templateCodes | List<String> | - | Optional | Template code list(FriendTalk unsupported) |
 | requestIds | List<String> | 5 | Optional | Request ID list |
 | statsIds | List<String> | - | Optional | Statistics ID list |
-| statsCriteria | List<String> | - | Optional | Statistics criteria<br/>- EVENT: event (default value)<br/>- EXTRA_1,EVENT: sub product type, event<br/>- EXTRA_2,EVENT: senderKey, event |
+| statsCriteria | List<String> | - | Optional | Statistics criteria<br/>- EVENT: event(default value)<br/>- EXTRA_1,EVENT: sub product type, event<br/>- EXTRA_2,EVENT: senderKey, event |
 
 [Response body]
 ```json
@@ -119,11 +119,11 @@
 | extra1s | List<String> | - | Optional | Sub-product type<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
 | extra2s | List<String> | - | Optional | senderKey |
 | eventTypes | List<String> | - | Optional | Event type<br/> REQUESTED, SENT, RECEIVED, SENT_FAILED, RESENT, RESENT_FAILED |
-| eventCategory | String | - | Optional | Event list (Currently only `MESSAGE` is supported)<br/> MESSAGE |
-| templateCodes | List<String> | - | Optional | Template code list (FriendTalk unsupported) |
+| eventCategory | String | - | Optional | Event list(Currently only `MESSAGE` is supported)<br/> MESSAGE |
+| templateCodes | List<String> | - | Optional | Template code list(FriendTalk unsupported) |
 | requestIds | List<String> | 5 | Optional | Request ID list |
 | statsIds | List<String> | - | Optional | Statistics ID list |
-| statsCriteria | List<String> | - | Optional | Statistics criteria<br/>- EVENT: event (default value)<br/>- EXTRA_1,EVENT: sub product type, event<br/>- EXTRA_2,EVENT: senderKey, event |
+| statsCriteria | List<String> | - | Optional | Statistics criteria<br/>- EVENT: event(default value)<br/>- EXTRA_1,EVENT: sub product type, event<br/>- EXTRA_2,EVENT: senderKey, event |
 
 [Response body]
 ```json

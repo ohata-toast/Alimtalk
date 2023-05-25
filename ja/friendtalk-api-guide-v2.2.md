@@ -204,7 +204,7 @@ Content-Type: application/json;charset=UTF-8
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter] 1番or (2番, 3番)の条件必須
+[Query parameter] 1番or(2番, 3番)の条件必須
 
 | 値              | タイプ | 必須  | 説明                          |
 | -------------------- | ------- | --------- | --------------------------------- |
@@ -970,7 +970,7 @@ Content-Type: multipart/form-data
 | 値 | タイプ | 必須 | 説明 |
 | ----- | ---- | ---- | ---- |
 | image | File | O    | イメージ |
-| wide  | boolean | X | ワイドイメージの可否 (基本: false) |
+| wide  | boolean | X | ワイドイメージの可否(基本: false) |
 
 [例]
 ```

@@ -137,7 +137,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|senderKey|	String|	O | 발신 키 (40자) |
+|senderKey|	String|	O | 발신 키(40자) |
 |requestDate|	String|	X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
@@ -158,21 +158,21 @@ Content-Type: application/json;charset=UTF-8
 |-- chatEvent|	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- bizFormKey|	String|	X| BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
 |-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- header | String | X | 헤더 (와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+|- header | String | X | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
 |- item | Object | X | 와이드 아이템 |
-|-- list | List | X | 와이드 아이템리스트 (최소 3개/최대 4개) |
-|--- title | String | X | 아이템 제목 (최대 25자) |
+|-- list | List | X | 와이드 아이템리스트(최소 3개/최대 4개) |
+|--- title | String | X | 아이템 제목(최대 25자) |
 |--- imageUrl | String | X | 아이템 이미지 URL |
 |--- linkMo | String | X | 모바일 웹 링크 |
 |--- linkPc | String | X | PC 웹 링크 |
 |--- schemeIos | String | X | iOS 앱 링크 |
 |--- schemeAndroid | String | X | 안드로이드 앱 링크 |
 |- carousel | Object | X | 캐러셀 | 
-|-- list | List | X |  캐러셀 리스트 (최소 2개 / 최대 6개) | 
-|--- header | String | X | 캐러셀 아이템 제목 (최대 20자) | 
-|--- message | String | X | 캐러셀 아이템 메시지 (최대 180자) | 
+|-- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
+|--- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
+|--- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
 |--- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
-|---- buttons | List | X | 버튼 리스트 (최대 2개) | 
+|---- buttons | List | X | 버튼 리스트(최대 2개) | 
 |----- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
 |----- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 |----- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
@@ -280,7 +280,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -551,21 +551,21 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- bizFormKey|	String|	X| BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
 |-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- header | String | X | 헤더 (와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+|- header | String | X | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
 |- item | Object | X | 와이드 아이템 |
-|-- list | List | X | 와이드 아이템리스트 (최소 3개/최대 4개) |
-|--- title | String | X | 아이템 제목 (최대 25자) |
+|-- list | List | X | 와이드 아이템리스트(최소 3개/최대 4개) |
+|--- title | String | X | 아이템 제목(최대 25자) |
 |--- imageUrl | String | X | 아이템 이미지 URL |
 |--- linkMo | String | X | 모바일 웹 링크 |
 |--- linkPc | String | X | PC 웹 링크 |
 |--- schemeIos | String | X | iOS 앱 링크 |
 |--- schemeAndroid | String | X | 안드로이드 앱 링크 |
 |- carousel | Object | X | 캐러셀 | 
-|-- list | List | X |  캐러셀 리스트 (최소 2개 / 최대 6개) | 
-|--- header | String | X | 캐러셀 아이템 제목 (최대 20자) | 
-|--- message | String | X | 캐러셀 아이템 메시지 (최대 180자) | 
+|-- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
+|--- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
+|--- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
 |--- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
-|---- buttons | List | X | 버튼 리스트 (최대 2개) | 
+|---- buttons | List | X | 버튼 리스트(최대 2개) | 
 |----- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
 |----- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 |----- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
@@ -1091,8 +1091,8 @@ curl -X GET \
 | - requestDate | String | 요청 날짜 |
 | - receiveDate | String | 수신 날짜 |
 | - content | String | 본문 |
-| - messageStatus | String | 대량 수신자 발송 상태 코드 (READY, COMPLETED, FAILED, CANCEL) |
-| - resendStatus | String |	대체 발송 상태 코드 (RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - messageStatus | String | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
+| - resendStatus | String |	대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
 | - resendStatusName | String |	대체 발송 상태 코드명 |
 | - resendRequestId | String | 대체 발송 SMS 요청 ID |
 | - resendResultCode | String | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api) |
@@ -1112,21 +1112,21 @@ curl -X GET \
 | -- chatEvent | String | BT: 봇 전환 시 연결할 봇 이벤트명 |
 | -- bizFormKey|	String|	X| BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
 | -- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - header | String | X | 헤더 (와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+| - header | String | X | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
 | - item | Object | X | 와이드 아이템 |
-| -- list | List | X | 와이드 아이템리스트 (최소 3개/최대 4개) |
-| --- title | String | X | 아이템 제목 (최대 25자) |
+| -- list | List | X | 와이드 아이템리스트(최소 3개/최대 4개) |
+| --- title | String | X | 아이템 제목(최대 25자) |
 | --- imageUrl | String | X | 아이템 이미지 URL |
 | --- linkMo | String | X | 모바일 웹 링크 |
 | --- linkPc | String | X | PC 웹 링크 |
 | --- schemeIos | String | X | iOS 앱 링크 |
 | --- schemeAndroid | String | X | 안드로이드 앱 링크 |
 | - carousel | Object | X | 캐러셀 | 
-| -- list | List | X |  캐러셀 리스트 (최소 2개 / 최대 6개) | 
-| --- header | String | X | 캐러셀 아이템 제목 (최대 20자) | 
-| --- message | String | X | 캐러셀 아이템 메시지 (최대 180자) | 
+| -- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
+| --- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
+| --- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
 | --- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
-| ---- buttons | List | X | 버튼 리스트 (최대 2개) | 
+| ---- buttons | List | X | 버튼 리스트(최대 2개) | 
 | ----- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
 | ----- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 | ----- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
@@ -1178,7 +1178,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```
@@ -1504,7 +1504,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|imageTypes|	String|	X| - IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> IMAGE, WIDE_IMAGE (default) |
+|imageTypes|	String|	X| - IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> IMAGE, WIDE_IMAGE(default) |
 |pageNum|	Integer|	X|	페이지 번호(기본: 1)|
 |pageSize|	Integer|	X|	조회 건수(기본: 15)|
 

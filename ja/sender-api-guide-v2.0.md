@@ -2,8 +2,8 @@
 
 ## v2.0 API紹介
 #### 改善された点
-1. 카카오 채널 추가 시, 발급 받은 senderKey 필드로 API 호출이 되도록 변경 되었습니다. (plusFriendId 필드 대체)
-2. API uri가 변경 되었습니다. (/plus-friends -> /senders)
+1. 카카오 채널 추가 시, 발급 받은 senderKey 필드로 API 호출이 되도록 변경 되었습니다.(plusFriendId 필드 대체)
+2. API uri가 변경 되었습니다.(/plus-friends -> /senders)
 3. 카카오 채널 그룹 기능이 추가 되었습니다.
 
 #### [API 도메인]

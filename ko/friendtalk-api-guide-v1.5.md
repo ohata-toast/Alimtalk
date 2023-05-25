@@ -191,7 +191,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -599,7 +599,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```

@@ -83,7 +83,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|senderKey|	String|	O | 발신 키 (40자) |
+|senderKey|	String|	O | 발신 키(40자) |
 |requestDate|	String|	X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
@@ -191,7 +191,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -607,7 +607,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```

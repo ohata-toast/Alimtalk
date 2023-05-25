@@ -575,7 +575,7 @@ Content-Type: multipart/form-data
 | 値 | タイプ | 必須 | 説明 |
 | ----- | ---- | ---- | ---- |
 | image | File | O    | イメージ |
-| wide  | boolean | X | ワイドイメージの可否 (基本: false) |
+| wide  | boolean | X | ワイドイメージの可否(基本: false) |
 
 [例]
 ```

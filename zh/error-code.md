@@ -4,7 +4,7 @@
 | service | isSuccess | resultCode | resultMessage                                                |
 | ------- | --------- | ---------- | ------------------------------------------------------------ |
 | Common  | true      | 0          | Successful                                                   |
-| Common  | false     | 4          | Parameter validation failed (see resultMessage)              |
+| Common  | false     | 4          | Parameter validation failed(see resultMessage)              |
 | Common  | false     | -1000      | Invalid appkey                                               |
 | Common  | false     | -1001      | Invalid secret key                                           |
 | Common  | false     | -1002      | Invalid SMS appkey                                           |
@@ -21,28 +21,28 @@
 | Common  | false     | -2018      | Invalid button parameter                                     |
 | Common  | false     | -2019      | Failed due to template body with above 1,000 characters      |
 | Common  | false     | -2022      | ImageLink is missing for attached image                      |
-| Common  | false     | -2023      | FriendTalk body message exceeding 400 characters (image attached) |
+| Common  | false     | -2023      | FriendTalk body message exceeding 400 characters(image attached) |
 | Common  | false     | -2024      | FriendTalk body message exceeding 1,000 characters           |
 | Common  | false     | -2025      | Scheduled date and time is from the past                     |
-| Common  | false     | -2026      | Scheduled date and time is 90 days after (available up to 90 days) |
+| Common  | false     | -2026      | Scheduled date and time is 90 days after(available up to 90 days) |
 | Common  | false     | -2027      | Error in parsing due to different date format                |
 | Common  | false     | -2028      | Invalid request ID                                           |
 | Common  | false     | -2029      | Requested message is missing or there is no message to cancel |
 | Common  | false     | -2502      | Alternative delivery requested when failed delivery is not configured |
 | Common  | false     | -2999      | Request of all recipients requesting delivery failed         |
-| Common  | false     | -3000      | Button name/mobile link (linkMo) is required for free button-type templates. |
+| Common  | false     | -3000      | Button name/mobile link(linkMo) is required for free button-type templates. |
 | Common  | false     | -3001      | Template code or template name already exists                |
 | Common  | false     | -3002      | Unable to read request body which is required                |
 | Common  | false     | -3003      | Template does not exist                                      |
 | Common  | false     | -3004      | Error in template parameter to send                          |
-| Common  | false     | -3005      | Error in template status (when requested for delivery before approval) |
+| Common  | false     | -3005      | Error in template status(when requested for delivery before approval) |
 | Common  | false     | -3006      | Button URL must include http:// or https://.                 |
 | Common  | false     | -3007      | Only free button-type templates allow the input of button name and button URL. |
 | Common  | false     | -3008      | Query delivery button type does not allow the input of button URL. |
 | Common  | false     | -3009      | Button name does not exist.                                  |
 | Common  | false     | -3010      | Template body does not match.                                |
 | Common  | false     | -3011      | Template button does not match.                              |
-| Common  | false     | -3012      | Unavailable to modify template (either approved or rejected)           |
+| Common  | false     | -3012      | Unavailable to modify template(either approved or rejected)           |
 | Common  | false     | -3013      | Template under modification exists                           |
 | Common  | false     | -3014      | Invalid button type                         |
 | Common  | false     | -3015      | Plus Friend with CBT deactivated                  |
@@ -62,7 +62,7 @@
 | Common  | false     | -4005      | Appkey closed for service                                    |
 | Common  | false     | -4006      | Appkey not registered with basic sender profile              |
 | Common  | false     | -4007      | File size exceeding 500KB                                    |
-| Common  | false     | -4015      | Invalid request ID (requestId)                               |
+| Common  | false     | -4015      | Invalid request ID(requestId)                               |
 | Common  | false     | -4016      | Data unavailable corresponding to requested value            |
 | Common  | false     | -4100      | Invalid query period                                         |
 | Common  | false     | -4101      | Invalid query parameter for statistics                       |
@@ -77,7 +77,7 @@
 | Common | false     | -6005      | 채널 추가(AC) 타입 버튼은 이미지형(I) 메시지 타입일 경우, 첫 번째 순서에 위치해야 합니다.<br>와이드형(W) 메시지 타입일 경우, 마지막에 위치해야 합니다.|
 | Common | false     | -6006      | 비지니스폼(BF) 타입 버튼은 bizFormId 값이 반드시 존재해야 합니다.<br>이미지형(I) 메시지 타입일 경우, 첫 번째 순서에 위치해야 합니다.<br>와이드형(W) 메시지 타입일 경우, 마지막에 위치해야 합니다.<br>이미지형(I) 메시지 타입이면서 채널 추가(AC) 타입 버튼과 같이 사용할 경우, 두 번째에 위치해야 합니다.<br>와이드형(W) 메시지 타입이면서 채널 추가(AC) 타입 버튼과 같이 사용할 경우, 첫 번째에 위치해야 합니다.|
 | Common  | false     | -7000      | Vendor request API failed                                    |
-| Common  | false     | -8000      | Image sequence (imageSeq) is missing                         |
+| Common  | false     | -8000      | Image sequence(imageSeq) is missing                         |
 | Common  | false     | -8001      | Image file is not normal                                     |
 | Common  | false     | -8002      | No image available corresponding to image sequence           |
 | Common  | false     | -8003      | Deleting image failed                                        |
@@ -106,7 +106,7 @@
 	</tr>
   <tr>
 		<td>1001</td>
-		<td>Server Busy (Queue full for RS internal saving)</td>
+		<td>Server Busy(Queue full for RS internal saving)</td>
 	</tr>
   <tr>
 		<td>1002</td>
@@ -122,15 +122,15 @@
 	</tr>
   <tr>
 		<td>1006</td>
-		<td>Deleted sender profile (contact Customer Center)</td>
+		<td>Deleted sender profile(contact Customer Center)</td>
 	</tr>
 	<tr>
 		<td>1007</td>
-		<td>Blocked sender profile (contact Customer Center)</td>
+		<td>Blocked sender profile(contact Customer Center)</td>
 	</tr>
 	<tr>
 		<td>1011</td>
-		<td>Contract information is not found (contact Customer Center) </td>
+		<td>Contract information is not found(contact Customer Center) </td>
 	</tr>
   <tr>
 		<td>1012</td>
@@ -174,11 +174,11 @@
 	</tr>
 	<tr>
 		<td>2001</td>
-		<td>Unable to send messages (due to unexpected error)</td>
+		<td>Unable to send messages(due to unexpected error)</td>
 	</tr>
 	<tr>
 		<td>2004</td>
-		<td>Error occurred when template consistency is checked (internal error occurred)</td>
+		<td>Error occurred when template consistency is checked(internal error occurred)</td>
 	</tr>
 	<tr>
 		<td>3000</td>
@@ -186,7 +186,7 @@
 	</tr>
 	<tr>
 		<td>3005</td>
-		<td>Message is delivered but receipt is not confirmed (Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
+		<td>Message is delivered but receipt is not confirmed(Uncertain if successful; Encrypted and saved in server and available for sending within 3 days)</td>
 	</tr>
 	<tr>
 		<td>3006</td>
@@ -222,19 +222,19 @@
 	</tr>
 	<tr>
 		<td>3015</td>
-		<td>msg_type error (neither 1008 nor 1009)</td>
+		<td>msg_type error(neither 1008 nor 1009)</td>
 	</tr>
 	<tr>
 		<td>3018</td>
-		<td>Unable to send messages<br>1. KakaoTalk user who has withdrawn <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users (for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
+		<td>Unable to send messages<br>1. KakaoTalk user who has withdrawn <br>2. User who has never been subscribed to KakaoTalk <br>3. Blocked user from AlimTalk messages <br>4. Android users who use different "KakaoTalk numbers from USIM on device" <br>5. Deactivated users(for push) <br>6. User of the minimum KakaoTalk version or unsupported device, or punished user </td>
 	</tr>
 	<tr>
 		<td>3022</td>
-		<td>Not available time (Friend Talk messages can be sent from 08:00 to 20:50)</td>
+		<td>Not available time(Friend Talk messages can be sent from 08:00 to 20:50)</td>
 	</tr>
 	<tr>
 		<td>3023</td>
-		<td>Grammatical error of message (error in JSON format)</td>
+		<td>Grammatical error of message(error in JSON format)</td>
 	</tr>
 	<tr>
 		<td>3024</td>
@@ -258,7 +258,7 @@
 	</tr>
 	<tr>
 		<td>3029</td>
-		<td>Exceeded limit of length in message highlighted title (50 characters)</td>
+		<td>Exceeded limit of length in message highlighted title(50 characters)</td>
 	</tr>
 	<tr>
 		<td>3030</td>
@@ -270,7 +270,7 @@
 	</tr>
 	<tr>
 		<td>3032</td>
-		<td>Error of length restriction in message (1000 characters including spaces)</td>
+		<td>Error of length restriction in message(1000 characters including spaces)</td>
 	</tr>
 	<tr>
 		<td>3033</td>
@@ -344,7 +344,7 @@
 	</tr>
   <tr>
 		<td>3060</td>
-		<td>Sent to user but not sure if received (Polling)</td>
+		<td>Sent to user but not sure if received(Polling)</td>
 	</tr>
 	<tr>
 		<td>4000</td>
@@ -356,11 +356,11 @@
 	</tr>
   <tr>
 		<td>9998</td>
-		<td>Under administrator's checkup for issue occurred in system (currently unavailable) </td>
+		<td>Under administrator's checkup for issue occurred in system(currently unavailable) </td>
 	</tr>
   <tr>
 		<td>9999</td>
-		<td> Under administrator's checkup for error occurred in system (unknown error in system)</td>
+		<td> Under administrator's checkup for error occurred in system(unknown error in system)</td>
 	</tr>
 	<tr>
 		<td>E900</td>

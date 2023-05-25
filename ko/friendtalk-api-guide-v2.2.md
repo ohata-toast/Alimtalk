@@ -92,7 +92,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|senderKey|	String|	O | 발신 키 (40자) |
+|senderKey|	String|	O | 발신 키(40자) |
 |requestDate|	String|	X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
@@ -204,7 +204,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -922,8 +922,8 @@ curl -X GET \
 | - requestDate | String | 요청 날짜 |
 | - receiveDate | String | 수신 날짜 |
 | - content | String | 본문 |
-| - messageStatus | String | 대량 수신자 발송 상태 코드 (READY, COMPLETED, FAILED, CANCEL) |
-| - resendStatus | String |	대체 발송 상태 코드 (RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - messageStatus | String | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
+| - resendStatus | String |	대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
 | - resendStatusName | String |	대체 발송 상태 코드명 |
 | - resendRequestId | String | 대체 발송 SMS 요청 ID |
 | - resendResultCode | String | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api) |
@@ -979,7 +979,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```

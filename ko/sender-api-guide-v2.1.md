@@ -141,8 +141,8 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 카카오톡 채널 검색용 ID (최대 30자) |
-|phoneNo|	String |	O | 관리자 핸드폰 번호 (최대 15자) |
+|plusFriendId|	String|	O | 카카오톡 채널 검색용 ID(최대 30자) |
+|phoneNo|	String |	O | 관리자 핸드폰 번호(최대 15자) |
 |categoryCode|	String |	O | 카테고리 코드(11자)<br>카테고리 조회 API의 응답 참고<br>ex) 00100010001 건강(001) - 병원(0001) - 종합병원(0001) |
 
 #### 응답
@@ -200,7 +200,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |plusFriendId|	String|	O | 카카오톡 채널 검색용 ID |
-|token|	Integer |	O | 인증 토큰 (플러스친구 등록 API 호출 후, 카카오톡 앱으로 받은 인증 토큰) |
+|token|	Integer |	O | 인증 토큰(플러스친구 등록 API 호출 후, 카카오톡 앱으로 받은 인증 토큰) |
 
 #### 응답
 ```
@@ -358,11 +358,11 @@ Content-Type: application/json;charset=UTF-8
 |- senderKey | String |	발신 키 |
 |- categoryCode | String |	카테고리 코드 |
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명 (등록 대기중, 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
-|- kakaoStatusName | String |	카카오 플러스친구 상태명 (정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
+|- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
-|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명 (활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
 |- alimtalk|	Object|	알림톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
@@ -470,11 +470,11 @@ Content-Type: application/json;charset=UTF-8
 |- senderKey | String |	발신 키 |
 |- categoryCode | String |	카테고리 코드 |
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명 (등록 대기중, 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
-|- kakaoStatusName | String |	카카오 플러스친구 상태명 (정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
+|- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
-|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명 (활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
 |- alimtalk|	Object|	알림톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
