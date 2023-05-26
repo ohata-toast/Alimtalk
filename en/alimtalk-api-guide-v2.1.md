@@ -230,7 +230,7 @@ Content-Type: application/json;charset=UTF-8
 | senderGroupingKey      | String  | X        | Sender's grouping key(up to 100 characters)                 |
 | recipientList          | List    | O        | List of recipients(up to 1,000 persons)                     |
 | - recipientNo          | String  | O        | Recipient number(up to 15 characters)                       |
-| - content              | String  | O        | Message (up to 1000 characters)                             |
+| - content              | String  | O        | Message(up to 1000 characters)                             |
 | - templateTitle        | String  | X        | Title(up to 50 characters)                                  |
 | - buttons              | List    | X        | List of buttons(up to 5)                                    |
 | -- ordering            | Integer | X        | Button sequence(required, if there is a button)             |
@@ -430,7 +430,7 @@ Content-Type: application/json;charset=UTF-8
 | --- ordering                | Integer | Button sequence                                              |
 | --- type                    | String  | Button type(WL: Web Link, AL: App Link, DS: Delivery Search, BK: Bot Keyword, MD: Message Delivery, BC: Bot for Consultation, BT: Bot Transfer, CA: Channel Added) |
 | --- name                    | String  | Button name                                                  |
-| --- linkMo                  | String  | Mobile web link (required for the WL type)                  |
+| --- linkMo                  | String  | Mobile web link(required for the WL type)                  |
 | --- linkPc                  | String  | PC web link(optional for the WL type)                       |
 | --- schemeIos               | String  | iOS app link(required for the AL type)                      |
 | --- schemeAndroid           | String  | Android app link(required for the AL type)                  |

@@ -353,11 +353,11 @@ Content-Type: application/json;charset=UTF-8
 | - plusFriendId            | String  | PlusFriend ID                                                |
 | - senderKey               | String  | Sender key                                                   |
 | - categoryCode            | String  | Category code                                                |
-| - status                  | String  | Status code of NHN Cloud PlusFriend (YSC02: Ready for registeration, YSC03: Normally registered) |
+| - status                  | String  | Status code of NHN Cloud PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
 | - statusName              | String  | Status name of NHN Cloud PlusFriend(ready for registration, normally registered) |
 | - kakaoStatus             | String  | Status code of Kakao PlusFriend(A: Normal, S: Blocked) kakaoStatus is null if the status is YSC02. |
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked) kakaoStatusName is null if the status is YSC02. |
-| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile (A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
+| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
 | - kakaoProfileStatusName  | String  | Status name of Kakao PlusFriend profile(Activated, Deactivated, Blocked, Deleted, or Deleting) kakaoProfileStatusName is null if the status is YSC02. |
 |- alimtalk                 |	Object  |	AlimTalk information                                         |
 |-- resendAppKey            | String  | Alternative sms appkey                                       |
@@ -408,7 +408,7 @@ Content-Type: application/json;charset=UTF-8
 | ------------------- | ------- | -------- | ------------------------------------------------------------ |
 | plusFriendId        | String  | X        | PlusFriend ID                                                |
 | senderKey | String | X | Sender key |
-| status              | String  | X        | Status code of PlusFriend (YSC02: Ready for token authenticated, YSC03: Normally registered) |
+| status              | String  | X        | Status code of PlusFriend(YSC02: Ready for token authenticated, YSC03: Normally registered) |
 |pageNum|	Integer|	X|	page number(Default : 1)|
 |pageSize|	Integer|	X|	page size(Default : 15, Max : 1000)|
 
@@ -464,11 +464,11 @@ Content-Type: application/json;charset=UTF-8
 | - plusFriendId            | String  | PlusFriend ID                                                |
 | - senderKey               | String  | Sender key                                                   |
 | - categoryCode            | String  | Category code                                                |
-| - status                  | String  | Status code of NHN Cloud PlusFriend (YSC02: Ready for registeration, YSC03: Normally registered) |
+| - status                  | String  | Status code of NHN Cloud PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
 | - statusName              | String  | Status name of NHN Cloud PlusFriend(ready for registration, normally registered) |
 | - kakaoStatus             | String  | Status code of Kakao PlusFriend(A: Normal, S: Blocked) kakaoStatus is null if the status is YSC02. |
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked) kakaoStatusName is null if the status is YSC02. |
-| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile (A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
+| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
 | - kakaoProfileStatusName  | String  | Status name of Kakao PlusFriend profile(Activated, Deactivated, Blocked, Deleted, or Deleting) kakaoProfileStatusName is null if the status is YSC02. |
 |- alimtalk                 |	Object  |	AlimTalk information                                         |
 |-- resendAppKey            | String  | Alternative sms appkey                                       |
@@ -549,7 +549,7 @@ Content-Type: application/json;charset=UTF-8
 |senderGroup|	Object|	Sender group |
 |- groupName | String |	group name |
 |- senderKey | String |	Sender key |
-| - status                  | String  | Status code of NHN Cloud PlusFriend (YSC02: Ready for registeration, YSC03: Normally registered) |
+| - status                  | String  | Status code of NHN Cloud PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
 |- senders | List |	Sender List |
 |-- plusFriendId | String |	PlusFriend ID |
 |-- senderKey | String |	Sender key |

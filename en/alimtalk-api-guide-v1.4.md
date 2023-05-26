@@ -215,7 +215,7 @@ Content-Type: application/json;charset=UTF-8
 | senderGroupingKey      | String  | X        | Sender's grouping key(up to 100 characters)                 |
 | recipientList          | List    | O        | List of recipients(up to 1,000 persons)                     |
 | - recipientNo          | String  | O        | Recipient number(up to 15 characters)                       |
-| - content              | String  | O        | Message (up to 1000 characters)                             |
+| - content              | String  | O        | Message(up to 1000 characters)                             |
 | - buttons              | List    | X        | List of buttons(up to 5)                                    |
 | -- ordering            | Integer | X        | Button sequence(required, if there is a button)             |
 | -- type                | String  | X        | Button type(WL: Web Link, AL: App Link, DS: Delivery Search, BK: Bot Keyword, MD: Message Delivery) |
@@ -402,7 +402,7 @@ Content-Type: application/json;charset=UTF-8
 | --- ordering                | Integer | Button sequence                                              |
 | --- type                    | String  | Button type(WL: Web Link, AL: App Link, DS: Delivery Search, BK: Bot Keyword, MD: Message Delivery) |
 | --- name                    | String  | Button name                                                  |
-| --- linkMo                  | String  | Mobile web link (required for the WL type)                  |
+| --- linkMo                  | String  | Mobile web link(required for the WL type)                  |
 | --- linkPc                  | String  | PC web link(optional for the WL type)                       |
 | --- schemeIos               | String  | iOS app link(required for the AL type)                      |
 | --- schemeAndroid           | String  | Android app link(required for the AL type)                  |
@@ -1451,7 +1451,7 @@ Content-Type: application/json;charset=UTF-8
 | Value               | Type    | Required | Description                                                  |
 | ------------------- | ------- | -------- | ------------------------------------------------------------ |
 | plusFriendId        | String  | X        | PlusFriend ID                                                |
-| status              | String  | X        | Status code of PlusFriend (YSC02: Ready for token authenticated, YSC03: Normally registered) |
+| status              | String  | X        | Status code of PlusFriend(YSC02: Ready for token authenticated, YSC03: Normally registered) |
 
 #### Response
 
@@ -1499,15 +1499,15 @@ Content-Type: application/json;charset=UTF-8
 | - plusFriendType          | String  | PlusFriend type(NORMAL, GROUP)                              |
 | - senderKey               | String  | Sender key                                                   |
 | - categoryCode            | String  | Category code                                                |
-| - alimtalkDailyMaxCount   | Integer | Number of maximum daily AlimTalk deliveries (not limited if it is 0) |
+| - alimtalkDailyMaxCount   | Integer | Number of maximum daily AlimTalk deliveries(not limited if it is 0) |
 | - friendtalkDailyMaxCount | Integer | Number of maximum daily FriendTalk deliveries(not limited if it is 0) |
-| - alimtalkSentCount       | Integer | Number of daily AlimTalk deliveries (not limited if it is 0) |
+| - alimtalkSentCount       | Integer | Number of daily AlimTalk deliveries(not limited if it is 0) |
 | - friendtalkSentCount     | Integer | Number of daily FriendTalk deliveries(not limited if it is 0) |
-| - status                  | String  | Status code of NHN Cloud PlusFriend (YSC02: Ready for registeration, YSC03: Normally registered) |
+| - status                  | String  | Status code of NHN Cloud PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
 | - statusName              | String  | Status name of NHN Cloud PlusFriend(ready for registration, normally registered) |
 | - kakaoStatus             | String  | Status code of Kakao PlusFriend(A: Normal, S: Blocked, D: Deleted) kakaoStatus is null if the status is YSC02. |
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked, deleted) kakaoStatusName is null if the status is YSC02. |
-| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile (A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
+| - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
 | - kakaoProfileStatusName  | String  | Status name of Kakao PlusFriend profile(Activated, Deactivated, Blocked, Deleted, or Deleting) kakaoProfileStatusName is null if the status is YSC02. |
 | - resendYn                | String  | Set delivery failure(resending) or not                      |
 | - smsSendNo               | String  | Sender number for tc-sms, to resend                          |

@@ -236,7 +236,7 @@ Content-Type: application/json;charset=UTF-8
 |-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
@@ -428,7 +428,7 @@ Content-Type: application/json;charset=UTF-8
 |--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
@@ -560,7 +560,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- messageOption | Object |	메시지 옵션 |
@@ -793,7 +793,7 @@ Content-Type: application/json;charset=UTF-8
 |-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
@@ -982,7 +982,7 @@ Content-Type: application/json;charset=UTF-8
 |--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
@@ -1114,7 +1114,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- messageOption | Object |	메시지 옵션 |
@@ -1423,7 +1423,7 @@ Content-Type: application/json;charset=UTF-8
 |-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가[광고 추가/복합형만]) |
 |-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 
@@ -1515,7 +1515,7 @@ Content-Type: application/json;charset=UTF-8
 |-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가[광고 추가/복합형만]) |
 |-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 
@@ -1831,7 +1831,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
@@ -1972,7 +1972,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |

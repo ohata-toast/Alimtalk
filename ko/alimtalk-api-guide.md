@@ -324,7 +324,7 @@ Content-Type: application/json;charset=UTF-8
 |--- imageUrl | String | X | 섬네일 이미지 주소 |
 |- templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |- buttons|	List |	X | 버튼 리스트(최대 5개) |
@@ -332,7 +332,7 @@ Content-Type: application/json;charset=UTF-8
 |-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
@@ -348,7 +348,7 @@ Content-Type: application/json;charset=UTF-8
 |-- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 |-- name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- pluginId|	String|	X |	플러그인 ID(최대 24자) |
@@ -699,7 +699,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- imageUrl | String | X | 섬네일 이미지 주소 |
 |- templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |- requestDate | String |	요청 일시 |
@@ -718,7 +718,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
@@ -734,7 +734,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 |-- name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- pluginId|	String|	X |	플러그인 ID(최대 24자) |
@@ -1420,7 +1420,7 @@ curl -X GET \
 | --- imageUrl | String | X | 섬네일 이미지 주소 |
 | - templateRepresentLink | Object | X| 대표 링크 |
 | -- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| -- linkPc | String |	X |PC 웹 링크 (최대 500자) |
+| -- linkPc | String |	X |PC 웹 링크(최대 500자) |
 | -- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 | -- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 | - requestDate | String | 요청 날짜 |
@@ -1439,7 +1439,7 @@ curl -X GET \
 | -- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 | -- name | String |	버튼 이름 |
 | -- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-| -- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+| -- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 | -- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 | -- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 | -- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
@@ -1455,7 +1455,7 @@ curl -X GET \
 | -- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 | -- name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
 | -- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-| -- linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+| -- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 | -- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 | -- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 | -- pluginId|	String|	X |	플러그인 ID(최대 24자) |
@@ -1648,7 +1648,7 @@ Content-Type: application/json;charset=UTF-8
 | - imageUrl | String | X | 섬네일 이미지 주소 |
 |templateRepresentLink | Object | X| 대표 링크 |
 | - linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| - linkPc | String |	X |PC 웹 링크 (최대 500자) |
+| - linkPc | String |	X |PC 웹 링크(최대 500자) |
 | - schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 | - schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
@@ -1660,7 +1660,7 @@ Content-Type: application/json;charset=UTF-8
 |- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-bizFormId|	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
@@ -1670,7 +1670,7 @@ Content-Type: application/json;charset=UTF-8
 | - type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
 | - name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
 | - linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-| - linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+| - linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 | - schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 | - schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 | - pluginId|	String|	X |	플러그인 ID(최대 24자) |
@@ -1813,7 +1813,7 @@ Content-Type: application/json;charset=UTF-8
 | - imageUrl | String | X | 섬네일 이미지 주소 |
 |templateRepresentLink | Object | X| 대표 링크 |
 | - linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| - linkPc | String |	X |PC 웹 링크 (최대 500자) |
+| - linkPc | String |	X |PC 웹 링크(최대 500자) |
 | - schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 | - schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |templateImageName | String |	X | 이미지명(업로드한 파일명) |
@@ -1825,7 +1825,7 @@ Content-Type: application/json;charset=UTF-8
 |- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
 |-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크 (WL 타입일 경우 선택 필드, 최대 500자) |
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 
@@ -2186,7 +2186,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- imageUrl | String | X | 섬네일 이미지 주소 |
 |-templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |-- templateImageName | String | 이미지명(업로드한 파일명) |
@@ -2196,7 +2196,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
@@ -2370,7 +2370,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- imageUrl | String | X | 섬네일 이미지 주소 |
 |-templateRepresentLink | Object | X| 대표 링크 |
 |-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크 (최대 500자) |
+|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
 |-- templateImageName | String | 이미지명(업로드한 파일명) |
@@ -2380,7 +2380,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |--- name | String |	버튼 이름 |
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크 (WL 타입일 경우 선택 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
