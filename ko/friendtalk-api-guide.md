@@ -1612,6 +1612,72 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 |- isSuccessful|	Boolean| 성공 여부|
 
 
+## 업로드
+### 비즈니스폼 등록
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+|senderKey|	String|	발신 키 |
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+
+[Request body]
+
+```
+{
+    "bizFormId": Integer
+}
+```
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|bizFormId|	Integer|	O | 비즈니스폼 아이디 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form -d '{"bizFormId": 1}
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "bizFormKey": String
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|bizFormKey | String | 비즈니스폼 키 |
+
+
 ## 대체 발송 관리
 ### SMS AppKey 등록
 
