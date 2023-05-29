@@ -75,7 +75,7 @@ If you select **Proceed after Inspection** when performing mass delivery of Alim
 ### Status of Mass Delivery
   - <b>Waiting:</b> Template file data are yet to be read.
   - <b>Preparing:</b> Loading template file data.
-  - <b>Ready:</b> All template file data are loaded and delivery is ready. Select a request (column on the list) and you can find recipient numbers and delivery information from the list at the bottom.
+  - <b>Ready:</b> All template file data are loaded and delivery is ready. Select a request(column on the list) and you can find recipient numbers and delivery information from the list at the bottom.
   - <b>Waiting for Delivery:</b> Delivery is yet to be processed.
   - <b>Delivering:</b> Delivery is currently underway.
   - <b>Delivery Completed:</b> Request for delivery has been properly completed.
@@ -122,8 +122,8 @@ Click **Register Templates** to register a template.
 * You can set the alternative delivery for Plus Friend according to each message type of Alimktalk/FriendTalk.
 * Only messages for Plus Friends with alternative delivery set will be resent with LMS or SMS.
 * If you edit the SMS app key, all Plus Friends' alternative delivery settings will be initialized.
-* Because the alternative delivery is performed with SMS service, fields must be entered according to the specification of the SMS service's delivery API. (sender number registered in SMS service, various field length limits, etc.)
-* Subject or content of an alternative delivery that exceeds the byte limit of the specified alternative delivery type may be truncated and sent. (See [[SMS cautions](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])
+* Because the alternative delivery is performed with SMS service, fields must be entered according to the specification of the SMS service's delivery API.(sender number registered in SMS service, various field length limits, etc.)
+* Subject or content of an alternative delivery that exceeds the byte limit of the specified alternative delivery type may be truncated and sent.(See [[SMS cautions](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])
 * Alternative delivery content is sent based on EUC-KR, and unsupported emoticons will fail to be sent.
 
 ![plusfriend_03_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_03_201904.png)

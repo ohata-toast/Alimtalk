@@ -5,7 +5,7 @@ Advertising messages can be sent to members who agreed to receive marketing.
 It's similar to FriendTalk, but the difference is that you can send messages to users once got the 'Agreement to receive Kakao Talk marketing' without adding a channel.
 
 BrandTalk informs that the message was sent based on the customer's consent to receive marketing.
-Profile Name is exposed along with the (advertisement) mark and (information) is displayed on the right side of the Profile Name.
+Profile Name is exposed along with the(advertisement) mark and(information) is displayed on the right side of the Profile Name.
 BrandTalk guides the customer's own denial of receipt system at the bottom of the message content.
 Add Channel button can be used to induce the addition of a channel.
 

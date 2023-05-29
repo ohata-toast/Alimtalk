@@ -8,7 +8,7 @@ RESTful API is provided for easy integration.
 * Send ad messages to users who become friends.
 * Requires no template registration but feel free to send texts .
 * Send text as well as image attachment.
-* Restricted during night time (20:00 - 08:00 on the following day).
+* Restricted during night time(20:00 - 08:00 on the following day).
 
 ## Main Features
 * RESTful APIs are provided to Send/Query Messages or Manage Images.

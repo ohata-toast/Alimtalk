@@ -19,7 +19,7 @@ Enter token message received on the administrator's phone and it is completely r
 ![plusfriend_02_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_02_201904.png)
 
 <b><span style="color:red">With the registration of Plus Friend, the initial maximum daily delivery volume is limited to 1,000.</span></b>
-To change the maximum daily delivery volume, you must send request to Customer Center (support@toast.com).
+To change the maximum daily delivery volume, you must send request to Customer Center(support@toast.com).
 
 ## Setting for Failed Delivery  
 
@@ -31,7 +31,7 @@ To change the maximum daily delivery volume, you must send request to Customer C
 ![plusfriend_03_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_03_201812.png)
 
 ## Guide for Notice of Personal Information Assignor
-When the Customer uses NHN Cloud > Notification > KakaoTalk Bizmessage Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection, and the Personal Information Protection Act.
+When the Customer uses NHN Cloud > Notification > KakaoTalk Bizmessage Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status(assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection, and the Personal Information Protection Act.
 
 Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud KakaoTalk Bizmessage Service and not to be adversely affected for not disclosing his assignment status:
 

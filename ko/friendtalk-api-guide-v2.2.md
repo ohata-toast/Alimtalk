@@ -92,7 +92,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|senderKey|	String|	O | 발신 키 (40자) |
+|senderKey|	String|	O | 발신 키(40자) |
 |requestDate|	String|	X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
@@ -108,7 +108,7 @@ Content-Type: application/json;charset=UTF-8
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
 |-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String | X |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
@@ -204,7 +204,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -426,7 +426,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
 |-- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
@@ -707,8 +707,8 @@ curl -X GET \
 | --- name | String | 버튼 이름 |
 | --- linkMo | String | 모바일 웹 링크(WL 타입일 경우 필수 필드) |
 | --- linkPc | String | PC 웹 링크(WL 타입일 경우 선택 필드)|
-| --- schemeIos | String | IOS 앱 링크(AL 타입일 경우 필수 필드) |
-| --- schemeAndroid | String | Android 앱 링크(AL 타입일 경우 필수 필드) |
+| --- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| --- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 | --- chatExtra | String | BC: 상담톡 전환시 전달할 메타 정보<br/> BT: 봇 전환 시 전달할 메타 정보 |
 | --- chatEvent | String | BT: 봇 전환 시 연결할 봇 이벤트명 |
 | --- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
@@ -922,8 +922,8 @@ curl -X GET \
 | - requestDate | String | 요청 날짜 |
 | - receiveDate | String | 수신 날짜 |
 | - content | String | 본문 |
-| - messageStatus | String | 대량 수신자 발송 상태 코드 (READY, COMPLETED, FAILED, CANCEL) |
-| - resendStatus | String |	대체 발송 상태 코드 (RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - messageStatus | String | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
+| - resendStatus | String |	대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
 | - resendStatusName | String |	대체 발송 상태 코드명 |
 | - resendRequestId | String | 대체 발송 SMS 요청 ID |
 | - resendResultCode | String | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api) |
@@ -937,8 +937,8 @@ curl -X GET \
 | -- name | String | 버튼 이름 |
 | -- linkMo | String | 모바일 웹 링크(WL 타입일 경우 필수 필드) |
 | -- linkPc | String | PC 웹 링크(WL 타입일 경우 선택 필드)|
-| -- schemeIos | String | IOS 앱 링크(AL 타입일 경우 필수 필드) |
-| -- schemeAndroid | String | Android 앱 링크(AL 타입일 경우 필수 필드) |
+| -- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| -- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 | -- chatExtra | String | BC: 상담톡 전환시 전달할 메타 정보<br/> BT: 봇 전환 시 전달할 메타 정보 |
 | -- chatEvent | String | BT: 봇 전환 시 연결할 봇 이벤트명 |
 | -- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
@@ -979,7 +979,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```
@@ -1010,7 +1010,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- resultMessage|	String| 결과 메시지|
 |- isSuccessful|	Boolean| 성공 여부|
 |image|	Object|	본문 영역|
-|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
 |- imageUrl | String |	이미지 URL |
 |- imageName | String |	이미지명(업로드한 파일명) |
 
@@ -1086,7 +1086,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- isSuccessful|	Boolean| 성공 여부|
 |imagesResponse| Object| 본문 영역|
 |- image|	Object|	본문 영역|
-|-- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|-- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
 |-- imageUrl | String |	이미지 URL |
 |-- imageName | String |	이미지명(업로드한 파일명) |
 |-- wide | boolean |	와이드 이미지 여부 |
@@ -1166,7 +1166,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1221,7 +1221,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```

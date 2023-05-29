@@ -92,43 +92,43 @@ Content-Type: application/json;charset=UTF-8
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|senderKey| String| O | Sender key (40 characters) |
-|requestDate|   String| X | Date and time of request (yyyy-MM-dd HH:mm), to be sent immediately if field is not sent |
-|senderGroupingKey| String | X| Sender's grouping key (up to 100 characters) |
-| createUser | String | X | Registrant (saved as user UUID when sending from console) |
-|recipientList| List|   O|  List of recipients (up to 1000) |
+|senderKey| String| O | Sender key(40 characters) |
+|requestDate|   String| X | Date and time of request(yyyy-MM-dd HH:mm), to be sent immediately if field is not sent |
+|senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
+| createUser | String | X | Registrant(saved as user UUID when sending from console) |
+|recipientList| List|   O|  List of recipients(up to 1000) |
 |- recipientNo| String| O|  Recipient number |
-|- content| String| O| Body message (up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included |
+|- content| String| O| Body message(up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included |
 |- imageSeq|    Integer|    X|  Image number |
 |- imageLink|   String| X|  Image link   |
 |- buttons| List|   X|  Button<br>1 link button, if wide image is included |
-|-- ordering|   Integer|    X | Button sequence (required, if there is a button)|
-|-- type| String |  X | Button type (WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery) |
-|-- name| String |  X | Button name (required, if there is a button)|
-|-- linkMo| String |    X | Mobile web link (required for the WL type)|
-|-- linkPc | String |   X |PC web link (optional for the WL type) |
-|-- schemeIos | String | X |    iOS app link (required for the AL type) |
-|-- schemeAndroid | String | X |    Android app link (required for the AL type) |
-|-- chatExtra|  String| X| Meta information to send for BC (Bot for Consultation) or BT (Bot Transfer) type buttons |
-|-- chatEvent|  String| X| Bot event name to connect for BT (Bot Transfer) type button |
+|-- ordering|   Integer|    X | Button sequence(required, if there is a button)|
+|-- type| String |  X | Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery) |
+|-- name| String |  X | Button name(required, if there is a button)|
+|-- linkMo| String |    X | Mobile web link(required for the WL type)|
+|-- linkPc | String |   X |PC web link(optional for the WL type) |
+|-- schemeIos | String | X |    iOS app link(required for the AL type) |
+|-- schemeAndroid | String | X |    Android app link(required for the AL type) |
+|-- chatExtra|  String| X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons |
+|-- chatEvent|  String| X| Bot event name to connect for BT(Bot Transfer) type button |
 |-- target| String| X | In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
 |- resendParameter| Object| X| Alternative delivery information |
 |-- isResend|   boolean|    X|  Whether to resend text, if delivery fails<br/>Resent by default, if alternative delivery is set on console. |
-|-- resendType| String| X|  Alternative delivery type (SMS,LMS)<br>Categorized by the length of template body, if value is unavailable. |
+|-- resendType| String| X|  Alternative delivery type(SMS,LMS)<br>Categorized by the length of template body, if value is unavailable. |
 |-- resendTitle|    String| X|  Title of alternative delivery for LMS<br/>(resent with PlusFriend ID if value is unavailable.) |
 |-- resendContent|  String| X|  Alternative delivery content<br/>(resent with [Message body and web link button name - web link mobile link] if value is unavailable.) |
-|-- resendSendNo | String| X| Sender number for alternative delivery (up to 13 characters)<br><span style="color:red"> (Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
-|-- resendUnsubscribeNo | String| X| Alternative delivery 080 blocked number <br> <span style="color:red"> (If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span> |
-|- isAd | Boolean | X | Ad or not (default is true) |
-|- recipientGroupingKey|    String| X|  Recipient's grouping key (up to 100 characters) |
-| statsId | String |	X | Statistics ID (not included in the delivery search conditions, up to 8 characters) |
+|-- resendSendNo | String| X| Sender number for alternative delivery(up to 13 characters)<br><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
+|-- resendUnsubscribeNo | String| X| Alternative delivery 080 blocked number <br> <span style="color:red">(If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span> |
+|- isAd | Boolean | X | Ad or not(default is true) |
+|- recipientGroupingKey|    String| X|  Recipient's grouping key(up to 100 characters) |
+| statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
 * <b> Request date and time can be configured up to 90 days after a point of calling </b>
-* <b> Delivery restricted during night (20:50~08:00 on the following day)</b>
-* <b> Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service (e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
-* <b> Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions (see [[Cautions for SMS](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])</b>
+* <b> Delivery restricted during night(20:50~08:00 on the following day)</b>
+* <b> Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
+* <b> Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])</b>
 * <b> FriendTalk ad message can be replaced by Ad SMS API, so it must be registered at the 080 Unsubscription Service to enable alternative delivery. </b>
-* <b> When the resendContent field of a FriendTalk ad message is available, ad phrase for SMS Ad API is required to enable alternative delivery. (Ad) Content [Unsubscribe for Free] 080XXXXXXX </b>
+* <b> When the resendContent field of a FriendTalk ad message is available, ad phrase for SMS Ad API is required to enable alternative delivery.(Ad) Content [Unsubscribe for Free] 080XXXXXXX </b>
 * <b> When the resendContent field of a FriendTalk ad message is missing, ad phrase is automatically created with registered 080 number for unsubscription to enable alternative delivery. </b>
 
 [Example]
@@ -204,24 +204,24 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|  String| O | Can be created on console.  |
 
-[Query parameter] No.1 or (2, 3) is conditionally required
+[Query parameter] No.1 or(2, 3) is conditionally required
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|requestId| String| Conditionally required (no.1) | Request ID |
-|startRequestDate|  String| Conditionally required (no.2) | Start date of delivery request (yyyy-MM-dd HH:mm)|
-|endRequestDate|    String| Conditionally required (no.2) | End date of delivery request (yyyy-MM-dd HH:mm) |
-|startCreateDate| String| Conditionally required (no.3) | Start date of registration (mm:HH dd-MM-yyyy)|
-|endCreateDate|  String| Conditionally required (no.3) |  End date of registration (mm:HH dd-MM-yyyy) |
+|requestId| String| Conditionally required(no.1) | Request ID |
+|startRequestDate|  String| Conditionally required(no.2) | Start date of delivery request(yyyy-MM-dd HH:mm)|
+|endRequestDate|    String| Conditionally required(no.2) | End date of delivery request(yyyy-MM-dd HH:mm) |
+|startCreateDate| String| Conditionally required(no.3) | Start date of registration(mm:HH dd-MM-yyyy)|
+|endCreateDate|  String| Conditionally required(no.3) |  End date of registration(mm:HH dd-MM-yyyy) |
 |recipientNo|   String| X | Recipient number |
 |senderKey| String| X | Sender key |
 |senderGroupingKey| String | X| Sender's grouping key |
 |recipientGroupingKey|  String| X|  Recipient's grouping key |
-|messageStatus| String |    X | Request status (COMPLETED: successful, FAILED: failed)   |
-|resultCode| String |   X | Delivery result (MRC01: successful, MRC02: failed) |
-|createUser| String | X | Registrant (saved as user UUID when sending from console) |
-|pageNum|   Integer|    X|  Page number (default: 1)|
-|pageSize|  Integer|    X|  Number of queries (default: 15, max: 1000)|
+|messageStatus| String |    X | Request status(COMPLETED: successful, FAILED: failed)   |
+|resultCode| String |   X | Delivery result(MRC01: successful, MRC02: failed) |
+|createUser| String | X | Registrant(saved as user UUID when sending from console) |
+|pageNum|   Integer|    X|  Page number(default: 1)|
+|pageSize|  Integer|    X|  Number of queries(default: 15, max: 1000)|
 
 #### Response
 ```
@@ -275,12 +275,12 @@ Content-Type: application/json;charset=UTF-8
 |-- createDate | String | Registered date and time |
 |-- receiveDate | String |  Date and time of receiving |
 |-- content | String |  Body |
-|-- messageStatus | String |    Request status (COMPLETED: successful, FAILED: failed) |
+|-- messageStatus | String |    Request status(COMPLETED: successful, FAILED: failed) |
 |-- resendStatus | String | Status code of resending |
 |-- resendStatusName | String | Status code name of resending |
 |-- resultCode | String |   Result code of receiving |
 |-- resultCodeName | String |   Result code name of receiving |
-|-- createUser | String | Registrant (saved as user UUID when sending from console) |
+|-- createUser | String | Registrant(saved as user UUID when sending from console) |
 |-- senderGroupingKey | String | Sender's grouping key |
 |-- recipientGroupingKey | String | Recipient's grouping key |
 |- totalCount | Integer | Total count |
@@ -294,7 +294,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | Name |  Description|
 |---|---|
 |RSC01| No target of resending|
-|RSC02| Target of resending (If sending fails, resending is performed.)|
+|RSC02| Target of resending(If sending fails, resending is performed.)|
 |RSC03| Resending in progress|
 |RSC04| Resending successful|
 |RSC05| Resending failed|
@@ -406,29 +406,29 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createDate | String | Registered date and time |
 |- receiveDate | String |   Date and time of receiving |
 |- content | String |   Body |
-|- messageStatus | String | Status of request (COMPLETED: successful, FAILED: failed) |
+|- messageStatus | String | Status of request(COMPLETED: successful, FAILED: failed) |
 |- resendStatus | String |  Status code of resending |
 |- resendStatusName | String |  Status code name of resending |
 |- resendResultCode | String | Alternative delivery result code SMS result code |
 |- resendRequestId | String | Resending SMS request ID |
 |- resultCode | String |    Result code of receiving |
 |- resultCodeName | String |    Result code name of receiving |
-|- createUser | String | Registrant (saved as user UUID when sending from console) |
+|- createUser | String | Registrant(saved as user UUID when sending from console) |
 |- imageSeq|    Integer|  Image number |
-|- imageName|   String|  Image name (name of uploaded file) |
+|- imageName|   String|  Image name(name of uploaded file) |
 |- imageUrl|    String|  Image URL |
 |- imageLink|   String| Image link   |
 |- wide     | Boolean | Image is wide or not |
 |- buttons | List | List of buttons |
 |-- ordering | Integer |    Button sequence |
-|-- type | String | Button type (WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery) |
+|-- type | String | Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery) |
 |-- name | String | Button name |
-|-- linkMo | String |   Mobile web link (required for the WL type) |
-|-- linkPc | String |   PC web link (optional for the WL type) |
-|-- schemeIos | String |    iOS app link (required for the AL type) |
-|-- schemeAndroid | String |    Android app link (required for the AL type) |
-|-- chatExtra|  String| Meta information to send for BC (Bot for Consultation) or BT (Bot Transfer) type buttons |
-|-- chatEvent|  String| Bot event name to connect for BT (Bot Transfer) type button |
+|-- linkMo | String |   Mobile web link(required for the WL type) |
+|-- linkPc | String |   PC web link(optional for the WL type) |
+|-- schemeIos | String |    iOS app link(required for the AL type) |
+|-- schemeAndroid | String |    Android app link(required for the AL type) |
+|-- chatExtra|  String| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons |
+|-- chatEvent|  String| Bot event name to connect for BT(Bot Transfer) type button |
 |-- target| String| In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
 |- isAd | Boolean | Ad or not |
 |- senderGroupingKey | String | Sender's grouping key |
@@ -525,10 +525,10 @@ Content-Type: application/json;charset=UTF-8
 
 | Value |  Type| Required| Description|
 |---|---|---|---|
-|startUpdateDate|   String| O | Start time of querying result updates (yyyy-MM-dd HH:mm)|
-|endUpdateDate| String| O | End time of querying result updates (yyyy-MM-dd HH:mm) |
-|pageNum|   Integer|    X|  Page number (default: 1)|
-|pageSize|  Integer|    X|  Number of queries (default: 15)|
+|startUpdateDate|   String| O | Start time of querying result updates(yyyy-MM-dd HH:mm)|
+|endUpdateDate| String| O | End time of querying result updates(yyyy-MM-dd HH:mm) |
+|pageNum|   Integer|    X|  Page number(default: 1)|
+|pageSize|  Integer|    X|  Number of queries(default: 15)|
 
 #### Response
 ```
@@ -579,7 +579,7 @@ Content-Type: application/json;charset=UTF-8
 |-- requestDate | String |  Date and time of request |
 |-- receiveDate | String |  Date and time of receiving |
 |-- content | String |  Body |
-|-- messageStatus | String |    Request status (COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled) |
+|-- messageStatus | String |    Request status(COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled) |
 |-- resendStatus | String | Status code of resending |
 |-- resendStatusName | String | Status code name of resending |
 |-- resultCode | String |   Result code of receiving |
@@ -699,16 +699,16 @@ curl -X GET \
 | -- requestDate | String | Date of request |
 | -- plusFriendId | String | PlusFriend ID |
 | -- senderKey | String | Sender ID |
-| -- masterStatusCode | String | Mass delivery status code (WAIT, READY, SENDREADY, SENDWAIT, SENDING, COMPLETE, CANCEL, FAIL) |
+| -- masterStatusCode | String | Mass delivery status code(WAIT, READY, SENDREADY, SENDWAIT, SENDING, COMPLETE, CANCEL, FAIL) |
 | -- content | String | Content |
 | -- buttons | List | Button sequence |
 | --- ordering | String | Button sequence |
 | --- type | String | Button type<br/> - WL: Web Link<br/> - AL: App Link<br/> - DS: Delivery Search<br/> - BK: Bot Keyword<br/> - MD: Message Delivery<br/> - BC: Bot for Consultation<br/> - BT: Bot Transfer<br/> - AC: Channel Added [only for Ad Included/Mixed Purposes Type] |
 | --- name | String | Button name |
-| --- linkMo | String | Mobile web link (required for the WL type) |
-| --- linkPc | String | PC web link (optional for the WL type)|
-| --- schemeIos | String | iOS app link (required for the AL type) |
-| --- schemeAndroid | String | Android app link (required for the AL type) |
+| --- linkMo | String | Mobile web link(required for the WL type) |
+| --- linkPc | String | PC web link(optional for the WL type)|
+| --- schemeIos | String | iOS app link(required for the AL type) |
+| --- schemeAndroid | String | Android app link(required for the AL type) |
 | --- chatExtra | String | BC: Meta information to be delivered when switching to consultation talk<br/> BT: Meta information to be delivered when switching to bot |
 | --- chatEvent | String | BT: Bot event name to connect when switching to bot |
 | --- target|   String| In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
@@ -719,7 +719,7 @@ curl -X GET \
 | -- autoSendYn | String | Auto sending or not |
 | -- statsId | String | Statistics ID |
 | -- createDate | String | Date of creation |
-| -- createUser | String | User who created the request (saved as user UUID when sending from console) |
+| -- createUser | String | User who created the request(saved as user UUID when sending from console) |
 | - totalCount | Integer | Total count |
 
 
@@ -809,7 +809,7 @@ curl -X GET \
 | -- recipientNo | String | Recipient number |
 | -- requestDate | String | Date of request |
 | -- receiveDate | String | Date of receiving |
-| -- messageStatus | String | Mass recipient delivery status code (READY, COMPLETED, FAILED, CANCEL) |
+| -- messageStatus | String | Mass recipient delivery status code(READY, COMPLETED, FAILED, CANCEL) |
 | -- resultCode | String | Result code of receiving |
 | -- resultCodeName | String | Result code name of receiving |
 | - totalCount | Integer | Total count |
@@ -917,13 +917,13 @@ curl -X GET \
 | - requestId | String | Request ID |
 | - recipientSeq | Integer | Recipient sequence number |
 | - plusFriendId | String | PlusFriend ID |
-| - senderKey | String | Sender key (40 characters)|
+| - senderKey | String | Sender key(40 characters)|
 | - recipientNo | String | Recipient number |
 | - requestDate | String | Date of request |
 | - receiveDate | String | Date of receiving |
 | - content | String | Body message |
-| - messageStatus | String | Mass recipient delivery status code (READY, COMPLETED, FAILED, CANCEL) |
-| - resendStatus | String | Status code of resending (RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below) |
+| - messageStatus | String | Mass recipient delivery status code(READY, COMPLETED, FAILED, CANCEL) |
+| - resendStatus | String | Status code of resending(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below) |
 | - resendStatusName | String | Status code name of resending |
 | - resendRequestId | String | Resending SMS request ID |
 | - resendResultCode | String | Result code of resending [Result code of SMS sending](https://docs.toast.com/en/Notification/SMS/en/error-code/#api) |
@@ -935,10 +935,10 @@ curl -X GET \
 | -- ordering | String | Button sequence |
 | -- type | String | Button type<br/> - WL: Web Link<br/> - AL: App Link<br/> - DS: Delivery Search<br/> - BK: Bot Keyword<br/> - MD: Message Delivery<br/> - BC: Bot for Consultation<br/> - BT: Bot Transfer<br/> - AC: Channel Added [only for Ad Included/Mixed Purposes Type] |
 | -- name | String | Button name |
-| -- linkMo | String | Mobile web link (required for the WL type) |
-| -- linkPc | String | PC web link (optional for the WL type)|
-| -- schemeIos | String | iOS app link (required for the AL type) |
-| -- schemeAndroid | String | Android app link (required for the AL type) |
+| -- linkMo | String | Mobile web link(required for the WL type) |
+| -- linkPc | String | PC web link(optional for the WL type)|
+| -- schemeIos | String | iOS app link(required for the AL type) |
+| -- schemeAndroid | String | Android app link(required for the AL type) |
 | -- chatExtra | String | BC: Meta information to be delivered when switching to consultation talk<br/> BT: Meta information to be delivered when switching to bot |
 | -- chatEvent | String | BT: Bot event name to connect when switching to bot |
 | -- target|    String| In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
@@ -979,7 +979,7 @@ Content-Type: multipart/form-data
 | Name |  Type| Required| Description|
 |---|---|---|---|
 |image| File|   O | Image |
-|wide| boolean | X | Image is wide or not (Default: false) |
+|wide| boolean | X | Image is wide or not(Default: false) |
 
 [Example]
 ```
@@ -1010,9 +1010,9 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- resultMessage|   String| Result message|
 |- isSuccessful|    Boolean| Successful or not|
 |image| Object| Body area|
-|- imageSeq | Integer | Image number (to send FriendTalk messages)|
+|- imageSeq | Integer | Image number(to send FriendTalk messages)|
 |- imageUrl | String |  Image URL |
-|- imageName | String | Image name (name of uploaded file) |
+|- imageName | String | Image name(name of uploaded file) |
 
 
 ### Query Images
@@ -1045,8 +1045,8 @@ Content-Type: application/json;charset=UTF-8
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|pageNum|   Integer|    X|  Page number (default: 1)|
-|pageSize|  Integer|    X|  Number of queries (default: 15)|
+|pageNum|   Integer|    X|  Page number(default: 1)|
+|pageSize|  Integer|    X|  Number of queries(default: 15)|
 
 [Example]
 ```
@@ -1086,9 +1086,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- isSuccessful|    Boolean| Successful or not|
 |imagesResponse| Object| Body area|
 |- image|   Object| Body area|
-|-- imageSeq | Integer |    Image number (to send FriendTalk messages)|
+|-- imageSeq | Integer |    Image number(to send FriendTalk messages)|
 |-- imageUrl | String | Image URL |
-|-- imageName | String |    Image name (name of uploaded file) |
+|-- imageName | String |    Image name(name of uploaded file) |
 |-- wide | boolean |    Image is wide or not |
 |-- createDate | String |   Date and time of creation |
 |- totalCount | Integer | Total count |
@@ -1151,6 +1151,70 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 |- resultMessage|   String| Result message|
 |- isSuccessful|    Boolean| Successful or not|
 
+## 업로드
+### 비즈니스폼 등록
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+|senderKey|	String|	발신 키 |
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+
+[Request body]
+
+```
+{
+    "bizFormId": Integer
+}
+```
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|bizFormId|	Integer|	O | 비즈니스폼 아이디 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form -d '{"bizFormId": 1}
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "bizFormKey": String
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|bizFormKey | String | 비즈니스폼 키 |
 
 ## Manage Alternative Delivery
 ### Register an SMS AppKey
@@ -1250,7 +1314,7 @@ Content-Type: application/json;charset=UTF-8
 |senderKey| String| O | Sender Key |
 |isResend|  Boolean|    O | Whether to resend text, if delivery fails<br/>Resent by default, if alternative delivery is set on console. |
 |resendSendNo|  String| O | Sender number for alternative delivery<br/><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
-|resendUnsubscribeNo|   String| X | Alternative delivery 080 blocked number <br> <span style="color:red"> (If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span> |
+|resendUnsubscribeNo|   String| X | Alternative delivery 080 blocked number <br> <span style="color:red">(If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span> |
 
 [Example]
 ```
