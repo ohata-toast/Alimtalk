@@ -36,7 +36,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -75,12 +75,12 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 플러스친구 ID (최대 30자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드 (최대 20자) |
-|requestDate| String | X| 요청 일시 (yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
-|senderGroupingKey| String | X| 발신 그룹핑 키 (최대 100자) |
-|recipientList|	List|	O|	수신자 리스트 (최대 1000명) |
-|- recipientNo|	String|	O|	수신번호 (최대 15자) |
+|plusFriendId|	String|	O | 플러스친구 ID(최대 30자) |
+|templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
+|senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
+|recipientList|	List|	O|	수신자 리스트(최대 1000명) |
+|- recipientNo|	String|	O|	수신번호(최대 15자) |
 |- templateParameter|	Object|	X|	템플릿 파라미터<br>(템플릿에 치환할 변수 포함 시, 필수) |
 |-- key|	String|	X |	치환 키(#{key})|
 |-- value| String |	X |	치환 키에 매핑되는 Value값|
@@ -90,7 +90,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resendTitle|	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.) |
 |-- resendContent|	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.) |
 |-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
+|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
@@ -156,7 +156,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -206,28 +206,28 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 플러스친구 ID (최대 30자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드 (최대 20자) |
-|requestDate| String | X| 요청 일시 (yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
-|senderGroupingKey| String | X| 발신 그룹핑 키 (최대 100자) |
-|recipientList|	List|	O|	수신자 리스트 (최대 1,000명) |
-|- recipientNo|	String|	O|	수신번호 (최대 15자) |
-|- content|	String|	O|	내용 (최대 1000자) |
-|- buttons|	List |	X | 버튼 리스트 (최대 5개) |
-|-- ordering|	Integer|	X |	버튼 순서 (버튼이 있는 경우 필수)|
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
-|-- name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-|-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|plusFriendId|	String|	O | 플러스친구 ID(최대 30자) |
+|templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
+|senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
+|recipientList|	List|	O|	수신자 리스트(최대 1,000명) |
+|- recipientNo|	String|	O|	수신번호(최대 15자) |
+|- content|	String|	O|	내용(최대 1000자) |
+|- buttons|	List |	X | 버튼 리스트(최대 5개) |
+|-- ordering|	Integer|	X |	버튼 순서(버튼이 있는 경우 필수)|
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
+|-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+|-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
 |-- resendTitle|	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.) |
 |-- resendContent|	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.) |
 |-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
+|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
@@ -296,7 +296,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -312,16 +312,16 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	조건 필수 (1번) | 요청 아이디 |
-|startRequestDate|	String|	조건 필수 (2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm)|
-|endRequestDate|	String| 조건 필수 (2번) |	발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
+|requestId|	String|	조건 필수(1번) | 요청 아이디 |
+|startRequestDate|	String|	조건 필수(2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm)|
+|endRequestDate|	String| 조건 필수(2번) |	발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
 |recipientNo|	String|	X |	수신번호 |
 |plusFriendId|	String|	X |	플러스친구 ID |
 |templateCode|	String|	X |	템플릿 코드|
 |senderGroupingKey| String | X| 발신 그룹핑 키 |
 |recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
-|messageStatus| String |	X | 요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
-|resultCode| String |	X | 발송 결과 ( MRC01 -> 성공 MRC02 -> 실패 )	|
+|messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
+|resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
 
@@ -390,17 +390,17 @@ Content-Type: application/json;charset=UTF-8
 |-- receiveDate | String |	수신 일시 |
 |-- resendStatus | String |	재발송 상태 코드 |
 |-- resendStatusName | String |	재발송 상태 코드명 |
-|-- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
+|-- messageStatus | String |	요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |-- resultCode | String |	수신 결과 코드 |
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서 |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -414,7 +414,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | 이름 |	설명|
 |---|---|
 |RSC01|	재발송 미대상|
-|RSC02|	재발송 대상 (발송 결과 실패 시, 재발송이 진행됩니다.)|
+|RSC02|	재발송 대상(발송 결과 실패 시, 재발송이 진행됩니다.)|
 |RSC03|	재발송 중|
 |RSC04|	재발송 성공|
 |RSC05|	재발송 실패|
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -509,17 +509,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- receiveDate | String |	수신 일시 |
 |- resendStatus | String |	재발송 상태 코드 |
 |- resendStatusName | String |	재발송 상태 코드명 |
-|- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
+|- messageStatus | String |	요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |- resultCode | String |	수신 결과 코드 |
 |- resultCodeName | String |	수신 결과 코드명 |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name | String |	버튼 이름 |
-|-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
 
@@ -549,7 +549,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -588,12 +588,12 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 플러스친구 ID (최대 30자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드 (최대 20자) |
-|requestDate| String | X| 요청 일시 (yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
-|senderGroupingKey| String | X| 발신 그룹핑 키 (최대 100자) |
-|recipientList|	List|	O|	수신자 리스트 (최대 1000명) |
-|- recipientNo|	String|	O|	수신번호 (최대 15자) |
+|plusFriendId|	String|	O | 플러스친구 ID(최대 30자) |
+|templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
+|senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
+|recipientList|	List|	O|	수신자 리스트(최대 1000명) |
+|- recipientNo|	String|	O|	수신번호(최대 15자) |
 |- templateParameter|	Object|	X|	템플릿 파라미터<br>(템플릿에 치환할 변수 포함 시, 필수) |
 |-- key|	String|	X |	치환 키(#{key})|
 |-- value| String |	X |	치환 키에 매핑되는 Value값|
@@ -603,7 +603,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resendTitle|	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.) |
 |-- resendContent|	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.) |
 |-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
+|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
@@ -668,7 +668,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -718,28 +718,28 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 플러스친구 ID (최대 30자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드 (최대 20자) |
-|requestDate| String | X| 요청 일시 (yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
-|senderGroupingKey| String | X| 발신 그룹핑 키 (최대 100자) |
-|recipientList|	List|	O|	수신자 리스트 (최대 1,000명) |
-|- recipientNo|	String|	O|	수신번호 (최대 15자) |
-|- content|	String|	O|	내용 (최대 1000자) |
-|- buttons|	List |	X | 버튼 리스트 (최대 5개) |
-|-- ordering|	Integer|	X |	버튼 순서 (버튼이 있는 경우 필수)|
-|-- type| String |	X |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
-|-- name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-|-- linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|plusFriendId|	String|	O | 플러스친구 ID(최대 30자) |
+|templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송) |
+|senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
+|recipientList|	List|	O|	수신자 리스트(최대 1,000명) |
+|- recipientNo|	String|	O|	수신번호(최대 15자) |
+|- content|	String|	O|	내용(최대 1000자) |
+|- buttons|	List |	X | 버튼 리스트(최대 5개) |
+|-- ordering|	Integer|	X |	버튼 순서(버튼이 있는 경우 필수)|
+|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
+|-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+|-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+|-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
 |-- resendTitle|	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.) |
 |-- resendContent|	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.) |
 |-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키 (최대 100자) |
+|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
@@ -805,7 +805,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -821,16 +821,16 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	조건 필수 (1번) | 요청 아이디 |
-|startRequestDate|	String|	조건 필수 (2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm)|
-|endRequestDate|	String| 조건 필수 (2번) |	발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
+|requestId|	String|	조건 필수(1번) | 요청 아이디 |
+|startRequestDate|	String|	조건 필수(2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm)|
+|endRequestDate|	String| 조건 필수(2번) |	발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
 |recipientNo|	String|	X |	수신번호 |
 |plusFriendId|	String|	X |	플러스친구 ID |
 |templateCode|	String|	X |	템플릿 코드|
 |senderGroupingKey| String | X| 발신 그룹핑 키 |
 |recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
-|messageStatus| String |	X | 요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
-|resultCode| String |	X | 발송 결과 ( MRC01 -> 성공 MRC02 -> 실패 )	|
+|messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
+|resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
 
@@ -899,17 +899,17 @@ Content-Type: application/json;charset=UTF-8
 |-- receiveDate | String |	수신 일시 |
 |-- resendStatus | String |	재발송 상태 코드 |
 |-- resendStatusName | String |	재발송 상태 코드명 |
-|-- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
+|-- messageStatus | String |	요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |-- resultCode | String |	수신 결과 코드 |
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서 |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -923,7 +923,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | 이름 |	설명|
 |---|---|
 |RSC01|	재발송 미대상|
-|RSC02|	재발송 대상 (발송 결과 실패 시, 재발송이 진행됩니다.)|
+|RSC02|	재발송 대상(발송 결과 실패 시, 재발송이 진행됩니다.)|
 |RSC03|	재발송 중|
 |RSC04|	재발송 성공|
 |RSC05|	재발송 실패|
@@ -943,7 +943,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |requestId|	String|	요청 아이디 |
 |recipientSeq|	Integer|	수신자 시퀀스 번호 |
 
@@ -1018,17 +1018,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- receiveDate | String |	수신 일시 |
 |- resendStatus | String |	재발송 상태 코드 |
 |- resendStatusName | String |	재발송 상태 코드명 |
-|- messageStatus | String |	요청 상태 ( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
+|- messageStatus | String |	요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 ) |
 |- resultCode | String |	수신 결과 코드 |
 |- resultCodeName | String |	수신 결과 코드명 |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|-- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |-- name | String |	버튼 이름 |
-|-- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|-- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|-- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
 
@@ -1201,7 +1201,7 @@ Content-Type: application/json;charset=UTF-8
 |--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |--- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
 |- totalCount | Integer | 총 개수 |
@@ -1228,7 +1228,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1310,7 +1310,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1334,8 +1334,8 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|plusFriendId|	String|	O | 플러스친구 ID (최대 30자) |
-|phoneNo|	String |	O | 관리자 핸드폰 번호 (최대 15자) |
+|plusFriendId|	String|	O | 플러스친구 ID(최대 30자) |
+|phoneNo|	String |	O | 관리자 핸드폰 번호(최대 15자) |
 |categoryCode|	String |	O | 카테고리 코드(11자)<br>카테고리 조회 API의 응답 참고<br>ex) 00100010001 건강(001) - 병원(0001) - 종합병원(0001) |
 
 #### 응답
@@ -1369,7 +1369,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 
 [Header]
@@ -1392,7 +1392,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|token|	Integer |	O | 인증 토큰 (플러스친구 등록 API 호출 후, 카카오톡 앱으로 받은 인증 토큰) |
+|token|	Integer |	O | 인증 토큰(플러스친구 등록 API 호출 후, 카카오톡 앱으로 받은 인증 토큰) |
 
 #### 응답
 ```
@@ -1426,7 +1426,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId| String | 플러스친구 ID |
 
 [Header]
@@ -1491,11 +1491,11 @@ Content-Type: application/json;charset=UTF-8
 |- senderKey | String |	발신키 |
 |- categoryCode | String |	카테고리 코드 |
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명 (등록 대기중, 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단, D:삭제)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
-|- kakaoStatusName | String |	카카오 플러스친구 상태명 (정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
+|- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
-|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명 (활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
 |- alimtalk|	Object|	알림톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
@@ -1525,7 +1525,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1600,11 +1600,11 @@ Content-Type: application/json;charset=UTF-8
 |- senderKey | String |	발신키 |
 |- categoryCode | String |	카테고리 코드 |
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명 (등록 대기중, 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단, D:삭제)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
-|- kakaoStatusName | String |	카카오 플러스친구 상태명 (정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
+|- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
-|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명 (활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
 |- alimtalk|	Object|	알림톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
@@ -1636,7 +1636,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |plusFriendId|	String|	플러스친구 ID |
 
 [Header]
@@ -1672,17 +1672,17 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|templateCode|	String |	O | 템플릿 코드 (최대 20자) |
-|templateName|	String |	O | 템플릿명 (최대 150자) |
-|templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
-|buttons|	List |	X | 버튼 리스트 (최대 5개) |
+|templateCode|	String |	O | 템플릿 코드(최대 20자) |
+|templateName|	String |	O | 템플릿명(최대 150자) |
+|templateContent|	String |	O | 템플릿 본문(최대 1000자) |
+|buttons|	List |	X | 버튼 리스트(최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
-|-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-|-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
+|-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+|-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 
 #### 응답
 ```
@@ -1715,7 +1715,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey |
+|appkey|	String|	고유의 앱키 |
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1751,16 +1751,16 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|templateName|	String |	O | 템플릿명 (최대 150자) |
-|templateContent|	String |	O | 템플릿 본문 (최대 1000자) |
-|buttons|	List |	X | 버튼 리스트 (최대 5개) |
+|templateName|	String |	O | 템플릿명(최대 150자) |
+|templateContent|	String |	O | 템플릿 본문(최대 1000자) |
+|buttons|	List |	X | 버튼 리스트(최대 5개) |
 |-ordering|	Integer |	X | 버튼 순서(1~5) |
-|-type|	String |	X | 버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
-|-name| String |	X |	버튼 이름 (버튼이 있는 경우 필수, 최대 14자)|
-|-linkMo| String |	X |	모바일 웹 링크 (WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크  (WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	IOS 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	Android 앱 링크 (AL 타입일 경우 필수 필드, 최대 500자) |
+|-type|	String |	X | 버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
+|-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+|-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+|-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 
 #### 응답
 ```
@@ -1793,7 +1793,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1835,7 +1835,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -1894,7 +1894,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -1991,12 +1991,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateContent | String |	템플릿 본문 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2023,7 +2023,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 |plusFriendId|	String|	플러스친구 ID |
 |templateCode|	String|	템플릿 코드 |
 
@@ -2105,12 +2105,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateContent | String |	템플릿 본문 |
 |-- buttons | List |	버튼 리스트 |
 |--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 타입(WL:웹링크, AL:앱링크, DS:배송 조회, BK:봇 키워드, MD:메시지 전달) |
+|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달) |
 |--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크 (WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크  (WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	IOS 앱 링크 (AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	Android 앱 링크 (AL 타입일 경우 필수 필드) |
+|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- comments | List | 검수 결과 |
 |--- id | Integer | 문의 아이디 |
 |--- content |  String | 문의 내용 |
@@ -2137,7 +2137,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -2192,7 +2192,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```

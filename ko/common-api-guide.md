@@ -54,7 +54,7 @@
 | extra2s | List<String> | - | 옵션 | senderKey |
 | eventTypes | List<String> | - | 옵션 | 이벤트 종류<br/> REQUESTED, SENT, RECEIVED, SENT_FAILED, RESENT, RESENT_FAILED |
 | eventCategory | String | - | 옵션 | 이벤트 목록(현재 `MESSAGE`만 지원)<br/> MESSAGE |
-| templateCodes | List<String> | - | 옵션 | 템플릿 코드 목록 (친구톡 미지원) |
+| templateCodes | List<String> | - | 옵션 | 템플릿 코드 목록(친구톡 미지원) |
 | requestIds | List<String> | 5 | 옵션 | 요청 ID 목록 |
 | statsIds | List<String> | - | 옵션 | 통계 ID 목록 |
 | statsCriteria | List<String> | - | 옵션 | 통계 기준<br/>- EVENT: 이벤트(기본 값)<br/>- EXTRA_1,EVENT: 하위 상품 구분, 이벤트<br/>- EXTRA_2,EVENT: senderKey, 이벤트 |

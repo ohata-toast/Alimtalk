@@ -317,7 +317,7 @@ Content-Type: application/json;charset=UTF-8
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter] 1番or (2番、 3番)の条件は必須
+[Query parameter] 1番or(2番、 3番)の条件は必須
 
 | 値             | タイプ | 必須 | 説明                                |
 | -------------------- | ------- | --------- | ---------------------------------------- |
@@ -853,7 +853,7 @@ Content-Type: application/json;charset=UTF-8
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter] 1番or (2番、 3番)の条件は必須
+[Query parameter] 1番or(2番、 3番)の条件は必須
 
 | 値             | タイプ | 必須 | 説明                                |
 | -------------------- | ------- | --------- | ---------------------------------------- |
@@ -1735,7 +1735,7 @@ Content-Type: application/json;charset=UTF-8
 |categories|	List|	カテゴリー一覧 |
 |- name | String | カテゴリー名 |
 |- subCategories | List |	サブカテゴリーのリスト |
-|-- code | String | カテゴリーコード (テンプレートの登録/変更する際、使用) |
+|-- code | String | カテゴリーコード(テンプレートの登録/変更する際、使用) |
 |-- name | String |	カテゴリー名 |
 |-- groupName | String |	カテゴリーグループ名 |
 |-- inclusion | String |	カテゴリー対象テンプレートの説明 |
@@ -1806,7 +1806,7 @@ Content-Type: application/json;charset=UTF-8
 |tempalteTitle      | String  | X  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 |templateSubtitle   | String  | X  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 |securityFlag| Boolean | X| セキュリティテンプレートかどうか<br>OTPなどのセキュリティメッセージの場合、設定<br>発信当時のメインデバイスを除くすべてのデバイスにメッセージテキストミノチュル(default: false) |
-|categoryCode| String | X | テンプレートのカテゴリコード (テンプレートカテゴリー照会API参考, default: 999999)<br>カテゴリーを入力し、テンプレートを優先審査 |
+|categoryCode| String | X | テンプレートのカテゴリコード(テンプレートカテゴリー照会API参考, default: 999999)<br>カテゴリーを入力し、テンプレートを優先審査 |
 | buttons         | List    | X    | ボタンリスト(最大5個)                             |
 | -ordering       | Integer | X    | ボタン順序(1~5)                               |
 | -type           | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |[広告追加/複合型のみ]) |
@@ -1899,7 +1899,7 @@ Content-Type: application/json;charset=UTF-8
 | tempalteTitle| String | X| テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 | templateSubtitle| String | X| テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
 |securityFlag| Boolean | X| セキュリティテンプレートかどうか<br>OTPなどのセキュリティメッセージの場合、設定<br>発信当時のメインデバイスを除くすべてのデバイスにメッセージテキストミノチュル(default: false) |
-|categoryCode| String | X | テンプレートのカテゴリコード (テンプレートカテゴリー照会API参考, default: 999999)<br>カテゴリーを入力し、テンプレートを優先審査 |
+|categoryCode| String | X | テンプレートのカテゴリコード(テンプレートカテゴリー照会API参考, default: 999999)<br>カテゴリーを入力し、テンプレートを優先審査 |
 | buttons         | List    | X    | ボタンリスト(最大5個)                             |
 | -ordering       | Integer | X    | ボタン順序(1~5)                               |
 | -type           | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |[広告追加/複合型のみ]) |

@@ -99,7 +99,7 @@ Content-Type: application/json;charset=UTF-8
 |-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
 |-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String | X |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
@@ -191,7 +191,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or (2번, 3번) 조건 필수
+[Query parameter] 1번 or(2번, 3번) 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -404,7 +404,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|-- schemeAndroid | String |	Android 앱 링크(AL 타입일 경우 필수 필드) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |- isAd | Boolean |	광고 여부 |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
@@ -599,7 +599,7 @@ Content-Type: multipart/form-data
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |image|	File|	O |	이미지 |
-|wide| boolean | X | 와이드 이미지 여부 (Default: false) |
+|wide| boolean | X | 와이드 이미지 여부(Default: false) |
 
 [예시]
 ```
@@ -630,7 +630,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- resultMessage|	String| 결과 메시지|
 |- isSuccessful|	Boolean| 성공 여부|
 |image|	Object|	본문 영역|
-|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
 |- imageUrl | String |	이미지 URL |
 |- imageName | String |	이미지명(업로드한 파일명) |
 
@@ -706,7 +706,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- isSuccessful|	Boolean| 성공 여부|
 |imagesResponse| Object| 본문 영역|
 |- image|	Object|	본문 영역|
-|-- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
+|-- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
 |-- imageUrl | String |	이미지 URL |
 |-- imageName | String |	이미지명(업로드한 파일명) |
 |-- wide | boolean |	와이드 이미지 여부 |
@@ -786,7 +786,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```
@@ -841,7 +841,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름 |	타입|	설명|
 |---|---|---|
-|appkey|	String|	고유의 Appkey|
+|appkey|	String|	고유의 앱키|
 
 [Header]
 ```

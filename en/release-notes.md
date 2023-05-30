@@ -1,4 +1,13 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+
+### May 30, 2023
+* [Console] Added New Features for AlimTalk/FriendTalk(v2.3)
+    * Added Quick Reply, Item List type, Talk Biz plugin, Main Link, and Business Form button.
+    * Added FriendTalk wide item list, carousel feed, coupon, and business form button features.
+* [Console] Improved the identity verification process
+    * Improved so that you only have to authenticate yourself once within the same organization on the SMS console.
+
+
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
     * Improved so that, when the number of delivery results exceeds 10,000, the total number of cases appears as '9,999+'.
@@ -18,12 +27,12 @@
 
 ### October 25, 2022
 * [API] Delete Sending Profile enquiry API isSearchKakaoStatus field
-    * isSearchKakaoStatus field was deleted from Sending Profile enquiry API and it has been improved to available for semi-real-time Kakao status enquiry. (Synchronize status at 6-hour intervals)
+    * isSearchKakaoStatus field was deleted from Sending Profile enquiry API and it has been improved to available for semi-real-time Kakao status enquiry.(Synchronize status at 6-hour intervals)
 * [API] API buttons Field Improved for Notification Talk Replacement Request
     * When requesting Notification Talk Replacement, it has been improved to normally send just by entering the button for the specified ordering.
 
 ### Augutst 23, 2022
-* [Console] TemplateAd whole Change for Notification Talk Template Channel Addition (AD) and Multiple (MI) Message Type
+* [Console] TemplateAd whole Change for Notification Talk Template Channel Addition(AD) and Multiple(MI) Message Type
     * In accordance with Kakao policy, it is to be changed as a whole Add a channel and receive ads and marketing messages for this channel via Kakao Talk .
 * [API] When sending, add Statistics ID Length Validation Test
     * StatsId field length validation test is added when sending.
@@ -34,7 +43,7 @@
     *Only Sending Profile with the CBT feature activated is available to use.
 * [API] Delete templateAd Field, when registering/modifying Notification Template
     * [API] templateAd Field was Deleted, when registering/modifying Notification Template
-    * When registering Channel Addition (AD) or Multiple(MI) Message Type Template, templateAd value is to be fixed.
+    * When registering Channel Addition(AD) or Multiple(MI) Message Type Template, templateAd value is to be fixed.
 
 ### June 14, 2022
 * [Console] Changes to Ad Included/Mixed Purposes Templates
@@ -58,8 +67,8 @@
     * For Excel download, changed to create a .zip file for more than 1 million results.
 
 ### January 11, 2022
-* [Console] Fade-out of (Old)Statistics
-    * Due to introduction of new statistics, the (Old)Statistics tab has been deleted.
+* [Console] Fade-out of(Old)Statistics
+    * Due to introduction of new statistics, the(Old)Statistics tab has been deleted.
 * [Console] Limit of maximum 5,000 members for the sender profile group
     * In accordance with Kakao policy, applied the limit of 5,000 to the maximum number of members in a sender profile group.
 * [Console] CloudTrail applied
@@ -77,8 +86,8 @@
 * [API] Added statistics API
     * A statistics API has been added.
 * [API] Added chatExtra and chatEvent fields
-    * A chatExtra field has been added to the BC (Bot for Consultation) type button when sending a message.
-    * chatExtra and chatEvent fields have been added to the BT (Bot Transfer) type button when sending a message.
+    * A chatExtra field has been added to the BC(Bot for Consultation) type button when sending a message.
+    * chatExtra and chatEvent fields have been added to the BT(Bot Transfer) type button when sending a message.
 * [API] Added an outlink feature to the web link type button
     * This is a feature to open the link with the browser of the mobile device instead of the in-app browser when clicking the button.
     * An outlink feature has been added, by adding a target field when sending a message.
@@ -92,7 +101,7 @@
 ### July 27, 2021
 * [Console] New statistics feature
     * New statistics has been added to enhance the functionality.
-    * The collection for (Old)Statistics service will be performed until July 31, 2021, and will end on December 31, 2021.
+    * The collection for(Old)Statistics service will be performed until July 31, 2021, and will end on December 31, 2021.
 
 ### June 29, 2021
 * [Console] Webhook feature for the update of the sending result
@@ -130,14 +139,14 @@
     * Category Code field added for registration or modification of AlimTalk template.
     * The template with a category entered is screened first.
 * [Console] Backup function of AlimTalk sent list data more than 180 days old added
-    * A function that adds a backup file to customers' object storage or AWS S3 for a sent list (normal/batch) more than 180 days old has been added.
+    * A function that adds a backup file to customers' object storage or AWS S3 for a sent list(normal/batch) more than 180 days old has been added.
     * Backup settings can be set in the **Send Settings** tab.
 * [API] AlimTalk template code limit changed
-    * Changed to allow the following in the AlimTalk templateCode field: (alphabet letters, numbers, -, _).
+    * Changed to allow the following in the AlimTalk templateCode field:(alphabet letters, numbers, -, _).
 
 ### October 27, 2020
 * [API] Changed the fields of the AlimTalk that are exposed to/hidden from PC
-    * The pcFlag field has been changed to securityFlag field. (Default: false)
+    * The pcFlag field has been changed to securityFlag field.(Default: false)
     * A field used to show whether there is a security template. It must be configured for security messages like OTP.
     * If it is true, the message text will not be displayed on any devices except the main device.
 * [API] Changed the type of the Add Channel button for AlimTalk
@@ -162,7 +171,7 @@
 * [API] Template Emphasizing AlimTalk Messages
     * Officially added as a feature, with CBT closed.
 * [API] More Types for AlimTalk Template Messages
-    * Expanded types for AlimTalk template messages (BA: Basic, EX: Extra Information, AD: Ads Included, MI: Mixed Purposes)
+    * Expanded types for AlimTalk template messages(BA: Basic, EX: Extra Information, AD: Ads Included, MI: Mixed Purposes)
 * [API] Query of Attachments for AlimTalk Templates
     * Added the feature of querying on AlimTalk templates with files attached
 
@@ -236,7 +245,7 @@
     - Set Alternative Delivery API for PlusFriend has been added.
 * [API] Updated Query PlusFriend API
     - Pagination has been added to Query PlusFriend API.
-    - Response field of AlimTalk/FriendTalk alternative delivery has been added to Query PlusFriend API. (v1.3)
+    - Response field of AlimTalk/FriendTalk alternative delivery has been added to Query PlusFriend API.(v1.3)
 
 
 ### April 30, 2019
@@ -253,7 +262,7 @@
 * [Console] Introduced the <b>business verification feature</b> when adding a Plus friend
     - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [[Related notice:](https://center-pf.kakao.com/notices/311)]
 * [Console] Added the Like search feature in the template selection modal window
-    - Added the Like search feature to the template selection modal window so that templates can easily be selected. (Use template code and name to search templates)
+    - Added the Like search feature to the template selection modal window so that templates can easily be selected.(Use template code and name to search templates)
 * [API] Improved the system so that advertisement FriendTalk and <b>advertisement SMS API</b> can be used for alternative delivery
     - Improved the system so that advertisement SMS API can be used as an alternative when advertisement FriendTalk delivery fails.
     - For alternative delivery to work, an 080 opt-out number must be registered when configuring the advertisement FriendTalk alternative delivery.
@@ -316,7 +325,7 @@
 * [API] Advanced AlimTalk delivery API alternative delivery
     - Added the alternative delivery title field for delivery.
     - The name of LMS can be specified when performing alternative delivery with LMS using the alternative delivery title field.
-    - Changed to use the alternative delivery when the request fails with template context mismatch (-3010) or template button mismatch (-3011). Messages that don't need alternative delivery can be controlled using the isResend field.
+    - Changed to use the alternative delivery when the request fails with template context mismatch(-3010) or template button mismatch(-3011). Messages that don't need alternative delivery can be controlled using the isResend field.
 * [API] Fixed a bug regarding scheduled delivery
     - Fixed a bug in which scheduled deliveries could not normally be canceled due to an error in the date data of the request ID when sending a scheduled message.
 
@@ -326,7 +335,7 @@
     - The scheduled message can be canceled at any time before it is sent.
     - For more information, see [[AlimTalk delivery API](./alimtalk-api-guide/#_3)].
 * [API] Advanced AlimTalk delivery API alternative delivery
-    - Added the alternative delivery type (SMS/LMS), whether to use alternative delivery (true/false), alternative delivery content fields for delivery.
+    - Added the alternative delivery type(SMS/LMS), whether to use alternative delivery(true/false), alternative delivery content fields for delivery.
     - The alternative delivery can be used at scale using the fields.
 * [API] Added the API related to Plus friends and templates
     - Added the APIs for Plus friend category view, business license upload, registration, token authentication, and list view.
@@ -376,7 +385,7 @@ Delivery body text
     - Added the API that views a specific delivery result.
     - For more information, see [[AlimTalk API guide](./alimtalk-api-guide/#_14)].
 * [API] Added delivery result list view API v1.1
-    - Added v1.1 API as the recipientSeq (Recipient sequence) field is added to response.
+    - Added v1.1 API as the recipientSeq(Recipient sequence) field is added to response.
 
 #### Bug Fixes
 * [API] Fixed a bug related to the substitution delivery API
@@ -386,7 +395,7 @@ Delivery body text
 #### More Features
 * [Console] Added a feature that is used for template chat bubble
     - Added a feature for multiple button template.
-    - Added new button types: (delivery view, web link, app link, bot keyword, and message forwarding)
+    - Added new button types:(delivery view, web link, app link, bot keyword, and message forwarding)
 * [API] Added the API for viewing templates
     - Added the API that views templates.
     - For more information, see [[ AlimTalk API guide ](./alimtalk-api-guide/#_46)].
@@ -394,7 +403,7 @@ Delivery body text
 #### Feature Updates
 * [API] Edited the resending feature after a failed delivery
     - Fixed the system so that messages are sent as SMS or LMS according to their length.
-    - Changed the body text of resending message: (Body + web link button name + button link)
+    - Changed the body text of resending message:(Body + web link button name + button link)
 
 ### March 22, 2018
 #### More Features
@@ -415,7 +424,7 @@ Delivery body text
 #### Feature Updates
 * [Console] Improved template registration
     - Added a feature that is used to remove spaces in front and back of a button name.
-    - Edited the length limit: (Template code: 10 characters -> 20 characters, button name: 10 characters -> 14 characters)
+    - Edited the length limit:(Template code: 10 characters -> 20 characters, button name: 10 characters -> 14 characters)
     - Modified the system so that user can manually enter the button name when registering a delivery view template.
 
 #### More Features
@@ -458,7 +467,7 @@ Delivery body text
 * [Console] Added the delivery failure setting
     - This is a feature that is used to send the message via LMS when AlimTalk delivery fails
 * [Console] Added a feature that is used to substitute the free button type of a template
-    - For template free button type, the button link can be added as a substituter (e.g. buttonURL: #{url})
+    - For template free button type, the button link can be added as a substituter(e.g. buttonURL: #{url})
 
 ### May 25, 2017
 #### Feature Updates
