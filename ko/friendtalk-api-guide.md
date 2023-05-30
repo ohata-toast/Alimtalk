@@ -120,6 +120,14 @@ Content-Type: application/json;charset=UTF-8
             "schemeIos": String
           }
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -144,7 +152,7 @@ Content-Type: application/json;charset=UTF-8
 |recipientList|	List|	O|	수신자 목록(최대 1000명) |
 |- recipientNo|	String|	O|	수신 번호 |
 |- content|	String|	O| 내용(최대 1000자)<br>이미지 발송 시, 최대 400자<br>와이드 이미지 발송 시, 최대 76자 |
-|- imageUrl|	Integer|	X|	이미지 URL |
+|- imageUrl|	String|	X|	이미지 URL |
 |- imageLink|	String|	X|	이미지 링크   |
 |- buttons|	List|	X|	버튼<br>와이드 이미지 발송 시, 링크 버튼 1개 |
 |-- ordering|	Integer|	X |	버튼 순서(버튼이 있는 경우 필수)|
@@ -168,7 +176,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeIos | String | X | iOS 앱 링크 |
 |--- schemeAndroid | String | X | 안드로이드 앱 링크 |
 |- carousel | Object | X | 캐러셀 | 
-|-- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
+|-- list | List | X |  캐러셀 리스트(최소 2개/최대 6개) | 
 |--- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
 |--- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
 |--- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
@@ -187,6 +195,13 @@ Content-Type: application/json;charset=UTF-8
 |--- linkPc | String |	X |PC 웹 링크 |
 |--- schemeIos | String | X |	iOS 앱 링크 |
 |--- schemeAndroid | String | X |	안드로이드 앱 링크 |
+|- coupon | Object | X | 쿠폰 | 
+|-- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+|-- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+|-- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+|-- linkPc | String |	X |PC 웹 링크 |
+|-- schemeIos | String | X |	iOS 앱 링크 |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다. |
 |-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
@@ -206,6 +221,9 @@ Content-Type: application/json;charset=UTF-8
 * <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
 * <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
 * <b>와이드 아이템리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
+* <b>쿠폰은 일반 텍스트형, 이미지형, 와이드 이미지형, 와이드 아이템리스트형만 사용 가능합니다.</b>
+* <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
+
 
 [예시]
 ```
@@ -503,6 +521,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "schemeIos": String
          }
       },
+      "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      },
       "isAd" : Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
@@ -549,37 +575,44 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-|-- bizFormKey|	String|	X| BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
-|-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- header | String | X | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
-|- item | Object | X | 와이드 아이템 |
-|-- list | List | X | 와이드 아이템리스트(최소 3개/최대 4개) |
-|--- title | String | X | 아이템 제목(최대 25자) |
-|--- imageUrl | String | X | 아이템 이미지 URL |
-|--- linkMo | String | X | 모바일 웹 링크 |
-|--- linkPc | String | X | PC 웹 링크 |
-|--- schemeIos | String | X | iOS 앱 링크 |
-|--- schemeAndroid | String | X | 안드로이드 앱 링크 |
-|- carousel | Object | X | 캐러셀 | 
-|-- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
-|--- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
-|--- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
-|--- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
-|---- buttons | List | X | 버튼 리스트(최대 2개) | 
-|----- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
-|----- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
-|----- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
-|----- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드) |
-|----- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|----- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-|---- image | Object | X |  | 
-|----- imageUrl|	String|	X|	이미지 URL   |
-|----- imageLink|	String|	X|	이미지 링크   |
-|-- tail | Object | X | 더보기 버튼 정보 | 
-|--- linkMo| String |	X |	모바일 웹 링크|
-|--- linkPc | String |	X |PC 웹 링크 |
-|--- schemeIos | String | X |	iOS 앱 링크 |
-|--- schemeAndroid | String | X |	안드로이드 앱 링크 |
+|-- bizFormKey|	String|	BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
+|-- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+|- header | String | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+|- item | Object | 와이드 아이템 |
+|-- list | List | 와이드 아이템리스트(최소 3개/최대 4개) |
+|--- title | String | 아이템 제목(최대 25자) |
+|--- imageUrl | String | 아이템 이미지 URL |
+|--- linkMo | String | 모바일 웹 링크 |
+|--- linkPc | String | PC 웹 링크 |
+|--- schemeIos | String | iOS 앱 링크 |
+|--- schemeAndroid | String | 안드로이드 앱 링크 |
+|- carousel | Object | 캐러셀 | 
+|-- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+|--- header | String | 캐러셀 아이템 제목(최대 20자) | 
+|--- message | String | 캐러셀 아이템 메시지(최대 180자) | 
+|--- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
+|---- buttons | List | 버튼 리스트(최대 2개) | 
+|----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+|----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
+|----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
+|----- linkPc | String | PC 웹 링크(WL 타입일 경우 선택 필드) |
+|----- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|----- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+|---- image | Object | 이미지  | 
+|----- imageUrl|	String|	이미지 URL   |
+|----- imageLink|	String|	이미지 링크   |
+|-- tail | Object | 더보기 버튼 정보 | 
+|--- linkMo| String |	모바일 웹 링크|
+|--- linkPc | String |	PC 웹 링크 |
+|--- schemeIos | String | iOS 앱 링크 |
+|--- schemeAndroid | String | X안드로이드 앱 링크 |
+|- coupon | Object | 쿠폰 | 
+|-- title| String |	쿠폰 title |
+|-- description| String |	쿠폰 상세 설명 |
+|-- linkMo| String | 모바일 웹 링크 |
+|-- linkPc | String |	PC 웹 링크 |
+|-- schemeIos | String | iOS 앱 링크 |
+|-- schemeAndroid | String | 안드로이드 앱 링크 |
 |- isAd | Boolean |	광고 여부 |
 |- senderGroupingKey | String | 발신 그룹핑 키 |
 |- recipientGroupingKey | String |	수신자 그룹핑 키 |
@@ -1070,6 +1103,14 @@ curl -X GET \
             "schemeIos": String
           }
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "isAd": Boolean,
         "createDate": String
     }
@@ -1110,37 +1151,44 @@ curl -X GET \
 | -- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 | -- chatExtra | String | BC: 상담톡 전환시 전달할 메타 정보<br/> BT: 봇 전환 시 전달할 메타 정보 |
 | -- chatEvent | String | BT: 봇 전환 시 연결할 봇 이벤트명 |
-| -- bizFormKey|	String|	X| BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
-| -- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - header | String | X | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
-| - item | Object | X | 와이드 아이템 |
-| -- list | List | X | 와이드 아이템리스트(최소 3개/최대 4개) |
-| --- title | String | X | 아이템 제목(최대 25자) |
-| --- imageUrl | String | X | 아이템 이미지 URL |
-| --- linkMo | String | X | 모바일 웹 링크 |
-| --- linkPc | String | X | PC 웹 링크 |
-| --- schemeIos | String | X | iOS 앱 링크 |
-| --- schemeAndroid | String | X | 안드로이드 앱 링크 |
-| - carousel | Object | X | 캐러셀 | 
-| -- list | List | X |  캐러셀 리스트(최소 2개 / 최대 6개) | 
-| --- header | String | X | 캐러셀 아이템 제목(최대 20자) | 
-| --- message | String | X | 캐러셀 아이템 메시지(최대 180자) | 
-| --- attachment | Object | X | 캐러셀 아이템 이미지, 버튼 정보 | 
-| ---- buttons | List | X | 버튼 리스트(최대 2개) | 
-| ----- name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
-| ----- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
-| ----- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
-| ----- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드) |
-| ----- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-| ----- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-| ---- image | Object | X |  | 
-| ----- imageUrl|	String|	X|	이미지 URL   |
-| ----- imageLink|	String|	X|	이미지 링크   |
-| -- tail | Object | X | 더보기 버튼 정보 | 
-| --- linkMo| String |	X |	모바일 웹 링크|
-| --- linkPc | String |	X |PC 웹 링크 |
-| --- schemeIos | String | X |	iOS 앱 링크 |
-| --- schemeAndroid | String | X |	안드로이드 앱 링크 |
+| -- bizFormKey|	String|	BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
+| -- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - header | String | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+| - item | Object | 와이드 아이템 |
+| -- list | List | 와이드 아이템리스트(최소 3개/최대 4개) |
+| --- title | String | 아이템 제목(최대 25자) |
+| --- imageUrl | String | 아이템 이미지 URL |
+| --- linkMo | String | 모바일 웹 링크 |
+| --- linkPc | String | PC 웹 링크 |
+| --- schemeIos | String | iOS 앱 링크 |
+| --- schemeAndroid | String | 안드로이드 앱 링크 |
+| - carousel | Object | 캐러셀 | 
+| -- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+| --- header | String | 캐러셀 아이템 제목(최대 20자) | 
+| --- message | String | 캐러셀 아이템 메시지(최대 180자) | 
+| --- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
+| ---- buttons | List | 버튼 리스트(최대 2개) | 
+| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+| ----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
+| ----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
+| ----- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+| ----- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| ----- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+| ---- image | Object | 이미지  | 
+| ----- imageUrl|	String|	이미지 URL   |
+| ----- imageLink|	String|	이미지 링크   |
+| -- tail | Object | 더보기 버튼 정보 | 
+| --- linkMo| String |	모바일 웹 링크|
+| --- linkPc | String |	PC 웹 링크 |
+| --- schemeIos | String | iOS 앱 링크 |
+| --- schemeAndroid | String | 안드로이드 앱 링크 |
+|- coupon | Object | 쿠폰 | 
+|-- title| String |	쿠폰 title |
+|-- description| String |	쿠폰 상세 설명 |
+|-- linkMo| String | 모바일 웹 링크 |
+|-- linkPc | String |	PC 웹 링크 |
+|-- schemeIos | String | iOS 앱 링크 |
+|-- schemeAndroid | String | 안드로이드 앱 링크 |
 | - isAd | Boolean | 광고 여부 |
 | - createDate | String | 생성 날짜 |
 
@@ -1342,137 +1390,6 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
 |- imageUrl | String |	이미지 URL |
 |- imageName | String |	이미지명(업로드한 파일명) |
-
-### 와이드 아이템리스트 이미지 등록
-#### 요청
-
-[URL]
-
-```
-POST  /friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images
-Content-Type: multipart/form-data
-```
-
-[Path parameter]
-
-| 이름 |	타입|	설명|
-|---|---|---|
-|appkey|	String|	고유의 앱키|
-
-[Header]
-```
-{
-  "X-Secret-Key": String
-}
-```
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-
-[Request parameter]
-
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|image|	File|	O |	이미지 |
-
-[예시]
-```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images" -F "image=@friend-ricecake02.jpeg"
-```
-
-#### 응답
-```
-
-{
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
-  },
-  "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
-    }
-}
-```
-
-| 이름 |	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|image|	Object|	본문 영역|
-|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
-|- imageUrl | String |	이미지 URL |
-|- imageName | String |	이미지명(업로드한 파일명) |
-
-### 캐러셀 이미지 등록
-#### 요청
-
-[URL]
-
-```
-POST  /friendtalk/v2.3/appkeys/{appkey}/carousel/images
-Content-Type: multipart/form-data
-```
-
-[Path parameter]
-
-| 이름 |	타입|	설명|
-|---|---|---|
-|appkey|	String|	고유의 앱키|
-
-[Header]
-```
-{
-  "X-Secret-Key": String
-}
-```
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-
-[Request parameter]
-
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|image|	File|	O |	이미지 |
-
-[예시]
-```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
-```
-
-#### 응답
-```
-
-{
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
-  },
-  "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
-    }
-}
-```
-
-| 이름 |	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|image|	Object|	본문 영역|
-|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송시 사용)|
-|- imageUrl | String |	이미지 URL |
-|- imageName | String |	이미지명(업로드한 파일명) |
-
 
 ### 이미지 조회
 #### 요청
