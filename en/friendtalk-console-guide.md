@@ -16,7 +16,7 @@ Messages are considered as ad messages, if **Advertisement** is selected for **A
 
 ![[그림 3] 친구톡 광고 메시지](http://static.toastoven.net/prod_alimtalk/friendtalk_02.png)
 
-* Ad messages must be specifically displayed in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection. '(Ad)', as well as a rejection method of  receiving (home > Block Friend), come before a message.  
+* Ad messages must be specifically displayed in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection. '(Ad)', as well as a rejection method of  receiving(home > Block Friend), come before a message.  
 
 ## Mass Delivery
 

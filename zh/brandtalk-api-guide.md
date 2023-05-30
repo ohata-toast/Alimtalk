@@ -65,20 +65,20 @@ Content-Type: application/json;charset=UTF-8
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|senderKey| String| O | Sender key (40 characters) |
-|templateCode|  String| O | Registered delivery template code (up to 20 characters) |
-|requestDate| String | X| Date and time of request (yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
-|senderGroupingKey| String | X| Sender's grouping key (up to 100 characters) |
-|createUser| String | X| Registrant (saved as user UUID when sending from console)|
-|recipientList| List|   O|  List of recipients (up to 1000 persons) |
-|- recipientNo| String| O|  Recipient number (up to 15 characters) |
+|senderKey| String| O | Sender key(40 characters) |
+|templateCode|  String| O | Registered delivery template code(up to 20 characters) |
+|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
+|createUser| String | X| Registrant(saved as user UUID when sending from console)|
+|recipientList| List|   O|  List of recipients(up to 1000 persons) |
+|- recipientNo| String| O|  Recipient number(up to 15 characters) |
 |- templateParameter|   Object| X|  Template parameter<br>(required, if it includes a variable to be replaced for template) |
-|-- key|    String| X | Replacement key (#{key})|
+|-- key|    String| X | Replacement key(#{key})|
 |-- value| String | X | Value which is mapped for replacement key|
-|- recipientGroupingKey|    String| X|  Recipient grouping key (up to 100 characters) |
+|- recipientGroupingKey|    String| X|  Recipient grouping key(up to 100 characters) |
 
 * <b>Request date and time can be set up to 90 days since a point of calling.</b>
-* <b> Delivery restricted during night (20:50~08:00 on the following day)</b>
+* <b> Delivery restricted during night(20:50~08:00 on the following day)</b>
 
 [Example]
 ```
@@ -153,24 +153,24 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
-[Query parameter] No. 1 or (2, 3) is conditionally required
+[Query parameter] No. 1 or(2, 3) is conditionally required
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|requestId| String| Conditionally required (no.1) | Request ID |
-|startRequestDate|  String| Conditionally required (no.2) | Start date of delivery request (yyyy-MM-dd HH:mm)|
-|endRequestDate|    String| Conditionally required (no.2) |    End date of delivery request (yyyy-MM-dd HH:mm) |
-|startCreateDate|  String| Conditionally required (no.3) | Start date of registration (mm:HH dd-MM-yyyy)|
-|endCreateDate|  String| Conditionally required (no.3) | End date of registration (mm:HH dd-MM-yyyy) |
+|requestId| String| Conditionally required(no.1) | Request ID |
+|startRequestDate|  String| Conditionally required(no.2) | Start date of delivery request(yyyy-MM-dd HH:mm)|
+|endRequestDate|    String| Conditionally required(no.2) |    End date of delivery request(yyyy-MM-dd HH:mm) |
+|startCreateDate|  String| Conditionally required(no.3) | Start date of registration(mm:HH dd-MM-yyyy)|
+|endCreateDate|  String| Conditionally required(no.3) | End date of registration(mm:HH dd-MM-yyyy) |
 |recipientNo|   String| X | Recipient number |
 |senderKey| String| X | Sender key |
 |templateCode|  String| X | Template code|
 |senderGroupingKey| String | X| Sender's grouping key |
 |recipientGroupingKey|  String| X|  Recipient's grouping key |
-|messageStatus| String |    X | Request status (COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled)   |
-|resultCode| String |   X | Delivery result (BRC01 -> Successful, BRC02 ->Failed)   |
-|pageNum|   Integer|    X|  Page number (default: 1)|
-|pageSize|  Integer|    X|  Number of queries (default: 15, max : 1000)|
+|messageStatus| String |    X | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled)   |
+|resultCode| String |   X | Delivery result(BRC01 -> Successful, BRC02 ->Failed)   |
+|pageNum|   Integer|    X|  Page number(default: 1)|
+|pageSize|  Integer|    X|  Number of queries(default: 15, max : 1000)|
 
 * Cannot query data requested for delivery which are dated before 90 days.
 * The maximum available days for delivery request is 30 days.
@@ -227,10 +227,10 @@ Content-Type: application/json;charset=UTF-8
 |-- requestDate | String |  Date and time of request |
 |-- createDate | String | Registered date and time |
 |-- receiveDate | String |  Date and time of receiving |
-|-- messageStatus | String |    Request status (COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled ) |
+|-- messageStatus | String |    Request status(COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled ) |
 |-- resultCode | String |   Result code of receiving |
 |-- resultCodeName | String |   Result code name of receiving |
-|-- createUser | String | Registrant (saved as user UUID when sending from console) |
+|-- createUser | String | Registrant(saved as user UUID when sending from console) |
 |-- senderGroupingKey | String | Sender's grouping key |
 |-- recipientGroupingKey | String | Recipient's grouping key |
 |- totalCount | Integer | Total Count |
@@ -335,15 +335,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createDate | String | Registered date and time |
 |- buttons | List | List of buttons |
 |-- name | String | Button name |
-|-- type | String | Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
-|-- linkMo | String |   Mobile web link (required for the WL type) |
-|-- linkPc | String |   PC web link (optional for the WL type) |
-|-- schemeIos | String |    iOS app link (required for the AL type) |
-|-- schemeAndroid | String |    Android app link (required for the AL type) |
-|-- bizFormId|	Integer|	Business Form (required for the BF type) |
+|-- type | String | Button type(WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+|-- linkMo | String |   Mobile web link(required for the WL type) |
+|-- linkPc | String |   PC web link(optional for the WL type) |
+|-- schemeIos | String |    iOS app link(required for the AL type) |
+|-- schemeAndroid | String |    Android app link(required for the AL type) |
+|-- bizFormId|	Integer|	Business Form(required for the BF type) |
 |- resultCode | String |    Result code of receiving |
 |- resultCodeName | String |    Result code name of receiving |
-|- createUser | String | Registrant (saved as user UUID when sending from console) |
+|- createUser | String | Registrant(saved as user UUID when sending from console) |
 |- senderGroupingKey | String | Sender's grouping key |
 |- recipientGroupingKey | String |  Recipient grouping key |
 
@@ -437,27 +437,27 @@ Content-Type: application/json;charset=UTF-8
 
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|templateCode|  String |    O | Template code (up to 20 characters) |
-|templateName|  String |    O | Template name (up to 150 characters) |
-|messageType| String | X |Types of template message (I: Image type, W: Wide Image type) |
-|contentType| String | X |Types of template text (F: Fixed content, V: Variable content) |
+|templateCode|  String |    O | Template code(up to 20 characters) |
+|templateName|  String |    O | Template name(up to 150 characters) |
+|messageType| String | X |Types of template message(I: Image type, W: Wide Image type) |
+|contentType| String | X |Types of template text(F: Fixed content, V: Variable content) |
 |unsubscribeContent|	String |	O | 무료수신거부 전화번호/인증번호 |
-|templateContent|	String |	O | Template body (up to 1000 characters) |
+|templateContent|	String |	O | Template body(up to 1000 characters) |
 |templateImageLink | String |	X | Template Image Link |
 |image | String |	X | 이미지 URL |
-| buttons[i].type|	String |	X | Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
-| buttons[i].name| String |	X |	Button name (up to 14 characters) |
-| buttons[i].linkMo| String |	X |	Mobile web link (required for the WL type) |
-| buttons[i].linkPc | String |	X |PC web link (optional for the WL type) |
-| buttons[i].schemeAndroid | String | X |	Android app link (required for the AL type) |
-| buttons[i].schemeIos | String | X |	iOS app link (required for the AL type) |
-| buttons[i].bizFormId | Integer | X |	Business Form (required for the BF type) |
+| buttons[i].type|	String |	X | Button type(WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+| buttons[i].name| String |	X |	Button name(up to 14 characters) |
+| buttons[i].linkMo| String |	X |	Mobile web link(required for the WL type) |
+| buttons[i].linkPc | String |	X |PC web link(optional for the WL type) |
+| buttons[i].schemeAndroid | String | X |	Android app link(required for the AL type) |
+| buttons[i].schemeIos | String | X |	iOS app link(required for the AL type) |
+| buttons[i].bizFormId | Integer | X |	Business Form(required for the BF type) |
 
 * contentType이 변수형(V)인 경우 템플릿 내용(templateContent)에 변수 입력 가능
 * 변수명은 최대 20자 이내 한/영/숫자/허용된 특수기호('-', '_')로만 입력 가능
-* 최대 20개의 변수명 입력 가능 (중복 제외)
-* 무료수신거부 전화번호에 인증번호가 없는 경우 (예: 080-1111-2222)
-* 무료수신거부 전화번호에 인증번호가 있는 경우는 / 로 구분해서 입력 (예: 080-1111-2222/12345)
+* 최대 20개의 변수명 입력 가능(중복 제외)
+* 무료수신거부 전화번호에 인증번호가 없는 경우(예: 080-1111-2222)
+* 무료수신거부 전화번호에 인증번호가 있는 경우는 / 로 구분해서 입력(예: 080-1111-2222/12345)
 * 인증번호는 숫자 1~10자리 입니다.
 
 * 이미지형은 버튼 수 최대 5개, 와이드형은 버튼 수 최대 2개까지 가능
@@ -468,7 +468,7 @@ Content-Type: application/json;charset=UTF-8
 * AC 버튼과 BF 버튼이 동시에 쓰일 경우 BF 버튼은, 이미지형은 두번째 버튼 / 와이드형은 첫번째 버튼의 순서대로 입력
 * BF 버튼은 버튼명이 "톡에서 예약하기", "톡에서 설문하기", "톡에서 응모하기" 중 택1하여 사용하여야 함
 * BF 버튼 링크는 카카오 for 비즈니스에서 생성한 비즈니스폼 ID로 등록이 가능하며, 아래 조건이 유효해야 함
-  1) 비즈니스폼 등록 관리자와 채널 관리자가 일치하여야 함 (관리자 권한 무관)
+  1) 비즈니스폼 등록 관리자와 채널 관리자가 일치하여야 함(관리자 권한 무관)
   2) 비즈니스폼 상태가 작성완료 / 실행 이고, 종료일이 등록일보다 미래여야 함
   3) 비즈니스폼 내 채널 추가 옵션이 있을 경우, 메시지 발송 채널과 일치하여야 함
 
@@ -584,20 +584,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- senderKey    | String | Sender Key    |
 |- templateCode | String |	Template code |
 |- templateName | String |	Template name |
-|- messageType| String | Types of template message (I: Image type, W: Wide Image type) |
-|- contentType| String | Types of template text (F: Fixed content, V: Variable content) |
+|- messageType| String | Types of template message(I: Image type, W: Wide Image type) |
+|- contentType| String | Types of template text(F: Fixed content, V: Variable content) |
 |- templateContent | String |	Template body |
 |- unsubscribeContent | String | 무료수신거부 전화번호/인증번호 |
 |- templateImageLink | String | Template Image Link |
 |- templateImageUrl | String |	Template Image URL |
 |- buttons | List |	List of buttons |
 |-- name | String |	Button name |
-|-- type | String |	Button type (WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
-|-- linkMo | String |	Mobile web link (required for the WL type) |
-|-- linkPc | String |	PC web link (optional for the WL type) |
-|-- schemeAndroid | String |	Android app link (required for the AL type) |
-|-- schemeIos | String |	iOS app link (required for the AL type) |
-|-- bizFormId | Integer |	Business Form (required for the BF type) |
-|- kakaoStatus | String | Status code of Kakao Template (A: Normal, R: 대기(발송전), S: Blocked) |
+|-- type | String |	Button type(WL: Web Link, AL: App Link, BK:Bot Keyword, MD: Message Delivery, BF: Business Form, AC: Added Channel) |
+|-- linkMo | String |	Mobile web link(required for the WL type) |
+|-- linkPc | String |	PC web link(optional for the WL type) |
+|-- schemeAndroid | String |	Android app link(required for the AL type) |
+|-- schemeIos | String |	iOS app link(required for the AL type) |
+|-- bizFormId | Integer |	Business Form(required for the BF type) |
+|- kakaoStatus | String | Status code of Kakao Template(A: Normal, R: 대기(발송전), S: Blocked) |
 |- createDate | String | Date of creation |
 |- updateDate | String | Date of modification |
