@@ -120,6 +120,14 @@ Content-Type: application/json;charset=UTF-8
             "schemeIos": String
           }
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -144,7 +152,7 @@ Content-Type: application/json;charset=UTF-8
 |recipientList|	List|	O|	List of recipients(up to 1000) |
 |- recipientNo|	String|	O|	Recipient number |
 |- content|	String|	O| Body message(up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included |
-|- imageUrl|	Integer|	X|	Image URL |
+|- imageUrl|	String|	X|	Image URL |
 |- imageLink|	String|	X|	Image link   |
 |- buttons|	List|	X|	Button<br>1 link button, if wide image is included |
 |-- ordering|	Integer|	X |	Button sequence(required, if there is a button)|
@@ -179,7 +187,7 @@ Content-Type: application/json;charset=UTF-8
 |----- linkPc | String |	X |PC web link(optional for the WL type) |
 |----- schemeIos | String | X |	iOS app link(required for the AL type) |
 |----- schemeAndroid | String | X |	Android app link(required for the AL type) |
-|---- image | Object | X |  | 
+|---- image | Object | X | Image | 
 |----- imageUrl|	String|	X|	Image URL   |
 |----- imageLink|	String|	X|	Image link   |
 |-- tail | Object | X | Learn more button information | 
@@ -187,6 +195,13 @@ Content-Type: application/json;charset=UTF-8
 |--- linkPc | String |	X |PC web link |
 |--- schemeIos | String | X |	iOS app link |
 |--- schemeAndroid | String | X |	Android app link |
+|- coupon | Object | X | 쿠폰 | 
+|-- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+|-- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+|-- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+|-- linkPc | String |	X |PC 웹 링크 |
+|-- schemeIos | String | X |	iOS 앱 링크 |
+|-- schemeAndroid | String | X |	안드로이드 앱 링크 |
 |- resendParameter|	Object|	X| Alternative delivery information |
 |-- isResend|	boolean|	X|	Whether to resend text, if delivery fails<br>Resent by default, if alternative delivery is set on console. |
 |-- resendType|	String|	X|	Alternative delivery type(SMS,LMS)<br>Categorized by the length of template body, if value is unavailable. |
@@ -503,6 +518,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "schemeIos": String
          }
       },
+      "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      },
       "isAd" : Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
@@ -549,37 +572,44 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- schemeAndroid | String |	Android app link(required for the AL type) |
 |-- chatExtra|	String|	Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons |
 |-- chatEvent|	String| Bot event name to connect for BT(Bot Transfer) type button |
-|-- bizFormKey|	String|	X| Biz from key for BF(Business from) type button |
-|-- target|	String|	X |	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-|- header | String | X | Header(required when using the wide item list message type, up to 25 characters) |
-|- item | Object | X | Wide item |
-|-- list | List | X | Wide item list(at lease 3, up to 4) |
-|--- title | String | X | Item title(up to 25 characters) |
-|--- imageUrl | String | X | Item image URL |
-|--- linkMo | String | X | Mobile web link |
-|--- linkPc | String | X | PC web link |
-|--- schemeIos | String | X | iOS app link |
-|--- schemeAndroid | String | X | Android app link |
-|- carousel | Object | X | Carousel | 
-|-- list | List | X |  Carousel list(at least 2, up to 6) | 
-|--- header | String | X | Carousel item title(up to 20 characters) | 
-|--- message | String | X | Carousel item message(up to 180 characters) | 
-|--- attachment | Object | X | Carousel item images, button information | 
-|---- buttons | List | X | Button list(up to 2) | 
-|----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
-|----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
-|----- linkMo| String |	X |	Mobile web link(required for the WL type)|
-|----- linkPc | String |	X |PC web link(optional for the WL type) |
-|----- schemeIos | String | X |	iOS app link(required for the AL type) |
-|----- schemeAndroid | String | X |	Android app link(required for the AL type) |
-|---- image | Object | X |  | 
-|----- imageUrl|	String|	X|	Image URL   |
-|----- imageLink|	String|	X|	Image link   |
-|-- tail | Object | X | Learn more button information | 
-|--- linkMo| String |	X |	Mobile web link|
-|--- linkPc | String |	X |PC web link |
-|--- schemeIos | String | X |	iOS app link |
-|--- schemeAndroid | String | X |	Android app link |
+|-- bizFormKey|	String|	Biz from key for BF(Business from) type button |
+|-- target|	String|	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+|- header | String | Header(required when using the wide item list message type, up to 25 characters) |
+|- item | Object | Wide item |
+|-- list | List | Wide item list(at lease 3, up to 4) |
+|--- title | String | Item title(up to 25 characters) |
+|--- imageUrl | String | Item image URL |
+|--- linkMo | String | Mobile web link |
+|--- linkPc | String | PC web link |
+|--- schemeIos | String | iOS app link |
+|--- schemeAndroid | String | Android app link |
+|- carousel | Object | Carousel | 
+|-- list | List | Carousel list(at least 2, up to 6) | 
+|--- header | String | Carousel item title(up to 20 characters) | 
+|--- message | String | Carousel item message(up to 180 characters) | 
+|--- attachment | Object | Carousel item images, button information | 
+|---- buttons | List | Button list(up to 2) | 
+|----- name| String |	Button name(required, if there's a button, up to 28 characters)|
+|----- type| String |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
+|----- linkMo| String |	Mobile web link(required for the WL type)|
+|----- linkPc | String |PC web link(optional for the WL type) |
+|----- schemeIos | String | iOS app link(required for the AL type) |
+|----- schemeAndroid | String | Android app link(required for the AL type) |
+|---- image | Object | Image | 
+|----- imageUrl|	String|	Image URL   |
+|----- imageLink|	String|	Image link   |
+|-- tail | Object | Learn more button information | 
+|--- linkMo| String |	Mobile web link|
+|--- linkPc | String |PC web link |
+|--- schemeIos | String | iOS app link |
+|--- schemeAndroid | String | Android app link |
+|- coupon | Object | Coupon | 
+|-- title| String |	Coupon title |
+|-- description| String |	Coupon description |
+|-- linkMo| String | Mobile web link |
+|-- linkPc | String |	PC web link |
+|-- schemeIos | String | iOS app link |
+|-- schemeAndroid | String | Android app link |
 |- isAd | Boolean |	Ad or not |
 |- senderGroupingKey | String | Sender's grouping key |
 |- recipientGroupingKey | String |	Recipient's grouping key |
@@ -1070,6 +1100,14 @@ curl -X GET \
             "schemeIos": String
           }
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "isAd": Boolean,
         "createDate": String
     }
@@ -1110,37 +1148,44 @@ curl -X GET \
 | -- schemeAndroid | String | Android app link(required for the AL type) |
 | -- chatExtra | String | BC: Meta information to be delivered when switching to consultation talk<br/> BT: Meta information to be delivered when switching to bot |
 | -- chatEvent | String | BT: Bot event name to connect when switching to bot |
-| -- bizFormKey|	String|	X| Biz from key for BF(Business from) type button |
-| -- target|	String|	X |	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-| - header | String | X | Header(required when using the wide item list message type, up to 25 characters) |
-| - item | Object | X | Wide item |
-| -- list | List | X | Wide item list(at lease 3, up to 4) |
-| --- title | String | X | Item title(up to 25 characters) |
-| --- imageUrl | String | X | Item image URL |
-| --- linkMo | String | X | Mobile web link |
-| --- linkPc | String | X | PC web link |
-| --- schemeIos | String | X | iOS app link |
-| --- schemeAndroid | String | X | Android app link |
-| - carousel | Object | X | Carousel | 
-| -- list | List | X |  Carousel list(at least 2, up to 6) | 
-| --- header | String | X | Carousel item title(up to 20 characters) | 
-| --- message | String | X | Carousel item message(up to 180 characters) | 
-| --- attachment | Object | X | Carousel item images, button information | 
-| ---- buttons | List | X | Button list(up to 2) | 
-| ----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
-| ----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
-| ----- linkMo| String |	X |	Mobile web link(required for the WL type)|
-| ----- linkPc | String |	X |PC web link(optional for the WL type) |
-| ----- schemeIos | String | X |	iOS app link(required for the AL type) |
-| ----- schemeAndroid | String | X |	Android app link(required for the AL type) |
-| ---- image | Object | X |  | 
-| ----- imageUrl|	String|	X|	Image URL   |
-| ----- imageLink|	String|	X|	Image link   |
-| -- tail | Object | X | Learn more button information | 
-| --- linkMo| String |	X |	Mobile web link|
-| --- linkPc | String |	X |PC web link |
-| --- schemeIos | String | X |	iOS app link |
-| --- schemeAndroid | String | X |	Android app link |
+| -- bizFormKey|	String|	Biz from key for BF(Business from) type button |
+| -- target|	String|	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+| - header | String | Header(required when using the wide item list message type, up to 25 characters) |
+| - item | Object | Wide item |
+| -- list | List | Wide item list(at lease 3, up to 4) |
+| --- title | String | Item title(up to 25 characters) |
+| --- imageUrl | String | Item image URL |
+| --- linkMo | String | Mobile web link |
+| --- linkPc | String | PC web link |
+| --- schemeIos | String | iOS app link |
+| --- schemeAndroid | String | Android app link |
+| - carousel | Object | Carousel | 
+| -- list | List | Carousel list(at least 2, up to 6) | 
+| --- header | String | Carousel item title(up to 20 characters) | 
+| --- message | String | Carousel item message(up to 180 characters) | 
+| --- attachment | Object | Carousel item images, button information | 
+| ---- buttons | List | Button list(up to 2) | 
+| ----- name| String |	Button name(required, if there's a button, up to 28 characters)|
+| ----- type| String |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
+| ----- linkMo| String |	Mobile web link(required for the WL type)|
+| ----- linkPc | String |	PC web link(optional for the WL type) |
+| ----- schemeIos | String | iOS app link(required for the AL type) |
+| ----- schemeAndroid | String | Android app link(required for the AL type) |
+| ---- image | Object | Image | 
+| ----- imageUrl|	String|	Image URL   |
+| ----- imageLink|	String|	Image link   |
+| -- tail | Object | Learn more button information | 
+| --- linkMo| String |	Mobile web link|
+| --- linkPc | String |	PC web link |
+| --- schemeIos | String | iOS app link |
+| --- schemeAndroid | String | Android app link |
+|- coupon | Object | Coupon | 
+|-- title| String |	Coupon title |
+|-- description| String |	Coupon description |
+|-- linkMo| String | Mobile web link |
+|-- linkPc | String |	PC web link |
+|-- schemeIos | String | iOS app link |
+|-- schemeAndroid | String | Android app link |
 | - isAd | Boolean | Ad or not |
 | - createDate | String | Date of creation |
 

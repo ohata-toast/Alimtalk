@@ -18,9 +18,10 @@
 </table>
 
 ## v2.3 API紹介
-1. カカともへのメッセージ大量送信照会が追加されました。
-2. メッセージ送信時、buttonsフィールドにchatExtra, chatEvent, targetフィールドが追加されました。
-3. メッセージ照会時、buttonsフィールドにchatExtra、chatEvent、targetフィールドが追加されました。
+1. 친구톡 와이드 아이템리스트, 케러셀 피드형, 쿠폰, 비즈니스폼 버튼 기능이 추가되었습니다.
+2. 와이드 아이템리스트 이미지 등록, 캐러셀 이미지 등록 API가 추가되었습니다.
+3. 이미지 조회 시, imageType 필드가 추가되었습니다.
+4. 발송 시, imageSeq -> imageUrl 필드를 사용하도록 변경되었습니다.
 
 ## メッセージの送信
 #### 送信リクエスト
@@ -52,29 +53,81 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "plusFriendId": String,
+    "senderKey": String,
     "requestDate": String,
     "senderGroupingKey": String,
     "createUser" : String,
     "recipientList": [{
         "recipientNo": String,
         "content": String,
-        "imageSeq": Integer,
+        "imageUrl": String,
         "imageLink": String,
         "buttons": [
-                {
-                    "ordering": Integer,
-                    "type": String,
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "header": String,
+        "item": {
+          "list": [
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            }
+          ]
+        },
+        "carousel": {
+          "list": [
+            {
+              "header": String,
+              "message": String,
+              "attachment": {
+                "buttons": [
+                  {
                     "name": String,
+                    "type": String,
                     "linkMo": String,
                     "linkPc": String,
-                    "schemeIos": String,
                     "schemeAndroid": String,
-                    "chatExtra": String,
-                    "chatEvent": String,
-                    "target": String
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
                 }
-        ],
+              }
+            }
+          ],
+          "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+          }
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -99,7 +152,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
 | - recipientNo          | String  | O    | 受信番号                              |
 | - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
-| - imageSeq             | Integer | X    | イメージ番号                             |
+| - imageUrl             | String  | X    |	이미지 URL |
 | - imageLink            | String  | X    | イメージリンク                                |
 | - buttons              | List    | X    | ボタン                                 |
 | -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
@@ -111,7 +164,44 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
 | -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 | -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
 | -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
+| - item                 | Object  | X    | Wide item |
+| -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
+| --- title              | String  | X    | Item title(up to 25 characters) |
+| --- imageUrl           | String  | X    | Item image URL |
+| --- linkMo | String | X | Mobile web link |
+| --- linkPc | String | X | PC web link |
+| --- schemeIos | String | X | iOS app link |
+| --- schemeAndroid | String | X | Android app link |
+| - carousel | Object | X | Carousel | 
+| -- list | List | X |  Carousel list(at least 2, up to 6) | 
+| --- header | String | X | Carousel item title(up to 20 characters) | 
+| --- message | String | X | Carousel item message(up to 180 characters) | 
+| --- attachment | Object | X | Carousel item images, button information | 
+| ---- buttons | List | X | Button list(up to 2) | 
+| ----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
+| ----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
+| ----- linkMo| String |	X |	Mobile web link(required for the WL type)|
+| ----- linkPc | String |	X |PC web link(optional for the WL type) |
+| ----- schemeIos | String | X |	iOS app link(required for the AL type) |
+| ----- schemeAndroid | String | X |	Android app link(required for the AL type) |
+| ---- image | Object | X | Image | 
+| ----- imageUrl|	String|	X|	Image URL   |
+| ----- imageLink|	String|	X|	Image link   |
+| -- tail | Object | X | Learn more button information | 
+| --- linkMo| String |	X |	Mobile web link|
+| --- linkPc | String |	X |PC web link |
+| --- schemeIos | String | X |	iOS app link |
+| --- schemeAndroid | String | X |	Android app link |
+| - coupon | Object | X | 쿠폰 | 
+| -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+| -- linkPc | String |	X |PC 웹 링크 |
+| -- schemeIos | String | X |	iOS 앱 링크 |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -123,13 +213,16 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 | statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
-* <b>夜間送信制限(20:00～翌日08:00)</b>
-* <b>SMSサービスの代替として送信されるため、SMSサービスの発送API明細に従ってフィールドを入力してください。(SMSサービスに登録された発信番号、080受信拒否番号、各種フィールドの長さ制限など)</b>
-* <b>指定した代替発送タイプのバイトの制限を超える代替発送のタイトルや内容はカットされ、代替発送となることがあります。([[SMS注意事項](https://docs.toast.com/ja/Notification/SMS/ja/api-guide/#_1)] 参照)</b>
-* <b>友達トークの広告メッセージは、広告SMS APIに代替送信されるので、必ず080受信拒否番号を登録しないと代替送信されません。</b>
-* <b>友達トーク広告メッセージのresendContentフィールドを入力する場合、SMS広告APIの広告文句を必須入力すると正常的に代替して送信されます。(広告)内容[無料受信拒否]080XXXXXX</b>
-* <b>友達トーク広告メッセージのresendContentフィールドがない場合は、登録された080受信拒否番号で広告メッセージを自動生成して代替送信されます。</b>
+* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
+* <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
+* <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>친구톡 광고 메시지는 광고 SMS API로 대체 발송되므로, 반드시 080 수신 거부 번호를 등록해야 대체 발송됩니다.</b>
+* <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
+* <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
+* <b>와이드 아이템리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
+* <b>쿠폰은 일반 텍스트형, 이미지형, 와이드 이미지형, 와이드 아이템리스트형만 사용 가능합니다.</b>
+* <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
 
 [例]
 ```
@@ -378,6 +471,59 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "target": String
         }
       ],
+      "header": String,
+       "item": {
+        "list": [
+           {
+            "title": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+          }
+         ]
+       },
+      "carousel": {
+        "list": [
+          {
+            "header": String,
+            "message": String,
+            "attachment": {
+               "buttons": [
+                {
+                  "name": String,
+                  "type": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String,
+                  "bizFormKey": String,
+                  "target": String
+                 }
+              ],
+              "image":{
+                "imageUrl": String,
+                "imageLink": String
+               }
+            }
+           }
+        ],
+        "tail": {
+           "linkMo": String,
+          "linkPc": String,
+           "schemeAndroid": String,
+          "schemeIos": String
+         }
+      },
+      "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      },
       "isAd" : Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
@@ -421,7 +567,44 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
 | -- chatExtra           | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 | -- chatEvent           | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormKey|	String|	BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
 | -- target              | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+|- header | String | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+|- item | Object | 와이드 아이템 |
+|-- list | List | 와이드 아이템리스트(최소 3개/최대 4개) |
+|--- title | String | 아이템 제목(최대 25자) |
+|--- imageUrl | String | 아이템 이미지 URL |
+|--- linkMo | String | 모바일 웹 링크 |
+|--- linkPc | String | PC 웹 링크 |
+|--- schemeIos | String | iOS 앱 링크 |
+|--- schemeAndroid | String | 안드로이드 앱 링크 |
+|- carousel | Object | 캐러셀 | 
+|-- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+|--- header | String | 캐러셀 아이템 제목(최대 20자) | 
+|--- message | String | 캐러셀 아이템 메시지(최대 180자) | 
+|--- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
+|---- buttons | List | 버튼 리스트(최대 2개) | 
+|----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+|----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
+|----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
+|----- linkPc | String | PC 웹 링크(WL 타입일 경우 선택 필드) |
+|----- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+|----- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+|---- image | Object | 이미지  | 
+|----- imageUrl|	String|	이미지 URL   |
+|----- imageLink|	String|	이미지 링크   |
+|-- tail | Object | 더보기 버튼 정보 | 
+|--- linkMo| String |	모바일 웹 링크|
+|--- linkPc | String |	PC 웹 링크 |
+|--- schemeIos | String | iOS 앱 링크 |
+|--- schemeAndroid | String | X안드로이드 앱 링크 |
+|- coupon | Object | 쿠폰 | 
+|-- title| String |	쿠폰 title |
+|-- description| String |	쿠폰 상세 설명 |
+|-- linkMo| String | 모바일 웹 링크 |
+|-- linkPc | String |	PC 웹 링크 |
+|-- schemeIos | String | iOS 앱 링크 |
+|-- schemeAndroid | String | 안드로이드 앱 링크 |
 | - isAd                 | Boolean | 広告かどうか                                   |
 | - senderGroupingKey    | String  | 発信グルーピングキー                               |
 | - recipientGroupingKey | String  | 受信者グルーピングキー                              |
@@ -649,20 +832,6 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
                 "senderKey": String,
                 "masterStatusCode": String,
                 "content": String,
-                "buttons": [
-                    {
-                        "ordering": Integer,
-                        "type": String,
-                        "name": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeIos": String,
-                        "schemeAndroid": String,
-                        "chatExtra": String,
-                        "chatEvent": String,
-                        "target": String
-                    }
-                ],
                 "isAd": Boolean,
                 "imageSeq": Integer,
                 "imageLink": String,
@@ -692,17 +861,6 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | -- senderKey | String | 送信者ID |
 | -- masterStatusCode | String | 大量送信ステータスコード(WAIT, READY, SENDREADY, SENDWAIT, SENDING, COMPLETE, CANCEL, FAIL) |
 | -- content | String | 内容 |
-| -- buttons | List | ボタンの順序 |
-| --- ordering | String | ボタンの順序 |
-| --- type | String | ボタンの種類<br/> - WL：Webリンク<br/> - AL：アプリリンク<br/> - DS：配送照会<br/> - BK：Botキーワード<br/> - MD：メッセージ伝達<br/> - BC：相談トーク切り替え<br/> - BT：Bot切り替え<br/> - AC：チャンネル追加[広告追加/複合型のみ] |
-| --- name | String | ボタン名 |
-| --- linkMo | String | モバイルWebリンク(WLタイプの場合は必須フィールド) |
-| --- linkPc | String | PC Webリンク(WLタイプの場合は任意フィールド)|
-| --- schemeIos | String | IOSアプリリンク(ALタイプの場合は必須フィールド) |
-| --- schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド) |
-| --- chatExtra | String | BC：相談トークに切り替える時に伝達するメタ情報<br/> BT：Botに切り替える時に伝達するメタ情報 |
-| --- chatEvent | String | BT：Botに切り替える時に接続するBotイベント名 |
-| --- target|	String|	Webリンクボタンの場合、"target"："out"プロパティを追加時アウトリンク<br>基本アプリ内リンクで送信 |
 | -- isAd | Boolean | 広告かどうか |
 | -- imageSeq | Integer | 画像の順序 |
 | -- imageLink | Boolean | 画像のURL |
@@ -889,9 +1047,61 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
                 "schemeAndroid": String,
                 "chatExtra": String,
                 "chatEvent": String,
+                "bizFormKey": String,
                 "target": String
             }
         ],
+        "header": String,
+        "item": {
+          "list": [
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            }
+          ]
+        },
+        "carousel": {
+          "list": [
+            {
+              "header": String,
+              "message": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                }
+              }
+            }
+          ],
+          "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+          }
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
         "isAd": Boolean,
         "createDate": String
     }
@@ -932,7 +1142,44 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | -- schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド) |
 | -- chatExtra | String | BC：相談トークに切り替える時に伝達するメタ情報<br/> BT：Botに切り替える時に伝達するメタ情報 |
 | -- chatEvent | String | BT：Botに切り替える時に接続するBotイベント名 |
+| -- bizFormKey|	String|	BF(비즈니스 폼) 타입 버튼 시, 비즈폼 키 |
 | -- target|	String|	Webリンクボタンの場合、"target"："out"プロパティを追加時アウトリンク<br>基本アプリ内リンクで送信 |
+| - header | String | 헤더(와이드 아이템리스트 메시지 타입 사용 시, 필수, 최대 25자) |
+| - item | Object | 와이드 아이템 |
+| -- list | List | 와이드 아이템리스트(최소 3개/최대 4개) |
+| --- title | String | 아이템 제목(최대 25자) |
+| --- imageUrl | String | 아이템 이미지 URL |
+| --- linkMo | String | 모바일 웹 링크 |
+| --- linkPc | String | PC 웹 링크 |
+| --- schemeIos | String | iOS 앱 링크 |
+| --- schemeAndroid | String | 안드로이드 앱 링크 |
+| - carousel | Object | 캐러셀 | 
+| -- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+| --- header | String | 캐러셀 아이템 제목(최대 20자) | 
+| --- message | String | 캐러셀 아이템 메시지(최대 180자) | 
+| --- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
+| ---- buttons | List | 버튼 리스트(최대 2개) | 
+| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+| ----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
+| ----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
+| ----- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+| ----- schemeIos | String | iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| ----- schemeAndroid | String | 안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+| ---- image | Object | 이미지  | 
+| ----- imageUrl|	String|	이미지 URL   |
+| ----- imageLink|	String|	이미지 링크   |
+| -- tail | Object | 더보기 버튼 정보 | 
+| --- linkMo| String |	모바일 웹 링크|
+| --- linkPc | String |	PC 웹 링크 |
+| --- schemeIos | String | iOS 앱 링크 |
+| --- schemeAndroid | String | 안드로이드 앱 링크 |
+|- coupon | Object | 쿠폰 | 
+|-- title| String |	쿠폰 title |
+|-- description| String |	쿠폰 상세 설명 |
+|-- linkMo| String | 모바일 웹 링크 |
+|-- linkPc | String |	PC 웹 링크 |
+|-- schemeIos | String | iOS 앱 링크 |
+|-- schemeAndroid | String | 안드로이드 앱 링크 |
 | - isAd | Boolean | 広告かどうか |
 | - createDate | String | 作成日 |
 
@@ -1005,6 +1252,136 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 | - imageUrl      | String  | イメージURL                |
 | - imageName     | String  | イメージ名(アップロードしたファイル名)         |
 
+### 와이드 아이템리스트 이미지 등록
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+[Request parameter]
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|image|	File|	O |	이미지 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images" -F "image=@friend-ricecake02.jpeg"
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "image": {
+      "imageSeq" : Integer,
+      "imageUrl" : String,
+      "imageName" : String
+    }
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|image|	Object|	본문 영역|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
+|- imageUrl | String |	이미지 URL |
+|- imageName | String |	이미지명(업로드한 파일명) |
+
+### 캐러셀 이미지 등록
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk/v2.3/appkeys/{appkey}/carousel/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
+[Request parameter]
+
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|image|	File|	O |	이미지 |
+
+[예시]
+```
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
+```
+
+#### 응답
+```
+
+{
+  "header" : {
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+  },
+  "image": {
+      "imageSeq" : Integer,
+      "imageUrl" : String,
+      "imageName" : String
+    }
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+|image|	Object|	본문 영역|
+|- imageSeq | Integer |	이미지 번호(친구톡 메시지 발송 시 사용)|
+|- imageUrl | String |	이미지 URL |
+|- imageName | String |	이미지명(업로드한 파일명) |
+
 
 ### イメージの照会
 #### リクエスト
@@ -1036,6 +1413,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値  | タイプ | 必須 | 説明      |
 | -------- | ------- | ---- | ------------- |
+|imageTypes|	String|	X| - IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> IMAGE, WIDE_IMAGE(default) |
 | pageNum  | Integer | X    | ページ番号(基本：1) |
 | pageSize | Integer | X    | 照会件数(基本：15) |
 
@@ -1059,7 +1437,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
             "imageSeq" : Integer,
             "imageUrl" : String,
             "imageName" : String,
-            "wide": String,
+            "imageType": String,
             "createDate" : String
         }
     ],
@@ -1080,7 +1458,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- imageSeq     | Integer | イメージ番号(カカともへのメッセージの送信時に使用) |
 | -- imageUrl     | String  | イメージURL                |
 | -- imageName    | String  | イメージ名(アップロードしたファイル名)         |
-| -- wide         | boolean |	ワイドイメージの可否                       |
+| -- imageType     | String |	- IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> |
 | -- createDate   | String  | 作成日時            |
 | - totalCount    | Integer | 総個数                  |
 
