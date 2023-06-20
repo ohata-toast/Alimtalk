@@ -100,11 +100,11 @@
 	</tr>
   <tr>
 		<td>1001</td>
-		<td>Server Busy(Queue full for RS internal saving)</td>
+		<td>Request Body가 Json형식이 아님</td>
 	</tr>
   <tr>
 		<td>1002</td>
-		<td>Format error of recipient number</td>
+		<td>허브 파트너 키가 유효하지 않음</td>
 	</tr>
   <tr>
 		<td>1003</td>
@@ -144,7 +144,7 @@
 	</tr>
 	<tr>
 		<td>1022</td>
-		<td>Blocked KakaoTalk channel </td>
+		<td>Closed KakaoTalk channel </td>
 	</tr>
 	<tr>
 		<td>1023</td>
@@ -156,7 +156,11 @@
 	</tr>
 	<tr>
 		<td>1025</td>
-		<td>KakaoTalk channel blocked for message </td>
+		<td>채널 제재 상태로 인한 메시지 전송 실패</td>
+	</tr>
+	<tr>
+		<td>1027</td>
+		<td>채널 메시지 제재 상태로 인한 메시지 전송 실패</td>
 	</tr>
 	<tr>
 		<td>1030</td>
@@ -169,10 +173,6 @@
 	<tr>
 		<td>2001</td>
 		<td>Unable to send messages(due to unexpected error)</td>
-	</tr>
-	<tr>
-		<td>2004</td>
-		<td>Error occurred when template consistency is checked(internal error occurred)</td>
 	</tr>
 	<tr>
 		<td>3000</td>
@@ -232,7 +232,7 @@
 	</tr>
 	<tr>
 		<td>3024</td>
-		<td>Invalid sender profile key </td>
+		<td>메시지에 포함된 이미지를 전송할 수 없음(이미지주소 또는 링크가 올바르지 않거나 이미지가 규격에 맞지 않음)</td>
 	</tr>
 	<tr>
 		<td>3025</td>
@@ -240,7 +240,7 @@
 	</tr>
 	<tr>
 		<td>3026</td>
-		<td>Error occurred during consistency checked between message and template </td>
+		<td>상담/봇 전환 버튼 extra, event 글자수 제한 초과</td>
 	</tr>
 	<tr>
 		<td>3027</td>
@@ -256,89 +256,59 @@
 	</tr>
 	<tr>
 		<td>3030</td>
-		<td>Redundant serial number of message </td>
+		<td>메시지 타입과 템플릿 강조유형이 일치하지 않음</td>
 	</tr>
 	<tr>
 		<td>3031</td>
-		<td>Message is empty</td>
+		<td>헤더가 템플릿과 일치하지 않음</td>
 	</tr>
 	<tr>
 		<td>3032</td>
-		<td>Error of length restriction in message(1000 characters including spaces)</td>
+		<td>헤더 길이 제한 초과(16자)</td>
 	</tr>
 	<tr>
 		<td>3033</td>
-		<td>Template not found </td>
+		<td>아이템 하이라이트가 템플릿과 일치하지 않음</td>
 	</tr>
 	<tr>
 		<td>3034</td>
-		<td>Message is not consistent with template </td>
+		<td>아이템 하이라이트 타이틀 길이 제한 초과(이미지 없는 경우 30자, 이미지 있는 경우 21자)</td>
+	</tr>
+	<tr>
+		<td>3035</td>
+		<td>아이템 하이라이트 디스크립션 길이 제한 초과(이미지 없는 경우 19자, 이미지 있는 경우 13자)</td>
+	</tr>
+	<tr>
+		<td>3036</td>
+		<td>아이템 리스트가 템플릿과 일치하지 않음</td>
+	</tr>
+	<tr>
+		<td>3037</td>
+		<td>아이템 리스트의 아이템의 디스크립션 길이 제한 초과(23자)</td>
+	</tr>
+	<tr>
+		<td>3038</td>
+		<td>아이템 요약정보가 템플릿과 일치하지 않음</td>
+	</tr>
+	<tr>
+		<td>3039</td>
+		<td>아이템 요약정보의 디스크립션 길이 제한 초과(14자)</td>
 	</tr>
 	<tr>
 		<td>3040</td>
 		<td>아이템 요약정보의 디스크립션에 허용되지 않은 문자 포함(통화기호/코드, 숫자, 콤마, 소수점, 공백을 제외한 문자 포함) </td>
 	</tr>
 	<tr>
-		<td>3041</td>
-		<td>Name not found in the request body</td>
-	</tr>
-	<tr>
 		<td>3042</td>
-		<td>Sender profile not found </td>
-	</tr>
-	<tr>
-		<td>3043</td>
-		<td>Deleted sender profile </td>
-	</tr>
-	<tr>
-		<td>3044</td>
-		<td>Blocked sender profile </td>
-	</tr>
-	<tr>
-		<td>3045</td>
-		<td>Blocked Plus Friend </td>
-	</tr>
-	<tr>
-		<td>3046</td>
-		<td>Closed Plus Friend </td>
-	</tr>
-	<tr>
-		<td>3047</td>
-		<td>Deleted Plus Friend </td>
-	</tr>
-	<tr>
-		<td>3048</td>
-		<td>Contract information not found </td>
-	</tr>
-	<tr>
-		<td>3049</td>
-		<td>Message delivery failed due to internal system error </td>
-	</tr>
-	<tr>
-		<td>3050</td>
-		<td>Non-KakaoTalk user <br>
-	    User opting to block AlimTalk of users who record no KakaoTalk service use within 72 hours <br>
-	    Not a friend of FriendTalk <br></td>
+		<td>대표링크가 템플릿과 일치하지 않음</td>
 	</tr>
 	<tr>
 		<td>3051</td>
-		<td>Message undelivered </td>
+		<td>케러셀 아이템 리스트 갯수 최소, 최대 갯수 불일치</td>
 	</tr>
 	<tr>
-		<td>3054</td>
-                <td>Unavailable time to send messages</td>
-	</tr>
-  <tr>
-		<td>3055</td>
-		<td>Message group information not found </td>
-	</tr>
-  <tr>
-		<td>3056</td>
-		<td>Message delivery result not found </td>
-	</tr>
-  <tr>
-		<td>3060</td>
-		<td>Sent to user but not sure if received(Polling)</td>
+		<td>3052</td>
+		<td>케러셀 아이템 메시지 길이 초과</td>
 	</tr>
 	<tr>
 		<td>4000</td>
@@ -355,58 +325,6 @@
   <tr>
 		<td>9999</td>
 		<td> Under administrator's checkup for error occurred in system(unknown error in system)</td>
-	</tr>
-	<tr>
-		<td>E900</td>
-		<td>Transfer key is not available</td>
-	</tr>
-	<tr>
-		<td>E901</td>
-		<td>Recipient number is not available </td>
-	</tr>
-	<tr>
-		<td>E903</td>
-		<td>Title is not available </td>
-	</tr>
-	<tr>
-		<td>E904</td>
-		<td>Message is not available </td>
-	</tr>
-	<tr>
-		<td>E905</td>
-		<td>Reply number is not available</td>
-	</tr>
-	<tr>
-		<td>E906</td>
-		<td>Message key is not available</td>
-	</tr>
-	<tr>
-		<td>E915</td>
-		<td>Duplicate message</td>
-	</tr>
-	<tr>
-		<td>E916</td>
-		<td>Blocked number at authenticated server </td>
-	</tr>
-	<tr>
-		<td>E917</td>
-		<td>Blocked number at customer database </td>
-	</tr>
-	<tr>
-		<td>E918</td>
-		<td>USER CALLBACK FAIL</td>
-	</tr>
-	<tr>
-		<td>E919</td>
-		<td>Message redelivery is prohibited during delivery restricted hours </td>
-	</tr>
-	<tr>
-		<td>E920</td>
-		<td>Message table includes a file group key for AlimTalk messages </td>
-	</tr>
-	<tr>
-		<td>E999</td>
-		<td>Other errors </td>
 	</tr>
 </tbody>
 </table>
