@@ -86,7 +86,7 @@
 | Common  | false     | -3032      | 템플릿 강조 표시 타입 이미지형(IMAGE)일 경우, templateImageName, templateImageUrl 필드 필수값       |
 | Common  | false     | -3033      | 버튼 또는 바로연결이 템플릿에 등록되지 않았을 경우                                 |
 | Common  | false     | -3034      | Only templates that have not been sent for 3 days can be deleted       |
-| Common  | false     | -3035      | 템플릿 강조 표시 타입 아이템리스트형(ITEM_LIST)로 등록 시, templateHeader, templateImageName, templateImageUrl, templateItem, templateItemHighlight 필드 중 값이 없는 필드가 있는 경우       |
+| Common  | false     | -3035      | 템플릿 강조 표시 타입 아이템리스트형(ITEM_LIST)로 등록 시, templateHeader, templateImageName, templateImageUrl, templateItem, templateItemHighlight 필드 중 1개 이상 필수로 포함       |
 | Common  | false     | -3036      | 템플릿 강조 표시 타입 아이템리스트형(ITEM_LIST)로 등록 시, 보안 템플릿으로 등록할 수 없음       |
 | Common  | false     | -3037      | templateItem list의 title은 치환 변수를 가질 수 없음                         |
 | Common  | false     | -3038      | templateItem summary의 title은 치환 변수를 가질 수 없음                      |

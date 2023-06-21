@@ -1630,7 +1630,7 @@ Content-Type: application/json;charset=UTF-8
 |templateName|	String |	O | 템플릿명(최대 150자) |
 |templateContent|	String |	O | 템플릿 본문(최대 1000자) |
 |templateMessageType| String | X |템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형, default: BA) |
-|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수|
+|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수<br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수 |
 |templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
 |tempalteTitle| String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
 |templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
@@ -2166,7 +2166,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateCode | String |	템플릿 코드 |
 |-- templateName | String |	템플릿명 |
 |-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형) |
+|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형) |
 |-- templateContent | String |	템플릿 본문 |
 |-- templateExtra | String | 템플릿 부가 정보 |
 |-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
@@ -2350,7 +2350,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateCode | String |	템플릿 코드 |
 |-- templateName | String |	템플릿명 |
 |-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형) |
+|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ) |
 |-- templateContent | String |	템플릿 본문 |
 |-- templateExtra | String | 템플릿 부가 정보 |
 |-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
