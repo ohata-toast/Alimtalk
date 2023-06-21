@@ -324,7 +324,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -435,7 +434,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -452,7 +450,8 @@ Content-Type: application/json;charset=UTF-8
                 "sentCount" : Integer
          },
          "dormant": Boolean,
-         "block": Boolean
+         "block": Boolean,
+         "createDate": String
       }
    ],
    "totalCount": Integer
@@ -488,9 +487,9 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo | String |	재발송 시, tc-sms 080 수신 거부 번호 |
 |-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
 |-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|- createDate | String |	등록 일자 |
 |- dormant | Boolean |	발신프로필 휴면 여부 |
 |- block | Boolean |	발신프로필 차단 여부 |
+|- createDate | String |	등록 일자 |
 |totalCount | Integer | 총 개수 |
 
 ## 발신 프로필 그룹
