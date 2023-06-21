@@ -320,7 +320,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -434,7 +433,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -452,6 +450,7 @@ Content-Type: application/json;charset=UTF-8
          },
          "dormant": Boolean,
          "block": Boolean,
+         "createDate": String
       }
    ],
    "totalCount": Integer
