@@ -463,7 +463,7 @@ Content-Type: application/json;charset=UTF-8
 |resultCode| String |	X | Delivery result(MRC01 -> Successful, MRC02 ->Failed)	|
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |pageNum|	Integer|	X|	Page number(default: 1)|
-|pageSize|	Integer|	X|	Number of queries(default: 15, max : 1000)|
+|pageSize|	Integer|	X|	Number of queries(default: 15, Max: 1000)|
 
 * Cannot query data requested for delivery which are dated before 90 days.
 * The maximum available days for delivery request is 30 days.
@@ -977,7 +977,7 @@ Content-Type: application/json;charset=UTF-8
 |endUpdateDate|	String| O |	End date of querying result updates(yyyy-MM-dd HH:mm) |
 |alimtalkMessageType|	String| X |	AlimTalk message type(NORMAL, AUTH) |
 |pageNum|	Integer|	X|	Page number(default: 1)|
-|pageSize|	Integer|	X|	Number of queries(default: 15, max : 1000)|
+|pageSize|	Integer|	X|	Number of queries(default: 15, Max: 1000)|
 
 #### Response
 ```
@@ -1631,7 +1631,7 @@ Content-Type: application/json;charset=UTF-8
 |templateName|	String |	O | Template name(up to 150 characters) |
 |templateContent|	String |	O | Template body(up to 1000 characters) |
 |templateMessageType| String | X |Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
-|templateEmphasizeType| String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required|
+|templateEmphasizeType| String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: 아이템리스트형, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수|
 |templateExtra | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
 |tempalteTitle| String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 |templateSubtitle| String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
@@ -2054,7 +2054,7 @@ Content-Type: application/json;charset=UTF-8
 |templateName|	String|	X |	Template name|
 |templateStatus| String |	X | Template status code|
 |pageNum|	Integer|	X|	Page number(default:1)|
-|pageSize|	Integer|	X|	Number of queries(default: 15, max : 1000)|
+|pageSize|	Integer|	X|	Number of queries(default: 15, Max: 1000)|
 
 |Template status code| Description|
 |---|---|

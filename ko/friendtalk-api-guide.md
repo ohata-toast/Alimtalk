@@ -315,7 +315,7 @@ Content-Type: application/json;charset=UTF-8
 |resultCode| String |	X | 발송 결과(MRC01: 성공 MRC02: 실패 )	|
 |createUser| String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |pageNum|	Integer|	X|	페이지 번호(Default: 1)|
-|pageSize|	Integer|	X|	조회 건수(Default: 15, Max : 1000)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -377,7 +377,7 @@ Content-Type: application/json;charset=UTF-8
 |-- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -769,7 +769,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -878,7 +878,7 @@ curl -X GET \
 | -- statsId | String | 통계 ID |
 | -- createDate | String | 생성 날짜 |
 | -- createUser | String | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
-| - totalCount | Integer | 총 개수 |
+| - totalCount | Integer | 총개수 |
 
 
 ### 대량 발송 수신자 목록 조회
@@ -970,7 +970,7 @@ curl -X GET \
 | -- messageStatus | String | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
 | -- resultCode | String | 수신 결과 코드 |
 | -- resultCodeName | String | 수신 결과 코드명 |
-| - totalCount | Integer | 총 개수 |
+| - totalCount | Integer | 총개수 |
 
 ### 대량 발송 수신자 조회
 
@@ -1468,7 +1468,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- imageName | String |	이미지명(업로드한 파일명) |
 |-- createUser | String |	생성자 |
 |-- imageType | String |	- IMAGE: 일반 이미지<br/> - WIDE_IMAGE: 와이드 이미지<br/> - WIDE_ITEMLIST_IMAGE: 와이드 아이템리스트 이미지<br/> - CAROUSEL_IMAGE: 캐러셀 이미지<br/> |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 * 이미지는 최근 등록한 순대로 정렬되어 응답합니다.
 

@@ -1,10 +1,9 @@
-## Notification > KakaoTalk Bizmessage > Sender > API v2.0 Guide
+## Notification > KakaoTalk Bizmessage > Sender > API v2.3 Guide
 
-## Overview of v2.0 API
+## Overview of v2.3 API
 #### What's the diffrence
-1. 카카오 채널 추가 시, 발급 받은 senderKey 필드로 API 호출이 되도록 변경 되었습니다.(plusFriendId 필드 대체)
-2. API uri가 변경 되었습니다.(/plus-friends -> /senders)
-3. 카카오 채널 그룹 기능이 추가 되었습니다.
+1. 발신프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
+2. 발신프로필 조회 API에 카카오톡 채널 스팸 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다. 
 
 #### [API Domain]
 
@@ -29,7 +28,7 @@
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/sender/categories
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -47,7 +46,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 #### Response
 ```
@@ -113,7 +112,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/senders
+POST  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -131,7 +130,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -175,7 +174,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/sender/token
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender/token
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -194,7 +193,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -235,7 +234,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.0/appkeys/{appkey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -254,7 +253,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 * 발신 프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제 됩니다.
 * 발신 프로필 삭제 시, 복구가 불가능합니다.
@@ -283,7 +282,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/senders/{senderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -302,7 +301,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 #### Response
 ```
@@ -322,6 +321,8 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -337,7 +338,10 @@ Content-Type: application/json;charset=UTF-8
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "createDate": String
+         "dormant": Boolean,
+         "block": Boolean,
+         "createDate": String,
+         "initialUserRestriction" : Boolean
     }
 }
 ```
@@ -358,6 +362,8 @@ Content-Type: application/json;charset=UTF-8
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked) kakaoStatusName is null if the status is YSC02. |
 | - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
 | - kakaoProfileStatusName  | String  | Status name of Kakao PlusFriend profile(Activated, Deactivated, Blocked, Deleted, or Deleting) kakaoProfileStatusName is null if the status is YSC02. |
+| - profileSpamLevel        | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+| - profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
 |- alimtalk                 |	Object  |	AlimTalk information                                         |
 |-- resendAppKey            | String  | Alternative sms appkey                                       |
 |-- isResend                | String  | Whether to send text as alternative, if delivery fails       |
@@ -371,7 +377,10 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo     | String  |	080 unsubscription number for alternative delivery           |
 |-- dailyMaxCount           | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음)              |
 |-- sentCount               | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음)                  |
+| - dormant                 | Boolean |	Sender dormant or not                                        |
+| - block                   | Boolean |	Sender block or not                                          |
 | - createDate              | String  | Date and time of registration                                |
+| - initialUserRestriction  | Boolean | 	최초 사용자 제한 여부                                         |
 | totalCount                | Integer | Total count                                                  |
 
 ### List Sender
@@ -381,7 +390,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/senders
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -399,7 +408,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter] No.1 or 2 is conditionally required
 
@@ -431,6 +440,8 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -446,7 +457,10 @@ Content-Type: application/json;charset=UTF-8
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "createDate": String
+         "dormant": Boolean,
+         "block": Boolean,
+         "createDate": String,
+         "initialUserRestriction" : Boolean
       }
    ],
    "totalCount": Integer
@@ -469,6 +483,8 @@ Content-Type: application/json;charset=UTF-8
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked) kakaoStatusName is null if the status is YSC02. |
 | - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
 | - kakaoProfileStatusName  | String  | Status name of Kakao PlusFriend profile(Activated, Deactivated, Blocked, Deleted, or Deleting) kakaoProfileStatusName is null if the status is YSC02. |
+| - profileSpamLevel        | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+| - profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
 |- alimtalk                 |	Object  |	AlimTalk information                                         |
 |-- resendAppKey            | String  | Alternative sms appkey                                       |
 |-- isResend                | String  | Whether to send text as alternative, if delivery fails       |
@@ -482,7 +498,10 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo     | String  |	080 unsubscription number for alternative delivery            |
 |-- dailyMaxCount           | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음)              |
 |-- sentCount               | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음)                  |
+| - dormant                 | Boolean |	Sender dormant or not                                        |
+| - block                   | Boolean |	Sender block or not                                          |
 | - createDate              | String  | Date and time of registration                                |
+| - initialUserRestriction  | Boolean | 	최초 사용자 제한 여부                                         |
 | totalCount                | Integer | Total count                                                  |
 
 ## Sender group
@@ -493,7 +512,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -512,7 +531,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 #### Response
 ```
@@ -562,7 +581,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -582,7 +601,9 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+
+* The maximum number of members in a group is 5000.
 
 #### Response
 ```
@@ -608,7 +629,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -628,7 +649,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 #### Response
 ```

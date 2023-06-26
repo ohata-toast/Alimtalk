@@ -1,8 +1,10 @@
-## Notification > KakaoTalk Bizmessage > Sender > API v2.1 Guide
+## Notification > KakaoTalk Bizmessage > Sender > API v2.3 Guide
 
-## v2.1 API 소개
+## v2.3 API 소개
 #### 개선된 점
-1. 발신 프로필 조회 API에 차단, 휴면 상태 필드가 추가되었습니다.
+
+1. 발신프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
+2. 발신프로필 조회 API에 카카오톡 채널 스팸 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
 
 #### [API 도메인]
 
@@ -27,7 +29,7 @@
 [URL]
 
 ```
-GET  /alimtalk/v2.1/appkeys/{appkey}/sender/categories
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -109,7 +111,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.1/appkeys/{appkey}/senders
+POST  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -168,7 +170,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.1/appkeys/{appkey}/sender/token
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender/token
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -237,7 +239,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.1/appkeys/{appkey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -257,6 +259,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
 
 * 발신프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제됩니다.
 * 발신프로필 삭제 시, 복구가 불가능합니다.
@@ -285,7 +288,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.1/appkeys/{appkey}/senders/{senderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -324,14 +327,16 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "alimtalk": {  
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
+         "alimtalk" : {  
                 "resendAppKey": String,
                 "isResend": Boolean,
                 "resendSendNo": String,
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
           },
-         "friendtalk": {  
+         "friendtalk" : {  
                 "resendAppKey": String,
                 "isResend": Boolean,
                 "resendSendNo": String,
@@ -339,45 +344,49 @@ Content-Type: application/json;charset=UTF-8
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "dormant": Boolean,
-         "block": Boolean,
-         "createDate": String
+         "dormant" : Boolean,
+         "block" : Boolean,
+         "createDate" : String,
+         "initialUserRestriction" : Boolean
     }
 }
 ```
 
-| 이름 |	타입| 	설명                                                                                                                       |
-|---|---|---------------------------------------------------------------------------------------------------------------------------|
-|header|	Object| 	헤더 영역                                                                                                                    |
-|- resultCode|	Integer| 	결과 코드                                                                                                                    |
-|- resultMessage|	String| 결과 메시지                                                                                                                    |
-|- isSuccessful|	Boolean| 성공 여부                                                                                                                     |
-|sender |	Object| 	발신프로필                                                                                                                    |
-|- plusFriendId | String | 	플러스친구 ID                                                                                                                 |
-|- senderKey | String | 	발신 키                                                                                                                     |
-|- categoryCode | String | 	카테고리 코드                                                                                                                  |
-|- status | String | 	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록)                                                                 |
-|- statusName | String | 	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록)                                                                                      |
-|- kakaoStatus | String | 	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다.                                        |
-|- kakaoStatusName | String | 	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다.                                                |
-|- kakaoProfileStatus | String | 	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B: 차단, C: 비활성화, D: 삭제 E: 삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
-|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다.                  |
-|- alimtalk|	Object| 	알림톡 설정 정보                                                                                                                |
-|-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                    |
-|-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                          |
-|-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                      |
-|-- dailyMaxCount | Integer | 	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
-|-- sentCount | Integer | 	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                       |
-|- friendtalk|	Object| 	친구톡 설정 정보                                                                                                                |
-|-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                    |
-|-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                          |
-|-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                      |
-|-- resendUnsubscribeNo | String | 	재발송 시, tc-sms 080 수신 거부 번호                                                                                               |
-|-- dailyMaxCount | Integer | 	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
-|-- sentCount | Integer | 	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                       |
-|- dormant | Boolean | 	발신프로필 휴면 여부                                                                                                              |
-|- block | Boolean | 	발신프로필 차단 여부                                                                                                              |
-|- createDate | String | 	등록 일자                                                                                                                    |
+| 이름 |	타입| 	설명                                                                                                                    |
+|---|---|------------------------------------------------------------------------------------------------------------------------|
+|header|	Object| 	헤더 영역                                                                                                                 |
+|- resultCode|	Integer| 	결과 코드                                                                                                                 |
+|- resultMessage|	String| 결과 메시지                                                                                                                 |
+|- isSuccessful|	Boolean| 성공 여부                                                                                                                  |
+|sender |	Object| 	발신 프로필                                                                                                                |
+|- plusFriendId | String | 	플러스친구 ID                                                                                                              |
+|- senderKey | String | 	발신 키                                                                                                                  |
+|- categoryCode | String | 	카테고리 코드                                                                                                               |
+|- status | String | 	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록)                                                               |
+|- statusName | String | 	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록)                                                                                    |
+|- kakaoStatus | String | 	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다.                                     |
+|- kakaoStatusName | String | 	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다.                                             |
+|- kakaoProfileStatus | String | 	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
+|- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다.               |
+|- profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+|- profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
+|- alimtalk|	Object| 	알림톡 설정 정보                                                                                                             |
+|-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                 |
+|-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                       |
+|-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                   |
+|-- dailyMaxCount | Integer | 	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                 |
+|-- sentCount | Integer | 	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
+|- friendtalk|	Object| 	친구톡 설정 정보                                                                                                             |
+|-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                 |
+|-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                       |
+|-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                   |
+|-- resendUnsubscribeNo | String | 	재발송 시, tc-sms 080 수신 거부 번호                                                                                            |
+|-- dailyMaxCount | Integer | 	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                 |
+|-- sentCount | Integer | 	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
+|- dormant | Boolean | 	발신프로필 휴면 여부                                                                                                           |
+|- block | Boolean | 	발신프로필 차단 여부                                                                                                           |
+|- createDate | String | 	등록 일자                                                                                                                 |
+|- initialUserRestriction | Boolean | 	최초 사용자 제한 여부                                                                                                          |
 
 ### 발신 프로필 리스트 조회
 #### 요청
@@ -385,7 +394,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.1/appkeys/{appkey}/senders
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -401,7 +410,7 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|는
+| 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
@@ -434,6 +443,8 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -450,8 +461,9 @@ Content-Type: application/json;charset=UTF-8
                 "sentCount" : Integer
          },
          "dormant": Boolean,
-         "block": Boolean,
-         "createDate": String
+         "block": Boolean
+         "createDate": String,
+         "initialUserRestriction" : Boolean
       }
    ],
    "totalCount": Integer
@@ -474,6 +486,8 @@ Content-Type: application/json;charset=UTF-8
 |- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
 |- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+|- profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+|- profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
 |- alimtalk|	Object|	알림톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
@@ -490,6 +504,7 @@ Content-Type: application/json;charset=UTF-8
 |- dormant | Boolean |	발신프로필 휴면 여부 |
 |- block | Boolean |	발신프로필 차단 여부 |
 |- createDate | String |	등록 일자 |
+|- initialUserRestriction | Boolean | 	최초 사용자 제한 여부                                                                                                          |
 |totalCount | Integer | 총개수 |
 
 ## 발신 프로필 그룹
@@ -500,7 +515,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.1/appkeys/{appkey}/sender-groups/{groupSenderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -555,6 +570,8 @@ Content-Type: application/json;charset=UTF-8
 |senderGroup|	Object|	발신 프로필 그룹 |
 |- groupName | String |	발신 프로필 그룹명 |
 |- senderKey | String |	발신 키 |
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
+|- senders | List |	그룹에 속한 발신 프로필 List |
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
 |- senders | List |	그룹에 속한 발신프로필 목록 |
 |-- plusFriendId | String |	카카오톡 채널 검색용 ID |
@@ -569,7 +586,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.1/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -617,7 +634,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.1/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 

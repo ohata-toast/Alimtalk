@@ -1893,7 +1893,7 @@ Content-Type: application/json;charset=UTF-8
 | templateName    | String  | O    | テンプレート名(最大150文字)                             |
 | templateContent | String  | O    | テンプレート本文(最大1000文字)                         |
 | templateMessageType| String | X  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
-|templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
+|templateEmphasizeType| String| X  | テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、ITEM_LIST:아이템리스트형, default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須<br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수 |
 | templateExtra     | String  | X  | テンプレート付加情報 |
 |tempalteTitle      | String  | X  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
 |templateSubtitle   | String  | X  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
