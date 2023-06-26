@@ -104,7 +104,7 @@ Content-Type: application/json;charset=UTF-8
 
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
-* <b>SMS 서비스는 국제 SMS만 지원합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
+* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
 
 [예시]
@@ -253,7 +253,7 @@ Content-Type: application/json;charset=UTF-8
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
-* <b>SMS 서비스는 국제 SMS만 지원합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
+* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
 
 [예시]
@@ -346,8 +346,8 @@ Content-Type: application/json;charset=UTF-8
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -433,7 +433,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -900,8 +900,8 @@ Content-Type: application/json;charset=UTF-8
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -987,7 +987,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -1218,7 +1218,7 @@ Content-Type: application/json;charset=UTF-8
 |endUpdateDate|	String| O |	결과 업데이트 조회 종료 시간(yyyy-MM-dd HH:mm) |
 |alimtalkMessageType|	String| X |	알림톡 메시지 타입(NORMAL, AUTH) |
 |pageNum|	Integer|	X|	페이지 번호(기본: 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -1730,8 +1730,8 @@ Content-Type: application/json;charset=UTF-8
 |templateCode|	String|	X |	템플릿 코드|
 |templateName|	String|	X |	템플릿 이름|
 |templateStatus| String |	X | 템플릿 상태 코드|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 |템플릿 상태 코드| 설명|
 |---|---|
@@ -1849,7 +1849,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- categoryCode| String | 템플릿 카테고리 코드  |
 |-- createDate | String | 생성일자 |
 |-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ### 템플릿 수정 리스트 조회
 
@@ -1991,7 +1991,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- activated | Boolean | 활성화 여부 |
 |-- createDate | String | 생성일자 |
 |-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ## 대체 발송 관리
 ### SMS AppKey 등록

@@ -1,10 +1,10 @@
-## Notification > KakaoTalk Bizmessage > Sender > API v2.0 Guide
+## Notification > KakaoTalk Bizmessage > Sender > API v2.3 Guide
 
-## v2.0 API紹介
+## v2.3 API紹介
 #### 改善された点
-1. 카카오 채널 추가 시, 발급 받은 senderKey 필드로 API 호출이 되도록 변경 되었습니다.(plusFriendId 필드 대체)
-2. API uri가 변경 되었습니다.(/plus-friends -> /senders)
-3. 카카오 채널 그룹 기능이 추가 되었습니다.
+
+1. 발신프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
+2. 발신프로필 조회 API에 카카오톡 채널 스팸 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
 
 #### [API 도메인]
 
@@ -29,7 +29,7 @@
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/sender/categories
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender/categories
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -111,7 +111,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/senders
+POST  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -170,7 +170,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/sender/token
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender/token
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -228,7 +228,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.0/appkeys/{appkey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -277,7 +277,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/senders/{senderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -318,6 +318,8 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
          "alimtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
@@ -331,7 +333,10 @@ Content-Type: application/json;charset=UTF-8
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "createDate": String
+         "dormant": Boolean,
+         "block": Boolean,
+         "createDate": String,
+         "initialUserRestriction" : Boolean
     }
 }
 ```
@@ -352,6 +357,8 @@ Content-Type: application/json;charset=UTF-8
 | - kakaoStatusName         | String  | カカオプラスフレンドステータス名(正常、遮断)<br>statusがYSC02の場合、kakaoStatusName null値を持ちます。 |
 | - kakaoProfileStatus      | String  | カカオプラスフレンドプロフィールステータスコード<br>(A：有効化、B：遮断、C：無効化、D：削除E：削除処理中)<br>statusがYSC02の場合、kakaoProfileStatus null値を持ちます。 |
 | - kakaoProfileStatusName  | String  | カカオプラスフレンドプロフィールステータス名(有効化、無効化、遮断、削除処理中、削除)<br>statusがYSC02の場合、kakaoProfileStatusName null値を持ちます。 |
+|- profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+|- profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
 |- alimtalk|	Object|	お知らせトーク設定情報|
 |-- isResend | String  | 送信失敗設定(再送信)するかどうか                   |
 |-- resendSendNo | String  | 再送信時、tc-sms発信番号              |
@@ -363,7 +370,10 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo | String |	再送信時、tc-sms 080受信拒否番号 |
 |-- dailyMaxCount | Integer | カカともへのメッセージの一日最大送信件数<br>(値が0の場合、件数制限なし)    |
 |-- sentCount | Integer | カカともへのメッセージの一日送信件数<br>(値が0の場合、件数制限なし)       |
+|- dormant | Boolean |	発信プロフィール休眠するかどうか |
+|- block | Boolean |	発信プロフィールブロックするかどうか |
 | - createDate              | String  | 登録日時                            |
+| - initialUserRestriction | Boolean | 	최초 사용자 제한 여부                                                                                                          |
 
 ### Senderの照会
 #### リクエスト
@@ -371,7 +381,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/senders
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -420,6 +430,8 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
          "alimtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
@@ -433,7 +445,10 @@ Content-Type: application/json;charset=UTF-8
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "createDate": String
+         "dormant": Boolean,
+         "block": Boolean,
+         "createDate": String,
+         "initialUserRestriction" : Boolean
       }
    ],
    "totalCount": Integer
@@ -456,6 +471,8 @@ Content-Type: application/json;charset=UTF-8
 | - kakaoStatusName         | String  | カカオプラスフレンドステータス名(正常、遮断)<br>statusがYSC02の場合、kakaoStatusName null値を持ちます。 |
 | - kakaoProfileStatus      | String  | カカオプラスフレンドプロフィールステータスコード<br>(A：有効化、B：遮断、C：無効化、D：削除E：削除処理中)<br>statusがYSC02の場合、kakaoProfileStatus null値を持ちます。 |
 | - kakaoProfileStatusName  | String  | カカオプラスフレンドプロフィールステータス名(有効化、無効化、遮断、削除処理中、削除)<br>statusがYSC02の場合、kakaoProfileStatusName null値を持ちます。 |
+| - profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                            |
+| - profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                                           |
 |- alimtalk|	Object|	お知らせトーク設定情報|
 |-- isResend | String  | 送信失敗設定(再送信)するかどうか                   |
 |-- resendSendNo | String  | 再送信時、tc-sms発信番号              |
@@ -467,7 +484,10 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo | String |	再送信時、tc-sms 080受信拒否番号 |
 |-- dailyMaxCount | Integer | カカともへのメッセージの一日最大送信件数<br>(値が0の場合、件数制限なし)    |
 |-- sentCount | Integer | カカともへのメッセージの一日送信件数<br>(値が0の場合、件数制限なし)       |
+|- dormant | Boolean |	発信プロフィール休眠するかどうか |
+|- block | Boolean |	発信プロフィールブロックするかどうか |
 | - createDate              | String  | 登録日時                            |
+| - initialUserRestriction  | Boolean | 	최초 사용자 제한 여부                                                                                                          |
 | totalCount                | Integer | 総個数                               |
 
 ## Sender group
@@ -478,7 +498,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-GET  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}
+GET  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -547,7 +567,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-POST  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+POST  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -568,6 +588,8 @@ Content-Type: application/json;charset=UTF-8
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+
+* グループの最大メンバー数は5000人です。
 
 #### レスポンス
 ```
@@ -593,7 +615,7 @@ Content-Type: application/json;charset=UTF-8
 [URL]
 
 ```
-DELETE  /alimtalk/v2.0/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
+DELETE  /alimtalk/v2.3/appkeys/{appkey}/sender-groups/{groupSenderKey}/senders/{senderKey}
 Content-Type: application/json;charset=UTF-8
 ```
 

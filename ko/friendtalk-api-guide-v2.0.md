@@ -208,7 +208,7 @@ Content-Type: application/json;charset=UTF-8
 |resultCode| String |	X | 발송 결과(MRC01: 성공 MRC02: 실패 )	|
 |createUser| String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |pageNum|	Integer|	X|	페이지 번호(Default: 1)|
-|pageSize|	Integer|	X|	조회 건수(Default: 15, Max : 1000)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -270,7 +270,7 @@ Content-Type: application/json;charset=UTF-8
 |-- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -567,7 +567,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resultCodeName | String |	수신 결과 코드명 |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -719,7 +719,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- imageName | String |	이미지명(업로드한 파일명) |
 |-- wide | boolean |	와이드 이미지 여부 |
 |-- createDate | String |	생성 일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 * 이미지는 최근 등록한 순대로 정렬되어 응답합니다.
 
