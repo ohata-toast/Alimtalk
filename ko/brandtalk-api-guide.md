@@ -169,8 +169,8 @@ Content-Type: application/json;charset=UTF-8
 |recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( BRC01 -> 성공, BRC02 -> 실패 )	|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -233,7 +233,7 @@ Content-Type: application/json;charset=UTF-8
 |-- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```

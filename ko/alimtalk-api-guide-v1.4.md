@@ -308,7 +308,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or 2번 조건 필수
+[Query parameter] 1번 또는 2번 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -322,8 +322,8 @@ Content-Type: application/json;charset=UTF-8
 |recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -403,7 +403,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -817,7 +817,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or 2번 조건 필수
+[Query parameter] 1번 또는 2번 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
@@ -831,8 +831,8 @@ Content-Type: application/json;charset=UTF-8
 |recipientGroupingKey|	String|	X|	수신자 그룹핑 키 |
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -912,7 +912,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -1127,7 +1127,7 @@ Content-Type: application/json;charset=UTF-8
 |endUpdateDate|	String| O |	결과 업데이트 조회 종료 시간(yyyy-MM-dd HH:mm) |
 |alimtalkMessageType|	String| X |	알림톡 메시지 타입(NORMAL, AUTH) |
 |pageNum|	Integer|	X|	페이지 번호(기본: 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -1204,7 +1204,7 @@ Content-Type: application/json;charset=UTF-8
 |--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -1490,8 +1490,8 @@ Content-Type: application/json;charset=UTF-8
 |- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP) |
 |- senderKey | String |	발신키 |
 |- categoryCode | String |	카테고리 코드 |
-|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단, D:삭제)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
 |- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
@@ -1500,15 +1500,15 @@ Content-Type: application/json;charset=UTF-8
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
-|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- friendtalk|	Object|	친구톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
 |-- resendUnsubscribeNo | String |	재발송 시, tc-sms 080 수신 거부 번호 |
-|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- createDate | String |	등록 일자 |
 
 ### 플러스친구 리스트 조회
@@ -1537,14 +1537,14 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or 2번 조건 필수
+[Query parameter] 1번 또는 2번 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |plusFriendId|	String|	X | 플러스친구 ID |
-|status|	String|	X | 플러스친구 상태 코드 <br>(YSC02: 토큰 인증 대기중, YSC03: 정상 등록)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|status|	String|	X | 플러스친구 상태 코드 <br>(YSC02: 토큰 인증 대기 중, YSC03: 정상 등록)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -1599,8 +1599,8 @@ Content-Type: application/json;charset=UTF-8
 |- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP) |
 |- senderKey | String |	발신키 |
 |- categoryCode | String |	카테고리 코드 |
-|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단, D:삭제)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
 |- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단, 삭제)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
@@ -1609,17 +1609,17 @@ Content-Type: application/json;charset=UTF-8
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
-|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- friendtalk|	Object|	친구톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
 |-- resendUnsubscribeNo | String |	재발송 시, tc-sms 080 수신 거부 번호 |
-|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- createDate | String |	등록 일자 |
-|totalCount | Integer | 총 개수 |
+|totalCount | Integer | 총개수 |
 
 ## 템플릿
 
@@ -1914,8 +1914,8 @@ Content-Type: application/json;charset=UTF-8
 |templateCode|	String|	X |	템플릿 코드|
 |templateName|	String|	X |	템플릿 이름|
 |templateStatus| String |	X | 템플릿 상태 코드|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 |템플릿 상태 코드| 설명|
 |---|---|
@@ -2006,7 +2006,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- status| String | 템플릿 상태 |
 |-- statusName | String | 템플릿 상태명 |
 |-- createDate | String | 생성일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ### 템플릿 수정 리스트 조회
 
@@ -2121,7 +2121,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- statusName | String | 템플릿 상태명 |
 |-- activated | Boolean | 활성화 여부 |
 |-- createDate | String | 생성일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ## 대체 발송 관리
 ### SMS AppKey 등록

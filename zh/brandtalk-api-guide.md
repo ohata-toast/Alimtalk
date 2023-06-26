@@ -170,7 +170,7 @@ Content-Type: application/json;charset=UTF-8
 |messageStatus| String |    X | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled)   |
 |resultCode| String |   X | Delivery result(BRC01 -> Successful, BRC02 ->Failed)   |
 |pageNum|   Integer|    X|  Page number(default: 1)|
-|pageSize|  Integer|    X|  Number of queries(default: 15, max : 1000)|
+|pageSize|  Integer|    X|  Number of queries(default: 15, Max: 1000)|
 
 * Cannot query data requested for delivery which are dated before 90 days.
 * The maximum available days for delivery request is 30 days.

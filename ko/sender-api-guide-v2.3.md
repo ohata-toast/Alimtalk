@@ -2,8 +2,13 @@
 
 ## v2.3 API 소개
 #### 개선된 점
+<<<<<<< Updated upstream
 1. 발신 프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
 2. 발신 프로필 조회 API에 카카오톡 채널 스탬 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
+=======
+1. 발신프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
+2. 발신프로필 조회 API에 카카오톡 채널 스팸 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
+>>>>>>> Stashed changes
 
 #### [API 도메인]
 
@@ -230,7 +235,7 @@ Content-Type: application/json;charset=UTF-8
 |- plusFriendId | String |	플러스친구 ID |
 |- senderKey | String |	발신 키 |
 |- categoryCode | String |	카테고리 코드 |
-|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
 
 ### 발신 프로필 삭제
 #### 요청
@@ -259,8 +264,13 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
+<<<<<<< Updated upstream
 * 발신 프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제 됩니다.
 * 발신 프로필 삭제 시, 복구가 불가능합니다.
+=======
+* 발신프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제됩니다.
+* 발신프로필 삭제 시, 복구가 불가능합니다.
+>>>>>>> Stashed changes
 
 #### 응답
 ```
@@ -360,8 +370,8 @@ Content-Type: application/json;charset=UTF-8
 |- plusFriendId | String | 	플러스친구 ID                                                                                                              |
 |- senderKey | String | 	발신 키                                                                                                                  |
 |- categoryCode | String | 	카테고리 코드                                                                                                               |
-|- status | String | 	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록)                                                               |
-|- statusName | String | 	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록)                                                                                    |
+|- status | String | 	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록)                                                               |
+|- statusName | String | 	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록)                                                                                    |
 |- kakaoStatus | String | 	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다.                                     |
 |- kakaoStatusName | String | 	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다.                                             |
 |- kakaoProfileStatus | String | 	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
@@ -372,15 +382,15 @@ Content-Type: application/json;charset=UTF-8
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                       |
 |-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                   |
-|-- dailyMaxCount | Integer | 	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음)                                                                                 |
-|-- sentCount | Integer | 	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음)                                                                                    |
+|-- dailyMaxCount | Integer | 	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                 |
+|-- sentCount | Integer | 	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
 |- friendtalk|	Object| 	친구톡 설정 정보                                                                                                             |
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부                                                                                                       |
 |-- resendSendNo | String | 	재발송 시, tc-sms 발신 번호                                                                                                   |
 |-- resendUnsubscribeNo | String | 	재발송 시, tc-sms 080 수신 거부 번호                                                                                            |
-|-- dailyMaxCount | Integer | 	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음)                                                                                 |
-|-- sentCount | Integer | 	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음)                                                                                    |
+|-- dailyMaxCount | Integer | 	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                 |
+|-- sentCount | Integer | 	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                    |
 |- dormant | Boolean | 	발신프로필 휴면 여부                                                                                                           |
 |- block | Boolean | 	발신프로필 차단 여부                                                                                                           |
 |- createDate | String | 	등록 일자                                                                                                                 |
@@ -412,15 +422,15 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-[Query parameter] 1번 or 2번 조건 필수
+[Query parameter] 1번 또는 2번 조건 필수
 
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |plusFriendId|	String|	X | 플러스친구 ID |
 | senderKey | String | X | 발신 키 |
-|status|	String|	X | 플러스친구 상태 코드 <br>(YSC02: 토큰 인증 대기중, YSC03: 정상 등록)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|status|	String|	X | 플러스친구 상태 코드 <br>(YSC02: 토큰 인증 대기 중, YSC03: 정상 등록)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -474,12 +484,16 @@ Content-Type: application/json;charset=UTF-8
 |- resultCode|	Integer|	결과 코드|
 |- resultMessage|	String| 결과 메시지|
 |- isSuccessful|	Boolean| 성공 여부|
+<<<<<<< Updated upstream
 |senders|	Object|	발신 프로필 List|
+=======
+|senders|	Object|	발신프로필 목록|
+>>>>>>> Stashed changes
 |- plusFriendId | String |	플러스친구 ID |
 |- senderKey | String |	발신 키 |
 |- categoryCode | String |	카테고리 코드 |
-|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
-|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기중, 정상 등록) |
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
+|- statusName | String |	NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록) |
 |- kakaoStatus | String |	카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
 |- kakaoStatusName | String |	카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
 |- kakaoProfileStatus | String |	카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다.|
@@ -490,20 +504,20 @@ Content-Type: application/json;charset=UTF-8
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
-|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- friendtalk|	Object|	친구톡 설정 정보|
 |-- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
 |-- isResend | String | 대체 발송 설정(재발송) 여부|
 |-- resendSendNo | String |	재발송 시, tc-sms 발신 번호 |
 |-- resendUnsubscribeNo | String |	재발송 시, tc-sms 080 수신 거부 번호 |
-|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한없음) |
-|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한없음) |
+|-- dailyMaxCount | Integer |	친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+|-- sentCount | Integer |	친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
 |- dormant | Boolean |	발신프로필 휴면 여부 |
 |- block | Boolean |	발신프로필 차단 여부 |
 |- createDate | String |	등록 일자 |
 |- initialUserRestriction | Boolean | 	최초 사용자 제한 여부                                                                                                          |
-|totalCount | Integer | 총 개수 |
+|totalCount | Integer | 총개수 |
 
 ## 발신 프로필 그룹
 
@@ -568,8 +582,13 @@ Content-Type: application/json;charset=UTF-8
 |senderGroup|	Object|	발신 프로필 그룹 |
 |- groupName | String |	발신 프로필 그룹명 |
 |- senderKey | String |	발신 키 |
+<<<<<<< Updated upstream
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
 |- senders | List |	그룹에 속한 발신 프로필 List |
+=======
+|- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
+|- senders | List |	그룹에 속한 발신프로필 목록 |
+>>>>>>> Stashed changes
 |-- plusFriendId | String |	카카오톡 채널 검색용 ID |
 |-- senderKey | String |	발신 키 |
 |-- createDate | String | 그룹 등록 일자 |
