@@ -322,7 +322,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -409,8 +408,8 @@ Content-Type: application/json;charset=UTF-8
 | plusFriendId        | String  | X        | PlusFriend ID                                                |
 | senderKey | String | X | Sender key |
 | status              | String  | X        | Status code of PlusFriend(YSC02: Ready for token authenticated, YSC03: Normally registered) |
-|pageNum|	Integer|	X|	page number(Default : 1)|
-|pageSize|	Integer|	X|	page size(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	page number(Default: 1)|
+|pageSize|	Integer|	X|	page size(Default: 15, Max: 1000)|
 
 #### Response
 
@@ -432,7 +431,6 @@ Content-Type: application/json;charset=UTF-8
          "kakaoStatusName" : String,
          "kakaoProfileStatus" : String,
          "kakaoProfileStatusName" : String,
-         "createDate": String,
          "alimtalk": {  
                 "resendAppKey": String,
                 "isResend": Boolean,
@@ -447,7 +445,8 @@ Content-Type: application/json;charset=UTF-8
                 "resendUnsubscribeNo": String,
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
-         }
+         },
+         "createDate": String
       }
    ],
    "totalCount": Integer

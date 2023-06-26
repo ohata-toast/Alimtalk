@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2023. 06. 27.
+* [Console] 발신프로필 조회 시, 신규 필드 추가(v2.3)
+    * 카카오톡 채널 스팸 상태(profileSpamLevel), 카카오톡 메시지 스팸 상태(profileMessageSpamLevel) 필드가 추가되었습니다.
+
 ### 2023. 05. 30.
 * [Console] 알림톡/친구톡 신규 기능 추가(v2.3)
     * 알림톡 아이템리스트형, 톡비즈 플러그인, 비즈니스폼 버튼 타입, 바로연결, 대표링크 기능이 추가되었습니다.

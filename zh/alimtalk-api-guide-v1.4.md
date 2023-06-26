@@ -328,7 +328,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus        | String  | X                             | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled) |
 | resultCode           | String  | X                             | Delivery result(MRC01 -> Successful, MRC02 ->Failed)        |
 | pageNum              | Integer | X                             | Page number(default: 1)                                     |
-| pageSize             | Integer | X                             | Number of queries(default: 15, max : 1000)                  |
+| pageSize             | Integer | X                             | Number of queries(default: 15, Max: 1000)                  |
 
 * Cannot query data requested for delivery which are dated before 90 days.
 * The maximum available days for delivery request is 30 days.
@@ -829,7 +829,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus        | String  | X                             | Request status(COMPLETED -> successful, FAILED -> failed, CANCEL -> canceled ) |
 | resultCode           | String  | X                             | Delivery result(MRC01 -> successful, MRC02 -> failed )      |
 | pageNum              | Integer | X                             | Page number(default: 1)                                     |
-| pageSize             | Integer | X                             | Number of queries(default: 15, max : 1000)                  |
+| pageSize             | Integer | X                             | Number of queries(default: 15, Max: 1000)                  |
 
 * Delivery request data before 90 days cannot be queried.
 * Delivery can be requested within 30 days to the maximum.   
@@ -1124,7 +1124,7 @@ Content-Type: application/json;charset=UTF-8
 | endUpdateDate       | String  | O        | End date of querying result updates(yyyy-MM-dd HH:mm)   |
 | alimtalkMessageType | String  | X        | AlimTalk message type(NORMAL, AUTH)                     |
 | pageNum             | Integer | X        | Page number(default: 1)                                 |
-| pageSize            | Integer | X        | Number of queries(default: 15, max : 1000)              |
+| pageSize            | Integer | X        | Number of queries(default: 15, Max: 1000)              |
 
 #### Response
 ```
@@ -1818,7 +1818,7 @@ Content-Type: application/json;charset=UTF-8
 | templateName   | String  | X        | Template name                   |
 | templateStatus | String  | X        | Template status code            |
 | pageNum        | Integer | X        | Page number(default:1)         |
-| pageSize       | Integer | X        | Number of queries(default: 15, max : 1000) |
+| pageSize       | Integer | X        | Number of queries(default: 15, Max: 1000) |
 
 | Template Status Code | Description |
 | -------------------- | ----------- |

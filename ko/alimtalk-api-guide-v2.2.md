@@ -370,8 +370,8 @@ Content-Type: application/json;charset=UTF-8
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -463,7 +463,7 @@ Content-Type: application/json;charset=UTF-8
 |--- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -959,8 +959,8 @@ Content-Type: application/json;charset=UTF-8
 |messageStatus| String |	X | 요청 상태( COMPLETED -> 성공, FAILED -> 실패, CANCEL -> 취소 )	|
 |resultCode| String |	X | 발송 결과( MRC01 -> 성공 MRC02 -> 실패 )	|
 |createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 * 90일 이전 발송 요청 데이터는 조회되지 않습니다.
 * 발송 요청 일시의 범위는 최대 30일입니다.
@@ -1052,7 +1052,7 @@ Content-Type: application/json;charset=UTF-8
 |--- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |-- senderGroupingKey | String | 발신 그룹핑 키 |
 |-- recipientGroupingKey | String |	수신자 그룹핑 키 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 [예시]
 ```
@@ -1289,7 +1289,7 @@ Content-Type: application/json;charset=UTF-8
 |endUpdateDate|	String| O |	결과 업데이트 조회 종료 시간(yyyy-MM-dd HH:mm) |
 |alimtalkMessageType|	String| X |	알림톡 메시지 타입(NORMAL, AUTH) |
 |pageNum|	Integer|	X|	페이지 번호(기본: 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 #### 응답
 ```
@@ -1489,7 +1489,7 @@ curl -X GET \
 | -- statsId | String | 통계 ID |
 | -- createDate | String | 생성 날짜 |
 | -- createUser | String | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
-| - totalCount | Integer | 총 개수 |
+| - totalCount | Integer | 총개수 |
 
 
 ### 대량 발송 수신자 목록 조회
@@ -1581,7 +1581,7 @@ curl -X GET \
 | -- messageStatus | String | 메시지 상태 |
 | -- resultCode | String | 결과 코드 |
 | -- resultCodeName | String | 결과 코드 내용 |
-| - totalCount | Integer | 총 개수 |
+| - totalCount | Integer | 총개수 |
 
 ### 대량 발송 수신자 조회
 
@@ -2199,8 +2199,8 @@ Content-Type: application/json;charset=UTF-8
 |templateCode|	String|	X |	템플릿 코드|
 |templateName|	String|	X |	템플릿 이름|
 |templateStatus| String |	X | 템플릿 상태 코드|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15, Max : 1000)|
+|pageNum|	Integer|	X|	페이지 번호(Default: 1)|
+|pageSize|	Integer|	X|	조회 건수(Default: 15, Max: 1000)|
 
 |템플릿 상태 코드| 설명|
 |---|---|
@@ -2322,7 +2322,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- categoryCode| String | 템플릿 카테고리 코드  |
 |-- createDate | String | 생성일자 |
 |-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ### 템플릿 수정 리스트 조회
 
@@ -2468,7 +2468,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- activated | Boolean | 활성화 여부 |
 |-- createDate | String | 생성일자 |
 |-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총 개수 |
+|- totalCount | Integer | 총개수 |
 
 ### 템플릿 이미지 등록
 #### 요청
