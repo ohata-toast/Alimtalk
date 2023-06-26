@@ -2,13 +2,9 @@
 
 ## v2.3 API 소개
 #### 개선된 점
-<<<<<<< Updated upstream
-1. 발신 프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
-2. 발신 프로필 조회 API에 카카오톡 채널 스탬 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
-=======
+
 1. 발신프로필 조회 API에 최초 사용자 제한 상태 필드가 추가되었습니다.
 2. 발신프로필 조회 API에 카카오톡 채널 스팸 상태, 카카오톡 메시지 스팸 상태 필드가 추가되었습니다.
->>>>>>> Stashed changes
 
 #### [API 도메인]
 
@@ -264,13 +260,9 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
-<<<<<<< Updated upstream
-* 발신 프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제 됩니다.
-* 발신 프로필 삭제 시, 복구가 불가능합니다.
-=======
+
 * 발신프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제됩니다.
 * 발신프로필 삭제 시, 복구가 불가능합니다.
->>>>>>> Stashed changes
 
 #### 응답
 ```
@@ -484,11 +476,7 @@ Content-Type: application/json;charset=UTF-8
 |- resultCode|	Integer|	결과 코드|
 |- resultMessage|	String| 결과 메시지|
 |- isSuccessful|	Boolean| 성공 여부|
-<<<<<<< Updated upstream
-|senders|	Object|	발신 프로필 List|
-=======
 |senders|	Object|	발신프로필 목록|
->>>>>>> Stashed changes
 |- plusFriendId | String |	플러스친구 ID |
 |- senderKey | String |	발신 키 |
 |- categoryCode | String |	카테고리 코드 |
@@ -582,13 +570,10 @@ Content-Type: application/json;charset=UTF-8
 |senderGroup|	Object|	발신 프로필 그룹 |
 |- groupName | String |	발신 프로필 그룹명 |
 |- senderKey | String |	발신 키 |
-<<<<<<< Updated upstream
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기중, YSC03: 정상 등록) |
 |- senders | List |	그룹에 속한 발신 프로필 List |
-=======
 |- status | String |	NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
 |- senders | List |	그룹에 속한 발신프로필 목록 |
->>>>>>> Stashed changes
 |-- plusFriendId | String |	카카오톡 채널 검색용 ID |
 |-- senderKey | String |	발신 키 |
 |-- createDate | String | 그룹 등록 일자 |
