@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2023. 06. 27.
+* [Console]発信プロフィール照会時、新規フィールド追加(v2.3)
+    * カカオトークチャンネルスパム状態(profileSpamLevel)、カカオトークメッセージスパム状態(profileMessageSpamLevel)フィールドが追加されました。
+
 ### 2023. 05. 30.
 * [Console]本人認証手続きの改善
     * KTBコンソール使用時、同一組織内で一度だけ本人認証を行うように改善しました。

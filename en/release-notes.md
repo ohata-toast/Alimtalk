@@ -1,4 +1,7 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### June 27, 2023
+* [Console] Added a new field when querying sender profiles (v2.3)
+    * Added KakaoTalk channel spam status (profileSpamLevel) and KakaoTalk message spam status (profileMessageSpamLevel) fields.
 
 ### May 30, 2023
 * [Console] Added New Features for AlimTalk/FriendTalk(v2.3)
