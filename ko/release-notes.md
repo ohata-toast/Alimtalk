@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2023. 07. 25.
+* [Console] 파일 업로드를 이용한 템플릿 등록 기능에 신규 필드 추가(v2.3)
+    * 파일 업로드를 이용한 템플릿 등록 시 알림톡 아이템리스트, 바로 연결, 대표 링크 등의 신규 필드들이 적용될 수 있도록 개선하였습니다.
+
 ### 2023. 06. 27.
 * [Console] 발신프로필 조회 시, 신규 필드 추가(v2.3)
     * 카카오톡 채널 스팸 상태(profileSpamLevel), 카카오톡 메시지 스팸 상태(profileMessageSpamLevel) 필드가 추가되었습니다.
