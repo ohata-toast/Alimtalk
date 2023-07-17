@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### July 25, 2023
+* [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
+    * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
+
 ### June 27, 2023
 * [Console] Added a new field when querying sender profiles (v2.3)
     * Added KakaoTalk channel spam status (profileSpamLevel) and KakaoTalk message spam status (profileMessageSpamLevel) fields.
