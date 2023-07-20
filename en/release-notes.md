@@ -2,6 +2,11 @@
 ### July 25, 2023
 * [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
     * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
+* [Console] Improved the identity verification process
+    * Improved so that, when identity verification is rejected or requested again, users can change business registration certificates registered in the organization.
+    * Added the attachment field when verifying identities.
+* [Console] Improved sender number registration process
+    * Added the attachment field when registering sender numbers.
 
 ### June 27, 2023
 * [Console] Added a new field when querying sender profiles (v2.3)
