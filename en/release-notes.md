@@ -5,8 +5,6 @@
 * [Console] Improved the identity verification process
     * Improved so that, when identity verification is rejected or requested again, users can change business registration certificates registered in the organization.
     * Added the attachment field when verifying identities.
-* [Console] Improved sender number registration process
-    * Added the attachment field when registering sender numbers.
 
 ### June 27, 2023
 * [Console] Added a new field when querying sender profiles (v2.3)
@@ -18,7 +16,6 @@
     * Added FriendTalk wide item list, carousel feed, coupon, and business form button features.
 * [Console] Improved the identity verification process
     * Improved so that you only have to authenticate yourself once within the same organization on the KTB console.
-
 
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
