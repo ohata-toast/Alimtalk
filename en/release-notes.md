@@ -1,4 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### July 25, 2023
+* [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
+    * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
+* [Console] Improved the identity verification process
+    * Improved so that, when identity verification is rejected or requested again, users can change business registration certificates registered in the organization.
+    * Added the attachment field when verifying identities.
+
 ### June 27, 2023
 * [Console] Added a new field when querying sender profiles (v2.3)
     * Added KakaoTalk channel spam status (profileSpamLevel) and KakaoTalk message spam status (profileMessageSpamLevel) fields.
@@ -9,7 +16,6 @@
     * Added FriendTalk wide item list, carousel feed, coupon, and business form button features.
 * [Console] Improved the identity verification process
     * Improved so that you only have to authenticate yourself once within the same organization on the KTB console.
-
 
 ### February 28, 2023
 * [Console] Improved displaying the total number of delivery results
