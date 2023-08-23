@@ -1,4 +1,10 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### August 29, 2023
+* [API] Added a webhook field for message sending result code update
+    * Added the recipientGroupingKey and senderGroupingKey fields to the message sending result code update webhook.
+* [Console] Improved display of the total number of sending result views
+    * When the sending results exceeded 100,000, the total number is shown as '9,999+' (the limit previously set to 10,000)
+    
 ### July 25, 2023
 * [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
     * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
