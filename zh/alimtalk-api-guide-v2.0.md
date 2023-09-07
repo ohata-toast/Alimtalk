@@ -50,7 +50,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Note](./sender-console-guide/#x-secret-key)] |
 
 [Request body]
 
@@ -181,7 +181,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -332,7 +332,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter] No. 1 or(2, 3) is conditionally required
 
@@ -481,7 +481,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Example]
 ```
@@ -616,7 +616,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request body]
 
@@ -741,7 +741,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -888,7 +888,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter] No. 1 or(2, 3) is conditionally required
 
@@ -1037,7 +1037,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Example]
 ```
@@ -1166,7 +1166,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter]
 
@@ -1224,7 +1224,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter]
 
@@ -1244,8 +1244,7 @@ Content-Type: application/json;charset=UTF-8
       "resultMessage" :  String,
       "isSuccessful" :  boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messages" : [
     {
       "requestId" :  String,
       "recipientSeq" : Integer,
@@ -1260,9 +1259,7 @@ Content-Type: application/json;charset=UTF-8
       "resultCode" :  String,
       "resultCodeName" : String
     }
-    ],
-    "totalCount" :  Integer
-  }
+  ]
 }
 ```
 
@@ -1272,20 +1269,19 @@ Content-Type: application/json;charset=UTF-8
 | - resultCode                | Integer | Result code                                                  |
 | - resultMessage             | String  | Result message                                               |
 | - isSuccessful              | Boolean | Successful or not                                            |
-| messageSearchResultResponse | Object  | Body area                                                    |
-| - messages                  | List    | List of messages                                             |
-| -- requestId                | String  | Request ID                                                   |
-| -- recipientSeq             | Integer | Recipient sequence number                                    |
-| -- requestDate              | String  | Date and time of request                                     |
-| -- createDate               | String  | Date and time of creation                                    |
-| -- receiveDate              | String  | Date and time of receiving                                   |
-| -- resendStatus             | String  | Status code of resending                                     |
-| -- resendStatusName         | String  | Status code name of resending                                |
-| -- resendResultCode         | String  | Result code of resending to sms                              |
-| -- resendRequestId          | String  | RequestId of resending to sms                                |
-| -- messageStatus            | String  | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled) |
-| -- resultCode               | String  | Result code of receiving                                     |
-| -- resultCodeName           | String  | Result code name of receiving                                |
+|  messages                  | List    | List of messages                                             |
+| - requestId                | String  | Request ID                                                   |
+| - recipientSeq             | Integer | Recipient sequence number                                    |
+| - requestDate              | String  | Date and time of request                                     |
+| - createDate               | String  | Date and time of creation                                    |
+| - receiveDate              | String  | Date and time of receiving                                   |
+| - resendStatus             | String  | Status code of resending                                     |
+| - resendStatusName         | String  | Status code name of resending                                |
+| - resendResultCode         | String  | Result code of resending to sms                              |
+| - resendRequestId          | String  | RequestId of resending to sms                                |
+| - messageStatus            | String  | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled) |
+| - resultCode               | String  | Result code of receiving                                     |
+| - resultCodeName           | String  | Result code name of receiving                                |
 
 [Example]
 
@@ -1318,7 +1314,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 #### Response
 ```
@@ -1387,7 +1383,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -1484,7 +1480,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -1623,7 +1619,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -1680,7 +1676,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console.  |
+|X-Secret-Key|	String| O | Can be created on console. [[Note](./sender-console-guide/#x-secret-key)] |
 
 [Request Body]
 
@@ -1740,7 +1736,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Query parameter]
 
@@ -1757,7 +1753,7 @@ Content-Type: application/json;charset=UTF-8
 | TSC01                | Requested   |
 | TSC02                | Inspecting  |
 | TSC03                | Approved    |
-| TSC04                | Returned    |
+| TSC04                | Rejected    |
 
 [Example]
 
@@ -1859,7 +1855,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List    | Attachment                                                   |
 | ---- originalFileName | String | Attachment file name                                          |
 | ---- filePath         | String | Attachment file path                                          |
-| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- createDate        | String  | Date and time of creation                                    |
@@ -1892,7 +1888,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Value        | Type   | Required | Description                                                  |
 | ------------ | ------ | -------- | ------------------------------------------------------------ |
-| X-Secret-Key | String | O        | Can be created on console.  |
+| X-Secret-Key | String | O        | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
 
 [Example]
 ```
@@ -1994,7 +1990,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List    | Attachment                                                   |
 | ---- originalFileName | String | Attachment file name                                          |
 | ---- filePath         | String | Attachment file path                                          |
-| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- activated         | Boolean | activated or not                                             |
