@@ -1299,8 +1299,7 @@ Content-Type: application/json;charset=UTF-8
       "resultMessage" :  String,
       "isSuccessful" :  boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messages" : [
     {
       "requestId" :  String,
       "recipientSeq" : Integer,
@@ -1315,9 +1314,7 @@ Content-Type: application/json;charset=UTF-8
       "resultCode" :  String,
       "resultCodeName" : String
     }
-    ],
-    "totalCount" :  Integer
-  }
+  ]
 }
 ```
 

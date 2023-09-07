@@ -1244,8 +1244,7 @@ Content-Type: application/json;charset=UTF-8
       "resultMessage" :  String,
       "isSuccessful" :  boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messages" : [
     {
       "requestId" :  String,
       "recipientSeq" : Integer,
@@ -1260,9 +1259,7 @@ Content-Type: application/json;charset=UTF-8
       "resultCode" :  String,
       "resultCodeName" : String
     }
-    ],
-    "totalCount" :  Integer
-  }
+  ]
 }
 ```
 
@@ -1272,20 +1269,19 @@ Content-Type: application/json;charset=UTF-8
 | - resultCode                | Integer | Result code                                                  |
 | - resultMessage             | String  | Result message                                               |
 | - isSuccessful              | Boolean | Successful or not                                            |
-| messageSearchResultResponse | Object  | Body area                                                    |
-| - messages                  | List    | List of messages                                             |
-| -- requestId                | String  | Request ID                                                   |
-| -- recipientSeq             | Integer | Recipient sequence number                                    |
-| -- requestDate              | String  | Date and time of request                                     |
-| -- createDate               | String  | Date and time of creation                                    |
-| -- receiveDate              | String  | Date and time of receiving                                   |
-| -- resendStatus             | String  | Status code of resending                                     |
-| -- resendStatusName         | String  | Status code name of resending                                |
-| -- resendResultCode         | String  | Result code of resending to sms                              |
-| -- resendRequestId          | String  | RequestId of resending to sms                                |
-| -- messageStatus            | String  | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled) |
-| -- resultCode               | String  | Result code of receiving                                     |
-| -- resultCodeName           | String  | Result code name of receiving                                |
+|  messages                  | List    | List of messages                                             |
+| - requestId                | String  | Request ID                                                   |
+| - recipientSeq             | Integer | Recipient sequence number                                    |
+| - requestDate              | String  | Date and time of request                                     |
+| - createDate               | String  | Date and time of creation                                    |
+| - receiveDate              | String  | Date and time of receiving                                   |
+| - resendStatus             | String  | Status code of resending                                     |
+| - resendStatusName         | String  | Status code name of resending                                |
+| - resendResultCode         | String  | Result code of resending to sms                              |
+| - resendRequestId          | String  | RequestId of resending to sms                                |
+| - messageStatus            | String  | Request status(COMPLETED -> Successful, FAILED -> Failed, CANCEL -> Canceled) |
+| - resultCode               | String  | Result code of receiving                                     |
+| - resultCodeName           | String  | Result code name of receiving                                |
 
 [Example]
 

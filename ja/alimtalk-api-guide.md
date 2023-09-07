@@ -1313,40 +1313,22 @@ Content-Type: application/json;charset=UTF-8
       "resultMessage" :  String,
       "isSuccessful" :  boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messages" : [
     {
       "requestId" :  String,
       "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
       "requestDate" :  String,
+      "createDate" :  String,
       "receiveDate" : String,
       "resendStatus" :  String,
       "resendStatusName" :  String,
+      "resendResultCode" :  String,
+      "resendRequestId" :  String,
       "messageStatus" :  String,
       "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
-        {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
-          "linkPc": String,
-          "schemeIos": String,
-          "schemeAndroid": String
-        }
-      ],
-      "senderGroupingKey": String,
-      "recipientGroupingKey": String
+      "resultCodeName" : String
     }
-    ],
-    "totalCount" :  Integer
-  }
+  ]
 }
 ```
 
@@ -1356,33 +1338,19 @@ Content-Type: application/json;charset=UTF-8
 | - resultCode                | Integer | 結果コード                            |
 | - resultMessage             | String  | 結果メッセージ                           |
 | - isSuccessful              | Boolean | 成否                             |
-| messageSearchResultResponse | Object  | 本文領域                            |
-| - messages                  | List    | メッセージリスト                           |
-| -- requestId                | String  | リクエストID                                    |
-| -- recipientSeq             | Integer | 受信者シーケンス番号                       |
-| -- plusFriendId             | String  | プラスフレンドID                                 |
-| -- senderKey                | String  | 発信キー                                  |
-| -- templateCode             | String  | テンプレートコード                           |
-| -- recipientNo              | String  | 受信番号                            |
-| -- content                  | String  | 本文                               |
-| -- requestDate              | String  | リクエスト日時                            |
-| -- receiveDate              | String  | 受信日時                            |
-| -- resendStatus             | String  | 再送信ステータスコード                        |
-| -- resendStatusName         | String  | 再送信ステータスコード名                        |
-| -- messageStatus            | String  | リクエストステータス(COMPLETED -> 成功、FAILED -> 失敗、CANCEL -> キャンセル) |
-| -- resultCode               | String  | 受信結果コード                         |
-| -- resultCodeName           | String  | 受信結果コード名                         |
-| -- buttons                  | List    | ボタンリスト                            |
-| --- ordering                | Integer | ボタン順序                            |
-| --- type                    | String  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |
-| --- name                    | String  | ボタン名                            |
-| --- linkMo                  | String  | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| --- linkPc                  | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
-| --- schemeIos               | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| --- schemeAndroid           | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- senderGroupingKey        | String  | 発信グルーピングキー                            |
-| -- recipientGroupingKey     | String  | 受信者グルーピングキー                           |
-| - totalCount                | Integer | 総個数                              |
+| messages                  | List    | メッセージリスト                           |
+| - requestId                | String  | リクエストID                                    |
+| - recipientSeq             | Integer | 受信者シーケンス番号                       |
+| - requestDate              | String  | リクエスト日時                            |
+| - createDate               | String  | 作成日時                            |
+| - receiveDate              | String  | 受信日時                            |
+| - resendStatus             | String  | 再送信ステータスコード                        |
+| - resendStatusName         | String  | 再送信ステータスコード名                        |
+| - resendResultCode         | String  | 再送結果コード[SMS結果コード](https://docs.toast.com/ja/Notification/SMS/ja/error-code/#api)                        |
+| - resendRequestId          | String  | 再送SMSリクエストID                        |
+| - messageStatus            | String  | リクエストステータス(COMPLETED -> 成功、FAILED -> 失敗、CANCEL -> キャンセル) |
+| - resultCode               | String  | 受信結果コード                         |
+| - resultCodeName           | String  | 受信結果コード名                         |
 
 [例]
 ```
