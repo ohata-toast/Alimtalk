@@ -1,4 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### September 26, 2023
+* [Console] Changed the fixed text when adding a Alimtalk channel
+    * (As-Is) Add a channel and receive relevant ads and marketing messages via KakaoTalk
+    * (To-Be) Add a channel and receive relevant marketing messages via KakaoTalk
+* [Console] Display the reason for personal verification rejection
+    * Improved to show the reason for rejection in the form of a tooltip on the Verification tab.
+
 ### August 29, 2023
 * [API] Added a webhook field for message sending result code update
     * Added the recipientGroupingKey and senderGroupingKey fields to the message sending result code update webhook.
