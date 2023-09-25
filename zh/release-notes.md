@@ -1,20 +1,27 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### September 26, 2023
+* [Console] Changed the fixed text when adding a Alimtalk channel
+    * (As-Is) Add a channel and receive relevant ads and marketing messages via KakaoTalk
+    * (To-Be) Add a channel and receive relevant marketing messages via KakaoTalk
+* [Console] Display the reason for personal verification rejection
+    * Improved to show the reason for rejection in the form of a tooltip on the Verification tab.
+
 ### August 29, 2023
 * [API] Added a webhook field for message sending result code update
     * Added the recipientGroupingKey and senderGroupingKey fields to the message sending result code update webhook.
 * [Console] Improved display of the total number of sending result views
-    * When the sending results exceeded 100,000, the total number is shown as '9,999+' (the limit previously set to 10,000)
+    * When the sending results exceeded 100,000, the total number is shown as '99,999+' (the limit previously set to 10,000)
 
 ### July 25, 2023
 * [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
-  * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
+    * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
 * [Console] Improved the identity verification process
-  * Improved so that, when identity verification is rejected or requested again, users can change business registration certificates registered in the organization.
-  * Added the attachment field when verifying identities.
+    * Improved so that, when identity verification is rejected or requested again, users can change business registration certificates registered in the organization.
+    * Added the attachment field when verifying identities.
 
 ### June 27, 2023
 * [Console] Added a new field when querying sender profiles (v2.3)
-  * Added KakaoTalk channel spam status (profileSpamLevel) and KakaoTalk message spam status (profileMessageSpamLevel) fields.
+    * Added KakaoTalk channel spam status (profileSpamLevel) and KakaoTalk message spam status (profileMessageSpamLevel) fields.
 
 ### May 30, 2023
 * [Console] Improved the identity verification process
