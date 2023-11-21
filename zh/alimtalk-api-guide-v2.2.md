@@ -1674,11 +1674,7 @@ curl -X GET \
                 "chatEvent": String
                 "target": String
             }
-        ],
-        "messageOption": {
-          "price": Integer,
-          "currencyType": String
-        }
+        ]
     }
 }
 ```
@@ -1723,9 +1719,6 @@ curl -X GET \
 | -- chatExtra | String | BC: Meta information to be delivered when switching to consultation talk<br/> BT: Meta information to be delivered when switching to bot |
 | -- chatEvent | String | BT: Bot event name to connect when switching to bot |
 | -- target|    String| In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-| - messageOption | Boolean | Message Option |
-|-- price | Integer |   Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement) |
-|-- currencyType | String | Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 
 ## Templates
 
