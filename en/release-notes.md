@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### November 28, 2023
+* [API] Changed the limit on the number of FriendTalk wide image buttons
+    * (AS-IS) Maximum 1 button when sending a FriendTalk wide image
+    * (To-BE) Maximum 2 buttons when sending a FriendTalk wide image
+
 ### September 26, 2023
 * [Console] Changed the fixed text when adding a Alimtalk channel
     * (As-Is) Add a channel and receive relevant ads and marketing messages via KakaoTalk
