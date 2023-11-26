@@ -98,42 +98,42 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|senderKey|	String|	O | 발신 키(40자) |
-|templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
-|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
-|senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
-|createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
-|recipientList|	List|	O|	수신자 리스트(최대 1000명) |
-|- recipientNo|	String|	O|	수신번호(최대 15자) |
-|- templateParameter|	Object|	X|	템플릿 파라미터<br>(템플릿에 치환할 변수 포함 시, 필수) |
-|-- key|	String|	X |	치환 키(#{key})|
-|-- value| String |	X |	치환 키에 매핑되는 Value값|
-|- resendParameter|	Object|	X| 대체 발송 정보 |
-|-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 대체 발송됩니다. |
-|-- resendType|	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
-|-- resendTitle|	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 대체 발송됩니다.) |
-|-- resendContent|	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 대체 발송됩니다.) |
-|-- resendSendNo | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
-|- buttons|	List|	X| 버튼 추가 정보 |
-|-- ordering            | Integer  | X        |	버튼 순서(버튼이 있는 경우 필수)|
-|-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-|-- chatEvent|	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-|-- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
-|-- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
-|-- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
-|-- target|	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- quickReplies|	List|	X| 바로연결 정보 |
-|-- ordering            | Integer  | X        |	바로연결 순서(바로연결이 있는 경우 필수)|
-|-- chatExtra|	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 시, 전달할 메타정보 |
-|-- chatEvent|	String|	X| BT(봇 전환) 타입 시, 연결할 봇 이벤트명 |
-|-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
-|messageOption | Object |	X | 메시지 옵션 |
-|- price | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
-|- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
-| statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
+| 이름                     |	타입|	필수|	설명|
+|------------------------|---|---|---|
+| senderKey              |	String|	O | 발신 키(40자) |
+| templateCode           |	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
+| requestDate            | String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
+| senderGroupingKey      | String | X| 발신 그룹핑 키(최대 100자) |
+| createUser             | String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
+| recipientList          |	List|	O|	수신자 리스트(최대 1000명) |
+| - recipientNo          |	String|	O|	수신번호(최대 15자) |
+| - templateParameter    |	Object|	X|	템플릿 파라미터<br>(템플릿에 치환할 변수 포함 시, 필수) |
+| -- key                 |	String|	X |	치환 키(#{key})|
+| -- value               | String |	X |	치환 키에 매핑되는 Value값|
+| - resendParameter      |	Object|	X| 대체 발송 정보 |
+| -- isResend            |	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 대체 발송됩니다. |
+| -- resendType          |	String|	X|	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다. |
+| -- resendTitle         |	String|	X|	LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 대체 발송됩니다.) |
+| -- resendContent       |	String|	X|	대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 대체 발송됩니다.) |
+| -- resendSendNo        | String| X| 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
+| - buttons              |	List|	X| 버튼 추가 정보 |
+| -- ordering            | Integer  | X        |	버튼 순서(버튼이 있는 경우 필수)|
+| -- chatExtra           |	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
+| -- chatEvent           |	String|	X| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- relayId             |	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
+| -- oneClickId          |	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+| -- productId           |	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+| -- target              |	String|	X |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - quickReplies         |	List|	X| 바로연결 정보 |
+| -- ordering            | Integer  | X        |	바로연결 순서(바로연결이 있는 경우 필수)|
+| -- chatExtra           |	String|	X| BC(상담톡 전환) / BT(봇 전환) 타입 시, 전달할 메타정보 |
+| -- chatEvent           |	String|	X| BT(봇 전환) 타입 시, 연결할 봇 이벤트명 |
+| -- target              |	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - recipientGroupingKey |	String|	X|	수신자 그룹핑 키(최대 100자) |
+| messageOption          | Object |	X | 메시지 옵션 |
+| - price                | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
+| - currencyType         | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
+| statsId                | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
 * <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
@@ -258,7 +258,7 @@ Content-Type: application/json;charset=UTF-8
                     "schemeAndroid": String,
                     "chatExtra": String,
                     "chatEvent": String,
-                    "bizFormId": String,
+                    "bizFormId": Integer,
                     "pluginId": String,
                     "relayId": String,
                     "oneClickId": String,
@@ -277,7 +277,7 @@ Content-Type: application/json;charset=UTF-8
                     "schemeAndroid": String,
                     "chatExtra": String,
                     "chatEvent": String,
-                    "bizFormId": String,
+                    "bizFormId": Integer,
                     "target": String
                 }
             ],
@@ -351,7 +351,7 @@ Content-Type: application/json;charset=UTF-8
 |-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
 |-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
 |-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-- pluginId|	String|	X |	플러그인 ID(최대 24자) |
+|-- bizFormId|	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
 |-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- resendParameter|	Object|	X| 대체 발송 정보 |
 |-- isResend|	boolean|	X|	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 대체 발송됩니다. |
@@ -634,7 +634,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "schemeAndroid": String,
           "chatExtra": String,
           "chatEvent": String,
-          "bizFormId": String,
+          "bizFormId": Integer,
           "pluginId": String,
           "relayId": String,
           "oneClickId": String,
@@ -653,7 +653,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "schemeAndroid": String,
           "chatExtra": String,
           "chatEvent": String,
-          "bizFormId": String,
+          "bizFormId": Integer,
           "target": String
           }
       ],
@@ -685,23 +685,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- templateSubtitle | String | 템플릿 보조 문구 |
 |- templateExtra | String | 템플릿 부가 내용 |
 |- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-|- templateHeader| String| X| 템플릿 헤더(최대 16자) |
-|- templateItem | Object | X| 아이템 |
-|-- list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(최대 23자) |
-|-- summary | Object | X | 아이템 요약 정보 |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-|- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|--- title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-|--- description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-|--- imageUrl | String | X | 섬네일 이미지 주소 |
-|- templateRepresentLink | Object | X| 대표 링크 |
-|-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
-|-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-|-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
+|- templateHeader| String| 템플릿 헤더(최대 16자) |
+|- templateItem | Object | 아이템 |
+|-- list | List | 아이템 리스트(최소 2개, 최대 10개) |
+|--- title | String | 타이틀(최대 6자) |
+|--- description | String | 디스크립션(최대 23자) |
+|-- summary | Object | 아이템 요약 정보 |
+|--- title | String | 타이틀(최대 6자) |
+|--- description | String | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
+|- templateItemHighlight | Object | 아이템 하이라이트 |
+|--- title | String | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
+|--- description | String | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
+|--- imageUrl | String | 섬네일 이미지 주소 |
+|- templateRepresentLink | Object | 대표 링크 |
+|-- linkMo| String |	모바일 웹 링크(최대 500자)|
+|-- linkPc | String |	PC 웹 링크(최대 500자) |
+|-- schemeIos | String |	iOS 앱 링크(최대 500자) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(최대 500자) |
 |- requestDate | String |	요청 일시 |
 |- receiveDate | String |	수신 일시 |
 |- createDate | String | 등록 일시 |
@@ -715,7 +715,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
-|-- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+|-- type| String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
 |-- name | String |	버튼 이름 |
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
@@ -723,22 +723,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
 |-- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
 |-- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-|-- bizFormId|	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
-|-- pluginId|	String|	X |	플러그인 ID(최대 24자) |
-|-- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
-|-- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
-|-- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+|-- bizFormId|	Integer|	비즈니스폼 ID(BF 타입일 경우 필수) |
+|-- pluginId|	String|	플러그인 ID(최대 24자) |
+|-- relayId|	String|	플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
+|-- oneClickId|	String| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+|-- productId|	String| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
 |-- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-|- quickReplies|	List |	X | 바로연결 리스트(최대 5개) |
-|-- ordering|	Integer|	X |	바로연결 순서(바로연결이 있는 경우 필수)|
-|-- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
-|-- name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
-|-- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
-|-- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-- pluginId|	String|	X |	플러그인 ID(최대 24자) |
-|-- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+|- quickReplies|	List |	바로연결 리스트(최대 5개) |
+|-- ordering|	Integer|	바로연결 순서(바로연결이 있는 경우 필수)|
+|-- type| String |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+|-- name| String |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
+|-- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+|-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+|-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+|-- pluginId|	String|	플러그인 ID(최대 24자) |
+|-- target|	String|	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 |- messageOption | Object |	메시지 옵션 |
 |-- price | Integer |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
 |-- currencyType | String |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
@@ -1107,10 +1107,6 @@ curl -X GET \
         "masterStatusCode": String,
         "content": String,
         "fileId": String,
-        "templateExtra": String,
-        "templateAd": String,
-        "templateTitle": String,
-        "templateSubtitle": String,
         "autoSendYn": String,
         "statsId": String,
         "createDate": String,
@@ -1140,10 +1136,6 @@ curl -X GET \
 | -- content | String | 내용 |
 | -- fileId | String | 첨부 파일 ID |
 | -- templateCode |	String | 템플릿 코드(최대 20자) |
-| -- templateExtra | String | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-| -- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-| -- tempalteTitle| String | 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-| -- templateSubtitle| String | 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
 | -- autoSendYn | String | 자동 발송 여부 |
 | -- statsId | String | 통계 ID |
 | -- createDate | String | 생성 날짜 |
@@ -1354,7 +1346,7 @@ curl -X GET \
             "schemeAndroid": String,
             "chatExtra": String,
             "chatEvent": String,
-            "bizFormId": String,
+            "bizFormId": Integer,
             "pluginId": String,
             "relayId": String,
             "oneClickId": String,
@@ -1373,93 +1365,86 @@ curl -X GET \
             "schemeAndroid": String,
             "chatExtra": String,
             "chatEvent": String,
-            "bizFormId": String,
+            "bizFormId": Integer,
             "target": String
             }
-        ],
-        "messageOption": {
-          "price": Integer,
-          "currencyType": String
-        }
+        ]
     }
 }
 ```
 
-| 이름 |	타입|	설명|
-|---|---|---|
-| header | Object |	헤더 영역 |
-| - resultCode |	Integer |	결과 코드 |
-| - resultMessage |	String | 결과 메시지 |
-| - isSuccessful |	Boolean | 성공 여부 |
-| body | Object | 본문 영역 |
-| - requestId | String | 요청 ID |
-| - recipientSeq | String | 수신자 시퀀스 번호 |
-| - plusFriendId | String | 플러스 친구 ID |
-| - senderKey | String | 전송자 ID |
-| - templateCode |	String | 템플릿 코드(최대 20자) |
-| - recipientNo | String | 수신 번호 |
-| - content | String | 내용 |
-| - tempalteTitle| String | 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-| - templateSubtitle| String | 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
-| - templateExtra | String | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-| - templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-| - templateHeader| String| X| 템플릿 헤더(최대 16자) |
-| - templateItem | Object | X| 아이템 |
-| -- list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-| --- title | String | X | 타이틀(최대 6자) |
-| --- description | String | X | 디스크립션(최대 23자) |
-| -- summary | Object | X | 아이템 요약 정보 |
-| --- title | String | X | 타이틀(최대 6자) |
-| --- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-| - templateItemHighlight | Object | X| 아이템 하이라이트 |
-| --- title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-| --- description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-| --- imageUrl | String | X | 섬네일 이미지 주소 |
-| - templateRepresentLink | Object | X| 대표 링크 |
-| -- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| -- linkPc | String |	X |PC 웹 링크(최대 500자) |
-| -- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-| -- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
-| - requestDate | String | 요청 날짜 |
-| - receiveDate | String | 수신 날짜 |
-| - createDate | String | 생성 날짜 |
-| - resendStatus | String | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
-| - resendStatusName | String | 대체 발송 상태명 |
-| - resendResultCode | String | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api) |
-| - resendRequestId | String | 대체 발송 요청 ID |
-| - messageStatus | String | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
-| - resultCode | String | 결과 상태 코드 |
-| - resultCodeName | String | 결과 상태명 |
-| - createUser | String | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
-| - buttons | List |	버튼 리스트 |
-| -- ordering | Integer |	버튼 순서 |
-| -- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
-| -- name | String |	버튼 이름 |
-| -- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-| -- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
-| -- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-| -- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-| -- chatExtra|	String|	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent|	String| BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- bizFormId|	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
-| -- pluginId|	String|	X |	플러그인 ID(최대 24자) |
-| -- relayId|	String|	X| 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
-| -- oneClickId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
-| -- productId|	String|	X| 원클릭 결제 플러그인에서 사용하는 결제 정보 |
-| -- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - quickReplies|	List |	X | 바로연결 리스트(최대 5개) |
-| -- ordering|	Integer|	X |	바로연결 순서(바로연결이 있는 경우 필수)|
-| -- type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
-| -- name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
-| -- linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-| -- linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
-| -- schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-| -- schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-| -- pluginId|	String|	X |	플러그인 ID(최대 24자) |
-| -- target|	String|	X |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - messageOption | Boolean | 메시지 옵션 |
-| -- price | Integer |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
-| -- currencyType | String |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
+| 이름 | 	타입       |	설명|
+|---|-----------|---|
+| header | Object    |	헤더 영역 |
+| - resultCode | 	Integer  |	결과 코드 |
+| - resultMessage | 	String   | 결과 메시지 |
+| - isSuccessful | 	Boolean  | 성공 여부 |
+| body | Object    | 본문 영역 |
+| - requestId | String    | 요청 ID |
+| - recipientSeq | String    | 수신자 시퀀스 번호 |
+| - plusFriendId | String    | 플러스 친구 ID |
+| - senderKey | String    | 전송자 ID |
+| - templateCode | 	String   | 템플릿 코드(최대 20자) |
+| - recipientNo | String    | 수신 번호 |
+| - content | String    | 내용 |
+| - tempalteTitle| String    | 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
+| - templateSubtitle| String    | 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
+| - templateExtra | String    | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
+| - templateAd | String    | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
+| - templateHeader| String    | 템플릿 헤더(최대 16자) |
+| - templateItem | Object    | 아이템 |
+| -- list | List      | 아이템 리스트(최소 2개, 최대 10개) |
+| --- title | String    | 타이틀(최대 6자) |
+| --- description | String    | 디스크립션(최대 23자) |
+| -- summary | Object    | 아이템 요약 정보 |
+| --- title | String    | 타이틀(최대 6자) |
+| --- description | String    | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
+| - templateItemHighlight | Object    | 아이템 하이라이트 |
+| --- title | String    | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| --- description | String    | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| --- imageUrl | String    | 섬네일 이미지 주소 |
+| - templateRepresentLink | Object    | 대표 링크 |
+| -- linkMo| String    |	모바일 웹 링크(최대 500자)|
+| -- linkPc | String    |	PC 웹 링크(최대 500자) |
+| -- schemeIos | String    |	iOS 앱 링크(최대 500자) |
+| -- schemeAndroid | String    |	안드로이드 앱 링크(최대 500자) |
+| - requestDate | String    | 요청 날짜 |
+| - receiveDate | String    | 수신 날짜 |
+| - createDate | String    | 생성 날짜 |
+| - resendStatus | String    | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - resendStatusName | String    | 대체 발송 상태명 |
+| - resendResultCode | String    | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api) |
+| - resendRequestId | String    | 대체 발송 요청 ID |
+| - messageStatus | String    | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL) |
+| - resultCode | String    | 결과 상태 코드 |
+| - resultCodeName | String    | 결과 상태명 |
+| - createUser | String    | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장) |
+| - buttons | List      |	버튼 리스트 |
+| -- ordering | Integer   |	버튼 순서 |
+| -- type| String    |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| -- name | String    |	버튼 이름 |
+| -- linkMo | String    |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+| -- linkPc | String    |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+| -- schemeIos | String    |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| -- schemeAndroid | String    |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+| -- chatExtra| 	String   |	BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
+| -- chatEvent| 	String   | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormId| 	Integer  |	비즈니스폼 ID(BF 타입일 경우 필수) |
+| -- pluginId| 	String   |	플러그인 ID(최대 24자) |
+| -- relayId| 	String   | 플러그인 실행 시 X-Kakao-Plugin-Relay-Id 헤더를 통해 전달받을 값 |
+| -- oneClickId| 	String   | 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+| -- productId| 	String   | 원클릭 결제 플러그인에서 사용하는 결제 정보 |
+| -- target| 	String   |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - quickReplies| 	List     | 바로연결 리스트(최대 5개) |
+| -- ordering| 	Integer  |	바로연결 순서(바로연결이 있는 경우 필수)|
+| -- type| String    |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+| -- name| String    |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
+| -- linkMo| String    |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+| -- linkPc | String    |	PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+| -- schemeIos | String    | iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| -- schemeAndroid | String    | 안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| -- pluginId| 	String   |	플러그인 ID(최대 24자) |
+| -- target| 	String   |	웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 
 ## 템플릿
 
@@ -1621,56 +1606,56 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|templateCode|	String |	O | 템플릿 코드(최대 20자) |
-|templateName|	String |	O | 템플릿명(최대 150자) |
-|templateContent|	String |	O | 템플릿 본문(최대 1000자) |
-|templateMessageType| String | X |템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형, default: BA) |
-|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수<br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수 |
-|templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
-|templateHeader| String| X| 템플릿 헤더(최대 16자) |
-|templateItem | Object | X| 아이템 |
-| - list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-| -- title | String | X | 타이틀(최대 6자) |
-| -- description | String | X | 디스크립션(최대 23자) |
-| - summary | Object | X | 아이템 요약 정보 |
-| -- title | String | X | 타이틀(최대 6자) |
-| -- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-|templateItemHighlight | Object | X| 아이템 하이라이트 |
-| - title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-| - description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-| - imageUrl | String | X | 섬네일 이미지 주소 |
-|templateRepresentLink | Object | X| 대표 링크 |
-| - linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| - linkPc | String |	X |PC 웹 링크(최대 500자) |
-| - schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-| - schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
-|templateImageName | String |	X | 이미지명(업로드한 파일명) |
-|templateImageUrl | String |	X | 이미지 URL |
-|securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
-|categoryCode| String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
-|buttons|	List |	X | 버튼 리스트(최대 5개) |
-|-ordering|	Integer |	X | 버튼 순서(1~5) |
-|- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
-|-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
-|-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-bizFormId|	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
-|- pluginId|	String|	X |	플러그인 ID(최대 24자) |
-|quickReplies|	List |	X | 바로연결 리스트(최대 5개) |
-| - ordering|	Integer|	X |	바로연결 순서(바로연결이 있는 경우 필수)|
-| - type| String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
-| - name| String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
-| - linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-| - linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
-| - schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-| - schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-| - pluginId|	String|	X |	플러그인 ID(최대 24자) |
+| 이름                    |	타입|	필수|	설명|
+|-----------------------|---|---|---|
+| templateCode          |	String |	O | 템플릿 코드(최대 20자) |
+| templateName          |	String |	O | 템플릿명(최대 150자) |
+| templateContent       |	String |	O | 템플릿 본문(최대 1000자) |
+| templateMessageType   | String | X |템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형, default: BA) |
+| templateEmphasizeType | String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수<br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수 |
+| templateExtra         | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
+| tempalteTitle         | String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
+| templateSubtitle      | String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
+| templateHeader        | String| X| 템플릿 헤더(최대 16자) |
+| templateItem          | Object | X| 아이템 |
+| - list                | List | X | 아이템 리스트(최소 2개, 최대 10개) |
+| -- title              | String | X | 타이틀(최대 6자) |
+| -- description        | String | X | 디스크립션(최대 23자) |
+| - summary             | Object | X | 아이템 요약 정보 |
+| -- title              | String | X | 타이틀(최대 6자) |
+| -- description        | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
+| templateItemHighlight | Object | X| 아이템 하이라이트 |
+| - title               | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| - description         | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| - imageUrl            | String | X | 섬네일 이미지 주소 |
+| templateRepresentLink | Object | X| 대표 링크 |
+| - linkMo              | String |	X |	모바일 웹 링크(최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(최대 500자) |
+| templateImageName     | String |	X | 이미지명(업로드한 파일명) |
+| templateImageUrl      | String |	X | 이미지 URL |
+| securityFlag          | Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
+| categoryCode          | String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
+| buttons               |	List |	X | 버튼 리스트(최대 5개) |
+| - ordering            |	Integer |	X | 버튼 순서(1~5) |
+| - type                | String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| - name                | String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+| - linkMo              | String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - bizFormId           |	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
+| - pluginId            |	String|	X |	플러그인 ID(최대 24자) |
+| quickReplies          |	List |	X | 바로연결 리스트(최대 5개) |
+| - ordering            |	Integer|	X |	바로연결 순서(바로연결이 있는 경우 필수)|
+| - type                | String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+| - name                | String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
+| - linkMo              | String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - bizFormId           |	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
 
 * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
 * 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
@@ -1787,44 +1772,55 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|templateName|	String |	O | 템플릿명(최대 150자) |
-|templateContent|	String |	O | 템플릿 본문(최대 1000자) |
-|templateMessageType| String | X | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수|
-|templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
-|templateHeader| String| X| 템플릿 헤더(최대 16자) |
-|templateItem | Object | X| 아이템 |
-| - list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-| -- title | String | X | 타이틀(최대 6자) |
-| -- description | String | X | 디스크립션(최대 23자) |
-| - summary | Object | X | 아이템 요약 정보 |
-| -- title | String | X | 타이틀(최대 6자) |
-| -- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-|templateItemHighlight | Object | X| 아이템 하이라이트 |
-| - title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-| - description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-| - imageUrl | String | X | 섬네일 이미지 주소 |
-|templateRepresentLink | Object | X| 대표 링크 |
-| - linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-| - linkPc | String |	X |PC 웹 링크(최대 500자) |
-| - schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-| - schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
-|templateImageName | String |	X | 이미지명(업로드한 파일명) |
-|templateImageUrl | String |	X | 이미지 URL |
-|securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
-|categoryCode| String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
-|buttons|	List |	X | 버튼 리스트(최대 5개) |
-|-ordering|	Integer |	X | 버튼 순서(1~5) |
-|- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
-|-name| String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
-|-linkMo| String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
-|-linkPc | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
-|-schemeIos | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
-|-schemeAndroid | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| 이름                    |	타입|	필수|	설명|
+|-----------------------|---|---|---|
+| templateName          |	String |	O | 템플릿명(최대 150자) |
+| templateContent       |	String |	O | 템플릿 본문(최대 1000자) |
+| templateMessageType   | String | X | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
+| templateEmphasizeType | String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수<br>- IMAGE: templateImageName, templateImageUrl 필드 필수|
+| templateExtra         | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
+| tempalteTitle         | String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
+| templateSubtitle      | String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
+| templateHeader        | String| X| 템플릿 헤더(최대 16자) |
+| templateItem          | Object | X| 아이템 |
+| - list                | List | X | 아이템 리스트(최소 2개, 최대 10개) |
+| -- title              | String | X | 타이틀(최대 6자) |
+| -- description        | String | X | 디스크립션(최대 23자) |
+| - summary             | Object | X | 아이템 요약 정보 |
+| -- title              | String | X | 타이틀(최대 6자) |
+| -- description        | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
+| templateItemHighlight | Object | X| 아이템 하이라이트 |
+| - title               | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| - description         | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| - imageUrl            | String | X | 섬네일 이미지 주소 |
+| templateRepresentLink | Object | X| 대표 링크 |
+| - linkMo              | String |	X |	모바일 웹 링크(최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(최대 500자) |
+| templateImageName     | String |	X | 이미지명(업로드한 파일명) |
+| templateImageUrl      | String |	X | 이미지 URL |
+| securityFlag          | Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
+| categoryCode          | String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
+| buttons               |	List |	X | 버튼 리스트(최대 5개) |
+| - ordering            |	Integer |	X | 버튼 순서(1~5) |
+| - type                | String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| - name                | String |	X |	버튼 이름(버튼이 있는 경우 필수, 최대 14자)|
+| - linkMo              | String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - bizFormId           |	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
+| - pluginId            |	String|	X |	플러그인 ID(최대 24자) |
+| quickReplies          |	List |	X | 바로연결 리스트(최대 5개) |
+| - ordering            |	Integer|	X |	바로연결 순서(바로연결이 있는 경우 필수)|
+| - type                | String |	X |	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼) |
+| - name                | String |	X |	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)|
+| - linkMo              | String |	X |	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)|
+| - linkPc              | String |	X |PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자) |
+| - schemeIos           | String | X |	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - schemeAndroid       | String | X |	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자) |
+| - bizFormId           |	Integer|	X |	비즈니스폼 ID(BF 타입일 경우 필수) |
 
 * 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, templateAd 값이 고정됩니다.
 * 채널 추가형(AD)과 복합형(MI) 메시지 유형 템플릿 수정 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
@@ -2080,6 +2076,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "senderKey": String,
               "plusFriendType": String,
               "templateCode": String,
+              "kakaoTemplateCode": String,
               "templateName": String,
               "templateMessageType" : String,
               "templateEmphasizeType": String,
@@ -2114,16 +2111,30 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "templateImageUrl" : String,
               "buttons": [
                 {
-                    "ordering":Integer,
+                    "ordering": Integer,
                     "type": String,
                     "name": String,
                     "linkMo": String,
                     "linkPc": String,
                     "schemeIos": String,
-                    "schemeAndroid": String
+                    "schemeAndroid": String,
+                    "bizFormId": Integer,
+                    "pluginId": String
                 }
-                ],
-                "comments": [
+              ],
+              "quickReplies": [
+                {
+                    "ordering": Integer,
+                    "type": String,
+                    "name": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeIos": String,
+                    "schemeAndroid": String,
+                    "bizFormId": Integer
+                }
+              ],
+              "comments": [
                   {
                       "id": Integer,
                       "content": String,
@@ -2134,84 +2145,96 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                         "filePath": String
                       }],
                       "status": String
-                    }  
-                ],
-                "status": String,
-                "statusName": String,
-                "securityFlag": Boolean,
-                "categoryCode": String,
-                "createDate": String,
-                "updateDate": String
-            }
-        ],
-        "totalCount": Integer
-    }
+                  }  
+              ],
+              "status": String,
+              "statusName": String,
+              "securityFlag": Boolean,
+              "categoryCode": String,
+              "createDate": String,
+              "updateDate": String
+          }
+      ],
+      "totalCount": Integer
+  }
 }
 ```
 
-| 이름 |	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|templateListResponse|	Object|	본문 영역|
-|- templates | List |	템플릿 리스트 |
-|-- plusFriendId | String |	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명 |
-|-- senderKey    | String | 발신 키    |
-|-- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP) |
-|-- templateCode | String |	템플릿 코드 |
-|-- templateName | String |	템플릿명 |
-|-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형) |
-|-- templateContent | String |	템플릿 본문 |
-|-- templateExtra | String | 템플릿 부가 정보 |
-|-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-|-- tempalteTitle| String | 템플릿 제목 |
-|-- templateSubtitle| String | 템플릿 보조 문구 |
-|- templateHeader| String| X| 템플릿 헤더(최대 16자) |
-|- templateItem | Object | X| 아이템 |
-|-- list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(최대 23자) |
-|-- summary | Object | X | 아이템 요약 정보 |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-|- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|-- title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-|-- description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-|-- imageUrl | String | X | 섬네일 이미지 주소 |
-|-templateRepresentLink | Object | X| 대표 링크 |
-|-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
-|-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-|-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
-|-- templateImageName | String | 이미지명(업로드한 파일명) |
-|-- templateImageUrl | String |	이미지 URL |
-|-- buttons | List |	버튼 리스트 |
-|--- ordering | Integer |	버튼 순서(1~5) |
-|--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
-|--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-|-- comments | List | 검수 결과 |
-|--- id | Integer | 문의 아이디 |
-|--- content |  String | 문의 내용 |
-|--- userName | String | 작성자 |
-|--- createAt | String | 등록 날짜 |
-|--- attachment | List | 첨부 파일 |
-|---- originalFileName | String | 첨부 파일명 |
-|---- filePath | String | 첨부 파일 경로 |
-|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
-|-- status| String | 템플릿 상태 |
-|-- statusName | String | 템플릿 상태명 |
-|-- securityFlag| Boolean | 보안 템플릿 여부 |
-|-- categoryCode| String | 템플릿 카테고리 코드  |
-|-- createDate | String | 생성일자 |
-|-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총개수 |
+| 이름                       |	타입| 	설명                                                                                                                                                                        |
+|--------------------------|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header                   |	Object| 	헤더 영역                                                                                                                                                                     |
+| - resultCode             |	Integer| 	결과 코드                                                                                                                                                                     |
+| - resultMessage          |	String| 결과 메시지                                                                                                                                                                     |
+| - isSuccessful           |	Boolean| 성공 여부                                                                                                                                                                      |
+| templateListResponse     |	Object| 	본문 영역                                                                                                                                                                     |
+| - templates              | List | 	템플릿 리스트                                                                                                                                                                   |
+| -- plusFriendId          | String | 	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                              |
+| -- senderKey             | String | 발신 키                                                                                                                                                                       |
+| -- plusFriendType        | String | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                    |
+| -- templateCode          | String | 	템플릿 코드                                                                                                                                                                    |
+| -- kakaoTemplateCode     | String | 	원본 템플릿 코드                                                                                                                                                                 |
+| -- templateName          | String | 	템플릿명                                                                                                                                                                      |
+| -- templateMessageType   | String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형)                                                                                                                       |
+| -- templateEmphasizeType | String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형)                                                                                                     |
+| -- templateContent       | String | 	템플릿 본문                                                                                                                                                                    |
+| -- templateExtra         | String | 템플릿 부가 정보                                                                                                                                                                  |
+| -- templateAd            | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구                                                                                                                                                |
+| -- tempalteTitle         | String | 템플릿 제목                                                                                                                                                                     |
+| -- templateSubtitle      | String | 템플릿 보조 문구                                                                                                                                                                  |
+| - templateHeader         | String| 템플릿 헤더(최대 16자)                                                                                                                                                             |
+| - templateItem           | Object | 아이템                                                                                                                                                                        |
+| -- list                  | List | 아이템 리스트(최소 2개, 최대 10개)                                                                                                                                                     |
+| --- title                | String | 타이틀(최대 6자)                                                                                                                                                                 |
+| --- description          | String | 디스크립션(최대 23자)                                                                                                                                                              |
+| -- summary               | Object | 아이템 요약 정보                                                                                                                                                                  |
+| --- title                | String | 타이틀(최대 6자)                                                                                                                                                                 |
+| --- description          | String | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자)                                                                                                                              |
+| - templateItemHighlight  | Object | 아이템 하이라이트                                                                                                                                                                  |
+| -- title                 | String | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자)                                                                                                                                            |
+| -- description           | String | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자)                                                                                                                                          |
+| -- imageUrl              | String | 섬네일 이미지 주소                                                                                                                                                                 |
+| -templateRepresentLink   | Object | 대표 링크                                                                                                                                                                      |
+| -- linkMo                | String | 	모바일 웹 링크(최대 500자)                                                                                                                                                         |
+| -- linkPc                | String | PC 웹 링크(최대 500자)                                                                                                                                                           |
+| -- schemeIos             | String | 	iOS 앱 링크(최대 500자)                                                                                                                                                         |
+| -- schemeAndroid         | String | 	안드로이드 앱 링크(최대 500자)                                                                                                                                                       |
+| -- templateImageName     | String | 이미지명(업로드한 파일명)                                                                                                                                                             |
+| -- templateImageUrl      | String | 	이미지 URL                                                                                                                                                                   |
+| -- buttons               | List | 	버튼 리스트                                                                                                                                                                    |
+| --- ordering             | Integer | 	버튼 순서(1~5)                                                                                                                                                                |
+| --- type                 | String | 	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| --- name                 | String | 	버튼 이름                                                                                                                                                                     |
+| --- linkMo               | String | 	모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                                 |
+| --- linkPc               | String | 	PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                                  |
+| --- schemeIos            | String | 	iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                                 |
+| --- schemeAndroid        | String | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                               |
+| --- bizFormId            |	Integer| 	비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                    |
+| --- pluginId             |	String| 	플러그인 ID(최대 24자)                                                                                                                                                           |
+| -- quickReplies          |	List | 바로연결 리스트(최대 5개)                                                                                                                                                            |
+| --- ordering             |	Integer| 	바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                   |
+| --- type                 | String | 	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                   |
+| --- name                 | String | 	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)                                                                                                                                           |
+| --- linkMo               | String | 	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                        |
+| --- linkPc               | String | PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자)                                                                                                                                          |
+| --- schemeIos            | String | 	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                        |
+| --- schemeAndroid        | String | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                      |
+| --- bizFormId            |	Integer| 	비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                    |
+| -- comments              | List | 검수 결과                                                                                                                                                                      |
+| --- id                   | Integer | 문의 아이디                                                                                                                                                                     |
+| --- content              |  String | 문의 내용                                                                                                                                                                      |
+| --- userName             | String | 작성자                                                                                                                                                                        |
+| --- createAt             | String | 등록 날짜                                                                                                                                                                      |
+| --- attachment           | List | 첨부 파일                                                                                                                                                                      |
+| ---- originalFileName    | String | 첨부 파일명                                                                                                                                                                     |
+| ---- filePath            | String | 첨부 파일 경로                                                                                                                                                                   |
+| --- status               | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변)                                                                                                                                  |
+| -- status                | String | 템플릿 상태                                                                                                                                                                     |
+| -- statusName            | String | 템플릿 상태명                                                                                                                                                                    |
+| -- securityFlag          | Boolean | 보안 템플릿 여부                                                                                                                                                                  |
+| -- categoryCode          | String | 템플릿 카테고리 코드                                                                                                                                                                |
+| -- createDate            | String | 생성일자                                                                                                                                                                       |
+| -- updateDate            | String | 수정일자                                                                                                                                                                       |
+| - totalCount             | Integer | 총개수                                                                                                                                                                        |
 
 ### 템플릿 수정 리스트 조회
 
@@ -2305,8 +2328,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                     "schemeIos": String,
                     "schemeAndroid": String
                 }
-                ],
-                "comments": [
+              ],
+              "quickReplies": [
+                {
+                    "ordering": Integer,
+                    "type": String,
+                    "name": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeIos": String,
+                    "schemeAndroid": String,
+                    "bizFormId": Integer
+                }
+              ],
+              "comments": [
                   {
                       "id": Integer,
                       "content": String,
@@ -2317,86 +2352,95 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                         "filePath": String
                       }],
                       "status": String
-                    }  
-                ],
-                "status": String,
-                "statusName": String,
-                "securityFlag": Boolean,
-                "categoryCode": String,
-                "activated": boolean,
-                "createDate": String,
-                "updateDate": String
-            }
-        ],
-        "totalCount": Integer
-    }
+                  }  
+              ],
+              "status": String,
+              "statusName": String,
+              "securityFlag": Boolean,
+              "categoryCode": String,
+              "activated": boolean,
+              "createDate": String,
+              "updateDate": String
+          }
+      ],
+      "totalCount": Integer
+  }
 }
 ```
 
-| 이름 |	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|templateModificationsResponse|	Object|	본문 영역|
-|- templates | List |	템플릿 리스트 |
-|-- plusFriendId | String |	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명 |
-|-- senderKey    | String | 발신 키    |
-|-- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP) |
-|-- templateCode | String |	템플릿 코드 |
-|-- templateName | String |	템플릿명 |
-|-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ) |
-|-- templateContent | String |	템플릿 본문 |
-|-- templateExtra | String | 템플릿 부가 정보 |
-|-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-|-- tempalteTitle| String | 템플릿 제목 |
-|-- templateSubtitle| String | 템플릿 보조 문구 |
-|- templateHeader| String| X| 템플릿 헤더(최대 16자) |
-|- templateItem | Object | X| 아이템 |
-|-- list | List | X | 아이템 리스트(최소 2개, 최대 10개) |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(최대 23자) |
-|-- summary | Object | X | 아이템 요약 정보 |
-|--- title | String | X | 타이틀(최대 6자) |
-|--- description | String | X | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
-|- templateItemHighlight | Object | X| 아이템 하이라이트 |
-|-- title | String | X | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
-|-- description | String | X | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
-|-- imageUrl | String | X | 섬네일 이미지 주소 |
-|-templateRepresentLink | Object | X| 대표 링크 |
-|-- linkMo| String |	X |	모바일 웹 링크(최대 500자)|
-|-- linkPc | String |	X |PC 웹 링크(최대 500자) |
-|-- schemeIos | String | X |	iOS 앱 링크(최대 500자) |
-|-- schemeAndroid | String | X |	안드로이드 앱 링크(최대 500자) |
-|-- templateImageName | String | 이미지명(업로드한 파일명) |
-|-- templateImageUrl | String |	이미지 URL |
-|-- buttons | List |	버튼 리스트 |
-|--- ordering | Integer |	버튼 순서(1~5) |
-|--- type| String |	X |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
-|--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-|-- comments | List | 검수 결과 |
-|--- id | Integer | 문의 아이디 |
-|--- content |  String | 문의 내용 |
-|--- userName | String | 작성자 |
-|--- createAt | String | 등록 날짜 |
-|--- attachment | List | 첨부 파일 |
-|---- originalFileName | String | 첨부 파일명 |
-|---- filePath | String | 첨부 파일 경로 |
-|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
-|-- status| String | 템플릿 상태 |
-|-- statusName | String | 템플릿 상태명 |
-|-- securityFlag| Boolean | 보안 템플릿 여부 |
-|-- categoryCode| String | 템플릿 카테고리 코드  |
-|-- activated | Boolean | 활성화 여부 |
-|-- createDate | String | 생성일자 |
-|-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총개수 |
+| 이름                            | 	타입      |	설명|
+|-------------------------------|----------|---|
+| header                        | 	Object  |	헤더 영역|
+| - resultCode                  | 	Integer |	결과 코드|
+| - resultMessage               | 	String  | 결과 메시지|
+| - isSuccessful                | 	Boolean | 성공 여부|
+| templateModificationsResponse | 	Object  |	본문 영역|
+| - templates                   | List     |	템플릿 리스트 |
+| -- plusFriendId               | String   |	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명 |
+| -- senderKey                  | String   | 발신 키    |
+| -- plusFriendType             | String   | 플러스친구 타입(NORMAL, GROUP) |
+| -- templateCode               | String   |	템플릿 코드 |
+| -- templateName               | String   |	템플릿명 |
+| -- templateMessageType        | String   | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
+| -- templateEmphasizeType      | String   | 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, IMAGE: 이미지형, ) |
+| -- templateContent            | String   |	템플릿 본문 |
+| -- templateExtra              | String   | 템플릿 부가 정보 |
+| -- templateAd                 | String   | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
+| -- tempalteTitle              | String   | 템플릿 제목 |
+| -- templateSubtitle           | String   | 템플릿 보조 문구 |
+| - templateHeader              | String   | 템플릿 헤더(최대 16자) |
+| - templateItem                | Object   | 아이템 |
+| -- list                       | List     | 아이템 리스트(최소 2개, 최대 10개) |
+| --- title                     | String   | 타이틀(최대 6자) |
+| --- description               | String   | 디스크립션(최대 23자) |
+| -- summary                    | Object   | 아이템 요약 정보 |
+| --- title                     | String   | 타이틀(최대 6자) |
+| --- description               | String   | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자) |
+| - templateItemHighlight       | Object   | 아이템 하이라이트 |
+| -- title                      | String   | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자) |
+| -- description                | String   | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자) |
+| -- imageUrl                   | String   | 섬네일 이미지 주소 |
+| -templateRepresentLink        | Object   | 대표 링크 |
+| -- linkMo                     | String   |	모바일 웹 링크(최대 500자)|
+| -- linkPc                     | String   |PC 웹 링크(최대 500자) |
+| -- schemeIos                  | String   |	iOS 앱 링크(최대 500자) |
+| -- schemeAndroid              | String   |	안드로이드 앱 링크(최대 500자) |
+| -- templateImageName          | String   | 이미지명(업로드한 파일명) |
+| -- templateImageUrl           | String   |	이미지 URL |
+| -- buttons                    | List     |	버튼 리스트 |
+| --- ordering                  | Integer  |	버튼 순서(1~5) |
+| --- type                      | String   |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID) |
+| --- name                      | String   |	버튼 이름 |
+| --- linkMo                    | String   |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
+| --- linkPc                    | String   |	PC 웹 링크(WL 타입일 경우 선택 필드) |
+| --- schemeIos                 | String   |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
+| --- schemeAndroid             | String   |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
+| -- quickReplies               | 	List    | 바로연결 리스트(최대 5개)                                                                                                                                                            |
+| --- ordering                  | 	Integer | 	바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                   |
+| --- type                      | String   | 	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                   |
+| --- name                      | String   | 	바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)                                                                                                                                           |
+| --- linkMo                    | String   | 	모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                        |
+| --- linkPc                    | String   | PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자)                                                                                                                                          |
+| --- schemeIos                 | String   | 	iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                        |
+| --- schemeAndroid             | String   | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                      |
+| --- bizFormId                 | 	Integer | 	비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                    |
+| -- comments                   | List     | 검수 결과 |
+| --- id                        | Integer  | 문의 아이디 |
+| --- content                   | String   | 문의 내용 |
+| --- userName                  | String   | 작성자 |
+| --- createAt                  | String   | 등록 날짜 |
+| --- attachment                | List     | 첨부 파일 |
+| ---- originalFileName         | String   | 첨부 파일명 |
+| ---- filePath                 | String   | 첨부 파일 경로 |
+| --- status                    | String   | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
+| -- status                     | String   | 템플릿 상태 |
+| -- statusName                 | String   | 템플릿 상태명 |
+| -- securityFlag               | Boolean  | 보안 템플릿 여부 |
+| -- categoryCode               | String   | 템플릿 카테고리 코드  |
+| -- activated                  | Boolean  | 활성화 여부 |
+| -- createDate                 | String   | 생성일자 |
+| -- updateDate                 | String   | 수정일자 |
+| - totalCount                  | Integer  | 총개수 |
 
 ### 템플릿 이미지 등록
 #### 요청

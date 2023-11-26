@@ -1672,11 +1672,7 @@ curl -X GET \
                 "chatEvent": String
                 "target": String
             }
-        ],
-        "messageOption": {
-          "price": Integer,
-          "currencyType": String
-        }
+        ]
     }
 }
 ```
@@ -1721,9 +1717,6 @@ curl -X GET \
 | -- chatExtra | String | BC: 상담톡 전환시 전달할 메타 정보<br/> BT: 봇 전환 시 전달할 메타 정보 |
 | -- chatEvent | String | BT: 봇 전환 시 연결할 봇 이벤트명 |
 | -- target|	String|	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - messageOption | Boolean | 메시지 옵션 |
-|-- price | Integer |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
-|-- currencyType | String |	사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
 ## 템플릿
 
