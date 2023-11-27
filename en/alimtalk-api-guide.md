@@ -668,83 +668,83 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| Name |	Type|	Description|
-|---|---|---|
-|header|	Object|	Header area|
-|- resultCode|	Integer|	Result code|
-|- resultMessage|	String| Result message|
-|- isSuccessful|	Boolean| Successful or not|
-|message|	Object|	Message|
-|- requestId | String |	Request ID |
-|- recipientSeq | Integer |	Recipient sequence number |
-|- plusFriendId | String |	PlusFriend ID |
-|- senderKey    | String |  Sender Key    |
-|- templateCode | String |	Template code |
-|- recipientNo | String |	Recipient number |
-|- content | String |	Body message |
-|- templateTitle | String | Template title |
-|- templateSubtitle | String | Auxiliary template phrase |
-|- templateExtra | String | Additional template information |
-|- templateAd | String | Request for consent of receiving within template or simple ad phrases |
-|- templateHeader| String| X| Template header(up to 16 characters) |
-|- templateItem | Object | X| Item |
-|-- list | List | X | Item list(at least 2, up to 10) |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(up to 23 characters) |
-|-- summary | Object | X | Item summary information |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-|- templateItemHighlight | Object | X| Item highlight |
-|--- title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-|--- description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-|--- imageUrl | String | X | Thumbnail image address |
-|- templateRepresentLink | Object | X| Main link |
-|-- linkMo| String |	X |	Mobile web link(up to 500 characters)|
-|-- linkPc | String |	X |PC web link(up to 500 characters) |
-|-- schemeIos | String | X |	iOS app link(up to 500 characters) |
-|-- schemeAndroid | String | X |	Android app link(up to 500 characters) |
-|- requestDate | String |	Date and time of request |
-|- receiveDate | String |	Date and time of receiving |
-|- createDate | String | Registered date and time |
-|- resendStatus | String |	Status code of resending(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below) |
-|- resendStatusName | String |	Status code name of resending |
-|- resendResultCode | String | Result code of resending [Result code of SMS sending](https://docs.toast.com/en/Notification/SMS/en/error-code/#api) |
-|- resendRequestId | String | Resending SMS request ID |
-|- messageStatus | String |	Request status(COMPLETED -> successful, FAILED -> failed, CANCEL -> cancelled ) |
-|- resultCode | String |	Result code of receiving |
-|- resultCodeName | String |	Result code name of receiving |
-|- createUser | String | Registrant(saved as user UUID when sending from console) |
-|- buttons | List |	List of buttons |
-|-- ordering | Integer |	Button sequence |
-|-- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
-|-- name | String |	Button name |
-|-- linkMo | String |	Mobile web link(required for the WL type) |
-|-- linkPc | String |	PC web link(optional for the WL type) |
-|-- schemeIos | String |	iOS app link(required for the AL type) |
-|-- schemeAndroid | String |	Android app link(required for the AL type) |
-|-- chatExtra|	String|	Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons |
-|-- chatEvent|	String| Bot event name to connect for BT(Bot Transfer) type button |
-|-- bizFormId|	Integer|	X |	Business form ID(required for BF type) |
-|-- pluginId|	String|	X |	Plugin ID(up to 24 characters) |
-|-- relayId|	String|	X| Value passed via the X-Kakao-Plugin-Relay-Id header when the plugin is executed |
-|-- oneClickId|	String|	X| Payment information used in the one click payment plugin |
-|-- productId|	String|	X| Payment information used in the one click payment plugin |
-|-- target|	String|	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-|- quickReplies|	List |	X | Quick reply list(up to 5) |
-|-- ordering|	Integer|	X |	Quick reply order(required  when quick reply exists)|
-|-- type| String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
-|-- name| String |	X |	Quick reply name(required  when quick reply exists, up to 14 characters)|
-|-- linkMo| String |	X |	Mobile web link(required for the WL type, for up to 500 characters)|
-|-- linkPc | String |	X |PC web link(required for the WL type, for up to 500 characters) |
-|-- schemeIos | String | X |	iOS app link(required for the AL type, for up to 500 characters) |
-|-- schemeAndroid | String | X |	Android app link(required for the AL type, for up to 500 characters) |
-|-- pluginId|	String|	X |	Plugin ID(up to 24 characters) |
-|-- target|	String|	X |	In the case of a web link type, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-|- messageOption | Object |	Message Option |
-|-- price | Integer |	Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement) |
-|-- currencyType | String |	Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
-|- senderGroupingKey | String | Sender's grouping key |
-|- recipientGroupingKey | String |	Recipient's grouping key |
+| Name |	Type| 	Description                                                                                                                                                                                                       |
+|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|header|	Object| 	Header area                                                                                                                                                                                                       |
+|- resultCode|	Integer| 	Result code                                                                                                                                                                                                       |
+|- resultMessage|	String| Result message                                                                                                                                                                                                     |
+|- isSuccessful|	Boolean| Successful or not                                                                                                                                                                                                  |
+|message|	Object| 	Message                                                                                                                                                                                                           |
+|- requestId | String | 	Request ID                                                                                                                                                                                                        |
+|- recipientSeq | Integer | 	Recipient sequence number                                                                                                                                                                                         |
+|- plusFriendId | String | 	PlusFriend ID                                                                                                                                                                                                     |
+|- senderKey    | String | Sender Key                                                                                                                                                                                                         |
+|- templateCode | String | 	Template code                                                                                                                                                                                                     |
+|- recipientNo | String | 	Recipient number                                                                                                                                                                                                  |
+|- content | String | 	Body message                                                                                                                                                                                                      |
+|- templateTitle | String | Template title                                                                                                                                                                                                     |
+|- templateSubtitle | String | Auxiliary template phrase                                                                                                                                                                                          |
+|- templateExtra | String | Additional template information                                                                                                                                                                                    |
+|- templateAd | String | Request for consent of receiving within template or simple ad phrases                                                                                                                                              |
+|- templateHeader| String| Template header(up to 16 characters)                                                                                                                                                                               |
+|- templateItem | Object | Item                                                                                                                                                                                                               |
+|-- list | List | Item list(at least 2, up to 10)                                                                                                                                                                                    |
+|--- title | String | Title(up to 6 characters)                                                                                                                                                                                          |
+|--- description | String | Description(up to 23 characters)                                                                                                                                                                                   |
+|-- summary | Object | Item summary information                                                                                                                                                                                           |
+|--- title | String | Title(up to 6 characters)                                                                                                                                                                                          |
+|--- description | String | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters)                                                                                                                  |
+|- templateItemHighlight | Object | Item highlight                                                                                                                                                                                                     |
+|--- title | String | Title(up to 30 characters, 21 characters with a thumbnail image)                                                                                                                                                   |
+|--- description | String | Description(up to 19 characters, 13 with a thumbnail image)                                                                                                                                                        |
+|--- imageUrl | String | Thumbnail image address                                                                                                                                                                                            |
+|- templateRepresentLink | Object | Main link                                                                                                                                                                                                          |
+|-- linkMo| String | 	Mobile web link(up to 500 characters)                                                                                                                                                                             |
+|-- linkPc | String | PC web link(up to 500 characters)                                                                                                                                                                                  |
+|-- schemeIos | String | 	iOS app link(up to 500 characters) |
+|-- schemeAndroid | String | 	Android app link(up to 500 characters) |
+|- requestDate | String | 	Date and time of request                                                                                                                                                                                          |
+|- receiveDate | String | 	Date and time of receiving                                                                                                                                                                                        |
+|- createDate | String | Registered date and time                                                                                                                                                                                           |
+|- resendStatus | String | 	Status code of resending(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below)    |
+|- resendStatusName | String | 	Status code name of resending                                                                                                                                                                                     |
+|- resendResultCode | String | Result code of resending [Result code of SMS sending](https://docs.toast.com/en/Notification/SMS/en/error-code/#api)                                                                                               |
+|- resendRequestId | String | Resending SMS request ID                                                                                                                                                                                           |
+|- messageStatus | String | 	Request status(COMPLETED -> successful, FAILED -> failed, CANCEL -> cancelled )                                                                                                                                   |
+|- resultCode | String | 	Result code of receiving                                                                                                                                                                                          |
+|- resultCodeName | String | 	Result code name of receiving                                                                                                                                                                                     |
+|- createUser | String | Registrant(saved as user UUID when sending from console)                                                                                                                                                           |
+|- buttons | List | 	List of buttons                                                                                                                                                                                                   |
+|-- ordering | Integer | 	Button sequence                                                                                                                                                                                                   |
+|-- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|-- name | String | 	Button name                                                                                                                                                                                                       |
+|-- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                         |
+|-- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                             |
+|-- schemeIos | String | 	iOS app link(required for the AL type)                                                                                                                                                                            |
+|-- schemeAndroid | String | 	Android app link(required for the AL type)                                                                                                                                                                        |
+|-- chatExtra|	String| 	Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                                            |
+|-- chatEvent|	String| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                                         |
+|-- bizFormId|	Integer|	Business form ID(required for BF type) |
+|-- pluginId|	String| 	Plugin ID(up to 24 characters) |
+|-- relayId|	String|  Value passed via the X-Kakao-Plugin-Relay-Id header when the plugin is executed |
+|-- oneClickId|	String| 	 Payment information used in the one click payment plugin |
+|-- productId|	String| 	 Payment information used in the one click payment plugin |
+|-- target|	String| 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                                         |
+|- quickReplies|	List | 	 Quick reply list(up to 5) |
+|-- ordering|	Integer| 	Quick reply order(required  when quick reply exists)|
+|-- type| String |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
+|-- name| String |	Quick reply name(required  when quick reply exists, up to 14 characters)|
+|-- linkMo| String | 	Mobile web link(required for the WL type, for up to 500 characters)|
+|-- linkPc | String | 	PC web link(required for the WL type, for up to 500 characters) |
+|-- schemeIos | String |	iOS app link(required for the AL type, for up to 500 characters) |
+|-- schemeAndroid | String |	Android app link(required for the AL type, for up to 500 characters) |
+|-- pluginId|	String| 	Plugin ID(up to 24 characters) |
+|-- target|	String| 	In the case of a web link type, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+|- messageOption | Object | 	Message Option                                                                                                                                                                                                    |
+|-- price | Integer | 	Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement)                                                                                                 |
+|-- currencyType | String | 	Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
+|- senderGroupingKey | String | Sender's grouping key                                                                                                                                                                                              |
+|- recipientGroupingKey | String | 	Recipient's grouping key                                                                                                                                                                                          |
 
 ## Authentication Messages
 
@@ -1108,10 +1108,6 @@ curl -X GET \
         "masterStatusCode": String,
         "content": String,
         "fileId": String,
-        "templateExtra": String,
-        "templateAd": String,
-        "templateTitle": String,
-        "templateSubtitle": String,
         "autoSendYn": String,
         "statsId": String,
         "createDate": String,
@@ -1141,10 +1137,6 @@ curl -X GET \
 | -- content | String | Content |
 | -- fileId | String | Attachment ID |
 | -- templateCode |	String | Template code(up to 20 characters) |
-| -- templateExtra | String | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
-| -- templateAd | String | Request for consent of receiving within template or simple ad phrases |
-| -- tempalteTitle| String | Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
-| -- templateSubtitle| String | Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | -- autoSendYn | String | Auto sending or not |
 | -- statsId | String | Statistics ID |
 | -- createDate | String | Date of creation |
@@ -1355,7 +1347,7 @@ curl -X GET \
             "schemeAndroid": String,
             "chatExtra": String,
             "chatEvent": String,
-            "bizFormId": String,
+            "bizFormId": Integer,
             "pluginId": String,
             "relayId": String,
             "oneClickId": String,
@@ -1374,93 +1366,86 @@ curl -X GET \
             "schemeAndroid": String,
             "chatExtra": String,
             "chatEvent": String,
-            "bizFormId": String,
+            "bizFormId": Integer,
             "target": String
             }
         ],
-        "messageOption": {
-          "price": Integer,
-          "currencyType": String
-        }
     }
 }
 ```
 
-| Name |	Type|	Description|
-|---|---|---|
-| header | Object |	Header area |
-| - resultCode |	Integer |	Result code |
-| - resultMessage |	String | Result message |
-| - isSuccessful |	Boolean | Successful or not |
-| body | Object | Body area |
-| - requestId | String | Request ID |
-| - recipientSeq | String | Recipient sequence number |
-| - plusFriendId | String | PlusFriend ID |
-| - senderKey | String | Sender ID |
-| - templateCode |	String | Template code(up to 20 characters) |
-| - recipientNo | String | Recipient number |
-| - content | String | Content |
-| - tempalteTitle| String | Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
-| - templateSubtitle| String | Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
-| - templateExtra | String | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
-| - templateAd | String | Request for consent of receiving within template or simple ad phrases |
-| - templateHeader| String| X| Template header(up to 16 characters) |
-| - templateItem | Object | X| Item |
-| -- list | List | X | Item list(at least 2, up to 10) |
-| --- title | String | X | Title(up to 6 characters) |
-| --- description | String | X | Description(up to 23 characters) |
-| -- summary | Object | X | Item summary information |
-| --- title | String | X | Title(up to 6 characters) |
-| --- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-| - templateItemHighlight | Object | X| Item highlight |
-| --- title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-| --- description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-| --- imageUrl | String | X | Thumbnail image address |
-| - templateRepresentLink | Object | X| Main link |
-| -- linkMo| String |	X |	Mobile web link(up to 500 characters)|
-| -- linkPc | String |	X |PC web link(up to 500 characters) |
-| -- schemeIos | String | X |	iOS app link(up to 500 characters) |
-| -- schemeAndroid | String | X |	Android app link(up to 500 characters) |
-| - requestDate | String | Date of request |
-| - receiveDate | String | Date of receiving |
-| - createDate | String | Date of creation |
-| - resendStatus | String | Status code of resending(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below) |
-| - resendStatusName | String | Status name of resending |
-| - resendResultCode | String | Result code of resending [Result code of SMS sending](https://docs.toast.com/en/Notification/SMS/en/error-code/#api) |
-| - resendRequestId | String | Resending SMS request ID |
-| - messageStatus | String | Mass recipient delivery status code(READY, COMPLETED, FAILED, CANCEL) |
-| - resultCode | String | Result status code |
-| - resultCodeName | String | Result status name |
-| - createUser | String | User who created the request(saved as user UUID when sending from console) |
-| - buttons | List |	List of buttons |
-| -- ordering | Integer |	Button sequence |
-| -- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
-| -- name | String |	Button name |
-| -- linkMo | String |	Mobile web link(required for the WL type) |
-| -- linkPc | String |	PC web link(optional for the WL type) |
-| -- schemeIos | String |	iOS app link(required for the AL type) |
-| -- schemeAndroid | String |	Android app link(required for the AL type) |
-| -- chatExtra|	String|	Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons |
-| -- chatEvent|	String| Bot event name to connect for BT(Bot Transfer) type button |
-| -- bizFormId|	Integer|	X |	Business form ID(required for BF type) |
-| -- pluginId|	String|	X |	Plugin ID(up to 24 characters) |
-| -- relayId|	String|	X| Value passed via the X-Kakao-Plugin-Relay-Id header when the plugin is executed |
-| -- oneClickId|	String|	X| Payment information used in the one click payment plugin |
-| -- productId|	String|	X| Payment information used in the one click payment plugin |
-| -- target|	String|	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-| - quickReplies|	List |	X | Quick reply list(up to 5) |
-| -- ordering|	Integer|	X |	Quick reply order(required  when quick reply exists)|
-| -- type| String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
-| -- name| String |	X |	Quick reply name(required  when quick reply exists, up to 14 characters)|
-| -- linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
-| -- linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
-| -- schemeIos | String | X |	iOS app link(required for the AL type, up to 500 characters) |
-| -- schemeAndroid | String | X |	Android app link(required for the AL type, up to 500 characters) |
-| -- pluginId|	String|	X |	Plugin ID(up to 24 characters) |
-| -- target|	String|	X |	In the case of a web link type, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
-| - messageOption | Boolean | Message Option |
-| -- price | Integer |	Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement) |
-| -- currencyType | String |	Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
+| Name |	Type| 	Description                                                                                                                                                                                                      |
+|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header | Object | 	Header area                                                                                                                                                                                                      |
+| - resultCode |	Integer | 	Result code                                                                                                                                                                                                      |
+| - resultMessage |	String | Result message                                                                                                                                                                                                    |
+| - isSuccessful |	Boolean | Successful or not                                                                                                                                                                                                 |
+| body | Object | Body area                                                                                                                                                                                                         |
+| - requestId | String | Request ID                                                                                                                                                                                                        |
+| - recipientSeq | String | Recipient sequence number                                                                                                                                                                                         |
+| - plusFriendId | String | PlusFriend ID                                                                                                                                                                                                     |
+| - senderKey | String | Sender ID                                                                                                                                                                                                         |
+| - templateCode |	String | Template code(up to 20 characters)                                                                                                                                                                                |
+| - recipientNo | String | Recipient number                                                                                                                                                                                                  |
+| - content | String | Content                                                                                                                                                                                                           |
+| - tempalteTitle| String | Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters)              |
+| - templateSubtitle| String | Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters)                                                 |
+| - templateExtra | String | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes])                                                                                                                |
+| - templateAd | String | Request for consent of receiving within template or simple ad phrases                                                                                                                                             |
+| - templateHeader| String|  Template header(up to 16 characters) |
+| - templateItem | Object |  Item |
+| -- list | List | Item list(at least 2, up to 10) |
+| --- title | String | Title(up to 6 characters) |
+| --- description | String |  Description(up to 23 characters) |
+| -- summary | Object |  Item summary information |
+| --- title | String |  Title(up to 6 characters) |
+| --- description | String |  Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
+| - templateItemHighlight | Object |  Item highlight |
+| --- title | String |  Title(up to 30 characters, 21 characters with a thumbnail image) |
+| --- description | String |  Description(up to 19 characters, 13 with a thumbnail image) |
+| --- imageUrl | String |  Thumbnail image address |
+| - templateRepresentLink | Object |  Main link |
+| -- linkMo| String | 	Mobile web link(up to 500 characters)|
+| -- linkPc | String | PC web link(up to 500 characters) |
+| -- schemeIos | String |	iOS app link(up to 500 characters) |
+| -- schemeAndroid | String | 	Android app link(up to 500 characters) |
+| - requestDate | String | Date of request                                                                                                                                                                                                   |
+| - receiveDate | String | Date of receiving                                                                                                                                                                                                 |
+| - createDate | String | Date of creation                                                                                                                                                                                                  |
+| - resendStatus | String | Status code of resending(RSC01, RSC02, RSC03, RSC04, RSC05)<br>([Refer to [Status code of resending table](http://docs.toast.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#smslms)] below)    |
+| - resendStatusName | String | Status name of resending                                                                                                                                                                                          |
+| - resendResultCode | String | Result code of resending [Result code of SMS sending](https://docs.toast.com/en/Notification/SMS/en/error-code/#api)                                                                                              |
+| - resendRequestId | String | Resending SMS request ID                                                                                                                                                                                          |
+| - messageStatus | String | Mass recipient delivery status code(READY, COMPLETED, FAILED, CANCEL)                                                                                                                                             |
+| - resultCode | String | Result status code                                                                                                                                                                                                |
+| - resultCodeName | String | Result status name                                                                                                                                                                                                |
+| - createUser | String | User who created the request(saved as user UUID when sending from console)                                                                                                                                        |
+| - buttons | List | 	List of buttons                                                                                                                                                                                                  |
+| -- ordering | Integer | 	Button sequence                                                                                                                                                                                                  |
+| -- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| -- name | String | 	Button name                                                                                                                                                                                                      |
+| -- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                        |
+| -- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                            |
+| -- schemeIos | String | 	iOS app link(required for the AL type)                                                                                                                                                                           |
+| -- schemeAndroid | String | 	Android app link(required for the AL type)                                                                                                                                                                       |
+| -- chatExtra|	String| 	Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                                           |
+| -- chatEvent|	String| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                                        |
+| -- bizFormId|	Integer| 	Business form ID(required for BF type)                                                                                                                                                                           |
+| -- pluginId|	String| 	Plugin ID(up to 24 characters)                                                                                                                                                                                   |
+| -- relayId|	String| Value passed via the X-Kakao-Plugin-Relay-Id header when the plugin is executed                                                                                                                                   |
+| -- oneClickId|	String| Payment information used in the one click payment plugin                                                                                                                                                          |
+| -- productId|	String| Payment information used in the one click payment plugin                                                                                                                                                          |
+| -- target|	String| 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                                        |
+| - quickReplies|	List | Quick reply list(up to 5)                                                                                                                                                                                         |
+| -- ordering|	Integer| 	Quick reply order(required  when quick reply exists)                                                                                                                                                             |
+| -- type| String | 	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form)                                                                                     |
+| -- name| String | 	Quick reply name(required  when quick reply exists, up to 14 characters)                                                                                                                                         |
+| -- linkMo| String | 	Mobile web link(required for the WL type, up to 500 characters)                                                                                                                                                  |
+| -- linkPc | String | PC web link(optional for the WL type, up to 500 characters)                                                                                                                                                       |
+| -- schemeIos | String | 	iOS app link(required for the AL type, up to 500 characters) |
+| -- schemeAndroid | String |	Android app link(required for the AL type, up to 500 characters) |
+| -- bizFormId|	String| 	Plugin ID(up to 24 characters) |
+| -- target|	String| 	In the case of a web link type, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
 
 ## Templates
 
@@ -1622,56 +1607,56 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required|	Description|
-|---|---|---|---|
-|templateCode|	String |	O | Template code(up to 20 characters) |
-|templateName|	String |	O | Template name(up to 150 characters) |
-|templateContent|	String |	O | Template body(up to 1000 characters) |
-|templateMessageType| String | X |Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
-|templateEmphasizeType| String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: 아이템리스트형, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수|
-|templateExtra | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
-|tempalteTitle| String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
-|templateSubtitle| String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
-|templateHeader| String| X| Template header(up to 16 characters) |
-|templateItem | Object | X| Item |
-| - list | List | X | Item list(at least 2, up to 10) |
-| -- title | String | X | Title(up to 6 characters) |
-| -- description | String | X | Description(up to 23 characters) |
-| - summary | Object | X | Item summary information |
-| -- title | String | X | Title(up to 6 characters) |
-| -- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-|templateItemHighlight | Object | X| Item highlight |
-| - title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-| - description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-| - imageUrl | String | X | Thumbnail image address |
-|templateRepresentLink | Object | X| Main link |
-| - linkMo| String |	X |	Mobile web link(up to 500 characters)|
-| - linkPc | String |	X |PC web link(up to 500 characters) |
-| - schemeIos | String | X |	iOS app link(up to 500 characters) |
-| - schemeAndroid | String | X |	Android app link(up to 500 characters) |
-|templateImageName | String |	X | Image name(name of uploaded file) |
-|templateImageUrl | String |	X | Image URL |
-|securityFlag| Boolean | X| Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending(default: false) |
-|categoryCode| String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
-|buttons|	List |	X | List of buttons(up to 5) |
-|-ordering|	Integer |	X | Button sequence(1~5) |
-|- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
-|-name| String |	X |	Button name(required, if there's a button, up to 14 characters)|
-|-linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
-|-linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
-|-schemeIos | String | X |	iOS app link(required for the AL type, up to 500 characters) |
-|-schemeAndroid | String | X |	Android app link(required for the AL type, up to 500 characters) |
-|-bizFormId|	Integer|	X |	Business form ID(required for BF type) |
-|- pluginId|	String|	X |	Plugin ID(up to 24 characters) |
-|quickReplies|	List |	X | Quick reply list(up to 5) |
-| - ordering|	Integer|	X |	Quick reply order(required  when quick reply exists)|
-| - type| String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
-| - name| String |	X |	Quick reply name(required  when quick reply exists, up to 14 characters)|
-| - linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
-| - linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
-| - schemeIos | String | X |	iOS app link(required for the AL type, up to 500 characters) |
-| - schemeAndroid | String | X |	Android app link(required for the AL type, up to 500 characters) |
-| - pluginId|	String|	X |	Plugin ID(up to 24 characters) |
+| Name                  |	Type|	Required|	Description|
+|-----------------------|---|---|---|
+| templateCode          |	String |	O | Template code(up to 20 characters) |
+| templateName          |	String |	O | Template name(up to 150 characters) |
+| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateMessageType   | String | X |Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
+| templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: 아이템리스트형, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수|
+| templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
+| tempalteTitle         | String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
+| templateSubtitle      | String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
+| templateHeader        | String| X| Template header(up to 16 characters) |
+| templateItem          | Object | X| Item |
+| - list                | List | X | Item list(at least 2, up to 10) |
+| -- title              | String | X | Title(up to 6 characters) |
+| -- description        | String | X | Description(up to 23 characters) |
+| - summary             | Object | X | Item summary information |
+| -- title              | String | X | Title(up to 6 characters) |
+| -- description        | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
+| templateItemHighlight | Object | X| Item highlight |
+| - title               | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
+| - description         | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
+| - imageUrl            | String | X | Thumbnail image address |
+| templateRepresentLink | Object | X| Main link |
+| - linkMo              | String |	X |	Mobile web link(up to 500 characters)|
+| - linkPc              | String |	X |PC web link(up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(up to 500 characters) |
+| templateImageName     | String |	X | Image name(name of uploaded file) |
+| templateImageUrl      | String |	X | Image URL |
+| securityFlag          | Boolean | X| Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending(default: false) |
+| categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
+| buttons               |	List |	X | List of buttons(up to 5) |
+| -ordering             |	Integer |	X | Button sequence(1~5) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
+| - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
+| - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(required for the AL type, up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(required for the AL type, up to 500 characters) |
+| - bizFormId           |	Integer|	X |	Business form ID(required for BF type) |
+| - pluginId            |	String|	X |	Plugin ID(up to 24 characters) |
+| quickReplies          |	List |	X | Quick reply list(up to 5) |
+| - ordering            |	Integer|	X |	Quick reply order(required  when quick reply exists)|
+| - type                | String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
+| - name                | String |	X |	Quick reply name(required  when quick reply exists, up to 14 characters)|
+| - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
+| - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(required for the AL type, up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(required for the AL type, up to 500 characters) |
+| - bizFormId           |	Integer|	X |	Business form ID(required for BF type) |
 
 * The templateAd value is fixed when registering the AD included(AD) or Mixed Purposes(MI) message type template.
 * The Add Chanel button must be in the first when registering the AD included(AD) or Mixed Purposes(MI) message type template.
@@ -1788,44 +1773,55 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required|	Description|
-|---|---|---|---|
-|templateName|	String |	O | Template name(up to 150 characters) |
-|templateContent|	String |	O | Template body(up to 1000 characters) |
-|templateMessageType| String | X | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
-|templateEmphasizeType| String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required|
-|templateExtra | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
-|tempalteTitle| String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
-|templateSubtitle| String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
-|templateHeader| String| X| Template header(up to 16 characters) |
-|templateItem | Object | X| Item |
-| - list | List | X | Item list(at least 2, up to 10) |
-| -- title | String | X | Title(up to 6 characters) |
-| -- description | String | X | Description(up to 23 characters) |
-| - summary | Object | X | Item summary information |
-| -- title | String | X | Title(up to 6 characters) |
-| -- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-|templateItemHighlight | Object | X| Item highlight |
-| - title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-| - description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-| - imageUrl | String | X | Thumbnail image address |
-|templateRepresentLink | Object | X| Main link |
-| - linkMo| String |	X |	Mobile web link(up to 500 characters)|
-| - linkPc | String |	X |PC web link(up to 500 characters) |
-| - schemeIos | String | X |	iOS app link(up to 500 characters) |
-| - schemeAndroid | String | X |	Android app link(up to 500 characters) |
-|templateImageName | String |	X | Image name(name of uploaded file) |
-|templateImageUrl | String |	X | Image URL |
-|securityFlag| Boolean | X| Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending(default: false) |
-|categoryCode| String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
-|buttons|	List |	X | List of buttons(up to 5) |
-|-ordering|	Integer |	X | Button sequence(1~5) |
-|- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
-|-name| String |	X |	Button name(required, if there's a button, up to 14 characters)|
-|-linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
-|-linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
-|-schemeIos | String | X |	iOS app link(required for the AL type, up to 500 characters) |
-|-schemeAndroid | String | X |	Android app link(required for the AL type, up to 500 characters) |
+| Name                  |	Type|	Required|	Description|
+|-----------------------|---|---|---|
+| templateName          |	String |	O | Template name(up to 150 characters) |
+| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateMessageType   | String | X | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
+| templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required|
+| templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
+| tempalteTitle         | String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
+| templateSubtitle      | String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
+| templateHeader        | String| X| Template header(up to 16 characters) |
+| templateItem          | Object | X| Item |
+| - list                | List | X | Item list(at least 2, up to 10) |
+| -- title              | String | X | Title(up to 6 characters) |
+| -- description        | String | X | Description(up to 23 characters) |
+| - summary             | Object | X | Item summary information |
+| -- title              | String | X | Title(up to 6 characters) |
+| -- description        | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
+| templateItemHighlight | Object | X| Item highlight |
+| - title               | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
+| - description         | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
+| - imageUrl            | String | X | Thumbnail image address |
+| templateRepresentLink | Object | X| Main link |
+| - linkMo              | String |	X |	Mobile web link(up to 500 characters)|
+| - linkPc              | String |	X |PC web link(up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(up to 500 characters) |
+| templateImageName     | String |	X | Image name(name of uploaded file) |
+| templateImageUrl      | String |	X | Image URL |
+| securityFlag          | Boolean | X| Security template<br>Set for security messages such as OTP<br>If set, message text is unexposed to all devices except for the main device at the time of sending(default: false) |
+| categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
+| buttons               |	List |	X | List of buttons(up to 5) |
+| - ordering            |	Integer |	X | Button sequence(1~5) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
+| - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
+| - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(required for the AL type, up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(required for the AL type, up to 500 characters) |
+| - bizFormId           |	Integer|	X |	Business form ID(required for BF type) |
+| - pluginId            |	String|	X |	Plugin ID(up to 24 characters) |
+| quickReplies          |	List |	X | Quick reply list(up to 5) |
+| - ordering            |	Integer|	X |	Quick reply order(required  when quick reply exists)|
+| - type                | String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
+| - name                | String |	X |	Quick reply name(required  when quick reply exists, up to 14 characters)|
+| - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
+| - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
+| - schemeIos           | String | X |	iOS app link(required for the AL type, up to 500 characters) |
+| - schemeAndroid       | String | X |	Android app link(required for the AL type, up to 500 characters) |
+| - bizFormId           |	Integer|	X |	Business form ID(required for BF type) |
 
 * The templateAd value is fixed when modifying the AD included(AD) or Mixed Purposes(MI) message type template.
 * The Add Chanel button must be in the first when modifying the AD included(AD) or Mixed Purposes(MI) message type template.
@@ -2123,8 +2119,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                     "schemeIos": String,
                     "schemeAndroid": String
                 }
-                ],
-                "comments": [
+              ],
+              "quickReplies" : [
+                {
+                  "ordering" : Integer,
+                  "type" : String,
+                  "name" : String,
+                  "linkMo" : String,
+                  "linkPc" : String,
+                  "schemeIos" : String,
+                  "schemeAndroid" : String
+                  "bizFormId" : Integer
+                }
+              ],
+              "comments": [
                   {
                       "id": Integer,
                       "content": String,
@@ -2135,14 +2143,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                         "filePath": String
                       }],
                       "status": String
-                    }  
-                ],
-                "status": String,
-                "statusName": String,
-                "securityFlag": Boolean,
-                "categoryCode": String,
-                "createDate": String,
-                "updateDate": String
+                  }  
+              ],
+              "status": String,
+              "statusName": String,
+              "securityFlag": Boolean,
+              "categoryCode": String,
+              "createDate": String,
+              "updateDate": String
             }
         ],
         "totalCount": Integer
@@ -2150,69 +2158,81 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| Name |	Type|	Description|
-|---|---|---|
-|header|	Object|	Header area|
-|- resultCode|	Integer|	Result code|
-|- resultMessage|	String| Result message|
-|- isSuccessful|	Boolean| Successful or not|
-|templateListResponse|	Object|	Body area|
-|- templates | List |	Template list |
-|-- plusFriendId | String |	PlusFriend ID |
-|-- senderKey    | String | Sender Key    |
-|-- plusFriendType | String | PlusFriend type(NORMAL, GROUP) |
-|-- templateCode | String |	Template code |
-|-- templateName | String |	Template name |
-|-- templateMessageType| String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes) |
-|-- templateEmphasizeType| String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE) |
-|-- templateContent | String |	Template body |
-|-- templateExtra | String | Additional template information |
-|-- templateAd | String | Request for consent of receiving within template or simple ad phrases |
-|-- tempalteTitle| String | Template title |
-|-- templateSubtitle| String | Auxiliary template phrase |
-|- templateHeader| String| X| Template header(up to 16 characters) |
-|- templateItem | Object | X| Item |
-|-- list | List | X | Item list(at least 2, up to 10) |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(up to 23 characters) |
-|-- summary | Object | X | Item summary information |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-|- templateItemHighlight | Object | X| Item highlight |
-|-- title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-|-- description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-|-- imageUrl | String | X | Thumbnail image address |
-|-templateRepresentLink | Object | X| Main link |
-|-- linkMo| String |	X |	Mobile web link(up to 500 characters)|
-|-- linkPc | String |	X |PC web link(up to 500 characters) |
-|-- schemeIos | String | X |	iOS app link(up to 500 characters) |
-|-- schemeAndroid | String | X |	Android app link(up to 500 characters) |
-|-- templateImageName | String | Image name(name of uploaded file) |
-|-- templateImageUrl | String |	Image URL |
-|-- buttons | List |	List of buttons |
-|--- ordering | Integer |	Button sequence(1~5) |
-|--- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
-|--- name | String |	Button name |
-|--- linkMo | String |	Mobile web link(required for the WL type) |
-|--- linkPc | String |	PC web link(optional for the WL type) |
-|--- schemeIos | String |	iOS app link(required for the AL type) |
-|--- schemeAndroid | String |	Android app link(required for the AL type) |
-|-- comments | List | Inspection result |
-|--- id | Integer | Inquiry ID |
-|--- content |  String | Inquiries |
-|--- userName | String | Creator |
-|--- createAt | String | Date of registration |
-|--- attachment | List | Attachment |
-|---- originalFileName | String | Attachment file name |
-|---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
-|-- status| String | Template status |
-|-- statusName | String | Template status name |
-|-- securityFlag| Boolean | Whether it is a security template |
-|-- categoryCode| String | Template category code  |
-|-- createDate | String | Date of creation |
-|-- updateDate | String | Date of modification |
-|- totalCount | Integer | Total count |
+| Name                     |	Type| 	Description                                                                                                                                                                                                                                                                                           |
+|--------------------------|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header                   |	Object| 	Header area                                                                                                                                                                                                                                                                                           |
+| - resultCode             |	Integer| 	Result code                                                                                                                                                                                                                                                                                           |
+| - resultMessage          |	String| Result message                                                                                                                                                                                                                                                                                         |
+| - isSuccessful           |	Boolean| Successful or not                                                                                                                                                                                                                                                                                      |
+| templateListResponse     |	Object| 	Body area                                                                                                                                                                                                                                                                                             |
+| - templates              | List | 	Template list                                                                                                                                                                                                                                                                                         |
+| -- plusFriendId          | String | 	PlusFriend ID                                                                                                                                                                                                                                                                                         |
+| -- senderKey             | String | Sender Key                                                                                                                                                                                                                                                                                             |
+| -- plusFriendType        | String | PlusFriend type(NORMAL, GROUP)                                                                                                                                                                                                                                                                         |
+| -- templateCode          | String | 	Template code                                                                                                                                                                                                                                                                                         |
+| -- kakaoTemplateCode     | String | 	Kakao's origin template code                                                                                                                                                                                                                                                                          |
+| -- templateName          | String | 	Template name                                                                                                                                                                                                                                                                                         |
+| -- templateMessageType   | String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes)                                                                                                                                                                                                       |
+| -- templateEmphasizeType | String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)                                                                                                                                                                                                           |
+| -- templateContent       | String | 	Template body                                                                                                                                                                                                                                                                                         |
+| -- templateExtra         | String | Additional template information                                                                                                                                                                                                                                                                        |
+| -- templateAd            | String | Request for consent of receiving within template or simple ad phrases                                                                                                                                                                                                                                  |
+| -- tempalteTitle         | String | Template title                                                                                                                                                                                                                                                                                         |
+| -- templateSubtitle      | String | Auxiliary template phrase                                                                                                                                                                                                                                                                              |
+| - templateHeader         | String| Template header(up to 16 characters)                                                                                                                                                                                                                                                                   |
+| - templateItem           | Object | Item                                                                                                                                                                                                                                                                                                   |
+| -- list                  | List | Item list(at least 2, up to 10)                                                                                                                                                                                                                                                                        |
+| --- title                | String | Title(up to 6 characters)                                                                                                                                                                                                                                                                              |
+| --- description          | String | Description(up to 23 characters)                                                                                                                                                                                                                                                                       |
+| -- summary               | Object | Item summary information                                                                                                                                                                                                                                                                               |
+| --- title                | String | Title(up to 6 characters)                                                                                                                                                                                                                                                                              |
+| --- description          | String | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters)                                                                                                                                                                                                      |
+| - templateItemHighlight  | Object | Item highlight                                                                                                                                                                                                                                                                                         |
+| -- title                 | String | Title(up to 30 characters, 21 characters with a thumbnail image)                                                                                                                                                                                                                                       |
+| -- description           | String | Description(up to 19 characters, 13 with a thumbnail image)                                                                                                                                                                                                                                            |
+| -- imageUrl              | String | Thumbnail image address                                                                                                                                                                                                                                                                                |
+| -templateRepresentLink   | Object | Main link                                                                                                                                                                                                                                                                                              |
+| -- linkMo                | String | 	Mobile web link(up to 500 characters)                                                                                                                                                                                                                                                                 |
+| -- linkPc                | String | PC web link(up to 500 characters)                                                                                                                                                                                                                                                                      |
+| -- schemeIos             | String | 	iOS app link(up to 500 characters)                                                                                                                                                                                                                                                                    |
+| -- schemeAndroid         | String | 	Android app link(up to 500 characters)                                                                                                                                                                                                                                                                |
+| -- templateImageName     | String | Image name(name of uploaded file)                                                                                                                                                                                                                                                                      |
+| -- templateImageUrl      | String | 	Image URL                                                                                                                                                                                                                                                                                             |
+| -- buttons               | List | 	List of buttons                                                                                                                                                                                                                                                                                       |
+| --- ordering             | Integer | 	Button sequence(1~5)                                                                                                                                                                                                                                                                                  |
+| --- type                 | String | 	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| --- name                 | String | 	Button name                                                                                                                                                                                                                                                                                           |
+| --- linkMo               | String | 	Mobile web link(required for the WL type)                                                                                                                                                                                                                                                             |
+| --- linkPc               | String | 	PC web link(optional for the WL type)                                                                                                                                                                                                                                                                 |
+| --- schemeIos            | String | 	iOS app link(required for the AL type)                                                                                                                                                                                                                                                                |
+| --- schemeAndroid        | String | 	Android app link(required for the AL type)                                                                                                                                                                                                                                                            |
+| --- bizFormId            |	Integer| 	X                                                                                                                                                                                                                                                                                                     |	Business form ID(required for BF type) |
+| --- pluginId             |	String| 	X                                                                                                                                                                                                                                                                                                     |	Plugin ID(up to 24 characters) |
+| -- quickReplies          |	List | 	X                                                                                                                                                                                                                                                                                                     | Quick reply list(up to 5) |
+| --- ordering             |	Integer| 	X                                                                                                                                                                                                                                                                                                     |	Quick reply order(required  when quick reply exists)|
+| --- type                 | String | 	X                                                                                                                                                                                                                                                                                                     |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
+| --- name                 | String | 	X                                                                                                                                                                                                                                                                                                     |	Quick reply name(required  when quick reply exists, up to 14 characters)|
+| --- linkMo               | String | 	X                                                                                                                                                                                                                                                                                                     |	Mobile web link(required for the WL type, up to 500 characters)|
+| --- linkPc               | String | 	X                                                                                                                                                                                                                                                                                                     |PC web link(optional for the WL type, up to 500 characters) |
+| --- schemeIos            | String | X                                                                                                                                                                                                                                                                                                      |	iOS app link(required for the AL type, up to 500 characters) |
+| --- schemeAndroid        | String | X                                                                                                                                                                                                                                                                                                      |	Android app link(required for the AL type, up to 500 characters) |
+| --- bizFormId            |	Integer| 	X                                                                                                                                                                                                                                                                                                     |	Business form ID(required for BF type) |
+| -- comments              | List | Inspection result                                                                                                                                                                                                                                                                                      |
+| --- id                   | Integer | Inquiry ID                                                                                                                                                                                                                                                                                             |
+| --- content              |  String | Inquiries                                                                                                                                                                                                                                                                                              |
+| --- userName             | String | Creator                                                                                                                                                                                                                                                                                                |
+| --- createAt             | String | Date of registration                                                                                                                                                                                                                                                                                   |
+| --- attachment           | List | Attachment                                                                                                                                                                                                                                                                                             |
+| ---- originalFileName    | String | Attachment file name                                                                                                                                                                                                                                                                                   |
+| ---- filePath            | String | Attachment file path                                                                                                                                                                                                                                                                                   |
+| --- status               | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied)                                                                                                                                                                                                                              |
+| -- status                | String | Template status                                                                                                                                                                                                                                                                                        |
+| -- statusName            | String | Template status name                                                                                                                                                                                                                                                                                   |
+| -- securityFlag          | Boolean | Whether it is a security template                                                                                                                                                                                                                                                                      |
+| -- categoryCode          | String | Template category code                                                                                                                                                                                                                                                                                 |
+| -- createDate            | String | Date of creation                                                                                                                                                                                                                                                                                       |
+| -- updateDate            | String | Date of modification                                                                                                                                                                                                                                                                                   |
+| - totalCount             | Integer | Total count                                                                                                                                                                                                                                                                                            |
 
 ### List Template modifications
 
@@ -2354,28 +2374,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateAd | String | Request for consent of receiving within template or simple ad phrases |
 |-- tempalteTitle| String | Template title |
 |-- templateSubtitle| String | Auxiliary template phrase |
-|- templateHeader| String| X| Template header(up to 16 characters) |
-|- templateItem | Object | X| Item |
-|-- list | List | X | Item list(at least 2, up to 10) |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(up to 23 characters) |
-|-- summary | Object | X | Item summary information |
-|--- title | String | X | Title(up to 6 characters) |
-|--- description | String | X | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
-|- templateItemHighlight | Object | X| Item highlight |
-|-- title | String | X | Title(up to 30 characters, 21 characters with a thumbnail image) |
-|-- description | String | X | Description(up to 19 characters, 13 with a thumbnail image) |
-|-- imageUrl | String | X | Thumbnail image address |
-|-templateRepresentLink | Object | X| Main link |
-|-- linkMo| String |	X |	Mobile web link(up to 500 characters)|
-|-- linkPc | String |	X |PC web link(up to 500 characters) |
-|-- schemeIos | String | X |	iOS app link(up to 500 characters) |
-|-- schemeAndroid | String | X |	Android app link(up to 500 characters) |
+|- templateHeader| String| Template header(up to 16 characters) |
+|- templateItem | Object | Item |
+|-- list | List | Item list(at least 2, up to 10) |
+|--- title | String | Title(up to 6 characters) |
+|--- description | String | Description(up to 23 characters) |
+|-- summary | Object | Item summary information |
+|--- title | String | Title(up to 6 characters) |
+|--- description | String | Description(Only variables and monetary units, numbers, commas, and periods, up to 14 characters) |
+|- templateItemHighlight | Object | Item highlight |
+|-- title | String | Title(up to 30 characters, 21 characters with a thumbnail image) |
+|-- description | String | Description(up to 19 characters, 13 with a thumbnail image) |
+|-- imageUrl | String | Thumbnail image address |
+|-templateRepresentLink | Object | Main link |
+|-- linkMo| String |	Mobile web link(up to 500 characters)|
+|-- linkPc | String |PC web link(up to 500 characters) |
+|-- schemeIos | String |	iOS app link(up to 500 characters) |
+|-- schemeAndroid | String |	Android app link(up to 500 characters) |
 |-- templateImageName | String | Image name(name of uploaded file) |
 |-- templateImageUrl | String |	Image URL |
 |-- buttons | List |	List of buttons |
 |--- ordering | Integer |	Button sequence(1~5) |
-|--- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|--- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
 |--- name | String |	Button name |
 |--- linkMo | String |	Mobile web link(required for the WL type) |
 |--- linkPc | String |	PC web link(optional for the WL type) |

@@ -154,7 +154,7 @@ Content-Type: application/json;charset=UTF-8
 |- content|	String|	O| 내용(최대 1000자)<br>이미지 발송 시, 최대 400자<br>와이드 이미지 발송 시, 최대 76자 |
 |- imageUrl|	String|	X|	이미지 URL |
 |- imageLink|	String|	X|	이미지 링크   |
-|- buttons|	List|	X|	버튼<br>와이드 이미지 발송 시, 링크 버튼 1개 |
+|- buttons|	List|	X|	버튼<br>와이드 이미지 발송 시, 링크 버튼 최대 2개 |
 |-- ordering|	Integer|	X |	버튼 순서(버튼이 있는 경우 필수)|
 |-- type| String |	X |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 |-- name| String |	X |	버튼 이름(버튼이 있는 경우 필수)|
