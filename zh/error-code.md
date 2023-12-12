@@ -49,6 +49,7 @@
 | Common  | false     | -2034      | 템플릿 아이템 하이라이트 파라미터가 유효하지 않은 경우                     |
 | Common  | false     | -2035      | 템플릿 헤더가 16자를 초과한 경우                                     |
 | Common  | false     | -2036      | Requested message is missing or there is no message to cancel |
+| Common  | false     | -2037      | 아이템리스트형 템플릿 등록시 메시지 본문 글자수가 700자를 초과한 경우         |
 | Common  | false     | -2500      | 대량 발송 요청을 찾을 수 없는 경우                                   |
 | Common  | false     | -2501      | 요청한 메시지가 없거나, 취소할 수 있는 메시지가 없는 경우                  |
 | Common  | false     | -2502      | Alternative delivery requested when failed delivery is not configured |
@@ -125,6 +126,7 @@
 | Common  | false     | -8005      | No Plus Friend is registered in project to upload images     |
 | Common  | false     | -8006      | Authentication message not included in Template, when sending an authentication message       |
 | Common  | false     | -8008      | Banned word was included in message content , when sending an message       |
+| Common  | false     | -8010      | 네트워크 등의 문제로 이미지 파일 업로드 실패                             |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
 | Common  | false     | -9998      | API does not exist                                           |
