@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### December 19, 2023
+* [API] Changed the character limit for Alimtalk item list body
+    * (AS-IS) Maximum 1,000 characters for Alimtalk item list body
+    * (TO-BE) Maximum 700 characters for Alimtalk item list body
+
 ### November 28, 2023
 * [API] Changed the limit on the number of FriendTalk wide image buttons
     * (AS-IS) Maximum 1 button when sending a FriendTalk wide image
