@@ -1,4 +1,10 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2024. 01. 23.
+* [Console] 알림톡 대량 발송 시, 과거 일자로 요청되던 버그 수정
+    * 알림톡 대량 발송 시, 과거 일자로 요청되던 버그를 수정하였습니다.
+* [API] 일부 요청 실패 메시지가 대체 발송되지 않은 버그 수정
+    * -3042(templateHeader 불일치), -3043(templateItem, templateHighlight 불일치), -3046(templateRepresentLink 불일치) 요청 실패 메시지도 대체 발송되도록 버그를 수정하였습니다.
+
 ### 2023. 12. 19.
 * [API] 알림톡 아이템리스트 포함 시 본문 글자수 제한 변경
     * (변경 전) 알림톡 아이템리스트 포함 시 최대 본문 길이 1,000자
