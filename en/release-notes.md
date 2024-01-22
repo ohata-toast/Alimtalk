@@ -1,4 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+
+### January 23, 2024
+* [Console] Fixed a bug of past dates being requested when mass sending AlimTalk messages
+    * FIxed a bug where a past date is requested when mass sending AlimTalk messages.
+* [API] Fixed a bug where some request failure messages are not sent as alternative delivery
+    * Fixed a bug so that -3042 (templateHeader mismatch), -3043 (templateItem, templateHighlight mismatch), and -3046 (templateRepresentLink mismatch) request failure messages are also sent instead.
+
 ### December 19, 2023
 * [API] Changed the character limit for Alimtalk item list body
     * (AS-IS) Maximum 1,000 characters for Alimtalk item list body
