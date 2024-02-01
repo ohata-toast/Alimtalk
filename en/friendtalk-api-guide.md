@@ -50,8 +50,9 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
 
 [Request body]
-
-```
+<details>
+<summary>Basic</summary>
+<pre><code>
 {
     "senderKey": String,
     "requestDate": String,
@@ -62,6 +63,55 @@ Content-Type: application/json;charset=UTF-8
         "content": String,
         "imageUrl": String,
         "imageLink": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</code></pre>
+</details>
+
+<details>
+<summary>Wide Item list</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "buttons": [
           {
             "ordering": Integer,
@@ -90,6 +140,40 @@ Content-Type: application/json;charset=UTF-8
             }
           ]
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</pre></code>
+</details>
+
+<details>
+<summary>Carousel Feed</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "carousel": {
           "list": [
             {
@@ -120,14 +204,6 @@ Content-Type: application/json;charset=UTF-8
             "schemeIos": String
           }
         },
-        "coupon": {
-          "title": String,
-          "description": String,
-          "linkMo": String,
-          "linkPc": String,
-          "schemeAndroid": String,
-          "schemeIos": String
-        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -141,7 +217,8 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-```
+</pre></code>
+</details>
 
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
