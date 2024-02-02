@@ -46,7 +46,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -92,7 +92,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
+* <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
@@ -166,7 +166,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -230,7 +230,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 
 * <b>本文とボタンに置換が完了したデータを入れてください。</b>
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
+* <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)<
@@ -306,7 +306,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter] 1番or 2番の条件は必須
 
@@ -446,7 +446,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [例]
 ```
@@ -559,7 +559,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -605,7 +605,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
+* <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
 
@@ -678,7 +678,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -742,7 +742,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 
 * <b>本文とボタンに置換が完了したデータを入れてください。</b>
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
+* <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 
 [例]
 ```
@@ -815,7 +815,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter] 1番or 2番の条件は必須
 
@@ -955,7 +955,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [例]
 ```
@@ -1059,7 +1059,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter]
 
@@ -1117,7 +1117,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter]
 
@@ -1237,7 +1237,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 #### レスポンス
 ```
@@ -1319,7 +1319,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -1379,7 +1379,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -1438,7 +1438,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 #### レスポンス
@@ -1532,7 +1532,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter] 1番or 2番の条件は必須
 
@@ -1640,7 +1640,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -1720,7 +1720,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -1840,7 +1840,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -1897,7 +1897,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter]
 
@@ -2028,7 +2028,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 |---|---|---|---|
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [예시]
 ```
@@ -2141,7 +2141,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 [Request body]
@@ -2197,7 +2197,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 [Request body]

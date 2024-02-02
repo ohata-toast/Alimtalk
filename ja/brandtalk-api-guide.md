@@ -42,7 +42,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [Request body]
 
@@ -77,7 +77,7 @@ Content-Type: application/json;charset=UTF-8
 |-- value| String |	X |	置換キーにマッピングされるValue値|
 |- recipientGroupingKey|	String|	X|	受信者グルーピングキー(最大100文字) |
 
-* <b>リクエスト日時は呼び出す時点から90日後まで設定可能です。</b>
+* <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 * <b>夜間送信制限(20:50～翌日08:00)</b>
 
 [例]
@@ -151,7 +151,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [Query parameter] 1番or (2番、3番)条件必須
 
@@ -267,7 +267,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [例]
 ```
@@ -375,7 +375,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [Query parameter]
 
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [Request parameter]
 
@@ -531,7 +531,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | コンソールで作成できる。 |
 
 [Query parameter]
 
