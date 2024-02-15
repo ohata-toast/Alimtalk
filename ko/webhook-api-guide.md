@@ -26,9 +26,9 @@ KakaoTalk Bizmessage 서비스 내 특정 이벤트가 발생하면 웹훅 설�
 |hooksId|	String| 웹훅 설정에 정의된 URL로 POST 요청을 할 때마다 고유하게 생성되는 ID |
 |webhookConfigId|	String|웹훅 설정 ID|
 |productName|	String|	웹훅 이벤트가 발생한 서비스명 |
-|appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
+|appKey|	String| 웹훅 이벤트가 발생한 서비스 앱키 |
 |event|	String| 웹훅 이벤트명 |
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./webhook-api-guide/#event-hooks)를 참고해주세요. |
+|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./webhook-api-guide/#event-hooks)를 참고해 주세요. |
 
 #### cURL
 ```
@@ -63,7 +63,7 @@ curl -X POST \
 |- senderKey|	String|	발신 키 |
 |- templateCode|	String| 템플릿 코드 |
 |- kakaoTemplateCode|	String| 원본 템플릿 코드 |
-|- status|	String| 템플릿 상태 (TSC01: 요청, TSC02: 검수중, TSC03: 승인, TSC04: 반러) |
+|- status|	String| 템플릿 상태(TSC01: 요청, TSC02: 검수 중, TSC03: 승인, TSC04: 반려) |
 |- comments|	List| 검수 결과 |
 |-- id|	String| 문의 아이디|
 |-- content|	String|문의 내용 |
