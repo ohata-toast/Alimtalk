@@ -1,4 +1,21 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### February 27, 2024
+* [Console] Allow inquiries and attachments when registering AlimTalk templates
+  * Improved so that comments and attachments can be registered for template review during the template creation process.
+  * When registering a template with the Send button included, you must attach the captured image of the payment page where the payer can be identified' for review. [Bank Transfer App Link Guide](https://t1.daumcdn.net/kakaopay/static/guide/account-remittance-app-link/index.html)
+* [API] Changed the attachment limit in Inquiry of AlimTalk templates
+  * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates 
+  * (TO-BE) Up to 10 attachments  allowed when inquiring about AlimTalk templates
+* [API] Changed the character limit for FriendTalk wild item list titles
+  * (AS-IS) Set a 25 character limit for 1st to 4th item titles when sending a FriendTalk wild item list   
+  * (TO-BE) Set a 25 change limit for 1st item title, and a 30 character limit for 2nd to 4th item titles when sending a FriendTalk wild item list
+* [API] Changed the limit on number of FriendTalk carousel feeds
+  * (AS-IS) The number of carousels in a FriendTalk carousel feed ranges from 2 to 6 when sending a carousel feed.
+  * (TO-BE) The number of carousels in a FriendTalk carousel feed ranges from 2 to 10 when sending a carousel feed.
+* [API] Changed the limit on the number of FriendTalk carousel feed buttons
+  * (AS-IS) Up to 5 buttons for each carousel can be added when sending a carousel feed
+  * (TO-BE) Up to 2 buttons for each carousel can be added when sending a carousel feed
+  
 ### January 23, 2024
 * [Console] Fixed a bug of past dates being requested when mass sending AlimTalk messages
     * FIxed a bug where a past date is requested when mass sending AlimTalk messages.
