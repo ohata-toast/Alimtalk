@@ -3,6 +3,9 @@
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
   * Improved so that comments and attachments can be registered for template review during the template creation process.
   * When registering a template with the Send button included, you must attach the captured image of the payment page where the payer can be identified' for review. [Bank Transfer App Link Guide](https://t1.daumcdn.net/kakaopay/static/guide/account-remittance-app-link/index.html)
+* [Console] Change the channel add type to default type
+  * (AS-IS) When registering an AlimTalk template, the basic type is the default type
+  * (TO-BE) When registering an AlimTalk template, the channel add type is the default type
 * [API] Changed the attachment limit in Inquiry of AlimTalk templates
   * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates 
   * (TO-BE) Up to 10 attachments  allowed when inquiring about AlimTalk templates
@@ -15,7 +18,10 @@
 * [API] Changed the limit on the number of FriendTalk carousel feed buttons
   * (AS-IS) Up to 5 buttons for each carousel can be added when sending a carousel feed
   * (TO-BE) Up to 2 buttons for each carousel can be added when sending a carousel feed
-  
+* [API] Removed BC and BT types of FriendTalk buttons
+  * (AS-IS) The consult conversion and bot conversion buttons are available
+  * (TO-BE) The consult conversion and bot conversion buttons are unavailable
+
 ### January 23, 2024
 * [Console] Fixed a bug of past dates being requested when mass sending AlimTalk messages
     * FIxed a bug where a past date is requested when mass sending AlimTalk messages.
