@@ -1675,10 +1675,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-|値|	タイプ|	必須|	説明|
-|---|---|---|---|
-|comment|	String |	O | お問い合わせ内容 |
-|attachments| List<File> | X | 添付ファイルリスト(最大5個) |
+|値|	タイプ|	必須| 	説明              |
+|---|---|---|------------------|
+|comment|	String |	O | お問い合わせ内容         |
+|attachments| List<File> | X | 添付ファイルリスト(最大10個) |
 
 #### レスポンス
 ```

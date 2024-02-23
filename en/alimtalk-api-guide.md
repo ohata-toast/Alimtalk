@@ -1986,10 +1986,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required|	Description|
-|---|---|---|---|
-|comment|	String |	O | Inquiries |
-|attachments| List<File> | X | List of Attachment(Up to 5) |
+| Name |	Type|	Required| 	Description                 |
+|---|---|---|------------------------------|
+|comment|	String |	O | Inquiries                    |
+|attachments| List<File> | X | List of Attachment(Up to 10) |
 
 * When commenting a template in the REJ status, it will be changed to the REQ status.
 

@@ -2074,10 +2074,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|comment|	String |	O | 문의 내용 |
-|attachments| List<File> | X | 첨부 파일 목록(최대 5개) |
+| 이름 |	타입|	필수| 	설명              |
+|---|---|---|------------------|
+|comment|	String |	O | 문의 내용            |
+|attachments| List<File> | X | 첨부 파일 목록(최대 10개) |
 
 #### 응답
 ```

@@ -1985,10 +1985,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|comment|	String |	O | 문의 내용 |
-|attachments| List<File> | X | 첨부 파일 목록(최대 5개) |
+| 이름 |	타입|	필수| 	설명              |
+|---|---|---|------------------|
+|comment|	String |	O | 문의 내용            |
+|attachments| List<File> | X | 첨부 파일 목록(최대 10개) |
 
 * 반려 상태의 템플릿에 문의를 남길 경우, 검수 중(REQ) 상태로 변경됩니다.
 

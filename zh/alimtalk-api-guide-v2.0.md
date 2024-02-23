@@ -1687,10 +1687,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Value        | Type   | Required | Description                                                  |
-|---|---|---|---|
-|comment|	String |	O | Content of Inquiry |
-|attachments| List<File> | X | List of Attachment(Up to 5) |
+| Value        | Type   | Required | Description                  |
+|---|---|---|------------------------------|
+|comment|	String |	O | Content of Inquiry           |
+|attachments| List<File> | X | List of Attachment(Up to 10) |
 
 #### Response
 ```
