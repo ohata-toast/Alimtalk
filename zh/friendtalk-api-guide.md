@@ -47,11 +47,12 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request body]
-
-```
+<details>
+<summary>Basic</summary>
+<pre><code>
 {
     "senderKey": String,
     "requestDate": String,
@@ -62,6 +63,55 @@ Content-Type: application/json;charset=UTF-8
         "content": String,
         "imageUrl": String,
         "imageLink": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</code></pre>
+</details>
+
+<details>
+<summary>Wide Item list</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "buttons": [
           {
             "ordering": Integer,
@@ -90,6 +140,40 @@ Content-Type: application/json;charset=UTF-8
             }
           ]
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</pre></code>
+</details>
+
+<details>
+<summary>Carousel Feed</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "carousel": {
           "list": [
             {
@@ -120,14 +204,6 @@ Content-Type: application/json;charset=UTF-8
             "schemeIos": String
           }
         },
-        "coupon": {
-          "title": String,
-          "description": String,
-          "linkMo": String,
-          "linkPc": String,
-          "schemeAndroid": String,
-          "schemeIos": String
-        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -141,7 +217,8 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-```
+</pre></code>
+</details>
 
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
@@ -181,7 +258,7 @@ Content-Type: application/json;charset=UTF-8
 |--- message | String | X | Carousel item message(up to 180 characters) | 
 |--- attachment | Object | X | Carousel item images, button information | 
 |---- buttons | List | X | Button list(up to 2) | 
-|----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
+|----- name| String |	X |	Button name(required, if there's a button, up to 8 characters)|
 |----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
 |----- linkMo| String |	X |	Mobile web link(required for the WL type)|
 |----- linkPc | String |	X |PC web link(optional for the WL type) |
@@ -293,7 +370,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter] No.1 or(2, 3) is conditionally required
 
@@ -415,7 +492,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -641,7 +718,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -699,7 +776,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -1216,7 +1293,7 @@ Content-Type: multipart/form-data
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request parameter]
 
@@ -1282,7 +1359,7 @@ Content-Type: multipart/form-data
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request parameter]
 
@@ -1347,7 +1424,7 @@ Content-Type: multipart/form-data
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request parameter]
 
@@ -1413,7 +1490,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -1494,7 +1571,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -1615,7 +1692,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 
 [Request body]
@@ -1670,7 +1747,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 
 [Request body]

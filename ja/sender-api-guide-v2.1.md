@@ -45,7 +45,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 #### レスポンス
 ```
@@ -127,7 +127,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -186,7 +186,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Request body]
 
@@ -245,7 +245,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 * 발신 프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제 됩니다.
 * 발신 프로필 삭제 시, 복구가 불가능합니다.
@@ -295,7 +295,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 #### レスポンス
@@ -391,7 +391,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter] 1番or 2番の条件は必須
 
@@ -503,7 +503,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 #### レスポンス
 ```
@@ -573,7 +573,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 * グループの最大メンバー数は5000人です。
 
@@ -621,7 +621,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 #### レスポンス
 ```
