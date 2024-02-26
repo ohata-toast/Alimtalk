@@ -645,7 +645,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- buttons | List |	버튼 리스트 |
 |-- ordering | Integer |	버튼 순서 |
 |-- type | String |	버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달) |
-|-- name | String |	버튼 이름 |
+|-- name | String |	버튼 이름(최대 28자, 와이드 아이템리스트일 경우, 9자) |
 |-- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
 |-- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
 |-- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
@@ -664,7 +664,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- schemeIos | String | iOS 앱 링크 |
 |--- schemeAndroid | String | 안드로이드 앱 링크 |
 |- carousel | Object | 캐러셀 | 
-|-- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+|-- list | List | 캐러셀 리스트(최소 2개/최대 10개) | 
 |--- header | String | 캐러셀 아이템 제목(최대 20자) | 
 |--- message | String | 캐러셀 아이템 메시지(최대 180자) | 
 |--- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
@@ -1245,7 +1245,7 @@ curl -X GET \
 | --- message | String | 캐러셀 아이템 메시지(최대 180자) | 
 | --- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
 | ---- buttons | List | 버튼 리스트(최대 2개) | 
-| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 8자)|
 | ----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 | ----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
 | ----- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
