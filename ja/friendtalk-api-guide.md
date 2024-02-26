@@ -246,7 +246,7 @@ Content-Type: application/json;charset=UTF-8
 | - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
 | - item                 | Object  | X    | Wide item |
 | -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
-| --- title              | String  | X    | Item title(up to 25 characters) |
+| --- title              | String  | X    | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
 | --- imageUrl           | String  | X    | Item image URL |
 | --- linkMo | String | X | Mobile web link |
 | --- linkPc | String | X | PC web link |
