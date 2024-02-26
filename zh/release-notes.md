@@ -1,5 +1,4 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
-
 ### February 27, 2024
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
     * Improved so that comments and attachments can be registered for template review during the template creation process.
