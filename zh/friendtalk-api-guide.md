@@ -246,7 +246,7 @@ Content-Type: application/json;charset=UTF-8
 |- header | String | X | Header(required when using the wide item list message type, up to 25 characters) |
 |- item | Object | X | Wide item |
 |-- list | List | X | Wide item list(at lease 3, up to 4) |
-|--- title | String | X | Item title(up to 25 characters) |
+|--- title | String | X | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
 |--- imageUrl | String | X | Item image URL |
 |--- linkMo | String | X | Mobile web link |
 |--- linkPc | String | X | PC web link |
@@ -654,14 +654,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- header | String | Header(required when using the wide item list message type, up to 25 characters) |
 |- item | Object | Wide item |
 |-- list | List | Wide item list(at lease 3, up to 4) |
-|--- title | String | Item title(up to 25 characters) |
+|--- title | String | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
 |--- imageUrl | String | Item image URL |
 |--- linkMo | String | Mobile web link |
 |--- linkPc | String | PC web link |
 |--- schemeIos | String | iOS app link |
 |--- schemeAndroid | String | Android app link |
 |- carousel | Object | Carousel | 
-|-- list | List | Carousel list(at least 2, up to 6) | 
+|-- list | List | Carousel list(at least 2, up to 10) | 
 |--- header | String | Carousel item title(up to 20 characters) | 
 |--- message | String | Carousel item message(up to 180 characters) | 
 |--- attachment | Object | Carousel item images, button information | 
@@ -1230,14 +1230,14 @@ curl -X GET \
 | - header | String | Header(required when using the wide item list message type, up to 25 characters) |
 | - item | Object | Wide item |
 | -- list | List | Wide item list(at lease 3, up to 4) |
-| --- title | String | Item title(up to 25 characters) |
+| --- title | String | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
 | --- imageUrl | String | Item image URL |
 | --- linkMo | String | Mobile web link |
 | --- linkPc | String | PC web link |
 | --- schemeIos | String | iOS app link |
 | --- schemeAndroid | String | Android app link |
 | - carousel | Object | Carousel | 
-| -- list | List | Carousel list(at least 2, up to 6) | 
+| -- list | List | Carousel list(at least 2, up to 10) | 
 | --- header | String | Carousel item title(up to 20 characters) | 
 | --- message | String | Carousel item message(up to 180 characters) | 
 | --- attachment | Object | Carousel item images, button information | 
