@@ -234,7 +234,7 @@ Content-Type: application/json;charset=UTF-8
 | - buttons              | List    | X    | ボタン                                 |
 | -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
 | -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | X    | ボタン名(ボタンがある場合は必須)                      |
+| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
 | -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
 | -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
 | -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
@@ -258,7 +258,7 @@ Content-Type: application/json;charset=UTF-8
 | --- message | String | X | Carousel item message(up to 180 characters) | 
 | --- attachment | Object | X | Carousel item images, button information | 
 | ---- buttons | List | X | Button list(up to 2) | 
-| ----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
+| ----- name| String |	X |	Button name(required, if there's a button, up to 8 characters)|
 | ----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
 | ----- linkMo| String |	X |	Mobile web link(required for the WL type)|
 | ----- linkPc | String |	X |PC web link(optional for the WL type) |
@@ -1231,7 +1231,7 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | --- schemeIos | String | iOS 앱 링크 |
 | --- schemeAndroid | String | 안드로이드 앱 링크 |
 | - carousel | Object | 캐러셀 | 
-| -- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+| -- list | List | 캐러셀 리스트(최소 2개/최대 10개) | 
 | --- header | String | 캐러셀 아이템 제목(최대 20자) | 
 | --- message | String | 캐러셀 아이템 메시지(최대 180자) | 
 | --- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
