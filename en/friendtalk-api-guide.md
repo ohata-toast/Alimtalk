@@ -258,7 +258,7 @@ Content-Type: application/json;charset=UTF-8
 |--- message | String | X | Carousel item message(up to 180 characters) | 
 |--- attachment | Object | X | Carousel item images, button information | 
 |---- buttons | List | X | Button list(up to 2) | 
-|----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
+|----- name| String |	X |	Button name(required, if there's a button, up to 8 characters)|
 |----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
 |----- linkMo| String |	X |	Mobile web link(required for the WL type)|
 |----- linkPc | String |	X |PC web link(optional for the WL type) |
