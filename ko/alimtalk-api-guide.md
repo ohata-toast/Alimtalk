@@ -135,7 +135,7 @@ Content-Type: application/json;charset=UTF-8
 | - currencyType         | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 | statsId                | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
-* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -366,7 +366,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
-* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -784,7 +784,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request body]
-[위와 동일](./sender-console-guide/#_2)
+[위와 동일](./alimtalk-api-guide/#_2)
 
 ### 메시지 전문 발송 요청
 
@@ -812,7 +812,7 @@ Content-Type: application/json;charset=UTF-8
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
 
 [Request Body]
-[위와 동일](./sender-console-guide/#_4)
+[위와 동일](./alimtalk-api-guide/#_4)
 
 ### 메시지 리스트 조회
 
@@ -879,7 +879,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 #### 응답
-[위와 동일](./sender-console-guide/#_9)
+[위와 동일](./alimtalk-api-guide/#_9)
 
 ## 메시지
 ### 메시지 발송 취소
@@ -1985,10 +1985,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	필수|	설명|
-|---|---|---|---|
-|comment|	String |	O | 문의 내용 |
-|attachments| List<File> | X | 첨부 파일 목록(최대 5개) |
+| 이름 |	타입|	필수| 	설명                                                                                                                                         |
+|---|---|---|---------------------------------------------------------------------------------------------------------------------------------------------|
+|comment|	String |	O | 문의 내용                                                                                                                                       |
+|attachments| List<File> | X | 첨부 파일 목록(최대 10개)<br>- 지원 확장자 ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- 각 개별 파일의 최대 크기 100mb<br>- 전체 업로드 가능한 파일의 최대 크기 100mb |
 
 * 반려 상태의 템플릿에 문의를 남길 경우, 검수 중(REQ) 상태로 변경됩니다.
 

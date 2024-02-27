@@ -47,11 +47,12 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Request body]
-
-```
+<details>
+<summary>基本型</summary>
+<pre><code>
 {
     "senderKey": String,
     "requestDate": String,
@@ -62,6 +63,55 @@ Content-Type: application/json;charset=UTF-8
         "content": String,
         "imageUrl": String,
         "imageLink": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</code></pre>
+</details>
+
+<details>
+<summary>ワイドアイテムリスト</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "buttons": [
           {
             "ordering": Integer,
@@ -90,6 +140,40 @@ Content-Type: application/json;charset=UTF-8
             }
           ]
         },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+</pre></code>
+</details>
+
+<details>
+<summary>カルーセル</summary>
+<pre><code>
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
         "carousel": {
           "list": [
             {
@@ -120,14 +204,6 @@ Content-Type: application/json;charset=UTF-8
             "schemeIos": String
           }
         },
-        "coupon": {
-          "title": String,
-          "description": String,
-          "linkMo": String,
-          "linkPc": String,
-          "schemeAndroid": String,
-          "schemeIos": String
-        },
         "resendParameter": {
             "isResend" : boolean,
             "resendType" : String,
@@ -141,7 +217,8 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-```
+</pre></code>
+</details>
 
 | 値                | タイプ | 必須 | 説明                                 |
 | ---------------------- | ------- | ---- | ---------------------------------------- |
@@ -157,7 +234,7 @@ Content-Type: application/json;charset=UTF-8
 | - buttons              | List    | X    | ボタン                                 |
 | -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
 | -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | X    | ボタン名(ボタンがある場合は必須)                      |
+| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
 | -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
 | -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
 | -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
@@ -169,7 +246,7 @@ Content-Type: application/json;charset=UTF-8
 | - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
 | - item                 | Object  | X    | Wide item |
 | -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
-| --- title              | String  | X    | Item title(up to 25 characters) |
+| --- title              | String  | X    | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
 | --- imageUrl           | String  | X    | Item image URL |
 | --- linkMo | String | X | Mobile web link |
 | --- linkPc | String | X | PC web link |
@@ -181,7 +258,7 @@ Content-Type: application/json;charset=UTF-8
 | --- message | String | X | Carousel item message(up to 180 characters) | 
 | --- attachment | Object | X | Carousel item images, button information | 
 | ---- buttons | List | X | Button list(up to 2) | 
-| ----- name| String |	X |	Button name(required, if there's a button, up to 28 characters)|
+| ----- name| String |	X |	Button name(required, if there's a button, up to 8 characters)|
 | ----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
 | ----- linkMo| String |	X |	Mobile web link(required for the WL type)|
 | ----- linkPc | String |	X |PC web link(optional for the WL type) |
@@ -213,7 +290,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 | statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
-* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 * <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -295,7 +372,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Query parameter] 1番or(2番, 3番)の条件必須
 
@@ -413,7 +490,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Query parameter]
 
@@ -584,7 +661,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- message | String | 캐러셀 아이템 메시지(최대 180자) | 
 |--- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
 |---- buttons | List | 버튼 리스트(최대 2개) | 
-|----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+|----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 8자)|
 |----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 |----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
 |----- linkPc | String | PC 웹 링크(WL 타입일 경우 선택 필드) |
@@ -636,7 +713,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 [Query parameter]
 
@@ -694,7 +771,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Query parameter]
 
@@ -1154,12 +1231,12 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | --- schemeIos | String | iOS 앱 링크 |
 | --- schemeAndroid | String | 안드로이드 앱 링크 |
 | - carousel | Object | 캐러셀 | 
-| -- list | List | 캐러셀 리스트(최소 2개/최대 6개) | 
+| -- list | List | 캐러셀 리스트(최소 2개/최대 10개) | 
 | --- header | String | 캐러셀 아이템 제목(최대 20자) | 
 | --- message | String | 캐러셀 아이템 메시지(최대 180자) | 
 | --- attachment | Object | 캐러셀 아이템 이미지, 버튼 정보 | 
 | ---- buttons | List | 버튼 리스트(최대 2개) | 
-| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 28자)|
+| ----- name| String |	버튼 이름(버튼이 있는 경우 필수, 최대 8자)|
 | ----- type| String |	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼) |
 | ----- linkMo| String |	모바일 웹 링크(WL 타입일 경우 필수 필드)|
 | ----- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
@@ -1210,7 +1287,7 @@ Content-Type: multipart/form-data
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Request parameter]
 
@@ -1407,7 +1484,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Query parameter]
 
@@ -1489,7 +1566,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 [[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。  |
 
 [Query parameter]
 
@@ -1610,7 +1687,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 [Request body]
@@ -1666,7 +1743,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。[[参考](./sender-console-guide/#x-secret-key)] |
+| X-Secret-Key | String | O    | コンソールで作成できる。 |
 
 
 [Request body]

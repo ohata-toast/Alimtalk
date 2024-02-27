@@ -77,7 +77,7 @@ Content-Type: application/json;charset=UTF-8
 |-- value| String |	X |	치환 키에 매핑되는 Value값|
 |- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 
-* <b>요청 일시는 호출하는 시점부터 90일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 
 [예시]

@@ -93,7 +93,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendSendNo        | String  | X        | Sender number for alternative delivery(up to 13 characters)<br/><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
 | - recipientGroupingKey | String  | X        | Recipient grouping key(up to 100 characters)                |
 
-* <b>Request date and time can be set up to 90 days since a point of calling.</b>
+* <b>Request date and time can be set up to 30 days since a point of calling.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -233,7 +233,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X        | Recipient's grouping key(up to 100 characters)              |
 
 * <b>Enter data completed with replacement for the body and button. </b>
-* **Request date and time can be set up to 90 days since a point of calling.**
+* **Request date and time can be set up to 30 days since a point of calling.**
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -607,7 +607,7 @@ Content-Type: application/json;charset=UTF-8
 | - resendSendNo         | String  | X        | Sender number for alternative delivery(up to 13 characters)<br><span style="color:red">(if the number is not registered in SMS service, alternative delivery may fail.)</span> |
 | - recipientGroupingKey | String  | X        | Recipient grouping key(up to 100 characters)                |
 
-* <b> Request date and time can be set up to 90 days since a point of calling. </b>
+* <b> Request date and time can be set up to 30 days since a point of calling. </b>
 
 [Example]
 ```
@@ -739,7 +739,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X        | Recipient's grouping key(up to 100 characters)              |
 
 * <b>Enter data completed with replacement in the body and button. </b>
-* <b>Request date and time can be set up to 90 days since a point of calling. </b>
+* <b>Request date and time can be set up to 30 days since a point of calling. </b>
 
 [Example]
 ```

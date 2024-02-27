@@ -42,7 +42,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[참고](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|	String| O | Can be created on console. [[참고](./alimtalk-api-guide/#x-secret-key)] |
 
 [Request body]
 
@@ -77,7 +77,7 @@ Content-Type: application/json;charset=UTF-8
 |-- value| String | X | Value which is mapped for replacement key|
 |- recipientGroupingKey|    String| X|  Recipient grouping key(up to 100 characters) |
 
-* <b>Request date and time can be set up to 90 days since a point of calling.</b>
+* <b>Request date and time can be set up to 30 days since a point of calling.</b>
 * <b> Delivery restricted during night(20:50~08:00 on the following day)</b>
 
 [Example]
@@ -151,7 +151,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter] No. 1 or(2, 3) is conditionally required
 
@@ -267,7 +267,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [예시]
 ```
@@ -374,7 +374,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Query parameter]
 
@@ -431,7 +431,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Request parameter]
 
@@ -528,7 +528,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |  Type| Required| Description|
 |---|---|---|---|
-|X-Secret-Key|  String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)] |
+|X-Secret-Key|  String| O | Can be created on console.  |
 
 [Example]
 ```

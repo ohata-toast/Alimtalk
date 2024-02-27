@@ -49,7 +49,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request body]
 
@@ -136,7 +136,7 @@ Content-Type: application/json;charset=UTF-8
 |- currencyType | String |	X| Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
-* <b>Request date and time can be set up to 90 days since a point of calling.</b>
+* <b>Request date and time can be set up to 30 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -210,7 +210,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -367,7 +367,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
 * <b>Enter data completed with replacement for the body and button. </b>
-* <b>Request date and time can be set up to 90 days since a point of calling.</b>
+* <b>Request date and time can be set up to 30 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -443,7 +443,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Typ|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter] No. 1 or(2, 3) is conditionally required
 
@@ -564,7 +564,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Example]
 ```
@@ -782,10 +782,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request body]
-[Same as the above](./sender-console-guide/#request-of-sending-replaced-messages)
+[Same as the above](./alimtalk-api-guide/#request-of-sending-replaced-messages)
 
 ### Request of Sending Full Text
 
@@ -810,10 +810,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
-[Same as the above](./sender-console-guide/#request-of-sending-full-text)
+[Same as the above](./alimtalk-api-guide/#request-of-sending-full-text)
 
 ### List Messages
 
@@ -840,10 +840,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
-[Same as the above](./sender-console-guide/#list-messages)
+[Same as the above](./alimtalk-api-guide/#list-messages)
 
 ### Get Messages
 
@@ -872,7 +872,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Example]
 ```
@@ -880,7 +880,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 #### Response
-[Same as the above](./sender-console-guide/#get-messages)
+[Same as the above](./alimtalk-api-guide/#get-messages)
 
 ## Message
 ### Cancel Sending Messages
@@ -909,7 +909,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -967,7 +967,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -1472,7 +1472,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 #### Response
 ```
@@ -1539,7 +1539,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -1706,7 +1706,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -1916,7 +1916,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -1975,7 +1975,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -1986,10 +1986,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required|	Description|
-|---|---|---|---|
-|comment|	String |	O | Inquiries |
-|attachments| List<File> | X | List of Attachment(Up to 5) |
+| Name |	Type|	Required| 	Description                 |
+|---|---|---|------------------------------|
+|comment|	String |	O | Inquiries                    |
+|attachments| List<File> | X | List of Attachment(Up to 10)<br>- Supported extensions ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- Maximum size of each individual file 100mb<br>- Maximum total size of files that can be uploaded 100mb |
 
 * When commenting a template in the REJ status, it will be changed to the REQ status.
 
@@ -2037,7 +2037,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Query parameter]
 
@@ -2261,7 +2261,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Example]
 ```
@@ -2442,7 +2442,7 @@ Content-Type: multipart/form-data
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request parameter]
 
@@ -2503,7 +2503,7 @@ Content-Type: multipart/form-data
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request parameter]
 
@@ -2565,7 +2565,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -2626,7 +2626,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 [Request Body]
 
@@ -2685,7 +2685,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 #### Response
 ```
@@ -2729,7 +2729,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 #### Response
 ```
@@ -2791,7 +2791,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)]  |
+|X-Secret-Key|	String| O | Can be created on console.   |
 
 
 [Request body]
@@ -2846,7 +2846,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console. [[Reference](./sender-console-guide/#x-secret-key)  |
+|X-Secret-Key|	String| O | Can be created on console. [[Reference](./alimtalk-api-guide/#x-secret-key)  |
 
 
 [Request body]
