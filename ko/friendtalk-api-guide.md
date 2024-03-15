@@ -71,8 +71,6 @@ Content-Type: application/json;charset=UTF-8
     "recipientList": [{
         "recipientNo": String,
         "content": String,
-        "imageUrl": String,
-        "imageLink": String,
         "buttons": [
           {
             "ordering": Integer,
