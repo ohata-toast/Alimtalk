@@ -1,6 +1,6 @@
-## Notification > KakaoTalk Bizmessage > AlimTalk > API v2.2 Guide
+## Notification > KakaoTalk Bizmessage > 알림톡 > API v2.2 Guide
 
-## AlimTalk
+## 알림톡
 
 #### [API Domain]
 

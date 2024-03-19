@@ -1,6 +1,6 @@
-## Notification > KakaoTalk Bizmessage > AlimTalk > API v2.3 Guide
+## Notification > KakaoTalk Bizmessage > 알림톡 > API v2.3 Guide
 
-## AlimTalk
+## 알림톡
 
 #### [API Domain]
 
@@ -1991,6 +1991,52 @@ Content-Type: application/json;charset=UTF-8
 |attachments| List<File> | X | 첨부 파일 목록(최대 10개)<br>- 지원 확장자 ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- 각 개별 파일의 최대 크기 100mb<br>- 전체 업로드 가능한 파일의 최대 크기 100mb |
 
 * 반려 상태의 템플릿에 문의를 남길 경우, 검수 중(REQ) 상태로 변경됩니다.
+
+#### 응답
+```
+{
+  "header" : {
+    "resultCode" :  Integer,
+    "resultMessage" :  String,
+    "isSuccessful" :  boolean
+  }
+}
+```
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- resultCode|	Integer|	결과 코드|
+|- resultMessage|	String| 결과 메시지|
+|- isSuccessful|	Boolean| 성공 여부|
+
+### 템플릿 채널 추가형으로 변경
+
+#### 요청
+[URL]
+```
+PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 |	타입|	설명|
+|---|---|---|
+|appkey|	String|	고유의 앱키|
+|senderKey|	String|	발신 키 |
+|templateCode|	String|	템플릿 코드 |
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 이름 |	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+
 
 #### 응답
 ```
