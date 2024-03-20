@@ -129,7 +129,7 @@
 | Common  | false     | -8010      | 네트워크 등의 문제로 이미지 파일 업로드 실패                             |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
-| 공통      | false     | -9997      | 적절하지 않은 요청으로 인한 실패                                                                                                                                                                                                                                            |
+| Common      | false     | -9997      | Failed dut to invalid request                               |
 | Common  | false     | -9998      | API does not exist                                           |
 | Common  | false     | -9999      | Error in system                                              |
 
