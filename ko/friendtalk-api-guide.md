@@ -56,7 +56,6 @@ Content-Type: application/json;charset=UTF-8
 * <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
 * <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
 * <b>와이드 아이템리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
-* <b>쿠폰은 일반 텍스트형, 이미지형, 와이드 이미지형, 와이드 아이템리스트형만 사용 가능합니다.</b>
 * <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
 
 #### 텍스트형 발송 요청
@@ -148,7 +147,7 @@ Content-Type: application/json;charset=UTF-8
 |- recipientGroupingKey|	String|	X| 	수신자 그룹핑 키(최대 100자)                                                                                                                                          |
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
 
-#### 이미지형 발송 요청
+#### 이미지형 / 와이드 이미지형 발송 요청
 
 [Request body]
 ```
@@ -277,6 +276,22 @@ Content-Type: application/json;charset=UTF-8
               "linkPc": String,
               "schemeIos": String,
               "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
             }
           ]
         },
@@ -382,6 +397,26 @@ Content-Type: application/json;charset=UTF-8
                   "imageLink": String
                 }
               }
+            },
+            {
+              "header": String,
+              "message": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                }
+              }
             }
           ],
           "tail": {
@@ -390,6 +425,14 @@ Content-Type: application/json;charset=UTF-8
             "schemeAndroid": String,
             "schemeIos": String
           }
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         },
         "resendParameter": {
             "isResend" : boolean,
@@ -434,6 +477,13 @@ Content-Type: application/json;charset=UTF-8
 |--- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
 |--- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
 |--- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                  |
+|- coupon | Object | X | 쿠폰                                                                                                                                                           | 
+|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                               |
+|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
+|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
+|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
+|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                  |
 |- resendParameter|	Object|	X| 대체 발송 정보                                                                                                                                                     |
 |-- isResend|	boolean|	X| 	발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다.                                                                                                       |
 |-- resendType|	String|	X| 	대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다.                                                                                                     |
@@ -452,7 +502,13 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 #### 응답
-
+|- coupon | Object | X | 쿠폰                                                                                                                                                           | 
+|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                               |
+|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
+|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
+|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
+|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                  |
 ```
 {
   "header": {
