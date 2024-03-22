@@ -2311,9 +2311,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- createDate        | String  | 作成日時                            |
 | - totalCount         | Integer | 総個数                              |
 
-### 템플릿 채널 추가형으로 변경
+### テンプレートチャンネル追加型に変更
 
-#### 요청
+#### リクエスト
 [URL]
 ```
 PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
@@ -2322,11 +2322,11 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| 名前 |	タイプ|	説明|
 |---|---|---|
-|appkey|	String|	고유의 앱키|
-|senderKey|	String|	발신 키 |
-|templateCode|	String|	템플릿 코드 |
+|appkey|	String|	固有のアプリキー|
+|senderKey|	String|	発信キー |
+|templateCode|	String|	テンプレートコード |
 
 [Header]
 ```
@@ -2334,12 +2334,12 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| 名前 |	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | コンソールで作成できる。  |
 
 
-#### 응답
+#### レスポンス
 ```
 {
   "header" : {
@@ -2350,12 +2350,12 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| 名前 |	タイプ|	説明|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
+|header|	Object|	ヘッダ領域|
+|- resultCode|	Integer|	結果コード|
+|- resultMessage|	String| 結果メッセージ|
+|- isSuccessful|	Boolean| 成否|
 
 ### テンプレートの修正リスト照会
 
