@@ -49,10 +49,108 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
 
+* <b> Request date and time can be configured up to 90 days after a point of calling </b>
+* <b> Delivery restricted during night(20:50~08:00 on the following day)</b>
+* <b> Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
+* <b> Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])</b>
+* <b> FriendTalk ad message can be replaced by Ad SMS API, so it must be registered at the 080 Unsubscription Service to enable alternative delivery. </b>
+* <b> When the resendContent field of a FriendTalk ad message is available, ad phrase for SMS Ad API is required to enable alternative delivery.(Ad) Content [Unsubscribe for Free] 080XXXXXXX </b>
+* <b> When the resendContent field of a FriendTalk ad message is missing, ad phrase is automatically created with registered 080 number for unsubscription to enable alternative delivery. </b>
+* <b>Ad delivery is only available for the wide item list type and the carousel feed type.<b>
+
+#### Basic
+
 [Request body]
-<details>
-<summary>Basic</summary>
-<pre><code>
+```
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
+        "content": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+```
+
+| Name |	Type|	Required| 	Description                                                                                                                                                                              |
+|---|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|senderKey|	String|	O | Sender key(40 characters)                                                                                                                                                                 |
+|requestDate|	String|	X | Date and time of request(yyyy-MM-dd HH:mm), to be sent immediately if field is not sent                                                                                                   |
+|senderGroupingKey| String | X| Sender's grouping key(up to 100 characters)                                                                                                                                               |
+| createUser | String | X | Registrant(saved as user UUID when sending from console)                                                                                                                                  |
+|recipientList|	List|	O| 	List of recipients(up to 1000)                                                                                                                                                           |
+|- recipientNo|	String|	O| 	Recipient number                                                                                                                                                                         |
+|- content|	String|	O| Body message(up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included                                                                             |
+|- buttons|	List|	X| 	Button<br>1 link button, if wide image is included                                                                                                                                       |
+|-- ordering|	Integer|	X | 	Button sequence(required, if there is a button)                                                                                                                                          |
+|-- type| String |	X | 	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form)                                                                                        |
+|-- name| String |	X | 	Button name(required, if there is a button, Maximum 28 characters, 9 characters for wide item list type)                                                                                 |
+|-- linkMo| String |	X | 	Mobile web link(required for the WL type)                                                                                                                                                |
+|-- linkPc | String |	X | PC web link(optional for the WL type)                                                                                                                                                     |
+|-- schemeIos | String | X | 	iOS app link(required for the AL type)                                                                                                                                                   |
+|-- schemeAndroid | String | X | 	Android app link(required for the AL type)                                                                                                                                               |
+|-- chatExtra|	String|	X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                    |
+|-- chatEvent|	String|	X| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                |
+|-- bizFormKey|	String|	X| Biz from key for BF(Business from) type button                                                                                                                                            |
+|-- target|	String|	X | 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                |
+|- coupon | Object | X | 쿠폰                                                                                                                                                                                        | 
+|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"                              |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                                                            |
+|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                                                   |
+|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                                                   |
+|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                                                 |
+|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                                               |
+|- resendParameter|	Object|	X| Alternative delivery information                                                                                                                                                          |
+|-- isResend|	boolean|	X| 	Whether to resend text, if delivery fails<br>Resent by default, if alternative delivery is set on console.                                                                               |
+|-- resendType|	String|	X| 	Alternative delivery type(SMS,LMS)<br>Categorized by the length of template body, if value is unavailable.                                                                               |
+|-- resendTitle|	String|	X| 	Title of alternative delivery for LMS<br>(resent with PlusFriend ID if value is unavailable.)                                                                                            |
+|-- resendContent|	String|	X| 	Alternative delivery content<br>(resent with [Message body and web link button name - web link mobile link] if value is unavailable.)                                                    |
+|-- resendSendNo | String| X| Sender number for alternative delivery(up to 13 characters)<br><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
+|-- resendUnsubscribeNo | String| X| Alternative delivery 080 blocked number<br><span style="color:red">(If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span>            |
+|- isAd | Boolean | X | 	Ad or not(default is true)                                                                                                                                                               |
+|- recipientGroupingKey|	String|	X| 	Recipient's grouping key(up to 100 characters)                                                                                                                                           |
+| statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters)                                                                                                         |
+
+#### Image / Wide Image
+
+[Request body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -99,12 +197,53 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</code></pre>
-</details>
+```
 
-<details>
-<summary>Wide Item list</summary>
-<pre><code>
+| Name |	Type|	Required| 	Description                                                                                                                                                                              |
+|---|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|senderKey|	String|	O | Sender key(40 characters)                                                                                                                                                                 |
+|requestDate|	String|	X | Date and time of request(yyyy-MM-dd HH:mm), to be sent immediately if field is not sent                                                                                                   |
+|senderGroupingKey| String | X| Sender's grouping key(up to 100 characters)                                                                                                                                               |
+| createUser | String | X | Registrant(saved as user UUID when sending from console)                                                                                                                                  |
+|recipientList|	List|	O| 	List of recipients(up to 1000)                                                                                                                                                           |
+|- recipientNo|	String|	O| 	Recipient number                                                                                                                                                                         |
+|- content|	String|	O| Body message(up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included                                                                             |
+|- imageUrl|	String|	X| 	Image URL                                                                                                                                                                                |
+|- imageLink|	String|	X| 	Image link                                                                                                                                                                               |
+|- buttons|	List|	X| 	Button<br>1 link button, if wide image is included                                                                                                                                       |
+|-- ordering|	Integer|	X | 	Button sequence(required, if there is a button)                                                                                                                                          |
+|-- type| String |	X | 	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form)                                                                                        |
+|-- name| String |	X | 	Button name(required, if there is a button, Maximum 28 characters, 9 characters for wide item list type)                                                                                 |
+|-- linkMo| String |	X | 	Mobile web link(required for the WL type)                                                                                                                                                |
+|-- linkPc | String |	X | PC web link(optional for the WL type)                                                                                                                                                     |
+|-- schemeIos | String | X | 	iOS app link(required for the AL type)                                                                                                                                                   |
+|-- schemeAndroid | String | X | 	Android app link(required for the AL type)                                                                                                                                               |
+|-- chatExtra|	String|	X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                    |
+|-- chatEvent|	String|	X| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                |
+|-- bizFormKey|	String|	X| Biz from key for BF(Business from) type button                                                                                                                                            |
+|-- target|	String|	X | 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                |
+|- coupon | Object | X | 쿠폰                                                                                                                                                                                        | 
+|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"                              |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                                                            |
+|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                                                   |
+|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                                                   |
+|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                                                 |
+|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                                               |
+|- resendParameter|	Object|	X| Alternative delivery information                                                                                                                                                          |
+|-- isResend|	boolean|	X| 	Whether to resend text, if delivery fails<br>Resent by default, if alternative delivery is set on console.                                                                               |
+|-- resendType|	String|	X| 	Alternative delivery type(SMS,LMS)<br>Categorized by the length of template body, if value is unavailable.                                                                               |
+|-- resendTitle|	String|	X| 	Title of alternative delivery for LMS<br>(resent with PlusFriend ID if value is unavailable.)                                                                                            |
+|-- resendContent|	String|	X| 	Alternative delivery content<br>(resent with [Message body and web link button name - web link mobile link] if value is unavailable.)                                                    |
+|-- resendSendNo | String| X| Sender number for alternative delivery(up to 13 characters)<br><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
+|-- resendUnsubscribeNo | String| X| Alternative delivery 080 blocked number<br><span style="color:red">(If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span>            |
+|- isAd | Boolean | X | 	Ad or not(default is true)                                                                                                                                                               |
+|- recipientGroupingKey|	String|	X| 	Recipient's grouping key(up to 100 characters)                                                                                                                                           |
+| statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters)                                                                                                         |
+
+#### Wide Item list
+
+[Request Body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -137,6 +276,22 @@ Content-Type: application/json;charset=UTF-8
               "linkPc": String,
               "schemeIos": String,
               "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
             }
           ]
         },
@@ -161,12 +316,59 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</pre></code>
-</details>
+```
+| Name |	Type|	Required| 	Description                                                                                                                                                                              |
+|---|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|senderKey|	String|	O | Sender key(40 characters)                                                                                                                                                                 |
+|requestDate|	String|	X | Date and time of request(yyyy-MM-dd HH:mm), to be sent immediately if field is not sent                                                                                                   |
+|senderGroupingKey| String | X| Sender's grouping key(up to 100 characters)                                                                                                                                               |
+| createUser | String | X | Registrant(saved as user UUID when sending from console)                                                                                                                                  |
+|recipientList|	List|	O| 	List of recipients(up to 1000)                                                                                                                                                           |
+|- recipientNo|	String|	O| 	Recipient number                                                                                                                                                                         |
+|- buttons|	List|	X| 	Button<br>1 link button, if wide image is included                                                                                                                                       |
+|-- ordering|	Integer|	X | 	Button sequence(required, if there is a button)                                                                                                                                          |
+|-- type| String |	X | 	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form)                                                                                        |
+|-- name| String |	X | 	Button name(required, if there is a button, Maximum 28 characters, 9 characters for wide item list type)                                                                                 |
+|-- linkMo| String |	X | 	Mobile web link(required for the WL type)                                                                                                                                                |
+|-- linkPc | String |	X | PC web link(optional for the WL type)                                                                                                                                                     |
+|-- schemeIos | String | X | 	iOS app link(required for the AL type)                                                                                                                                                   |
+|-- schemeAndroid | String | X | 	Android app link(required for the AL type)                                                                                                                                               |
+|-- chatExtra|	String|	X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                    |
+|-- chatEvent|	String|	X| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                |
+|-- bizFormKey|	String|	X| Biz from key for BF(Business from) type button                                                                                                                                            |
+|-- target|	String|	X | 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                |
+|- header | String | X | Header(required when using the wide item list message type, up to 25 characters)                                                                                                          |
+|- item | Object | X | Wide item                                                                                                                                                                                 |
+|-- list | List | X | Wide item list(at lease 3, up to 4)                                                                                                                                                       |
+|--- title | String | X | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters)                                                                                                                                                  |
+|--- imageUrl | String | X | Item image URL                                                                                                                                                                            |
+|--- linkMo | String | X | Mobile web link                                                                                                                                                                           |
+|--- linkPc | String | X | PC web link                                                                                                                                                                               |
+|--- schemeIos | String | X | iOS app link                                                                                                                                                                              |
+|--- schemeAndroid | String | X | Android app link                                                                                                                                                                          |
+|- coupon | Object | X | 쿠폰                                                                                                                                                                                        | 
+|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"                              |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                                                            |
+|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                                                   |
+|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                                                   |
+|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                                                 |
+|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                                               |
+|- resendParameter|	Object|	X| Alternative delivery information                                                                                                                                                          |
+|-- isResend|	boolean|	X| 	Whether to resend text, if delivery fails<br>Resent by default, if alternative delivery is set on console.                                                                               |
+|-- resendType|	String|	X| 	Alternative delivery type(SMS,LMS)<br>Categorized by the length of template body, if value is unavailable.                                                                               |
+|-- resendTitle|	String|	X| 	Title of alternative delivery for LMS<br>(resent with PlusFriend ID if value is unavailable.)                                                                                            |
+|-- resendContent|	String|	X| 	Alternative delivery content<br>(resent with [Message body and web link button name - web link mobile link] if value is unavailable.)                                                    |
+|-- resendSendNo | String| X| Sender number for alternative delivery(up to 13 characters)<br><span style="color:red">(Alternative delivery may fail, if the sender number is not registered on the SMS service.)</span> |
+|-- resendUnsubscribeNo | String| X| Alternative delivery 080 blocked number<br><span style="color:red">(If it is not the 080 blocked number registered in the SMS service, alternative delivery may fail.) </span>            |
+|- isAd | Boolean | X | 	Ad or not(default is true)                                                                                                                                                               |
+|- recipientGroupingKey|	String|	X| 	Recipient's grouping key(up to 100 characters)                                                                                                                                           |
+| statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters)                                                                                                         |
 
-<details>
-<summary>Carousel Feed</summary>
-<pre><code>
+
+#### Carousel Feed
+
+[Request Body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -195,6 +397,26 @@ Content-Type: application/json;charset=UTF-8
                   "imageLink": String
                 }
               }
+            },
+            {
+              "header": String,
+              "message": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                }
+              }
             }
           ],
           "tail": {
@@ -203,6 +425,14 @@ Content-Type: application/json;charset=UTF-8
             "schemeAndroid": String,
             "schemeIos": String
           }
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         },
         "resendParameter": {
             "isResend" : boolean,
@@ -217,8 +447,7 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</pre></code>
-</details>
+```
 
 | Name |	Type|	Required| 	Description                                                                                                                                                                              |
 |---|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -228,30 +457,6 @@ Content-Type: application/json;charset=UTF-8
 | createUser | String | X | Registrant(saved as user UUID when sending from console)                                                                                                                                  |
 |recipientList|	List|	O| 	List of recipients(up to 1000)                                                                                                                                                           |
 |- recipientNo|	String|	O| 	Recipient number                                                                                                                                                                         |
-|- content|	String|	O| Body message(up to 1000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included                                                                             |
-|- imageUrl|	String|	X| 	Image URL                                                                                                                                                                                |
-|- imageLink|	String|	X| 	Image link                                                                                                                                                                               |
-|- buttons|	List|	X| 	Button<br>1 link button, if wide image is included                                                                                                                                       |
-|-- ordering|	Integer|	X | 	Button sequence(required, if there is a button)                                                                                                                                          |
-|-- type| String |	X | 	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form)                                                                                        |
-|-- name| String |	X | 	Button name(required, if there is a button, Maximum 28 characters, 9 characters for wide item list type)                                                                                 |
-|-- linkMo| String |	X | 	Mobile web link(required for the WL type)                                                                                                                                                |
-|-- linkPc | String |	X | PC web link(optional for the WL type)                                                                                                                                                     |
-|-- schemeIos | String | X | 	iOS app link(required for the AL type)                                                                                                                                                   |
-|-- schemeAndroid | String | X | 	Android app link(required for the AL type)                                                                                                                                               |
-|-- chatExtra|	String|	X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type buttons                                                                                                    |
-|-- chatEvent|	String|	X| Bot event name to connect for BT(Bot Transfer) type button                                                                                                                                |
-|-- bizFormKey|	String|	X| Biz from key for BF(Business from) type button                                                                                                                                            |
-|-- target|	String|	X | 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                |
-|- header | String | X | Header(required when using the wide item list message type, up to 25 characters)                                                                                                          |
-|- item | Object | X | Wide item                                                                                                                                                                                 |
-|-- list | List | X | Wide item list(at lease 3, up to 4)                                                                                                                                                       |
-|--- title | String | X | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters)                                                                                                                                                  |
-|--- imageUrl | String | X | Item image URL                                                                                                                                                                            |
-|--- linkMo | String | X | Mobile web link                                                                                                                                                                           |
-|--- linkPc | String | X | PC web link                                                                                                                                                                               |
-|--- schemeIos | String | X | iOS app link                                                                                                                                                                              |
-|--- schemeAndroid | String | X | Android app link                                                                                                                                                                          |
 |- carousel | Object | X | Carousel                                                                                                                                                                                  | 
 |-- list | List | X | Carousel list(at least 2, up to 10)                                                                                                                                                       | 
 |--- header | String | X | Carousel item title(up to 20 characters)                                                                                                                                                  | 
@@ -290,14 +495,6 @@ Content-Type: application/json;charset=UTF-8
 |- recipientGroupingKey|	String|	X| 	Recipient's grouping key(up to 100 characters)                                                                                                                                           |
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters)                                                                                                         |
 
-* <b> Request date and time can be configured up to 90 days after a point of calling </b>
-* <b> Delivery restricted during night(20:50~08:00 on the following day)</b>
-* <b> Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
-* <b> Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/en/Notification/SMS/en/api-guide/#_1)])</b>
-* <b> FriendTalk ad message can be replaced by Ad SMS API, so it must be registered at the 080 Unsubscription Service to enable alternative delivery. </b>
-* <b> When the resendContent field of a FriendTalk ad message is available, ad phrase for SMS Ad API is required to enable alternative delivery.(Ad) Content [Unsubscribe for Free] 080XXXXXXX </b>
-* <b> When the resendContent field of a FriendTalk ad message is missing, ad phrase is automatically created with registered 080 number for unsubscription to enable alternative delivery. </b>
-* <b>Ad delivery is only available for the wide item list type and the carousel feed type.<b>
 
 [Example]
 ```

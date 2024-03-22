@@ -1,4 +1,14 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### 2024. 03. 26.
+* [Console] 역할 세분화
+    * 역할에 따라 KTB 메뉴 접근 및 기능 제어 권한이 별도로 부여되도록 기능이 추가되었습니다.
+    * 역할 설정 방법은 [콘솔 사용 가이드 > 멤버 관리 > 프로젝트 멤버](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#_24) 단락을 참고해 주세요.
+* [API] 기등록된 템플릿을 채널 추가형 템플릿으로 전환하는 API 추가
+    * 기본형 템플릿을 채널 추가형 템플릿으로, 부가 정보형 템플릿을 복합형 템플릿으로 전환하는 API가 추가되었습니다.
+    * 채널 추가형으로 변경될 템플릿은 버튼의 개수가 최대 버튼 개수보다 적어야 합니다.
+* [API] 친구톡 버튼 링크형 필드의 길이 제한 변경(500자->2000자)
+    * 친구톡 버튼의 PC 링크 필드, 모바일 링크 필드 등의 최대 길이 제한을 2000자로 변경하였습니다.
+
 ### February 27, 2024
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
     * Improved so that comments and attachments can be registered for template review during the template creation process.
