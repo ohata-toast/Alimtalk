@@ -102,7 +102,7 @@
 | Common  | false     | -4003      | Query range exceeding a month                                |
 | Common  | false     | -4004      | Appkey does not exist                                        |
 | Common  | false     | -4005      | Appkey closed for service                                    |
-| Common  | false     | -4007      | File size exceeding 500KB                                    |
+| Common  | false     | -4007      | File size exceeding                                    |
 | Common  | false     | -4009      | 유효하지 않은 파일 확장자                                          |
 | Common  | false     | -4015      | Invalid request ID(requestId)                               |
 | Common  | false     | -4101      | Invalid query parameter for statistics                       |

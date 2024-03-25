@@ -1,13 +1,15 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
-### 2024. 03. 26.
-* [Console] 역할 세분화
-    * 역할에 따라 KTB 메뉴 접근 및 기능 제어 권한이 별도로 부여되도록 기능이 추가되었습니다.
-    * 역할 설정 방법은 [콘솔 사용 가이드 > 멤버 관리 > 프로젝트 멤버](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#_24) 단락을 참고해 주세요.
-* [API] 기등록된 템플릿을 채널 추가형 템플릿으로 전환하는 API 추가
-    * 기본형 템플릿을 채널 추가형 템플릿으로, 부가 정보형 템플릿을 복합형 템플릿으로 전환하는 API가 추가되었습니다.
-    * 채널 추가형으로 변경될 템플릿은 버튼의 개수가 최대 버튼 개수보다 적어야 합니다.
-* [API] 친구톡 버튼 링크형 필드의 길이 제한 변경(500자->2000자)
-    * 친구톡 버튼의 PC 링크 필드, 모바일 링크 필드 등의 최대 길이 제한을 2000자로 변경하였습니다.
+### March 26, 2024
+* [Console] Role Segmentation
+    * Added the feature to grant separate KTB menu access and feature control permissions based on role.
+    * To set up roles, see the [Console User Guide > Manage Members > Project Members](https://docs.nhncloud.com/en/nhncloud/en/console-guide/#_24) paragraph.
+* [API] Added the API to convert pre-registered templates to channel-add templates
+    * Added the API to convert basic templates to channel-add templates and additional information templates to composite templates.
+    * The template that will be changed to the channel-add type must have fewer than the maximum number of buttons.
+* [API] Changed the length limit for link type fields in FriendTalk button (500 characters -> 2000 characters)
+    * Changed the maximum length limit of the PC link field, mobile link field, etc. of the FriendTalk button to 2000 characters.
+* [API] Changed the size limit for image fields in FriendTalk (2MB -> 5MB)
+    * Changed the maximum size limit of the image of the FriendTalk to 5MB.
 
 ### February 27, 2024
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
@@ -17,10 +19,10 @@
     * (AS-IS) When registering an AlimTalk template, the basic type is the default type
     * (TO-BE) When registering an AlimTalk template, the channel add type is the default type
 * [API] Changed the attachment limit in Inquiry of AlimTalk templates
-    * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates
+    * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates 
     * (TO-BE) Up to 10 attachments  allowed when inquiring about AlimTalk templates
 * [API] Changed the character limit for FriendTalk wild item list titles
-    * (AS-IS) Set a 25 character limit for 1st to 4th item titles when sending a FriendTalk wild item list
+    * (AS-IS) Set a 25 character limit for 1st to 4th item titles when sending a FriendTalk wild item list   
     * (TO-BE) Set a 25 change limit for 1st item title, and a 30 character limit for 2nd to 4th item titles when sending a FriendTalk wild item list
 * [API] Changed the limit on number of FriendTalk carousel feeds
     * (AS-IS) The number of carousels in a FriendTalk carousel feed ranges from 2 to 6 when sending a carousel feed.
@@ -31,6 +33,12 @@
 * [API] Removed BC and BT types of FriendTalk buttons
     * (AS-IS) The consult conversion and bot conversion buttons are available
     * (TO-BE) The consult conversion and bot conversion buttons are unavailable
+
+### January 23, 2024
+* [Console] Fixed a bug of past dates being requested when mass sending AlimTalk messages
+    * FIxed a bug where a past date is requested when mass sending AlimTalk messages.
+* [API] Fixed a bug where some request failure messages are not sent as alternative delivery
+    * Fixed a bug so that -3042 (templateHeader mismatch), -3043 (templateItem, templateHighlight mismatch), and -3046 (templateRepresentLink mismatch) request failure messages are also sent instead.
 
 ### December 19, 2023
 * [API] Changed the character limit for Alimtalk item list body
