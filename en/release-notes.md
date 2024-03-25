@@ -8,6 +8,8 @@
     * The template that will be changed to the channel-add type must have fewer than the maximum number of buttons.
 * [API] Changed the length limit for link type fields in FriendTalk button (500 characters -> 2000 characters)
     * Changed the maximum length limit of the PC link field, mobile link field, etc. of the FriendTalk button to 2000 characters.
+* [API] Changed the size limit for image fields in FriendTalk (2MB -> 5MB)
+    * Changed the maximum size limit of the image of the FriendTalk to 5MB.
 
 ### February 27, 2024
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
