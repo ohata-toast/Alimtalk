@@ -2311,6 +2311,52 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- createDate        | String  | 作成日時                            |
 | - totalCount         | Integer | 総個数                              |
 
+### テンプレートチャンネル追加型に変更
+
+#### リクエスト
+[URL]
+```
+PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 名前 |	タイプ|	説明|
+|---|---|---|
+|appkey|	String|	固有のアプリキー|
+|senderKey|	String|	発信キー |
+|templateCode|	String|	テンプレートコード |
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 名前 |	タイプ|	必須|	説明|
+|---|---|---|---|
+|X-Secret-Key|	String| O | コンソールで作成できる。  |
+
+
+#### レスポンス
+```
+{
+  "header" : {
+    "resultCode" :  Integer,
+    "resultMessage" :  String,
+    "isSuccessful" :  boolean
+  }
+}
+```
+
+| 名前 |	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- resultCode|	Integer|	結果コード|
+|- resultMessage|	String| 結果メッセージ|
+|- isSuccessful|	Boolean| 成否|
+
 ### テンプレートの修正リスト照会
 
 #### リクエスト

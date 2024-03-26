@@ -2011,6 +2011,52 @@ Content-Type: application/json;charset=UTF-8
 |- resultMessage|	String| Result message|
 |- isSuccessful|	Boolean| Successful or not|
 
+### Change Template to Channel-Add Type
+
+#### Request
+[URL]
+```
+PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| Name |	Type|	Description|
+|---|---|---|
+|appkey|	String|	Unique appkey|
+|senderKey|	String|	Sender Key |
+|templateCode|	String|	Template code |
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| Name |	Type|	Required|	Description|
+|---|---|---|---|
+|X-Secret-Key|	String| O | Can be created on console. |
+
+
+#### Response
+```
+{
+  "header" : {
+    "resultCode" :  Integer,
+    "resultMessage" :  String,
+    "isSuccessful" :  boolean
+  }
+}
+```
+
+| Name |	Type|	Description|
+|---|---|---|
+|header|	Object|	Header area|
+|- resultCode|	Integer|	Result code|
+|- resultMessage|	String| Result message|
+|- isSuccessful|	Boolean| Successful or not|
+
 ### List Templates
 
 #### Request

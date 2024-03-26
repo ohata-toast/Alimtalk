@@ -1,4 +1,16 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### March 26, 2024
+* [Console] Role Segmentation
+    * Added the feature to grant separate KTB menu access and feature control permissions based on role.
+    * To set up roles, see the [Console User Guide > Manage Members > Project Members](https://docs.nhncloud.com/en/nhncloud/en/console-guide/#_24) paragraph.
+* [API] Added the API to convert pre-registered templates to channel-add templates
+    * Added the API to convert basic templates to channel-add templates and additional information templates to composite templates.
+    * The template that will be changed to the channel-add type must have fewer than the maximum number of buttons.
+* [API] Changed the length limit for link type fields in FriendTalk button (500 characters -> 2000 characters)
+    * Changed the maximum length limit of the PC link field, mobile link field, etc. of the FriendTalk button to 2000 characters.
+* [API] Changed the size limit for image fields in FriendTalk (2MB -> 5MB)
+    * Changed the maximum size limit of the image of the FriendTalk to 5MB.
+
 ### February 27, 2024
 * [Console] Allow inquiries and attachments when registering AlimTalk templates
     * Improved so that comments and attachments can be registered for template review during the template creation process.

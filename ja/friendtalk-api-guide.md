@@ -49,10 +49,109 @@ Content-Type: application/json;charset=UTF-8
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できる。  |
 
+* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
+* <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
+* <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>친구톡 광고 메시지는 광고 SMS API로 대체 발송되므로, 반드시 080 수신 거부 번호를 등록해야 대체 발송됩니다.</b>
+* <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
+* <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
+* <b>와이드 아이템리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
+* <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
+
+#### 텍스트형 발송 요청
+
 [Request body]
-<details>
-<summary>基本型</summary>
-<pre><code>
+```
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser" : String,
+    "recipientList": [{
+        "recipientNo": String,
+        "content": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "resendParameter": {
+            "isResend" : boolean,
+            "resendType" : String,
+            "resendTitle" : String,
+            "resendContent" : String,
+            "resendSendNo" : String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+```
+
+| 値                | タイプ | 必須 | 説明                                 |
+| ---------------------- | ------- | ---- | ---------------------------------------- |
+| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
+| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
+| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
+| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
+| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
+| - recipientNo          | String  | O    | 受信番号                              |
+| - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
+| - buttons              | List    | X    | ボタン                                 |
+| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
+| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
+| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
+| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
+| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
+| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
+| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
+| -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
+| -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
+| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - coupon | Object | X | 쿠폰 | 
+| -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+| -- linkPc | String |	X |PC 웹 링크 |
+| -- schemeIos | String | X |	iOS 앱 링크 |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 |
+| - resendParameter      | Object  | X    | 代替発送情報 |
+| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
+| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
+| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
+| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
+| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
+| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
+| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
+| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
+| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
+
+#### 이미지형 / 와이드 이미지형 발송 요청
+
+[Request body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -99,12 +198,53 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</code></pre>
-</details>
+```
 
-<details>
-<summary>ワイドアイテムリスト</summary>
-<pre><code>
+| 値                | タイプ | 必須 | 説明                                 |
+| ---------------------- | ------- | ---- | ---------------------------------------- |
+| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
+| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
+| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
+| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
+| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
+| - recipientNo          | String  | O    | 受信番号                              |
+| - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
+| - imageUrl             | String  | X    |	이미지 URL |
+| - imageLink            | String  | X    | イメージリンク                                |
+| - buttons              | List    | X    | ボタン                                 |
+| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
+| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
+| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
+| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
+| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
+| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
+| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
+| -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
+| -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
+| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - coupon | Object | X | 쿠폰 | 
+| -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+| -- linkPc | String |	X |PC 웹 링크 |
+| -- schemeIos | String | X |	iOS 앱 링크 |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 |
+| - resendParameter      | Object  | X    | 代替発送情報 |
+| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
+| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
+| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
+| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
+| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
+| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
+| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
+| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
+| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
+
+#### 와이드 아이템리스트형 발송 요청
+
+[Request Body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -137,6 +277,22 @@ Content-Type: application/json;charset=UTF-8
               "linkPc": String,
               "schemeIos": String,
               "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            },
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
             }
           ]
         },
@@ -161,12 +317,59 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</pre></code>
-</details>
+```
+| 値                | タイプ | 必須 | 説明                                 |
+| ---------------------- | ------- | ---- | ---------------------------------------- |
+| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
+| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
+| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
+| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
+| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
+| - recipientNo          | String  | O    | 受信番号                              |
+| - buttons              | List    | X    | ボタン                                 |
+| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
+| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
+| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
+| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
+| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
+| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
+| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
+| -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
+| -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
+| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
+| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
+| - item                 | Object  | X    | Wide item |
+| -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
+| --- title              | String  | X    | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
+| --- imageUrl           | String  | X    | Item image URL |
+| --- linkMo | String | X | Mobile web link |
+| --- linkPc | String | X | PC web link |
+| --- schemeIos | String | X | iOS app link |
+| --- schemeAndroid | String | X | Android app link |
+| - coupon | Object | X | 쿠폰 | 
+| -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+| -- linkPc | String |	X |PC 웹 링크 |
+| -- schemeIos | String | X |	iOS 앱 링크 |
+| -- schemeAndroid | String | X |	안드로이드 앱 링크 |
+| - resendParameter      | Object  | X    | 代替発送情報 |
+| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
+| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
+| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
+| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
+| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
+| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
+| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
+| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
+| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
-<details>
-<summary>カルーセル</summary>
-<pre><code>
+
+#### 캐러셀 피드형 발송 요청
+
+[Request Body]
+```
 {
     "senderKey": String,
     "requestDate": String,
@@ -195,6 +398,26 @@ Content-Type: application/json;charset=UTF-8
                   "imageLink": String
                 }
               }
+            },
+            {
+              "header": String,
+              "message": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                }
+              }
             }
           ],
           "tail": {
@@ -203,6 +426,14 @@ Content-Type: application/json;charset=UTF-8
             "schemeAndroid": String,
             "schemeIos": String
           }
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         },
         "resendParameter": {
             "isResend" : boolean,
@@ -217,8 +448,7 @@ Content-Type: application/json;charset=UTF-8
     }],
     "statsId": String
 }
-</pre></code>
-</details>
+```
 
 | 値                | タイプ | 必須 | 説明                                 |
 | ---------------------- | ------- | ---- | ---------------------------------------- |
@@ -228,30 +458,6 @@ Content-Type: application/json;charset=UTF-8
 | createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
 | recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
 | - recipientNo          | String  | O    | 受信番号                              |
-| - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
-| - imageUrl             | String  | X    |	이미지 URL |
-| - imageLink            | String  | X    | イメージリンク                                |
-| - buttons              | List    | X    | ボタン                                 |
-| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
-| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
-| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
-| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
-| - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
-| - item                 | Object  | X    | Wide item |
-| -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
-| --- title              | String  | X    | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
-| --- imageUrl           | String  | X    | Item image URL |
-| --- linkMo | String | X | Mobile web link |
-| --- linkPc | String | X | PC web link |
-| --- schemeIos | String | X | iOS app link |
-| --- schemeAndroid | String | X | Android app link |
 | - carousel | Object | X | Carousel | 
 | -- list | List | X |  Carousel list(at least 2, up to 6) | 
 | --- header | String | X | Carousel item title(up to 20 characters) | 
@@ -289,17 +495,6 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 | statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
-
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
-* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
-* <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
-* <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
-* <b>친구톡 광고 메시지는 광고 SMS API로 대체 발송되므로, 반드시 080 수신 거부 번호를 등록해야 대체 발송됩니다.</b>
-* <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
-* <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
-* <b>와이드 아이템리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
-* <b>쿠폰은 일반 텍스트형, 이미지형, 와이드 이미지형, 와이드 아이템리스트형만 사용 가능합니다.</b>
-* <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
 
 [例]
 ```

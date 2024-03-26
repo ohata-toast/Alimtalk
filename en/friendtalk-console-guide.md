@@ -58,7 +58,7 @@ Images for FriendTalk can be registered or deleted.
 * Recommended size: general image [720px * 720px] / wide image [800px * 600px]
 * Restricted size: general image [Unavailable to upload, if the width is below 500px, or if the 'width:length' ratio is below 2:1, or above 3:4] / wide image must be [800px * 600px.]
 * File format: JPG or PNG
-* File size: It must be 500KB or smaller for a general image, or 2MB or smaller for a wide image.
+* File size: It must be 5MB or smaller for a general image, or 5MB or smaller for a wide image.
 
 ## Statistics
 
