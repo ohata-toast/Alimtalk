@@ -50,7 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 KEY<br>10분간 동일한 KEY로 요청 시, 해당 요청을 실패 처리 됩니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
 
 
 [Request body]
@@ -174,7 +174,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 KEY<br>10분간 동일한 KEY로 요청 시, 해당 요청을 실패 처리 됩니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 
@@ -595,7 +595,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 KEY<br>10분간 동일한 KEY로 요청 시, 해당 요청을 실패 처리 됩니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
 
 [Request body]
 
@@ -717,7 +717,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 KEY<br>10분간 동일한 KEY로 요청 시, 해당 요청을 실패 처리 됩니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 
