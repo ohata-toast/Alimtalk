@@ -1,4 +1,12 @@
 ## Notification > KakaoTalk Bizmessage > 릴리스 노트
+### 2024. 04. 23.
+* [API] 메시지 발송 중복 요청 시, 실패 처리 기능
+    * 메시지 발송 시, Header에 명시한 X-NC-API-IDEMPOTENCY-KEY 값을 기반으로 10분간 동일 키 값은 실패되는 기능이 추가되었습니다. [메시지 발송 요청 API 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#_3)
+* [Console] 예약 발송 최대 예약 가능 기간 변경
+  * 예약 발송의 발송 일시를 현재로부터 최대 60일 이후까지 설정이 가능하도록 변경되었습니다.
+* [Console] 알림톡 아이템리스트형 요약 필드 초기화 되지 않는 버그 수정
+    * 알림톡 아이템리스트형 요약 필드 입력 후, 삭제 시 초기화 되지 않는 버그를 수정하였습니다.
+
 ### 2024. 03. 26.
 * [Console] 역할 세분화
     * 역할에 따라 KTB 메뉴 접근 및 기능 제어 권한이 별도로 부여되도록 기능이 추가되었습니다.
