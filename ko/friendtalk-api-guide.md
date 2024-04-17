@@ -46,8 +46,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 * <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>
@@ -574,7 +574,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 or(2번, 3번) 조건 필수
 
@@ -696,7 +696,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -922,7 +922,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -980,7 +980,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1497,7 +1497,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -1563,7 +1563,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -1628,7 +1628,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -1693,7 +1693,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1774,7 +1774,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1831,7 +1831,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
@@ -1897,7 +1897,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
@@ -1952,7 +1952,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]

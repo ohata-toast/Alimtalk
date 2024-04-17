@@ -1,7 +1,7 @@
 ## Notification > KakaoTalk Bizmessage > 릴리스 노트
 ### 2024. 04. 23.
-* [API] 메시지 발송 중복 요청 시, 실패 처리 기능
-    * 메시지 발송 시, X-NC-API-IDEMPOTENCY-KEY 헤더의 값을 기준으로 10분간 동일한 키 값을 가지는 요청을 실패 처리하는 기능이 추가되었습니다. [메시지 발송 요청 API 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#_3)
+* [API] 메시지 발송 중복 요청 시 실패 처리 기능 추가
+    * 메시지 발송 시 X-NC-API-IDEMPOTENCY-KEY 헤더의 값을 기준으로 10분간 동일한 키 값을 가지는 요청을 실패 처리하는 기능이 추가되었습니다. [메시지 발송 요청 API 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#_3)
 * [Console] 예약 발송 최대 예약 가능 기간 변경
     * 예약 발송의 발송 일시를 현재로부터 최대 60일 이후까지 설정이 가능하도록 변경되었습니다.
 * [Console] 알림톡 아이템리스트형 요약 필드 초기화 되지 않는 버그 수정

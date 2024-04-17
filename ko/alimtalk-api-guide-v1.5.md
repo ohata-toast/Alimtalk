@@ -49,8 +49,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 
 [Request body]
@@ -173,8 +173,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 
@@ -318,7 +318,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 or(2번, 3번) 조건 필수
 
@@ -465,7 +465,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -594,8 +594,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request body]
 
@@ -716,8 +716,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
-|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시, 해당 요청을 실패 처리합니다. |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 
@@ -858,7 +858,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 or(2번, 3번) 조건 필수
 
@@ -1005,7 +1005,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -1125,7 +1125,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1183,7 +1183,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1308,7 +1308,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -1390,7 +1390,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1450,7 +1450,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1507,7 +1507,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -1605,7 +1605,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 또는 2번 조건 필수
 
@@ -1716,7 +1716,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -1783,7 +1783,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1877,7 +1877,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2011,7 +2011,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2068,7 +2068,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2127,7 +2127,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -2270,7 +2270,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -2394,7 +2394,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
@@ -2449,7 +2449,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
