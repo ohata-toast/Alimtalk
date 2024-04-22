@@ -7,8 +7,8 @@ RESTful API is provided for easy integration.
 * Send up 1,000 messages at a lower cost than sending SMS.
 * Send notification messages regarding order checks, payment history, and delivery status, without adding friends.  
 * Delivery is available after inspection is completed based on templates.
-* Send personalized messages for each reicipient by using replacement tags.  
+* Send personalized messages for each recipient by using replacement tags.  
 
 ## Main Features
 * RESTful API is provided for sending and query.  
-* Console provides delivery test, query of delivery history, and template management.
+* Console provides delivery test, query of delivery history, and template management. 

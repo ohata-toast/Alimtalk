@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 
@@ -783,6 +784,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-replaced-messages)
@@ -811,6 +813,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request Body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-full-text)
@@ -872,7 +875,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console.   |
+|X-Secret-Key|	String| O | Can be created on console.  |
 
 [Example]
 ```
@@ -1986,9 +1989,9 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required| 	Description                 |
-|---|---|---|------------------------------|
-|comment|	String |	O | Inquiries                    |
+| Name |	Type|	Required| 	Description                                                                                                                                            |
+|---|---|---|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+|comment|	String |	O | Inquiries                                                                                                                                               |
 |attachments| List<File> | X | List of Attachment(Up to 10)<br>- Supported extensions ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- Maximum size of each individual file 100mb<br>- Maximum total size of files that can be uploaded 100mb |
 
 * When commenting a template in the REJ status, it will be changed to the REQ status.
@@ -2011,9 +2014,9 @@ Content-Type: application/json;charset=UTF-8
 |- resultMessage|	String| Result message|
 |- isSuccessful|	Boolean| Successful or not|
 
-### 템플릿 채널 추가형으로 변경
+### Change Template to Channel-Add Type
 
-#### 요청
+#### Request
 [URL]
 ```
 PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
@@ -2022,11 +2025,11 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |	Type|	Description|
 |---|---|---|
-|appkey|	String|	고유의 앱키|
-|senderKey|	String|	발신 키 |
-|templateCode|	String|	템플릿 코드 |
+|appkey|	String|	Unique appkey|
+|senderKey|	String|	Sender Key |
+|templateCode|	String|	Template code |
 
 [Header]
 ```
@@ -2034,12 +2037,12 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-Secret-Key|	String| O | Can be created on console. |
 
 
-#### 응답
+#### Response
 ```
 {
   "header" : {
@@ -2050,12 +2053,12 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |	Type|	Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
+|header|	Object|	Header area|
+|- resultCode|	Integer|	Result code|
+|- resultMessage|	String| Result message|
+|- isSuccessful|	Boolean| Successful or not|
 
 ### List Templates
 

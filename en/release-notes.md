@@ -1,4 +1,15 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### April 23, 2024
+* [API] Added the feature to handle failures on duplicate message sending requests
+    * Added the feature to fail requests with the same key value for 10 minutes based on the value of the X-NC-API-IDEMPOTENCY-KEY header when sending messages. [Send Message Request API Guide](https://docs.nhncloud.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#_3)
+* [Console] Changed the maximum number of days for scheduled delivery
+    * Changed the sending date for scheduled delivery to allow you to set the send date up to 60 days from now.
+* [Console] Fixed a bug where the item list type summary field in AlimTalk was not initialized
+    * Fixed a bug where the AlimTalk item list type summary field was not initialized on deletion after being entered.
+* [Console] Fixed a bug where unnecessary field information was registered when registering AlimTalk templates
+    * Fixed a bug in the AlimTalk template registration process where data was not initialized when changing the type, causing unnecessary field information to be registered.
+    
+
 ### March 26, 2024
 * [Console] Role Segmentation
     * Added the feature to grant separate KTB menu access and feature control permissions based on role.

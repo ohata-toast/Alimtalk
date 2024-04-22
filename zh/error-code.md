@@ -10,6 +10,7 @@
 | Common  | false     | -1002      | Invalid SMS appkey                                           |
 | Common  | false     | -1003      | Invalid SMS sender number                                    |
 | Common  | false     | -1004      | Already registered Plus Friend                               |
+| Common  | false     | -1005      | When a request is made with the same key for 10 minutes |
 | Common  | false     | -1008      | Registration failed for Plus Friend token                    |
 | Common  | false     | -1010      | 발신프로필 그룹이 존재하지 않을 경우                                  |
 | Common  | false     | -1013      | 이미 존재하는 발신프로필 그룹일 경우                                  |
@@ -129,7 +130,7 @@
 | Common  | false     | -8010      | 네트워크 등의 문제로 이미지 파일 업로드 실패                             |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
-| 공통      | false     | -9997      | 적절하지 않은 요청으로 인한 실패                                                                                                                                                                                                                                            |
+| Common      | false     | -9997      | Failed dut to invalid request                               |
 | Common  | false     | -9998      | API does not exist                                           |
 | Common  | false     | -9999      | Error in system                                              |
 

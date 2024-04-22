@@ -25,9 +25,9 @@ Select **Mass Delivery** at the bottom.
 
 ![[Figure 4] Mass Delivery of FriendTalk](http://static.toastoven.net/prod_alimtalk/friendtalk_mass_04.png)
 
-* Enter template replacer in the '#{name}' format, and click **Download Templates** to download CSV file including the template replacer.
+* Enter template replacer in the '#{name}' format, and click **Download Templates** to download CSV, XLSX file including the template replacer.
 * Korean may not be properly saved, if CSV file is open and saved in excel. It is recommended to 'Send after inspect' to see if it has been properly replaced.   
-* Only csv files can be uploaded: available no more than 20 MB, sent up to 100,000 recipients.
+* Only CSV, XLSX files can be uploaded: available no more than 20 MB, sent up to 1,000,000 recipients.
 
 ![[그림 5] 친구톡 대량 csv](http://static.toastoven.net/prod_alimtalk/friendtalk_mass_05.png)
 
@@ -38,6 +38,13 @@ Select **Mass Delivery** at the bottom.
 
 Go to **Query Delivery Result** to query FriendTalk messages.
 ![friendtalk_02_201812.png](https://static.toastoven.net/prod_alimtalk/friendtalk_02_201812.png)
+
+### Canceling Delivery
+
+Scheduled delivery which is requested for a future date can be canceled.
+By searching for a request of scheduled delivery, you can find a checkbox on the left of a request ID.
+Check boxes are available only for those scheduled delivery requests which are not canceled. To cancel a request, check the box you need to cancel, and press **Cancel Selected Schedule**.
+The whole list can be selected and canceled, by selecting the check box on top of the list.
 
 ## Image Management
 

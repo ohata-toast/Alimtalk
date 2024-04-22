@@ -10,6 +10,7 @@
 | Common  | false     | -1002      | Invalid SMS appkey                                           |
 | Common  | false     | -1003      | Invalid SMS sender number                                    |
 | Common  | false     | -1004      | Already registered Plus Friend                               |
+| Common  | false     | -1005      | When a request is made with the same key for 10 minutes |
 | Common  | false     | -1008      | Registration failed for Plus Friend token                    |
 | Common  | false     | -1010      | 발신프로필 그룹이 존재하지 않을 경우                                  |
 | Common  | false     | -1013      | 이미 존재하는 발신프로필 그룹일 경우                                  |
