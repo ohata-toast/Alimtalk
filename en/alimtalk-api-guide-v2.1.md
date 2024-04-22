@@ -103,7 +103,7 @@ Content-Type: application/json;charset=UTF-8
 | - price                | Integer | X        | Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement) |
 | - currencyType         | String  | X        | Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 
-* <b>Request date and time can be set up to 30 days since a point of calling.</b>
+* <b>Request date and time can be set up to 60 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS (e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -252,7 +252,7 @@ Content-Type: application/json;charset=UTF-8
 | - currencyType         | String  | X        | Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 
 * <b>Enter data completed with replacement for the body and button. </b>
-* **Request date and time can be set up to 30 days since a point of calling.**
+* **Request date and time can be set up to 60 days since a point of calling.**
 * <b>Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
 * <b>Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)])</b>
@@ -668,7 +668,7 @@ Content-Type: application/json;charset=UTF-8
 | - price                | Integer | X        | Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement) |
 | - currencyType         | String  | X        | Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 
-* <b> Request date and time can be set up to 30 days since a point of calling. </b>
+* <b> Request date and time can be set up to 60 days since a point of calling. </b>
 
 [Example]
 ```
@@ -813,7 +813,7 @@ Content-Type: application/json;charset=UTF-8
 | - currencyType         | String  | X        | Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 
 * <b>Enter data completed with replacement in the body and button. </b>
-* <b>Request date and time can be set up to 30 days since a point of calling. </b>
+* <b>Request date and time can be set up to 60 days since a point of calling. </b>
 
 [Example]
 ```

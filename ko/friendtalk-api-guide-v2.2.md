@@ -124,7 +124,7 @@ Content-Type: application/json;charset=UTF-8
 |- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 * <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>

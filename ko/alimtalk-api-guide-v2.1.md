@@ -20,7 +20,7 @@
 ## v2.1 API 소개
 1. 알림톡 템플릿 이미지 업로드 API가 추가되었습니다.
 2. 템플릿 조회 시, templateImageName, templateImageUrl 필드가 추가되었습니다.
-3. 예약 발송이 90일 -> 30일 이후까지 가능하도록 변경되었습니다.
+3. 예약 발송이 90일 -> 60일 이후까지 가능하도록 변경되었습니다.
 
 ## 일반 메시지
 
@@ -84,7 +84,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey|	String|	O | 발신 키(40자) |
 |templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
-|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 |createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
 |recipientList|	List|	O|	수신자 리스트(최대 1000명) |
@@ -103,7 +103,7 @@ Content-Type: application/json;charset=UTF-8
 |- price | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
 |- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -226,7 +226,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey|	String|	O | 발신 키(40자) |
 |templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
-|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 |createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
 |recipientList|	List|	O|	수신자 리스트(최대 1,000명) |
@@ -253,7 +253,7 @@ Content-Type: application/json;charset=UTF-8
 |- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -663,7 +663,7 @@ Content-Type: application/json;charset=UTF-8
 |- price | Integer |	X | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당) |
 |- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
 
@@ -812,7 +812,7 @@ Content-Type: application/json;charset=UTF-8
 |- currencyType | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 
 [예시]
 ```
