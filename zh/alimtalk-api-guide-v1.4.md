@@ -94,9 +94,9 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X        | Recipient grouping key(up to 100 characters)                |
 
 * <b>Request date and time can be set up to 30 days since a point of calling.</b>
-* <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
-* <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
-* <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS (e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
+* <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
+* <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
 
 [Example]
 
@@ -1503,8 +1503,8 @@ Content-Type: application/json;charset=UTF-8
 | - friendtalkDailyMaxCount | Integer | Number of maximum daily FriendTalk deliveries(not limited if it is 0) |
 | - alimtalkSentCount       | Integer | Number of daily AlimTalk deliveries(not limited if it is 0) |
 | - friendtalkSentCount     | Integer | Number of daily FriendTalk deliveries(not limited if it is 0) |
-| - status                  | String  | Status code of TOAST PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
-| - statusName              | String  | Status name of TOAST PlusFriend(ready for registration, normally registered) |
+| - status                  | String  | Status code of NHN Cloud PlusFriend(YSC02: Ready for registeration, YSC03: Normally registered) |
+| - statusName              | String  | Status name of NHN Cloud PlusFriend(ready for registration, normally registered) |
 | - kakaoStatus             | String  | Status code of Kakao PlusFriend(A: Normal, S: Blocked, D: Deleted) kakaoStatus is null if the status is YSC02. |
 | - kakaoStatusName         | String  | Status name of Kakao PlusFriend(normal, blocked, deleted) kakaoStatusName is null if the status is YSC02. |
 | - kakaoProfileStatus      | String  | Status code of Kakao PlusFriend profile(A: Activated, B: Blocked, C: Deactivated, D:Deleted, E: Deleting) kakaoProfileStatus is null if the status is YSC02. |
@@ -1825,7 +1825,7 @@ Content-Type: application/json;charset=UTF-8
 | TSC01                | Requested   |
 | TSC02                | Inspecting  |
 | TSC03                | Approved    |
-| TSC04                | Returned    |
+| TSC04                | Rejected    |
 
 [Example]
 
@@ -1906,7 +1906,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | Inquiry content                                              |
 | ---userName          | String  | Creator                                                      |
 | ---createAt          | String  | Date of registration                                         |
-| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- createDate        | String  | Date and time of creation                                    |
@@ -2020,7 +2020,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | Inquiry content                                              |
 | ---userName          | String  | Creator                                                      |
 | ---createAt          | String  | Date of registration                                         |
-| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- activated         | Boolean | activated or not                                             |
