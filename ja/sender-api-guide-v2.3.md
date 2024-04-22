@@ -47,7 +47,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 #### レスポンス
 ```
@@ -129,7 +129,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 [Request body]
 
@@ -188,7 +188,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 [Request body]
 
@@ -247,7 +247,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 * 발신 프로필 삭제 시, 등록한 템플릿 데이터가 함께 삭제 됩니다.
 * 발신 프로필 삭제 시, 복구가 불가능합니다.
@@ -297,7 +297,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 
 #### レスポンス
@@ -399,7 +399,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 [Query parameter] 1番or 2番の条件は必須
 
@@ -517,7 +517,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 #### レスポンス
 ```
@@ -587,7 +587,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 * グループの最大メンバー数は5000人です。
 
@@ -635,7 +635,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 #### レスポンス
 ```
