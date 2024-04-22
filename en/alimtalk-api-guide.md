@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 
@@ -783,6 +784,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-replaced-messages)
@@ -811,6 +813,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request Body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-full-text)
