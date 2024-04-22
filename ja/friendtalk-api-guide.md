@@ -47,9 +47,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 重複メッセージ送信要求基準key<br>10分間同じkeyで要求すると、その要求を失敗処理します。 |
 
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 * <b>SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 080 수신 거부 번호, 각종 필드 길이 제한 등)</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -567,7 +568,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter] 1番or(2番, 3番)の条件必須
 
@@ -685,7 +686,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
 
@@ -908,7 +909,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 [Query parameter]
 
@@ -966,7 +967,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
 
@@ -1482,7 +1483,7 @@ Content-Type: multipart/form-data
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Request parameter]
 
@@ -1548,7 +1549,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -1613,7 +1614,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -1679,7 +1680,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
 
@@ -1761,7 +1762,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値      | タイプ | 必須 | 説明                                 |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。  |
+| X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
 
@@ -1817,7 +1818,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
@@ -1882,7 +1883,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 
 [Request body]
@@ -1938,7 +1939,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値     | タイプ | 必須 | 説明                                |
 | ------------ | ------ | ---- | ---------------------------------------- |
-| X-Secret-Key | String | O    | コンソールで作成できる。 |
+| X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 
 [Request body]
