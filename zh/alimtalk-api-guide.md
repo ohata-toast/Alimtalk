@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 
@@ -103,7 +104,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey|	String|	O | Sender key(40 characters) |
 |templateCode|	String|	O | Registered delivery template code(up to 20 characters) |
-|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 60 days later |
 |senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList|	List|	O|	List of recipients(up to 1000 persons) |
@@ -136,7 +137,7 @@ Content-Type: application/json;charset=UTF-8
 |- currencyType | String |	X| Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
-* <b>Request date and time can be set up to 30 days since a point of calling.</b>
+* <b>Request date and time can be set up to 60 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -304,7 +305,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey|	String|	O | Sender key(40 characters) |
 |templateCode|	String|	O | Registered delivery template code(up to 20 characters) |
-|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 60 days later |
 |senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList|	List|	O|	List of recipients(up to 1,000 persons) |
@@ -367,7 +368,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
 * <b>Enter data completed with replacement for the body and button. </b>
-* <b>Request date and time can be set up to 30 days since a point of calling.</b>
+* <b>Request date and time can be set up to 60 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -783,6 +784,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-replaced-messages)
@@ -811,6 +813,7 @@ Content-Type: application/json;charset=UTF-8
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console.   |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | Key used to recognize subsequent retries of the same request<br>If a request is made with the same key for 10 minutes, the request will be failed. |
 
 [Request Body]
 [Same as the above](./alimtalk-api-guide/#request-of-sending-full-text)
@@ -872,7 +875,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Can be created on console.   |
+|X-Secret-Key|	String| O | Can be created on console.  |
 
 [Example]
 ```
@@ -1986,9 +1989,9 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required| 	Description                 |
-|---|---|---|------------------------------|
-|comment|	String |	O | Inquiries                    |
+| Name |	Type|	Required| 	Description                                                                                                                                            |
+|---|---|---|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+|comment|	String |	O | Inquiries                                                                                                                                               |
 |attachments| List<File> | X | List of Attachment(Up to 10)<br>- Supported extensions ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- Maximum size of each individual file 100mb<br>- Maximum total size of files that can be uploaded 100mb |
 
 * When commenting a template in the REJ status, it will be changed to the REQ status.
@@ -2011,9 +2014,9 @@ Content-Type: application/json;charset=UTF-8
 |- resultMessage|	String| Result message|
 |- isSuccessful|	Boolean| Successful or not|
 
-### 템플릿 채널 추가형으로 변경
+### Change Template to Channel-Add Type
 
-#### 요청
+#### Request
 [URL]
 ```
 PUT  /alimtalk/v2.3/appkeys/{appKey}/senders/{senderKey}/templates/{templateCode}/convert-add-channel
@@ -2022,11 +2025,11 @@ Content-Type: application/json;charset=UTF-8
 
 [Path parameter]
 
-| 이름 |	타입|	설명|
+| Name |	Type|	Description|
 |---|---|---|
-|appkey|	String|	고유의 앱키|
-|senderKey|	String|	발신 키 |
-|templateCode|	String|	템플릿 코드 |
+|appkey|	String|	Unique appkey|
+|senderKey|	String|	Sender Key |
+|templateCode|	String|	Template code |
 
 [Header]
 ```
@@ -2034,12 +2037,12 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-| 이름 |	타입|	필수|	설명|
+| Name |	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | Can be created on console. |
 
 
-#### 응답
+#### Response
 ```
 {
   "header" : {
@@ -2050,12 +2053,12 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 |	타입|	설명|
+| Name |	Type|	Description|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
+|header|	Object|	Header area|
+|- resultCode|	Integer|	Result code|
+|- resultMessage|	String| Result message|
+|- isSuccessful|	Boolean| Successful or not|
 
 ### List Templates
 

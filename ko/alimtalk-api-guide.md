@@ -48,7 +48,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request body]
 
@@ -102,7 +103,7 @@ Content-Type: application/json;charset=UTF-8
 |------------------------|---|---|---|
 | senderKey              |	String|	O | 발신 키(40자) |
 | templateCode           |	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
-| requestDate            | String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
+| requestDate            | String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능 |
 | senderGroupingKey      | String | X| 발신 그룹핑 키(최대 100자) |
 | createUser             | String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
 | recipientList          |	List|	O|	수신자 리스트(최대 1000명) |
@@ -135,7 +136,7 @@ Content-Type: application/json;charset=UTF-8
 | - currencyType         | String |	X| 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당) |
 | statsId                | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -209,7 +210,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 
@@ -303,7 +305,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey|	String|	O | 발신 키(40자) |
 |templateCode|	String|	O | 등록한 발송 템플릿 코드(최대 20자) |
-|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 30일 이후까지 예약 가능 |
+|requestDate| String | X| 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능 |
 |senderGroupingKey| String | X| 발신 그룹핑 키(최대 100자) |
 |createUser| String | X| 등록자(콘솔에서 발송 시 사용자 UUID로 저장)|
 |recipientList|	List|	O|	수신자 리스트(최대 1,000명) |
@@ -366,7 +368,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
-* <b>요청 일시는 호출하는 시점부터 30일 후까지 설정 가능합니다.</b>
+* <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
 * <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
@@ -442,7 +444,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 or(2번, 3번) 조건 필수
 
@@ -563,7 +565,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -781,7 +783,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request body]
 [위와 동일](./alimtalk-api-guide/#_2)
@@ -809,7 +812,8 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 [Request Body]
 [위와 동일](./alimtalk-api-guide/#_4)
@@ -839,7 +843,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 [위와 동일](./sender-console-guide/#_6)
@@ -871,7 +875,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -908,7 +912,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -966,7 +970,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -1471,7 +1475,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -1538,7 +1542,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1705,7 +1709,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1915,7 +1919,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -1974,7 +1978,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2035,7 +2039,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 #### 응답
@@ -2082,7 +2086,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -2309,7 +2313,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -2511,7 +2515,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -2572,7 +2576,7 @@ Content-Type: multipart/form-data
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -2634,7 +2638,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2695,7 +2699,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request Body]
 
@@ -2754,7 +2758,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -2798,7 +2802,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 #### 응답
 ```
@@ -2860,7 +2864,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]
@@ -2915,7 +2919,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 
 [Request body]

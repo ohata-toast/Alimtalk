@@ -93,7 +93,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey| String| O | Sender key(40 characters) |
 |templateCode|  String| O | Registered delivery template code(up to 20 characters) |
-|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 60 days later |
 |senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList| List|   O|  List of recipients(up to 1000 persons) |
@@ -120,7 +120,7 @@ Content-Type: application/json;charset=UTF-8
 
 
 
-* <b>Request date and time can be set up to 30 days since a point of calling.</b>
+* <b>Request date and time can be set up to 60 days since a point of calling.</b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
@@ -246,7 +246,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |senderKey| String| O | Sender key(40 characters) |
 |templateCode|  String| O | Registered delivery template code(up to 20 characters) |
-|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 30 days later |
+|requestDate| String | X| Date and time of request(yyyy-MM-dd HH:mm)<br>(send immediately, if it is left blank)<br>Can be scheduled up to 60 days later |
 |senderGroupingKey| String | X| Sender's grouping key(up to 100 characters) |
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList| List|   O|  List of recipients(up to 1,000 persons) |
@@ -277,7 +277,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
 * <b>Enter data completed with replacement for the body and button. </b>
-* **Request date and time can be set up to 30 days since a point of calling.**
+* **Request date and time can be set up to 60 days since a point of calling.**
 * <b>Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
 * <b>Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)])</b>
@@ -713,7 +713,7 @@ Content-Type: application/json;charset=UTF-8
 |- currencyType | String |  X| Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
-* <b> Request date and time can be set up to 30 days since a point of calling. </b>
+* <b> Request date and time can be set up to 60 days since a point of calling. </b>
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
 
@@ -869,7 +869,7 @@ Content-Type: application/json;charset=UTF-8
 | statsId | String |	X | Statistics ID(not included in the delivery search conditions, up to 8 characters) |
 
 * <b>Enter data completed with replacement in the body and button. </b>
-* <b>Request date and time can be set up to 30 days since a point of calling. </b>
+* <b>Request date and time can be set up to 60 days since a point of calling. </b>
 
 [Example]
 ```
@@ -1696,7 +1696,7 @@ curl -X GET \
 | - tempalteTitle| String | Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | - templateSubtitle| String | Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
 | - templateExtra | String | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
-| - templateAd | String | Request for consent of receiving within template or simple ad phrases  |
+| - templateAd | String | Request for consent of receiving within template or simple ad phrases |
 | - requestDate | String | Date of request |
 | - receiveDate | String | Date of receiving |
 | - createDate | String | Date of creation |
@@ -1866,9 +1866,6 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String | X |PC web link(optional for the WL type, up to 500 characters) |
 |-schemeIos | String | X |  iOS app link(required for the AL type, up to 500 characters) |
 |-schemeAndroid | String | X |  Android app link(required for the AL type, up to 500 characters) |
-* 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 templateAd 값이 고정됩니다.
-* 채널 추가형(AD) 또는 복합형(MI) 메시지 유형 템플릿 등록 시 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
-* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여 등록해야 합니다.
 
 #### Response
 ```
@@ -1965,9 +1962,6 @@ Content-Type: application/json;charset=UTF-8
 |-linkPc | String | X |PC web link(optional for the WL type, up to 500 characters) |
 |-schemeIos | String | X |  iOS app link(required for the AL type, up to 500 characters) |
 |-schemeAndroid | String | X |  Android app link(required for the AL type, up to 500 characters) |
-* 채널 추가형(AD)"과 "복합형(MI)" 메시지 유형 템플릿 수정 시, templateAd 값이 고정됩니다.
-* 채널 추가형(AD)과 복합형(MI) 메시지 유형 템플릿 수정 시, 채널 추가(AC) 버튼이 첫 번째 순서에 위치해야 합니다.
-* 채널 추가(AC) 버튼의 버튼명은 "채널 추가"로 고정하여, 수정해야 합니다.
 
 #### Response
 ```
@@ -2010,6 +2004,10 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
+
+* When an approved template is deleted, it is only deleted within NHN Cloud.(Only templates that have not been sent for 3 days can be deleted.)
+* In the case of an approved template, Kakao's internal data cannot be deleted due to the restrictions of KakaoTalk BizMessage.
+* A template remaining in Kakao becomes dormant if it is not used for 1 year, and gets deleted if it remains dormant for 1 year.(If a template becomes dormant or gets deleted on Kakao, the person in charge will be notified.)
 
 #### Response
 ```
@@ -2192,7 +2190,7 @@ Content-Type: application/json;charset=UTF-8
 | TSC01 | Requested |
 | TSC02 | Inspecting |
 | TSC03 | Approved |
-| TSC04 | Returned |
+| TSC04 | Rejected |
 
 [Example]
 ```
@@ -2300,7 +2298,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- attachment | List | Attachment |
 |---- originalFileName | String | Attachment file name |
 |---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 |-- status| String | Template status |
 |-- statusName | String | Template status name |
 |-- securityFlag| Boolean | Whether it is a security template |
@@ -2445,7 +2443,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- attachment | List | Attachment |
 |---- originalFileName | String | Attachment file name |
 |---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Returned, REP: Replied) |
+|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
 |-- status| String | Template status |
 |-- statusName | String | Template status name |
 |-- securityFlag| Boolean | Whether it is a security template |

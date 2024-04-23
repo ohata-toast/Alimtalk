@@ -42,7 +42,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request body]
 
@@ -151,7 +151,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter] 1번 or(2번, 3번) 조건 필수
 
@@ -267,7 +267,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```
@@ -375,7 +375,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Query parameter]
 
@@ -434,7 +434,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [Request parameter]
 
@@ -531,7 +531,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 | 이름 |	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있다.  |
+|X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
 [예시]
 ```

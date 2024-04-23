@@ -1,19 +1,19 @@
 ## Notification > KakaoTalk Bizmessage > 브랜드톡 > 개요
 
-브랜드톡은 제3자 마케팅 수신동의에 기반한 광고성 메시지 전송 서비스입니다.
-마케팅 수신동의한 회원 대상으로 광고성 메시지 전송할 수 있습니다다.
-친구톡과 비슷하지만 다른 점은, 채널추가를 하지 않아도 ‘카카오톡 마케팅 수신동의’를 받았다면, 사용자에게 메시지를 보낼 수 있다는 점 입니다.
+BrandTalk is an advertising message delivery service based on third-party marketing consent.
+Advertising messages can be sent to members who agreed to receive marketing.
+It's similar to FriendTalk, but the difference is that you can send messages to users once got the 'Agreement to receive Kakao Talk marketing' without adding a channel.
 
-브랜드톡은 고객사 마케팅 수신 동의를 기반으로 발송된 메시지임을 알려줍니다.
-(광고) 표시와 함께 프로필명이 노출되고 프로필명 우측에(안내)가 표시됩니다.
-브랜드톡은 메시지 본문 최하단에 고객사 자체 수신거부 시스템을 안내합니다.
-채널 추가 버튼을 활용해 채널 추가를 유도할 수 있습니다.
+BrandTalk informs that the message was sent based on the customer's consent to receive marketing.
+Profile Name is exposed along with the(advertisement) mark and(information) is displayed on the right side of the Profile Name.
+BrandTalk guides the customer's own denial of receipt system at the bottom of the message content.
+Add Channel button can be used to induce the addition of a channel.
 
-## 특징
-* SMS보다 저렴한 비용으로 1,000자까지 장문의 메시지를 보낼 수 있습니다.
-* 친구 추가 없이, 마케팅 수신 동의 자사 고객에게 광고 메시지를 보낼 수 있습니다.
-* 치환 태그를 이용하여 수신자별로 개별 내용을 발송할 수 있습니다.
+## Characteristics
+* Can send long messages up to 1,000 characters at a lower cost than SMS.
+* Can send advertising messages to your customers who agreed to receive marketing, without adding friends.
+*Can use the replacement tag to send individual content to respective receiver.
 
-## 주요 기능
-* 발송, 조회 RESTful API를 제공합니다.
-* 콘솔에서는 발송 테스트, 발송 내역 조회, 템플릿 관리를 할 수 있습니다.
+## Main features
+* Provides a RESTful API for sending and enquiry.
+* From the console, can test sending, enquire sending history and manage templates."
