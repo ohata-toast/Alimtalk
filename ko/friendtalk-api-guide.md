@@ -503,13 +503,6 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 #### 응답
-|- coupon | Object | X | 쿠폰                                                                                                                                                           | 
-|-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
-|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                               |
-|-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
-|-- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
-|-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
-|-- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                  |
 ```
 {
   "header": {
