@@ -7,14 +7,14 @@
 ![KTB_09_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_09_20230926.png)
 
 1. 발신프로필을 선택합니다.
-   * 발신프로필은 <b>Notification</b> > <b>KakaoTalk Bizmessage</b> > <b>발신프로필 관리</b> 탭에서 확인할 수 있습니다.
+    * 발신프로필은 <b>Notification</b> > <b>KakaoTalk Bizmessage</b> > <b>발신프로필 관리</b> 탭에서 확인할 수 있습니다.
 
 2. 통계 이벤트 키별로 통계 데이터를 수집하려면 이벤트 키를 설정합니다.
 
 3. 발송하고 싶은 시간이 있다면 예약 발송을 선택하여 일시를 입력합니다.
 
 4. 검수가 완료된 템플릿을 불러옵니다.
-   * 템플릿은 <b>Notification</b> > <b>KakaoTalk Bizmessage</b> > <b>알림톡</b> > <b>템플릿 관리</b> 탭에서 관리할 수 있습니다.
+    * 템플릿은 <b>Notification</b> > <b>KakaoTalk Bizmessage</b> > <b>알림톡</b> > <b>템플릿 관리</b> 탭에서 관리할 수 있습니다.
 
 5. 대체 발송 메시지 설정 여부를 선택합니다.
 
