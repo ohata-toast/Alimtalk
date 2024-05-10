@@ -488,7 +488,6 @@ Content-Type: application/json;charset=UTF-8
 |----- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
 |----- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
 |----- schemeAndroid | String | X | 	안드로이드 앱 링크                                                                                                                                                  |
-
 |-- tail | Object | O | 더보기 버튼 정보                                                                                                                                                    | 
 |--- linkMo| String |	O | 	모바일 웹 링크                                                                                                                                                    |
 |--- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
