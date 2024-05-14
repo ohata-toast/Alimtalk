@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### May 12, 2024
+* [API] Changed the carousel type field in FriendTalk
+    * (AS-IS) The carousel type field with a required tail padding in FriendTalk, coupons unavailable
+    * (TO-BE) The carousel type field with an optional tail padding in FriendTalk, coupons available for each carousel
+
 ### April 23, 2024
 * [API] Added the feature to handle failures on duplicate message sending requests
     * Added the feature to fail requests with the same key value for 10 minutes based on the value of the X-NC-API-IDEMPOTENCY-KEY header when sending messages. [Send Message Request API Guide](https://docs.nhncloud.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#_3)

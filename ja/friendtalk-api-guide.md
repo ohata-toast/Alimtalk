@@ -133,7 +133,7 @@ Content-Type: application/json;charset=UTF-8
 | -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 | - coupon | Object | X | 쿠폰 | 
 | -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
-| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
 | -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
 | -- linkPc | String |	X |PC 웹 링크 |
 | -- schemeIos | String | X |	iOS 앱 링크 |
@@ -226,7 +226,7 @@ Content-Type: application/json;charset=UTF-8
 | -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
 | - coupon | Object | X | 쿠폰 | 
 | -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
-| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
 | -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
 | -- linkPc | String |	X |PC 웹 링크 |
 | -- schemeIos | String | X |	iOS 앱 링크 |
@@ -350,7 +350,7 @@ Content-Type: application/json;charset=UTF-8
 | --- schemeAndroid | String | X | Android app link |
 | - coupon | Object | X | 쿠폰 | 
 | -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
-| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
 | -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
 | -- linkPc | String |	X |PC 웹 링크 |
 | -- schemeIos | String | X |	iOS 앱 링크 |
@@ -397,6 +397,14 @@ Content-Type: application/json;charset=UTF-8
                 "image":{
                   "imageUrl": String,
                   "imageLink": String
+                },
+                "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
                 }
               }
             },
@@ -417,6 +425,14 @@ Content-Type: application/json;charset=UTF-8
                 "image":{
                   "imageUrl": String,
                   "imageLink": String
+                },
+                "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
                 }
               }
             }
@@ -427,14 +443,6 @@ Content-Type: application/json;charset=UTF-8
             "schemeAndroid": String,
             "schemeIos": String
           }
-        },
-        "coupon": {
-          "title": String,
-          "description": String,
-          "linkMo": String,
-          "linkPc": String,
-          "schemeAndroid": String,
-          "schemeIos": String
         },
         "resendParameter": {
             "isResend" : boolean,
@@ -474,18 +482,18 @@ Content-Type: application/json;charset=UTF-8
 | ---- image | Object | X | Image | 
 | ----- imageUrl|	String|	X|	Image URL   |
 | ----- imageLink|	String|	X|	Image link   |
+| ---- coupon | Object | X | 쿠폰 | 
+| ----- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
+| ----- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
+| ----- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
+| ----- linkPc | String |	X |PC 웹 링크 |
+| ----- schemeIos | String | X |	iOS 앱 링크 |
+| ----- schemeAndroid | String | X |	안드로이드 앱 링크 |
 | -- tail | Object | X | Learn more button information | 
 | --- linkMo| String |	X |	Mobile web link|
 | --- linkPc | String |	X |PC web link |
 | --- schemeIos | String | X |	iOS app link |
 | --- schemeAndroid | String | X |	Android app link |
-| - coupon | Object | X | 쿠폰 | 
-| -- title| String |	X |	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰"|
-| -- description| String |	X |	쿠폰 상세 설명 (일반 텍스트, 이미지형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)|
-| -- linkMo| String |	X |	모바일 웹 링크 (하단 필수 조건 확인) |
-| -- linkPc | String |	X |PC 웹 링크 |
-| -- schemeIos | String | X |	iOS 앱 링크 |
-| -- schemeAndroid | String | X |	안드로이드 앱 링크 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -778,7 +786,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "image":{
                 "imageUrl": String,
                 "imageLink": String
-               }
+              },
+              "coupon": {
+                "title": String,
+                "description": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+              }
             }
            }
         ],
@@ -866,6 +882,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |---- image | Object | 이미지  | 
 |----- imageUrl|	String|	이미지 URL   |
 |----- imageLink|	String|	이미지 링크   |
+|---- coupon | Object | 쿠폰 | 
+|----- title| String |	쿠폰 title |
+|----- description| String |	쿠폰 상세 설명 |
+|----- linkMo| String | 모바일 웹 링크 |
+|----- linkPc | String |	PC 웹 링크 |
+|----- schemeIos | String | iOS 앱 링크 |
+|----- schemeAndroid | String | 안드로이드 앱 링크 |
 |-- tail | Object | 더보기 버튼 정보 | 
 |--- linkMo| String |	모바일 웹 링크|
 |--- linkPc | String |	PC 웹 링크 |
@@ -1356,6 +1379,14 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
                 "image":{
                   "imageUrl": String,
                   "imageLink": String
+                },
+                "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
                 }
               }
             }
@@ -1441,6 +1472,13 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | ---- image | Object | 이미지  | 
 | ----- imageUrl|	String|	이미지 URL   |
 | ----- imageLink|	String|	이미지 링크   |
+| ---- coupon | Object | 쿠폰 | 
+| ----- title| String |	쿠폰 title |
+| ----- description| String |	쿠폰 상세 설명 |
+| ----- linkMo| String | 모바일 웹 링크 |
+| ----- linkPc | String |	PC 웹 링크 |
+| ----- schemeIos | String | iOS 앱 링크 |
+| ----- schemeAndroid | String | 안드로이드 앱 링크 |
 | -- tail | Object | 더보기 버튼 정보 | 
 | --- linkMo| String |	모바일 웹 링크|
 | --- linkPc | String |	PC 웹 링크 |
