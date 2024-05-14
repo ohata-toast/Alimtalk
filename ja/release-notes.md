@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > リリースノート
+### 2024. 05. 12.
+* [API]カカともへのメッセージカルーセルタイプフィールド変更
+    * (変更前)カカともへのメッセージカルーセルタイプtail必須フィールド、クーポン使用不可
+    * (変更後)カカともへのメッセージカルーセルタイプtail選択フィールド、カルーセル別クーポン使用可
+
 ### 2024. 04. 23.
 * [API]メッセージ送信の重複リクエストの失敗処理機能を追加
     * メッセージ送信時、X-NC-API-IDEMPOTENCY-KEYヘッダーの値を基準に10分間同じキー値を持つリクエストを失敗処理する機能が追加されました。[メッセージ送信リクエストAPIガイド](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#_3)
