@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### May 28, 2024
+* [API] Changed the sorting criteria for responses of the get message list API
+    * (Previous) Sort by requestDate in descending order
+    * (Current) Sort by requestDate in descending order, Sort by requestId, recipientSeq in descending order if requestDate is the same
+  
 ### May 12, 2024
 * [API] Changed the carousel type field in FriendTalk
     * (AS-IS) The carousel type field with a required tail padding in FriendTalk, coupons unavailable
