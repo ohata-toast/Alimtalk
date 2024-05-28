@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > リリースノート
+### 2024. 05. 28.
+* [API]メッセージリスト照会APIレスポンスのソート基準変更
+    * (変更前) requestDateを基準に降順ソート
+    * (変更後) requestDateを基準に降順ソート、 requestDateが同じ場合はrequestId、recipientSeqを基準に降順ソート
+
 ### 2024. 05. 12.
 * [API]カカともへのメッセージカルーセルタイプフィールド変更
     * (変更前)カカともへのメッセージカルーセルタイプtail必須フィールド、クーポン使用不可
