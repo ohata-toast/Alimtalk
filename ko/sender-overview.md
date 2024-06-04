@@ -26,7 +26,7 @@
     * 통신판매업, 의료기기판매업, 건강기능식품판매업의 경우 신고증을 첨부합니다.
     * 입력한 비즈니스 정보의 기업명과 채널 이름이 다를 경우, 심사에 참고할 자료를 첨부합니다.
 
-![그림2](https://static.toastoven.net/prod_alimtalk/KTB_Image_1.png)
+![그림2](https://static.toastoven.net/prod_alimtalk/KTB_Image_2.png)
 
 ### 카카오톡 채널 등록
 1. 비즈니스 채널 전환이 완료(승인)되었다면, **Notification > KakaoTalk Bizmessage > 발신프로필 관리** 탭에서 해당 발신프로필(카카오톡 채널)을 등록합니다.
