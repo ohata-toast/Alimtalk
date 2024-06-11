@@ -1,19 +1,30 @@
 ## Notification > KakaoTalk Bizmessage > Overview
 
-KakaoTalk Bizmessage provides AlimTalk and FriendTalk to send messages to KakaoTalk users based on mobile phone numbers, with no need of adding friends.
-RESTful API is provided for easy integration.
+KakaoTalk Bizmessage is a service that can send messages, AlimTalk and FriendTalk type without adding friends based on their mobile phone number. 
+It provides RESTful API for easy interworking.
 
 ## AlimTalk vs FriendTalk
-| Category     | AlimTalk                                                     | FriendTalk                                                   |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Message Type | Available to send informative messages                       | Available to send advertisement messages                     |
-| Target       | Friends not necessary(requires phone number information)    | Users who are friends to Plus Friend(requires phone number information) |
-| Format       | 1,000 characters including spaces, Korean or English + Link at the message bottom | - FriendTalk text: 1,000 characters of text in Korean or English + link button<br />- FriendTalk image: 400 characters of text + 1 page of image + link button |
-| Features     | - Restricted to informative biz messages <br />- Send by approved templates | - Delivery prohibited during night time(20:50~ 08:00 on the following day) |
+| Classification    | AlimTalk                                    | FriendTalk                                       |
+| ----- |----------------------------------------|-------------------------------------------|
+| Send contents | Able to send informational messages                          | Able to send advertising messages                             |
+| Send To | Doesn’t matter if friend or not (needs phone number information)                 | Users who made friends with the KakaoTalk channel (need phone number information)           |
+| Send type | Text type<br>Image Type                           | Text type<br>Image Type<br>Wide image type<br>Item list<br>Carousel |
+| Considerations | - Informational Biz messages only<br />- Send based on approved templates | - Delivery restricted during night (20:50~08:00 on the following day)              |
 
-## 발송 전 유의사항
-* 알림톡 이용 시, 고객사는 다음과 같은 서비스 이용 유의 사항을 수신자에게 안내해야 합니다.
-  * 알림톡을 수신하는 과정에서 와이파이 환경이 아닌 경우, 데이터통신 요금이 발생할 수 있습니다.
-  * 알림톡 수신을 원하지 않을 경우에 대해 다음의 내용을 참고하십시오.
-    * 발신자의 연락처(고객센터 등)를 통하여 발신자에게 수신 거부 의사를 전달할 수 있도록 안내해야 합니다.
-    * 알림톡이 수신된 채팅방의 상단 레이어에서 [알림톡 차단]을 선택하여 발신자를 차단할 수 있습니다.
+## Precautions Before Delivery
+* When using AlimTalk, the customer should inform the recipient of the following precautions for using the service.
+  * In the process of receiving AlimTalk, data communication charges may be incurred if it is not in a Wi-Fi environment.
+  * If you don't want to receive AlimTalk, refer to the following.
+    * The caller's contact information (customer center, etc.) should be provided to inform the caller that he/she can unsubscribe.
+    * You can block callers by selecting [Block AlimTalk] in top layer of the chat room where the notification talk was received.
+
+## Notice of Personal Information Consignee
+When a customer uses the NHN Cloud > Notification > KakaoTalk Bizmessage service, there is a consignment relationship between the customer and the company regarding the processing of personal information, therefore, in line with the Information and Communication Network Act and the Personal Information Protection Act, the customer who is the consignor must disclose the status of entrusting personal information to the company (trustee and details of work) through the personal information processing policy.
+
+Accordingly, we can guide customers to comply with the relevant laws and regulations when using NHN Cloud's KakaoTalk Bizmessage service and not to be penalized for non-disclosure of consignment status as follows.
+
+Example<br>
+[Notice of Personal Information Consignee]<br>
+When using the KakaoTalk Bizmessage service, please indicate the following information in the 'Personal Information Processing Policy > Consignment Status' operated by the customer.<br>
+Consignee: NHN<br>
+Business details: KakaoTalk Biz messaging agent<br>
