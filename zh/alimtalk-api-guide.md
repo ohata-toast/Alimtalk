@@ -2274,7 +2274,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment           | List | Attachment                                                                                                                                                                                                                                                                                             |
 | ---- originalFileName    | String | Attachment file name                                                                                                                                                                                                                                                                                   |
 | ---- filePath            | String | Attachment file path                                                                                                                                                                                                                                                                                   |
-| --- status               | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied)                                                                                                                                                                                                                              |
+| --- status               | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection)                                                                                                                                                                                                       |
 | -- status                | String | Template status                                                                                                                                                                                                                                                                                        |
 | -- statusName            | String | Template status name                                                                                                                                                                                                                                                                                   |
 | -- securityFlag          | Boolean | Whether it is a security template                                                                                                                                                                                                                                                                      |
@@ -2458,7 +2458,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- attachment | List | Attachment |
 |---- originalFileName | String | Attachment file name |
 |---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection) |
 |-- status| String | Template status |
 |-- statusName | String | Template status name |
 |-- securityFlag| Boolean | Whether it is a security template |

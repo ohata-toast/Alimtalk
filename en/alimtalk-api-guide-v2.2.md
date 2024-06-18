@@ -2260,52 +2260,52 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| Name |  Type| Description|
-|---|---|---|
-|header|    Object| Header area|
-|- resultCode|  Integer|    Result code|
-|- resultMessage|   String| Result message|
-|- isSuccessful|    Boolean| Successful or not|
-|templateListResponse|  Object| Body area|
-|- templates | List |   Template list |
-|-- plusFriendId | String | PlusFriend ID |
-|-- senderKey    | String | Sender Key    |
-|-- plusFriendType | String | PlusFriend type(NORMAL, GROUP) |
-|-- templateCode | String | Template code |
-|-- templateName | String | Template name |
-|-- templateMessageType| String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes) |
-|-- templateEmphasizeType| String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE) |
-|-- templateContent | String |  Template body |
-|-- templateExtra | String | Additional template information |
-|-- templateAd | String | Request for consent of receiving within template or simple ad phrases |
-|-- tempalteTitle| String | Template title |
-|-- templateSubtitle| String | Auxiliary template phrase |
-|-- templateImageName | String | Image name(name of uploaded file) |
-|-- templateImageUrl | String | Image URL |
-|-- buttons | List |    List of buttons |
-|--- ordering | Integer |   Button sequence(1~5) |
-|--- type | String |    Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, CA: Channel Added) |
-|--- name | String |    Button name |
-|--- linkMo | String |  Mobile web link(required for the WL type) |
-|--- linkPc | String |  PC web link(optional for the WL type) |
-|--- schemeIos | String |   iOS app link(required for the AL type) |
-|--- schemeAndroid | String |   Android app link(required for the AL type) |
-|-- comments | List | Inspection result |
-|--- id | Integer | Inquiry ID |
-|--- content |  String | Inquiry content |
-|--- userName | String | Creator |
-|--- createAt | String | Date of registration |
-|--- attachment | List | Attachment |
-|---- originalFileName | String | Attachment file name |
-|---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
-|-- status| String | Template status |
-|-- statusName | String | Template status name |
-|-- securityFlag| Boolean | Whether it is a security template |
-|-- categoryCode| String | Template category code  |
-|-- createDate | String | Date of creation |
-|-- updateDate | String | Date of modification |
-|- totalCount | Integer | Total count |
+| Name |  Type| Description                                                                                                                                                        |
+|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|header|    Object| Header area                                                                                                                                                        |
+|- resultCode|  Integer| Result code                                                                                                                                                        |
+|- resultMessage|   String| Result message                                                                                                                                                     |
+|- isSuccessful|    Boolean| Successful or not                                                                                                                                                  |
+|templateListResponse|  Object| Body area                                                                                                                                                          |
+|- templates | List | Template list                                                                                                                                                      |
+|-- plusFriendId | String | PlusFriend ID                                                                                                                                                      |
+|-- senderKey    | String | Sender Key                                                                                                                                                         |
+|-- plusFriendType | String | PlusFriend type(NORMAL, GROUP)                                                                                                                                     |
+|-- templateCode | String | Template code                                                                                                                                                      |
+|-- templateName | String | Template name                                                                                                                                                      |
+|-- templateMessageType| String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes)                                                                   |
+|-- templateEmphasizeType| String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)                                                                       |
+|-- templateContent | String | Template body                                                                                                                                                      |
+|-- templateExtra | String | Additional template information                                                                                                                                    |
+|-- templateAd | String | Request for consent of receiving within template or simple ad phrases                                                                                              |
+|-- tempalteTitle| String | Template title                                                                                                                                                     |
+|-- templateSubtitle| String | Auxiliary template phrase                                                                                                                                          |
+|-- templateImageName | String | Image name(name of uploaded file)                                                                                                                                  |
+|-- templateImageUrl | String | Image URL                                                                                                                                                          |
+|-- buttons | List | List of buttons                                                                                                                                                    |
+|--- ordering | Integer | Button sequence(1~5)                                                                                                                                               |
+|--- type | String | Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, CA: Channel Added) |
+|--- name | String | Button name                                                                                                                                                        |
+|--- linkMo | String | Mobile web link(required for the WL type)                                                                                                                          |
+|--- linkPc | String | PC web link(optional for the WL type)                                                                                                                              |
+|--- schemeIos | String | iOS app link(required for the AL type)                                                                                                                             |
+|--- schemeAndroid | String | Android app link(required for the AL type)                                                                                                                         |
+|-- comments | List | Inspection result                                                                                                                                                  |
+|--- id | Integer | Inquiry ID                                                                                                                                                         |
+|--- content |  String | Inquiry content                                                                                                                                                    |
+|--- userName | String | Creator                                                                                                                                                            |
+|--- createAt | String | Date of registration                                                                                                                                               |
+|--- attachment | List | Attachment                                                                                                                                                         |
+|---- originalFileName | String | Attachment file name                                                                                                                                               |
+|---- filePath | String | Attachment file path                                                                                                                                               |
+|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection)                                                                   |
+|-- status| String | Template status                                                                                                                                                    |
+|-- statusName | String | Template status name                                                                                                                                               |
+|-- securityFlag| Boolean | Whether it is a security template                                                                                                                                  |
+|-- categoryCode| String | Template category code                                                                                                                                             |
+|-- createDate | String | Date of creation                                                                                                                                                   |
+|-- updateDate | String | Date of modification                                                                                                                                               |
+|- totalCount | Integer | Total count                                                                                                                                                        |
 
 ### List Template modifications
 
@@ -2405,53 +2405,53 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| Name |  Type| Description|
-|---|---|---|
-|header|    Object| Header area|
-|- resultCode|  Integer|    Result code|
-|- resultMessage|   String| Result message|
-|- isSuccessful|    Boolean| Successful or not|
-|templateModificationsResponse| Object| Body area|
-|- templates | List |   Template list |
-|-- plusFriendId | String | ID for KakaoTalk channel search or sending profile group name  |
-|-- senderKey    | String | Sender Key    |
-|-- plusFriendType | String | PlusFriend type(NORMAL, GROUP) |
-|-- templateCode | String | Template code |
-|-- templateName | String | Template name |
-|-- templateMessageType| String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes) |
-|-- templateEmphasizeType| String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE) |
-|-- templateContent | String |  Template body |
-|-- templateExtra | String | Additional template information |
-|-- templateAd | String | Request for consent of receiving within template or simple ad phrases |
-|-- tempalteTitle| String | Template title |
-|-- templateSubtitle| String | Auxiliary template phrase |
-|-- templateImageName | String | Image name(name of uploaded file) |
-|-- templateImageUrl | String | Image URL |
-|-- buttons | List |    List of buttons |
-|--- ordering | Integer |   Button sequence(1~5) |
-|--- type | String |    Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, CA: Channel Added) |
-|--- name | String |    Button name |
-|--- linkMo | String |  Mobile web link(required for the WL type) |
-|--- linkPc | String |  PC web link(optional for the WL type) |
-|--- schemeIos | String |   iOS app link(required for the AL type) |
-|--- schemeAndroid | String |   Android app link(required for the AL type) |
-|-- comments | List | Inspection result |
-|--- id | Integer | Inquiry ID |
-|--- content |  String | Inquiry content |
-|--- userName | String | Creator |
-|--- createAt | String | Date of registration |
-|--- attachment | List | Attachment |
-|---- originalFileName | String | Attachment file name |
-|---- filePath | String | Attachment file path |
-|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
-|-- status| String | Template status |
-|-- statusName | String | Template status name |
-|-- securityFlag| Boolean | Whether it is a security template |
-|-- categoryCode| String | Template category code  |
-|-- activated | Boolean | Activated or not |
-|-- createDate | String | Date of creation |
-|-- updateDate | String | Date of modification |
-|- totalCount | Integer | Total count |
+| Name |  Type| Description                                                                                                                                                        |
+|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|header|    Object| Header area                                                                                                                                                        |
+|- resultCode|  Integer| Result code                                                                                                                                                        |
+|- resultMessage|   String| Result message                                                                                                                                                     |
+|- isSuccessful|    Boolean| Successful or not                                                                                                                                                  |
+|templateModificationsResponse| Object| Body area                                                                                                                                                          |
+|- templates | List | Template list                                                                                                                                                      |
+|-- plusFriendId | String | ID for KakaoTalk channel search or sending profile group name                                                                                                      |
+|-- senderKey    | String | Sender Key                                                                                                                                                         |
+|-- plusFriendType | String | PlusFriend type(NORMAL, GROUP)                                                                                                                                     |
+|-- templateCode | String | Template code                                                                                                                                                      |
+|-- templateName | String | Template name                                                                                                                                                      |
+|-- templateMessageType| String | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes)                                                                   |
+|-- templateEmphasizeType| String| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)                                                                       |
+|-- templateContent | String | Template body                                                                                                                                                      |
+|-- templateExtra | String | Additional template information                                                                                                                                    |
+|-- templateAd | String | Request for consent of receiving within template or simple ad phrases                                                                                              |
+|-- tempalteTitle| String | Template title                                                                                                                                                     |
+|-- templateSubtitle| String | Auxiliary template phrase                                                                                                                                          |
+|-- templateImageName | String | Image name(name of uploaded file)                                                                                                                                  |
+|-- templateImageUrl | String | Image URL                                                                                                                                                          |
+|-- buttons | List | List of buttons                                                                                                                                                    |
+|--- ordering | Integer | Button sequence(1~5)                                                                                                                                               |
+|--- type | String | Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, CA: Channel Added) |
+|--- name | String | Button name                                                                                                                                                        |
+|--- linkMo | String | Mobile web link(required for the WL type)                                                                                                                          |
+|--- linkPc | String | PC web link(optional for the WL type)                                                                                                                              |
+|--- schemeIos | String | iOS app link(required for the AL type)                                                                                                                             |
+|--- schemeAndroid | String | Android app link(required for the AL type)                                                                                                                         |
+|-- comments | List | Inspection result                                                                                                                                                  |
+|--- id | Integer | Inquiry ID                                                                                                                                                         |
+|--- content |  String | Inquiry content                                                                                                                                                    |
+|--- userName | String | Creator                                                                                                                                                            |
+|--- createAt | String | Date of registration                                                                                                                                               |
+|--- attachment | List | Attachment                                                                                                                                                         |
+|---- originalFileName | String | Attachment file name                                                                                                                                               |
+|---- filePath | String | Attachment file path                                                                                                                                               |
+|--- status | String | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection)                                                                   |
+|-- status| String | Template status                                                                                                                                                    |
+|-- statusName | String | Template status name                                                                                                                                               |
+|-- securityFlag| Boolean | Whether it is a security template                                                                                                                                  |
+|-- categoryCode| String | Template category code                                                                                                                                             |
+|-- activated | Boolean | Activated or not                                                                                                                                                   |
+|-- createDate | String | Date of creation                                                                                                                                                   |
+|-- updateDate | String | Date of modification                                                                                                                                               |
+|- totalCount | Integer | Total count                                                                                                                                                        |
 
 ### Register Template Image
 #### Request

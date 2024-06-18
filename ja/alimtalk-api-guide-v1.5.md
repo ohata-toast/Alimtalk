@@ -2225,7 +2225,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | お問い合わせ内容                            |
 | ---userName          | String  | 作成者                               |
 | ---createAt          | String  | 登録日                            |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ : 検査中) |
 | -- status            | String  | テンプレートのステータス                           |
 | -- statusName        | String  | テンプレートのステータス名                           |
 | -- createDate        | String  | 作成日時                            |
@@ -2351,7 +2351,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | お問い合わせ内容                            |
 | ---userName          | String  | 作成者                               |
 | ---createAt          | String  | 登録日                            |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ : 検査中) |
 | -- status            | String  | テンプレートのステータス                           |
 | -- statusName        | String  | テンプレートのステータス名                           |
 | -- activated         | Boolean  | 有効かどうか                            |
