@@ -56,7 +56,7 @@ Content-Type: application/json;charset=UTF-8
     "plusFriendId": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser":String,
     "recipientList": [{
         "recipientNo": String,
         "content": String,
@@ -77,11 +77,11 @@ Content-Type: application/json;charset=UTF-8
                 }
         ],
         "resendParameter": {
-            "isResend" : boolean,
-            "resendType" : String,
-            "resendTitle" : String,
-            "resendContent" : String,
-            "resendSendNo" : String,
+            "isResend":boolean,
+            "resendType":String,
+            "resendTitle":String,
+            "resendContent":String,
+            "resendSendNo":String,
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
@@ -110,9 +110,9 @@ Content-Type: application/json;charset=UTF-8
 | -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
 | -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | X    | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | X    | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | X    |	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | X    | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
+| -- chatEvent           | String  | X    | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
+| -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -222,37 +222,37 @@ Content-Type: application/json;charset=UTF-8
 | resultCode           | String  | X         | 送信結果(MRC01：成功、MRC02：失敗)       |
 | createUser           | String  | X         | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
 | pageNum              | Integer | X         | ページ番号(基本：1)                     |
-| pageSize             | Integer | X         | 照会件数(基本：15, 最大 : 1000)                     |
+| pageSize             | Integer | X         | 照会件数(基本：15, 最大:1000)                     |
 
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
         {
-          "requestId" :  String,
-          "recipientSeq" : Integer,
-          "plusFriendId" :  String,
-          "recipientNo" :  String,
-          "requestDate" : String,
-          "createDate" : String,
-          "content" :  String,
-          "messageStatus" :  String,
-          "resendStatus" :  String,
-          "resendStatusName" :  String,
-          "resultCode" :  String,
-          "resultCodeName" : String,
-          "createUser" : String,
+          "requestId": String,
+          "recipientSeq":Integer,
+          "plusFriendId": String,
+          "recipientNo": String,
+          "requestDate":String,
+          "createDate":String,
+          "content": String,
+          "messageStatus": String,
+          "resendStatus": String,
+          "resendStatusName": String,
+          "resultCode": String,
+          "resultCodeName":String,
+          "createUser":String,
           "senderGroupingKey": String,
           "recipientGroupingKey": String
         }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -338,39 +338,39 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "recipientNo" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "content" :  String,
-      "messageStatus" :  String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "imageSeq" : Integer,
-      "imageName" : String,
-      "imageUrl" : String,
-      "imageLink" : String,
-      "wide" : Boolean,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "recipientNo": String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "content": String,
+      "messageStatus": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode":String,
+      "resendRequestId":String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "imageSeq":Integer,
+      "imageName":String,
+      "imageUrl":String,
+      "imageLink":String,
+      "wide":Boolean,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String,
@@ -379,7 +379,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "target": String
         }
       ],
-      "isAd" : Boolean,
+      "isAd":Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
   }
@@ -420,9 +420,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시, 전달할 메타정보 |
-| -- chatEvent           | String  | BT(봇 전환) 타입 버튼 시, 연결할 봇 이벤트명 |
-| -- target              | String  | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송 |
+| -- chatExtra           | String  | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
+| -- chatEvent           | String  | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
+| -- target              | String  | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
 | - isAd                 | Boolean | 広告かどうか                                   |
 | - senderGroupingKey    | String  | 発信グルーピングキー                               |
 | - recipientGroupingKey | String  | 受信者グルーピングキー                              |
@@ -467,10 +467,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -521,36 +521,36 @@ Content-Type: application/json;charset=UTF-8
 | startUpdateDate | String  | O    | 結果アップデート照会の開始時間(yyyy-MM-dd HH:mm) |
 | endUpdateDate   | String  | O    | 結果アップデート照会の終了時間(yyyy-MM-dd HH:mm) |
 | pageNum         | Integer | X    | ページ番号(基本：1)                      |
-| pageSize        | Integer | X    | 照会件数(基本：15, 最大 : 1000)          |
+| pageSize        | Integer | X    | 照会件数(基本：15, 最大:1000)          |
 
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "recipientNo" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "content" :  String,
-      "messageStatus" :  String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "recipientNo": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "content": String,
+      "messageStatus": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resultCode": String,
+      "resultCodeName":String,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -637,9 +637,9 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KE
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "messages": [
@@ -766,9 +766,9 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KE
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "recipients": [
@@ -857,9 +857,9 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.2/appkeys/{appKey}/'"${APP_KE
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "requestId": String,
@@ -982,15 +982,15 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
+      "imageSeq":Integer,
+      "imageUrl":String,
+      "imageName":String
     }
 }
 ```
@@ -1049,22 +1049,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "imagesResponse": {
-    "images" : [
+    "images":[
         {
-            "imageSeq" : Integer,
-            "imageUrl" : String,
-            "imageName" : String,
+            "imageSeq":Integer,
+            "imageUrl":String,
+            "imageName":String,
             "wide": String,
-            "createDate" : String
+            "createDate":String
         }
     ],
-    "totalCount" : Integer
+    "totalCount":Integer
   }
 
 }
@@ -1128,10 +1128,10 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1192,10 +1192,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1253,10 +1253,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
