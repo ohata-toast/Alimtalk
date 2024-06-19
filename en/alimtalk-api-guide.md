@@ -141,6 +141,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS(e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
+ * <b>If you add the `\s` character to the end of the templateTitle and templateItemHighlight.title fields with a substitution and templateParameter, you can apply the strikethrough style</b>
+     * <b>But, this does not apply if you pre-add \s to the fields when registering the template</b>.
 
 [Example]
 ```
