@@ -3,8 +3,8 @@
 * [API] Improved to use strikethrough style for certain fields 
     * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough. 
     * But, the style does not apply if you add \s to the fields beforehand when registering a template
-* [API] 친구톡 발송시 쿠폰이 포함될 경우 버튼을 최대 4개까지만 추가 가능하도록 변경
-    * 친구톡 텍스트/이미지 타입 발송시 쿠폰이 포함될 경우 버튼을 최대 4개까지만 추가 가능하도록 변경되었습니다.
+* [API] 친구톡 발송 시 쿠폰이 포함될 경우 버튼을 최대 4개까지만 추가 가능하도록 변경
+    * 친구톡 텍스트/이미지 타입 발송 시 쿠폰이 포함될 경우 버튼을 최대 4개까지만 추가 가능하도록 변경되었습니다.
 * [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab 
     * Fixed a bug that prevented template titles from being displayed as substituted values in the preview tab.
 
