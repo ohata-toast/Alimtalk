@@ -1,4 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### June 25, 2024
+* [API] Improved to use strikethrough style for certain fields 
+    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough. 
+    * But, the style does not apply if you add \s to the fields beforehand when registering a template 
+* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab 
+    * Fixed a bug that prevented template titles from being displayed as substituted values in the preview tab.
+
 ### May 28, 2024
 * [API] Changed the sorting criteria for responses of the get message list API
     * (Previous) Sort by requestDate in descending order

@@ -18,8 +18,8 @@
 </table>
 
 ## v2.0 API紹介
-1. 카카오 채널 추가 시, 발급 받은 senderKey 필드로 API 호출이 되도록 변경 되었습니다.
-2. 카카오 채널 그룹 기능이 추가 되었습니다.
+1. カカオチャンネル追加時、発行されたsenderKeyフィールドでAPI呼び出しが行われるように変更しました。
+2. カカオチャンネルグループ機能が追加されました。
 
 ## 一般メッセージ
 
@@ -65,11 +65,11 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }],
@@ -99,7 +99,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -107,6 +107,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
+* <b>templateTitleとtemplateItemHighlight.titleフィールドの一番後ろに日本語識別子とtemplateParameterを利用して`\s`文字を追加する場合、取り消し線スタイルを適用できます。</b>
+    * <b>ただし、テンプレート登録時にあらかじめ\sをフィールドに追加しておいた場合は適用されません。</b>
 
 [例]
 ```
@@ -192,7 +194,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle":String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -205,11 +207,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -246,7 +248,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -255,6 +257,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)<
+* <b>送信時にtemplateTitleとtemplateItemHighlight.titleフィールドの一番後ろに`\s`文字を追加すると、取り消し線スタイルを適用できます。</b>
+    * <b>ただし、テンプレート登録時にあらかじめ\sをフィールドに追加しておいた場合は適用されません。</b>
 
 [例]
 ```
@@ -355,36 +359,36 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -394,7 +398,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -486,40 +490,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "createDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle":String,
+      "templateSubtitle":String,
+      "templateExtra":String,
+      "templateAd":String,
+      "requestDate": String,
+      "receiveDate":String,
+      "createDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode":String,
+      "resendRequestId":String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -569,7 +573,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| - messageOption        | Object  |	メッセージオプション                                           |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -622,18 +626,18 @@ Content-Type: application/json;charset=UTF-8
     "templateCode": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser":String,
     "recipientList": [{
         "recipientNo": String,
         "templateParameter": {
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }],
@@ -663,7 +667,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -756,7 +760,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle":String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -769,11 +773,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -811,7 +815,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -917,36 +921,36 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -956,7 +960,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1048,40 +1052,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle":String,
+      "templateSubtitle":String,
+      "templateExtra":String,
+      "templateAd":String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode":String,
+      "resendRequestId":String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -1134,7 +1138,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| - messageOption        | Object  |	メッセージオプション                                           |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -1180,10 +1184,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1240,25 +1244,25 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messages" : [
+  "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "requestDate" :  String,
-      "createDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" :  String,
-      "resendRequestId" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String
+      "requestId": String,
+      "recipientSeq":Integer,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String
     }
   ]
 }
@@ -1321,10 +1325,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "categories": [
     {
@@ -1388,26 +1392,26 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateCode" : String,
-  "templateName" : String,
-  "templateContent" : String,
+  "templateCode":String,
+  "templateName":String,
+  "templateContent":String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType":String,
   "templateExtra": String,
   "templateAd": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
+  "templateTitle":String,
+  "templateSubtitle":String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1437,10 +1441,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1483,24 +1487,24 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateName" : String,
-  "templateContent" : String,
+  "templateName":String,
+  "templateContent":String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType":String,
   "templateExtra": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
+  "templateTitle":String,
+  "templateSubtitle":String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1529,10 +1533,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1571,10 +1575,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1617,7 +1621,7 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String
+  "comment":String
 }
 ```
 
@@ -1628,10 +1632,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1674,8 +1678,8 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String,
-  "attachments" : File
+  "comment":String,
+  "attachments":File
 }
 ```
 
@@ -1687,10 +1691,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1756,10 +1760,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateListResponse": {
       "templates": [
@@ -1770,11 +1774,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "templateName": String,
               "templateContent": String,
               "templateEmphasizeType": String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
-              "templateMessageType" : String,
-              "templateExtra" : String,
-              "templateAd" : String,
+              "templateTitle":String,
+              "templateSubtitle":String,
+              "templateMessageType":String,
+              "templateExtra":String,
+              "templateAd":String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1844,7 +1848,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List | 添付ファイル                           |
 | ---- originalFileName | String | 添付ファイル名                        |
 | ---- filePath         | String | 添付ファイルへのパス                   |
-| --- status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| --- status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ:検査中) |
 | -- status            | String  | テンプレートのステータス                           |
 | -- statusName        | String  | テンプレートのステータス名                           |
 | -- createDate        | String  | 作成日時                            |
@@ -1888,10 +1892,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateModificationsResponse": {
       "templates": [
@@ -1902,11 +1906,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "templateName": String,
               "templateContent": String,
               "templateEmphasizeType": String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
-              "templateMessageType" : String,
-              "templateExtra" : String,
-              "templateAd" : String,
+              "templateTitle":String,
+              "templateSubtitle":String,
+              "templateMessageType":String,
+              "templateExtra":String,
+              "templateAd":String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1942,47 +1946,51 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| 値            | タイプ | 説明                               |
-| -------------------- | ------- | ---------------------------------------- |
-| header               | Object  | ヘッダ領域                            |
-| - resultCode         | Integer | 結果コード                            |
-| - resultMessage      | String  | 結果メッセージ                           |
-| - isSuccessful       | Boolean | 成否                             |
-| templateModificationsResponse | Object  | 本文領域                            |
-| - templates          | List    | テンプレートリスト                          |
-| -- plusFriendId      | String  | プラスフレンドID                                 |
-| -- plusFriendType    | String  | プラスフレンドタイプ(NORMAL、GROUP)                  |
-| -- templateCode      | String  | テンプレートコード                           |
-| -- templateName      | String  | テンプレート名                             |
-| -- templateContent   | String  | テンプレート本文                           |
-| -- templateEmphasizeType| String| テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須 |
-| -- tempalteTitle     | String  | テンプレートのタイトル(最大50字、Android:2行、23字以上のコマ処理、iOS:2行、27字以上のコマ処理) |
-| -- templateSubtitle  | String  | テンプレートの補助フレーズ(最大50文字、Android:18字以上のコマを省く、iOS:21字以上のコマを省く) |
-| -- templateMessageType| String  | テンプレートメッセージタイプ(BA:基本型、EX:付加情報型、AD:広告追加型、MI:複合型)<br>EX：templateExtraフィールド必須<br>MI：templateExtraフィールド必須」 |
-| -- templateExtra     | String  | テンプレート付加情報 |
-| -- templateAd        | String  | テンプレート内の受信同意または簡単な広告文句 |
-| -- buttons           | List    | ボタンリスト                            |
-| --- ordering         | Integer | ボタン順序(1~5)                               |
-| --- type             | String  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |
-| --- name             | String  | ボタン名                            |
-| --- linkMo           | String  | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| --- linkPc           | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
-| --- schemeIos        | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| --- schemeAndroid    | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- comments          | List    | 検収結果                            |
-| --- id               | Integer | お問い合わせID                                   |
-| --- content          | String  | お問い合わせ内容                            |
-| ---userName          | String  | 作成者                               |
-| ---createAt          | String  | 登録日                            |
-| --- attachment        | List | 添付ファイル                           |
-| ---- originalFileName | String | 添付ファイル名                        |
-| ---- filePath         | String | 添付ファイルへのパス                   |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
-| -- status            | String  | テンプレートのステータス                           |
-| -- statusName        | String  | テンプレートのステータス名                           |
-| -- activated         | Boolean  | 有効かどうか                            |
-| -- createDate        | String  | 作成日時                            |
-| - totalCount         | Integer | 総個数                              |
+| 名前 |	タイプ| 	説明                                                                                            |
+|---|---|--------------------------------------------------------------------------------------------------|
+|header|	Object| 	ヘッダ領域                                                                                         |
+|- resultCode|	Integer| 	結果コード                                                                                         |
+|- resultMessage|	String| 結果メッセージ                                                                                         |
+|- isSuccessful|	Boolean| 成否                                                                                          |
+|templateModificationsResponse|	Object| 	本文領域                                                                                         |
+|- templates | List | 	テンプレートリスト                                                                                       |
+|-- plusFriendId | String | 	プラスフレンドID                                                                   |
+|-- senderKey    | String | 発信キー                                                                                           |
+|-- plusFriendType | String | プラスフレンドタイプ(NORMAL, GROUP)                                                                          |
+|-- templateCode | String | 	テンプレートコード                                                                                        |
+|-- templateName | String | 	テンプレート名                                                                                          |
+|-- templateMessageType| String | テンプレート本文                                            |
+|-- templateEmphasizeType| String| テンプレートハイライトタイプ（NONE：基本、TEXT：ハイライト、default：NONE）<br>TEXT：templateTitle、templateSubtitleフィールド必須                                           |
+|-- templateContent | String | 	テンプレート本文                                                                                        |
+|-- templateExtra | String | テンプレート付加情報                                                                                      |
+|-- templateAd | String | テンプレート内の受信同意または簡単な広告文句                                                                    |
+|-- tempalteTitle| String | テンプレートタイトル                                                                                         |
+|-- templateSubtitle| String | テンプレート補助文言                                                                                      |
+|-- buttons | List | 	ボタンリスト                                                                                        |
+|--- ordering | Integer | 	ボタン順序(1~5)                                                                                      |
+|--- type | String | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |
+|--- name | String | 	ボタン名                                                                                         |
+|--- linkMo | String | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                       |
+|--- linkPc | String | 	PC Webリンク(WLタイプの場合は任意フィールド)                                                                        |
+|--- schemeIos | String | 	iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                       |
+|--- schemeAndroid | String | 	Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                     |
+|-- comments | List | 検収結果                                                                                          |
+|--- id | Integer | お問い合わせID                                                                                           |
+|--- content |  String | お問い合わせ内容                                                                                          |
+|--- userName | String | 作成者                                                                                            |
+|--- createAt | String | 登録日                                                                                          |
+|--- attachment | List | 添付ファイル                                                                                          |
+|---- originalFileName | String | 添付ファイル名                                                                                         |
+|---- filePath | String | 添付ファイルのパス                                                                                       |
+|--- status | String | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ:検査中)                                              |
+|-- status| String | テンプレートのステータス                                                                                         |
+|-- statusName | String | テンプレートのステータス名                                                                                        |
+|-- securityFlag| Boolean | セキュリティテンプレートかどうか                                                                                       |
+|-- categoryCode| String | テンプレートカテゴリーコード                                                                                    |
+|-- activated | Boolean | 有効かどうか                                                                                          |
+|-- createDate | String | 作成日                                                                                            |
+|-- updateDate | String | 修正日                                                                                            |
+|- totalCount | Integer | 総数                                                                                            |
 
 ## 代替送信管理
 ### SMS AppKey登録
@@ -2033,10 +2041,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -2093,10 +2101,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```

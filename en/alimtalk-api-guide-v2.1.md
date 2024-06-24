@@ -107,6 +107,9 @@ Content-Type: application/json;charset=UTF-8
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS (e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
+* <b>If you add the `\s` character to the end of the templateTitle and templateItemHighlight.title fields with a substitution and templateParameter, you can apply the strikethrough style</b>
+    * <b>But, this does not apply if you pre-add \s to the fields when registering the template</b>.
+
 
 [Example]
 
@@ -256,6 +259,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>Delivery is to be replaced by SMS, and field input must follow delivery API specifications of the SMS service(e.g. sender number registered at SMS service, 080 unsubscription, and field length restrictions) </b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
 * <b>Title or message of an alternative delivery may be cut in length, if the byte size exceeds restrictions(see [[Cautions for SMS](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)])</b>
+* <b>The strikethrough style can be applied if you add the `\s` character to the end of the templateTitle and templateItemHighlight.title fields at the time of sending</b> 
+    * <b>However, this does not apply if you add the \s to the fields in advance when registering the template</b>.
 
 [Exapmle]
 
@@ -1865,7 +1870,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List    | Attachment                                                   |
 | ---- originalFileName | String | Attachment file name                                          |
 | ---- filePath         | String | Attachment file path                                          |
-| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- createDate        | String  | Date and time of creation                                    |
@@ -2004,7 +2009,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List    | Attachment                                                   |
 | ---- originalFileName | String | Attachment file name                                          |
 | ---- filePath         | String | Attachment file path                                          |
-| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+| --- status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- activated         | Boolean | activated or not                                             |

@@ -66,11 +66,11 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }],
@@ -85,7 +85,7 @@ Content-Type: application/json;charset=UTF-8
 | ---------------------- | ------- | ---- | ---------------------------------------- |
 | senderKey              | String  | O    | 発信キー                            |
 | templateCode           | String  | O    | 登録した送信テンプレートコード(最大20桁)                    |
-| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>최대 30일 이후까지 예약 가능 |
+| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>最大30日以降まで予約可能 |
 | senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
 | createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)|
 | recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
@@ -100,7 +100,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -108,6 +108,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
+* <b>templateTitleとtemplateItemHighlight.titleフィールドの一番後ろに日本語識別子とtemplateParameterを利用して`\s`文字を追加する場合、取り消し線スタイルを適用できます。</b>
+    * <b>ただし、テンプレート登録時にあらかじめ\sをフィールドに追加しておいた場合は適用されません。</b>
 
 [例]
 ```
@@ -193,7 +195,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle":String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -206,11 +208,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -247,7 +249,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -256,6 +258,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)<
+* <b>送信時にtemplateTitleとtemplateItemHighlight.titleフィールドの一番後ろに`\s`文字を追加すると、取り消し線スタイルを適用できます。</b>
+    * <b>ただし、テンプレート登録時にあらかじめ\sをフィールドに追加しておいた場合は適用されません。</b>
 
 [例]
 ```
@@ -356,36 +360,36 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -395,7 +399,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -487,40 +491,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "createDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle":String,
+      "templateSubtitle":String,
+      "templateExtra":String,
+      "templateAd":String,
+      "requestDate": String,
+      "receiveDate":String,
+      "createDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode":String,
+      "resendRequestId":String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -570,7 +574,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| - messageOption        | Object  |	メッセージオプション                                           |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -623,18 +627,18 @@ Content-Type: application/json;charset=UTF-8
     "templateCode": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser":String,
     "recipientList": [{
         "recipientNo": String,
         "templateParameter": {
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }],
@@ -664,7 +668,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -757,7 +761,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle":String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -770,11 +774,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -812,7 +816,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
 | -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| messageOption          | Object  | X    |	메시지 옵션                                           |
+| messageOption          | Object  | X    |	メッセージオプション                                           |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - currencyType         | String  | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 
@@ -918,36 +922,36 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -957,7 +961,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1049,40 +1053,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle":String,
+      "templateSubtitle":String,
+      "templateExtra":String,
+      "templateAd":String,
+      "requestDate": String,
+      "createDate":String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode":String,
+      "resendRequestId":String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "createUser":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -1135,7 +1139,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
 | -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| - messageOption        | Object  |	메시지 옵션                                           |
+| - messageOption        | Object  |	メッセージオプション                                           |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | - senderGroupingKey    | String  | 発信グルーピングキー                            |
@@ -1181,10 +1185,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1241,25 +1245,25 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messages" : [
+  "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "requestDate" :  String,
-      "createDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" :  String,
-      "resendRequestId" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String
+      "requestId": String,
+      "recipientSeq":Integer,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String
     }
   ]
 }
@@ -1321,10 +1325,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "categories": [
     {
@@ -1388,27 +1392,27 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateCode" : String,
-  "templateName" : String,
-  "templateContent" : String,
+  "templateCode":String,
+  "templateName":String,
+  "templateContent":String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType":String,
   "templateExtra": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
-  "templateImageName" : String,
-  "templateImageUrl" : String,
+  "templateTitle":String,
+  "templateSubtitle":String,
+  "templateImageName":String,
+  "templateImageUrl":String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1440,10 +1444,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1486,26 +1490,26 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateName" : String,
-  "templateContent" : String,
+  "templateName":String,
+  "templateContent":String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType":String,
   "templateExtra": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
-  "templateImageName" : String,
-  "templateImageUrl" : String,
+  "templateTitle":String,
+  "templateSubtitle":String,
+  "templateImageName":String,
+  "templateImageUrl":String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1536,10 +1540,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1578,10 +1582,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1624,7 +1628,7 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String
+  "comment":String
 }
 ```
 
@@ -1635,10 +1639,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1681,8 +1685,8 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String,
-  "attachments" : File
+  "comment":String,
+  "attachments":File
 }
 ```
 
@@ -1694,10 +1698,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1763,10 +1767,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateListResponse": {
       "templates": [
@@ -1777,13 +1781,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "templateName": String,
               "templateContent": String,
               "templateEmphasizeType": String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
-              "templateImageName" : String,
-              "templateImageUrl" : String,
-              "templateMessageType" : String,
-              "templateExtra" : String,
-              "templateAd" : String,
+              "templateTitle":String,
+              "templateSubtitle":String,
+              "templateImageName":String,
+              "templateImageUrl":String,
+              "templateMessageType":String,
+              "templateExtra":String,
+              "templateAd":String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1855,7 +1859,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List | 添付ファイル                           |
 | ---- originalFileName | String | 添付ファイル名                        |
 | ---- filePath         | String | 添付ファイルへのパス                   |
-| --- status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| --- status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ:検査中) |
 | -- status            | String  | テンプレートのステータス                           |
 | -- statusName        | String  | テンプレートのステータス名                           |
 | -- createDate        | String  | 作成日時                            |
@@ -1899,10 +1903,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateModificationsResponse": {
       "templates": [
@@ -1913,13 +1917,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "templateName": String,
               "templateContent": String,
               "templateEmphasizeType": String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
-              "templateImageName" : String,
-              "templateImageUrl" : String,
-              "templateMessageType" : String,
-              "templateExtra" : String,
-              "templateAd" : String,
+              "templateTitle":String,
+              "templateSubtitle":String,
+              "templateImageName":String,
+              "templateImageUrl":String,
+              "templateMessageType":String,
+              "templateExtra":String,
+              "templateAd":String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1992,7 +1996,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- attachment        | List | 添付ファイル                           |
 | ---- originalFileName | String | 添付ファイル名                        |
 | ---- filePath         | String | 添付ファイルへのパス                   |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ:検査中) |
 | -- status            | String  | テンプレートのステータス                           |
 | -- statusName        | String  | テンプレートのステータス名                           |
 | -- activated         | Boolean  | 有効かどうか                            |
@@ -2038,10 +2042,10 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   },
   "templateImage" {
     "templateImageName": String,
@@ -2109,10 +2113,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -2169,10 +2173,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```

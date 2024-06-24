@@ -67,7 +67,7 @@ Content-Type: application/json;charset=UTF-8
     "senderKey": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser": String,
     "recipientList": [{
         "recipientNo": String,
         "content": String,
@@ -95,11 +95,11 @@ Content-Type: application/json;charset=UTF-8
           "schemeIos": String
         },
         "resendParameter": {
-            "isResend" : boolean,
-            "resendType" : String,
-            "resendTitle" : String,
-            "resendContent" : String,
-            "resendSendNo" : String,
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
@@ -118,7 +118,7 @@ Content-Type: application/json;charset=UTF-8
 |recipientList|	List|	O| 	수신자 목록(최대 1000명)                                                                                                                                            |
 |- recipientNo|	String|	O| 	수신 번호                                                                                                                                                       |
 |- content|	String|	O| 내용(최대 1000자)<br>이미지 발송 시, 최대 400자<br>와이드 이미지 발송 시, 최대 76자                                                                                                    |
-|- buttons|	List|	X| 	버튼(최대 5개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                                             |
+|- buttons|	List|	X| 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                    |
 |-- ordering|	Integer|	X | 	버튼 순서(버튼이 있는 경우 필수)                                                                                                                                         |
 |-- type| String |	X | 	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼)                                                                                                      |
 |-- name| String |	X | 	버튼 이름(버튼이 있는 경우 필수)                                                                                                                                         |
@@ -132,7 +132,7 @@ Content-Type: application/json;charset=UTF-8
 |-- target|	String|	X | 	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송                                                                                                   |
 |- coupon | Object | X | 쿠폰                                                                                                                                                           | 
 |-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
-|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                               |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                      |
 |-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
 |-- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
 |-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
@@ -156,7 +156,7 @@ Content-Type: application/json;charset=UTF-8
     "senderKey": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser": String,
     "recipientList": [{
         "recipientNo": String,
         "content": String,
@@ -186,11 +186,11 @@ Content-Type: application/json;charset=UTF-8
           "schemeIos": String
         },
         "resendParameter": {
-            "isResend" : boolean,
-            "resendType" : String,
-            "resendTitle" : String,
-            "resendContent" : String,
-            "resendSendNo" : String,
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
@@ -211,7 +211,7 @@ Content-Type: application/json;charset=UTF-8
 |- content|	String|	O| 내용(최대 1000자)<br>이미지 발송 시, 최대 400자<br>와이드 이미지 발송 시, 최대 76자                                                                                                    |
 |- imageUrl|	String|	O| 	이미지 URL                                                                                                                                                     |
 |- imageLink|	String|	X| 	이미지 링크                                                                                                                                                      |
-|- buttons|	List|	X| 	버튼(최대 5개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                                             |
+|- buttons|	List|	X| 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                                    |
 |-- ordering|	Integer|	X | 	버튼 순서(버튼이 있는 경우 필수)                                                                                                                                         |
 |-- type| String |	X | 	버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼)                                                                                                      |
 |-- name| String |	X | 	버튼 이름(버튼이 있는 경우 필수)                                                                                                                                         |
@@ -225,7 +225,7 @@ Content-Type: application/json;charset=UTF-8
 |-- target|	String|	X | 	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송                                                                                                   |
 |- coupon | Object | X | 쿠폰                                                                                                                                                           | 
 |-- title| String |	X | 	title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
-|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                               |
+|-- description| String |	X | 	쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                      |
 |-- linkMo| String |	X | 	모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
 |-- linkPc | String |	X | PC 웹 링크                                                                                                                                                      |
 |-- schemeIos | String | X | 	iOS 앱 링크                                                                                                                                                    |
@@ -249,7 +249,7 @@ Content-Type: application/json;charset=UTF-8
     "senderKey": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser": String,
     "recipientList": [{
         "recipientNo": String,
         "buttons": [
@@ -305,11 +305,11 @@ Content-Type: application/json;charset=UTF-8
           "schemeIos": String
         },
         "resendParameter": {
-            "isResend" : boolean,
-            "resendType" : String,
-            "resendTitle" : String,
-            "resendContent" : String,
-            "resendSendNo" : String,
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
@@ -374,7 +374,7 @@ Content-Type: application/json;charset=UTF-8
     "senderKey": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser": String,
     "recipientList": [{
         "recipientNo": String,
         "carousel": {
@@ -444,11 +444,11 @@ Content-Type: application/json;charset=UTF-8
           }
         },
         "resendParameter": {
-            "isResend" : boolean,
-            "resendType" : String,
-            "resendTitle" : String,
-            "resendContent" : String,
-            "resendSendNo" : String,
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
@@ -599,34 +599,34 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
         {
-          "requestId" :  String,
-          "recipientSeq" : Integer,
-          "plusFriendId" :  String,
-          "senderKey" : String,
-          "recipientNo" :  String,
-          "requestDate" : String,
-          "createDate" : String,
-          "receiveDate" : String,
-          "content" :  String,
-          "messageStatus" :  String,
-          "resendStatus" :  String,
-          "resendStatusName" :  String,
-          "resultCode" :  String,
-          "resultCodeName" : String,
-          "createUser" : String,
+          "requestId": String,
+          "recipientSeq": Integer,
+          "plusFriendId": String,
+          "senderKey": String,
+          "recipientNo": String,
+          "requestDate": String,
+          "createDate": String,
+          "receiveDate": String,
+          "content": String,
+          "messageStatus": String,
+          "resendStatus": String,
+          "resendStatusName": String,
+          "resultCode": String,
+          "resultCodeName": String,
+          "createUser": String,
           "senderGroupingKey": String,
           "recipientGroupingKey": String
         }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -714,40 +714,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey" :  String,
-      "recipientNo" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "content" :  String,
-      "messageStatus" :  String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "imageSeq" : Integer,
-      "imageName" : String,
-      "imageUrl" : String,
-      "imageLink" : String,
-      "wide" : Boolean,
-      "buttons" : [
+  "message": {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "recipientNo": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "content": String,
+      "messageStatus": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "imageSeq": Integer,
+      "imageName": String,
+      "imageUrl": String,
+      "imageLink": String,
+      "wide": Boolean,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String,
@@ -816,7 +816,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
         "schemeAndroid": String,
         "schemeIos": String
       },
-      "isAd" : Boolean,
+      "isAd": Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
   }
@@ -951,10 +951,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1010,32 +1010,32 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "recipientNo" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "content" :  String,
-      "messageStatus" :  String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "recipientNo": String,
+      "requestDate": String,
+      "receiveDate": String,
+      "content": String,
+      "messageStatus": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resultCode": String,
+      "resultCodeName": String,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1122,9 +1122,9 @@ curl -X GET \
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "messages": [
@@ -1226,9 +1226,9 @@ curl -X GET \
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "recipients": [
@@ -1317,9 +1317,9 @@ curl -X GET \
 ```
 {
     "header": {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
     },
     "body": {
         "requestId": String,
@@ -1546,15 +1546,15 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
+      "imageSeq": Integer,
+      "imageUrl": String,
+      "imageName": String
     }
 }
 ```
@@ -1611,15 +1611,15 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
+      "imageSeq": Integer,
+      "imageUrl": String,
+      "imageName": String
     }
 }
 ```
@@ -1676,15 +1676,15 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "image": {
-      "imageSeq" : Integer,
-      "imageUrl" : String,
-      "imageName" : String
+      "imageSeq": Integer,
+      "imageUrl": String,
+      "imageName": String
     }
 }
 ```
@@ -1743,22 +1743,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "imagesResponse": {
-    "images" : [
+    "images": [
         {
-            "imageSeq" : Integer,
-            "imageUrl" : String,
-            "imageName" : String,
+            "imageSeq": Integer,
+            "imageUrl": String,
+            "imageName": String,
             "imageType": String,
-            "createUser" : String
+            "createUser": String
         }
     ],
-    "totalCount" : Integer
+    "totalCount": Integer
   }
 
 }
@@ -1822,10 +1822,10 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1886,10 +1886,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "bizFormKey": String
 }
@@ -1952,10 +1952,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -2013,10 +2013,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
