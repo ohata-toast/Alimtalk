@@ -100,6 +100,7 @@
 | Common  | false     | -3044      | 비지니스폼(BF) 타입 버튼은 단독으로 사용하거나, 가장 위에 위치해야하는 제약에 어긋난 경우            |
 | Common  | false     | -3045      | 비지니스폼(BF) 타입의 name이 "톡에서 예약하기", "톡에서 설문하기", "톡에서 응모하기" 이 아닐 경우, 또는 등록되지 않은 bizFormKey일 경우       |
 | Common  | false     | -3046      | templateRepresentLink이 템플릿과 일치하지 않는 경우                  |
+| Common  | false     | -3047      | 템플릿 등록시 서체 스타일을 적용하려고 한 경우 (서체 스타일은 발송 시점에 적용 가능합니다.)                                                                                                                                                                                                         |
 | Common  | false     | -4003      | Query range exceeding a month                                |
 | Common  | false     | -4004      | Appkey does not exist                                        |
 | Common  | false     | -4005      | Appkey closed for service                                    |
@@ -130,7 +131,7 @@
 | Common  | false     | -8010      | 네트워크 등의 문제로 이미지 파일 업로드 실패                             |
 | Common  | false     | -9995      | Called API of a faded version                                |
 | Common  | false     | -9996      | Content-type is not application/json                         |
-| Common      | false     | -9997      | Failed dut to invalid request                               |
+| Common     | false     | -9997      | Failed dut to invalid request                               |
 | Common  | false     | -9998      | API does not exist                                           |
 | Common  | false     | -9999      | Error in system                                              |
 

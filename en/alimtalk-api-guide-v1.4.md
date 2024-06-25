@@ -97,6 +97,9 @@ Content-Type: application/json;charset=UTF-8
 * <b>Since alternative delivery is made in the SMS service, field values must follow the API specifications for SMS (e.g. Sender number registered at the SMS service, or restriction in the field length). </b>
 * <b>The SMS Service supports international SMS only. For international receiver numbers, the resendType(alternative delivery type) must be changed to SMS to allow sending without fail. </b>
 * <b>Title or content for alternative delivery that exceeds specified byte size may be cut for delivery.(see [[Caution](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] for reference)</b>
+* <b>If you add the `\s` character to the end of the templateTitle and templateItemHighlight.title fields with a substitution and templateParameter, you can apply the strikethrough style</b>
+    * <b>But, this does not apply if you pre-add \s to the fields when registering the template</b>.
+
 
 [Example]
 
@@ -234,9 +237,9 @@ Content-Type: application/json;charset=UTF-8
 
 * <b>Enter data completed with replacement for the body and button. </b>
 * **Request date and time can be set up to 30 days since a point of calling.**
-* <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
+* <b>The fields must be entered according to the sending API specification of the SMS service, as they are sent alternatively by the SMS service (sending number registered with the SMS service, various field length limits, etc.)</b>
 * <b>Only the international SMS service is supported. For an international recipient number, the resendType(alternative delivery type) must be changed to SMS to allow sending normally. </b>
-* <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>Any subject or content of an alternative message that exceeds the byte limit of the specified alternative message type may be cut partially and sent as an alternative message (See [[SMS Precautions](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)])</b>
 
 [Exapmle]
 
@@ -1906,7 +1909,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | Inquiry content                                              |
 | ---userName          | String  | Creator                                                      |
 | ---createAt          | String  | Date of registration                                         |
-| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- createDate        | String  | Date and time of creation                                    |
@@ -2020,7 +2023,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | Inquiry content                                              |
 | ---userName          | String  | Creator                                                      |
 | ---createAt          | String  | Date of registration                                         |
-| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+| ---status            | String  | Comment status(INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Under inspection) |
 | -- status            | String  | Template status                                              |
 | -- statusName        | String  | Template status name                                         |
 | -- activated         | Boolean | activated or not                                             |

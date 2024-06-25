@@ -65,11 +65,11 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend": boolean,
+          "resendType": String,
+          "resendTitle": String,
+          "resendContent": String,
+          "resendSendNo": String
         },
         "recipientGroupingKey": String
     }],
@@ -105,8 +105,10 @@ Content-Type: application/json;charset=UTF-8
 
 * <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
-* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
+* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>templateTitle과 templateItemHighlight.title 필드 맨 뒤에 치환자와 templateParameter를 이용해서 `\s` 문자를 추가할 경우 취소선 스타일을 적용할 수 있습니다.</b>
+    * <b>단, 템플릿 등록 시 미리 \s를 필드에 추가해 두는 경우에는 적용되지 않습니다.</b>
 
 [예시]
 ```
@@ -193,7 +195,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle": String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -206,11 +208,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend": boolean,
+              "resendType": String,
+              "resendTitle": String,
+              "resendContent": String,
+              "resendSendNo": String
             },
             "recipientGroupingKey": String
         }
@@ -255,8 +257,10 @@ Content-Type: application/json;charset=UTF-8
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
 * <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
-* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
+* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
 * <b>지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송될 수 있습니다.([[SMS 주의사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고)</b>
+* <b>발송 시점에 templateTitle과 templateItemHighlight.title 필드 맨 뒤에 `\s` 문자를 추가할 경우 취소선 스타일을 적용할 수 있습니다.</b>
+    * <b>단, 템플릿 등록 시 미리 \s를 필드에 추가해 두는 경우에는 적용되지 않습니다.</b>
 
 [예시]
 ```
@@ -357,36 +361,36 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey" : String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -396,7 +400,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -479,40 +483,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey" : String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "createDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message": {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "requestDate": String,
+      "receiveDate": String,
+      "createDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -618,18 +622,18 @@ Content-Type: application/json;charset=UTF-8
     "templateCode": String,
     "requestDate": String,
     "senderGroupingKey": String,
-    "createUser" : String,
+    "createUser": String,
     "recipientList": [{
         "recipientNo": String,
         "templateParameter": {
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend": boolean,
+          "resendType": String,
+          "resendTitle": String,
+          "resendContent": String,
+          "resendSendNo": String
         },
         "recipientGroupingKey": String
     }],
@@ -752,7 +756,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle": String,
             "buttons": [
                 {
                     "ordering": Integer,
@@ -765,11 +769,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend": boolean,
+              "resendType": String,
+              "resendTitle": String,
+              "resendContent": String,
+              "resendSendNo": String
             },
             "recipientGroupingKey": String
         }
@@ -913,36 +917,36 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -952,7 +956,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1035,40 +1039,40 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message": {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey"   : String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -1167,10 +1171,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1227,25 +1231,25 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messages" : [
+  "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "requestDate" :  String,
-      "createDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" :  String,
-      "resendRequestId" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String
+      "requestId": String,
+      "recipientSeq": Integer,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String
     }
   ]
 }
@@ -1316,10 +1320,10 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "categories": [
     {
@@ -1383,25 +1387,25 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateCode" : String,
-  "templateName" : String,
-  "templateContent" : String,
+  "templateCode": String,
+  "templateName": String,
+  "templateContent": String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType": String,
   "templateExtra": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
+  "templateTitle": String,
+  "templateSubtitle": String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons": [
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering": Integer,
+      "type": String,
+      "name": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeIos": String,
+      "schemeAndroid": String
     }
   ]
 }
@@ -1413,10 +1417,10 @@ Content-Type: application/json;charset=UTF-8
 |templateName|	String |	O | 템플릿명(최대 150자) |
 |templateContent|	String |	O | 템플릿 본문(최대 1000자) |
 |templateMessageType| String | X |템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형, default: BA) |
-|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수|
+|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, default: NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수|
 |templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
+|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android: 2줄, 23자 이상 말줄임 처리, IOS: 2줄, 27자 이상 말줄임 처리) |
+|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android: 18자 이상 말줄임 처리, IOS: 21자 이상 말줄임 처리) |
 |securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
 |categoryCode| String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트(최대 5개) |
@@ -1431,10 +1435,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1477,24 +1481,24 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateName" : String,
-  "templateContent" : String,
+  "templateName": String,
+  "templateContent": String,
   "templateMessageType": String,
-  "templateEmphasizeType" : String,
+  "templateEmphasizeType": String,
   "templateExtra": String,
-  "templateTitle" : String,
-  "templateSubtitle" : String,
+  "templateTitle": String,
+  "templateSubtitle": String,
   "securityFlag": Boolean,
   "categoryCode": String,
-  "buttons" : [
+  "buttons": [
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering": Integer,
+      "type": String,
+      "name": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeIos": String,
+      "schemeAndroid": String
     }
   ]
 }
@@ -1505,10 +1509,10 @@ Content-Type: application/json;charset=UTF-8
 |templateName|	String |	O | 템플릿명(최대 150자) |
 |templateContent|	String |	O | 템플릿 본문(최대 1000자) |
 |templateMessageType| String | X | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, default : NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수|
+|templateEmphasizeType| String| X| 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, default: NONE)<br>- TEXT: templateTitle, templateSubtitle 필드 필수|
 |templateExtra | String | X | 템플릿 부가 정보(템플릿 메시지 유형이 [부가 정보형/복합형]일 경우 필수) |
-|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android : 2줄, 23자 이상 말줄임 처리, IOS : 2줄, 27자 이상 말줄임 처리) |
-|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android : 18자 이상 말줄임 처리, IOS : 21자 이상 말줄임 처리) |
+|tempalteTitle| String | X| 템플릿 제목(최대 50자, Android: 2줄, 23자 이상 말줄임 처리, IOS: 2줄, 27자 이상 말줄임 처리) |
+|templateSubtitle| String | X| 템플릿 보조 문구(최대 50자, Android: 18자 이상 말줄임 처리, IOS: 21자 이상 말줄임 처리) |
 |securityFlag| Boolean | X| 보안 템플릿 여부<br>OTP등 보안 메시지 일 경우 설정<br>발신 당시의 메인 디바이스를 제외한 모든 디바이스에 메시지 텍스트 미노출(default: false) |
 |categoryCode| String | X | 템플릿 카테고리 코드(템플릿 카테고리 조회 API 참고, default: 999999)<br>카테고리 기타일 경우, 최하위 우선순위로 심사 |
 |buttons|	List |	X | 버튼 리스트(최대 5개) |
@@ -1523,10 +1527,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1565,10 +1569,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1611,7 +1615,7 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String
+  "comment": String
 }
 ```
 
@@ -1622,10 +1626,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1668,8 +1672,8 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String,
-  "attachments" : File
+  "comment": String,
+  "attachments": File
 }
 ```
 
@@ -1681,10 +1685,10 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1737,7 +1741,7 @@ Content-Type: application/json;charset=UTF-8
 |템플릿 상태 코드| 설명|
 |---|---|
 | TSC01 | 요청 |
-| TSC02 | 검수중 |
+| TSC02 | 검수 중 |
 | TSC03 | 승인 |
 | TSC04 | 반려 |
 
@@ -1750,10 +1754,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateListResponse": {
       "templates": [
@@ -1763,13 +1767,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "plusFriendType": String,
               "templateCode": String,
               "templateName": String,
-              "templateMessageType" : String,
+              "templateMessageType": String,
               "templateEmphasizeType": String,
               "templateContent": String,
-              "templateExtra" : String,
-              "templateAd" : String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
+              "templateExtra": String,
+              "templateAd": String,
+              "templateTitle": String,
+              "templateSubtitle": String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1821,7 +1825,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateCode | String |	템플릿 코드 |
 |-- templateName | String |	템플릿명 |
 |-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, default : NONE) |
+|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, default: NONE) |
 |-- templateContent | String |	템플릿 본문 |
 |-- templateExtra | String | 템플릿 부가 정보 |
 |-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
@@ -1843,7 +1847,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |--- attachment | List | 첨부 파일 |
 |---- originalFileName | String | 첨부 파일명 |
 |---- filePath | String | 첨부 파일 경로 |
-|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
+|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중) |
 |-- status| String | 템플릿 상태 |
 |-- statusName | String | 템플릿 상태명 |
 |-- securityFlag| Boolean | 보안 템플릿 여부 |
@@ -1890,10 +1894,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateModificationsResponse": {
       "templates": [
@@ -1903,13 +1907,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
               "plusFriendType": String,
               "templateCode": String,
               "templateName": String,
-              "templateMessageType" : String,
+              "templateMessageType": String,
               "templateEmphasizeType": String,
               "templateContent": String,
-              "templateExtra" : String,
-              "templateAd" : String,
-              "templateTitle" : String,
-              "templateSubtitle" : String,
+              "templateExtra": String,
+              "templateAd": String,
+              "templateTitle": String,
+              "templateSubtitle": String,
               "buttons": [
                 {
                     "ordering":Integer,
@@ -1948,51 +1952,51 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 }
 ```
 
-| 이름 |	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- resultCode|	Integer|	결과 코드|
-|- resultMessage|	String| 결과 메시지|
-|- isSuccessful|	Boolean| 성공 여부|
-|templateModificationsResponse|	Object|	본문 영역|
-|- templates | List |	템플릿 리스트 |
-|-- plusFriendId | String |	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명 |
-|-- senderKey    | String | 발신 키    |
-|-- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP) |
-|-- templateCode | String |	템플릿 코드 |
-|-- templateName | String |	템플릿명 |
-|-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형) |
-|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE : 기본, TEXT : 강조 표시, default : NONE) |
-|-- templateContent | String |	템플릿 본문 |
-|-- templateExtra | String | 템플릿 부가 정보 |
-|-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구 |
-|-- tempalteTitle| String | 템플릿 제목 |
-|-- templateSubtitle| String | 템플릿 보조 문구 |
-|-- buttons | List |	버튼 리스트 |
-|--- ordering | Integer |	버튼 순서(1~5) |
-|--- type | String |	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
-|--- name | String |	버튼 이름 |
-|--- linkMo | String |	모바일 웹 링크(WL 타입일 경우 필수 필드) |
-|--- linkPc | String |	PC 웹 링크(WL 타입일 경우 선택 필드) |
-|--- schemeIos | String |	iOS 앱 링크(AL 타입일 경우 필수 필드) |
-|--- schemeAndroid | String |	안드로이드 앱 링크(AL 타입일 경우 필수 필드) |
-|-- comments | List | 검수 결과 |
-|--- id | Integer | 문의 아이디 |
-|--- content |  String | 문의 내용 |
-|--- userName | String | 작성자 |
-|--- createAt | String | 등록 날짜 |
-|--- attachment | List | 첨부 파일 |
-|---- originalFileName | String | 첨부 파일명 |
-|---- filePath | String | 첨부 파일 경로 |
-|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
-|-- status| String | 템플릿 상태 |
-|-- statusName | String | 템플릿 상태명 |
-|-- securityFlag| Boolean | 보안 템플릿 여부 |
-|-- categoryCode| String | 템플릿 카테고리 코드  |
-|-- activated | Boolean | 활성화 여부 |
-|-- createDate | String | 생성일자 |
-|-- updateDate | String | 수정일자 |
-|- totalCount | Integer | 총개수 |
+| 이름 |	타입| 	설명                                                                                              |
+|---|---|--------------------------------------------------------------------------------------------------|
+|header|	Object| 	헤더 영역                                                                                           |
+|- resultCode|	Integer| 	결과 코드                                                                                           |
+|- resultMessage|	String| 결과 메시지                                                                                           |
+|- isSuccessful|	Boolean| 성공 여부                                                                                            |
+|templateModificationsResponse|	Object| 	본문 영역                                                                                           |
+|- templates | List | 	템플릿 리스트                                                                                         |
+|-- plusFriendId | String | 	카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                    |
+|-- senderKey    | String | 발신 키                                                                                             |
+|-- plusFriendType | String | 플러스친구 타입(NORMAL, GROUP)                                                                          |
+|-- templateCode | String | 	템플릿 코드                                                                                          |
+|-- templateName | String | 	템플릿명                                                                                            |
+|-- templateMessageType| String | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형)                                             |
+|-- templateEmphasizeType| String| 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, default: NONE)                                            |
+|-- templateContent | String | 	템플릿 본문                                                                                          |
+|-- templateExtra | String | 템플릿 부가 정보                                                                                        |
+|-- templateAd | String | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구                                                                      |
+|-- tempalteTitle| String | 템플릿 제목                                                                                           |
+|-- templateSubtitle| String | 템플릿 보조 문구                                                                                        |
+|-- buttons | List | 	버튼 리스트                                                                                          |
+|--- ordering | Integer | 	버튼 순서(1~5)                                                                                      |
+|--- type | String | 	버튼 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가) |
+|--- name | String | 	버튼 이름                                                                                           |
+|--- linkMo | String | 	모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                       |
+|--- linkPc | String | 	PC 웹 링크(WL 타입일 경우 선택 필드)                                                                        |
+|--- schemeIos | String | 	iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                       |
+|--- schemeAndroid | String | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                     |
+|-- comments | List | 검수 결과                                                                                            |
+|--- id | Integer | 문의 아이디                                                                                           |
+|--- content |  String | 문의 내용                                                                                            |
+|--- userName | String | 작성자                                                                                              |
+|--- createAt | String | 등록 날짜                                                                                            |
+|--- attachment | List | 첨부 파일                                                                                            |
+|---- originalFileName | String | 첨부 파일명                                                                                           |
+|---- filePath | String | 첨부 파일 경로                                                                                         |
+|--- status | String | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중)                                              |
+|-- status| String | 템플릿 상태                                                                                           |
+|-- statusName | String | 템플릿 상태명                                                                                          |
+|-- securityFlag| Boolean | 보안 템플릿 여부                                                                                        |
+|-- categoryCode| String | 템플릿 카테고리 코드                                                                                      |
+|-- activated | Boolean | 활성화 여부                                                                                           |
+|-- createDate | String | 생성일자                                                                                             |
+|-- updateDate | String | 수정일자                                                                                             |
+|- totalCount | Integer | 총개수                                                                                              |
 
 ## 대체 발송 관리
 ### SMS AppKey 등록
@@ -2042,10 +2046,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -2101,10 +2105,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```

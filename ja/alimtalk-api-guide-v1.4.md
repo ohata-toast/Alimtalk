@@ -63,11 +63,11 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }]
@@ -97,6 +97,8 @@ Content-Type: application/json;charset=UTF-8
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
 * <b>SMSサービスは、国際SMSのみサポートします。国際受信者番号の場合、 resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
+* <b>templateTitleとtemplateItemHighlight.titleフィールドの一番後ろに日本語識別子とtemplateParameterを利用して`\s`文字を追加する場合、取り消し線スタイルを適用できます。</b>
+    * <b>ただし、テンプレート登録時にあらかじめ\sをフィールドに追加しておいた場合は適用されません。</b>
 
 [例]
 ```
@@ -194,11 +196,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -234,7 +236,7 @@ Content-Type: application/json;charset=UTF-8
 * <b>本文とボタンに置換が完了したデータを入れてください。</b>
 * <b>リクエスト日時は呼び出す時点から30日後まで設定可能です。</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信APIの仕様に応じてフィールドを入力する必要があります。(SMSサービスに登録された発信番号、各種フィールドの長さ制限など)</b>
-* <b>대체 발송은 SMS, LMS로 발송 가능하며, 국제 대체 발송은 SMS만 지원 합니다. 국제 수신자 번호일 경우, resendType(대체 발송 타입)을 SMS로 변경해야 정상적으로 대체 발송할 수 있습니다.</b>
+* <b>代替送信はSMS、LMSで送信可能で、国際代替送信はSMSのみサポートします。国際受信者番号の場合、resendType(代替送信タイプ)をSMSに変更すると正常に代替送信できます。</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は、途中で切れて代替送信されることがあります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)<
 
 [例]
@@ -245,7 +247,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 #### レスポンス
 
 ```
-{
+
   "header": {
     "resultCode": Integer,
     "resultMessage": String,
@@ -325,7 +327,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus        | String  | X         | リクエストステータス(COMPLETED -> 成功、FAILED -> 失敗、CANCEL -> キャンセル) |
 | resultCode           | String  | X         | 送信結果(MRC01 -> 成功、MRC02 -> 失敗)          |
 | pageNum              | Integer | X         | ページ番号(基本：1)                            |
-| pageSize             | Integer | X         | 照会件数(基本：15, 最大 : 1000)                |
+| pageSize             | Integer | X         | 照会件数(基本：15, 最大:1000)                |
 
 * 90日以上前の送信リクエストデータは照会されません。
 * 送信リクエスト日時の範囲は最大30日です。
@@ -333,33 +335,33 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -369,7 +371,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -458,31 +460,31 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -578,11 +580,11 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend":boolean,
+          "resendType":String,
+          "resendTitle":String,
+          "resendContent":String,
+          "resendSendNo":String
         },
         "recipientGroupingKey": String
     }]
@@ -707,11 +709,11 @@ Content-Type: application/json;charset=UTF-8
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend":boolean,
+              "resendType":String,
+              "resendTitle":String,
+              "resendContent":String,
+              "resendSendNo":String
             },
             "recipientGroupingKey": String
         }
@@ -835,7 +837,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus        | String  | X         | リクエストステータス(COMPLETED -> 成功、FAILED -> 失敗、CANCEL -> キャンセル) |
 | resultCode           | String  | X         | 送信結果(MRC01 -> 成功、MRC02 -> 失敗)          |
 | pageNum              | Integer | X         | ページ番号(基本：1)                            |
-| pageSize             | Integer | X         | 照会件数(基本：15, 最大 : 1000)                |
+| pageSize             | Integer | X         | 照会件数(基本：15, 最大:1000)                |
 
 * 90日以上前の送信リクエストデータは照会されません。
 * 送信リクエスト日時の範囲は最大30日です。
@@ -843,33 +845,33 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -879,7 +881,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -968,31 +970,31 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
+  "message":{
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -1075,10 +1077,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -1130,38 +1132,38 @@ Content-Type: application/json;charset=UTF-8
 | endUpdateDate       | String  | O    | 結果アップデート照会終了時間(yyyy-MM-dd HH:mm) |
 | alimtalkMessageType | String  | X    | お知らせトークメッセージタイプ(NORMAL、AUTH)           |
 | pageNum             | Integer | X    | ページ番号(基本：1)                      |
-| pageSize            | Integer | X    | 照会件数(基本：15, 最大 : 1000)          |
+| pageSize            | Integer | X    | 照会件数(基本：15, 最大:1000)          |
 
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse":{
+    "messages":[
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "buttons" : [
+      "requestId": String,
+      "recipientSeq":Integer,
+      "plusFriendId": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "receiveDate":String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName":String,
+      "buttons":[
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String
@@ -1171,7 +1173,7 @@ Content-Type: application/json;charset=UTF-8
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1245,29 +1247,29 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "categories" : [
+  "categories":[
   {
-      "parentCode" : String,
-      "depth" : Integer,
-      "code" : String,
-      "name" : String,
-      "subCategories" : [
+      "parentCode":String,
+      "depth":Integer,
+      "code":String,
+      "name":String,
+      "subCategories":[
         {
-        "parentCode" : String,
-        "depth" : Integer,
-        "code" : String,
-        "name" : String,
-        "subCategories" : [
+        "parentCode":String,
+        "depth":Integer,
+        "code":String,
+        "name":String,
+        "subCategories":[
           {
-            "parentCode" : String,
-            "depth" : Integer,
-            "code" : String,
-            "name" : String
+            "parentCode":String,
+            "depth":Integer,
+            "code":String,
+            "name":String
           }
           ]
         }
@@ -1328,9 +1330,9 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "plusFriendId" : String,
-  "phoneNo" : String,
-  "categoryCode" : String
+  "plusFriendId":String,
+  "phoneNo":String,
+  "categoryCode":String
 }
 ```
 
@@ -1343,10 +1345,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1388,7 +1390,7 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "token" : "Integer"
+  "token":"Integer"
 }
 ```
 
@@ -1399,10 +1401,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1448,33 +1450,33 @@ Content-Type: application/json;charset=UTF-8
 ```
 {  
    "header":{  
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
    },
    "plusFriend":{  
-         "plusFriendId" : String,
-         "plusFriendType" : String,
-         "senderKey" : String,
-         "categoryCode" : String,
-         "status" : String,
-         "statusName" : String,
-         "kakaoStatus" : String,
-         "kakaoStatusName" : String,
-         "kakaoProfileStatus" : String,
-         "kakaoProfileStatusName" : String,
+         "plusFriendId":String,
+         "plusFriendType":String,
+         "senderKey":String,
+         "categoryCode":String,
+         "status":String,
+         "statusName":String,
+         "kakaoStatus":String,
+         "kakaoStatusName":String,
+         "kakaoProfileStatus":String,
+         "kakaoProfileStatusName":String,
          "alimtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
+                "dailyMaxCount":Integer,
+                "sentCount":Integer
           },
          "friendtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
                 "resendUnsubscribeNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
+                "dailyMaxCount":Integer,
+                "sentCount":Integer
          },
          "createDate": String
     }
@@ -1544,41 +1546,41 @@ Content-Type: application/json;charset=UTF-8
 | plusFriendId        | String  | X    | プラスフレンドID                                 |
 | status              | String  | X    | プラスフレンドステータスコード <br>(YSC02：トークン認証待機中、YSC03：正常登録) |
 | pageNum        | Integer | X    | ページ番号(基本：1) |
-| pageSize       | Integer | X    | 照会件数(基本：15, 最大 : 1000) |
+| pageSize       | Integer | X    | 照会件数(基本：15, 最大:1000) |
 
 #### レスポンス
 ```
 {  
    "header":{  
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
    },
    "plusFriends":[  
       {  
-         "plusFriendId" : String,
-         "plusFriendType" : String,
-         "senderKey" : String,
-         "categoryCode" : String,
-         "status" : String,
-         "statusName" : String,
-         "kakaoStatus" : String,
-         "kakaoStatusName" : String,
-         "kakaoProfileStatus" : String,
-         "kakaoProfileStatusName" : String,
+         "plusFriendId":String,
+         "plusFriendType":String,
+         "senderKey":String,
+         "categoryCode":String,
+         "status":String,
+         "statusName":String,
+         "kakaoStatus":String,
+         "kakaoStatusName":String,
+         "kakaoProfileStatus":String,
+         "kakaoProfileStatusName":String,
          "createDate": String,
          "alimtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
+                "dailyMaxCount":Integer,
+                "sentCount":Integer
           },
          "friendtalk": {  
                 "isResend": Boolean,
                 "resendSendNo": String,
                 "resendUnsubscribeNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
+                "dailyMaxCount":Integer,
+                "sentCount":Integer
          }
       }
    ],
@@ -1649,18 +1651,18 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateCode" : String,
-  "templateName" : String,
-  "templateContent" : String,
-  "buttons" : [
+  "templateCode":String,
+  "templateName":String,
+  "templateContent":String,
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1683,10 +1685,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1729,17 +1731,17 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "templateName" : String,
-  "templateContent" : String,
-  "buttons" : [
+  "templateName":String,
+  "templateContent":String,
+  "buttons":[
     {
-      "ordering" : Integer,
-      "type" : String,
-      "name" : String,
-      "linkMo" : String,
-      "linkPc" : String,
-      "schemeIos" : String,
-      "schemeAndroid" : String
+      "ordering":Integer,
+      "type":String,
+      "name":String,
+      "linkMo":String,
+      "linkPc":String,
+      "schemeIos":String,
+      "schemeAndroid":String
     }
   ]
 }
@@ -1761,10 +1763,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1803,10 +1805,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1849,7 +1851,7 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-  "comment" : String
+  "comment":String
 }
 ```
 
@@ -1860,10 +1862,10 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-    "resultCode" :  Integer,
-    "resultMessage" :  String,
-    "isSuccessful" :  boolean
+  "header":{
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -1911,7 +1913,7 @@ Content-Type: application/json;charset=UTF-8
 | templateName   | String  | X    | テンプレート名 |
 | templateStatus | String  | X    | テンプレートステータスコード |
 | pageNum        | Integer | X    | ページ番号(基本：1) |
-| pageSize       | Integer | X    | 照会件数(基本：15, 最大 : 1000) |
+| pageSize       | Integer | X    | 照会件数(基本：15, 最大:1000) |
 
 | テンプレートステータスコード | 説明 |
 | --------- | ---- |
@@ -1929,10 +1931,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateListResponse": {
       "templates": [
@@ -1974,35 +1976,37 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 
 | 値             | タイプ | 説明                                |
 | -------------------- | ------- | ---------------------------------------- |
-| header               | Object  | ヘッダ領域                             |
-| - resultCode         | Integer | 結果コード                             |
-| - resultMessage      | String  | 結果メッセージ                            |
-| - isSuccessful       | Boolean | 成否                              |
-| templateListResponse | Object  | 本文領域                             |
-| - templates          | List    | テンプレートリスト                           |
-| -- plusFriendId      | String  | プラスフレンドID                                 |
-| -- plusFriendType    | String  | プラスフレンドタイプ(NORMAL、GROUP)                  |
-| -- templateCode      | String  | テンプレートコード                            |
-| -- templateName      | String  | テンプレート名                              |
-| -- templateContent   | String  | テンプレート本文                            |
-| -- buttons           | List    | ボタンリスト                             |
-| --- ordering         | Integer | ボタン順序(1~5)                               |
-| --- type             | String  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達) |
-| --- name             | String  | ボタン名                             |
-| --- linkMo           | String  | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| --- linkPc           | String  | PC Webリンク(WLタイプの場合は任意フィールド)                 |
-| --- schemeIos        | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| --- schemeAndroid    | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- comments          | List    | 検収結果                             |
-| --- id               | Integer | お問い合わせID                                   |
-| --- content          | String  | お問い合わせ内容                             |
-| ---userName          | String  | 作成者                                |
-| ---createAt          | String  | 登録日                             |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
-| -- status            | String  | テンプレートのステータス                            |
-| -- statusName        | String  | テンプレートのステータス名                            |
-| -- createDate        | String  | 作成日時                             |
-| - totalCount         | Integer | 総個数                               |
+| 名前 |	タイプ| 	説明                                                          |
+|---|---|----------------------------------------------------------------|
+|header|	Object| 	ヘッダ領域                                                       |
+|- resultCode|	Integer| 	結果コード                                                       |
+|- resultMessage|	String| 結果メッセージ                                                       |
+|- isSuccessful|	Boolean| 成否                                                        |
+|templateListResponse|	Object| 	本文領域                                                       |
+|- templates | List | 	テンプレートリスト                                                     |
+|-- plusFriendId | String | 	プラスフレンドID                                                      |
+|-- plusFriendType | String | プラスフレンドタイプ(NORMAL, GROUP)                                        |
+|-- templateCode | String | 	テンプレートコード                                                      |
+|-- templateName | String | 	テンプレート名                                                        |
+|-- templateContent | String | 	テンプレート本文                                                      |
+|-- buttons | List | 	ボタンリスト                                                      |
+|--- ordering | Integer | 	ボタン順序(1~5)                                                    |
+|--- type | String | 	ボタンボタンタイプ(WL: Webリンク、 AL:アプリリンク、 DS:配送照会、 BK: Botキーワード、 MD:メッセージ伝達) |
+|--- name | String | 	ボタン名                                                       |
+|--- linkMo | String | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                     |
+|--- linkPc | String | 	PC Webリンク(WLタイプの場合は任意フィールド)                                      |
+|--- schemeIos | String | 	iOSアプリリンク(ALタイプの場合は必須フィールド)                                     |
+|--- schemeAndroid | String | 	Androidアプリリンク(ALタイプの場合は必須フィールド)                                   |
+|-- comments | List | 検収結果                                                        |
+|--- id | Integer | お問い合わせID                                                         |
+|--- content |  String | お問い合わせ内容                                                        |
+|---userName | String | 作成者                                                          |
+|---createAt | String | 登録日                                                        |
+|---status | String | コメント状態(INQ:お問い合わせ、 APR:承認、 REJ:差し戻し、REP：返信、REQ:検収中)            |
+|-- status| String | テンプレート状態                                                       |
+|-- statusName | String | テンプレート状態名                                                      |
+|-- createDate | String | 作成日時                                                          |
+|- totalCount | Integer | 総数                                                          |
 
 ### テンプレートの修正リスト照会
 
@@ -2033,7 +2037,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 | X-Secret-Key | String | O    | コンソールで作成できます。 |
 
-[예시]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v1.4/appkeys/{appkey}/plus-friends/{plusFriendId}/templates/{templateCode}/modifications"
 ```
@@ -2042,10 +2046,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
   "templateModificationsResponse": {
       "templates": [
@@ -2112,7 +2116,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- content          | String  | お問い合わせ内容                             |
 | ---userName          | String  | 作成者                                |
 | ---createAt          | String  | 登録日                             |
-| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信) |
+| ---status            | String  | 応答状態(INQ：お問い合わせ、APR：承認、REJ：差し戻し、REP：返信, REQ:検査中) |
 | -- status            | String  | テンプレートのステータス                            |
 | -- statusName        | String  | テンプレートのステータス名                            |
 | -- activated         | Boolean  | 有効かどうか                             |
@@ -2168,10 +2172,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```
@@ -2228,10 +2232,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header":{
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   }
 }
 ```

@@ -1,44 +1,45 @@
 ## Notification > KakaoTalk Bizmessage > Plus Friend> Console Guide
 
-## Adding Plus Friends
+## Register/Authenticate Sender Profiles
+* To send a KakaoTalk Biz message, you must first register your sender profile.
+* KakaoTalk channel can be created free of charge in KakaoTalk homepage (https://center-pf.kakao.com).
+* Only business-certified KakaoTalk channels can be added to NHN Cloud Kakaotalk Bizmessage service (Refer to [PlusFriend Business Authentication](https://static.toastoven.net/prod_alimtalk/plusfriend_business_certify_guide_20190311.pdf))
 
-To add a Plus Friend, go to console and select **Notification > KakaoTalk Bizmessage > Plus Friend Management**.
+## Add sender profile
 
-When it is completely registered, KakaoTalk token message is sent to administrator's mobile phone.  
-Only the administrator can receive such token messages.
+Once the sender profile registration is complete, a KakaoTalk token message will be sent to administrator's phone. 
+KakaoTalk token messages are delivered only to mobile phones registered as administrators.
 
 ![plusfriend_01_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_01_201904.png)
 
-* Make sure to enter ID of search purpose for Plus Friend ID which was registered when the Plus Friend service was requested.
-* Customers receive KakaoTalk Bizmessages in the name of the Plus Friend registered at KakaoTalk.
+* PlusFriend ID requires you to enter the search ID you registered when opening PlusFriend.
+* KakaoTalk Biz message that the customer receives will be indicated by the name of Plus friend registered on KakaoTalk.
 
-## Token Registration
+## Token registration
 
-Enter token message received on the administrator's phone and it is completely registered.
+If you enter the token message you received on your administrator's phone, your registration will be complete.
 
 ![plusfriend_02_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_02_201904.png)
 
-<b><span style="color:red">With the registration of Plus Friend, the initial maximum daily delivery volume is limited to 1,000.</span></b>
-To change the maximum daily delivery volume, you must send request to Customer Center(support@toast.com).
+<b><span style="color:red">When registering a sender profile, the initial daily maximum volume of delivery is limited to 1,000.</span></b> 
+If you want to change the maximum daily delivery, you will need to request it separately from customer center (support@toast.com).
 
-## Setting for Failed Delivery  
+## Manage Alternative Delivery
 
-'Failed Delivery Setting' can be applied for each Plus Friend.
+You can set up an 'alternative delivery' for each sender profile.
 
-* Only such Plus Friend messages which are set up with failed delivery can be replaced by LMS or SMS.
-* With the modification of SMS appkey, failed delivery setting of all Plus Friends become initialized.
+* Only messages from sender profiles with delivery failure settings are replaced by LMS or SMS.
+* When you modify the SMS app key, the sender failure setting for all sender profiles is initialized.
 
 ![plusfriend_03_201812.png](https://static.toastoven.net/prod_alimtalk/plusfriend_03_201812.png)
 
-## Guide for Notice of Personal Information Assignor
-When the Customer uses NHN Cloud > Notification > KakaoTalk Bizmessage Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status(assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with the Act on Promotion of Information and Communications Network Utilization and Information Protection, and the Personal Information Protection Act.
+## Notice of Personal Information Consignee
+When a ‘customer’ uses the NHN Cloud > Notification > KakaoTalk Bizmessage service, there is a consignment relationship between the ‘customer’ and the ‘company’ regarding the processing of personal information, therefor, in line with the Information and Communication Network Act and the Personal Information Protection Act, the ‘customer’ who is the consignor must disclose the status of entrusting personal information to the ‘company’ (trustee and details of work) through the personal information processing policy.
 
-Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud KakaoTalk Bizmessage Service and not to be adversely affected for not disclosing his assignment status:
+Accordingly, the ‘Company’ can guide ‘Customer’ to comply with the relevant laws and regulations when using NHN Cloud's KakaoTalk Bizmessage service and not to be penalized due to non-disclosure of consignment status as follows.
 
-(Example)
-
-[Notice of Personal Information Assignor]
-To use NHN Cloud KakaoTalk Bizmessage Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
-
-Assignor: NHN
-Content of Business: Send KakaoTalk Bizmessage in lieu of customers
+Example<br>
+[Notice of Personal Information Consignee]<br>
+When using the KakaoTalk Bizmessage service, please indicate the following information in the 'Personal Information Processing Policy > Consignment Status' operated by the customer.<br>
+Consignee: NHN<br>
+Business details: KakaoTalk Biz messaging agent<br>
