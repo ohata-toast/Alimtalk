@@ -1,4 +1,21 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### June 25, 2024
+* [API] Improved to use strikethrough style for certain fields
+    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough.
+    * But, the style does not apply if you add \s to the fields beforehand when registering a template
+* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab
+    * Fixed a bug that prevented template titles from being displayed as substituted values in the preview tab.
+
+### May 28, 2024
+* [API] Changed the sorting criteria for responses of the get message list API
+    * (Previous) Sort by requestDate in descending order
+    * (Current) Sort by requestDate in descending order, Sort by requestId, recipientSeq in descending order if requestDate is the same
+
+### May 12, 2024
+* [API] Changed the carousel type field in FriendTalk
+    * (AS-IS) The carousel type field with a required tail padding in FriendTalk, coupons unavailable
+    * (TO-BE) The carousel type field with an optional tail padding in FriendTalk, coupons available for each carousel
+
 ### April 23, 2024
 * [API] Added the feature to handle failures on duplicate message sending requests
     * Added the feature to fail requests with the same key value for 10 minutes based on the value of the X-NC-API-IDEMPOTENCY-KEY header when sending messages. [Send Message Request API Guide](https://docs.nhncloud.com/en/Notification/KakaoTalk%20Bizmessage/en/alimtalk-api-guide/#_3)
