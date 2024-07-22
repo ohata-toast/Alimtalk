@@ -2041,6 +2041,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | Can be created on console. |
 
+* The template registered in sender group cannot be converted to a add-channel type.
 
 #### Response
 ```
