@@ -2045,6 +2045,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | 콘솔에서 생성할 수 있습니다.  |
 
+* 그룹 발신 프로필에 등록된 템플릿은 채널 추가형으로 전환할 수 없습니다.
 
 #### 응답
 ```

@@ -2345,6 +2345,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |X-Secret-Key|	String| O | コンソールで作成できます。  |
 
+* グループプロフィールに登録されたテンプレートは、チャンネルタイプに変換することはできません
 
 #### レスポンス
 ```
