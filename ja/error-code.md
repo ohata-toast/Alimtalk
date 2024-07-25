@@ -84,7 +84,6 @@
 | 共通 | false     | -3027      | 템플릿 강조 표시 타입 기본(NONE)로 등록 시, templateTitle, templateSubtitle 필드를 등록할 수 없       |
 | 共通 | false     | -3028      | 템플릿 메시지 유형 기본형(BA)일 경우, templateExtra 필드를 등록할 수 없음       |
 | 共通 | false     | -3030      | 템플릿 메시지 유형 채널 추가형(AD)일 경우, templateExtra 필드를 등록할 수 없음       |
-| 共通 | false     | -3031      | 그룹 템플릿은 템플릿 메시지 유형 채널추가형(AD), 복합형(MI)를 사용할 수 없음       |
 | 共通 | false     | -3032      | 템플릿 강조 표시 타입 이미지형(IMAGE)일 경우, templateImageName, templateImageUrl 필드 필수값       |
 | 共通 | false     | -3033      | 버튼 또는 바로연결이 템플릿에 등록되지 않았을 경우           |
 | 共通 | false     | -3034      | 삭제할 템플릿이 3일이내 발송 이력이 있을 경우               |
