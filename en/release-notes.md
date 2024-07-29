@@ -1,4 +1,8 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### July 23, 2024
+* [API] Fixed an issue where channel-add and composite templates could not be registered in the sender profile group
+    * Improved to register channel-add and composite templates in the sender profile group.
+    
 ### June 25, 2024
 * [API] Improved to use strikethrough style for certain fields 
     * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough. 
