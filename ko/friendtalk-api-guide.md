@@ -2195,7 +2195,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 [URL]
 
 ```
-POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/images/intro
+POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/intro-images
 Content-Type: multipart/form-data
 ```
 
