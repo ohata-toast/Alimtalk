@@ -19,7 +19,7 @@
 
 ## v2.4 API 소개
 1. 친구톡 커머스형, 캐러셀 커머스형, 프리미엄 비디오형, 성인용 메시지 설정 기능이 추가되었습니다.
-2. 캐러셀 커머스 인트로 이미지 등록 API가 추가되었습니다.
+2. 캐러셀 커머스 이미지 등록 API가 추가되었습니다.
 
 ## 메시지 발송
 
@@ -461,52 +461,52 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름                     | 	타입   | 	필수 | 	설명                                                                                                                                    |
-|------------------------|-------|--|----------------------------------------------------------------------------------------------------------------------------------------|
-| senderKey              | String | O | 발신 키(40자)                                                                                                                              |
-| requestDate            | String | X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송                                                                                          |
-| senderGroupingKey      | String | X | 발신 그룹핑 키(최대 100자)                                                                                                                      |
-| createUser             | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                            |
-| recipientList          | List  | O | 수신자 목록(최대 1000명)                                                                                                                       |
-| - recipientNo          | String | O | 수신 번호                                                                                                                                  |
-| - carousel             | Object | O | 캐러셀                                                                                                                                    
-| -- list                | List  | O | 캐러셀 리스트(최소 2개/최대 10개)                                                                                                                  | 
-| --- header             | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능                                                                                                   | 
-| --- message            | String | O | 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능                                                                                                                  | 
-| --- attachment         | Object | O | 캐러셀 아이템 이미지, 버튼 정보                                                                                                                     | 
-| ---- buttons           | List  | X | 버튼 리스트(최대 2개)                                                                                                                          | 
-| ----- name             | String | X | 버튼 이름(버튼이 있는 경우 필수, 최대 8자)                                                                                                             |
-| ----- type             | String | X | 버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼)                                                                                 |
-| ----- linkMo           | String | X | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                              |
-| ----- linkPc           | String | X | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                               |
-| ----- schemeIos        | String | X | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                              |
-| ----- schemeAndroid    | String | X | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                            |
-| ---- image             | Object | O |                                                                                                                                        | 
-| ----- imageUrl         | String | O | 이미지 URL                                                                                                                                |
-| ----- imageLink        | String | X | 이미지 링크                                                                                                                                 |
-| ---- coupon            | Object | X | 쿠폰                                                                                                                                     | 
+| 이름                     | 	타입   | 	필수 | 	설명                                                                                                                                                         |
+|------------------------|-------|--|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String | O | 발신 키(40자)                                                                                                                                                   |
+| requestDate            | String | X | 요청 일시(yyyy-MM-dd HH:mm), 필드를 보내지 않을 경우, 즉시 발송                                                                                                               |
+| senderGroupingKey      | String | X | 발신 그룹핑 키(최대 100자)                                                                                                                                           |
+| createUser             | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                 |
+| recipientList          | List  | O | 수신자 목록(최대 1000명)                                                                                                                                            |
+| - recipientNo          | String | O | 수신 번호                                                                                                                                                       |
+| - carousel             | Object | O | 캐러셀                                                                                                                                                         
+| -- list                | List  | O | 캐러셀 리스트(최소 2개/최대 10개)                                                                                                                                       | 
+| --- header             | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능                                                                                                                        | 
+| --- message            | String | O | 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능                                                                                                                      | 
+| --- attachment         | Object | O | 캐러셀 아이템 이미지, 버튼 정보                                                                                                                                          | 
+| ---- buttons           | List  | X | 버튼 리스트(최대 2개)                                                                                                                                               | 
+| ----- name             | String | X | 버튼 이름(버튼이 있는 경우 필수, 최대 8자)                                                                                                                                  |
+| ----- type             | String | X | 버튼 타입(WL:웹 링크, AL:앱 링크, BK:봇 키워드, MD:메시지 전달, BF:비즈니스폼)                                                                                                      |
+| ----- linkMo           | String | X | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                   |
+| ----- linkPc           | String | X | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                    |
+| ----- schemeIos        | String | X | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                   |
+| ----- schemeAndroid    | String | X | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                 |
+| ---- image             | Object | O |                                                                                                                                                             | 
+| ----- imageUrl         | String | O | 이미지 URL (캐러셀 피드형 이미지만 사용 가능합니다. 캐러셀 커머스 이미지 사용 불가)                                                                                                          |
+| ----- imageLink        | String | X | 이미지 링크                                                                                                                                                      |
+| ---- coupon            | Object | X | 쿠폰                                                                                                                                                          | 
 | ----- title            | String | X | title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
-| ----- description      | String | X | 쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                 |
-| ----- linkMo           | String | X | 모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                 |
-| ----- linkPc           | String | X | PC 웹 링크                                                                                                                                |
-| ----- schemeIos        | String | X | iOS 앱 링크                                                                                                                               |
-| ----- schemeAndroid    | String | X | 안드로이드 앱 링크                                                                                                                             |
-| -- tail                | Object | X | 더보기 버튼 정보                                                                                                                              | 
-| --- linkMo             | String | O | 모바일 웹 링크                                                                                                                               |
-| --- linkPc             | String | X | PC 웹 링크                                                                                                                                |
-| --- schemeIos          | String | X | iOS 앱 링크                                                                                                                               |
-| --- schemeAndroid      | String | X | 안드로이드 앱 링크                                                                                                                             |
-| - resendParameter      | Object | X | 대체 발송 정보                                                                                                                               |
-| -- isResend            | boolean |X | 발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다.                                                                                  |
-| -- resendType          | String | X | 대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다.                                                                                |
-| -- resendTitle         | String | X | LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.)                                                                                          |
-| -- resendContent       | String | X | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.)                                                                    |
-| -- resendSendNo        | String | X | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                          |
-| -- resendUnsubscribeNo | String | X | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                            |
-| - isAd                 | Boolean | O | 광고 여부(캐러셀 피드형은 광고 타입만 발송 가능)                                                                                                           |
-| - adult                | Boolean | X | 성인용 메시지 여부(기본값 false)                                                                                                                  |
-| - recipientGroupingKey | String | X | 수신자 그룹핑 키(최대 100자)                                                                                                                     |
-| statsId                | String | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                     |
+| ----- description      | String | X | 쿠폰 상세 설명 (일반 텍스트, 이미지형, 캐러셀 피드형 최대 12자 / 와이드 이미지형, 와이드 아이템리스트형 최대 18자)                                                                                      |
+| ----- linkMo           | String | X | 모바일 웹 링크 (하단 필수 조건 확인)                                                                                                                                      |
+| ----- linkPc           | String | X | PC 웹 링크                                                                                                                                                     |
+| ----- schemeIos        | String | X | iOS 앱 링크                                                                                                                                                    |
+| ----- schemeAndroid    | String | X | 안드로이드 앱 링크                                                                                                                                                  |
+| -- tail                | Object | X | 더보기 버튼 정보                                                                                                                                                   | 
+| --- linkMo             | String | O | 모바일 웹 링크                                                                                                                                                    |
+| --- linkPc             | String | X | PC 웹 링크                                                                                                                                                     |
+| --- schemeIos          | String | X | iOS 앱 링크                                                                                                                                                    |
+| --- schemeAndroid      | String | X | 안드로이드 앱 링크                                                                                                                                                  |
+| - resendParameter      | Object | X | 대체 발송 정보                                                                                                                                                    |
+| -- isResend            | boolean |X | 발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 재발송됩니다.                                                                                                       |
+| -- resendType          | String | X | 대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다.                                                                                                     |
+| -- resendTitle         | String | X | LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 재발송됩니다.)                                                                                                               |
+| -- resendContent       | String | X | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문과 웹링크 버튼명 - 웹링크 Mobile 링크]으로 재발송됩니다.)                                                                                         |
+| -- resendSendNo        | String | X | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                               |
+| -- resendUnsubscribeNo | String | X | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                 |
+| - isAd                 | Boolean | O | 광고 여부(캐러셀 피드형은 광고 타입만 발송 가능)                                                                                                                                |
+| - adult                | Boolean | X | 성인용 메시지 여부(기본값 false)                                                                                                                                       |
+| - recipientGroupingKey | String | X | 수신자 그룹핑 키(최대 100자)                                                                                                                                          |
+| statsId                | String | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                          |
 
 #### 캐러셀 커머스형 발송 요청
 
@@ -650,7 +650,7 @@ Content-Type: application/json;charset=UTF-8
 | ----- schemeIos | String | X | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                   |
 | ----- schemeAndroid | String | X | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                 |
 | ---- image | Object | O |                                                                                                                                                             | 
-| ----- imageUrl | String | O | 	이미지 URL (사용되는 이미지는 다른 캐러셀 이미지 및 인트로의 이미지와 비율이 동일해야 합니다.)                                                                                                   |
+| ----- imageUrl | String | O | 	이미지 URL (캐러셀 커머스 이미지만 사용 가능합니다. 사용되는 이미지는 다른 캐러셀 커머스 이미지 및 인트로의 이미지와 비율이 동일해야 합니다.)                                                                        |
 | ----- imageLink | String | X | 	이미지 링크                                                                                                                                                     |
 | ---- coupon | Object | X | 쿠폰                                                                                                                                                          | 
 | ----- title | String | X | title의 경우 5가지 형식으로 제한 됨<br>"${숫자}원 할인 쿠폰" 숫자는 1이상 99,999,999 이하<br>"${숫자}% 할인 쿠폰" 숫자는 1이상 100 이하<br>"배송비 할인 쿠폰"<br><br>"${7자 이내} 무료 쿠폰"<br>"${7자 이내} UP 쿠폰" |
@@ -2189,13 +2189,13 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- imageUrl | String |	이미지 URL |
 |- imageName | String |	이미지명(업로드한 파일명) |
 
-### 캐러셀 커머스 인트로 이미지 등록
+### 캐러셀 커머스 이미지 등록
 #### 요청
 
 [URL]
 
 ```
-POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/intro-images
+POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/commerce-images
 Content-Type: multipart/form-data
 ```
 
