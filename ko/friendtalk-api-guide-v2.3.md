@@ -57,7 +57,7 @@ Content-Type: application/json;charset=UTF-8
 * <b>친구톡 광고 메시지의 resendContent 필드를 입력할 경우 SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 정상 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`</b>
 * <b>친구톡 광고 메시지의 resendContent 필드가 없을 경우 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.</b>
 * <b>와이드 아이템 리스트형, 캐러셀 피드형은 광고 발송만 가능합니다.</b>
-* <b>쿠폰의 linkMo 필수값 나머지 옵션값 또는 채널 쿠폰 URL(포멧: alimtalk=coupon://) 사용 - scheme_android 혹은 scheme_ios 둘 중 하나 필수값 나머지 옵션값</b>
+* <b>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며, scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.</b>
 
 #### 텍스트형 발송 요청
 
