@@ -1,4 +1,4 @@
-## Notification > KakaoTalk Bizmessage > カカともへのメッセージ > API v2.3 Guide
+## Notification > KakaoTalk Bizmessage > カカともへのメッセージ > API v2.4 Guide
 
 ## カカともへのメッセージ
 
@@ -17,11 +17,11 @@
 </tbody>
 </table>
 
-## v2.3 API紹介
-1. カカともへのメッセージワイドアイテムリスト、カルーセルフィード型、クーポン、ビジネスフォームボタン機能が追加されました。
-2. ワイドアイテムリスト画像登録、カルーセル画像登録APIが追加されました。
-3. 画像照会時、 imageTypeフィールドが追加されました。
-4. 送信時、 imageSeq -> imageUrlフィールドを使用するように変更されました。
+## v2.4 API紹介
+1. カカともへのメッセージコマース型、カルーセルコマース型、プレミアムビデオ型、成人向けメッセージ設定機能が追加されました。
+2. カルーセルコマース画像登録APIが追加されました。
+
+
 
 ## メッセージの送信
 #### 送信リクエスト
@@ -29,7 +29,7 @@
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/messages
+POST  /friendtalk/v2.4/appkeys/{appkey}/messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -54,7 +54,7 @@ Content-Type: application/json;charset=UTF-8
 * <b>夜間送信制限(20:50~翌日08:00)</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信API仕様に従ってフィールドを入力する必要があります。(SMSサービスに登録された発信番号、 080受信拒否番号、各種フィールドの長さ制限など)</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は切り捨てられ、代替送信される場合があります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
-* <b>カカともへのメッセージ広告メッセージは広告SMS APIで代替送信されるため、代替送信を行うには必ず080受信拒否番号を登録する必要があります。</b>
+* <b>カカともへのメッセージ広告メッセージは広告SMS APIで代替送信されるため、必ず080受信拒否番号を登録する必要があります。</b>
 * <b>カカともへのメッセージ広告メッセージのresendContentフィールドを入力する場合、 SMS広告APIの <span style="color:red">広告文言</span>を必ず入力すると正常に代替送信されます。 `(広告)内容[無料受信拒否]080XXXXXXX`</b>
 * <b>カカともへのメッセージ広告メッセージのresendContentフィールドがない場合、登録された080受信拒否番号に<span style="color:red">広告文言</span>を自動作成して代替送信されます。</b>
 * <b>ワイドアイテムリスト型、カルーセルフィード型は広告送信のみ可能です。</b>
@@ -116,9 +116,9 @@ Content-Type: application/json;charset=UTF-8
 | requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
 | senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
 | createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
-| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
+| recipientList          | List    | O    | 受信者リスト(最大1,000人)                         |
 | - recipientNo          | String  | O    | 受信番号                              |
-| - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
+| - content              | String  | O    | 内容(最大1,000文字)<br>イメージを含む時は最大400文字  |
 | - buttons              | List    | X    | ボタン                                 |
 | -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
 | -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
@@ -129,7 +129,7 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
 | -- chatExtra           | String  | X    | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
 | -- chatEvent           | String  | X    | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
-| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
+|-- bizFormKey|	String|	X| BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                               |
 | -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
 | - coupon | Object | X | クーポン | 
 | -- title| String |	X |	titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン"|
@@ -195,52 +195,54 @@ Content-Type: application/json;charset=UTF-8
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
+        "adult": Boolean,
         "recipientGroupingKey": String
     }],
     "statsId": String
 }
 ```
 
-| 値                | タイプ | 必須 | 説明                                 |
-| ---------------------- | ------- | ---- | ---------------------------------------- |
-| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
-| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
-| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
-| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
-| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
-| - recipientNo          | String  | O    | 受信番号                              |
-| - content              | String  | O    | 内容(最大1000文字)<br>イメージを含む時は最大400文字  |
-| - imageUrl             | String  | X    |	画像URL |
-| - imageLink            | String  | X    | イメージリンク                                |
-| - buttons              | List    | X    | ボタン                                 |
-| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
-| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
-| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
-| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | X    | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
-| -- chatEvent           | String  | X    | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
-| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
-| -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
-| - coupon | Object | X | クーポン | 
-| -- title| String |	X |	titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン"|
-| -- description| String |	X |	クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)|
-| -- linkMo| String |	X |	モバイルWebリンク(下部の必須条件確認) |
-| -- linkPc | String |	X |PC Webリンク |
-| -- schemeIos | String | X |	iOSアプリリンク |
-| -- schemeAndroid | String | X |	Androidアプリリンク |
-| - resendParameter      | Object  | X    | 代替発送情報 |
-| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
-| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
-| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
-| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
-| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
-| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
-| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
-| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
+| 名前               |	タイプ|	必須| 	説明                                                                                                                                                    |
+|------------------------|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              |	String|	O | 発信キー(40文字)                                                                                                                                                    |
+| requestDate            |	String|	X | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                          |
+| senderGroupingKey      | String | X| 発信グルーピングキー(最大100文字)                                                                                                                                            |
+| createUser             | String | X | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                  |
+| recipientList          |	List|	O| 	受信者リスト(最大1,000人)                                                                                                                                            |
+| - recipientNo          |	String|	O| 	受信番号                                                                                                                                                 |
+| - content              |	String|	O| 内容(最大1,000文字)<br>画像送信時、最大400文字<br>ワイド画像送信時、最大76文字                                                                                              |
+| - imageUrl             |	String|	O| 	画像URL                                                                                                                                                     |
+| - imageLink            |	String|	X| 	画像リンク                                                                                                                                                |
+| - buttons              |	List|	X| 	ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
+| -- ordering            |	Integer|	X | 	ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
+| -- type                | String |	X | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF：ビジネスフォーム)
+| -- name                | String |	X | 	ボタン名(ボタンがある場合は必須）                                                                                                                                         |
+| -- linkMo              | String |	X | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
+| -- linkPc              | String |	X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                     |
+| -- schemeIos           | String | X | 	iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
+| -- schemeAndroid       | String | X | 	Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
+| -- chatExtra           |	String|	X| BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 
+| -- chatEvent           |	String|	X| BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                                           |
+| -- bizFormKey          |	String|	X| BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                               |
+| -- target              |	String|	X | 	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                             |
+| - coupon               | Object | X | クーポン                                                                                                                                                     | 
+| -- title               | String |	X | 	titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| -- description         | String |	X | 	クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                                      |
+| -- linkMo              | String |	X | 	モバイルWebリンク(下部の必須条件確認)                                                                                                                                      |
+| -- linkPc              | String |	X | PC Webリンク                                                                                                                                                |
+| -- schemeIos           | String | X | 	iOSアプリリンク                                                                                                                                              |
+| -- schemeAndroid       | String | X | 	Androidアプリリンク                                                                                                                                            |
+| - resendParameter      |	Object|	X| 代替送信情報                                                                                                                                               |
+| -- isResend            |	boolean|	X| 	送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                       |
+| -- resendType          |	String|	X| 	代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                     |
+| -- resendTitle         |	String|	X| 	LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                               |
+| -- resendContent       |	String|	X| 	代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                         |
+| -- resendSendNo        | String| X| 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                                |
+| -- resendUnsubscribeNo | String| X| 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                  |
+| - isAd                 | Boolean | X | 	広告かどうか(デフォルト値true)                                                                                                                                             |
+| - adult                | Boolean | X | 成人向けメッセージかどうか(デフォルト値false)                                                                                                                           |
+| - recipientGroupingKey |	String|	X| 	受信者グルーピングキー(最大100文字)                                                                                                                                          |
+| statsId                | String |	X | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                           |
 
 #### ワイドアイテムリスト型送信リクエスト
 
@@ -314,58 +316,60 @@ Content-Type: application/json;charset=UTF-8
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
+        "adult": Boolean,
         "recipientGroupingKey": String
     }],
     "statsId": String
 }
 ```
-| 値                | タイプ | 必須 | 説明                                 |
-| ---------------------- | ------- | ---- | ---------------------------------------- |
-| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
-| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
-| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
-| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
-| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
-| - recipientNo          | String  | O    | 受信番号                              |
-| - buttons              | List    | X    | ボタン                                 |
-| -- ordering            | Integer | X    | ボタン順序(ボタンがある場合は必須)                      |
-| -- type                | String  | X    | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | X    | ボタン名(ボタンがある場合は必須, 最大28文字、ワイドアイテムリストタイプの場合9文字）           |
-| -- linkMo              | String  | X    | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| -- linkPc              | String  | X    | PC Webリンク(WLタイプの場合は任意フィールド)                |
-| -- schemeIos           | String  | X    | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| -- schemeAndroid       | String  | X    | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | X    | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
-| -- chatEvent           | String  | X    | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
-| -- bizFormKey          |	String | X    | Biz from key for BF(Business from) type button |
-| -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
-| - header               | String  | X    | Header(required when using the wide item list message type, up to 25 characters) |
-| - item                 | Object  | X    | Wide item |
-| -- list                | List    | X    | Wide item list(at lease 3, up to 4) |
-| --- title              | String  | X    | Item title(For the first item, up to 25 characters; for items 2 to 4, up to 30 characters) |
-| --- imageUrl           | String  | X    | Item image URL |
-| --- linkMo | String | X | Mobile web link |
-| --- linkPc | String | X | PC web link |
-| --- schemeIos | String | X | iOS app link |
-| --- schemeAndroid | String | X | Android app link |
-| - coupon | Object | X | クーポン | 
-| -- title| String |	X |	titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン"|
-| -- description| String |	X |	クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)|
-| -- linkMo| String |	X |	モバイルWebリンク(下部の必須条件確認) |
-| -- linkPc | String |	X |PC Webリンク |
-| -- schemeIos | String | X |	iOSアプリリンク |
-| -- schemeAndroid | String | X |	Androidアプリリンク |
-| - resendParameter      | Object  | X    | 代替発送情報 |
-| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
-| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
-| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
-| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
-| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
-| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
-| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
-| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
+| 名前               | 	タイプ | 	必須 | 	説明                                                                                                                                       |
+|------------------------|------|---|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String | O | 発信キー(40文字)                                                                                                                                       |
+| requestDate            | String | X | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                             |
+| senderGroupingKey      | String | X | 発信グルーピングキー(最大100文字)                                                                                                                               |
+| createUser             | String | X | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                     |
+| recipientList          | List | 	O | 受信者リスト(最大1,000人)                                                                                                                                |
+| - recipientNo          | String | O | 受信番号                                                                                                                                     |
+| - buttons              | List | 	X | ボタン<br>ワイド画像送信時、リンクボタン最大2個                                                                                                           |
+| -- ordering            | Integer | X | ボタン順序(ボタンがある場合は必須)                                                                                                                             |
+| -- type                | String | X | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+| -- name                | String | X | ボタン名(ボタンがある場合は必須）                                                                                                                             |
+| -- linkMo              | String | X | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                       |
+| -- linkPc              | String | X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                        |
+| -- schemeIos           | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                       |
+| -- schemeAndroid       | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                     |
+| -- chatExtra           | String | X | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報                                                                                                   |
+| -- chatEvent           | String | X | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                              |
+| -- bizFormKey          | String | X | BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                  |
+| -- target              | String | X | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                 |
+| - header               | String | O | ヘッダ(ワイドアイテムリストメッセージタイプ使用時、必須、最大25文字)                                                                                                          |
+| - item                 | Object | O | ワイドアイテム                                                                                                                                    |
+| -- list                | List | O | ワイドアイテムリスト(最小3個、最大4個)                                                                                                                         |
+| --- title              | String | O | アイテムタイトル(最初のアイテムの場合は最大25文字、 2～4番目のアイテムの場合は最大30文字)                                                                                                |
+| --- imageUrl           | String | O | アイテム画像URL                                                                                                                                     |
+| --- linkMo             | String | O | モバイルWebリンク                                                                                                                                   |
+| ---------------------------------------- linkPc             | String | X | PC Webリンク                                                                                                                                   |
+| ---------------------------------------- schemeIos          | String | X | iOSアプリリンク                                                                                                                                  |
+| ---------------------------------------- schemeAndroid      | String | X | Androidアプリリンク                                                                                                                                |
+| - coupon               | Object | X | クーポン                                                                                                                                        | 
+| -- title               | String | X | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| -- description         | String | X | クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                          |
+| -- linkMo              | String | X | モバイルWebリンク(下部の必須条件確認)                                                                                                                          |
+| -- linkPc              | String | X | PC Webリンク                                                                                                                                   |
+| -- schemeIos           | String | X | iOSアプリリンク                                                                                                                                  |
+| -- schemeAndroid       | String | X | Androidアプリリンク                                                                                                                                |
+| - resendParameter      | Object | X | 代替送信情報                                                                                                                                  |
+| -- isResend            | boolean | X | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                           |
+| -- resendType          | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                         |
+| -- resendTitle         | String | X | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                   |
+| -- resendContent       | String | X | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                             |
+| -- resendSendNo        | String | X | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                   |
+| -- resendUnsubscribeNo | String | X | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                     |
+| - isAd                 | Boolean | X | 広告かどうか(デフォルト値true)                                                                                                                                 |
+| - adult                | Boolean | X | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                           |
+| - recipientGroupingKey | String | 	X | 受信者グルーピングキー(最大100文字)                                                                                                                              |
+| statsId                | String | 	X | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                              |
 
 #### カルーセルフィード型送信リクエスト
 
@@ -453,61 +457,445 @@ Content-Type: application/json;charset=UTF-8
             "resendUnsubscribeNo": String
         },
         "isAd": Boolean,
+        "adult": Boolean,
         "recipientGroupingKey": String
     }],
     "statsId": String
 }
 ```
 
-| 値                | タイプ | 必須 | 説明                                 |
-| ---------------------- | ------- | ---- | ---------------------------------------- |
-| plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
-| requestDate            | String  | X    | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信 |
-| senderGroupingKey      | String  | X    | 発信グルーピングキー(最大100文字)                        |
-| createUser             | String  | X    | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存) |
-| recipientList          | List    | O    | 受信者リスト(最大1000人)                         |
-| - recipientNo          | String  | O    | 受信番号                              |
-| - carousel | Object | X | Carousel | 
-| -- list | List | X |  Carousel list(at least 2, up to 6) | 
-| --- header | String | X | Carousel item title(up to 20 characters) | 
-| --- message | String | X | Carousel item message(up to 180 characters) | 
-| --- attachment | Object | X | Carousel item images, button information | 
-| ---- buttons | List | X | Button list(up to 2) | 
-| ----- name| String |	X |	Button name(required, if there's a button, up to 8 characters)|
-| ----- type| String |	X |	Button type(WL: Web Link, AL: App Link, BK: Bot Keyword, MD: Message Delivery, BF: Business Form) |
-| ----- linkMo| String |	X |	Mobile web link(required for the WL type)|
-| ----- linkPc | String |	X |PC web link(optional for the WL type) |
-| ----- schemeIos | String | X |	iOS app link(required for the AL type) |
-| ----- schemeAndroid | String | X |	Android app link(required for the AL type) |
-| ---- image | Object | X | Image | 
-| ----- imageUrl|	String|	X|	Image URL   |
-| ----- imageLink|	String|	X|	Image link   |
-| ---- coupon | Object | X | クーポン | 
-| ----- title| String |	X |	titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン"|
-| ----- description| String |	X |	クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)|
-| ----- linkMo| String |	X |	モバイルWebリンク(下部の必須条件確認) |
-| ----- linkPc | String |	X |PC Webリンク |
-| ----- schemeIos | String | X |	iOSアプリリンク |
-| ----- schemeAndroid | String | X |	Androidアプリリンク |
-| -- tail | Object | X | Learn more button information | 
-| --- linkMo| String |	X |	Mobile web link|
-| --- linkPc | String |	X |PC web link |
-| --- schemeIos | String | X |	iOS app link |
-| --- schemeAndroid | String | X |	Android app link |
-| - resendParameter      | Object  | X    | 代替発送情報 |
-| -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
-| -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
-| -- resendTitle         | String  | X    | LMS代替送信タイトル(最大20文字)<br>(値がない場合は、プラスフレンドIDで再送信されます。) |
-| -- resendContent       | String  | X    | 代替送信内容(最大1000文字)<br>(値がない場合は、テンプレートの内容で再送信されます。) |
-| -- resendSendNo        | String  | X    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
-| -- resendUnsubscribeNo | String  | X    | 代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span> |
-| - isAd                 | Boolean | X    | 広告かどうか(デフォルト値true)                          |
-| - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
-| statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
+| 名前               | 	タイプ | 	必須 | 	説明                                                                                                                                                   |
+|------------------------|-------|--|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String | O | 発信キー(40文字)                                                                                                                                                   |
+| requestDate            | String | X | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                         |
+| senderGroupingKey      | String | X | 発信グルーピングキー(最大100文字)                                                                                                                                           |
+| createUser             | String | X | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                 |
+| recipientList          | List  | O | 受信者リスト(最大1,000人)                                                                                                                                            |
+| - recipientNo          | String | O | 受信番号                                                                                                                                                 |
+| - carousel             | Object | O | カルーセル                                                                                                                                                   
+| -- list                | List  | O | カルーセルリスト(最小2個、最大10個)                                                                                                                                       | 
+| ---------------------------------------- header             | String | O | カルーセルアイテムタイトル(最大20文字)、カルーセルフィード型でのみ使用可能                                                                                                                  | 
+| ---------------------------------------- message            | String | O | カルーセルアイテムメッセージ(最大180文字)、カルーセルフィード型でのみ使用可能                                                                                                                | 
+| ---------------------------------------- attachment         | Object | O | カルーセルアイテム画像、ボタン情報                                                                                                                                    | 
+| ----------------------------------------- buttons           | List  | X | ボタンリスト(最大2個)                                                                                                                                               | 
+| ----- name             | String | X | ボタン名(ボタンがある場合は必須、最大8文字)                                                                                                                                  |
+| ----- type             | String | X | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+| ------------------------------------------ linkMo           | String | X | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
+| ------------------------------------------ linkPc           | String | X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                    |
+| ------------------------------------------ schemeIos        | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
+| ------------------------------------------ schemeAndroid    | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
+| ---- image             | Object | O |                                                                                                                                                             | 
+| ------------------------------------------ imageUrl         | String | O | 画像URL (カルーセルフィード型画像のみ使用可能です。カルーセルコマース画像使用不可)                                                                                                          |
+| ------------------------------------------ imageLink        | String | X | 画像リンク                                                                                                                                                |
+| ----------------------------------------- coupon            | Object | X | クーポン                                                                                                                                                    | 
+| ------------------------------------------ title            | String | X | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| ------------------------------------------ description      | String | X | クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                                      |
+| ------------------------------------------ linkMo           | String | X | モバイルWebリンク(下部の必須条件確認)                                                                                                                                      |
+| ------------------------------------------ linkPc           | String | X | PC Webリンク                                                                                                                                               |
+| ------------------------------------------ schemeIos        | String | X | iOSアプリリンク                                                                                                                                              |
+| ------------------------------------------ schemeAndroid    | String | X | Androidアプリリンク                                                                                                                                            |
+| -- tail                | Object | X | さらに表示ボタン情報                                                                                                                                              | 
+| --- linkMo             | String | O | モバイルWebリンク                                                                                                                                               |
+| ---------------------------------------- linkPc             | String | X | PC Webリンク                                                                                                                                               |
+| ---------------------------------------- schemeIos          | String | X | iOSアプリリンク                                                                                                                                              |
+| ---------------------------------------- schemeAndroid      | String | X | Androidアプリリンク                                                                                                                                            |
+| - resendParameter      | Object | X | 代替送信情報                                                                                                                                              |
+| -- isResend            | boolean |X | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                       |
+| -- resendType          | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                     |
+| -- resendTitle         | String | X | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                               |
+| -- resendContent       | String | X | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                         |
+| -- resendSendNo        | String | X | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                               |
+| -- resendUnsubscribeNo | String | X | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                 |
+| - isAd                 | Boolean | O | 広告かどうか(カルーセルフィード型は広告タイプのみ送信可能)                                                                                                                                |
+| - adult                | Boolean | X | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                       |
+| - recipientGroupingKey | String | X | 受信者グルーピングキー(最大100文字)                                                                                                                                          |
+| statsId                | String | X | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                          |
+
+#### カルーセルコマース型送信リクエスト
+
+[Request Body]
+```
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser": String,
+    "recipientList": [{
+        "recipientNo": String,
+        "carousel": {
+          "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+          },
+          "list": [
+            {
+              "additionalContent": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                },
+                "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
+                },
+                "commerce": {
+                  "title": String,
+                  "regularPrice": String,
+                  "discountPrice": String,
+                  "discountRate": String,
+                  "discountFixed": String
+                }
+              }
+            },
+            {
+              "additionalContent": String,
+              "attachment": {
+                "buttons": [
+                  {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String,
+                  }
+                ],
+                "image":{
+                  "imageUrl": String,
+                  "imageLink": String
+                },
+                "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
+                },
+                "commerce": {
+                  "title": String,
+                  "regularPrice": Integer,
+                  "discountPrice": Integer,
+                  "discountRate": Integer,
+                  "discountFixed": Integer
+                }
+              }
+            }
+          ],
+          "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+          }
+        },
+        "resendParameter": {
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "adult": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+```
+
+| 名前 | 	タイプ | 	必須 | 	説明                                                                                                                                                   |
+|--------|-------|--|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey | String | O | 発信キー(40文字)                                                                                                                                                   |
+| requestDate | String | X | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                         |
+| senderGroupingKey | String | X | 発信グルーピングキー(最大100文字)                                                                                                                                           |
+| createUser | String | X | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                 |
+| recipientList | List  | O | 受信者リスト(最大1,000人)                                                                                                                                            |
+| - recipientNo | String | 	O | 受信番号                                                                                                                                                 |
+| - carousel | Object | O | カルーセル                                                                                                                                                   
+| -- head | String | X | カルーセルイントロ情報(カルーセルコマース型でのみ使用可能)                                                                                                                              | 
+| ---------------------------------------- header | String | O | カルーセルイントロヘッダ(最大20文字)                                                                                                                                          |  
+| ---------------------------------------- content | String | O | カルーセルイントロ内容(最大50文字)                                                                                                                                          |
+| ---------------------------------------- imageUrl | String | O | カルーセルイントロ画像アドレス(使用される画像はカルーセルの画像と比率が同じである必要があります。)                                                                                                           |
+| ---------------------------------------- linkMo | String | X | モバイル環境でイントロクリック時に移動するWebリンク                                                                                                                             |
+| ---------------------------------------- linkPc | String | X | PC環境でイントロクリック時に移動するWebリンク                                                                                                                              |
+| ---------------------------------------- schemeIos | String | X | 	iOS環境でイントロクリック時に移動するアプリリンク                                                                                                                            |
+| ---------------------------------------- schemeAndroid | String | X | 	Android環境でイントロクリック時に移動するアプリリンク                                                                                                                          |
+| -- list | List  | O | カルーセルリスト(最小2個、最大10個)                                                                                                                                       | 
+| ---------------------------------------- additionalContent | String | X | 付加情報(最大34文字)、カルーセルコマース型でのみ使用可能                                                                                                                      |  
+| ---------------------------------------- attachment | Object | O | カルーセルアイテム画像、ボタン情報                                                                                                                                    | 
+| ----------------------------------------- buttons | List  | X | ボタンリスト(最大2個)                                                                                                                                               | 
+| ----- name | String | X | ボタン名(ボタンがある場合は必須、最大8文字)                                                                                                                                  |
+| ----- type | String | X | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+| ------------------------------------------ linkMo | String |X | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
+| ------------------------------------------ linkPc | String | X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                    |
+| ------------------------------------------ schemeIos | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
+| ------------------------------------------ schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
+| ---- image | Object | O |                                                                                                                                                             | 
+| ------------------------------------------ imageUrl | String | O | 	画像URL（カルーセルコマースの画像のみ使用可能です。使用される画像は、他のカルーセルコマースの画像やイントロの画像と同じ比率である必要があります。)                                                                        |
+| ------------------------------------------ imageLink | String | X | 	画像リンク                                                                                                                                               |
+| ----------------------------------------- coupon | Object | X | クーポン                                                                                                                                                    | 
+| ------------------------------------------ title | String | X | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| ------------------------------------------ description | String |X | クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                                      |
+| ------------------------------------------ linkMo | String | X | モバイルWebリンク(下部の必須条件確認)                                                                                                                                      |
+| ------------------------------------------ linkPc | String | X | PC Webリンク                                                                                                                                               |
+| ------------------------------------------ schemeIos | String | X | iOSアプリリンク                                                                                                                                              |
+| ------------------------------------------ schemeAndroid | String | X | Androidアプリリンク                                                                                                                                            |
+| ----------------------------------------- commerce | Object | O | コマース(カルーセルコマース型でのみ使用可能)                                                                                                                                      | 
+| ------------------------------------------ title | String | O | 商品タイトル(最大30文字)                                                                                                                                               |
+| ------------------------------------------ regularPrice | Integer | O | 正常価格(0 ～ 99,999,999)                                                                                                                                        |
+| ------------------------------------------ discountPrice | Integer | X | 割引価格(0 ～ 99,999,999)                                                                                                                                        |
+| ------------------------------------------ discountRate | Integer | X | 割引率(0 ～ 100)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                          |
+| ------------------------------------------ discountFixed | Integer | X | 	定額割引価格(0 ～ 999,999)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                  |
+| -- tail | Object | X | さらに表示ボタン情報                                                                                                                                             | 
+| --- linkMo | String | O | モバイルWebリンク                                                                                                                                               |
+| ---------------------------------------- linkPc | String | X | PC Webリンク                                                                                                                                               |
+| ---------------------------------------- schemeIos | String | X | iOSアプリリンク                                                                                                                                              |
+| ---------------------------------------- schemeAndroid | String | X | Androidアプリリンク                                                                                                                                            |
+| - resendParameter | Object | X | 代替送信情報                                                                                                                                              |
+| -- isResend | boolean | X | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                       |
+| -- resendType | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                     |
+| -- resendTitle | String | X | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                               |
+| -- resendContent | String | X | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                         |
+| -- resendSendNo | String | X | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                               |
+| -- resendUnsubscribeNo | String | X | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                 |
+| - isAd | Boolean | O | 広告かどうか(カルーセルコマース型は広告タイプのみ送信可能)                                                                                                                               |
+| - adult | Boolean | X | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                       |
+| - recipientGroupingKey | 	String | X | 	受信者グルーピングキー(最大100文字)                                                                                                                                         |
+| statsId | String | X | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                          |
+
+* カルーセルコマースに使用される全ての画像は同じ比率である必要があります。
+
+#### プレミアム動画型送信リクエスト
+
+[Request body]
+```
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser": String,
+    "recipientList": [{
+        "recipientNo": String,
+        "content": String,
+        "header": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "video": {
+          "videoUrl": String,
+          "videoLink": String
+        },
+        "resendParameter": {
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "adult": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+```
+
+| 名前               | 	タイプ | 	必須 | 	説明                                                                                                                                                    |
+|------------------------|------|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String | O | 発信キー(40文字)                                                                                                                                                    |
+| requestDate            | String | X | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                           |
+| senderGroupingKey      | String | X | 発信グルーピングキー(最大100文字)                                                                                                                                            |
+| createUser             | String | X | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                  |
+| recipientList          | List | O | 受信者リスト(最大1,000人)                                                                                                                                            |
+| - recipientNo          | String | O | 受信番号                                                                                                                                                  |
+| - content              | String | O | 内容(最大1,000文字)<br>画像送信時、最大400文字<br>ワイド画像送信時、最大76文字                                                                                             |
+| - header               | String | O | ヘッダ(プレミアムビデオタイプ使用時、選択、最大25文字)                                                                                                                             |
+| - buttons              | List | X | ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
+| -- ordering            | Integer | X | ボタン順序(ボタンがある場合は必須)                                                                                                                                          |
+| -- type                | String | X | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |                                                                                    
+| -- name                | String | X | ボタン名(ボタンがある場合は必須）                                                                                                                                          |
+| -- linkMo              | String | X | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                    |
+| -- linkPc              | String | X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                     |
+| -- schemeIos           | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                    |
+| -- schemeAndroid       | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                  |
+| -- chatExtra           | String | X | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報                                                                                                                 |
+| -- chatEvent           | String | X | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                                            |
+| -- bizFormKey          | String | X | | BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                                |
+| -- target              | String | X | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                               |
+| - coupon               | Object | X | クーポン                                                                                                                                                     | 
+| -- title               | String | X | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| -- description         | String | X | クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                                      |
+| -- linkMo              | String | X | モバイルWebリンク(下部の必須条件確認)                                                                                                                                        |
+| -- linkPc              | String | X | PC Webリンク                                                                                                                                                |
+| -- schemeIos           | String | X | iOSアプリリンク                                                                                                                                               |
+| -- schemeAndroid       | String | X | Androidアプリリンク                                                                                                                                             |
+| - video                | Object | O | ビデオ                                                                                                                                                    | 
+| -- videoUrl            | String | O | カカオTV動画URL (カカオTVにアップロードされた動画アドレスのみ使用可能)                                                                                                                    |
+| -- thumbnailUrl        | String | X | 動画のサムネイル用画像URL、一般画像でアップロードされたURLのみ使用可能、ない場合はカカオTV動画の基本サムネイルを使用                                                                                   |
+| - resendParameter      | Object | X | 代替送信情報                                                                                                                                               |
+| -- isResend            | boolean | X | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                          |
+| -- resendType          | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                      |
+| -- resendTitle         | String | X | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                                 |
+| -- resendContent       | String | X | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                           |
+| -- resendSendNo        | String | X | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                                 |
+| -- resendUnsubscribeNo | String | X | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                   |
+| - isAd                 | Boolean | X | 広告かどうか(デフォルト値true)                                                                                                                                              |
+| - adult                | Boolean | X | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                        |
+| - recipientGroupingKey | 	String | X | 受信者グルーピングキー(最大100文字)                                                                                                                                           |
+| statsId                | String | X | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                           |
+
+#### コマース型送信リクエスト
+
+[Request body]
+```
+{
+    "senderKey": String,
+    "requestDate": String,
+    "senderGroupingKey": String,
+    "createUser": String,
+    "recipientList": [{
+        "recipientNo": String,
+        "content": String,
+        "additionalContent": String,
+        "buttons": [
+          {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String,
+            "target": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer
+          "discountRate": Integer
+          "discountFixed": Integer
+        },
+        "resendParameter": {
+            "isResend": boolean,
+            "resendType": String,
+            "resendTitle": String,
+            "resendContent": String,
+            "resendSendNo": String,
+            "resendUnsubscribeNo": String
+        },
+        "isAd": Boolean,
+        "adult": Boolean,
+        "recipientGroupingKey": String
+    }],
+    "statsId": String
+}
+```
+
+| 名前             | 	タイプ | 	必須 | 	説明                                                                                                                                                   |
+|----------------------|------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey            | String | O   | 発信キー(40文字)                                                                                                                                                   |
+| requestDate          | String | X   | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                         |
+| senderGroupingKey    | String | X   | 発信グルーピングキー(最大100文字)                                                                                                                                           |
+| createUser           | String | X   | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                 |
+| recipientList        | List | 	O  | 受信者リスト(最大1,000人)                                                                                                                                            |
+| - recipientNo        | String | O   | 受信番号                                                                                                                                                 |
+| - content            | String | O   | 内容(最大1,000文字)<br>画像送信時、最大400文字<br>ワイド画像送信時、最大76文字                                                                                             |
+| - additionalContent | String | X   | 付加情報(最大34文字)、コマース型でのみ使用可能                                                                                                                      |
+| - buttons            | List | X   | 	ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
+| -- ordering          | Integer | X   | ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
+| -- type              | String | X   | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+| -- name              | String | X   | ボタン名(ボタンがある場合は必須）                                                                                                                                         |
+| -- linkMo            | String | X   | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
+| -- linkPc            | String | X   | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                    |
+| -- schemeIos         | String | X   | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
+| -- schemeAndroid     | String | X   | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
+| -- chatExtra         | String | X   | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報                                                                                                               |
+| -- chatEvent         | String | X   | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                                          |
+| -- bizFormKey        | String | X   | | BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                              |
+| -- target            | String | X   | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                             |
+| - coupon             | Object | X   | クーポン                                                                                                                                                    | 
+| -- title             | String | X   | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
+| -- description       | String | X   | クーポン詳細説明(一般テキスト、画像型、カルーセルフィード型最大12文字 / ワイド画像型、ワイドアイテムリスト型最大18文字)                                                                                      |
+| -- linkMo            | String | X   | モバイルWebリンク(下部の必須条件確認)                                                                                                                                      |
+| -- linkPc            | String | X   | PC Webリンク                                                                                                                                               |
+| -- schemeIos         | String | X   | iOSアプリリンク                                                                                                                                              |
+| -- schemeAndroid     | String | X   | Androidアプリリンク                                                                                                                                            |
+| - commerce           | Object | O   | コマース(コマース型でのみ使用可能)                                                                                                                                          | 
+| -- title             | String | O   | 商品タイトル(最大30文字)                                                                                                                                                |
+| -- regularPrice      | Integer | O   | 正常価格(0 ～ 99,999,999)                                                                                                                                        |
+| -- discountPrice     | Integer | X   | 割引価格(0 ～ 99,999,999)                                                                                                                                        |
+| -- discountRate      | Integer | X   | 割引率(0 ～ 100)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                           |
+| -- discountFixed     | Integer | X   | 定額割引価格(0 ～ 999,999)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                    |
+| - resendParameter    | Object | X   | 代替送信情報                                                                                                                                              |
+| -- isResend          | boolean | X   | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                       |
+| -- resendType        | String | X   | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                     |
+| -- resendTitle       | String | X   | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                               |
+| -- resendContent     | String | X   | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                         |
+| -- resendSendNo      | String | X   | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                               |
+| -- resendUnsubscribeNo | String | X   | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                 |
+| - isAd               | Boolean | X   | 	広告かどうか(デフォルト値true)                                                                                                                                            |
+| - adult              | Boolean | X   | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                       |
+| - recipientGroupingKey | String | 	X  | 	受信者グルーピングキー(最大100文字)                                                                                                                                         |
+| statsId              | String | 	X  | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                          |
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages -d '{"plusFriendId":"@プラスフレンド","requestDate":"yyyy-MM-dd HH:mm","recipientList":[{"recipientNo":"010-0000-0000","imageSeq":1,"imageLink":"https://toast.com","content":"内容","buttons":[{"ordering":1,"type":"WL","name":"ボタン1","linkMo":"https://toast.com","linkPc":"https://toast.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages -d '{"plusFriendId":"@プラスフレンド","requestDate":"yyyy-MM-dd HH:mm","recipientList":[{"recipientNo":"010-0000-0000","imageSeq":1,"imageLink":"https://toast.com","content":"内容","buttons":[{"ordering":1,"type":"WL","name":"ボタン1","linkMo":"https://toast.com","linkPc":"https://toast.com"}]}]}'
 ```
 
 #### レスポンス
@@ -558,7 +946,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/messages
+GET  /friendtalk/v2.4/appkeys/{appkey}/messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -657,7 +1045,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages?startRequestDate=2018-05-01%2000:00&endRequestDate=2018-05-30%2023:59"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages?startRequestDate=2018-05-01%2000:00&endRequestDate=2018-05-30%2023:59"
 ```
 
 #### 再送信ステータス
@@ -676,7 +1064,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}/{recipientSeq}
+GET  /friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}/{recipientSeq}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -705,7 +1093,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}/{recipientSeq}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}/{recipientSeq}"
 ```
 
 #### レスポンス
@@ -766,10 +1154,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
          ]
        },
       "carousel": {
+        "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+        },
         "list": [
           {
             "header": String,
             "message": String,
+            "addtionalContent": String,
             "attachment": {
                "buttons": [
                 {
@@ -794,6 +1192,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                 "linkPc": String,
                 "schemeAndroid": String,
                 "schemeIos": String
+              },
+              "commerce": {
+                "title": String,
+                "regularPrice": Integer,
+                "discountPrice": Integer,
+                "discountRate": Integer,
+                "discountFixed": Integer
               }
             }
            }
@@ -813,97 +1218,138 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
         "schemeAndroid": String,
         "schemeIos": String
       },
-      "isAd" : Boolean,
+      "video": {
+        "videoUrl": String,
+        "thumbnailUrl": String
+      },
+      "commerce": {
+        "title": String,
+        "regularPrice": Integer,
+        "discountPrice": Integer,
+        "discountRate": Integer,
+        "discountFixed": Integer
+      },
+      "isAd": Boolean,
+      "adult": Boolean,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
   }
 }
 ```
 
-| 値                | タイプ | 説明                                 |
-| ---------------------- | ------- | ---------------------------------------- |
-| header                 | Object  | ヘッダ領域                              |
-| - resultCode           | Integer | 結果コード                              |
-| - resultMessage        | String  | 結果メッセージ                             |
-| - isSuccessful         | Boolean | 成否                               |
-| message                | Object  | メッセージ                                |
-| - requestId            | String  | リクエストID                                    |
-| - recipientSeq         | Integer | 受信者シーケンス番号                         |
-| - plusFriendId         | String  | プラスフレンドID                                 |
-| - recipientNo          | String  | 受信番号                              |
-| - requestDate          | String  | リクエスト日時                              |
-| - createDate           | String  | 登録日時                             |
-| - receiveDate          | String  | 受信日時                              |
-| - content              | String  | 本文                                 |
-| - messageStatus        | String  | リクエストステータス(COMPLETED：成功、FAILED：失敗)      |
-| - resendStatus         | String  | 再送信ステータスコード                          |
-| - resendStatusName     | String  | 再送信ステータスコード名                             |
-| - resultCode           | String  | 受信結果コード                           |
-| - resultCodeName       | String  | 受信結果コード名                              |
-| - createUser           | String  | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)|
-| - imageSeq             | Integer | イメージ番号                             |
-| - imageName            | String  | イメージ名(アップロードしたファイル名)                           |
-| - imageUrl             | String  | イメージURL                                  |
-| - imageLink            | String  | イメージリンク(イメージ番号を入力した場合は必須)                |
-| - wide                 | Boolean | ワイドイメージの可否                        |
-| - buttons              | List    | ボタンリスト                              |
-| -- ordering            | Integer | ボタン順序                              |
-| -- type                | String  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達) |
-| -- name                | String  | ボタン名                              |
-| -- linkMo              | String  | モバイルWebリンク(WLタイプの場合は必須フィールド)                |
-| -- linkPc              | String  | PC Webリンク(WLタイプの場合は任意フィールド)                |
-| -- schemeIos           | String  | iOSアプリリンク(ALタイプの場合は必須フィールド)                |
-| -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
-| -- chatExtra           | String  | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
-| -- chatEvent           | String  | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名 |
-| -- bizFormKey|	String|	BF(ビジネスフォーム)タイプボタンの場合、ビズフォームキー |
-| -- target              | String  | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
-|- header | String | ヘッダ(ワイドアイテムリストメッセージタイプ使用時、必須、最大25文字) |
-|- item | Object | ワイドアイテム |
-|-- list | List | ワイドアイテムリスト(最小3個/最大4個) |
-|--- title | String | アイテムタイトル(最大25文字) |
-|--- imageUrl | String | アイテム画像URL |
-|--- linkMo | String | モバイルWebリンク |
-|--- linkPc | String | PC Webリンク |
-|--- schemeIos | String | iOSアプリリンク |
-|--- schemeAndroid | String | Androidアプリリンク |
-|- carousel | Object | カルーセル | 
-|-- list | List | カルーセルリスト(最小2個/最大6個) | 
-|--- header | String | カルーセルアイテムタイトル(最大20文字) | 
-|--- message | String | カルーセルアイテムメッセージ(最大180文字) | 
-|--- attachment | Object | カルーセルアイテム画像、ボタン情報 | 
-|---- buttons | List | ボタンリスト(最大2個) | 
-|----- name| String |	ボタン名(ボタンがある場合は必須、最大8文字)|
-|----- type| String |	ボタンタイプ(WL:Webリンク、 AL:アプリリンク、 BK:Botキーワード、 MD:メッセージ伝達、 BF:ビジネスフォーム) |
-|----- linkMo| String |	モバイルWebリンク(WLタイプの場合は必須フィールド)|
-|----- linkPc | String | PC Webリンク(WLタイプの場合は任意フィールド) |
-|----- schemeIos | String | iOSアプリリンク(ALタイプの場合は必須フィールド) |
-|----- schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド) |
-|---- image | Object | 画像 | 
-|----- imageUrl|	String|	画像URL   |
-|----- imageLink|	String|	画像リンク |
-|---- coupon | Object | クーポン | 
-|----- title| String |	クーポンtitle |
-|----- description| String |	クーポン詳細説明 |
-|----- linkMo| String | モバイルWebリンク |
-|----- linkPc | String |	PC Webリンク |
-|----- schemeIos | String | iOSアプリリンク |
-|----- schemeAndroid | String | Androidアプリリンク |
-|-- tail | Object | さらに表示ボタン情報 | 
-|--- linkMo| String |	モバイルWebリンク|
-|--- linkPc | String |	PC Webリンク |
-|--- schemeIos | String | iOSアプリリンク |
-|--- schemeAndroid | String | XAndroidアプリリンク |
-|- coupon | Object | クーポン | 
-|-- title| String |	クーポンtitle |
-|-- description| String |	クーポン詳細説明 |
-|-- linkMo| String | モバイルWebリンク |
-|-- linkPc | String |	PC Webリンク |
-|-- schemeIos | String | iOSアプリリンク |
-|-- schemeAndroid | String | Androidアプリリンク |
-| - isAd                 | Boolean | 広告かどうか                                   |
-| - senderGroupingKey    | String  | 発信グルーピングキー                               |
-| - recipientGroupingKey | String  | 受信者グルーピングキー                              |
+| 名前 |	タイプ| 	説明                                                 |
+|---|---|-----------------------------------------------------------|
+|header|	Object| 	ヘッダ領域                                              |
+|- resultCode|	Integer| 	結果コード                                              |
+|- resultMessage|	String| 結果メッセージ                                              |
+|- isSuccessful|	Boolean| 成否                                               |
+|message|	Object| 	メッセージ                                                |
+|- requestId | String | 	リクエストID                                                    |
+|- recipientSeq | Integer | 	受信者シーケンス番号                                         |
+|- plusFriendId | String | 	プラスフレンドID                                                 |
+|- senderKey | String | 発信キー                                                |
+|- recipientNo | String | 	受信番号                                              |
+|- requestDate | String | 	リクエスト日時                                              |
+|- createDate | String | 登録日時                                               |
+|- receiveDate | String | 	受信日時                                              |
+|- content | String | 	本文                                                 |
+|- messageStatus | String | 	リクエスト状態(COMPLETED:成功、 FAILED:失敗)                        |
+|- resendStatus | String | 	再送信ステータスコード                                          |
+|- resendStatusName | String | 	再送信ステータスコード名                                         |
+|- resendResultCode | String | 再送信結果コードSMS結果コード                                 |
+|- resendRequestId | String | 再送信SMSリクエストID                                             |
+|- resultCode | String | 	受信結果コード                                           |
+|- resultCodeName | String | 	受信結果コード名                                          |
+|- createUser | String | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                               |
+|- imageSeq|	Integer| 画像番号                                              |
+|- imageName|	String| 画像名(アップロードしたファイル名)                                            |
+|- imageUrl|	String| 画像URL                                                   |
+|- imageLink|	String| 画像リンク                                              |
+|- wide  | boolean | ワイド画像の可否                                          |
+|- buttons | List | 	ボタンリスト                                             |
+|-- ordering | Integer | 	ボタン順序                                              |
+|-- type | String | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達)         |
+|-- name | String | 	ボタン名(最大28文字、ワイドアイテムリストの場合、 9文字)                        |
+|-- linkMo | String | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                |
+|-- linkPc | String | 	PC Webリンク(WLタイプの場合は任意フィールド)                                 |
+|-- schemeIos | String | 	iOSアプリリンク(ALタイプの場合は必須フィールド)                                |
+|-- schemeAndroid | String | 	Androidアプリリンク(ALタイプの場合は必須フィールド)                              |
+|-- chatExtra|	String| 	BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報            |
+|-- chatEvent|	String| BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                        |
+|-- bizFormKey|	String| 	BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                           |
+|-- target|	String| 	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信 |
+|- header | String | ヘッダ(ワイドアイテムリストメッセージタイプ使用時、必須、最大25文字)                    |
+|- additionalContent | String | 付加情報(最大34文字)、コマース型でのみ使用可能                                                                                                                      |
+|- item | Object | ワイドアイテム                                              |
+|-- list | List | ワイドアイテムリスト(最小3個、最大4個)                                   |
+|---------------------------------------- title | String | アイテムタイトル(最初のアイテムの場合、最大25文字、 2～4番目のアイテムの場合、最大30文字)          |
+|--- imageUrl | String | アイテム画像URL                                               |
+|--- linkMo | String | モバイルWebリンク                                             |
+|---------------------------------------- linkPc | String | PC Webリンク                                             |
+|---------------------------------------- schemeIos | String | iOSアプリリンク                                            |
+|---------------------------------------- schemeAndroid | String | Androidアプリリンク                                          |
+|- carousel | Object | カルーセル                                                 | 
+|-- head | String | カルーセルイントロ情報                                          | 
+|---------------------------------------- header | String | カルーセルイントロヘッダ(最大20文字)                                        |  
+|---------------------------------------- content | String | カルーセルイントロ内容(最大50文字)                                        |
+|---------------------------------------- imageUrl | String | カルーセルイントロ画像アドレス                                      |
+|---------------------------------------- linkMo | String | モバイル環境でイントロクリック時に移動するWebリンク                           |
+|---------------------------------------- linkPc | String | PC環境でイントロクリック時に移動するWebリンク                            |
+|---------------------------------------- schemeIos | String | iOS環境でイントロクリック時に移動するアプリリンク                           |
+|---------------------------------------- schemeAndroid | String | Android環境でイントロクリック時に移動するアプリリンク                         |
+|-- list | List  | カルーセルリスト(最小2個、最大10個)                                     |
+|---------------------------------------- header | String | カルーセルアイテムタイトル(最大20文字)                                        | 
+|---------------------------------------- message | String | カルーセルアイテムメッセージ(最大180文字)                                      | 
+|---------------------------------------- additionalContent | String | 付加情報(最大34文字)                                             | 
+|---------------------------------------- attachment | Object | カルーセルアイテム画像、ボタン情報                                  | 
+|----------------------------------------- buttons | List | ボタンリスト(最大2個)                                             | 
+|----- name| String | 	ボタン名(ボタンがある場合は必須、最大8文字)                               |
+|----- type| String | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+|------------------------------------------ linkMo| String | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                |
+|------------------------------------------ linkPc | String | PC Webリンク(WLタイプの場合は任意フィールド)                                  |
+|------------------------------------------ schemeIos | String | iOSアプリリンク(ALタイプの場合は必須フィールド)                                 |
+|------------------------------------------ schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド)                               |
+|----------------------------------------- image | Object | 画像                                                 | 
+|------------------------------------------ imageUrl|	String| 	画像URL                                                  |
+|------------------------------------------ imageLink|	String| 	画像リンク                                             |
+|----------------------------------------- coupon | Object | クーポン                                                  | 
+|------------------------------------------ title| String | 	クーポンtitle                                                 |
+|------------------------------------------ description| String | 	クーポン詳細説明                                           |
+|----- linkMo| String | モバイルWebリンク                                             |
+|------------------------------------------ linkPc | String | 	PC Webリンク                                            |
+|------------------------------------------ schemeIos | String | iOSアプリリンク                                            |
+|------------------------------------------ schemeAndroid | String | Androidアプリリンク                                          |
+|----------------------------------------- commerce | Object | コマース                                                 | 
+|------------------------------------------ title | String | 商品タイトル(最大30文字)                                             |
+|------------------------------------------ regularPrice | Integer | 正常価格(0 ～ 99,999,999)                                      |
+|------------------------------------------ discountPrice | Integer | 割引価格(0 ～ 99,999,999)                                      |
+|------------------------------------------ discountRate | Integer | 割引率(0 ～ 100)、割引価格が存在する時の割引率                          |
+|------------------------------------------ discountFixed | Integer | 定額割引価格(0 ～ 999,999)                                       |
+|-- tail | Object | さらに表示ボタン情報                                           | 
+|--- linkMo| String | 	モバイルWebリンク                                            |
+|---------------------------------------- linkPc | String | 	PC Webリンク                                            |
+|---------------------------------------- schemeIos | String | iOSアプリリンク                                            |
+|---------------------------------------- schemeAndroid | String | Androidアプリリンク                                         |
+|- coupon | Object | クーポン                                                  | 
+|-- title| String | 	クーポンtitle                                                 |
+|-- description| String | 	クーポン詳細説明                                           |
+|-- linkMo| String | モバイルWebリンク                                             |
+|-- linkPc | String | 	PC Webリンク                                            |
+|-- schemeIos | String | iOSアプリリンク                                            |
+|-- schemeAndroid | String | Androidアプリリンク                                          |
+|- video | Object | ビデオ                                                 | 
+|-- videoUrl | String | カカオTV動画URL                  |
+|-- thumbnailUrl | String | 動画サムネイル用画像URL               |
+|- commerce | Object | コマース                                                 | 
+|-- title | String | 商品タイトル(最大30文字)                                             |
+|-- regularPrice | Integer | 正常価格(0 ～ 99,999,999)                                      |
+|-- discountPrice | Integer | 割引価格(0 ～ 99,999,999)                                      |
+|-- discountRate | Integer | 割引率(0 ～ 100)、割引価格が存在する時の割引率                          |
+|-- discountFixed | Integer | 定額割引価格(0 ～ 999,999)                                       |
+|- isAd | Boolean | 広告かどうか                                               |
+|- adult | Boolean | 成人向けのメッセージかどうか                                           |
+|- senderGroupingKey | String | 発信グルーピングキー                                            |
+|- recipientGroupingKey | String | 	受信者グルーピングキー                                          |
 
 ## メッセージ
 ### メッセージ送信取消
@@ -913,7 +1359,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-DELETE  /friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}
+DELETE  /friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -962,7 +1408,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
 ```
 
 ### メッセージ結果アップデート照会
@@ -972,7 +1418,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/message-results
+GET  /friendtalk/v2.4/appkeys/{appkey}/message-results
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1059,7 +1505,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
 ```
 
 ## 大量送信
@@ -1068,7 +1514,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### リクエスト
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages
+GET /friendtalk/v2.4/appkeys/{appKey}/mass-messages
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1106,7 +1552,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages?requestId='"${REQUEST_ID}" \
+https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -1173,7 +1619,7 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 #### リクエスト
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages/{requestId}/recipients
+GET /friendtalk/v2.4/appkeys/{appKey}/mass-messages/{requestId}/recipients
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1210,7 +1656,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients?requestId='"${REQUEST_ID}" \
+https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -1264,7 +1710,7 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 #### リクエスト
 [URL]
 ```
-GET /friendtalk/v2.3/appkeys/{appKey}/mass-messages/{requestId}/recipients/{recipientSeq}
+GET /friendtalk/v2.4/appkeys/{appKey}/mass-messages/{requestId}/recipients/{recipientSeq}
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1301,7 +1747,7 @@ Content-Type: application/json;charset=UTF-8
 #### cURL
 ```
 curl -X GET \
-https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients/${RECIPIENT_SEQ}?requestId='"${REQUEST_ID}" \
+https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appKey}/'"${APP_KEY}"'/mass-messages/recipients/${RECIPIENT_SEQ}?requestId='"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key:{secretkey}'
 ```
@@ -1361,10 +1807,20 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
           ]
         },
         "carousel": {
+          "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+          },
           "list": [
             {
               "header": String,
               "message": String,
+              "additionalContent": String,
               "attachment": {
                 "buttons": [
                   {
@@ -1374,6 +1830,13 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
                     "linkPc": String,
                     "schemeAndroid": String,
                     "schemeIos": String,
+                },
+                "commerce": {
+                  "title": String,
+                  "regularPrice": Integer,
+                  "discountPrice": Integer,
+                  "discountRate": Integer,
+                  "discountFixed": Integer
                   }
                 ],
                 "image":{
@@ -1406,7 +1869,19 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
           "schemeAndroid": String,
           "schemeIos": String
         },
+        "video": {
+          "videoUrl": String,
+          "thumbnailUrl": String
+        },
+        "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+        },
         "isAd": Boolean,
+        "adult": Boolean,
         "createDate": String
     }
 }
@@ -1450,7 +1925,7 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | -- target|	String|	Webリンクボタンの場合、"target"："out"プロパティを追加時アウトリンク<br>基本アプリ内リンクで送信 |
 | - header | String | ヘッダ(ワイドアイテムリストメッセージタイプ使用時、必須、最大25文字) |
 | - item | Object | ワイドアイテム |
-| -- list | List | ワイドアイテムリスト(最小3個/最大4個) |
+| -- list | List | ワイドアイテムリスト(最小3個、最大4個) |
 | --- title | String | アイテムタイトル(最大25文字) |
 | --- imageUrl | String | アイテム画像URL |
 | --- linkMo | String | モバイルWebリンク |
@@ -1458,42 +1933,66 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 | --- schemeIos | String | iOSアプリリンク |
 | --- schemeAndroid | String | Androidアプリリンク |
 | - carousel | Object | カルーセル | 
-| -- list | List | カルーセルリスト(最小2個/最大10個) | 
-| --- header | String | カルーセルアイテムタイトル(最大20文字) | 
-| --- message | String | カルーセルアイテムメッセージ(最大180文字) | 
-| --- attachment | Object | カルーセルアイテム画像、ボタン情報 | 
-| ---- buttons | List | ボタンリスト(最大2個) | 
-| ----- name| String |	ボタン名(ボタンがある場合は必須、最大8文字)|
-| ----- type| String |	ボタンタイプ(WL:Webリンク、 AL:アプリリンク、 BK:Botキーワード、 MD:メッセージ伝達、 BF:ビジネスフォーム) |
-| ----- linkMo| String |	モバイルWebリンク(WLタイプの場合は必須フィールド)|
-| ----- linkPc | String |	PC Webリンク(WLタイプの場合は任意フィールド) |
-| ----- schemeIos | String | iOSアプリリンク(ALタイプの場合は必須フィールド) |
-| ----- schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド) |
-| ---- image | Object | 画像 | 
-| ----- imageUrl|	String|	画像URL   |
-| ----- imageLink|	String|	画像リンク |
-| ---- coupon | Object | クーポン | 
-| ----- title| String |	クーポンtitle |
-| ----- description| String |	クーポン詳細説明 |
-| ----- linkMo| String | モバイルWebリンク |
-| ----- linkPc | String |	PC Webリンク |
-| ----- schemeIos | String | iOSアプリリンク |
-| ----- schemeAndroid | String | Androidアプリリンク |
-| -- tail | Object | さらに表示ボタン情報 | 
-| --- linkMo| String |	モバイルWebリンク|
-| --- linkPc | String |	PC Webリンク |
-| --- schemeIos | String | iOSアプリリンク |
-| --- schemeAndroid | String | Androidアプリリンク |
-|- coupon | Object | クーポン | 
-|-- title| String |	クーポンtitle |
-|-- description| String |	クーポン詳細説明 |
-|-- linkMo| String | モバイルWebリンク |
-|-- linkPc | String |	PC Webリンク |
-|-- schemeIos | String | iOSアプリリンク |
-|-- schemeAndroid | String | Androidアプリリンク |
-| - isAd | Boolean | 広告かどうか |
-| - createDate | String | 作成日 |
-
+|-- head | String | カルーセルイントロ情報                                          | 
+|---------------------------------------- header | String | カルーセルイントロヘッダ(最大20文字)                                        |  
+|---------------------------------------- content | String | カルーセルイントロ内容(最大50文字)                                        |
+|---------------------------------------- imageUrl | String | カルーセルイントロ画像アドレス                                      |
+|---------------------------------------- linkMo | String | モバイル環境でイントロクリック時に移動するWebリンク                           |
+|---------------------------------------- linkPc | String | PC環境でイントロクリック時に移動するWebリンク                            |
+|---------------------------------------- schemeIos | String | iOS環境でイントロクリック時に移動するアプリリンク                           |
+|---------------------------------------- schemeAndroid | String | Android環境でイントロクリック時に移動するアプリリンク                         |
+|-- list | List  | カルーセルリスト(最小2個、最大10個)                                     |
+|---------------------------------------- header | String | カルーセルアイテムタイトル(最大20文字)                                        | 
+|---------------------------------------- message | String | カルーセルアイテムメッセージ(最大180文字)                                      | 
+|---------------------------------------- additionalContent | String | 付加情報(最大34文字)                                             | 
+|---------------------------------------- attachment | Object | カルーセルアイテム画像、ボタン情報                                  | 
+|----------------------------------------- buttons | List | ボタンリスト(最大2個)                                             | 
+|----- name| String | 	ボタン名(ボタンがある場合は必須、最大8文字)                               |
+|----- type| String | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
+|------------------------------------------ linkMo| String | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                |
+|------------------------------------------ linkPc | String | PC Webリンク(WLタイプの場合は任意フィールド)                                  |
+|------------------------------------------ schemeIos | String | iOSアプリリンク(ALタイプの場合は必須フィールド)                                 |
+|------------------------------------------ schemeAndroid | String | Androidアプリリンク(ALタイプの場合は必須フィールド)                               |
+|----------------------------------------- image | Object | 画像                                                 | 
+|------------------------------------------ imageUrl|	String| 	画像URL                                                  |
+|------------------------------------------ imageLink|	String| 	画像リンク                                             |
+|----------------------------------------- coupon | Object | クーポン                                                  | 
+|------------------------------------------ title| String | 	クーポンtitle                                                 |
+|------------------------------------------ description| String | 	クーポン詳細説明                                           |
+|----- linkMo| String | モバイルWebリンク                                             |
+|------------------------------------------ linkPc | String | 	PC Webリンク                                            |
+|------------------------------------------ schemeIos | String | iOSアプリリンク                                            |
+|------------------------------------------ schemeAndroid | String | Androidアプリリンク                                          |
+|----------------------------------------- commerce | Object | コマース                                                 | 
+|------------------------------------------ title | String | 商品タイトル(最大30文字)                                             |
+|------------------------------------------ regularPrice | Integer | 正常価格(0 ～ 99,999,999)                                      |
+|------------------------------------------ discountPrice | Integer | 割引価格(0 ～ 99,999,999)                                      |
+|------------------------------------------ discountRate | Integer | 割引率(0 ～ 100)、割引価格が存在する時の割引率                          |
+|------------------------------------------ discountFixed | Integer | 定額割引価格(0 ～ 999,999)                                       |
+|-- tail | Object | さらに表示ボタン情報                                           | 
+|--- linkMo| String | 	モバイルWebリンク                                            |
+|---------------------------------------- linkPc | String | 	PC Webリンク                                            |
+|---------------------------------------- schemeIos | String | iOSアプリリンク                                            |
+|---------------------------------------- schemeAndroid | String | Androidアプリリンク                                         |
+|- coupon | Object | クーポン                                                  | 
+|-- title| String | 	クーポンtitle                                                 |
+|-- description| String | 	クーポン詳細説明                                           |
+|-- linkMo| String | モバイルWebリンク                                             |
+|-- linkPc | String | 	PC Webリンク                                            |
+|-- schemeIos | String | iOSアプリリンク                                            |
+|-- schemeAndroid | String | Androidアプリリンク                                          |
+|- video | Object | ビデオ                                                 | 
+|-- videoUrl | String | カカオTV動画URL                  |
+|-- thumbnailUrl | String | 動画サムネイル用画像URL               |
+|- commerce | Object | コマース                                                 | 
+|-- title | String | 商品タイトル(最大30文字)                                             |
+|-- regularPrice | Integer | 正常価格(0 ～ 99,999,999)                                      |
+|-- discountPrice | Integer | 割引価格(0 ～ 99,999,999)                                      |
+|-- discountRate | Integer | 割引率(0 ～ 100)、割引価格が存在する時の割引率                          |
+|-- discountFixed | Integer | 定額割引価格(0 ～ 999,999)                                       |
+|- isAd | Boolean | 広告かどうか                                               |
+|- adult | Boolean | 成人向けのメッセージかどうか                                           |
+|- createDate | String | 作成日 |
 
 ## イメージの管理
 
@@ -1503,7 +2002,7 @@ https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appKey}/'"${APP_KE
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/images
+POST  /friendtalk/v2.4/appkeys/{appkey}/images
 Content-Type: multipart/form-data
 ```
 
@@ -1532,7 +2031,7 @@ Content-Type: multipart/form-data
 
 [例]
 ```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images" -F "image=@friend-ricecake02.jpeg"
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/images" -F "image=@friend-ricecake02.jpeg"
 ```
 
 #### レスポンス
@@ -1569,7 +2068,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images
+POST  /friendtalk/v2.4/appkeys/{appkey}/wide-itemlist/images
 Content-Type: multipart/form-data
 ```
 
@@ -1597,7 +2096,7 @@ Content-Type: multipart/form-data
 
 [例]
 ```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/wide-itemlist/images" -F "image=@friend-ricecake02.jpeg"
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/wide-itemlist/images" -F "image=@friend-ricecake02.jpeg"
 ```
 
 #### レスポンス
@@ -1634,7 +2133,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/carousel/images
+POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/images
 Content-Type: multipart/form-data
 ```
 
@@ -1662,7 +2161,71 @@ Content-Type: multipart/form-data
 
 [例]
 ```
-curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
+```
+
+#### レスポンス
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "image": {
+      "imageSeq": Integer,
+      "imageUrl": String,
+      "imageName": String
+    }
+}
+```
+
+| 名前 |	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- resultCode|	Integer|	結果コード|
+|- resultMessage|	String| 結果メッセージ|
+|- isSuccessful|	Boolean| 成否|
+|image|	Object|	本文領域|
+|- imageSeq | Integer |	画像番号(カカともへのメッセージ送信時に使用)|
+|- imageUrl | String |	画像URL |
+|- imageName | String |	画像名(アップロードしたファイル名) |
+
+### カルーセルコマース画像登録
+#### リクエスト
+
+[URL]
+
+```
+POST  /friendtalk/v2.4/appkeys/{appkey}/carousel/commerce-images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 名前 |	タイプ|	説明|
+|---|---|---|
+|appkey|	String|	固有のアプリキー|
+
+[Header]
+```
+{
+  "X-Secret-Key": String
+}
+```
+| 名前 |	タイプ|	必須|	説明|
+|---|---|---|---|
+|X-Secret-Key|	String| O | コンソールで作成できます。  |
+
+[Request parameter]
+
+| 名前 |	タイプ|	必須|	説明|
+|---|---|---|---|
+|image|	File|	O |	画像 |
+
+[例]
+```
+curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/carousel/images" -F "image=@friend-ricecake02.jpeg"
 ```
 
 #### レスポンス
@@ -1700,7 +2263,7 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 [URL]
 
 ```
-GET  /friendtalk/v2.3/appkeys/{appkey}/images
+GET  /friendtalk/v2.4/appkeys/{appkey}/images
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1730,7 +2293,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images?pageNum=1&pageSize=15"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/images?pageNum=1&pageSize=15"
 ```
 
 #### レスポンス
@@ -1782,7 +2345,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-DELETE  /friendtalk/v2.3/appkeys/{appkey}/images
+DELETE  /friendtalk/v2.4/appkeys/{appkey}/images
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1810,7 +2373,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/images?imageSeq=1,2,3"
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/images?imageSeq=1,2,3"
 ```
 
 #### レスポンス
@@ -1837,7 +2400,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form
+POST  /friendtalk/v2.4/appkeys/{appkey}/senders/{senderKey}/biz-form
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1873,7 +2436,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/biz-form -d '{"bizFormId": 1}
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/senders/{senderKey}/biz-form -d '{"bizFormId": 1}
 ```
 
 #### レスポンス
@@ -1898,12 +2461,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 |bizFormKey | String | ビジネスフォームキー |
 
 ## 代替送信管理
-### SMS AppKey 登録
+### SMSアプリキー登録
 
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/failback/appkey
+POST  /friendtalk/v2.4/appkeys/{appkey}/failback/appkey
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1938,7 +2501,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/failback/appkey -d '{"resendAppKey": "smsAppKey"}
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/failback/appkey -d '{"resendAppKey": "smsAppKey"}
 ```
 
 #### レスポンス
@@ -1958,7 +2521,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 [URL]
 
 ```
-POST  /friendtalk/v2.3/appkeys/{appkey}/failback
+POST  /friendtalk/v2.4/appkeys/{appkey}/failback
 Content-Type: application/json;charset=UTF-8
 ```
 
@@ -1999,7 +2562,7 @@ Content-Type: application/json;charset=UTF-8
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/failback/appkey -d '{"plusFriendId": "@プラスフレンド","isResend": true,"resendSendNo": "01012341234", "resendUnsubscribeNo": "0801234567" }
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/failback/appkey -d '{"plusFriendId": "@プラスフレンド","isResend": true,"resendSendNo": "01012341234", "resendUnsubscribeNo": "0801234567" }
 ```
 
 #### レスポンス
