@@ -24,7 +24,6 @@
 4. 送信時、 imageSeq -> imageUrlフィールドを使用するように変更されました。
 
 ## メッセージの送信
-#### 送信リクエスト
 
 [URL]
 
@@ -505,13 +504,13 @@ Content-Type: application/json;charset=UTF-8
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 | statsId                 | String  | X    |	統計ID(発信検索条件には含まれません, 最大8文字) |
 
+
 [例]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/messages -d '{"plusFriendId":"@プラスフレンド","requestDate":"yyyy-MM-dd HH:mm","recipientList":[{"recipientNo":"010-0000-0000","imageSeq":1,"imageLink":"https://toast.com","content":"内容","buttons":[{"ordering":1,"type":"WL","name":"ボタン1","linkMo":"https://toast.com","linkPc":"https://toast.com"}]}]}'
 ```
 
 #### レスポンス
-
 ```
 {
   "header": {
@@ -600,32 +599,34 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
         {
-          "requestId" :  String,
-          "recipientSeq" : Integer,
-          "plusFriendId" :  String,
-          "recipientNo" :  String,
-          "requestDate" : String,
-          "createDate" : String,
-          "content" :  String,
-          "messageStatus" :  String,
-          "resendStatus" :  String,
-          "resendStatusName" :  String,
-          "resultCode" :  String,
-          "resultCodeName" : String,
-          "createUser" : String,
+          "requestId": String,
+          "recipientSeq": Integer,
+          "plusFriendId": String,
+          "senderKey": String,
+          "recipientNo": String,
+          "requestDate": String,
+          "createDate": String,
+          "receiveDate": String,
+          "content": String,
+          "messageStatus": String,
+          "resendStatus": String,
+          "resendStatusName": String,
+          "resultCode": String,
+          "resultCodeName": String,
+          "createUser": String,
           "senderGroupingKey": String,
           "recipientGroupingKey": String
         }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -641,9 +642,11 @@ Content-Type: application/json;charset=UTF-8
 | -- requestId                | String  | リクエストID                             |
 | -- recipientSeq             | Integer | 受信者シーケンス番号                  |
 | -- plusFriendId             | String  | プラスフレンドID                          |
+|-- senderKey   | String | 発信キー |
 | -- recipientNo              | String  | 受信番号                       |
 | -- requestDate              | String  | リクエスト日時                       |
 | -- createDate               | String  | 登録日時                             |
+|-- receiveDate | String |	受信日時 |
 | -- content                  | String  | 本文                          |
 | -- messageStatus            | String  | リクエストステータス(COMPLETED：成功、FAILED：失敗) |
 | -- resendStatus             | String  | 再送信ステータスコード                   |
@@ -830,6 +833,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | - requestId            | String  | リクエストID                                    |
 | - recipientSeq         | Integer | 受信者シーケンス番号                         |
 | - plusFriendId         | String  | プラスフレンドID                                 |
+|- senderKey   | String | 発信キー                                               |
 | - recipientNo          | String  | 受信番号                              |
 | - requestDate          | String  | リクエスト日時                              |
 | - createDate           | String  | 登録日時                             |
@@ -838,6 +842,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | - messageStatus        | String  | リクエストステータス(COMPLETED：成功、FAILED：失敗)      |
 | - resendStatus         | String  | 再送信ステータスコード                          |
 | - resendStatusName     | String  | 再送信ステータスコード名                             |
+|- resendResultCode | String | 再送信結果コードSMS結果コード                                |
+|- resendRequestId | String | 再送信SMSリクエストID                                            |
 | - resultCode           | String  | 受信結果コード                           |
 | - resultCodeName       | String  | 受信結果コード名                              |
 | - createUser           | String  | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)|
@@ -1004,31 +1010,32 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "recipientNo" :  String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "content" :  String,
-      "messageStatus" :  String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "recipientNo": String,
+      "requestDate": String,
+      "receiveDate": String,
+      "content": String,
+      "messageStatus": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resultCode": String,
+      "resultCodeName": String,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -1044,6 +1051,7 @@ Content-Type: application/json;charset=UTF-8
 | -- requestId                | String  | リクエストID                                    |
 | -- recipientSeq             | Integer | 受信者シーケンス番号                         |
 | -- plusFriendId             | String  | プラスフレンドID                                 |
+|-- senderKey | String |	発信キー |
 | -- recipientNo              | String  | 受信番号                              |
 | -- requestDate              | String  | リクエスト日時                              |
 | -- receiveDate              | String  | 受信日時                              |
@@ -1062,7 +1070,6 @@ Content-Type: application/json;charset=UTF-8
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.3/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
 ```
 
-## 大量送信
 ### 大量送信リクエストリスト照会
 
 #### リクエスト
@@ -1693,7 +1700,6 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 |- imageUrl | String |	画像URL |
 |- imageName | String |	画像名(アップロードしたファイル名) |
 
-
 ### イメージの照会
 #### リクエスト
 
@@ -1717,7 +1723,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 | 値      | タイプ | 必須 | 説明                                 |
-| ------------ | ------ | ---- | ---------------------------------------- |
+|---|---|---|---|
 | X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
@@ -1759,7 +1765,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 ```
 
 | 値         | タイプ | 説明               |
-| --------------- | ------- | ---------------------- |
+|---|---|---|
 | header          | Object  | ヘッダ領域            |
 | - resultCode    | Integer | 結果コード            |
 | - resultMessage | String  | 結果メッセージ           |
@@ -1774,7 +1780,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | - totalCount    | Integer | 総個数                  |
 
 * イメージは、最近登録した順にソートされてレスポンスを返します。
-
 
 ### イメージの削除
 #### リクエスト
@@ -1799,13 +1804,13 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 | 値      | タイプ | 必須 | 説明                                 |
-| ------------ | ------ | ---- | ---------------------------------------- |
+|---|---|---|---|
 | X-Secret-Key | String | O    | コンソールで作成できます。  |
 
 [Query parameter]
 
 | 値  | タイプ | 必須 | 説明 |
-| -------- | ------ | ---- | ------ |
+|---|---|---|---|
 | imageSeq | String | O    | イメージ番号 |
 
 [例]
@@ -1826,11 +1831,12 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Ke
 ```
 
 | 値         | タイプ | 説明 |
-| --------------- | ------- | ------ |
+|---|---|---|
 | header          | Object  | ヘッダ領域 |
 | - resultCode    | Integer | 結果コード |
 | - resultMessage | String  | 結果メッセージ |
 | - isSuccessful  | Boolean | 成否 |
+
 
 ## アップロード
 ### ビジネスフォーム登録
@@ -1897,6 +1903,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 |- isSuccessful|	Boolean| 成否|
 |bizFormKey | String | ビジネスフォームキー |
 
+
 ## 代替送信管理
 ### SMS AppKey 登録
 
@@ -1910,7 +1917,7 @@ Content-Type: application/json;charset=UTF-8
 [Path parameter]
 
 | 値     | タイプ | 説明 |
-| ------------ | ------ | -------- |
+|---|---|---|
 | appkey       | String | 固有のアプリケーションキー |
 
 [Header]
@@ -1920,7 +1927,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 | 値     | タイプ | 必須 | 説明                                |
-| ------------ | ------ | ---- | ---------------------------------------- |
+|---|---|---|---|
 | X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 
@@ -1965,7 +1972,7 @@ Content-Type: application/json;charset=UTF-8
 [Path parameter]
 
 | 値     | タイプ | 説明 |
-| ------------ | ------ | -------- |
+|---|---|---|
 | appkey       | String | 固有のアプリケーションキー |
 
 [Header]
@@ -1974,9 +1981,8 @@ Content-Type: application/json;charset=UTF-8
   "X-Secret-Key": String
 }
 ```
-
 | 値     | タイプ | 必須 | 説明                                |
-| ------------ | ------ | ---- | ---------------------------------------- |
+|---|---|---|---|
 | X-Secret-Key | String | O    | コンソールで作成できます。 |
 
 
@@ -1992,10 +1998,11 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 | 値                | タイプ | 必須 | 説明                                 |
-| ---------------------- | ------- | ---- | ---------------------------------------- |
+|---|---|---|---|
 | plusFriendId           | String  | O    | プラスフレンドID(最大30文字)                         |
 | isResend             | boolean | O    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | resendSendNo         | String  | O    | 代替送信発信番号(最大13桁)<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span> |
+|resendUnsubscribeNo|	String|	X | 代替送信080受信拒否番号<br><span style="color:red">(SMS商品に登録された080受信拒否番号でない場合、代替送信に失敗する可能性があります。)</span> |
 
 [例]
 ```
