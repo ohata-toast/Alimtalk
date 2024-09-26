@@ -1,4 +1,11 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+
+### August 27, 2024
+* [Console] Added new features to FriendTalk (v2.4)
+    * Added FriendTalk carousel commerce, premium video, commerce, and adult message settings.
+* [Console] Added the feature to set resend after nighttime ad sending timeout
+    * If you request to send during a nighttime ad sending timeout, you can set it to automatically resend after the ad sending timeout ends.
+
 ### July 23, 2024
 * [API] Fixed an issue where channel-add and composite templates could not be registered in the sender profile group
     * Improved to register channel-add and composite templates in the sender profile group.
