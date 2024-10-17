@@ -1,4 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### October 29, 2024
+* [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
+    * Improved so that comma (,) is usable for FriendTalk coupon titles.
+* [Console] Improved so that the FriendTalk send history can be viewed by the FriendTalk send type
+    * Added the feature to search by FriendTalk send type when searching FriendTalk send history.
 
 ### August 27, 2024
 * [Console] Added new features to FriendTalk (v2.4)
