@@ -1,16 +1,34 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### November 12, 2024
+* [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
+    * Improved so that comma (,) is usable for FriendTalk coupon titles.
+* [Console] Improved so that the FriendTalk send history can be viewed by the FriendTalk send type
+    * Added the feature to search by FriendTalk send type when searching FriendTalk send history.
+
+### August 27, 2024
+* [Console] Added new features to FriendTalk (v2.4)
+    * Added FriendTalk carousel commerce, premium video, commerce, and adult message settings.
+* [Console] Added the feature to set resend after nighttime ad sending timeout
+    * If you request to send during a nighttime ad sending timeout, you can set it to automatically resend after the ad sending timeout ends.
+
+### July 23, 2024
+* [API] Fixed an issue where channel-add and composite templates could not be registered in the sender profile group
+    * Improved to register channel-add and composite templates in the sender profile group.
+    
 ### June 25, 2024
-* [API] Improved to use strikethrough style for certain fields
-    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough.
+* [API] Improved to use strikethrough style for certain fields 
+    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough. 
     * But, the style does not apply if you add \s to the fields beforehand when registering a template
-* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab
+* [API] Changed so that, when sending FriendTalk with coupons included, a maximum of 4 buttons can be included
+    * When sending a FriendTalk text/image type message with a coupon, you can only add up to 4 buttons.
+* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab 
     * Fixed a bug that prevented template titles from being displayed as substituted values in the preview tab.
 
 ### May 28, 2024
 * [API] Changed the sorting criteria for responses of the get message list API
     * (Previous) Sort by requestDate in descending order
     * (Current) Sort by requestDate in descending order, Sort by requestId, recipientSeq in descending order if requestDate is the same
-
+  
 ### May 12, 2024
 * [API] Changed the carousel type field in FriendTalk
     * (AS-IS) The carousel type field with a required tail padding in FriendTalk, coupons unavailable

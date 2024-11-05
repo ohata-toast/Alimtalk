@@ -22,13 +22,28 @@ To send a FriendTalk, select **Notification > KakaoTalk Bizmessage > FriendTalk*
 
 5. Enter the content.
 
-6. Select a message type.
-    * Wide item list. 
+6. Select a message type. For a detailed guide to each type, see [Supported types for FriendTalk](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/friendtalk-overview/#_3).
+    * Basic (text/image/wide image)
+        * Text: 1,000 characters of text, including spaces, regardless of Korean/English + up to 5 link buttons (vertically arranged)
+        * Image: 400 characters of text, including spaces, regardless of Korean/English + 1 image + up to 5 link buttons (vertically arranged)
+        * Wide image: 76 characters of text, including spaces, regardless of Korean/English + 1 image + 1 link button
+    * Wide item list
         * It is an advertisement-type product that allows you to add three to four lists (image + item) to one title.
         * Text with spacing, regardless of Korean/English, first item title 25 characters, 2nd to 4th item title 30 characters + 3 to 4 image items + up to 2 link buttons (horizontal alignment)
-    * Carousel
+    * Carousel feed
         * It is an advertisement-type product that can contain up to 10 images and various text information.
         * Up to 10 items consisting of 20 subject text + phrase text 180 characters + image + link buttons (horizontal alignment), including spaces, regardless of Korean/English
+    * Premium video
+        * The type of video you attached that will automatically play in the speech bubble.
+        * The video link can only be used for videos uploaded to Kakao TV (e.g. https://tv.kakao.com/v/#{숫자} / https://tv.kakao.com/channel/#{숫자}/cliplink/#{숫자}).
+        * 'Header' 20 characters of text + 'Copy' 76 characters of text + 1 video uploaded to Kakao TV + 1 link button
+    * Commerce
+        * A speech bubble that can be used to highlight pricing and discount information for a product.
+        * 20 characters of text for "Title" + 34 characters of text for "Additional Info" + up to 2 link buttons (horizontally aligned) with no spaces, regardless of Korean/English
+    * Carousel commerce
+        * A speech bubble that allows you to organize information about different products into a catalog.
+        * Up to 10 items consisting of 30 characters of "Title" text + 34 characters of "Additional Info" text + up to 2 link buttons (horizontally aligned), with no case-sensitive spacing
+        * All images used in carousel commerce must have the same proportions.
 
 7. Select an image, if any.
     * Before you can attach an image to a message, you must register the image on the <b>Image Management</b> tab.
@@ -171,22 +186,22 @@ You can register or delete the images you want to use for FriendTalk and check t
 
 ![friendtalk_09_20231227.png](https://static.toastoven.net/prod_alimtalk/friendtalk_09_20231227.png)
 
-* You can select Images to register by type (basic/wide, wide item list type, carousel, business form).
+* You can select Images to register by type (basic/wide, wide item list type, carousel feed, carousel commerce, business form).
 * You cannot use the image when the image is deleted.
 * Make sure to comply with file specifications, recommended/restricted sizes.
 * You can copy an image address URL, which is utilized when sending APIs.
 * Business form is a business tool that supports event design such as schedule arrangements, surveys, and applications that KakaoTalk users can easily participate in and create and enter the corresponding ID. 
-▶ Register Business Form Shortcut (https://business.kakao.com/talkbizform/) 
-▶ Business Form Registration Guide Shortcut (https://kakaobusiness.gitbook.io/main/tool/bizform)
+* Go to [Register Business Form](https://business.kakao.com/talkbizform/) 
+* Go to [Business Form Registration Guide](https://kakaobusiness.gitbook.io/main/tool/bizform)
 
 #### Range that allows Image upload 
 * File format: JPG, PNG
-* File size: General [5MB or less] / Wide [5MB or less] / Wide item list, carousel [5MB or less]
+* File size: General [5MB or less] / Wide [5MB or less] / Wide item list, carousel feed, carousel commerce [5MB or less]
 * Size limit
 - General [500px * 250px]
 - Wide [800px * 600px]
 - Wide item list [400px * 400px ~ 800px * 400px]
-- carousel [width length 500px or more]
+- Carousel feed, carousel commerce [width length 500px or more]
 * Ratio: normal / carousel [width: length ratio is 2:1 or more and 3:4 or less]
 
 
