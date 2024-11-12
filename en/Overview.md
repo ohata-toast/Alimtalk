@@ -4,12 +4,12 @@ KakaoTalk Bizmessage is a service that can send messages, AlimTalk and FriendTal
 It provides RESTful API for easy interworking.
 
 ## AlimTalk vs FriendTalk
-| Classification    | AlimTalk                                    | FriendTalk                                       |
-| ----- |----------------------------------------|-------------------------------------------|
-| Send contents | Able to send informational messages                          | Able to send advertising messages                             |
-| Send To | Doesn’t matter if friend or not (needs phone number information)                 | Users who made friends with the KakaoTalk channel (need phone number information)           |
-| Send type | Text type<br>Image Type                           | Text type<br>Image Type<br>Wide image type<br>Item list<br>Carousel |
-| Considerations | - Informational Biz messages only<br />- Send based on approved templates | - Delivery restricted during night (20:50~08:00 on the following day)              |
+| Classification    | AlimTalk                                    | FriendTalk                                                                              |
+| ----- |----------------------------------------|------------------------------------------------------------------------------------|
+| Send contents | Able to send informational messages                          | Able to send advertising messages                                                                     |
+| Send To | Doesn’t matter if friend or not (needs phone number information)                 | Users who made friends with the KakaoTalk channel (need phone number information)                                                    |
+| Send type | Text type<br>Image Type                           | Text type<br>Image Type<br>Wide image type<br>Wide item list<br>Carousel feed type<br>Premium video type<br>Commerce type<br>Carousel commerce type |
+| Considerations | - Informational Biz messages only<br />- Send based on approved templates | - Delivery restricted during night (20:50~08:00 on the following day)                                                      |
 
 ## Precautions Before Delivery
 * When using AlimTalk, the customer should inform the recipient of the following precautions for using the service.
@@ -26,5 +26,5 @@ Accordingly, we can guide customers to comply with the relevant laws and regulat
 Example<br>
 [Notice of Personal Information Consignee]<br>
 When using the KakaoTalk Bizmessage service, please indicate the following information in the 'Personal Information Processing Policy > Consignment Status' operated by the customer.<br>
-Consignee: NHN<br>
+Consignee: NHN Cloud Corp.<br>
 Business details: KakaoTalk Biz messaging agent<br>
