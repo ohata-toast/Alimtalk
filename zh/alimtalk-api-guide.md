@@ -1989,10 +1989,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| Name |	Type|	Required| 	Description                                                                                                                                            |
-|---|---|---|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-|comment|	String |	O | Inquiries                                                                                                                                               |
-|attachments| List<File> | X | List of Attachment(Up to 10)<br>- Supported extensions ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- Maximum size of each individual file 100mb<br>- Maximum total size of files that can be uploaded 100mb |
+| Name |	Type|	Required| 	Description                                                                                                                                                                                                           |
+|---|---|---|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|comment|	String |	O | Inquiries                                                                                                                                                                                                              |
+|attachments| List<File> | X | List of Attachment(Up to 10)<br>- Supported extensions ( .png, .jpg, .jpeg, .gif, .pdf, .hwp, .doc, .docx )<br>- Maximum size of each individual file 50mb<br>- Maximum total size of files that can be uploaded 100mb |
 
 * When commenting a template in the REJ status, it will be changed to the REQ status.
 

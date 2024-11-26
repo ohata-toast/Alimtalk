@@ -798,7 +798,6 @@ Content-Type: application/json;charset=UTF-8
     "createUser": String,
     "recipientList": [{
         "recipientNo": String,
-        "content": String,
         "additionalContent": String,
         "buttons": [
           {
@@ -854,7 +853,6 @@ Content-Type: application/json;charset=UTF-8
 | createUser           | String | X   | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                 |
 | recipientList        | List | 	O  | 受信者リスト(最大1,000人)                                                                                                                                            |
 | - recipientNo        | String | O   | 受信番号                                                                                                                                                 |
-| - content            | String | O   | 内容(最大1,000文字)<br>画像送信時、最大400文字<br>ワイド画像送信時、最大76文字                                                                                             |
 | - additionalContent | String | X   | 付加情報(最大34文字)、コマース型でのみ使用可能                                                                                                                      |
 | - buttons            | List | X   | 	ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
 | -- ordering          | Integer | X   | ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
