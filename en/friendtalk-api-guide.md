@@ -795,7 +795,6 @@ Content-Type: application/json;charset=UTF-8
     "createUser": String,
     "recipientList": [{
         "recipientNo": String,
-        "content": String,
         "additionalContent": String,
         "buttons": [
           {
@@ -851,7 +850,6 @@ Content-Type: application/json;charset=UTF-8
 | createUser           | String | X   | Registrant (saved as user UUID when sending from console)                                                                                                                                 |
 | recipientList        | List | 	O  | Recipient lists (up to 1,000 recipients)                                                                                                                                            |
 | - recipientNo        | String | O   | Recipient number                                                                                                                                                       |
-| - content            | String | O   | Body message (up to 1,000 characters)<br>Up to 400, if image is included<br>Up to 76, if wide image is included                                                                                                   |
 | - additionalContent | String | X   | Additional information (up to 34 characters), available for commerce only                                                                                                                            |
 | - buttons            | List | X   | 	Buttons (up to 5, up to 4 if a coupon is included)<br>Up to 2 link buttons when sending wide images                                                                                                   |
 | -- ordering          | Integer | X   | Button sequence (required, if there is a button)                                                                                                                                         |
