@@ -795,7 +795,6 @@ Content-Type: application/json;charset=UTF-8
     "createUser": String,
     "recipientList": [{
         "recipientNo": String,
-        "content": String,
         "additionalContent": String,
         "buttons": [
           {
@@ -851,7 +850,6 @@ Content-Type: application/json;charset=UTF-8
 | createUser           | String | X   | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                 |
 | recipientList        | List | 	O  | 수신자 목록(최대 1,000명)                                                                                                                                            |
 | - recipientNo        | String | O   | 수신 번호                                                                                                                                                       |
-| - content            | String | O   | 내용(최대 1,000자)<br>이미지 발송 시, 최대 400자<br>와이드 이미지 발송 시, 최대 76자                                                                                                   |
 | - additionalContent | String | X   | 부가 정보(최대 34자), 커머스형에서만 사용 가능                                                                                                                            |
 | - buttons            | List | X   | 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                   |
 | -- ordering          | Integer | X   | 버튼 순서(버튼이 있는 경우 필수)                                                                                                                                         |
