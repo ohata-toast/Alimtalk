@@ -1,4 +1,17 @@
 ## Notification > KakaoTalk Bizmessage > リリースノート
+### 2025. 01. 14.
+* [API]カカオトークでメッセージを送信できない場合に返されるレスポンスコード(3018)が以下のように細分化されて提供される予定
+
+    | 商品別 | code | 説明           |
+    |-----| --- |---------------|
+    | お知らせトーク | 3018 | メッセージ送信不可 |
+    |     | 3019 | カカオトークユーザーではない   |
+    |     | 3020 | お知らせトーク受信ブロック    |
+    |     | 3021 | カカオトーク最小バージョン未サポート  |
+    | カカともへのメッセージ | 3018 | メッセージを送信不可 |
+    |     | 3019 | カカオトークユーザーではない      |
+    |     | 3021 | カカオトーク最小バージョン未サポート  |
+    
 ### November 12, 2024
 * [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
     * Improved so that comma (,) is usable for FriendTalk coupon titles.
