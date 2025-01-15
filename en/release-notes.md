@@ -1,4 +1,17 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
+### January 14, 2025
+* [API] Scheduled to segment the respose code (3018) that was bounced back when KakaoTalk could not send a message as follows
+
+    | Product | code | Description  |
+    |-----| --- | --- |
+    | AlimTalk | 3018 | Cannot send a message |
+    |     | 3019 | Not a KakaoTalk user |
+    |     | 3020 | Blocked AlimTalk reception |
+    |     | 3021 | KakaoTalk minimum version not supported |
+    | FriendTalk | 3018 | Cannot send a message |
+    |     | 3019 | Not a KakaoTalk user |
+    |     | 3021 | KakaoTalk minimum version not supported |
+
 ### November 12, 2024
 * [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
     * Improved so that comma (,) is usable for FriendTalk coupon titles.
