@@ -11,12 +11,18 @@
     | カカともへのメッセージ | 3018 | メッセージを送信不可 |
     |     | 3019 | カカオトークユーザーではない      |
     |     | 3021 | カカオトーク最小バージョン未サポート  |
-    
+
 ### November 12, 2024
 * [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
     * Improved so that comma (,) is usable for FriendTalk coupon titles.
 * [Console] Improved so that the FriendTalk send history can be viewed by the FriendTalk send type
     * Added the feature to search by FriendTalk send type when searching FriendTalk send history.
+
+### 2024. 10. 29.
+* [Console]カカともへのメッセージクーポンのタイトルにコンマ(,)を使用できるように改善
+    * カカともへのメッセージクーポンのタイトルにコンマ(,)を使用できるように改善しました。
+* [Console]カカともへのメッセージ送信履歴照会時、カカともへのメッセージ送信タイプで照会できるように改善
+    * カカともへのメッセージ送信履歴を照会する際、カカともへのメッセージ送信タイプ条件で照会できるように機能を追加しました。
 
 ### 2024. 08. 27.
 * [Console]カカともへのメッセージ新規機能追加(v2.4)

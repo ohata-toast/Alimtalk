@@ -275,15 +275,15 @@
 	</tr>
     <tr>
 		<td>3019</td>
-		<td>메시지를 전송할 수 없음<br>톡 유저가 아님</td>
+		<td>Cannot send a message<br>Not a KakaoTalk user</td>
 	</tr>
     <tr>
 		<td>3020</td>
-		<td>메시지를 전송할 수 없음<br>알림톡 수신 차단</td>
+		<td>Cannot send a message<br>AlimTalk reception blocked</td>
 	</tr>
     <tr>
 		<td>3021</td>
-		<td>메시지를 전송할 수 없음<br>톡 최소 버전 미지원</td>
+		<td>Cannot send a message<br>KakaoTalk minimum version not supported</td>
 	</tr>
 	<tr>
 		<td>3022</td>
