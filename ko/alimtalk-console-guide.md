@@ -61,7 +61,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 여러 수신 번호로 알림톡
 ## 발송 조회
 ### 발송 결과 조회
 메시지 타입을 조건으로 조회할 수 있습니다.
-(<b>요청 ID</b> 및 <b>요청 일시</b>는 필수값입니다.)
+(<b>요청ID</b> 및 <b>요청 일시</b>는 필수값 입니다.)
 ![KTB_13_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_13_20250403.jpg)
 * 각 발송 메시지의 자세한 내용은 검색 결과 항목을 클릭해 <b>상세 보기</b> 화면에서 확인할 수 있습니다.
 * <b>요청 일시</b>는 최대 한 달 이내로 검색할 수 있습니다.
