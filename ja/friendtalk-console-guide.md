@@ -133,7 +133,7 @@ Excel/CSVフォーマットのテンプレートファイルによって、複�
 ### 送信結果の照会
 **送信結果照会**タブでカカともへのメッセージを照会できます。
 
-![friendtalk_05_20231227.png](https://static.toastoven.net/prod_alimtalk/friendtalk_05_20231227.png)
+![friendtalk_05_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/friendtalk_05_20250403.png)
 
 * 各送信メッセージの詳細は、検索結果項目をクリックして<b>詳細表示</b>画面で確認できます。
 * <b>登録日時</b> および <b>リクエスト日時</b>は最大1か月以内の検索が可能です。
@@ -152,7 +152,7 @@ Excel/CSVフォーマットのテンプレートファイルによって、複�
 ### 大量送信の照会
 カカともへのメッセージの大量送信件を照会できます。
 
-![friendtalk_06_20231227.png](https://static.toastoven.net/prod_alimtalk/friendtalk_06_20231227.png)
+![friendtalk_06_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/friendtalk_06_20250403.jpg)
 
 * 照会：上段の照会フォームで大量カカともへのメッセージ送信件を照会できます。照会件のリスト行を選択すると、下段の照会フォームで受信番号と送信情報(送信内容、送信結果)を確認できます。
 * 送信/キャンセル：大量カカともへのメッセージを送信する際、<b>検収後に実行</b>を選択すると、<b>送信準備完了</b>状態の項目を<b>送信</b>または<b>キャンセル</b>をクリックして、送信およびキャンセルできます。

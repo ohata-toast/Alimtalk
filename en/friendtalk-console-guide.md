@@ -132,7 +132,7 @@ If an advertising message is sent after release it, you may be restricted to use
 ### Retrieve send results 
 You can view FriendTalk message in **Retrieve Send Results** tab.
 
-![friendtalk_05_20231227.png](https://static.toastoven.net/prod_alimtalk/friendtalk_05_20231227.png)
+![friendtalk_05_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/friendtalk_05_20250403.png)
 
 * Details of each sending message can be found on the <b>View Details</b> screen by clicking on the search results item.
 * <b>Registration Date and Time</b> and <b>Date and time of request</b> can be retrieved up to a month.
@@ -151,7 +151,7 @@ You can cancel scheduled delivery if the date and time of the sending request se
 ### View Mass Delivery
 You can view the mass delivery of your FriendTalk.
 
-![friendtalk_06_20231227.png](https://static.toastoven.net/prod_alimtalk/friendtalk_06_20231227.png)
+![friendtalk_06_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/friendtalk_06_20250403.jpg)
 
 * View: You can look up the mass delivery of FriendTalk in the inquiry form at the top. If you select the line of the inquiry list, you can check the receipt number and the sending information (contents, delivery results) in the inquiry form at the bottom.
 * Send/Cancel: When sending mass delivery FriendTalk, select <b>Inspect and proceed</b> to send or cancel items that are <b> Ready to send</b> by clicking on <b>Send</b> or <b>Cancel</b>.

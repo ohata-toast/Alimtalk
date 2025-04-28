@@ -61,17 +61,17 @@ It is the feature to send a text message alternatively if you fail to send AlimT
 ## View Delivery 
 ### Retrieve send results 
 You can view based on the message type. 
-(<b>Request ID</b> and <b>Registration Date and Time</b> are required values.) 
-![KTB_13_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_13_20230926.png)
+(<b>Request ID</b> and <b>Request Date and Time</b> are required values.) 
+![KTB_13_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_13_20250403.jpg)
 * Details of each sending message can be found on the <b>View Details</b> screen by clicking on the search results item.
-* <b>Registration Date and Time </b> and <b>Request Date and Time </b> can be retrieved up to a month.
+* <b>Request Date and Time </b> can be retrieved up to a month.
 * Data displayed on full screen can be downloaded as an Excel file.
 * You can check the status of the delivery request in <b>Request Status</b> column.
 * In the <b>send results</b> column, you can see whether the shipment was successful or not.
 
 ### Cancel Send
 During normal delivery, scheduled delivery with sending request date and time set to the future can be canceled. 
-![KTB_14_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_14_20230926.png)
+![KTB_14_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_14_20250403.jpg)
 * You can see the check box on the left side of the request ID by querying the scheduled delivery request.
 * The check box appears only for uncancelled scheduled requests.
 * If you select the check box of the request you want to cancel and click on <b>Cancel Selected Schedule</b> at the top, the request will be canceled.
@@ -80,7 +80,7 @@ During normal delivery, scheduled delivery with sending request date and time se
 
 ### View Mass delivery
 You can View Mass delivery of AlimTalk. 
-![KTB_15_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_15_20230926.png)
+![KTB_15_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_15_20250403.png)
 * View: You can look up mass AlimTalk messages sent in the inquiry form at the top. If you select the line of the inquiry list, you can check the receipt number and the sending information (sending contents, sending result) in the inquiry form at the bottom.
 * Send/Cancel: When sending mass AlimTalk, select <b> Inspect and proceed</b> to send or cancel items that are <b>ready to send</b> by clicking on <b>Send</b> or <b>Cancel</b>.
 * We recommend that you click on an item in the search results and check the replacement value in View in Detail window.
