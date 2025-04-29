@@ -61,17 +61,17 @@ Excel/CSV 포맷의 템플릿 파일을 통해 여러 수신 번호로 알림톡
 ## 발송 조회
 ### 발송 결과 조회
 메시지 타입을 조건으로 조회할 수 있습니다.
-(<b>요청 ID</b> 및 <b>등록 일시</b>는 필수값입니다.)
-![KTB_13_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_13_20230926.png)
+(<b>요청ID</b> 및 <b>요청 일시</b>는 필수값 입니다.)
+![KTB_13_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_13_20250403.jpg)
 * 각 발송 메시지의 자세한 내용은 검색 결과 항목을 클릭해 <b>상세 보기</b> 화면에서 확인할 수 있습니다.
-* <b>등록 일시</b> 및 <b>요청 일시</b>는 최대 한 달 이내로 검색할 수 있습니다.
+* <b>요청 일시</b>는 최대 한 달 이내로 검색할 수 있습니다.
 * 전체 화면에 표시되는 데이터는 엑셀 파일로 다운로드할 수 있습니다.
 * <b>요청 상태</b> 열에서 발송 요청에 대한 상태를 확인할 수 있습니다.
 * <b>발송 결과</b> 열에서 발송 처리에 대한 성공 여부를 확인할 수 있습니다.
 
 ### 발송 취소
 일반 발송 중 발신 요청 일시를 미래로 설정한 예약 발송은 취소할 수 있습니다.
-![KTB_14_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_14_20230926.png)
+![KTB_14_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_14_20250403.jpg)
 * 예약 발신 요청을 조회하면 요청 ID 좌측의 체크 박스를 확인할 수 있습니다.
 * 체크 박스는 취소되지 않은 예약 요청에만 나타납니다.
 * 취소할 요청의 체크 박스를 선택한 뒤 상단의 <b>선택 예약 취소</b>를 클릭하면 해당 요청이 취소됩니다.
@@ -80,7 +80,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 여러 수신 번호로 알림톡
 
 ### 대량 발송 조회
 알림톡의 대량 발송 건을 조회할 수 있습니다.
-![KTB_15_20230926.png](https://static.toastoven.net/prod_alimtalk/KTB_15_20230926.png)
+![KTB_15_20250403.jpg](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_alimtalk/KTB_15_20250403.png)
 * 조회: 상단의 조회 폼에서 대량 알림톡 발송 건을 조회할 수 있습니다. 조회 건의 리스트 행을 선택하면 하단의 조회 폼에서 수신번호와 발송 정보(발송 내용, 발송 결과)를 확인할 수 있습니다.
 * 발송/취소: 대량 알림톡을 발송할 때 <b>검수 후 진행</b>을 선택하면 <b>발송 준비 완료</b> 상태인 항목을 <b>발송</b> 또는 <b>취소</b>를 클릭해 발송하거나 취소할 수 있습니다.
 * 검색 결과에서 항목을 클릭하고 상세 조회 창에서 치환값을 확인할 것을 권장합니다.
