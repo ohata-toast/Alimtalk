@@ -1,0 +1,2941 @@
+## Notification > KakaoTalk Bizmessage > 친구톡 Upgrade > API v1.0 Guide
+
+## 친구톡 Upgrade
+
+#### [API 도메인]
+
+| 도메인 |
+| --- |
+| [https://api-alimtalk.cloud.toast.com](https://api-alimtalk.cloud.toast.com) |
+
+## V1.0 API 소개
+
+## 메시지 자유형 발송 요청
+
+* 마수동 발송은 자유형 발송으로 발송할 수 없습니다.
+* 기존 친구톡의 8가지 메시지 유형을 전부 사용할 수 있습니다.
+* BC, BT 버튼 타입을 사용할 수 있습니다.
+* AC(채널 추가)버튼을 사용할 수 없습니다.
+* BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 넣어서 사용할 수 있습니다.
+* cbt 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
+
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk-upgrade/v1.0/appkeys/{appkey}/freestyle-messages
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 텍스트형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "TEXT",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "content": String,
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 이미지형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "IMAGE",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "content": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
+| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용 |
+| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 와이드 이미지형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "WIDE",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "content": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
+| \- imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용 |
+| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 와이드 아이템 리스트형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "WIDE_ITEM_LIST",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "header": String,
+    "item": {
+        "list": [
+            {
+                "title": String,
+                "imageUrl": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            },
+            {
+                "title": String,
+                "imageUrl": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            },
+            {
+                "title": String,
+                "imageUrl": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            }
+        ]
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| header | String | O | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
+| item | Object | O | 와이드 리스트 요소 (WIDE\_ITEM\_LIST 타입에서만 사용 가능) |
+| \- list | List | O | 와이드 리스트 (최소: 3, 최대 4) |
+| \-\- title | String | O | 아이템 제목<br>\- 1번째 아이템은 최대 25자 제한 \(줄바꿈: 최대 1개\, 1번째 아이템의 경우 title이 필수 값이 아님\)<br>\- 2\~4번째 아이템 최대 30자 제한 \(줄바꿈: 최대 1개\) |
+| \-\- imageUrl | String | O | 아이템 이미지 URL<br>\- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>\- 2\~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 프리미엄 동영상형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "PREMIUM_VIDEO",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "content": String,
+    "header": String,
+    "video": {
+        "videoUrl": String,
+        "thumbnailUrl": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | X | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| header | String | X | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
+| video | Object | O | 동영상 요소 (PREMIUM\_VIDEO 타입만 사용 가능) |
+| \- videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한 |
+| \- thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 커머스형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "COMMERCE",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "additionalContent": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String
+    },
+    "commerce": {
+        "title": String,
+        "regularPrice": Integer,
+        "discountPrice": Integer,
+        "discountRate": Integer,
+        "discountFixed": Integer,
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| additionalContent | String | X | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능 |
+| commerce | Object | O | 커머스 (COMMERCE 타입에서만 사용 가능) |
+| title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999) |
+| discountPrice | Integer | X | 할인가격(0 \~ 99,999,999) |
+| discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| buttons | List | O | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 캐러셀 피드형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "CAROUSEL_FEED",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "carousel": {
+        "list": [
+            {
+                "header": String,
+                "content": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "chatExtra": String,
+                        "chatEvent": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                }
+            },
+            {
+                "header": String,
+                "content": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "chatExtra": String,
+                        "chatEvent": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                }
+            }
+        ],
+        "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+        }
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| carousel | Object | O | 캐러셀 |
+| \- list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
+| \-\- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
+| \-\- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
+| \-\- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능) |
+| \-\- imageLink | String | O | 이미지 링크, 1000자 제한 |
+| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\- coupon | Object | X | 쿠폰 요소 |
+| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- tail | Object | X | 더보기 버튼 정보 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 캐러셀 커머스형 발송 요청
+
+[Request body]
+
+```
+{
+    "senderKey": String,
+    "chatBubbleType": "CAROUSEL_COMMERCE",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "carousel": {
+        "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+        },
+        "list": [
+            {
+                "additionalContent": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "chatExtra": String,
+                        "chatEvent": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                },
+                "commerce": {
+                    "title": String,
+                    "regularPrice": Integer,
+                    "discountPrice": Integer,
+                    "discountRate": Integer,
+                    "discountFixed": Integer,
+                },
+            }
+        ],
+        "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+        }
+    },
+    "recipientList": [
+        {
+            "recipientNo": String
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| carousel | Object | O | 캐러셀 |
+| \- head | Object | X | 캐러셀 인트로 |
+| \-\- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
+| \-\- content | String | O | 캐러셀 인트로 내용(최대 50자) |
+| \-\- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함) |
+| \-\- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| \- list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
+| \-\- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
+| \-\- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용) |
+| \-\- imageLink | String | O | 이미지 링크, 1000자 제한 |
+| \-\- commerce | Object | O | 커머스 (CAROUSEL\_COMMERCE 타입에서만 사용 가능) |
+| \-\-\- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| \-\-\- regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999) |
+| \-\-\- discountPrice | Integer | X | 할인가격(0 \~ 99,999,999) |
+| \-\-\- discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| \-\-\- discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
+| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\- coupon | Object | X | 쿠폰 요소 |
+| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- tail | Object | X | 더보기 버튼 정보 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 응답
+
+```
+{
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "message": {
+    "requestId": String,
+    "sendResults": [
+      {
+        "recipientSeq": Integer,
+        "recipientNo": String,
+        "resultCode": Integer,
+        "resultMessage": String,
+      }
+    ]
+  }
+}
+```
+
+## 메시지 기본형 발송 요청
+
+* 템플릿을 이용한 발송입니다.
+* 마수동 발송을 사용할 수 있습니다.
+    * 현재 마수동 발송의 경우 5가지 메시지 유형(TEXT, IMAGE, WIDE, CAROUSEL\_FEED, PREMIUM\_VIDEO)만 지원합니다.
+* BC, BT 버튼 타입을 사용할 수 없습니다.
+* AC(채널 추가)버튼을 사용할 수 있습니다.
+* BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 업로드하여 비즈폼키를 발급받아 사용할 수 있습니다.
+* cbt 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
+
+[URL]
+
+```
+POST  /friendtalk-upgrade/v1.0/appkeys/{appkey}/basic-messages
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 발송 요청
+
+```
+{
+    "senderKey": String,
+    "templateCode": String,
+    "pushAlarm": boolean,
+    "recipientList": [
+        {
+            "recipientNo": String,
+            "targeting": String,
+            "templateParameter": Object
+        }
+    ],
+    "createUser": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
+| templateCode | String | O | 사용하려는 템플릿 코드 |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| \- targeting | String | O | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
+| \- templateParameter | Object | X | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수) |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 응답
+
+```
+{
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "message": {
+    "requestId": String,
+    "sendResults": [
+      {
+        "recipientSeq": Integer,
+        "recipientNo": String,
+        "resultCode": Integer,
+        "resultMessage": String,
+      }
+    ]
+  }
+}
+```
+
+## 발송 목록 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appkey}/messages
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Query parameter] 1번 or 2번 조건 필수
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| requestId | String | 조건 필수(1번) | 요청 ID |
+| startRequestDate | String | 조건 필수(2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm) |
+| endRequestDate | String | 조건 필수(2번) | 발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
+| senderKey | String | X | 발신 키 |
+| templateCode | String | X | 템플릿 코드 |
+| recipientNo | String | X | 수신 번호 |
+| messageStatus | String | 요청 상태 | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
+| resultCode | String | X | 발송 결과(MRC01: 성공 MRC02: 실패 ) |
+| pageNum | String | X | 페이지 번호(Default: 1) |
+| pageSize | String | X | 조회 건수(Default: 15, Max: 1000) |
+
+#### 응답
+
+```
+{
+    "header": {
+        "resultCode": Integer,
+        "resultMessage": String,
+        "isSuccessful": boolean
+    },
+    "messageSearchResultResponse": {
+        "messages": [
+            {
+                "requestId": String,
+                "recipientSeq": Integer,
+                "plusFriendId": String,
+                "templateCode": String,
+                "recipientNo": String,
+                "targeting": String,
+                "requestDate": String,
+                "createDate": String,
+                "receiveDate": String,
+                "chatBubbleType": String,
+                "pushAlarm": boolean,
+                "messageStatus": String
+                "isAddedChannel": boolean,
+                "resultCode": String,
+                "createUser": String
+            }
+        ],
+        "totalCount": Integer
+    }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| messageSearchResultResponse | Object | 본문 영역 |
+| \- messages | List | 메시지 리스트 |
+| \-\- requestId | String | 요청 ID |
+| \-\- recipientSeq | Integer | 수신자 시퀀스 번호 |
+| \-\- plusFriendId | String | 발신 프로필 ID |
+| \-\- senderKey | String | 발신 키 |
+| \-\- templateCode | String | 템플릿 코드 |
+| \-\- recipientNo | String | 수신 번호 |
+| \-\- target | String | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
+| \-\- requestDate | String | 요청 일시 |
+| \-\- createDate | String | 등록 일시 |
+| \-\- receiveDate | String | 수신 일시 |
+| \-\- chatBubbleType | String | 메시지 타입 |
+| \-\- pushAlarm | boolean | 푸시 알림 여부 |
+| \-\- messageStatus | String | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
+| \-\- isAddedChannel | String | 채널 친구 여부 |
+| \-\- resultCode | String | 수신 결과 코드 |
+| \-\- resultCodeName | String | 수신 결과 코드명 |
+| \-\- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+| \- totalCount | Integer | 총 개수 |
+
+## 발송 단건 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appkey}/messages/{requestId}/{recipientSeq}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| requestId | String | 요청 ID |
+| recipientSeq | Integer | 수신자 시퀀스 번호 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "message": {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "targeting": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "chatBubbleType": String,
+      "content": String,
+      "adult": boolean,
+      "header": String,
+      "additionalContent": String,
+      "image": {
+          "imageUrl": String,
+          "imageLink": String,
+      },
+      "buttons": [
+          {
+              "name": String,
+              "type": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+              "chatExtra": String,
+              "chatEvent": String,
+              "bizFormKey": String
+          }
+      ],
+      "item": {
+          "list": [
+              {
+                  "title": String,
+                  "imageUrl": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeIos": String,
+                  "schemeAndroid": String,
+              }
+          ]
+      },
+      "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+      },
+      "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+      },
+      "video": {
+          "videoUrl": String,
+          "thumbnailUrl": String
+      },
+      "carousel": {
+          "head": {
+              "header": String,
+              "content": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String
+          },
+          "list": [
+              {
+                  "header": String,
+                  "message": String,
+                  "addtionalContent": String,
+                  "attachment": {
+                      "buttons": [
+                          {
+                              "name": String,
+                              "type": String,
+                              "linkMo": String,
+                              "linkPc": String,
+                              "schemeAndroid": String,
+                              "schemeIos": String,
+                          }
+                      ],
+                      "image":{
+                          "imageUrl": String,
+                          "imageLink": String
+                      },
+                      "coupon": {
+                          "title": String,
+                          "description": String,
+                          "linkMo": String,
+                          "linkPc": String,
+                          "schemeAndroid": String,
+                          "schemeIos": String
+                      },
+                      "commerce": {
+                          "title": String,
+                          "regularPrice": Integer,
+                          "discountPrice": Integer,
+                          "discountRate": Integer,
+                          "discountFixed": Integer
+                      }
+                  }
+              }
+          ],
+          "tail": {
+              "linkMo": String,
+              "linkPc": String,
+              "schemeAndroid": String,
+              "schemeIos": String
+          }
+      },
+      "templateParameter": String,
+      "pushAlarm": boolean,
+      "messageStatus": String,
+      "isAddedChannel": boolean
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| message | Object | 메시지 본문 영역 |
+| \- requestId | String | 요청 ID |
+| \- recipientSeq | Integer | 수신자 시퀀스 번호 |
+| \- plusFriendId | String | 발신 프로필 ID |
+| \- senderKey | String | 발신 키 |
+| \- templateCode | String | 템플릿 코드 |
+| \- recipientNo | String | 수신 번호 |
+| \- target | String | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
+| \- requestDate | String | 요청 일시 |
+| \- createDate | String | 등록 일시 |
+| \- receiveDate | String | 수신 일시 |
+| \- chatBubbleType | String | 메시지 타입 |
+| \- pushAlarm | boolean | 푸시 알림 여부 |
+| \- content | String | 메시지 내용 |
+| \- adult | boolean | 성인용 메시지 여부 |
+| \- header | String | 헤더 |
+| \- item | Object | 와이드 리스트 요소 |
+| \-\- list | List | 와이드 리스트 |
+| \-\-\- title | String | 아이템 제목 |
+| \-\-\- imageUrl | String | 아이템 이미지 URL |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \- video | Object | 동영상 요소 |
+| \-\- videoUrl | String | 카카오TV 동영상 URL |
+| \-\- thumbnailUrl | String | 동영상 썸네일용 이미지 URL |
+| \- commerce | Object | 커머스 요소 |
+| \-\- title | String | 상품 제목 |
+| \-\- regularPrice | Integer | 정상 가격 |
+| \-\- discountPrice | Integer | 할인가격 |
+| \-\- discountRate | Integer | 할인율 |
+| \-\- discountFixed | Integer | 정액할인가격 |
+| \- buttons | List | 버튼 목록 |
+| \-\- name | String | 버튼 제목 |
+| \-\- type | String | 버튼 타입 |
+| \-\- linkMo | String | 모바일 웹 링크 |
+| \-\- linkPc | String | PC 웹 링크 |
+| \-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\- schemeIos | String | IOS 앱 링크 |
+| \-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \- coupon | Object | 쿠폰 요소 |
+| \-\- title | String | 쿠폰 제목 |
+| \-\- description | String | 쿠폰 상세 설명 |
+| \-\- linkMo | String | 모바일 웹 링크 |
+| \-\- linkPc | String | PC 웹 링크 |
+| \-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\- schemeIos | String | IOS 앱 링크 |
+| \- carousel | Object | 캐러셀 |
+| \-\- head | Object | 캐러셀 인트로 |
+| \-\-\- header | String | 캐러셀 인트로 헤더 |
+| \-\-\- content | String | 캐러셀 인트로 내용 |
+| \-\-\- imageUrl | String | 캐러셀 인트로 이미지 주소 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- list | List | 캐러셀 리스트 |
+| \-\-\- additionalContent | String | 부가 정보 |
+| \-\-\- imageUrl | String | 이미지 URL |
+| \-\-\- imageLink | String | 이미지 링크 |
+| \-\-\- commerce | Object | 커머스 |
+| \-\-\-\- title | String | 상품 제목 |
+| \-\-\-\- regularPrice | Integer | 정상 가격 |
+| \-\-\-\- discountPrice | Integer | 할인가격 |
+| \-\-\-\- discountRate | Integer | 할인율 |
+| \-\-\-\- discountFixed | Integer | 정액할인가격 |
+| \-\-\- buttons | List | 캐러셀 리스트 버튼 목록 |
+| \-\-\-\- name | String | 버튼 제목 |
+| \-\-\-\- type | String | 버튼 타입 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\-\- coupon | Object | 쿠폰 요소 |
+| \-\-\-\- title | String | 쿠폰 제목 |
+| \-\-\-\- description | String | 쿠폰 상세 설명 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- tail | Object | 더보기 버튼 정보 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \- templateParameter | String | 템플릿 파라미터 |
+| \- pushAlarm | boolean | 푸시 알림 여부 |
+| \- messageStatus | String | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
+| \- isAddedChannel | String | 채널 친구 여부 |
+| \- resultCode | String | 수신 결과 코드 |
+| \- resultCodeName | String | 수신 결과 코드명 |
+| \- createUser | String | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+## 템플릿 관리
+
+### 템플릿 리스트 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appkey}/senders/{senderKey}/templates
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Query parameter]
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateCode | String | X | 템플릿 코드 |
+| templateName | String | X | 템플릿 이름 |
+| status | String | X | 템플릿 상태 코드 |
+| pageNum | Integer | X | 페이지 번호(Default: 1) |
+| pageSize | Integer | X | 조회 건수(Default: 15, Max: 1000) |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "templateListResponse": {
+      "templates": [
+          {
+              "plusFriendId": String,
+              "plusFriendType": String,
+              "templateCode": String,
+              "templateName": String,
+              "chatBubbleType": String,
+              "content": String,
+              "header": String,
+              "additionalContent": String,
+              "adult": boolean,
+              "image": {
+                  "imageUrl": String,
+                  "imageLink": String
+              },
+              "buttons": [
+                {
+                    "name": String,
+                    "type": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeIos": String,
+                    "schemeAndroid": String,
+                    "bizFormId": Integer,
+                }
+              ],
+              "item": {
+                  "list": [
+                      {
+                          "title": String,
+                          "imageUrl": String,
+                          "linkMo": String,
+                          "linkPc": String,
+                          "schemeAndroid": String
+                          "schemeIos": String,
+                      }
+                  ]
+              },
+              "coupon": {
+                  "title": String,
+                  "description": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String,
+                  "schemeIos": String
+              },
+              "commerce": {
+                  "title": String,
+                  "regularPrice": Integer,
+                  "discountPrice": Integer,
+                  "discountRate": Integer,
+                  "discountFixed": Integer
+              },
+              "video": {
+                  "videoUrl": String,
+                  "thumbnailUrl": String
+              },
+              "carousel": {
+                  "head": {
+                      "header": String,
+                      "content": String,
+                      "imageUrl": String,
+                      "linkMo": String,
+                      "linkPc": String,
+                      "schemeAndroid": String,
+                      "schemeIos": String
+                  },
+                  "list": [
+                      {
+                          "header": String,
+                          "message": String,
+                          "additionalContent": String,
+                          "imageUrl": String,
+                          "imageLink": String,
+                          "commerce": {
+                              "title": String,
+                              "regularPrice": Integer,
+                              "discountPrice": Integer,
+                              "discountRate": Integer,
+                              "discountFixed": Integer
+                          },
+                          "buttons": [
+                              {
+                                  "name": String,
+                                  "type": String,
+                                  "linkMo": String,
+                                  "linkPc": String,
+                                  "schemeIos": String,
+                                  "schemeAndroid": String,
+                                  "bizFormId": Integer,
+                              }
+                          ],
+                          "coupon": {
+                              "title": String,
+                              "description": String,
+                              "linkMo": String,
+                              "linkPc": String,
+                              "schemeAndroid": String,
+                              "schemeIos": String
+                          }
+                      }
+                  ],
+                  "tail": {
+                      "linkMo": String,
+                      "linkPc": String,
+                      "schemeAndroid": String,
+                      "schemeIos": String
+                  }
+              },
+              "status": String,
+              "createDate": String,
+              "updateDate": String
+          }
+      ],
+      "totalCount": Integer
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| templateListResponse | Object | 본문 영역 |
+| \- templates | List | 템플릿 리스트 |
+| \-\- plusFriendId | String | 발신 프로필 ID |
+| \-\- plusFriendType | String | 발신 프로필 타입 |
+| \-\- templateCode | String | 템플릿 코드 |
+| \-\- templateName | String | 템플릿 명 |
+| \-\- chatBubbleType | String | 메시지 타입 |
+| \-\- content | String | 메시지 내용 |
+| \-\- adult | boolean | 성인용 메시지 여부 |
+| \-\- header | String | 헤더 |
+| \-\- item | Object | 와이드 리스트 요소 |
+| \-\-\- list | List | 와이드 리스트 |
+| \-\-\-\- title | String | 아이템 제목 |
+| \-\-\-\- imageUrl | String | 아이템 이미지 URL |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- video | Object | 동영상 요소 |
+| \-\-\- videoUrl | String | 카카오TV 동영상 URL |
+| \-\-\- thumbnailUrl | String | 동영상 썸네일용 이미지 URL |
+| \-\- commerce | Object | 커머스 요소 |
+| \-\-\- title | String | 상품 제목 |
+| \-\-\- regularPrice | Integer | 정상 가격 |
+| \-\-\- discountPrice | Integer | 할인가격 |
+| \-\-\- discountRate | Integer | 할인율 |
+| \-\-\- discountFixed | Integer | 정액할인가격 |
+| \-\- buttons | List | 버튼 목록 |
+| \-\-\- name | String | 버튼 제목 |
+| \-\-\- type | String | 버튼 타입 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\- coupon | Object | 쿠폰 요소 |
+| \-\-\- title | String | 쿠폰 제목 |
+| \-\-\- description | String | 쿠폰 상세 설명 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- carousel | Object | 캐러셀 |
+| \-\-\- head | Object | 캐러셀 인트로 |
+| \-\-\-\- header | String | 캐러셀 인트로 헤더 |
+| \-\-\-\- content | String | 캐러셀 인트로 내용 |
+| \-\-\-\- imageUrl | String | 캐러셀 인트로 이미지 주소 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\- list | List | 캐러셀 리스트 |
+| \-\-\-\- additionalContent | String | 부가 정보 |
+| \-\-\-\- imageUrl | String | 이미지 URL |
+| \-\-\-\- imageLink | String | 이미지 링크 |
+| \-\-\-\- commerce | Object | 커머스 |
+| \-\-\-\-\- title | String | 상품 제목 |
+| \-\-\-\-\- regularPrice | Integer | 정상 가격 |
+| \-\-\-\-\- discountPrice | Integer | 할인가격 |
+| \-\-\-\-\- discountRate | Integer | 할인율 |
+| \-\-\-\-\- discountFixed | Integer | 정액할인가격 |
+| \-\-\-\- buttons | List | 캐러셀 리스트 버튼 목록 |
+| \-\-\-\-\- name | String | 버튼 제목 |
+| \-\-\-\-\- type | String | 버튼 타입 |
+| \-\-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\-\-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\-\-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\-\-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\-\-\- coupon | Object | 쿠폰 요소 |
+| \-\-\-\-\- title | String | 쿠폰 제목 |
+| \-\-\-\-\- description | String | 쿠폰 상세 설명 |
+| \-\-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\- tail | Object | 더보기 버튼 정보 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- status | String | 템플릿 상태(A: 등록, S: 차단) |
+| \-\- createDate | String | 등록 일시 |
+| \-\- updateDate | String | 수정 일시 |
+
+### 템플릿 단건 조회
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+| templateCode | String | 템플릿 코드 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "template": {
+      "plusFriendId": String,
+      "plusFriendType": String,
+      "templateCode": String,
+      "templateName": String,
+      "chatBubbleType": String,
+      "content": String,
+      "header": String,
+      "additionalContent": String,
+      "adult": boolean,
+      "image": {
+          "imageUrl": String,
+          "imageLink": String
+      },
+      "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer,
+        }
+      ],
+      "item": {
+          "list": [
+              {
+                  "title": String,
+                  "imageUrl": String,
+                  "linkMo": String,
+                  "linkPc": String,
+                  "schemeAndroid": String
+                  "schemeIos": String,
+              }
+          ]
+      },
+      "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+      },
+      "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+      },
+      "video": {
+          "videoUrl": String,
+          "thumbnailUrl": String
+      },
+      "carousel": {
+          "head": {
+              "header": String,
+              "content": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeAndroid": String,
+              "schemeIos": String
+          },
+          "list": [
+              {
+                  "header": String,
+                  "message": String,
+                  "additionalContent": String,
+                  "imageUrl": String,
+                  "imageLink": String,
+                  "commerce": {
+                      "title": String,
+                      "regularPrice": Integer,
+                      "discountPrice": Integer,
+                      "discountRate": Integer,
+                      "discountFixed": Integer
+                  },
+                  "buttons": [
+                      {
+                          "name": String,
+                          "type": String,
+                          "linkMo": String,
+                          "linkPc": String,
+                          "schemeIos": String,
+                          "schemeAndroid": String,
+                          "bizFormId": Integer,
+                      }
+                  ],
+                  "coupon": {
+                      "title": String,
+                      "description": String,
+                      "linkMo": String,
+                      "linkPc": String,
+                      "schemeAndroid": String,
+                      "schemeIos": String
+                  }
+              }
+          ],
+          "tail": {
+              "linkMo": String,
+              "linkPc": String,
+              "schemeAndroid": String,
+              "schemeIos": String
+          }
+      },
+      "status": String,
+      "createDate": String,
+      "updateDate": String
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| template | Object | 템플릿 본문 영역 |
+| \- plusFriendId | String | 발신 프로필 ID |
+| \- plusFriendType | String | 발신 프로필 타입 |
+| \- templateCode | String | 템플릿 코드 |
+| \- templateName | String | 템플릿 명 |
+| \- chatBubbleType | String | 메시지 타입 |
+| \- pushAlarm | boolean | 푸시 알림 여부 |
+| \- content | String | 메시지 내용 |
+| \- adult | boolean | 성인용 메시지 여부 |
+| \- header | String | 헤더 |
+| \- item | Object | 와이드 리스트 요소 |
+| \-\- list | List | 와이드 리스트 |
+| \-\-\- title | String | 아이템 제목 |
+| \-\-\- imageUrl | String | 아이템 이미지 URL |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \- video | Object | 동영상 요소 |
+| \-\- videoUrl | String | 카카오TV 동영상 URL |
+| \-\- thumbnailUrl | String | 동영상 썸네일용 이미지 URL |
+| \- commerce | Object | 커머스 요소 |
+| \-\- title | String | 상품 제목 |
+| \-\- regularPrice | Integer | 정상 가격 |
+| \-\- discountPrice | Integer | 할인가격 |
+| \-\- discountRate | Integer | 할인율 |
+| \-\- discountFixed | Integer | 정액할인가격 |
+| \- buttons | List | 버튼 목록 |
+| \-\- name | String | 버튼 제목 |
+| \-\- type | String | 버튼 타입 |
+| \-\- linkMo | String | 모바일 웹 링크 |
+| \-\- linkPc | String | PC 웹 링크 |
+| \-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\- schemeIos | String | IOS 앱 링크 |
+| \-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \- coupon | Object | 쿠폰 요소 |
+| \-\- title | String | 쿠폰 제목 |
+| \-\- description | String | 쿠폰 상세 설명 |
+| \-\- linkMo | String | 모바일 웹 링크 |
+| \-\- linkPc | String | PC 웹 링크 |
+| \-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\- schemeIos | String | IOS 앱 링크 |
+| \- carousel | Object | 캐러셀 |
+| \-\- head | Object | 캐러셀 인트로 |
+| \-\-\- header | String | 캐러셀 인트로 헤더 |
+| \-\-\- content | String | 캐러셀 인트로 내용 |
+| \-\-\- imageUrl | String | 캐러셀 인트로 이미지 주소 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- list | List | 캐러셀 리스트 |
+| \-\-\- additionalContent | String | 부가 정보 |
+| \-\-\- imageUrl | String | 이미지 URL |
+| \-\-\- imageLink | String | 이미지 링크 |
+| \-\-\- commerce | Object | 커머스 |
+| \-\-\-\- title | String | 상품 제목 |
+| \-\-\-\- regularPrice | Integer | 정상 가격 |
+| \-\-\-\- discountPrice | Integer | 할인가격 |
+| \-\-\-\- discountRate | Integer | 할인율 |
+| \-\-\-\- discountFixed | Integer | 정액할인가격 |
+| \-\-\- buttons | List | 캐러셀 리스트 버튼 목록 |
+| \-\-\-\- name | String | 버튼 제목 |
+| \-\-\-\- type | String | 버튼 타입 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\-\-\- chatExtra | String | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| \-\-\-\- chatEvent | String | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| \-\-\-\- bizFormKey | String | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\-\- coupon | Object | 쿠폰 요소 |
+| \-\-\-\- title | String | 쿠폰 제목 |
+| \-\-\-\- description | String | 쿠폰 상세 설명 |
+| \-\-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\-\- schemeIos | String | IOS 앱 링크 |
+| \-\- tail | Object | 더보기 버튼 정보 |
+| \-\-\- linkMo | String | 모바일 웹 링크 |
+| \-\-\- linkPc | String | PC 웹 링크 |
+| \-\-\- schemeAndroid | String | 안드로이드 앱 링크 |
+| \-\-\- schemeIos | String | IOS 앱 링크 |
+| \- status | String | 템플릿 상태(A: 등록, S: 차단) |
+| \- createDate | String | 등록 일시 |
+| \- updateDate | String | 수정 일시 |
+
+### 템플릿 등록
+
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk-upgrade/v1.0/appkeys/{appkey}/senders/{senderKey}/templates
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 유의 사항
+
+* 쿠폰 제목에 치환자를 적용하고자 하면 다음과 같은 고정 치환자를 사용해야 합니다.
+
+```
+- #{할인금액}원 할인 쿠폰 (#{할인금액} 범위는 1 ~ 99,999,999)
+- #{할인율}% 할인 쿠폰 (#{할인율} 범위는 1 ~ 100)
+- 배송비 할인 쿠폰
+- #{상품명} 무료 쿠폰 (#{상품명}은 최대 7자)
+- #{상품명} UP 쿠폰 (#{상품명}은 최대 7자)
+```
+
+* 커머스에서 상품 제목을 제외한 regularPrice, discountPrice, discountRate, discountFixed 필드에는 치환자를 사용자가 지정할 수 없습니다.
+    * 해당 필드들은 값을 비울 경우 자동으로 고정 치환자가 채워져 저장됩니다.
+    * regularPrice -> #{정상가격}
+    * discountPrice -> #{할인가격}
+    * discountRate -> #{할인율}
+    * discountFixed -> #{정액할인가격}
+
+#### 텍스트형 템플릿 등록 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "TEXT",
+    "adult": boolean,
+    "content": String,
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키<br>치환자 사용 불가능 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 이미지형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "IMAGE",
+    "adult": boolean,
+    "content": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String,
+        "imageName": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
+| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 와이드 이미지형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "WIDE",
+    "adult": boolean,
+    "content": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String,
+        "imageName": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
+| \- imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 와이드 아이템 리스트형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "WIDE_ITEM_LIST",
+    "adult": boolean,
+    "header": String,
+    "item": {
+        "list": [
+            {
+                "title": String,
+                "imageUrl": String,
+                "imageName": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            },
+            {
+                "title": String,
+                "imageUrl": String,
+                "imageName": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            },
+            {
+                "title": String,
+                "imageUrl": String,
+                "imageName": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+            }
+        ]
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| header | String | O | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
+| item | Object | O | 와이드 리스트 요소 (WIDE\_ITEM\_LIST 타입에서만 사용 가능) |
+| \- list | List | O | 와이드 리스트 (최소: 3, 최대 4) |
+| \-\- title | String | O | 아이템 제목<br>\- 1번째 아이템은 최대 25자 제한 \(줄바꿈: 최대 1개\, 1번째 아이템의 경우 title이 필수 값이 아님\)<br>\- 1번째 아이템은 title이 필수 필드가 아님<br>\- 2\~4번째 아이템 최대 30자 제한 \(줄바꿈: 최대 1개\) |
+| \-\- imageUrl | String | O | 아이템 이미지 URL<br>\- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>\- 2\~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 프리미엄 동영상형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "PREMIUM_VIDEO",
+    "adult": boolean,
+    "content": String,
+    "header": String,
+    "video": {
+        "videoUrl": String,
+        "thumbnailUrl": String
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| content | String | X | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| header | String | X | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
+| video | Object | O | 동영상 요소 (PREMIUM\_VIDEO 타입만 사용 가능) |
+| \- videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한<br>치환자 사용 불가능 |
+| \- thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 커머스형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "COMMERCE",
+    "pushAlarm": boolean,
+    "adult": boolean,
+    "additionalContent": String,
+    "image": {
+        "imageUrl": String,
+        "imageLink": String,
+        "imageName": String
+    },
+    "commerce": {
+        "title": String,
+        "regularPrice": Integer,
+        "discountPrice": Integer,
+        "discountRate": Integer,
+        "discountFixed": Integer,
+    },
+    "buttons": [
+        {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+        }
+    ],
+    "coupon": {
+        "title": String,
+        "description": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| additionalContent | String | X | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능 |
+| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
+| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| commerce | Object | O | 커머스 (COMMERCE 타입에서만 사용 가능) |
+| title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
+| discountPrice | Integer | X | 할인가격(0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
+| discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
+| discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
+| buttons | List | O | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| coupon | Object | X | 쿠폰 요소 |
+| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+
+#### 캐러셀 피드형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "CAROUSEL_FEED",
+    "adult": boolean,
+    "carousel": {
+        "list": [
+            {
+                "header": String,
+                "content": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "imageName": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "chatExtra": String,
+                        "chatEvent": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                }
+            },
+            {
+                "header": String,
+                "content": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "imageName": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                }
+            }
+        ],
+        "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+        }
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| carousel | Object | O | 캐러셀 |
+| \- list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
+| \-\- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
+| \-\- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
+| \-\- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능)<br>치환자 사용 불가능 |
+| \-\- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\- coupon | Object | X | 쿠폰 요소 |
+| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- tail | Object | X | 더보기 버튼 정보 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| recipientList | List | O | 수신자 목록(최대 1,000명) |
+| \- recipientNo | String | O | 수신 번호 |
+| createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
+
+#### 캐러셀 커머스형 발송 요청
+
+[Request body]
+
+```
+{
+    "templateName": String,
+    "chatBubbleType": "CAROUSEL_COMMERCE",
+    "adult": boolean,
+    "carousel": {
+        "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "imageName": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+        },
+        "list": [
+            {
+                "additionalContent": String,
+                "imageUrl": String,
+                "imageLink": String,
+                "imageName": String,
+                "buttons": [
+                    {
+                        "name": String,
+                        "type": String,
+                        "linkMo": String,
+                        "linkPc": String,
+                        "schemeAndroid": String,
+                        "schemeIos": String,
+                        "bizFormKey": String
+                    }
+                ],
+                "coupon": {
+                    "title": String,
+                    "description": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeAndroid": String,
+                    "schemeIos": String
+                },
+                "commerce": {
+                    "title": String,
+                    "regularPrice": Integer,
+                    "discountPrice": Integer,
+                    "discountRate": Integer,
+                    "discountFixed": Integer,
+                },
+            }
+        ],
+        "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+        }
+    }
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| templateName | String | O | 템플릿 명 (최대 200자) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
+| carousel | Object | O | 캐러셀 |
+| \- head | Object | X | 캐러셀 인트로 |
+| \-\- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
+| \-\- content | String | O | 캐러셀 인트로 내용(최대 50자) |
+| \-\- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함)<br>치환자 사용 불가능 |
+| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
+| \-\- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| \- list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
+| \-\- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
+| \-\- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용)<br>치환자 사용 불가능 |
+| \-\- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| \-\- commerce | Object | O | 커머스 (CAROUSEL\_COMMERCE 타입에서만 사용 가능) |
+| \-\-\- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| \-\-\- regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
+| \-\-\- discountPrice | Integer | X | 할인가격(0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
+| \-\-\- discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
+| \-\-\- discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
+| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| \-\- coupon | Object | X | 쿠폰 요소 |
+| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
+| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
+| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| \- tail | Object | X | 더보기 버튼 정보 |
+| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "template": {
+      "templateCode": String
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| template | Object | 템플릿 정보 |
+| \- templateCode | String | 템플릿 코드 |
+
+### 템플릿 수정
+
+#### 요청
+
+[URL]
+
+```
+PUT  /friendtalk-upgrade/v1.0/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+| templateCode | String | 템플릿 코드 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Request Body]
+
+* 템플릿 등록과 스펙이 같음
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+
+### 템플릿 삭제
+
+#### 요청
+
+[URL]
+
+```
+DELETE  /friendtalk-upgrade/v1.0/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+| templateCode | String | 템플릿 코드 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+
+## 이미지 관리
+
+### 이미지 업로드
+
+#### 요청
+
+[URL]
+
+```
+POST  /friendtalk-upgrade/v1.0/appkeys/{appKey}/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Request parameter]
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| image | File | O | 이미지 |
+| imageType | String | O | 이미지 타입 <br>(IMAGE, WIDE\_IMAGE,MAIN\_WIDE\_ITEMLIST\_IMAGE,NORMAL\_WIDE\_ITEMLIST\_IMAGE,CAROUSEL\_FEED\_IMAGE,CAROUSEL\_COMMERCE\_IMAGE) |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+
+### 이미지 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appKey}/images
+Content-Type: multipart/form-data
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Request parameter]
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| imageTypes | List | O | 이미지 타입 <br>(IMAGE, WIDE\_IMAGE,MAIN\_WIDE\_ITEMLIST\_IMAGE,NORMAL\_WIDE\_ITEMLIST\_IMAGE,CAROUSEL\_FEED\_IMAGE,CAROUSEL\_COMMERCE\_IMAGE) |
+| pageNum | String | X | 페이지 번호(기본: 1) |
+| pageSize | String | X | 조회 건수(기본: 15) |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "image": {
+      "imageSeq": Integer,
+      "imageUrl": String,
+      "imageName": String
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+| image | Object | 이미지 영역 |
+| \- imageSeq | Integer | 이미지 시퀀스 |
+| \- imageUrl | String | 이미지 url |
+| \- imageName | String | 이미지명 |
+
+### 이미지 삭제
+
+#### 요청
+
+[URL]
+
+```
+DELETE  /friendtalk-upgrade/v1.0/appkeys/{appKey}/images
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+[Query parameter]
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| imageSeq | String | O | 이미지 번호 |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+
+## 업로드
+
+### 비즈폼 키 업로드
+
+#### 요청
+
+[URL]
+
+```
+POST /friendtalk-upgrade/v1.0/appkeys/{appKey}/senders/{senderKey}/biz-form
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | boolean | 성공 여부 |
+
+## 발신 프로필 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /friendtalk-upgrade/v1.0/appkeys/{appKey}/senders/{senderKey}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| appkey | String | 고유의 앱키 |
+| senderKey | String | 발신 키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름 | 타입 | 필수 | 설명 |
+| --- | --- | --- | --- |
+| X-Secret-Key | String | O | 콘솔에서 생성할 수 있습니다. |
+
+#### 응답
+
+```
+{  
+   "header":{  
+      "resultCode" :  Integer,
+      "resultMessage" :  String,
+      "isSuccessful" :  boolean
+   },
+   "sender":{  
+         "plusFriendId" : String,
+         "senderKey" : String,
+         "categoryCode" : String,
+         "unsubscribePhoneNumber": String,
+         "unsubscribeAuthNumber": String
+         "status" : String,
+         "statusName" : String,
+         "kakaoStatus" : String,
+         "kakaoStatusName" : String,
+         "kakaoProfileStatus" : String,
+         "kakaoProfileStatusName" : String,
+         "profileSpamLevel" : String,
+         "profileMessageSpamLevel" : String,
+         "alimtalk" : {  
+                "resendAppKey": String,
+                "isResend": Boolean,
+                "resendSendNo": String,
+                "dailyMaxCount" : Integer,
+                "sentCount" : Integer
+          },
+         "friendtalk" : {  
+                "resendAppKey": String,
+                "isResend": Boolean,
+                "resendSendNo": String,
+                "resendUnsubscribeNo": String,
+                "dailyMaxCount" : Integer,
+                "sentCount" : Integer
+         },
+         "dormant" : Boolean,
+         "block" : Boolean,
+         "createDate" : String,
+         "initialUserRestriction" : Boolean
+    }
+}
+```
+
+| 이름 | 타입 | 설명 |
+| --- | --- | --- |
+| header | Object | 헤더 영역 |
+| \- resultCode | Integer | 결과 코드 |
+| \- resultMessage | String | 결과 메시지 |
+| \- isSuccessful | Boolean | 성공 여부 |
+| sender | Object | 발신 프로필 |
+| \- plusFriendId | String | 플러스친구 ID |
+| \- senderKey | String | 발신 키 |
+| \- categoryCode | String | 카테고리 코드 |
+| \- unsubscribePhoneNumber | String | 무료수신거부 전화번호 |
+| \- unsubscribeAuthNumber | String | 무료수신거부 인증번호 |
+| \- status | String | NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
+| \- statusName | String | NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록) |
+| \- kakaoStatus | String | 카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
+| \- kakaoStatusName | String | 카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
+| \- kakaoProfileStatus | String | 카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
+| \- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+| \- profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다. |
+| \- profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다. |
+| \- alimtalk | Object | 알림톡 설정 정보 |
+| \-\- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
+| \-\- isResend | String | 대체 발송 설정(재발송) 여부 |
+| \-\- resendSendNo | String | 재발송 시, tc-sms 발신 번호 |
+| \-\- dailyMaxCount | Integer | 알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+| \-\- sentCount | Integer | 알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+| \- friendtalk | Object | 친구톡 설정 정보 |
+| \-\- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
+| \-\- isResend | String | 대체 발송 설정(재발송) 여부 |
+| \-\- resendSendNo | String | 재발송 시, tc-sms 발신 번호 |
+| \-\- resendUnsubscribeNo | String | 재발송 시, tc-sms 080 수신 거부 번호 |
+| \-\- dailyMaxCount | Integer | 친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+| \-\- sentCount | Integer | 친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
+| \- dormant | Boolean | 발신프로필 휴면 여부 |
+| \- block | Boolean | 발신프로필 차단 여부 |
+| \- createDate | String | 등록 일자 |
+| \- initialUserRestriction | Boolean | 최초 사용자 제한 여부 |
