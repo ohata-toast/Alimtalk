@@ -2948,40 +2948,40 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 | 타입 | 설명 |
-| --- | --- | --- |
-| header | Object | 헤더 영역 |
-| \- resultCode | Integer | 결과 코드 |
-| \- resultMessage | String | 결과 메시지 |
-| \- isSuccessful | Boolean | 성공 여부 |
-| sender | Object | 발신 프로필 |
-| \- plusFriendId | String | 플러스친구 ID |
-| \- senderKey | String | 발신 키 |
-| \- categoryCode | String | 카테고리 코드 |
-| \- unsubscribePhoneNumber | String | 무료수신거부 전화번호 |
-| \- unsubscribeAuthNumber | String | 무료수신거부 인증번호 |
-| \- status | String | NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록) |
-| \- statusName | String | NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록) |
-| \- kakaoStatus | String | 카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다. |
-| \- kakaoStatusName | String | 카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다. |
-| \- kakaoProfileStatus | String | 카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
-| \- kakaoProfileStatusName | String | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
-| \- profileSpamLevel | String | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다. |
-| \- profileMessageSpamLevel | String | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다. |
-| \- alimtalk | Object | 알림톡 설정 정보 |
-| \-\- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
-| \-\- isResend | String | 대체 발송 설정(재발송) 여부 |
-| \-\- resendSendNo | String | 재발송 시, tc-sms 발신 번호 |
-| \-\- dailyMaxCount | Integer | 알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
-| \-\- sentCount | Integer | 알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
-| \- friendtalk | Object | 친구톡 설정 정보 |
-| \-\- resendAppKey | String | 대체 발송으로 설정할 SMS 서비스 앱키 |
-| \-\- isResend | String | 대체 발송 설정(재발송) 여부 |
-| \-\- resendSendNo | String | 재발송 시, tc-sms 발신 번호 |
-| \-\- resendUnsubscribeNo | String | 재발송 시, tc-sms 080 수신 거부 번호 |
-| \-\- dailyMaxCount | Integer | 친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
-| \-\- sentCount | Integer | 친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음) |
-| \- dormant | Boolean | 발신프로필 휴면 여부 |
-| \- block | Boolean | 발신프로필 차단 여부 |
-| \- createDate | String | 등록 일자 |
-| \- initialUserRestriction | Boolean | 최초 사용자 제한 여부 |
+| 계층  | 이름                        | 타입    | Not Null | 설명                                                                                                                               |
+| :---- | :-------------------------- | :------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+|       | header                      | Object  | O        | 헤더 영역                                                                                                                          |
+| -     | resultCode                  | Integer | O        | 결과 코드                                                                                                                          |
+| -     | resultMessage               | String  | O        | 결과 메시지                                                                                                                        |
+| -     | isSuccessful                | boolean | O        | 성공 여부                                                                                                                          |
+|       | sender                      | Object  | X        | 발신 프로필                                                                                                                        |
+| -     | plusFriendId                | String  | O        | 플러스친구 ID                                                                                                                      |
+| -     | senderKey                   | String  | O        | 발신 키                                                                                                                            |
+| -     | categoryCode                | String  | X        | 카테고리 코드                                                                                                                      |
+| -     | unsubscribePhoneNumber      | String  | X        | 무료수신거부 전화번호                                                                                                              |
+| -     | unsubscribeAuthNumber       | String  | X        | 무료수신거부 인증번호                                                                                                              |
+| -     | status                      | String  | X        | NHN Cloud 플러스친구 상태 코드 <br>(YSC02: 등록 대기 중, YSC03: 정상 등록)                                                              |
+| -     | statusName                  | String  | X        | NHN Cloud 플러스친구 상태명(등록 대기 중, 정상 등록)                                                                                   |
+| -     | kakaoStatus                 | String  | X        | 카카오 플러스친구 상태 코드<br>(A: 정상, S: 차단)<br>status가 YSC02일 경우, kakaoStatus null 값을 가집니다.                                |
+| -     | kakaoStatusName             | String  | X        | 카카오 플러스친구 상태명(정상, 차단)<br>status가 YSC02일 경우, kakaoStatusName null 값을 가집니다.                                         |
+| -     | kakaoProfileStatus          | String  | X        | 카카오 플러스친구 프로필 상태 코드<br>(A: 활성화, B:차단, C: 비활성화, D:삭제 E:삭제 처리 중)<br>status가 YSC02일 경우, kakaoProfileStatus null 값을 가집니다. |
+| -     | kakaoProfileStatusName      | String  | X        | 카카오 플러스친구 프로필 상태명(활성화, 비활성화, 차단, 삭제 처리 중, 삭제)<br>status가 YSC02일 경우, kakaoProfileStatusName null 값을 가집니다. |
+| -     | profileSpamLevel            | String  | X        | 카카오톡 채널 스팸 상태명(영구제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                         |
+| -     | profileMessageSpamLevel     | String  | X        | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                     |
+| -     | alimtalk                    | Object  | X        | 알림톡 설정 정보                                                                                                                   |
+| --    | resendAppKey                | String  | X        | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                   |
+| --    | isResend                    | boolean | X        | 대체 발송 설정(재발송) 여부                                                                                                        |
+| --    | resendSendNo                | String  | X        | 재발송 시, tc-sms 발신 번호                                                                                                        |
+| --    | dailyMaxCount               | Integer | X        | 알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                              |
+| --    | sentCount                   | Integer | X        | 알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                  |
+| -     | friendtalk                  | Object  | X        | 친구톡 설정 정보                                                                                                                   |
+| --    | resendAppKey                | String  | X        | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                   |
+| --    | isResend                    | boolean | X        | 대체 발송 설정(재발송) 여부                                                                                                        |
+| --    | resendSendNo                | String  | X        | 재발송 시, tc-sms 발신 번호                                                                                                        |
+| --    | resendUnsubscribeNo         | String  | X        | 재발송 시, tc-sms 080 수신 거부 번호                                                                                                 |
+| --    | dailyMaxCount               | Integer | X        | 친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                              |
+| --    | sentCount                   | Integer | X        | 친구톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                  |
+| -     | dormant                     | boolean | O        | 발신프로필 휴면 여부                                                                                                               |
+| -     | block                       | boolean | O        | 발신프로필 차단 여부                                                                                                               |
+| -     | createDate                  | String  | X        | 등록 일자                                                                                                                          |
+| -     | initialUserRestriction      | boolean | O        | 최초 사용자 제한 여부                                                                                                              |
