@@ -4,7 +4,6 @@
 
 ### 일반 발송
 
-<br>
 발신 프로필을 설정하고 내용을 입력하여 친구톡 Upgrade 형태의 메시지를 발송할 수 있습니다.
 친구톡 Upgrade을 발송하려면 콘솔에서 **Notification > KakaoTalk Bizmessage > 친구톡 Upgrade**를 선택합니다.
 
@@ -12,14 +11,15 @@
 ### 템플릿 사용시
 
 <br>
-![Inline-image-2025-02-26 17.06.20.017.png](/wikis/1769381697328002548/files/4011878455089037308)
+
+![friendtalkupgrade_04_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_4_20250508.png)
 
 1. 발신프로필을 선택합니다.
-   * 발신프로필은 **Notification** \> **KakaoTalk Bizmessage** \> **발신프로필 관리** 탭에서 확인할 수 있습니다.
+   * 발신프로필은 **Notification > KakaoTalk Bizmessage > 발신프로필 관리** 탭에서 확인할 수 있습니다.
 2. 푸시 알람 여부를 선택합니다.
-   * 푸시 알람을 '사용 안함'을 선택할 경우,<span style="color:rgb(25, 25, 25);">메시지 푸시 알람이 발송되지 않습니다.</span>
+   * 푸시 알람을 '사용 안함'을 선택할 경우, 메시지 푸시 알람이 발송되지 않습니다.
 3. 템플릿 사용 여부를 '사용'을 선택한 뒤 발송 요청할 템플릿을 선택합니다.
-   * 템플릿은 <strong>Notification > KakaoTalk Bizmessage > 친구톡 Upgrade > 템플릿 관리</strong> <span style="color:rgb(25, 25, 25);">탭에서 등록이 가능합니다.</span>
+   * 템플릿은 <strong>Notification > KakaoTalk Bizmessage > 친구톡 Upgrade > 템플릿 관리</strong> 탭에서 등록이 가능합니다.
 4. 수신자를 추가합니다.
    * 수신자는 휴대폰 번호 형태로 작성할 수 있습니다.
 5. 수신자별로 타겟팅 유형을 선택합니다.
@@ -33,12 +33,9 @@
          * 광고주 발송 요청 대상에서, 채널 친구인 경우에만 광고성 메시지를 발송 처리합니다.
 6. 입력을 완료한 뒤 **발송**을 클릭하여 전송합니다.
 
-<br>
-<br>
 ### 템플릿 미사용시
 
-<br>
-![Inline-image-2025-02-26 17.05.38.727.png](/wikis/1769381697328002548/files/4011878107563291687)
+![friendtalkupgrade_05_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_5_20250508.png)
 
 1. 발신프로필을 선택합니다.
    * 발신프로필은 **Notification** \> **KakaoTalk Bizmessage** \> **발신프로필 관리** 탭에서 확인할 수 있습니다.
@@ -104,13 +101,11 @@
    ③ 전자우편을 수신 거부하기 위하여 웹사이트에 로그인하도록 하는 등 별도의 추가적인 조치를 거쳐야 하는 것은 수신의 거부 또는 수신동의 철회를 어렵게 하는 것으로 법 위반에 해당합니다.
    ![\[그림 3\] 친구톡 광고 메시지](http://static.toastoven.net/prod_alimtalk/friendtalk_02.png)
 
-<br>
-<br>
 ## 발송 조회
 
 ### 발송 결과 조회
 
-![Inline-image-2025-02-26 17.06.52.579.png](/wikis/1769381697328002548/files/4011878727223703795)
+![friendtalkupgrade_06_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_6_20250508.png)
 
 <br>
 * 각 발송 메시지의 자세한 내용은 검색 결과 항목을 클릭해 **상세 보기** 화면에서 확인할 수 있습니다.
@@ -118,12 +113,10 @@
 * **요청 상태** 열에서 발송 요청에 대한 상태를 확인할 수 있습니다.
 * **발송 결과** 열에서 발송 처리에 대한 성공 여부를 확인할 수 있습니다.
 
-<br>
-<br>
-<br>
+
 ## 이미지 관리
 
-![Inline-image-2025-02-26 17.07.56.847.png](/wikis/1769381697328002548/files/4011879266729265103)
+![friendtalkupgrade_07_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_7_20250508.png)
 
 친구톡 Upgrade에 사용할 이미지를 등록 또는 삭제하고 등록된 이미지의 정보를 확인할 수 있습니다.
 
@@ -142,7 +135,7 @@
 
 ## 템플릿 관리
 
-![Inline-image-2025-03-06 15.53.41.307.png](/wikis/1769381697328002548/files/4017640097827440600)
+![friendtalkupgrade_08_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_8_20250508.png)
 
 * 기존 알림톡과 유사한 방식으로 템플릿을 관리하고 발송에 사용할 수 있습니다.
 * 친구톡 upgrade는 검수 과정이 없으며 생성, 수정, 삭제가 자유롭습니다.
@@ -160,9 +153,9 @@
 * 관리하고자 하는 080 수신거부번호를 SMS 서비스에 등록합니다.
    * 만약 발신프로필에 등록된 080 수신거부번호가 SMS 서비스에서 등록되어 있지 않은 상태라면 발송 요청은 모두 실패하게 됩니다.
 * 자세한 사항은 [SMS 가이드](https://docs.nhncloud.com/ko/Notification/SMS/ko/console-guide/#080)를 참조해주세요
-  ![Inline-image-2025-03-21 22.10.45.459.png](/wikis/1769381697328002548/files/4028701518365824901)
+  ![friendtalkupgrade_09_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_9_20250508.png)
 * 080 수신거부 번호를 등록한 SMS 서비스의 앱키를 080 수신거부 탭에 입력하고 저장합니다.
 * 관리 대상으로 지정한 SMS 서비스에서 발신프로필에 등록되어 있는 080 수신거부번호로 수신자 관리를 할 수 있는지를 하단 발신프로필 목록에 우측 SMS 프로젝트 080 번호 관리 여부 필드를 통해서 확인할 수 있습니다.
 * SMS 서비스 앱키를 비우고 저장한 경우
    * 고객께서 직접 수신거부 수신자를 관리해야 하며, 저희 시스템의 발송 과정에서 수신자에 대한 검증을 하지 않습니다.
-     ![Inline-image-2025-03-06 15.57.49.406.png](/wikis/1769381697328002548/files/4017642177317231666)
+     ![friendtalkupgrade_10_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_10_20250508.png)

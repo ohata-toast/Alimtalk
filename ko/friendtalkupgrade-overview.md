@@ -24,7 +24,7 @@
 
 ## 친구톡 Upgrade 타겟팅
 
-![Inline-image-2025-02-27 15.22.26.794.png](/wikis/1769381697328002548/files/4012550960094691968)
+![friendtalkupgrade_1_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_1_20250508.png)
 
 ### M: 광고주 마수동 유저(카카오톡 수신 동의)
 
@@ -32,7 +32,7 @@
 * 수신자가 발송 채널의 친구가 아닌 경우, 무료수신거부 정보가 포함된 N타입의 채널 메시지로 발송 처리됩니다.
 * 무료수신거부 정보는 발송 채널의 발신프로필에서 등록 및 관리하실 수 있습니다.
 
-![Inline-image-2025-02-27 15.22.37.091.png](/wikis/1769381697328002548/files/4012551045269624732)
+![friendtalkupgrade_02_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_2_20250508.png)
 
 ### N: 광고주 마수동 유저(카카오톡 수신 동의) - 채널 친구
 
@@ -40,7 +40,7 @@
 * 수신자가 발송 채널의 친구가 아님으로, 무료수신거부 정보가 포함된 N타입의 채널 메시지로 발송 처리됩니다.
 * 무료수신거부 정보는 발송 채널의 발신프로필에서 등록 및 관리하실 수 있습니다.
 
-![Inline-image-2025-02-27 15.22.50.278.png](/wikis/1769381697328002548/files/4012551156385493036)
+![friendtalkupgrade_03_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_3_20250508.png)
 
 ### I: 광고주 발송 요청 대상 ∩ 채널 친구
 
