@@ -17,7 +17,7 @@
 * BC, BT 버튼 타입을 사용할 수 있습니다.
 * AC(채널 추가)버튼을 사용할 수 없습니다.
 * BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 넣어서 사용할 수 있습니다.
-* cbt 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
+* OBT 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
 
 #### 요청
 
@@ -948,18 +948,18 @@ Content-Type: application/json;charset=UTF-8
 
 [Query parameter] 1번 or 2번 조건 필수
 
-| 이름 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- |
-| requestId | String | 조건 필수(1번) | 요청 ID |
+| 이름               | 타입     | 필수        | 설명                              |
+|------------------|--------|-----------|---------------------------------|
+| requestId        | String | 조건 필수(1번) | 요청 ID                           |
 | startRequestDate | String | 조건 필수(2번) | 발송 요청 날짜 시작 값(yyyy-MM-dd HH:mm) |
-| endRequestDate | String | 조건 필수(2번) | 발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm) |
-| senderKey | String | X | 발신 키 |
-| templateCode | String | X | 템플릿 코드 |
-| recipientNo | String | X | 수신 번호 |
-| messageStatus | String | 요청 상태 | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
-| resultCode | String | X | 발송 결과(MRC01: 성공 MRC02: 실패 ) |
-| pageNum | String | X | 페이지 번호(Default: 1) |
-| pageSize | String | X | 조회 건수(Default: 15, Max: 1000) |
+| endRequestDate   | String | 조건 필수(2번) | 발송 요청 날짜 끝 값(yyyy-MM-dd HH:mm)  |
+| senderKey        | String | X         | 발신 키                            |
+| templateCode     | String | X         | 템플릿 코드                          |
+| recipientNo      | String | X         | 수신 번호                           |
+| messageStatus    | String | X         | 요청 상태                           | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
+| resultCode       | String | X         | 발송 결과(MRC01: 성공 MRC02: 실패 )     |
+| pageNum          | String | X         | 페이지 번호(Default: 1)              |
+| pageSize         | String | X         | 조회 건수(Default: 15, Max: 1000)   |
 
 #### 응답
 
