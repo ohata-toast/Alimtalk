@@ -1925,7 +1925,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
 | - schemeIos     | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
-#### 이미지형 발송 요청
+#### 이미지형 템플릿 등록 요청
 
 [Request body]
 
@@ -1986,7 +1986,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
 | - schemeIos     | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
-#### 와이드 이미지형 발송 요청
+#### 와이드 이미지형 템플릿 등록 요청
 
 [Request body]
 
@@ -2047,7 +2047,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
 | - schemeIos     | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
-#### 와이드 아이템 리스트형 발송 요청
+#### 와이드 아이템 리스트형 템플릿 등록 요청
 
 [Request body]
 
@@ -2137,7 +2137,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid  | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
 | - schemeIos      | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 
-#### 프리미엄 동영상형 발송 요청
+#### 프리미엄 동영상형 템플릿 등록 요청
 
 [Request body]
 
@@ -2200,7 +2200,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
 | - schemeIos     | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
-#### 커머스형 발송 요청
+#### 커머스형 템플릿 등록 요청
 
 [Request body]
 
@@ -2275,7 +2275,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid   | String  | X  | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
 | - schemeIos       | String  | X  | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 
-#### 캐러셀 피드형 발송 요청
+#### 캐러셀 피드형 템플릿 등록 요청
 
 [Request body]
 
@@ -2385,7 +2385,7 @@ Content-Type: application/json;charset=UTF-8
 | - recipientNo     | String  | O  | 수신 번호                                                                                                                                                                                                                             |
 | createUser        | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                       |
 
-#### 캐러셀 커머스형 발송 요청
+#### 캐러셀 커머스형 템플릿 등록 요청
 
 [Request body]
 
