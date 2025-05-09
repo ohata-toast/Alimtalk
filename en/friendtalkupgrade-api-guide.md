@@ -984,7 +984,7 @@ Content-Type: application/json;charset=UTF-8
                 "receiveDate": String,
                 "chatBubbleType": String,
                 "pushAlarm": boolean,
-                "messageStatus": String
+                "messageStatus": String,
                 "isAddedChannel": boolean,
                 "resultCode": String,
                 "createUser": String
@@ -1184,7 +1184,7 @@ Content-Type: application/json;charset=UTF-8
       "templateParameter": String,
       "pushAlarm": boolean,
       "messageStatus": String,
-      "isAddedChannel": boolean
+      "isAddedChannel": boolean,
       "resultCode": String,
       "resultCodeName": String,
       "createUser": String
@@ -1192,118 +1192,114 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름                                 | 타입    | Not Null | 설명                                                                                      |
-| :------------------------------------ | :------ | :------- | :---------------------------------------------------------------------------------------- |
-| header                                | Object  | O        | 헤더 영역                                                                                 |
-| - resultCode                          | Integer | O        | 결과 코드                                                                                 |
-| - resultMessage                       | String  | O        | 결과 메시지                                                                               |
-| - isSuccessful                        | boolean | O        | 성공 여부                                                                                 |
-| message                               | Object  | X        | 메시지 본문 영역                                                                          |
-| - requestId                           | String  | O        | 요청 ID                                                                                 |
-| - recipientSeq                        | Integer | O        | 수신자 시퀀스 번호                                                                        |
-| - plusFriendId                        | String  | O        | 발신 프로필 ID                                                                            |
-| - senderKey                           | String  | O        | 발신 키                                                                                   |
-| - templateCode                        | String  | X        | 템플릿 코드                                                                               |
-| - recipientNo                         | String  | O        | 수신 번호                                                                                 |
-| - targeting                           | String  | O        | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
-| - requestDate                         | String  | O        | 요청 일시                                                                                 |
-| - createDate                          | String  | O        | 등록 일시                                                                                 |
-| - receiveDate                         | String  | X        | 수신 일시                                                                                 |
-| - chatBubbleType                      | String  | O        | 메시지 타입                                                                               |
-| - content                             | String  | X        | 메시지 내용                                                                               |
-| - adult                               | boolean | O        | 성인용 메시지 여부                                                                        |
-| - header                              | String  | X        | 헤더 (메시지 내)                                                                          |
-| - additionalContent                   | String  | X        | (JSON에 없음, 설명 테이블 참고)                                                               |
-| - image                               | Object  | X        | 이미지 요소                                                                               |
-| -- imageUrl                           | String  | O        | 이미지 URL                                                                                |
-| -- imageLink                          | String  | X        | 이미지 링크                                                                               |
-| - buttons                             | Array   | X        | 버튼 목록                                                                                 |
-| -- (object)                           | Object  | X        | 버튼 객체                                                                                 |
-| --- name                              | String  | O        | 버튼 제목                                                                                 |
-| --- type                              | String  | O        | 버튼 타입                                                                                 |
-| --- linkMo                            | String  | X        | 모바일 웹 링크                                                                            |
-| --- linkPc                            | String  | X        | PC 웹 링크                                                                                |
-| --- schemeIos                         | String  | X        | IOS 앱 링크                                                                               |
-| --- schemeAndroid                     | String  | X        | 안드로이드 앱 링크                                                                        |
-| --- chatExtra                         | String  | X        | BC / BT 타입 버튼일 경우 전달할 메타 정보                                                     |
-| --- chatEvent                         | String  | X        | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                      |
-| --- bizFormKey                        | String  | X        | BF 타입 버튼일 경우 비즈폼 키                                                               |
-| - item                                | Object  | X        | 와이드 리스트 요소                                                                        |
-| -- list                               | Array   | X        | 와이드 리스트                                                                             |
-| --- (object)                          | Object  | X        | 리스트 아이템 객체                                                                        |
-| ---- title                            | String  | X        | 아이템 제목                                                                               |
-| ---- imageUrl                         | String  | O        | 아이템 이미지 URL                                                                         |
-| ---- linkMo                           | String  | O        | 모바일 웹 링크                                                                            |
-| ---- linkPc                           | String  | X        | PC 웹 링크                                                                                |
-| ---- schemeIos                        | String  | X        | IOS 앱 링크                                                                               |
-| ---- schemeAndroid                    | String  | X        | 안드로이드 앱 링크                                                                        |
-| - coupon                              | Object  | X        | 쿠폰 요소                                                                                 |
-| -- title                              | String  | O        | 쿠폰 제목                                                                                 |
-| -- description                        | String  | O        | 쿠폰 상세 설명                                                                            |
-| -- linkMo                             | String  | X        | 모바일 웹 링크                                                                            |
-| -- linkPc                             | String  | X        | PC 웹 링크                                                                                |
-| -- schemeAndroid                      | String  | X        | 안드로이드 앱 링크                                                                        |
-| -- schemeIos                          | String  | X        | IOS 앱 링크                                                                               |
-| - commerce                            | Object  | X        | 커머스 요소                                                                               |
-| -- title                              | String  | O        | 상품 제목                                                                                 |
-| -- regularPrice                       | Integer | X        | 정상 가격                                                                                 |
-| -- discountPrice                      | Integer | X        | 할인가격                                                                                  |
-| -- discountRate                       | Integer | X        | 할인율                                                                                    |
-| -- discountFixed                      | Integer | X        | 정액할인가격                                                                              |
-| - video                               | Object  | X        | 동영상 요소                                                                               |
-| -- videoUrl                           | String  | O        | 카카오TV 동영상 URL                                                                       |
-| -- thumbnailUrl                       | String  | X        | 동영상 썸네일용 이미지 URL                                                                  |
-| - carousel                            | Object  | X        | 캐러셀                                                                                    |
-| -- head                               | Object  | X        | 캐러셀 인트로                                                                             |
-| --- header                            | String  | O        | 캐러셀 인트로 헤더                                                                        |
-| --- content                           | String  | O        | 캐러셀 인트로 내용                                                                        |
-| --- imageUrl                          | String  | O        | 캐러셀 인트로 이미지 주소                                                                   |
-| --- linkMo                            | String  | X        | 모바일 웹 링크                                                                            |
-| --- linkPc                            | String  | X        | PC 웹 링크                                                                                |
-| --- schemeIos                         | String  | X        | IOS 앱 링크                                                                               |
-| --- schemeAndroid                     | String  | X        | 안드로이드 앱 링크                                                                        |
-| -- list                               | Array   | O        | 캐러셀 리스트                                                                             |
-| --- (object)                          | Object  | X        | 캐러셀 아이템 객체                                                                        |
-| ---- header                           | String  | O        | 캐러셀 아이템 헤더 (설명 테이블 기준, JSON엔 없음)                                            |
-| ---- message                          | String  | O        | 캐러셀 아이템 메시지 (Not Null 리스트의 content 매핑, JSON: message)                          |
-| ---- addtionalContent                 | String  | X        | 부가 정보 (JSON: addtionalContent)                                                        |
-| ---- attachment                       | Object  | O        | 캐러셀 아이템 첨부                                                                        |
-| ----- buttons                         | Array   | O        | 캐러셀 리스트 버튼 목록                                                                     |
-| ------ (object)                       | Object  | X        | 버튼 객체                                                                                 |
-| ------- name                          | String  | O        | 버튼 제목                                                                                 |
-| ------- type                          | String  | O        | 버튼 타입                                                                                 |
-| ------- linkMo                        | String  | X        | 모바일 웹 링크                                                                            |
-| ------- linkPc                        | String  | X        | PC 웹 링크                                                                                |
-| ------- schemeAndroid                 | String  | X        | 안드로이드 앱 링크                                                                        |
-| ------- schemeIos                     | String  | X        | IOS 앱 링크                                                                               |
-| ----- image                           | Object  | O        | 캐러셀 아이템 이미지                                                                      |
-| ------ imageUrl                       | String  | O        | 이미지 URL                                                                                |
-| ------ imageLink                      | String  | X        | 이미지 링크                                                                               |
-| ----- coupon                          | Object  | X        | 쿠폰 요소 (캐러셀 내)                                                                     |
-| ------ title                          | String  | X        | 쿠폰 제목                                                                                 |
-| ------ description                    | String  | X        | 쿠폰 상세 설명                                                                            |
-| ------ linkMo                         | String  | X        | 모바일 웹 링크                                                                            |
-| ------ linkPc                         | String  | X        | PC 웹 링크                                                                                |
-| ------ schemeAndroid                  | String  | X        | 안드로이드 앱 링크                                                                        |
-| ------ schemeIos                      | String  | X        | IOS 앱 링크                                                                               |
-| ----- commerce                        | Object  | O        | 커머스 (캐러셀 내)                                                                        |
-| ------ title                          | String  | O        | 상품 제목                                                                                 |
-| ------ regularPrice                   | Integer | X        | 정상 가격                                                                                 |
-| ------ discountPrice                  | Integer | X        | 할인가격                                                                                  |
-| ------ discountRate                   | Integer | X        | 할인율                                                                                    |
-| ------ discountFixed                  | Integer | X        | 정액할인가격                                                                              |
-| -- tail                               | Object  | X        | 더보기 버튼 정보                                                                          |
-| --- linkMo                            | String  | O        | 모바일 웹 링크                                                                            |
-| --- linkPc                            | String  | X        | PC 웹 링크                                                                                |
-| --- schemeAndroid                     | String  | X        | 안드로이드 앱 링크                                                                        |
-| --- schemeIos                         | String  | X        | IOS 앱 링크                                                                               |
-| - templateParameter                   | String  | X        | 템플릿 파라미터                                                                           |
-| - pushAlarm                           | boolean | O        | 푸시 알림 여부                                                                            |
-| - messageStatus                       | String  | O        | 요청 상태 (COMPLETED: 성공, FAILED: 실패)                                               |
-| - isAddedChannel                      | boolean | O        | 채널 친구 여부                                                                            |
-| - resultCode                          | String  | X        | 수신 결과 코드 (메시지 내)                                                                  |
-| - resultCodeName                      | String  | X        | 수신 결과 코드명 (메시지 내)                                                                 |
-| - createUser                          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                     |
+| 이름                   | 타입    | Not Null | 설명                                                                                      |
+|:---------------------| :------ | :------- | :---------------------------------------------------------------------------------------- |
+| header               | Object  | O        | 헤더 영역                                                                                 |
+| - resultCode         | Integer | O        | 결과 코드                                                                                 |
+| - resultMessage      | String  | O        | 결과 메시지                                                                               |
+| - isSuccessful       | boolean | O        | 성공 여부                                                                                 |
+| message              | Object  | X        | 메시지 본문 영역                                                                          |
+| - requestId          | String  | O        | 요청 ID                                                                                 |
+| - recipientSeq       | Integer | O        | 수신자 시퀀스 번호                                                                        |
+| - plusFriendId       | String  | O        | 발신 프로필 ID                                                                            |
+| - senderKey          | String  | O        | 발신 키                                                                                   |
+| - templateCode       | String  | X        | 템플릿 코드                                                                               |
+| - recipientNo        | String  | O        | 수신 번호                                                                                 |
+| - targeting          | String  | O        | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
+| - requestDate        | String  | O        | 요청 일시                                                                                 |
+| - createDate         | String  | O        | 등록 일시                                                                                 |
+| - receiveDate        | String  | X        | 수신 일시                                                                                 |
+| - chatBubbleType     | String  | O        | 메시지 타입                                                                               |
+| - content            | String  | X        | 메시지 내용                                                                               |
+| - adult              | boolean | O        | 성인용 메시지 여부                                                                        |
+| - header             | String  | X        | 헤더 (메시지 내)                                                                          |
+| - additionalContent  | String  | X        | (JSON에 없음, 설명 테이블 참고)                                                               |
+| - image              | Object  | X        | 이미지 요소                                                                               |
+| -- imageUrl          | String  | O        | 이미지 URL                                                                                |
+| -- imageLink         | String  | X        | 이미지 링크                                                                               |
+| - buttons            | Array   | X        | 버튼 목록                                                                                 |
+| -- name              | String  | O        | 버튼 제목                                                                                 |
+| -- type              | String  | O        | 버튼 타입                                                                                 |
+| -- linkMo            | String  | X        | 모바일 웹 링크                                                                            |
+| -- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| -- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| -- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- chatExtra         | String  | X        | BC / BT 타입 버튼일 경우 전달할 메타 정보                                                     |
+| -- chatEvent         | String  | X        | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                      |
+| -- bizFormKey        | String  | X        | BF 타입 버튼일 경우 비즈폼 키                                                               |
+| - item               | Object  | X        | 와이드 리스트 요소                                                                        |
+| -- list              | Array   | X        | 와이드 리스트                                                                             |
+| --- title            | String  | X        | 아이템 제목                                                                               |
+| --- imageUrl         | String  | O        | 아이템 이미지 URL                                                                         |
+| --- linkMo           | String  | O        | 모바일 웹 링크                                                                            |
+| --- linkPc           | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| - coupon             | Object  | X        | 쿠폰 요소                                                                                 |
+| -- title             | String  | O        | 쿠폰 제목                                                                                 |
+| -- description       | String  | O        | 쿠폰 상세 설명                                                                            |
+| -- linkMo            | String  | X        | 모바일 웹 링크                                                                            |
+| -- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| -- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| - commerce           | Object  | X        | 커머스 요소                                                                               |
+| -- title             | String  | O        | 상품 제목                                                                                 |
+| -- regularPrice      | Integer | X        | 정상 가격                                                                                 |
+| -- discountPrice     | Integer | X        | 할인가격                                                                                  |
+| -- discountRate      | Integer | X        | 할인율                                                                                    |
+| -- discountFixed     | Integer | X        | 정액할인가격                                                                              |
+| - video              | Object  | X        | 동영상 요소                                                                               |
+| -- videoUrl          | String  | O        | 카카오TV 동영상 URL                                                                       |
+| -- thumbnailUrl      | String  | X        | 동영상 썸네일용 이미지 URL                                                                  |
+| - carousel           | Object  | X        | 캐러셀                                                                                    |
+| -- head              | Object  | X        | 캐러셀 인트로                                                                             |
+| --- header           | String  | O        | 캐러셀 인트로 헤더                                                                        |
+| --- content          | String  | O        | 캐러셀 인트로 내용                                                                        |
+| --- imageUrl         | String  | O        | 캐러셀 인트로 이미지 주소                                                                   |
+| --- linkMo           | String  | X        | 모바일 웹 링크                                                                            |
+| --- linkPc           | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- list              | Array   | O        | 캐러셀 리스트                                                                             |
+| --- header           | String  | O        | 캐러셀 아이템 헤더 (설명 테이블 기준, JSON엔 없음)                                            |
+| --- message          | String  | O        | 캐러셀 아이템 메시지 (Not Null 리스트의 content 매핑, JSON: message)                          |
+| --- addtionalContent | String  | X        | 부가 정보 (JSON: addtionalContent)                                                        |
+| --- attachment       | Object  | O        | 캐러셀 아이템 첨부                                                                        |
+| ---- buttons         | Array   | O        | 캐러셀 리스트 버튼 목록                                                                     |
+| ----- name           | String  | O        | 버튼 제목                                                                                 |
+| ----- type           | String  | O        | 버튼 타입                                                                                 |
+| ----- linkMo         | String  | X        | 모바일 웹 링크                                                                            |
+| ----- linkPc         | String  | X        | PC 웹 링크                                                                                |
+| ----- schemeAndroid  | String  | X        | 안드로이드 앱 링크                                                                        |
+| ----- schemeIos      | String  | X        | IOS 앱 링크                                                                               |
+| ---- image           | Object  | O        | 캐러셀 아이템 이미지                                                                      |
+| ----- imageUrl       | String  | O        | 이미지 URL                                                                                |
+| ----- imageLink      | String  | X        | 이미지 링크                                                                               |
+| ---- coupon          | Object  | X        | 쿠폰 요소 (캐러셀 내)                                                                     |
+| ----- title          | String  | X        | 쿠폰 제목                                                                                 |
+| ----- description    | String  | X        | 쿠폰 상세 설명                                                                            |
+| ----- linkMo         | String  | X        | 모바일 웹 링크                                                                            |
+| ----- linkPc         | String  | X        | PC 웹 링크                                                                                |
+| ----- schemeAndroid  | String  | X        | 안드로이드 앱 링크                                                                        |
+| ----- schemeIos      | String  | X        | IOS 앱 링크                                                                               |
+| ---- commerce        | Object  | O        | 커머스 (캐러셀 내)                                                                        |
+| ----- title          | String  | O        | 상품 제목                                                                                 |
+| ----- regularPrice   | Integer | X        | 정상 가격                                                                                 |
+| ----- discountPrice  | Integer | X        | 할인가격                                                                                  |
+| ----- discountRate   | Integer | X        | 할인율                                                                                    |
+| ----- discountFixed  | Integer | X        | 정액할인가격                                                                              |
+| -- tail              | Object  | X        | 더보기 버튼 정보                                                                          |
+| --- linkMo           | String  | O        | 모바일 웹 링크                                                                            |
+| --- linkPc           | String  | X        | PC 웹 링크                                                                                |
+| --- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| --- schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| - templateParameter  | String  | X        | 템플릿 파라미터                                                                           |
+| - pushAlarm          | boolean | O        | 푸시 알림 여부                                                                            |
+| - messageStatus      | String  | O        | 요청 상태 (COMPLETED: 성공, FAILED: 실패)                                               |
+| - isAddedChannel     | boolean | O        | 채널 친구 여부                                                                            |
+| - resultCode         | String  | X        | 수신 결과 코드 (메시지 내)                                                                  |
+| - resultCodeName     | String  | X        | 수신 결과 코드명 (메시지 내)                                                                 |
+| - createUser         | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                     |
 
 ## 템플릿 관리
 
@@ -1476,108 +1472,102 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름                             | 타입    | Not Null | 설명                                                                                      |
-| :------------------------------- | :------ | :------- | :---------------------------------------------------------------------------------------- |
-| header                           | Object  | O        | 헤더 영역                                                                                 |
-| - resultCode                       | Integer | O        | 결과 코드                                                                                 |
-| - resultMessage                    | String  | O        | 결과 메시지                                                                               |
-| - isSuccessful                     | boolean | O        | 성공 여부                                                                                 |
-| templateListResponse             | Object  | O        | 본문 영역                                                                                 |
-| - templates                        | Array   | O        | 템플릿 리스트                                                                             |
-| -- (object)                        | Object  | X        | 템플릿 객체                                                                               |
-| --- plusFriendId                   | String  | O        | 발신 프로필 ID                                                                            |
-| --- plusFriendType                 | String  | O        | 발신 프로필 타입                                                                          |
-| --- templateCode                   | String  | O        | 템플릿 코드                                                                               |
-| --- templateName                   | String  | O        | 템플릿 명                                                                                 |
-| --- chatBubbleType                 | String  | O        | 메시지 타입                                                                               |
-| --- content                        | String  | X        | 메시지 내용                                                                               |
-| --- header                         | String  | X        | 헤더                                                                                      |
-| --- additionalContent              | String  | X        | (설명 테이블 참고)                                                                        |
-| --- adult                          | boolean | O        | 성인용 메시지 여부                                                                        |
-| --- image                          | Object  | X        | 이미지 정보                                                                               |
-| ---- imageUrl                       | String  | O        | 이미지 URL                                                                                |
-| ---- imageLink                      | String  | X        | 이미지 링크                                                                               |
-| --- buttons                        | Array   | X        | 버튼 목록                                                                                 |
-| ---- (object)                       | Object  | X        | 버튼 객체                                                                                 |
-| ----- name                         | String  | O        | 버튼 제목                                                                                 |
-| ----- type                         | String  | O        | 버튼 타입                                                                                 |
-| ----- linkMo                       | String  | X        | 모바일 웹 링크                                                                            |
-| ----- linkPc                       | String  | X        | PC 웹 링크                                                                                |
-| ----- schemeIos                    | String  | X        | IOS 앱 링크                                                                               |
-| ----- schemeAndroid                | String  | X        | 안드로이드 앱 링크                                                                        |
-| ----- bizFormId                    | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
-| --- item                           | Object  | X        | 와이드 리스트 요소                                                                        |
-| ---- list                          | Array   | X        | 와이드 리스트                                                                             |
-| ----- (object)                      | Object  | X        | 리스트 아이템 객체                                                                        |
-| ------ title                        | String  | X        | 아이템 제목                                                                               |
-| ------ imageUrl                     | String  | O        | 아이템 이미지 URL                                                                         |
-| ------ linkMo                       | String  | O        | 모바일 웹 링크                                                                            |
-| ------ linkPc                       | String  | X        | PC 웹 링크                                                                                |
-| ------ schemeAndroid                | String  | X        | 안드로이드 앱 링크                                                                        |
-| ------ schemeIos                    | String  | X        | IOS 앱 링크                                                                               |
-| --- coupon                         | Object  | X        | 쿠폰 요소                                                                                 |
-| ---- title                         | String  | O        | 쿠폰 제목                                                                                 |
-| ---- description                   | String  | O        | 쿠폰 상세 설명                                                                            |
-| ---- linkMo                        | String  | X        | 모바일 웹 링크                                                                            |
-| ---- linkPc                        | String  | X        | PC 웹 링크                                                                                |
-| ---- schemeAndroid                 | String  | X        | 안드로이드 앱 링크                                                                        |
-| ---- schemeIos                     | String  | X        | IOS 앱 링크                                                                               |
-| --- commerce                       | Object  | X        | 커머스 요소                                                                               |
-| ---- title                         | String  | O        | 상품 제목                                                                                 |
-| ---- regularPrice                  | Integer | X        | 정상 가격                                                                                 |
-| ---- discountPrice                 | Integer | X        | 할인가격                                                                                  |
-| ---- discountRate                  | Integer | X        | 할인율                                                                                    |
-| ---- discountFixed                 | Integer | X        | 정액할인가격                                                                              |
-| --- video                          | Object  | X        | 동영상 요소                                                                               |
-| ---- videoUrl                      | String  | O        | 카카오TV 동영상 URL                                                                       |
-| ---- thumbnailUrl                  | String  | X        | 동영상 썸네일용 이미지 URL                                                                |
-| --- carousel                       | Object  | X        | 캐러셀                                                                                    |
-| ---- head                          | Object  | X        | 캐러셀 인트로                                                                             |
-| ----- header                       | String  | O        | 캐러셀 인트로 헤더                                                                        |
-| ----- content                      | String  | O        | 캐러셀 인트로 내용                                                                        |
-| ----- imageUrl                     | String  | O        | 캐러셀 인트로 이미지 주소                                                                 |
-| ----- linkMo                       | String  | X        | 모바일 웹 링크                                                                            |
-| ----- linkPc                       | String  | X        | PC 웹 링크                                                                                |
-| ----- schemeAndroid                | String  | X        | 안드로이드 앱 링크                                                                        |
-| ----- schemeIos                    | String  | X        | IOS 앱 링크                                                                               |
-| ---- list                          | Array   | O        | 캐러셀 리스트                                                                             |
-| ----- (object)                      | Object  | X        | 캐러셀 아이템 객체                                                                        |
-| ------ header                       | String  | O        | 캐러셀 아이템 헤더                                                                        |
-| ------ message                      | String  | O        | 캐러셀 아이템 메시지 (Not Null 리스트의 content 매핑)                                     |
-| ------ additionalContent            | String  | X        | 부가 정보                                                                                 |
-| ------ imageUrl                     | String  | O        | 이미지 URL (캐러셀 아이템 내)                                                           |
-| ------ imageLink                    | String  | X        | 이미지 링크 (캐러셀 아이템 내)                                                          |
-| ------ commerce                     | Object  | O        | 커머스 (캐러셀 아이템 내)                                                                 |
-| ------- title                      | String  | O        | 상품 제목                                                                                 |
-| ------- regularPrice                 | Integer | X        | 정상 가격                                                                                 |
-| ------- discountPrice                | Integer | X        | 할인가격                                                                                  |
-| ------- discountRate                 | Integer | X        | 할인율                                                                                    |
-| ------- discountFixed                | Integer | X        | 정액할인가격                                                                              |
-| ------ buttons                      | Array   | O        | 캐러셀 리스트 버튼 목록                                                                   |
-| ------- (object)                     | Object  | X        | 버튼 객체                                                                                 |
-| -------- name                       | String  | O        | 버튼 제목                                                                                 |
-| -------- type                       | String  | O        | 버튼 타입                                                                                 |
-| -------- linkMo                     | String  | X        | 모바일 웹 링크                                                                            |
-| -------- linkPc                     | String  | X        | PC 웹 링크                                                                                |
-| -------- schemeIos                  | String  | X        | IOS 앱 링크                                                                               |
-| -------- schemeAndroid              | String  | X        | 안드로이드 앱 링크                                                                        |
-| -------- bizFormId                  | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
-| ------ coupon                       | Object  | X        | 쿠폰 요소 (캐러셀 아이템 내)                                                              |
-| ------- title                      | String  | X        | 쿠폰 제목                                                                                 |
-| ------- description                  | String  | X        | 쿠폰 상세 설명                                                                            |
-| ------- linkMo                     | String  | X        | 모바일 웹 링크                                                                            |
-| ------- linkPc                     | String  | X        | PC 웹 링크                                                                                |
-| ------- schemeAndroid              | String  | X        | 안드로이드 앱 링크                                                                        |
-| ------- schemeIos                  | String  | X        | IOS 앱 링크                                                                               |
-| ---- tail                          | Object  | X        | 더보기 버튼 정보                                                                          |
-| ----- linkMo                       | String  | O        | 모바일 웹 링크                                                                            |
-| ----- linkPc                       | String  | X        | PC 웹 링크                                                                                |
-| ----- schemeAndroid                | String  | X        | 안드로이드 앱 링크                                                                        |
-| ----- schemeIos                    | String  | X        | IOS 앱 링크                                                                               |
-| --- status                         | String  | O        | 템플릿 상태(A: 등록, S: 차단)                                                             |
-| --- createDate                     | String  | O        | 등록 일시                                                                                 |
-| --- updateDate                     | String  | X        | 수정 일시                                                                                 |
-| - totalCount                       | Integer | O        | 총 개수                                                                                   |
+| 이름                      | 타입    | Not Null | 설명                                                                                     |
+|:------------------------| :------ | :------- | :--------------------------------------------------------------------------------------- |
+| header                  | Object  | O        | 헤더 영역                                                                                 |
+| - resultCode            | Integer | O        | 결과 코드                                                                                 |
+| - resultMessage         | String  | O        | 결과 메시지                                                                               |
+| - isSuccessful          | boolean | O        | 성공 여부                                                                                 |
+| templateListResponse    | Object  | O        | 본문 영역                                                                                 |
+| - templates             | Array   | O        | 템플릿 리스트                                                                             |
+| -- plusFriendId         | String  | O        | 발신 프로필 ID                                                                            |
+| -- plusFriendType       | String  | O        | 발신 프로필 타입                                                                          |
+| -- templateCode         | String  | O        | 템플릿 코드                                                                               |
+| -- templateName         | String  | O        | 템플릿 명                                                                                 |
+| -- chatBubbleType       | String  | O        | 메시지 타입                                                                               |
+| -- content              | String  | X        | 메시지 내용                                                                               |
+| -- header               | String  | X        | 헤더                                                                                     |
+| -- additionalContent    | String  | X        | (설명 테이블 참고)                                                                        |
+| -- adult                | boolean | O        | 성인용 메시지 여부                                                                        |
+| -- image                | Object  | X        | 이미지 정보                                                                               |
+| --- imageUrl            | String  | O        | 이미지 URL                                                                                |
+| --- imageLink           | String  | X        | 이미지 링크                                                                               |
+| -- buttons              | Array   | X        | 버튼 목록                                                                                 |
+| --- name                | String  | O        | 버튼 제목                                                                                 |
+| --- type                | String  | O        | 버튼 타입                                                                                 |
+| --- linkMo              | String  | X        | 모바일 웹 링크                                                                            |
+| --- linkPc              | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos           | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid       | String  | X        | 안드로이드 앱 링크                                                                        |
+| --- bizFormId           | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
+| -- item                 | Object  | X        | 와이드 리스트 요소                                                                        |
+| --- list                | Array   | X        | 와이드 리스트                                                                             |
+| ---- title              | String  | X        | 아이템 제목                                                                               |
+| ---- imageUrl           | String  | O        | 아이템 이미지 URL                                                                         |
+| ---- linkMo             | String  | O        | 모바일 웹 링크                                                                            |
+| ---- linkPc             | String  | X        | PC 웹 링크                                                                                |
+| ---- schemeAndroid      | String  | X        | 안드로이드 앱 링크                                                                        |
+| ---- schemeIos          | String  | X        | IOS 앱 링크                                                                               |
+| -- coupon               | Object  | X        | 쿠폰 요소                                                                                 |
+| --- title               | String  | O        | 쿠폰 제목                                                                                 |
+| --- description         | String  | O        | 쿠폰 상세 설명                                                                            |
+| --- linkMo              | String  | X        | 모바일 웹 링크                                                                            |
+| --- linkPc              | String  | X        | PC 웹 링크                                                                                |
+| --- schemeAndroid       | String  | X        | 안드로이드 앱 링크                                                                        |
+| --- schemeIos           | String  | X        | IOS 앱 링크                                                                               |
+| -- commerce             | Object  | X        | 커머스 요소                                                                               |
+| --- title               | String  | O        | 상품 제목                                                                                 |
+| --- regularPrice        | Integer | X        | 정상 가격                                                                                 |
+| --- discountPrice       | Integer | X        | 할인가격                                                                                  |
+| --- discountRate        | Integer | X        | 할인율                                                                                    |
+| --- discountFixed       | Integer | X        | 정액할인가격                                                                              |
+| -- video                | Object  | X        | 동영상 요소                                                                               |
+| --- videoUrl            | String  | O        | 카카오TV 동영상 URL                                                                       |
+| --- thumbnailUrl        | String  | X        | 동영상 썸네일용 이미지 URL                                                                |
+| -- carousel             | Object  | X        | 캐러셀                                                                                    |
+| --- head                | Object  | X        | 캐러셀 인트로                                                                             |
+| ---- header             | String  | O        | 캐러셀 인트로 헤더                                                                        |
+| ---- content            | String  | O        | 캐러셀 인트로 내용                                                                        |
+| ---- imageUrl           | String  | O        | 캐러셀 인트로 이미지 주소                                                                 |
+| ---- linkMo             | String  | X        | 모바일 웹 링크                                                                            |
+| ---- linkPc             | String  | X        | PC 웹 링크                                                                                |
+| ----- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| ----- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| ---- list               | Array   | O        | 캐러셀 리스트                                                                             |
+| ----- header            | String  | O        | 캐러셀 아이템 헤더                                                                        |
+| ----- message           | String  | O        | 캐러셀 아이템 메시지 (Not Null 리스트의 content 매핑)                                     |
+| ----- additionalContent | String  | X        | 부가 정보                                                                                 |
+| ----- imageUrl          | String  | O        | 이미지 URL (캐러셀 아이템 내)                                                           |
+| ----- imageLink         | String  | X        | 이미지 링크 (캐러셀 아이템 내)                                                          |
+| ----- commerce          | Object  | O        | 커머스 (캐러셀 아이템 내)                                                                 |
+| ------ title            | String  | O        | 상품 제목                                                                                 |
+| ------ regularPrice     | Integer | X        | 정상 가격                                                                                 |
+| ------ discountPrice    | Integer | X        | 할인가격                                                                                  |
+| ------ discountRate     | Integer | X        | 할인율                                                                                    |
+| ------ discountFixed    | Integer | X        | 정액할인가격                                                                              |
+| ----- buttons           | Array   | O        | 캐러셀 리스트 버튼 목록                                                                   |
+| ------ name             | String  | O        | 버튼 제목                                                                                 |
+| ------ type             | String  | O        | 버튼 타입                                                                                 |
+| ------ linkMo           | String  | X        | 모바일 웹 링크                                                                            |
+| ------ linkPc           | String  | X        | PC 웹 링크                                                                                |
+| ------ schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| ------ schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| ------ bizFormId        | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
+| ----- coupon            | Object  | X        | 쿠폰 요소 (캐러셀 아이템 내)                                                              |
+| ------ title            | String  | X        | 쿠폰 제목                                                                                 |
+| ------ description      | String  | X        | 쿠폰 상세 설명                                                                            |
+| ------ linkMo           | String  | X        | 모바일 웹 링크                                                                            |
+| ------ linkPc           | String  | X        | PC 웹 링크                                                                                |
+| ------ schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| ------ schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| ---- tail               | Object  | X        | 더보기 버튼 정보                                                                          |
+| ----- linkMo            | String  | O        | 모바일 웹 링크                                                                            |
+| ----- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| ----- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| ----- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| --- status              | String  | O        | 템플릿 상태(A: 등록, S: 차단)                                                             |
+| --- createDate          | String  | O        | 등록 일시                                                                                 |
+| --- updateDate          | String  | X        | 수정 일시                                     || - totalCount             | Integer | O                                                     | 총 개수                                                                                   |
 
 ### 템플릿 단건 조회
 
@@ -1732,106 +1722,102 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름                             | 타입    | Not Null | 설명                                                                                      |
-| :------------------------------- | :------ | :------- | :---------------------------------------------------------------------------------------- |
-| header                           | Object  | O        | 헤더 영역                                                                                 |
-| - resultCode                       | Integer | O        | 결과 코드                                                                                 |
-| - resultMessage                    | String  | O        | 결과 메시지                                                                               |
-| - isSuccessful                     | boolean | O        | 성공 여부                                                                                 |
-| template                         | Object  | O        | 템플릿 본문 영역                                                                          |
-| - plusFriendId                     | String  | O        | 발신 프로필 ID                                                                            |
-| - plusFriendType                   | String  | O        | 발신 프로필 타입                                                                          |
-| - templateCode                     | String  | O        | 템플릿 코드                                                                               |
-| - templateName                     | String  | O        | 템플릿 명                                                                                 |
-| - chatBubbleType                   | String  | O        | 메시지 타입                                                                               |
-| - pushAlarm                        | boolean | X        | 푸시 알림 여부                                                                            |
-| - content                          | String  | X        | 메시지 내용                                                                               |
-| - adult                            | boolean | O        | 성인용 메시지 여부                                                                        |
-| - header                           | String  | X        | 헤더 (템플릿 내)                                                                         |
-| - additionalContent                | String  | X        | 부가 정보 (템플릿 내)                                                                     |
-| - image                            | Object  | X        | 이미지 정보                                                                               |
-| -- imageUrl                        | String  | O        | 이미지 URL                                                                                |
-| -- imageLink                       | String  | X        | 이미지 링크                                                                               |
-| - buttons                          | Array   | X        | 버튼 목록                                                                                 |
-| -- (object)                        | Object  | X        | 버튼 객체                                                                                 |
-| --- name                           | String  | O        | 버튼 제목                                                                                 |
-| --- type                           | String  | O        | 버튼 타입                                                                                 |
-| --- linkMo                         | String  | X        | 모바일 웹 링크                                                                            |
-| --- linkPc                         | String  | X        | PC 웹 링크                                                                                |
-| --- schemeIos                      | String  | X        | IOS 앱 링크                                                                               |
-| --- schemeAndroid                  | String  | X        | 안드로이드 앱 링크                                                                        |
-| --- bizFormId                      | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
-| - item                             | Object  | X        | 와이드 리스트 요소                                                                        |
-| -- list                            | Array   | X        | 와이드 리스트                                                                             |
-| --- (object)                       | Object  | X        | 리스트 아이템 객체                                                                        |
-| ---- title                         | String  | X        | 아이템 제목                                                                               |
-| ---- imageUrl                      | String  | O        | 아이템 이미지 URL                                                                         |
-| ---- linkMo                        | String  | O        | 모바일 웹 링크                                                                            |
-| ---- linkPc                        | String  | X        | PC 웹 링크                                                                                |
-| ---- schemeIos                     | String  | X        | IOS 앱 링크                                                                               |
-| ---- schemeAndroid                 | String  | X        | 안드로이드 앱 링크                                                                        |
-| - coupon                           | Object  | X        | 쿠폰 요소                                                                                 |
-| -- title                           | String  | O        | 쿠폰 제목                                                                                 |
-| -- description                     | String  | O        | 쿠폰 상세 설명                                                                            |
-| -- linkMo                          | String  | X        | 모바일 웹 링크                                                                            |
-| -- linkPc                          | String  | X        | PC 웹 링크                                                                                |
-| -- schemeIos                       | String  | X        | IOS 앱 링크                                                                               |
-| -- schemeAndroid                   | String  | X        | 안드로이드 앱 링크                                                                        |
-| - commerce                         | Object  | X        | 커머스 요소                                                                               |
-| -- title                           | String  | O        | 상품 제목                                                                                 |
-| -- regularPrice                    | Integer | X        | 정상 가격                                                                                 |
-| -- discountPrice                   | Integer | X        | 할인가격                                                                                  |
-| -- discountRate                    | Integer | X        | 할인율                                                                                    |
-| -- discountFixed                   | Integer | X        | 정액할인가격                                                                              |
-| - video                            | Object  | X        | 동영상 요소                                                                               |
-| -- videoUrl                        | String  | O        | 카카오TV 동영상 URL                                                                       |
-| -- thumbnailUrl                    | String  | X        | 동영상 썸네일용 이미지 URL                                                                |
-| - carousel                         | Object  | X        | 캐러셀                                                                                    |
-| -- head                            | Object  | X        | 캐러셀 인트로                                                                             |
-| --- header                         | String  | O        | 캐러셀 인트로 헤더                                                                        |
-| --- content                        | String  | O        | 캐러셀 인트로 내용                                                                        |
-| --- imageUrl                       | String  | O        | 캐러셀 인트로 이미지 주소                                                                 |
-| --- linkMo                         | String  | X        | 모바일 웹 링크                                                                            |
-| --- linkPc                         | String  | X        | PC 웹 링크                                                                                |
-| --- schemeIos                      | String  | X        | IOS 앱 링크                                                                               |
-| --- schemeAndroid                  | String  | X        | 안드로이드 앱 링크                                                                        |
-| -- list                            | Array   | O        | 캐러셀 리스트                                                                             |
-| --- (object)                       | Object  | X        | 캐러셀 아이템 객체                                                                        |
-| ---- header                        | String  | O        | 캐러셀 아이템 헤더                                                                        |
-| ---- message                       | String  | O        | 캐러셀 아이템 메시지                                                                      |
-| ---- additionalContent              | String  | X        | 부가 정보 (캐러셀 아이템 내)                                                              |
-| ---- imageUrl                      | String  | O        | 이미지 URL (캐러셀 아이템 내)                                                           |
-| ---- imageLink                     | String  | X        | 이미지 링크 (캐러셀 아이템 내)                                                          |
-| ---- commerce                      | Object  | O        | 커머스 (캐러셀 아이템 내)                                                                 |
-| ----- title                        | String  | O        | 상품 제목                                                                                 |
-| ----- regularPrice                 | Integer | X        | 정상 가격                                                                                 |
-| ----- discountPrice                | Integer | X        | 할인가격                                                                                  |
-| ----- discountRate                 | Integer | X        | 할인율                                                                                    |
-| ----- discountFixed                | Integer | X        | 정액할인가격                                                                              |
-| ---- buttons                       | Array   | O        | 캐러셀 리스트 버튼 목록                                                                   |
-| ----- (object)                     | Object  | X        | 버튼 객체                                                                                 |
-| ------ name                        | String  | O        | 버튼 제목                                                                                 |
-| ------ type                        | String  | O        | 버튼 타입                                                                                 |
-| ------ linkMo                      | String  | X        | 모바일 웹 링크                                                                            |
-| ------ linkPc                      | String  | X        | PC 웹 링크                                                                                |
-| ------ schemeIos                   | String  | X        | IOS 앱 링크                                                                               |
-| ------ schemeAndroid               | String  | X        | 안드로이드 앱 링크                                                                        |
-| ------ bizFormId                   | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
-| ---- coupon                        | Object  | X        | 쿠폰 요소 (캐러셀 아이템 내)                                                              |
-| ----- title                        | String  | X        | 쿠폰 제목                                                                                 |
-| ----- description                  | String  | X        | 쿠폰 상세 설명                                                                            |
-| ----- linkMo                       | String  | X        | 모바일 웹 링크                                                                            |
-| ----- linkPc                       | String  | X        | PC 웹 링크                                                                                |
-| ----- schemeIos                    | String  | X        | IOS 앱 링크                                                                               |
-| ----- schemeAndroid                | String  | X        | 안드로이드 앱 링크                                                                        |
-| -- tail                            | Object  | X        | 더보기 버튼 정보                                                                          |
-| --- linkMo                         | String  | O        | 모바일 웹 링크                                                                            |
-| --- linkPc                         | String  | X        | PC 웹 링크                                                                                |
-| --- schemeIos                      | String  | X        | IOS 앱 링크                                                                               |
-| --- schemeAndroid                  | String  | X        | 안드로이드 앱 링크                                                                        |
-| - status                           | String  | O        | 템플릿 상태(A: 등록, S: 차단)                                                             |
-| - createDate                       | String  | O        | 등록 일시                                                                                 |
-| - updateDate                       | String  | X        | 수정 일시                                                                                 |
+| 이름                    | 타입    | Not Null | 설명                                                                                      |
+|:----------------------| :------ | :------- | :---------------------------------------------------------------------------------------- |
+| header                | Object  | O        | 헤더 영역                                                                                 |
+| - resultCode          | Integer | O        | 결과 코드                                                                                 |
+| - resultMessage       | String  | O        | 결과 메시지                                                                               |
+| - isSuccessful        | boolean | O        | 성공 여부                                                                                 |
+| template              | Object  | O        | 템플릿 본문 영역                                                                          |
+| - plusFriendId        | String  | O        | 발신 프로필 ID                                                                            |
+| - plusFriendType      | String  | O        | 발신 프로필 타입                                                                          |
+| - templateCode        | String  | O        | 템플릿 코드                                                                               |
+| - templateName        | String  | O        | 템플릿 명                                                                                 |
+| - chatBubbleType      | String  | O        | 메시지 타입                                                                               |
+| - pushAlarm           | boolean | X        | 푸시 알림 여부                                                                            |
+| - content             | String  | X        | 메시지 내용                                                                               |
+| - adult               | boolean | O        | 성인용 메시지 여부                                                                        |
+| - header              | String  | X        | 헤더 (템플릿 내)                                                                         |
+| - additionalContent   | String  | X        | 부가 정보 (템플릿 내)                                                                     |
+| - image               | Object  | X        | 이미지 정보                                                                               |
+| -- imageUrl           | String  | O        | 이미지 URL                                                                                |
+| -- imageLink          | String  | X        | 이미지 링크                                                                               |
+| - buttons             | Array   | X        | 버튼 목록                                                                                 |
+| -- name               | String  | O        | 버튼 제목                                                                                 |
+| -- type               | String  | O        | 버튼 타입                                                                                 |
+| -- linkMo             | String  | X        | 모바일 웹 링크                                                                            |
+| -- linkPc             | String  | X        | PC 웹 링크                                                                                |
+| -- schemeIos          | String  | X        | IOS 앱 링크                                                                               |
+| -- schemeAndroid      | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- bizFormId          | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
+| - item                | Object  | X        | 와이드 리스트 요소                                                                        |
+| -- list               | Array   | X        | 와이드 리스트                                                                             |
+| --- title             | String  | X        | 아이템 제목                                                                               |
+| --- imageUrl          | String  | O        | 아이템 이미지 URL                                                                         |
+| --- linkMo            | String  | O        | 모바일 웹 링크                                                                            |
+| --- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| - coupon              | Object  | X        | 쿠폰 요소                                                                                 |
+| -- title              | String  | O        | 쿠폰 제목                                                                                 |
+| -- description        | String  | O        | 쿠폰 상세 설명                                                                            |
+| -- linkMo             | String  | X        | 모바일 웹 링크                                                                            |
+| -- linkPc             | String  | X        | PC 웹 링크                                                                                |
+| -- schemeIos          | String  | X        | IOS 앱 링크                                                                               |
+| -- schemeAndroid      | String  | X        | 안드로이드 앱 링크                                                                        |
+| - commerce            | Object  | X        | 커머스 요소                                                                               |
+| -- title              | String  | O        | 상품 제목                                                                                 |
+| -- regularPrice       | Integer | X        | 정상 가격                                                                                 |
+| -- discountPrice      | Integer | X        | 할인가격                                                                                  |
+| -- discountRate       | Integer | X        | 할인율                                                                                    |
+| -- discountFixed      | Integer | X        | 정액할인가격                                                                              |
+| - video               | Object  | X        | 동영상 요소                                                                               |
+| -- videoUrl           | String  | O        | 카카오TV 동영상 URL                                                                       |
+| -- thumbnailUrl       | String  | X        | 동영상 썸네일용 이미지 URL                                                                |
+| - carousel            | Object  | X        | 캐러셀                                                                                    |
+| -- head               | Object  | X        | 캐러셀 인트로                                                                             |
+| --- header            | String  | O        | 캐러셀 인트로 헤더                                                                        |
+| --- content           | String  | O        | 캐러셀 인트로 내용                                                                        |
+| --- imageUrl          | String  | O        | 캐러셀 인트로 이미지 주소                                                                 |
+| --- linkMo            | String  | X        | 모바일 웹 링크                                                                            |
+| --- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- list               | Array   | O        | 캐러셀 리스트                                                                             |
+| --- header            | String  | O        | 캐러셀 아이템 헤더                                                                        |
+| --- message           | String  | O        | 캐러셀 아이템 메시지                                                                      |
+| --- additionalContent | String  | X        | 부가 정보 (캐러셀 아이템 내)                                                              |
+| --- imageUrl          | String  | O        | 이미지 URL (캐러셀 아이템 내)                                                           |
+| --- imageLink         | String  | X        | 이미지 링크 (캐러셀 아이템 내)                                                          |
+| --- commerce          | Object  | O        | 커머스 (캐러셀 아이템 내)                                                                 |
+| ---- title            | String  | O        | 상품 제목                                                                                 |
+| ---- regularPrice     | Integer | X        | 정상 가격                                                                                 |
+| ---- discountPrice    | Integer | X        | 할인가격                                                                                  |
+| ---- discountRate     | Integer | X        | 할인율                                                                                    |
+| ---- discountFixed    | Integer | X        | 정액할인가격                                                                              |
+| --- buttons           | Array   | O        | 캐러셀 리스트 버튼 목록                                                                   |
+| ---- name             | String  | O        | 버튼 제목                                                                                 |
+| ---- type             | String  | O        | 버튼 타입                                                                                 |
+| ---- linkMo           | String  | X        | 모바일 웹 링크                                                                            |
+| ---- linkPc           | String  | X        | PC 웹 링크                                                                                |
+| ---- schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| ---- bizFormId        | Integer | X        | 비즈폼 ID (JSON 기준)                                                                     |
+| --- coupon            | Object  | X        | 쿠폰 요소 (캐러셀 아이템 내)                                                              |
+| ---- title            | String  | X        | 쿠폰 제목                                                                                 |
+| ---- description      | String  | X        | 쿠폰 상세 설명                                                                            |
+| ---- linkMo           | String  | X        | 모바일 웹 링크                                                                            |
+| ---- linkPc           | String  | X        | PC 웹 링크                                                                                |
+| ---- schemeIos        | String  | X        | IOS 앱 링크                                                                               |
+| ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                        |
+| -- tail               | Object  | X        | 더보기 버튼 정보                                                                          |
+| --- linkMo            | String  | O        | 모바일 웹 링크                                                                            |
+| --- linkPc            | String  | X        | PC 웹 링크                                                                                |
+| --- schemeIos         | String  | X        | IOS 앱 링크                                                                               |
+| --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                        |
+| - status              | String  | O        | 템플릿 상태(A: 등록, S: 차단)                                                             |
+| - createDate          | String  | O        | 등록 일시                                                                                 |
+| - updateDate          | String  | X        | 수정 일시                                                                                 |
 
 ### 템플릿 등록
 
