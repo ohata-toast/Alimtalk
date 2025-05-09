@@ -90,29 +90,29 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 이미지형 발송 요청
@@ -163,32 +163,32 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
-| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용 |
-| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
+| - imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용 |
+| - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 와이드 이미지형 발송 요청
@@ -239,32 +239,32 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
-| \- imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용 |
-| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
+| - imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용 |
+| - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 와이드 아이템 리스트형 발송 요청
@@ -339,37 +339,37 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| header | String | O | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
-| item | Object | O | 와이드 리스트 요소 (WIDE\_ITEM\_LIST 타입에서만 사용 가능) |
-| \- list | List | O | 와이드 리스트 (최소: 3, 최대 4) |
-| \-\- title | String | O | 아이템 제목<br>\- 1번째 아이템은 최대 25자 제한 \(줄바꿈: 최대 1개\, 1번째 아이템의 경우 title이 필수 값이 아님\)<br>\- 2\~4번째 아이템 최대 30자 제한 \(줄바꿈: 최대 1개\) |
-| \-\- imageUrl | String | O | 아이템 이미지 URL<br>\- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>\- 2\~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| header | String | O | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가) |
+| item | Object | O | 와이드 리스트 요소 (WIDE_ITEM_LIST 타입에서만 사용 가능) |
+| - list | List | O | 와이드 리스트 (최소: 3, 최대 4) |
+| -- title | String | O | 아이템 제목<br>- 1번째 아이템은 최대 25자 제한 (줄바꿈: 최대 1개, 1번째 아이템의 경우 title이 필수 값이 아님)<br>- 2~4번째 아이템 최대 30자 제한 (줄바꿈: 최대 1개) |
+| -- imageUrl | String | O | 아이템 이미지 URL<br>- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용 |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 프리미엄 동영상형 발송 요청
@@ -421,33 +421,33 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | X | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| header | String | X | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
-| video | Object | O | 동영상 요소 (PREMIUM\_VIDEO 타입만 사용 가능) |
-| \- videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한 |
-| \- thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | X | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| header | String | X | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가) |
+| video | Object | O | 동영상 요소 (PREMIUM_VIDEO 타입만 사용 가능) |
+| - videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한 |
+| - thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 커머스형 발송 요청
@@ -505,35 +505,35 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | additionalContent | String | X | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능 |
 | commerce | Object | O | 커머스 (COMMERCE 타입에서만 사용 가능) |
 | title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
-| regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999) |
-| discountPrice | Integer | X | 할인가격(0 \~ 99,999,999) |
-| discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
-| discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
-| buttons | List | O | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999) |
+| discountPrice | Integer | X | 할인가격(0 ~ 99,999,999) |
+| discountRate | Integer | X | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| discountFixed | Integer | X | 정액할인가격(0 ~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| buttons | List | O | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| - chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 캐러셀 피드형 발송 요청
@@ -622,39 +622,39 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | carousel | Object | O | 캐러셀 |
-| \- list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
-| \-\- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
-| \-\- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
-| \-\- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능) |
-| \-\- imageLink | String | O | 이미지 링크, 1000자 제한 |
-| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
-| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \-\-\- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
-| \-\- coupon | Object | X | 쿠폰 요소 |
-| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- tail | Object | X | 더보기 버튼 정보 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| - list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
+| -- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
+| -- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
+| -- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능) |
+| -- imageLink | String | O | 이미지 링크, 1000자 제한 |
+| -- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| --- name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| --- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| --- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| --- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| -- coupon | Object | X | 쿠폰 요소 |
+| --- title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| --- description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - tail | Object | X | 더보기 버튼 정보 |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 캐러셀 커머스형 발송 요청
@@ -731,52 +731,52 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | senderKey | String | O | 발신 키(40자), 그룹 발신키 사용 불가 |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | carousel | Object | O | 캐러셀 |
-| \- head | Object | X | 캐러셀 인트로 |
-| \-\- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
-| \-\- content | String | O | 캐러셀 인트로 내용(최대 50자) |
-| \-\- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함) |
-| \-\- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
-| \- list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
-| \-\- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
-| \-\- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용) |
-| \-\- imageLink | String | O | 이미지 링크, 1000자 제한 |
-| \-\- commerce | Object | O | 커머스 (CAROUSEL\_COMMERCE 타입에서만 사용 가능) |
-| \-\-\- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
-| \-\-\- regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999) |
-| \-\-\- discountPrice | Integer | X | 할인가격(0 \~ 99,999,999) |
-| \-\-\- discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
-| \-\-\- discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
-| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
-| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자 |
-| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>\- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>\- BF 타입은 첫번째 버튼으로만 사용할 수 있으며\, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
-| \-\-\- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
-| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
-| \-\- coupon | Object | X | 쿠폰 요소 |
-| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- tail | Object | X | 더보기 버튼 정보 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| - head | Object | X | 캐러셀 인트로 |
+| -- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
+| -- content | String | O | 캐러셀 인트로 내용(최대 50자) |
+| -- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함) |
+| -- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
+| -- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| - list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
+| -- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
+| -- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용) |
+| -- imageLink | String | O | 이미지 링크, 1000자 제한 |
+| -- commerce | Object | O | 커머스 (CAROUSEL_COMMERCE 타입에서만 사용 가능) |
+| --- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| --- regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999) |
+| --- discountPrice | Integer | X | 할인가격(0 ~ 99,999,999) |
+| --- discountRate | Integer | X | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| --- discountFixed | Integer | X | 정액할인가격(0 ~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수 |
+| -- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| --- name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자 |
+| --- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- BC 타입은 상담톡을 이용하는 카카오톡 채널만 이용 가능<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- chatExtra | String | X | BC / BT 타입 버튼일 경우 전달할 메타 정보 |
+| --- chatEvent | String | X | BT 타입 버튼일 경우 연결할 봇 이벤트명 |
+| --- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| -- coupon | Object | X | 쿠폰 요소 |
+| --- title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| --- description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - tail | Object | X | 더보기 버튼 정보 |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 응답
@@ -820,7 +820,7 @@ Content-Type: application/json;charset=UTF-8
 
 * 템플릿을 이용한 발송입니다.
 * 마수동 발송을 사용할 수 있습니다.
-    * 현재 마수동 발송의 경우 5가지 메시지 유형(TEXT, IMAGE, WIDE, CAROUSEL\_FEED, PREMIUM\_VIDEO)만 지원합니다.
+    * 현재 마수동 발송의 경우 5가지 메시지 유형(TEXT, IMAGE, WIDE, CAROUSEL_FEED, PREMIUM_VIDEO)만 지원합니다.
 * BC, BT 버튼 타입을 사용할 수 없습니다.
 * AC(채널 추가)버튼을 사용할 수 있습니다.
 * BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 업로드하여 비즈폼키를 발급받아 사용할 수 있습니다.
@@ -875,9 +875,9 @@ Content-Type: application/json;charset=UTF-8
 | templateCode | String | O | 사용하려는 템플릿 코드 |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
-| \- targeting | String | O | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
-| \- templateParameter | Object | X | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수) |
+| - recipientNo | String | O | 수신 번호 |
+| - targeting | String | O | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
+| - templateParameter | Object | X | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수) |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 응답
@@ -1917,24 +1917,24 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키<br>치환자 사용 불가능 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키<br>치환자 사용 불가능 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 
 #### 이미지형 발송 요청
 
@@ -1976,28 +1976,28 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
-| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
-| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
+| - imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 
 #### 와이드 이미지형 발송 요청
 
@@ -2039,28 +2039,28 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | O | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
-| \- imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
-| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | O | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
+| - imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 
 #### 와이드 아이템 리스트형 발송 요청
 
@@ -2125,36 +2125,36 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 이름 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- |
-| templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
-| adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| header | String | O | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
-| item | Object | O | 와이드 리스트 요소 (WIDE\_ITEM\_LIST 타입에서만 사용 가능) |
-| \- list | List | O | 와이드 리스트 (최소: 3, 최대 4) |
-| \-\- title | String | O | 아이템 제목<br>\- 1번째 아이템은 최대 25자 제한 \(줄바꿈: 최대 1개\, 1번째 아이템의 경우 title이 필수 값이 아님\)<br>\- 1번째 아이템은 title이 필수 필드가 아님<br>\- 2\~4번째 아이템 최대 30자 제한 \(줄바꿈: 최대 1개\) |
-| \-\- imageUrl | String | O | 아이템 이미지 URL<br>\- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>\- 2\~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
-| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
-| coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| 이름 | 타입 | 필수 | 설명                                                                                                                                                                                                                                      |
+| --- | --- | --- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| templateName | String | O | 템플릿 명 (최대 200자)                                                                                                                                                                                                                         |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                   |
+| adult | boolean | X | 성인용 메시지 여부 (기본값: false)                                                                                                                                                                                                                 |
+| header | String | O | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가)                                                                                                                               |
+| item | Object | O | 와이드 리스트 요소 (WIDE_ITEM_LIST 타입에서만 사용 가능)                                                                                                                                                                                                 |
+| - list | List | O | 와이드 리스트 (최소: 3, 최대 4)                                                                                                                                                                                                                   |
+| -- title | String | O | 아이템 제목<br>- 1번째 아이템은 최대 25자 제한 (줄바꿈: 최대 1개, 1번째 아이템의 경우 title이 필수 값이 아님)<br>- 1번째 아이템은 title이 필수 필드가 아님<br>- 2~4번째 아이템 최대 30자 제한 (줄바꿈: 최대 1개)                                                                                         |
+| -- imageUrl | String | O | 아이템 이미지 URL<br>- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능                                                                                                      |
+| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능                                                                                                                                                                                                         |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한                                                                                                                                                                                                                     |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                      |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                   |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                     |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                             |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                   |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                    |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                   |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                      |
+| coupon | Object | X | 쿠폰 요소                                                                                                                                                                                                                                   |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                       |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가                                                                                                                       |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                           |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                    |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                         |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                           |
 
 #### 프리미엄 동영상형 발송 요청
 
@@ -2196,28 +2196,28 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
-| content | String | X | \- TEXT 타입일 경우 최대 1\,000자 \(줄바꿈: 최대 33개\, URL 형식 입력 가능\)<br>\- IMAGE 타입일 경우 최대 400자 \(줄바꿈: 최대 29개\, URL 형식 입력 가능\)<br>\- WIDE 타입일 경우 최대 76자 \(줄바꿈 : 최대 1개\)<br>\- PREMIUM\_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음\, 최대 76자 \(줄바꿈: 최대 1개\)<br>\- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
-| header | String | X | 헤더<br>\- WIDE\_ITEM\_LIST 타입일 경우 필수 필드이고 최대 20자 \(줄바꿈: 불가\)<br>\- PREMIUM\_VIDEO 타입일 경우 선택 필드이고 최대 20자 \(줄바꿈: 불가\) |
-| video | Object | O | 동영상 요소 (PREMIUM\_VIDEO 타입만 사용 가능) |
-| \- videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한<br>치환자 사용 불가능 |
-| \- thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한<br>치환자 사용 불가능 |
-| buttons | List | X | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| content | String | X | - TEXT 타입일 경우 최대 1,000자 (줄바꿈: 최대 33개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
+| header | String | X | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가) |
+| video | Object | O | 동영상 요소 (PREMIUM_VIDEO 타입만 사용 가능) |
+| - videoUrl | String | O | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능), 최대 500자 제한<br>치환자 사용 불가능 |
+| - thumbnailUrl | String | X | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능 (없는 경우 카카오TV 동영상 기본 썸네일 사용) , 최대 500자 제한<br>치환자 사용 불가능 |
+| buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 
 #### 커머스형 발송 요청
 
@@ -2267,34 +2267,34 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | additionalContent | String | X | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능 |
-| image | Object | O | 이미지 요소<br>\- IMAGE\, WIDE\, COMMERCE 타입일 경우 필수 필드 |
-| \- imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
-| \- imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| \- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
+| - imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
+| - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
+| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | commerce | Object | O | 커머스 (COMMERCE 타입에서만 사용 가능) |
 | title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
-| regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
-| discountPrice | Integer | X | 할인가격(0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
-| discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
-| discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
-| buttons | List | O | 버튼 목록<br>\- TEXT\, IMAGE 타입일 경우 쿠폰 적용시 최대 4개\, 그 외 최대 5개<br>\- WIDE\, WIDE\_ITEM\_LIST 타입일 경우 최대 2개<br>\- PREMIUM\_VIDEO 타입일 경우 최대 1개<br>\- COMMERCE 타입일 경우 최소 1개 최대 2개 |
-| \- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
+| discountPrice | Integer | X | 할인가격(0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
+| discountRate | Integer | X | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
+| discountFixed | Integer | X | 정액할인가격(0 ~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
+| buttons | List | O | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
+| - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| - bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
 | coupon | Object | X | 쿠폰 요소 |
-| \- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| - description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| - linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| - schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
 
 #### 캐러셀 피드형 발송 요청
 
@@ -2375,38 +2375,38 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | carousel | Object | O | 캐러셀 |
-| \- list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
-| \-\- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
-| \-\- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
-| \-\- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능)<br>치환자 사용 불가능 |
-| \-\- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
-| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
-| \-\- coupon | Object | X | 쿠폰 요소 |
-| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- tail | Object | X | 더보기 버튼 정보 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| - list | List | O | 캐러셀 리스트 (최소 2개, 최대 6개) |
+| -- header | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능 |
+| -- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
+| -- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능)<br>치환자 사용 불가능 |
+| -- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
+| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| -- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| --- name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| --- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| -- coupon | Object | X | 쿠폰 요소 |
+| --- title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| --- description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - tail | Object | X | 더보기 버튼 정보 |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
 | recipientList | List | O | 수신자 목록(최대 1,000명) |
-| \- recipientNo | String | O | 수신 번호 |
+| - recipientNo | String | O | 수신 번호 |
 | createUser | String | X | 등록자(콘솔에서 발송 시 사용자 UUID로 저장) |
 
 #### 캐러셀 커머스형 발송 요청
@@ -2476,50 +2476,50 @@ Content-Type: application/json;charset=UTF-8
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | templateName | String | O | 템플릿 명 (최대 200자) |
-| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE\_ITEM\_LIST, PREMIUM\_VIDEO, COMMERCE, CAROUSEL\_FEED, CAROUSEL\_COMMERCE) |
+| chatBubbleType | String | O | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE) |
 | pushAlarm | boolean | X | 메시지 푸시 알람 발송 여부 (기본값: true) |
 | adult | boolean | X | 성인용 메시지 여부 (기본값: false) |
 | carousel | Object | O | 캐러셀 |
-| \- head | Object | X | 캐러셀 인트로 |
-| \-\- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
-| \-\- content | String | O | 캐러셀 인트로 내용(최대 50자) |
-| \-\- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함)<br>치환자 사용 불가능 |
-| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
-| \-\- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
-| \- list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
-| \-\- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
-| \-\- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용)<br>치환자 사용 불가능 |
-| \-\- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
-| \-\- commerce | Object | O | 커머스 (CAROUSEL\_COMMERCE 타입에서만 사용 가능) |
-| \-\-\- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
-| \-\-\- regularPrice | Integer | O | 정상 가격 (0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
-| \-\-\- discountPrice | Integer | X | 할인가격(0 \~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
-| \-\-\- discountRate | Integer | X | 할인율(0 \~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
-| \-\-\- discountFixed | Integer | X | 정액할인가격(0 \~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
-| \-\- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
-| \-\-\- name | String | O | 버튼 제목<br>\- TEXT\, IMAGE 타입일 경우 최대 14자<br>\- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
-| \-\-\- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>\- 템플릿에서는 BC 타입 이용 불가 <br>\- BT 타입 <br>\- 템플릿에서는 BF 타입 이용 불가<br>\- AC 타입은 TEXT\, IMAGE의 경우 첫번째 버튼으로\, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
-| \-\-\- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
-| \-\- coupon | Object | X | 쿠폰 요소 |
-| \-\-\- title | String | O | title의 경우 5가지 형식으로 제한됨<br>\- "$\{숫자\}원 할인 쿠폰" 숫자는 1 이상 99\,999\,999 이하<br>\- "$\{숫자\}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>\- "배송비 할인 쿠폰"<br>\- "$\{7자 이내\} 무료 쿠폰"<br>\- "$\{7자 이내\} UP 쿠폰" |
-| \-\-\- description | String | O | 쿠폰 상세 설명<br>\- WIDE\, WIDE\_ITEM\_LIST\, PREMIUM\_VIDEO 타입일 경우 최대 18자\, 줄바꿈: 불가<br>\- 이외의 타입일 경우 최대 12자\, 줄바꿈: 불가 |
-| \-\-\- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
-| \-\-\- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \-\-\- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme\_android 또는 scheme\_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
-| \- tail | Object | X | 더보기 버튼 정보 |
-| \-\- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
-| \-\- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| - head | Object | X | 캐러셀 인트로 |
+| -- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
+| -- content | String | O | 캐러셀 인트로 내용(최대 50자) |
+| -- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함)<br>치환자 사용 불가능 |
+| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| -- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
+| -- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한 |
+| - list | List | O | 캐러셀 리스트 (head가 존재할 경우 최소 1개, 최대 6개 / 그 외에는 최소 2개, 최대 6개) |
+| -- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
+| -- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용)<br>치환자 사용 불가능 |
+| -- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
+| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
+| -- commerce | Object | O | 커머스 (CAROUSEL_COMMERCE 타입에서만 사용 가능) |
+| --- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
+| --- regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
+| --- discountPrice | Integer | X | 할인가격(0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨 |
+| --- discountRate | Integer | X | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨 |
+| --- discountFixed | Integer | X | 정액할인가격(0 ~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨 |
+| -- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
+| --- name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
+| --- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한 |
+| --- bizFormKey | String | X | BF 타입 버튼일 경우 비즈폼 키 |
+| -- coupon | Object | X | 쿠폰 요소 |
+| --- title | String | O | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰" |
+| --- description | String | O | 쿠폰 상세 설명<br>- WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO 타입일 경우 최대 18자, 줄바꿈: 불가<br>- 이외의 타입일 경우 최대 12자, 줄바꿈: 불가 |
+| --- linkMo | String | X | 모바일 웹 링크 (WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- linkPc | String | X | PC 웹 링크 (WL 타입일 경우 선택 필드), 1,000자 제한 |
+| --- schemeAndroid | String | X | 안드로이드 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| --- schemeIos | String | X | IOS 앱 링크 (AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다. |
+| - tail | Object | X | 더보기 버튼 정보 |
+| -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- linkPc | String | X | PC 웹 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
+| -- schemeIos | String | X | IOS 앱 링크, 1,000자 제한<br>치환자 사용 불가능 |
 
 #### 응답
 
