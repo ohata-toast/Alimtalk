@@ -675,7 +675,7 @@ Content-Type: application/json;charset=UTF-8
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
-            "schemeIos": String,
+            "schemeIos": String
         },
         "list": [
             {
@@ -795,7 +795,7 @@ Content-Type: application/json;charset=UTF-8
         "recipientSeq": Integer,
         "recipientNo": String,
         "resultCode": Integer,
-        "resultMessage": String,
+        "resultMessage": String
       }
     ]
   }
@@ -896,7 +896,7 @@ Content-Type: application/json;charset=UTF-8
         "recipientSeq": Integer,
         "recipientNo": String,
         "resultCode": Integer,
-        "resultMessage": String,
+        "resultMessage": String
       }
     ]
   }
@@ -1080,7 +1080,7 @@ Content-Type: application/json;charset=UTF-8
       "additionalContent": String,
       "image": {
           "imageUrl": String,
-          "imageLink": String,
+          "imageLink": String
       },
       "buttons": [
           {
@@ -1103,7 +1103,7 @@ Content-Type: application/json;charset=UTF-8
                   "linkMo": String,
                   "linkPc": String,
                   "schemeIos": String,
-                  "schemeAndroid": String,
+                  "schemeAndroid": String
               }
           ]
       },
@@ -1629,7 +1629,7 @@ Content-Type: application/json;charset=UTF-8
             "linkPc": String,
             "schemeIos": String,
             "schemeAndroid": String,
-            "bizFormId": Integer,
+            "bizFormId": Integer
         }
       ],
       "item": {
@@ -1640,7 +1640,7 @@ Content-Type: application/json;charset=UTF-8
                   "linkMo": String,
                   "linkPc": String,
                   "schemeAndroid": String
-                  "schemeIos": String,
+                  "schemeIos": String
               }
           ]
       },
@@ -1695,7 +1695,7 @@ Content-Type: application/json;charset=UTF-8
                           "linkPc": String,
                           "schemeIos": String,
                           "schemeAndroid": String,
-                          "bizFormId": Integer,
+                          "bizFormId": Integer
                       }
                   ],
                   "coupon": {
@@ -2413,7 +2413,7 @@ Content-Type: application/json;charset=UTF-8
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
-            "schemeIos": String,
+            "schemeIos": String
         },
         "list": [
             {
