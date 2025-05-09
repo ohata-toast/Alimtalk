@@ -987,6 +987,7 @@ Content-Type: application/json;charset=UTF-8
                 "messageStatus": String,
                 "isAddedChannel": boolean,
                 "resultCode": String,
+                "resultCodeName": String,
                 "createUser": String
             }
         ],
@@ -996,7 +997,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 | 이름                             | 타입    | Not Null | 설명                                                                                      |
-| :------------------------------- | :------ | :------- | :---------------------------------------------------------------------------------------- |
+| :------------------------------- | :------ |:---------| :---------------------------------------------------------------------------------------- |
 | header                           | Object  | O        | 헤더 영역                                                                                 |
 | - resultCode                       | Integer | O        | 결과 코드                                                                                 |
 | - resultMessage                    | String  | O        | 결과 메시지                                                                               |
@@ -1018,7 +1019,7 @@ Content-Type: application/json;charset=UTF-8
 | -- messageStatus                   | String  | O        | 요청 상태(COMPLETED: 성공, FAILED: 실패)                                                  |
 | -- isAddedChannel                  | boolean | O        | 채널 친구 여부                                                                            |
 | -- resultCode                      | String  | X        | 수신 결과 코드                                                                            |
-| -- resultCodeName                  | String  | O        | 수신 결과 코드명                                                                          |
+| -- resultCodeName                  | String  | X        | 수신 결과 코드명                                                                          |
 | -- createUser                      | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                 |
 | - totalCount                       | Integer | O        | 총 개수                                                                                   |
 
@@ -1934,8 +1935,7 @@ Content-Type: application/json;charset=UTF-8
     "content": String,
     "image": {
         "imageUrl": String,
-        "imageLink": String,
-        "imageName": String
+        "imageLink": String
     },
     "buttons": [
         {
@@ -1968,7 +1968,6 @@ Content-Type: application/json;charset=UTF-8
 | image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
 | - imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
 | - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
 | - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
 | - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
@@ -1997,8 +1996,7 @@ Content-Type: application/json;charset=UTF-8
     "content": String,
     "image": {
         "imageUrl": String,
-        "imageLink": String,
-        "imageName": String
+        "imageLink": String
     },
     "buttons": [
         {
@@ -2031,7 +2029,6 @@ Content-Type: application/json;charset=UTF-8
 | image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
 | - imageUrl | String | O | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
 | - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | buttons | List | X | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개 |
 | - name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
 | - type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
@@ -2063,7 +2060,6 @@ Content-Type: application/json;charset=UTF-8
             {
                 "title": String,
                 "imageUrl": String,
-                "imageName": String,
                 "linkMo": String,
                 "linkPc": String,
                 "schemeAndroid": String,
@@ -2072,7 +2068,6 @@ Content-Type: application/json;charset=UTF-8
             {
                 "title": String,
                 "imageUrl": String,
-                "imageName": String,
                 "linkMo": String,
                 "linkPc": String,
                 "schemeAndroid": String,
@@ -2081,7 +2076,6 @@ Content-Type: application/json;charset=UTF-8
             {
                 "title": String,
                 "imageUrl": String,
-                "imageName": String,
                 "linkMo": String,
                 "linkPc": String,
                 "schemeAndroid": String,
@@ -2121,7 +2115,6 @@ Content-Type: application/json;charset=UTF-8
 | - list | List | O | 와이드 리스트 (최소: 3, 최대 4)                                                                                                                                                                                                                   |
 | -- title | String | O | 아이템 제목<br>- 1번째 아이템은 최대 25자 제한 (줄바꿈: 최대 1개, 1번째 아이템의 경우 title이 필수 값이 아님)<br>- 1번째 아이템은 title이 필수 필드가 아님<br>- 2~4번째 아이템 최대 30자 제한 (줄바꿈: 최대 1개)                                                                                         |
 | -- imageUrl | String | O | 아이템 이미지 URL<br>- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능                                                                                                      |
-| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능                                                                                                                                                                                                         |
 | -- linkMo | String | O | 모바일 웹 링크, 1,000자 제한                                                                                                                                                                                                                     |
 | -- linkPc | String | X | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                      |
 | -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                   |
@@ -2218,8 +2211,7 @@ Content-Type: application/json;charset=UTF-8
     "additionalContent": String,
     "image": {
         "imageUrl": String,
-        "imageLink": String,
-        "imageName": String
+        "imageLink": String
     },
     "commerce": {
         "title": String,
@@ -2259,7 +2251,6 @@ Content-Type: application/json;charset=UTF-8
 | image | Object | O | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드 |
 | - imageUrl | String | O | 이미지 URL, 일반 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능 |
 | - imageLink | String | X | 이미지 클릭시 이동할 URL, 1000자 제한<br>미설정시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능 |
-| - imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | commerce | Object | O | 커머스 (COMMERCE 타입에서만 사용 가능) |
 | title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
 | regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
@@ -2298,7 +2289,6 @@ Content-Type: application/json;charset=UTF-8
                 "content": String,
                 "imageUrl": String,
                 "imageLink": String,
-                "imageName": String,
                 "buttons": [
                     {
                         "name": String,
@@ -2326,7 +2316,6 @@ Content-Type: application/json;charset=UTF-8
                 "content": String,
                 "imageUrl": String,
                 "imageLink": String,
-                "imageName": String,
                 "buttons": [
                     {
                         "name": String,
@@ -2370,7 +2359,6 @@ Content-Type: application/json;charset=UTF-8
 | -- message | String | O | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능 |
 | -- imageUrl | String | O | 이미지 URL (캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능)<br>치환자 사용 불가능 |
 | -- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
-| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | -- buttons | List | O | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개 |
 | --- name | String | O | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능 |
 | --- type | String | O | 버튼 타입 (WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BC: 상담톡 전환, BT: 챗봇 전환, BF: 비즈니스 폼 )<br>- 템플릿에서는 BC 타입 이용 불가 <br>- BT 타입 <br>- 템플릿에서는 BF 타입 이용 불가<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야함 |
@@ -2409,7 +2397,6 @@ Content-Type: application/json;charset=UTF-8
             "header": String,
             "content": String,
             "imageUrl": String,
-            "imageName": String,
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
@@ -2420,7 +2407,6 @@ Content-Type: application/json;charset=UTF-8
                 "additionalContent": String,
                 "imageUrl": String,
                 "imageLink": String,
-                "imageName": String,
                 "buttons": [
                     {
                         "name": String,
@@ -2470,7 +2456,6 @@ Content-Type: application/json;charset=UTF-8
 | -- header | String | O | 캐러셀 인트로 헤더(최대 20자) |
 | -- content | String | O | 캐러셀 인트로 내용(최대 50자) |
 | -- imageUrl | String | O | 캐러셀 인트로 이미지 주소 (캐러셀 커머스형 이미지로 업로드된 이미지 사용, 사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 함)<br>치환자 사용 불가능 |
-| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | -- linkMo | String | X | 모바일 웹 링크 (linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수값), 1,000자 제한 |
 | -- linkPc | String | X | PC 웹 링크 , 1,000자 제한 |
 | -- schemeAndroid | String | X | 안드로이드 앱 링크, 1,000자 제한 |
@@ -2479,7 +2464,6 @@ Content-Type: application/json;charset=UTF-8
 | -- additionalContent | String | O | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능 |
 | -- imageUrl | String | O | 이미지 URL (캐러셀 커머스형 이미지로 업로드된 이미지 사용)<br>치환자 사용 불가능 |
 | -- imageLink | String | O | 이미지 링크, 1000자 제한<br>치환자 사용 불가능 |
-| -- imageName | String | O | 이미지 파일명, 1000자 제한<br>치환자 사용 불가능 |
 | -- commerce | Object | O | 커머스 (CAROUSEL_COMMERCE 타입에서만 사용 가능) |
 | --- title | String | O | 상품 제목 (최대 30자, 줄바꿈: 불가) |
 | --- regularPrice | Integer | O | 정상 가격 (0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨 |
@@ -2936,7 +2920,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 | 이름                             | 타입    | Not Null | 설명                                                                                                                               |
-| :------------------------------- | :------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| :------------------------------- | :------ |:---------| :--------------------------------------------------------------------------------------------------------------------------------- |
 | header                           | Object  | O        | 헤더 영역                                                                                                                          |
 | - resultCode                       | Integer | O        | 결과 코드                                                                                                                          |
 | - resultMessage                    | String  | O        | 결과 메시지                                                                                                                        |
@@ -2957,13 +2941,13 @@ Content-Type: application/json;charset=UTF-8
 | - profileMessageSpamLevel          | String  | X        | 카카오톡 메시지 스팸 상태명(활동제한, 경고제한, 정상)<br>발신 프로필 상태가 정상적이지 않을 경우 null 값을 가질 수 있습니다.                     |
 | - alimtalk                         | Object  | X        | 알림톡 설정 정보                                                                                                                   |
 | -- resendAppKey                    | String  | X        | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                   |
-| -- isResend                        | boolean | X        | 대체 발송 설정(재발송) 여부                                                                                                        |
+| -- isResend                        | boolean | O        | 대체 발송 설정(재발송) 여부                                                                                                        |
 | -- resendSendNo                    | String  | X        | 재발송 시, tc-sms 발신 번호                                                                                                        |
 | -- dailyMaxCount                   | Integer | X        | 알림톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                              |
 | -- sentCount                       | Integer | X        | 알림톡 일별 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                                  |
 | - friendtalk                       | Object  | X        | 친구톡 설정 정보                                                                                                                   |
 | -- resendAppKey                    | String  | X        | 대체 발송으로 설정할 SMS 서비스 앱키                                                                                                   |
-| -- isResend                        | boolean | X        | 대체 발송 설정(재발송) 여부                                                                                                        |
+| -- isResend                        | boolean | O        | 대체 발송 설정(재발송) 여부                                                                                                        |
 | -- resendSendNo                    | String  | X        | 재발송 시, tc-sms 발신 번호                                                                                                        |
 | -- resendUnsubscribeNo             | String  | X        | 재발송 시, tc-sms 080 수신 거부 번호                                                                                                 |
 | -- dailyMaxCount                   | Integer | X        | 친구톡 일별 최대 발송 건수<br>(값이 0일 경우 건수 제한 없음)                                                                              |
