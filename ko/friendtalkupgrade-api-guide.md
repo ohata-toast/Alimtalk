@@ -2685,7 +2685,7 @@ Content-Type: multipart/form-data
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
 | image | File | O | 이미지 |
-| imageType | String | O | 이미지 타입 <br>(IMAGE, WIDE\_IMAGE,MAIN\_WIDE\_ITEMLIST\_IMAGE,NORMAL\_WIDE\_ITEMLIST\_IMAGE,CAROUSEL\_FEED\_IMAGE,CAROUSEL\_COMMERCE\_IMAGE) |
+| imageType | String | O | 이미지 타입 <br>(IMAGE, WIDE_IMAGE,MAIN_WIDE_ITEMLIST_IMAGE,NORMAL_WIDE_ITEMLIST_IMAGE,CAROUSEL_FEED_IMAGE,CAROUSEL_COMMERCE_IMAGE) |
 
 #### 응답
 
@@ -2739,7 +2739,7 @@ Content-Type: multipart/form-data
 
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
-| imageTypes | List | O | 이미지 타입 <br>(IMAGE, WIDE\_IMAGE,MAIN\_WIDE\_ITEMLIST\_IMAGE,NORMAL\_WIDE\_ITEMLIST\_IMAGE,CAROUSEL\_FEED\_IMAGE,CAROUSEL\_COMMERCE\_IMAGE) |
+| imageTypes | List | O | 이미지 타입 <br>(IMAGE, WIDE_IMAGE,MAIN_WIDE_ITEMLIST_IMAGE,NORMAL_WIDE_ITEMLIST_IMAGE,CAROUSEL_FEED_IMAGE,CAROUSEL_COMMERCE_IMAGE) |
 | pageNum | String | X | 페이지 번호(기본: 1) |
 | pageSize | String | X | 조회 건수(기본: 15) |
 
