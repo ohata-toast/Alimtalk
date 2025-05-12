@@ -1,4 +1,4 @@
-## 개요
+## Notification > KakaoTalk Bizmessage > 친구톡 Upgrade > 개요
 
 친구톡 Upgrade는 광고주의 마케팅 수신동의(이하 마수동) 유저 대상 및 채널 친구 유저 대상으로 발송 가능한 광고성 메시지입니다.
 

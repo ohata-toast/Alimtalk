@@ -1,4 +1,4 @@
-# 콘솔 사용 가이드
+## Notification > KakaoTalk Bizmessage > 친구톡 Upgrade > 콘솔 사용 가이드
 
 ## 친구톡 Upgrade 발송
 

@@ -470,7 +470,7 @@ Content-Type: application/json;charset=UTF-8
         "regularPrice": Integer,
         "discountPrice": Integer,
         "discountRate": Integer,
-        "discountFixed": Integer,
+        "discountFixed": Integer
     },
     "buttons": [
         {
@@ -708,7 +708,7 @@ Content-Type: application/json;charset=UTF-8
                     "regularPrice": Integer,
                     "discountPrice": Integer,
                     "discountRate": Integer,
-                    "discountFixed": Integer,
+                    "discountFixed": Integer
                 },
             }
         ],
@@ -956,7 +956,7 @@ Content-Type: application/json;charset=UTF-8
 | senderKey        | String | X         | 발신 키                            |
 | templateCode     | String | X         | 템플릿 코드                          |
 | recipientNo      | String | X         | 수신 번호                           |
-| messageStatus    | String | X         | 요청 상태                           | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
+| messageStatus    | String | X         | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
 | resultCode       | String | X         | 발송 결과(MRC01: 성공 MRC02: 실패 )     |
 | pageNum          | String | X         | 페이지 번호(Default: 1)              |
 | pageSize         | String | X         | 조회 건수(Default: 15, Max: 1000)   |
@@ -1388,8 +1388,8 @@ Content-Type: application/json;charset=UTF-8
                           "imageUrl": String,
                           "linkMo": String,
                           "linkPc": String,
-                          "schemeAndroid": String
-                          "schemeIos": String,
+                          "schemeAndroid": String,
+                          "schemeIos": String
                       }
                   ]
               },
@@ -1642,7 +1642,7 @@ Content-Type: application/json;charset=UTF-8
                   "imageUrl": String,
                   "linkMo": String,
                   "linkPc": String,
-                  "schemeAndroid": String
+                  "schemeAndroid": String,
                   "schemeIos": String
               }
           ]
@@ -2220,7 +2220,7 @@ Content-Type: application/json;charset=UTF-8
         "regularPrice": Integer,
         "discountPrice": Integer,
         "discountRate": Integer,
-        "discountFixed": Integer,
+        "discountFixed": Integer
     },
     "buttons": [
         {
@@ -2433,7 +2433,7 @@ Content-Type: application/json;charset=UTF-8
                     "regularPrice": Integer,
                     "discountPrice": Integer,
                     "discountRate": Integer,
-                    "discountFixed": Integer,
+                    "discountFixed": Integer
                 },
             }
         ],
@@ -2892,7 +2892,7 @@ Content-Type: application/json;charset=UTF-8
          "senderKey" : String,
          "categoryCode" : String,
          "unsubscribePhoneNumber": String,
-         "unsubscribeAuthNumber": String
+         "unsubscribeAuthNumber": String,
          "status" : String,
          "statusName" : String,
          "kakaoStatus" : String,
@@ -2903,23 +2903,23 @@ Content-Type: application/json;charset=UTF-8
          "profileMessageSpamLevel" : String,
          "alimtalk" : {  
                 "resendAppKey": String,
-                "isResend": Boolean,
+                "isResend": boolean,
                 "resendSendNo": String,
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
           },
          "friendtalk" : {  
                 "resendAppKey": String,
-                "isResend": Boolean,
+                "isResend": boolean,
                 "resendSendNo": String,
                 "resendUnsubscribeNo": String,
                 "dailyMaxCount" : Integer,
                 "sentCount" : Integer
          },
-         "dormant" : Boolean,
-         "block" : Boolean,
+         "dormant" : boolean,
+         "block" : boolean,
          "createDate" : String,
-         "initialUserRestriction" : Boolean
+         "initialUserRestriction" : boolean
     }
 }
 ```
