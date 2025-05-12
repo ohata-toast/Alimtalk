@@ -52,38 +52,38 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "TEXT",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "content": String,
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "chatBubbleType": "TEXT",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "content": String,
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -121,42 +121,42 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "IMAGE",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "content": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "chatBubbleType": "IMAGE",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "content": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -197,42 +197,42 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "WIDE",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "content": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "chatBubbleType": "WIDE",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "content": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -273,66 +273,66 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "WIDE_ITEM_LIST",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "header": String,
-    "item": {
-        "list": [
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            },
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            },
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            }
-        ]
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
+  "senderKey": String,
+  "chatBubbleType": "WIDE_ITEM_LIST",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "header": String,
+  "item": {
+    "list": [
+      {
         "title": String,
-        "description": String,
+        "imageUrl": String,
         "linkMo": String,
         "linkPc": String,
         "schemeAndroid": String,
         "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+      },
+      {
+        "title": String,
+        "imageUrl": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      },
+      {
+        "title": String,
+        "imageUrl": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      }
+    ]
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -378,43 +378,43 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "PREMIUM_VIDEO",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "content": String,
-    "header": String,
-    "video": {
-        "videoUrl": String,
-        "thumbnailUrl": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "chatBubbleType": "PREMIUM_VIDEO",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "content": String,
+  "header": String,
+  "video": {
+    "videoUrl": String,
+    "thumbnailUrl": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -456,49 +456,49 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "COMMERCE",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "additionalContent": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "commerce": {
-        "title": String,
-        "regularPrice": Integer,
-        "discountPrice": Integer,
-        "discountRate": Integer,
-        "discountFixed": Integer
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "chatExtra": String,
-            "chatEvent": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "chatBubbleType": "COMMERCE",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "additionalContent": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "commerce": {
+    "title": String,
+    "regularPrice": Integer,
+    "discountPrice": Integer,
+    "discountRate": Integer,
+    "discountFixed": Integer
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "chatExtra": String,
+      "chatEvent": String,
+      "bizFormKey": String
+    }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -542,80 +542,80 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "CAROUSEL_FEED",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "carousel": {
-        "list": [
-            {
-                "header": String,
-                "content": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "chatExtra": String,
-                        "chatEvent": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                }
-            },
-            {
-                "header": String,
-                "content": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "chatExtra": String,
-                        "chatEvent": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                }
-            }
-        ],
-        "tail": {
+  "senderKey": String,
+  "chatBubbleType": "CAROUSEL_FEED",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "carousel": {
+    "list": [
+      {
+        "header": String,
+        "content": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
-            "schemeIos": String
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         }
-    },
-    "recipientList": [
-        {
-            "recipientNo": String
+      },
+      {
+        "header": String,
+        "content": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         }
+      }
     ],
-    "createUser": String
+    "tail": {
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
+    }
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -663,68 +663,68 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "chatBubbleType": "CAROUSEL_COMMERCE",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "carousel": {
-        "head": {
-            "header": String,
-            "content": String,
-            "imageUrl": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String
-        },
-        "list": [
-            {
-                "additionalContent": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "chatExtra": String,
-                        "chatEvent": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                },
-                "commerce": {
-                    "title": String,
-                    "regularPrice": Integer,
-                    "discountPrice": Integer,
-                    "discountRate": Integer,
-                    "discountFixed": Integer
-                },
-            }
-        ],
-        "tail": {
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String
-        }
+  "senderKey": String,
+  "chatBubbleType": "CAROUSEL_COMMERCE",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "carousel": {
+    "head": {
+      "header": String,
+      "content": String,
+      "imageUrl": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
     },
-    "recipientList": [
-        {
-            "recipientNo": String
-        }
+    "list": [
+      {
+        "additionalContent": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+        },
+      }
     ],
-    "createUser": String
+    "tail": {
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
+    }
+  },
+  "recipientList": [
+    {
+      "recipientNo": String
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -855,17 +855,17 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "senderKey": String,
-    "templateCode": String,
-    "pushAlarm": boolean,
-    "recipientList": [
-        {
-            "recipientNo": String,
-            "targeting": String,
-            "templateParameter": Object
-        }
-    ],
-    "createUser": String
+  "senderKey": String,
+  "templateCode": String,
+  "pushAlarm": boolean,
+  "recipientList": [
+    {
+      "recipientNo": String,
+      "targeting": String,
+      "templateParameter": Object
+    }
+  ],
+  "createUser": String
 }
 ```
 
@@ -965,35 +965,35 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "header": {
-        "resultCode": Integer,
-        "resultMessage": String,
-        "isSuccessful": boolean
-    },
-    "messageSearchResultResponse": {
-        "messages": [
-            {
-                "requestId": String,
-                "recipientSeq": Integer,
-                "plusFriendId": String,
-                "senderKey": String,
-                "templateCode": String,
-                "recipientNo": String,
-                "targeting": String,
-                "requestDate": String,
-                "createDate": String,
-                "receiveDate": String,
-                "chatBubbleType": String,
-                "pushAlarm": boolean,
-                "messageStatus": String,
-                "isAddedChannel": boolean,
-                "resultCode": String,
-                "resultCodeName": String,
-                "createUser": String
-            }
-        ],
-        "totalCount": Integer
-    }
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "messageSearchResultResponse": {
+    "messages": [
+      {
+        "requestId": String,
+        "recipientSeq": Integer,
+        "plusFriendId": String,
+        "senderKey": String,
+        "templateCode": String,
+        "recipientNo": String,
+        "targeting": String,
+        "requestDate": String,
+        "createDate": String,
+        "receiveDate": String,
+        "chatBubbleType": String,
+        "pushAlarm": boolean,
+        "messageStatus": String,
+        "isAddedChannel": boolean,
+        "resultCode": String,
+        "resultCodeName": String,
+        "createUser": String
+      }
+    ],
+    "totalCount": Integer
+  }
 }
 ```
 
@@ -1350,126 +1350,126 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   },
   "templateListResponse": {
-      "templates": [
+    "templates": [
+      {
+        "plusFriendId": String,
+        "plusFriendType": String,
+        "templateCode": String,
+        "templateName": String,
+        "chatBubbleType": String,
+        "content": String,
+        "header": String,
+        "additionalContent": String,
+        "adult": boolean,
+        "image": {
+          "imageUrl": String,
+          "imageLink": String
+        },
+        "buttons": [
           {
-              "plusFriendId": String,
-              "plusFriendType": String,
-              "templateCode": String,
-              "templateName": String,
-              "chatBubbleType": String,
-              "content": String,
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer,
+          }
+        ],
+        "item": {
+          "list": [
+            {
+              "title": String,
+              "imageUrl": String,
+              "linkMo": String,
+              "linkPc": String,
+              "schemeAndroid": String,
+              "schemeIos": String
+            }
+          ]
+        },
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+        },
+        "video": {
+          "videoUrl": String,
+          "thumbnailUrl": String
+        },
+        "carousel": {
+          "head": {
+            "header": String,
+            "content": String,
+            "imageUrl": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
+          },
+          "list": [
+            {
               "header": String,
+              "message": String,
               "additionalContent": String,
-              "adult": boolean,
-              "image": {
-                  "imageUrl": String,
-                  "imageLink": String
+              "imageUrl": String,
+              "imageLink": String,
+              "commerce": {
+                "title": String,
+                "regularPrice": Integer,
+                "discountPrice": Integer,
+                "discountRate": Integer,
+                "discountFixed": Integer
               },
               "buttons": [
                 {
-                    "name": String,
-                    "type": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeIos": String,
-                    "schemeAndroid": String,
-                    "bizFormId": Integer,
-                }
-              ],
-              "item": {
-                  "list": [
-                      {
-                          "title": String,
-                          "imageUrl": String,
-                          "linkMo": String,
-                          "linkPc": String,
-                          "schemeAndroid": String,
-                          "schemeIos": String
-                      }
-                  ]
-              },
-              "coupon": {
-                  "title": String,
-                  "description": String,
+                  "name": String,
+                  "type": String,
                   "linkMo": String,
                   "linkPc": String,
+                  "schemeIos": String,
                   "schemeAndroid": String,
-                  "schemeIos": String
-              },
-              "commerce": {
-                  "title": String,
-                  "regularPrice": Integer,
-                  "discountPrice": Integer,
-                  "discountRate": Integer,
-                  "discountFixed": Integer
-              },
-              "video": {
-                  "videoUrl": String,
-                  "thumbnailUrl": String
-              },
-              "carousel": {
-                  "head": {
-                      "header": String,
-                      "content": String,
-                      "imageUrl": String,
-                      "linkMo": String,
-                      "linkPc": String,
-                      "schemeAndroid": String,
-                      "schemeIos": String
-                  },
-                  "list": [
-                      {
-                          "header": String,
-                          "message": String,
-                          "additionalContent": String,
-                          "imageUrl": String,
-                          "imageLink": String,
-                          "commerce": {
-                              "title": String,
-                              "regularPrice": Integer,
-                              "discountPrice": Integer,
-                              "discountRate": Integer,
-                              "discountFixed": Integer
-                          },
-                          "buttons": [
-                              {
-                                  "name": String,
-                                  "type": String,
-                                  "linkMo": String,
-                                  "linkPc": String,
-                                  "schemeIos": String,
-                                  "schemeAndroid": String,
-                                  "bizFormId": Integer,
-                              }
-                          ],
-                          "coupon": {
-                              "title": String,
-                              "description": String,
-                              "linkMo": String,
-                              "linkPc": String,
-                              "schemeAndroid": String,
-                              "schemeIos": String
-                          }
-                      }
-                  ],
-                  "tail": {
-                      "linkMo": String,
-                      "linkPc": String,
-                      "schemeAndroid": String,
-                      "schemeIos": String
-                  }
-              },
-              "status": String,
-              "createDate": String,
-              "updateDate": String
+                  "bizFormId": Integer,
+                }
+              ],
+              "coupon": {
+                "title": String,
+                "description": String,
+                "linkMo": String,
+                "linkPc": String,
+                "schemeAndroid": String,
+                "schemeIos": String
+              }
+            }
+          ],
+          "tail": {
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
           }
-      ],
-      "totalCount": Integer
+        },
+        "status": String,
+        "createDate": String,
+        "updateDate": String
+      }
+    ],
+    "totalCount": Integer
   }
 }
 ```
@@ -1606,121 +1606,121 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   },
   "template": {
-      "plusFriendId": String,
-      "plusFriendType": String,
-      "templateCode": String,
-      "templateName": String,
-      "chatBubbleType": String,
-      "content": String,
-      "header": String,
-      "additionalContent": String,
-      "adult": boolean,
-      "image": {
-          "imageUrl": String,
-          "imageLink": String
-      },
-      "buttons": [
+    "plusFriendId": String,
+    "plusFriendType": String,
+    "templateCode": String,
+    "templateName": String,
+    "chatBubbleType": String,
+    "content": String,
+    "header": String,
+    "additionalContent": String,
+    "adult": boolean,
+    "image": {
+      "imageUrl": String,
+      "imageLink": String
+    },
+    "buttons": [
+      {
+        "name": String,
+        "type": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeIos": String,
+        "schemeAndroid": String,
+        "bizFormId": Integer
+      }
+    ],
+    "item": {
+      "list": [
         {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeIos": String,
-            "schemeAndroid": String,
-            "bizFormId": Integer
-        }
-      ],
-      "item": {
-          "list": [
-              {
-                  "title": String,
-                  "imageUrl": String,
-                  "linkMo": String,
-                  "linkPc": String,
-                  "schemeAndroid": String,
-                  "schemeIos": String
-              }
-          ]
-      },
-      "coupon": {
           "title": String,
-          "description": String,
+          "imageUrl": String,
           "linkMo": String,
           "linkPc": String,
           "schemeAndroid": String,
           "schemeIos": String
+        }
+      ]
+    },
+    "coupon": {
+      "title": String,
+      "description": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
+    },
+    "commerce": {
+      "title": String,
+      "regularPrice": Integer,
+      "discountPrice": Integer,
+      "discountRate": Integer,
+      "discountFixed": Integer
+    },
+    "video": {
+      "videoUrl": String,
+      "thumbnailUrl": String
+    },
+    "carousel": {
+      "head": {
+        "header": String,
+        "content": String,
+        "imageUrl": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
       },
-      "commerce": {
-          "title": String,
-          "regularPrice": Integer,
-          "discountPrice": Integer,
-          "discountRate": Integer,
-          "discountFixed": Integer
-      },
-      "video": {
-          "videoUrl": String,
-          "thumbnailUrl": String
-      },
-      "carousel": {
-          "head": {
-              "header": String,
-              "content": String,
-              "imageUrl": String,
-              "linkMo": String,
-              "linkPc": String,
-              "schemeAndroid": String,
-              "schemeIos": String
+      "list": [
+        {
+          "header": String,
+          "message": String,
+          "additionalContent": String,
+          "imageUrl": String,
+          "imageLink": String,
+          "commerce": {
+            "title": String,
+            "regularPrice": Integer,
+            "discountPrice": Integer,
+            "discountRate": Integer,
+            "discountFixed": Integer
           },
-          "list": [
-              {
-                  "header": String,
-                  "message": String,
-                  "additionalContent": String,
-                  "imageUrl": String,
-                  "imageLink": String,
-                  "commerce": {
-                      "title": String,
-                      "regularPrice": Integer,
-                      "discountPrice": Integer,
-                      "discountRate": Integer,
-                      "discountFixed": Integer
-                  },
-                  "buttons": [
-                      {
-                          "name": String,
-                          "type": String,
-                          "linkMo": String,
-                          "linkPc": String,
-                          "schemeIos": String,
-                          "schemeAndroid": String,
-                          "bizFormId": Integer
-                      }
-                  ],
-                  "coupon": {
-                      "title": String,
-                      "description": String,
-                      "linkMo": String,
-                      "linkPc": String,
-                      "schemeAndroid": String,
-                      "schemeIos": String
-                  }
-              }
-          ],
-          "tail": {
+          "buttons": [
+            {
+              "name": String,
+              "type": String,
               "linkMo": String,
               "linkPc": String,
+              "schemeIos": String,
               "schemeAndroid": String,
-              "schemeIos": String
+              "bizFormId": Integer
+            }
+          ],
+          "coupon": {
+            "title": String,
+            "description": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String
           }
-      },
-      "status": String,
-      "createDate": String,
-      "updateDate": String
+        }
+      ],
+      "tail": {
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      }
+    },
+    "status": String,
+    "createDate": String,
+    "updateDate": String
   }
 }
 ```
@@ -1877,29 +1877,29 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "TEXT",
-    "adult": boolean,
-    "content": String,
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
+  "templateName": String,
+  "chatBubbleType": "TEXT",
+  "adult": boolean,
+  "content": String,
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -1931,33 +1931,33 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "IMAGE",
-    "adult": boolean,
-    "content": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
+  "templateName": String,
+  "chatBubbleType": "IMAGE",
+  "adult": boolean,
+  "content": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -1992,33 +1992,33 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "WIDE",
-    "adult": boolean,
-    "content": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
+  "templateName": String,
+  "chatBubbleType": "WIDE",
+  "adult": boolean,
+  "content": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -2053,57 +2053,57 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "WIDE_ITEM_LIST",
-    "adult": boolean,
-    "header": String,
-    "item": {
-        "list": [
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            },
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            },
-            {
-                "title": String,
-                "imageUrl": String,
-                "linkMo": String,
-                "linkPc": String,
-                "schemeAndroid": String,
-                "schemeIos": String
-            }
-        ]
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
+  "templateName": String,
+  "chatBubbleType": "WIDE_ITEM_LIST",
+  "adult": boolean,
+  "header": String,
+  "item": {
+    "list": [
+      {
         "title": String,
-        "description": String,
+        "imageUrl": String,
         "linkMo": String,
         "linkPc": String,
         "schemeAndroid": String,
         "schemeIos": String
+      },
+      {
+        "title": String,
+        "imageUrl": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      },
+      {
+        "title": String,
+        "imageUrl": String,
+        "linkMo": String,
+        "linkPc": String,
+        "schemeAndroid": String,
+        "schemeIos": String
+      }
+    ]
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -2143,34 +2143,34 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "PREMIUM_VIDEO",
-    "adult": boolean,
-    "content": String,
-    "header": String,
-    "video": {
-        "videoUrl": String,
-        "thumbnailUrl": String
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
+  "templateName": String,
+  "chatBubbleType": "PREMIUM_VIDEO",
+  "adult": boolean,
+  "content": String,
+  "header": String,
+  "video": {
+    "videoUrl": String,
+    "thumbnailUrl": String
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -2206,41 +2206,41 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "COMMERCE",
-    "pushAlarm": boolean,
-    "adult": boolean,
-    "additionalContent": String,
-    "image": {
-        "imageUrl": String,
-        "imageLink": String
-    },
-    "commerce": {
-        "title": String,
-        "regularPrice": Integer,
-        "discountPrice": Integer,
-        "discountRate": Integer,
-        "discountFixed": Integer
-    },
-    "buttons": [
-        {
-            "name": String,
-            "type": String,
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String,
-            "bizFormKey": String
-        }
-    ],
-    "coupon": {
-        "title": String,
-        "description": String,
-        "linkMo": String,
-        "linkPc": String,
-        "schemeAndroid": String,
-        "schemeIos": String
+  "templateName": String,
+  "chatBubbleType": "COMMERCE",
+  "pushAlarm": boolean,
+  "adult": boolean,
+  "additionalContent": String,
+  "image": {
+    "imageUrl": String,
+    "imageLink": String
+  },
+  "commerce": {
+    "title": String,
+    "regularPrice": Integer,
+    "discountPrice": Integer,
+    "discountRate": Integer,
+    "discountFixed": Integer
+  },
+  "buttons": [
+    {
+      "name": String,
+      "type": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String,
+      "bizFormKey": String
     }
+  ],
+  "coupon": {
+    "title": String,
+    "description": String,
+    "linkMo": String,
+    "linkPc": String,
+    "schemeAndroid": String,
+    "schemeIos": String
+  }
 }
 ```
 
@@ -2281,71 +2281,71 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "CAROUSEL_FEED",
-    "adult": boolean,
-    "carousel": {
-        "list": [
-            {
-                "header": String,
-                "content": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "chatExtra": String,
-                        "chatEvent": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                }
-            },
-            {
-                "header": String,
-                "content": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                }
-            }
-        ],
-        "tail": {
+  "templateName": String,
+  "chatBubbleType": "CAROUSEL_FEED",
+  "adult": boolean,
+  "carousel": {
+    "list": [
+      {
+        "header": String,
+        "content": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
-            "schemeIos": String
+            "schemeIos": String,
+            "chatExtra": String,
+            "chatEvent": String,
+            "bizFormKey": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
         }
+      },
+      {
+        "header": String,
+        "content": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeAndroid": String,
+            "schemeIos": String,
+            "bizFormKey": String
+          }
+        ],
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        }
+      }
+    ],
+    "tail": {
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
     }
+  }
 }
 ```
 
@@ -2391,59 +2391,59 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "templateName": String,
-    "chatBubbleType": "CAROUSEL_COMMERCE",
-    "adult": boolean,
-    "carousel": {
-        "head": {
-            "header": String,
-            "content": String,
-            "imageUrl": String,
+  "templateName": String,
+  "chatBubbleType": "CAROUSEL_COMMERCE",
+  "adult": boolean,
+  "carousel": {
+    "head": {
+      "header": String,
+      "content": String,
+      "imageUrl": String,
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
+    },
+    "list": [
+      {
+        "additionalContent": String,
+        "imageUrl": String,
+        "imageLink": String,
+        "buttons": [
+          {
+            "name": String,
+            "type": String,
             "linkMo": String,
             "linkPc": String,
             "schemeAndroid": String,
-            "schemeIos": String
-        },
-        "list": [
-            {
-                "additionalContent": String,
-                "imageUrl": String,
-                "imageLink": String,
-                "buttons": [
-                    {
-                        "name": String,
-                        "type": String,
-                        "linkMo": String,
-                        "linkPc": String,
-                        "schemeAndroid": String,
-                        "schemeIos": String,
-                        "bizFormKey": String
-                    }
-                ],
-                "coupon": {
-                    "title": String,
-                    "description": String,
-                    "linkMo": String,
-                    "linkPc": String,
-                    "schemeAndroid": String,
-                    "schemeIos": String
-                },
-                "commerce": {
-                    "title": String,
-                    "regularPrice": Integer,
-                    "discountPrice": Integer,
-                    "discountRate": Integer,
-                    "discountFixed": Integer
-                },
-            }
+            "schemeIos": String,
+            "bizFormKey": String
+          }
         ],
-        "tail": {
-            "linkMo": String,
-            "linkPc": String,
-            "schemeAndroid": String,
-            "schemeIos": String
-        }
+        "coupon": {
+          "title": String,
+          "description": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeAndroid": String,
+          "schemeIos": String
+        },
+        "commerce": {
+          "title": String,
+          "regularPrice": Integer,
+          "discountPrice": Integer,
+          "discountRate": Integer,
+          "discountFixed": Integer
+        },
+      }
+    ],
+    "tail": {
+      "linkMo": String,
+      "linkPc": String,
+      "schemeAndroid": String,
+      "schemeIos": String
     }
+  }
 }
 ```
 
@@ -2498,12 +2498,12 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   },
   "template": {
-      "templateCode": String
+    "templateCode": String
   }
 }
 ```
@@ -2720,14 +2720,14 @@ Content-Type: multipart/form-data
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   },
   "image": {
-      "imageSeq": Integer,
-      "imageUrl": String,
-      "imageName": String
+    "imageSeq": Integer,
+    "imageUrl": String,
+    "imageName": String
   }
 }
 ```
@@ -2783,9 +2783,9 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -2834,9 +2834,9 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
   }
 }
 ```
@@ -2881,46 +2881,46 @@ Content-Type: application/json;charset=UTF-8
 #### 응답
 
 ```
-{  
-   "header":{  
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
-   },
-   "sender":{  
-         "plusFriendId" : String,
-         "senderKey" : String,
-         "categoryCode" : String,
-         "unsubscribePhoneNumber": String,
-         "unsubscribeAuthNumber": String,
-         "status" : String,
-         "statusName" : String,
-         "kakaoStatus" : String,
-         "kakaoStatusName" : String,
-         "kakaoProfileStatus" : String,
-         "kakaoProfileStatusName" : String,
-         "profileSpamLevel" : String,
-         "profileMessageSpamLevel" : String,
-         "alimtalk" : {  
-                "resendAppKey": String,
-                "isResend": boolean,
-                "resendSendNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
-          },
-         "friendtalk" : {  
-                "resendAppKey": String,
-                "isResend": boolean,
-                "resendSendNo": String,
-                "resendUnsubscribeNo": String,
-                "dailyMaxCount" : Integer,
-                "sentCount" : Integer
-         },
-         "dormant" : boolean,
-         "block" : boolean,
-         "createDate" : String,
-         "initialUserRestriction" : boolean
-    }
+{
+  "header":{
+    "resultCode" :  Integer,
+    "resultMessage" :  String,
+    "isSuccessful" :  boolean
+  },
+  "sender":{
+    "plusFriendId" : String,
+    "senderKey" : String,
+    "categoryCode" : String,
+    "unsubscribePhoneNumber": String,
+    "unsubscribeAuthNumber": String,
+    "status" : String,
+    "statusName" : String,
+    "kakaoStatus" : String,
+    "kakaoStatusName" : String,
+    "kakaoProfileStatus" : String,
+    "kakaoProfileStatusName" : String,
+    "profileSpamLevel" : String,
+    "profileMessageSpamLevel" : String,
+    "alimtalk" : {
+      "resendAppKey": String,
+      "isResend": boolean,
+      "resendSendNo": String,
+      "dailyMaxCount" : Integer,
+      "sentCount" : Integer
+    },
+    "friendtalk" : {
+      "resendAppKey": String,
+      "isResend": boolean,
+      "resendSendNo": String,
+      "resendUnsubscribeNo": String,
+      "dailyMaxCount" : Integer,
+      "sentCount" : Integer
+    },
+    "dormant" : boolean,
+    "block" : boolean,
+    "createDate" : String,
+    "initialUserRestriction" : boolean
+  }
 }
 ```
 
