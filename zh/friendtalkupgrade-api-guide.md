@@ -83,7 +83,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -114,6 +115,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList   | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo   | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser      | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId         | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 이미지형 발송 요청
 
@@ -156,7 +158,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -190,6 +193,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList   | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo   | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser      | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId         | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 와이드 이미지형 발송 요청
 
@@ -232,7 +236,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -266,6 +271,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList   | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo   | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser      | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId         | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 와이드 아이템 리스트형 발송 요청
 
@@ -332,7 +338,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -371,6 +378,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList    | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo    | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser       | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId          | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 프리미엄 동영상형 발송 요청
 
@@ -414,7 +422,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -449,6 +458,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList   | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo   | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser      | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId         | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 커머스형 발송 요청
 
@@ -498,7 +508,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -535,6 +546,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList     | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo     | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser        | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId           | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 캐러셀 피드형 발송 요청
 
@@ -615,7 +627,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -656,6 +669,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList     | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo     | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser        | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId           | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 캐러셀 커머스형 발송 요청
 
@@ -724,7 +738,8 @@ Content-Type: application/json;charset=UTF-8
       "recipientNo": String
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -778,6 +793,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList        | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo        | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | createUser           | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
+| statsId              | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
 #### 응답
 
@@ -865,7 +881,8 @@ Content-Type: application/json;charset=UTF-8
       "templateParameter": Object
     }
   ],
-  "createUser": String
+  "createUser": String,
+  "statsId": String
 }
 ```
 
@@ -879,6 +896,7 @@ Content-Type: application/json;charset=UTF-8
 | - targeting         | String  | O  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
 | - templateParameter | Object  | X  | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수)                                       |
 | createUser          | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                           |
+| statsId             | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                    |
 
 #### 응답
 
