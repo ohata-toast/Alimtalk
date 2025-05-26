@@ -133,6 +133,7 @@
 | Common      | false     | -3224      | 캐러셀 커머스 타입은 header와 message 필드를 사용할 수 없음                                                                                                                                                                                                                      |
 | Common      | false     | -3225      | 캐러셀 버튼이 유효하지 않음. 캐러셀 피드 타입의 경우 버튼은 2개를 초과할 수 없음. 캐러셀 커머스 타입의 경우 버튼은 1 ~ 2개여야 함                                                                                                                                                                                |
 | Common      | false     | -3226      | 커머스에 discountPrice 필드가 존재하면 discountRate 혹은 discountFixed 필드가 필수                                                                                                                                                                                              |
+| Common      | false     | -3297      | 자유형 발송시 M, N 타겟팅을 설정할 수 없습니다.                                                                                                                                                                                                                                |
 | Common      | false     | -3298      | 타겟팅 정보가 설정되지 않았습니다.                                                                                                                                                                                                                                           |
 | Common      | false     | -3299      | 커머스 변수는 지정된 조합으로만 사용해야 합니다: ['regularPrice'], ['regularPrice', 'discountPrice', 'discountRate'], ['regularPrice', 'discountPrice', 'discountFixed']                                                                                                           |
 | Common      | false     | -3300      | 수신거부 처리된 번호를 찾을 수 없습니다.                                                                                                                                                                                                                                       |
@@ -466,18 +467,22 @@
 		<td>Message undelivered </td>
 	</tr>
 	<tr>
-		<td>3054</td>
-                <td>Unavailable time to send messages</td>
+		<td>3053</td>
+		<td>캐러셀 템플릿 불일치</td>
 	</tr>
-  <tr>
+	<tr>
+		<td>3054</td>
+        <td>Unavailable time to send messages</td>
+	</tr>
+    <tr>
 		<td>3055</td>
 		<td>Message group information not found </td>
 	</tr>
-  <tr>
+    <tr>
 		<td>3056</td>
 		<td>Message delivery result not found </td>
 	</tr>
-  <tr>
+    <tr>
 		<td>3060</td>
 		<td>Sent to user but not sure if received(Polling)</td>
 	</tr>
@@ -489,11 +494,11 @@
 		<td>4001</td>
 		<td>Unknown message status </td>
 	</tr>
-  <tr>
+    <tr>
 		<td>9998</td>
 		<td>Under administrator's checkup for issue occurred in system(currently unavailable) </td>
 	</tr>
-  <tr>
+    <tr>
 		<td>9999</td>
 		<td> Under administrator's checkup for error occurred in system(unknown error in system)</td>
 	</tr>
