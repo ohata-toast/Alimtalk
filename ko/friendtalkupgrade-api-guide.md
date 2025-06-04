@@ -1206,6 +1206,7 @@ Content-Type: application/json;charset=UTF-8
     "isAddedChannel": boolean,
     "resultCode": String,
     "resultCodeName": String,
+    "resellerCode": String,
     "createUser": String
   }
 }
@@ -1319,6 +1320,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAddedChannel      | boolean | O        | 채널 친구 여부 (message 객체 존재 시 Not Null)                                                              | 
 | - resultCode          | String  | X        | 수신 결과 코드 (메시지 내)                                                                                 | 
 | - resultCodeName      | String  | X        | 수신 결과 코드명 (메시지 내)                                                                                | 
+| - resellerCode        | String  | X        | 재판매사 식별 코드                                                                                       |
 | - createUser          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                      |
 
 ## 템플릿 관리
