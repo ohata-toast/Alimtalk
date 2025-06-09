@@ -3059,14 +3059,7 @@ Content-Type: application/json;charset=UTF-8
     "kakaoProfileStatusName" : String,
     "profileSpamLevel" : String,
     "profileMessageSpamLevel" : String,
-    "alimtalk" : {
-      "resendAppKey": String,
-      "isResend": boolean,
-      "resendSendNo": String,
-      "dailyMaxCount" : Integer,
-      "sentCount" : Integer
-    },
-    "friendtalk" : {
+    "friendtalkUpgrade" : {
       "resendAppKey": String,
       "isResend": boolean,
       "resendSendNo": String,
