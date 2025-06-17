@@ -1240,8 +1240,6 @@ Content-Type: application/json;charset=UTF-8
     "plusFriendId": String,
     "senderKey": String,
     "templateCode": String,
-    "unsubscribeNo": String,
-    "unsubscribeAuthNo": String,
     "recipientNo": String,
     "targeting": String,
     "requestDate": String,
@@ -1364,7 +1362,6 @@ Content-Type: application/json;charset=UTF-8
     "resendStatusName": String,
     "resendResultCode": String,
     "resendRequestId": String,
-    "resellerCode": String,
     "createUser": String
   }
 }
@@ -1382,8 +1379,6 @@ Content-Type: application/json;charset=UTF-8
 | - plusFriendId        | String  | O        | 발신 프로필 ID (message 객체 존재 시 Not Null)                                                                      | 
 | - senderKey           | String  | O        | 발신 키 (message 객체 존재 시 Not Null)                                                                           | 
 | - templateCode        | String  | X        | 템플릿 코드                                                                                                    | 
-| - unsubscribeNo       | String  | X        | 080 무료수신거부 전화번호<br>사용자가 요청 시 입력한 값이 있는 경우에만 응답에 포함됩니다.<br>입력하지 않은 경우, 내부적으로 조회한 카카오 API 값은 응답에 포함되지 않습니다. |
-| - unsubscribeAuthNo   | String  | X        | 080 무료수신거부 인증번호<br>사용자가 요청 시 입력한 값이 있는 경우에만 응답에 포함됩니다.<br>입력하지 않은 경우, 내부적으로 조회한 카카오 API 값은 응답에 포함되지 않습니다. |
 | - recipientNo         | String  | O        | 수신 번호 (message 객체 존재 시 Not Null)                                                                          | 
 | - targeting           | String  | O        | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) (message 객체 존재 시 Not Null)          | 
 | - requestDate         | String  | O        | 요청 일시 (message 객체 존재 시 Not Null)                                                                          | 
@@ -1484,7 +1479,6 @@ Content-Type: application/json;charset=UTF-8
 | - resendStatusName    | String  | X        | 대체 발송 상태 코드명                                                                                              | 
 | - resendResultCode    | String  | X        | 대체 발송 결과 코드                                                                                               | 
 | - resendRequestId     | String  | X        | 대체 발송 요청 ID                                                                                               | 
-| - resellerCode        | String  | X        | 재판매사 식별 코드                                                                                                |
 | - createUser          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                               |
 
 ## 템플릿 관리
