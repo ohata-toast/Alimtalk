@@ -1,19 +1,42 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### 2025. 06. 24.
+* [API, Console] 친구톡 Upgrade 웹훅 기능 추가
+    * 발송 결과 업데이트 시, 웹훅 기능이 추가되었습니다.
+* [API, Console] 친구톡 Upgrade 대체발송 기능 추가
+    * 친구톡 Upgrade 발송 시 대체발송 기능이 추가되었습니다.
+    * '발송 설정'에서 SMS 서비스 앱키를 등록하면, 친구톡 Upgrade 발송 시 대체발송이 가능합니다.
+        * 입력한 발신 번호가 SMS 상품에 등록된 발신번호가 아닐 경우, 대체발송이 실패할 수 있습니다.
+* [API] 친구톡 Upgrade 메시지 타입 텍스트형 유효성 변경
+    * 텍스트형 본문 길이제한 유효성이 수정됩니다.
+    * 변경사항
+        * 본문 길이제한: 1000자 -> 1300자
+        * 줄바꿈: 33줄 -> 99줄
+* [API, Console] 친구톡 Upgrade 템플릿 발송 타겟팅 기능 개선
+    * 친구톡 Upgrade 템플릿 발송 시, 전체 메시지 유형에 대해 M,N 타입 발송이 가능하도록 개선됩니다.
+* [API, Console] 친구톡 Upgrade 템플릿 발송 080수신거부번호 필드 추가
+    * 친구톡 Upgrade 템플릿 발송 시, 080수신거부번호 필드가 추가됩니다. (unsubscribeNo, unsubscribeAuthNo)
+    * 해당 필드 입력시 발신프로필에 등록된 080수신거부번호 대신 해당 번호로 발송됩니다.
+    * 입력하지 않는 경우 발신프로필에 등록된 080수신거부번호로 발송됩니다.
+* [API] 친구톡 Upgrade 발신프로필 조회 API 오류 수정
+    * 친구톡 Upgrade 발신프로필 조회 API 조회시 친구톡 Upgrade 응답 중 일부 필드가 누락되어 있던 오류가 수정됩니다.
+        * 발신프로필 조회 API에서 친구톡 Upgrade 설정 정보가 누락되어 있던 오류가 수정됩니다.
+        * 발신프로필 조회 API에서 알림톡,친구톡 설정 정보를 더이상 제공하지 않습니다.
+
 ### 2025. 05. 27.
 * [Console] 알림톡 템플릿 조회 탭에 템플릿 차단 여부 노출
-  * 알림톡 템플릿 조회 탭에 템플릿 차단 여부가 노출됩니다.
+    * 알림톡 템플릿 조회 탭에 템플릿 차단 여부가 노출됩니다.
 * [Console] 친구톡 Upgrade 대량 발송 기능 추가
-  * csv,xlsx 파일을 이용하여, 대량 발송 기능이 추가되었습니다.
+    * csv,xlsx 파일을 이용하여, 대량 발송 기능이 추가되었습니다.
 * [Console] 친구톡 Upgrade 발송 통계 화면 제공
-  - 날짜별/시간대별/요일별 통계 화면이 제공됩니다.
+    - 날짜별/시간대별/요일별 통계 화면이 제공됩니다.
 
 ### 2025. 05. 13.
 * [API] 친구톡 Upgrade 서비스 베타 출시
-  * 친구톡 Upgrade 기본형 M,N그룹(마케팅수신동의 회원 타겟) 발송 가능 대상** : 아래 조건에 부합하는 경우 화이트리스트 등록 후 발송 가능 (kakao 승인 필요)
-    * **발송 가능 조건**: 카카오톡 비즈니스 채널 친구수 5만 이상 보유 + 알림톡 발송 이력 보유(최근 3개월) + 마케팅 수신 동의 증적 자료 제출 + 수신거부 번호 등록
-    * 화이트리스트 요청 시 필수 기재 내용은 추후 카카오에서 제공 받아 공지 예정
-      * 화이트리스트 요청: [고객센터](https://www.nhncloud.com/kr/support/inquiry) 또는 영업담당자에게 요청
+    * 친구톡 Upgrade 기본형 M,N그룹(마케팅수신동의 회원 타겟) 발송 가능 대상** : 아래 조건에 부합하는 경우 화이트리스트 등록 후 발송 가능 (kakao 승인 필요)
+        * **발송 가능 조건**: 카카오톡 비즈니스 채널 친구수 5만 이상 보유 + 알림톡 발송 이력 보유(최근 3개월) + 마케팅 수신 동의 증적 자료 제출 + 수신거부 번호 등록
+        * 화이트리스트 요청 시 필수 기재 내용은 추후 카카오에서 제공 받아 공지 예정
+            * 화이트리스트 요청: [고객센터](https://www.nhncloud.com/kr/support/inquiry) 또는 영업담당자에게 요청
 
 ### 2025. 04. 29.
 
@@ -37,15 +60,15 @@
 ### January 14, 2025
 * [API] Scheduled to segment the respose code (3018) that was bounced back when KakaoTalk could not send a message as follows
 
-    | Product | code | Description  |
-    |-----| --- | --- |
-    | AlimTalk | 3018 | Cannot send a message |
-    |     | 3019 | Not a KakaoTalk user |
-    |     | 3020 | Blocked AlimTalk reception |
-    |     | 3021 | KakaoTalk minimum version not supported |
-    | FriendTalk | 3018 | Cannot send a message |
-    |     | 3019 | Not a KakaoTalk user |
-    |     | 3021 | KakaoTalk minimum version not supported |
+  | Product | code | Description  |
+      |-----| --- | --- |
+  | AlimTalk | 3018 | Cannot send a message |
+  |     | 3019 | Not a KakaoTalk user |
+  |     | 3020 | Blocked AlimTalk reception |
+  |     | 3021 | KakaoTalk minimum version not supported |
+  | FriendTalk | 3018 | Cannot send a message |
+  |     | 3019 | Not a KakaoTalk user |
+  |     | 3021 | KakaoTalk minimum version not supported |
 
 ### November 12, 2024
 * [Console] Improved so that comma (,) is usable for FriendTalk coupon titles
@@ -62,21 +85,21 @@
 ### July 23, 2024
 * [API] Fixed an issue where channel-add and composite templates could not be registered in the sender profile group
     * Improved to register channel-add and composite templates in the sender profile group.
-    
+
 ### June 25, 2024
-* [API] Improved to use strikethrough style for certain fields 
-    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough. 
+* [API] Improved to use strikethrough style for certain fields
+    * Dynamically adding \s to the end of template titles in highlighted templates and item highlight titles in item list templates when sending AlimTalk will apply strikethrough.
     * But, the style does not apply if you add \s to the fields beforehand when registering a template
 * [API] Changed so that, when sending FriendTalk with coupons included, a maximum of 4 buttons can be included
     * When sending a FriendTalk text/image type message with a coupon, you can only add up to 4 buttons.
-* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab 
+* [Console] Fixed a bug that prevented some fields in highlighted templates from being substituted in the preview tab
     * Fixed a bug that prevented template titles from being displayed as substituted values in the preview tab.
 
 ### May 28, 2024
 * [API] Changed the sorting criteria for responses of the get message list API
     * (Previous) Sort by requestDate in descending order
     * (Current) Sort by requestDate in descending order, Sort by requestId, recipientSeq in descending order if requestDate is the same
-  
+
 ### May 12, 2024
 * [API] Changed the carousel type field in FriendTalk
     * (AS-IS) The carousel type field with a required tail padding in FriendTalk, coupons unavailable
@@ -91,7 +114,7 @@
     * Fixed a bug where the AlimTalk item list type summary field was not initialized on deletion after being entered.
 * [Console] Fixed a bug where unnecessary field information was registered when registering AlimTalk templates
     * Fixed a bug in the AlimTalk template registration process where data was not initialized when changing the type, causing unnecessary field information to be registered.
-    
+
 
 ### March 26, 2024
 * [Console] Role Segmentation
@@ -113,10 +136,10 @@
     * (AS-IS) When registering an AlimTalk template, the basic type is the default type
     * (TO-BE) When registering an AlimTalk template, the channel add type is the default type
 * [API] Changed the attachment limit in Inquiry of AlimTalk templates
-    * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates 
+    * (AS-IS) Up to 5 attachments allowed when inquiring about AlimTalk templates
     * (TO-BE) Up to 10 attachments  allowed when inquiring about AlimTalk templates
 * [API] Changed the character limit for FriendTalk wild item list titles
-    * (AS-IS) Set a 25 character limit for 1st to 4th item titles when sending a FriendTalk wild item list   
+    * (AS-IS) Set a 25 character limit for 1st to 4th item titles when sending a FriendTalk wild item list
     * (TO-BE) Set a 25 change limit for 1st item title, and a 30 character limit for 2nd to 4th item titles when sending a FriendTalk wild item list
 * [API] Changed the limit on number of FriendTalk carousel feeds
     * (AS-IS) The number of carousels in a FriendTalk carousel feed ranges from 2 to 6 when sending a carousel feed.
@@ -156,7 +179,7 @@
     * Added the recipientGroupingKey and senderGroupingKey fields to the message sending result code update webhook.
 * [Console] Improved display of the total number of sending result views
     * When the sending results exceeded 100,000, the total number is shown as '99,999+' (the limit previously set to 10,000)
-    
+
 ### July 25, 2023
 * [Console] Added a new field to the Template Registration Using File Uploads feature (v2.3)
     * Improved so that, when registering a template using file uploads, new fields such as Alimtalk Item List, Quick Reply, Primary Link could be applied.
@@ -188,9 +211,9 @@
 
 ### November 29, 2022
 *[Console] First User Restrictions on Sending Profile
-    * Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
-      1. Unable to add as a member to Group Profile
-      2. When the template variable is replaced, and if the difference is greater than 14 characters, process it as message sending failure
+* Sending Profile Restrictions on First User registration have been added to prevent abusing activity in accordance with Kakao Policy.
+1. Unable to add as a member to Group Profile
+2. When the template variable is replaced, and if the difference is greater than 14 characters, process it as message sending failure
 
 ### October 25, 2022
 * [API] Delete Sending Profile enquiry API isSearchKakaoStatus field
@@ -207,7 +230,7 @@
 ### July 26, 2022
 * [Console] Launched Brandtalk feature
     * The BrandTalk feature which is Kakao’s CBT feature is launched.
-    *Only Sending Profile with the CBT feature activated is available to use.
+      *Only Sending Profile with the CBT feature activated is available to use.
 * [API] Delete templateAd Field, when registering/modifying Notification Template
     * [API] templateAd Field was Deleted, when registering/modifying Notification Template
     * When registering Channel Addition(AD) or Multiple(MI) Message Type Template, templateAd value is to be fixed.
@@ -391,8 +414,8 @@
     - Scheduled AlimTalk message for authentication can be cancelled, if it is yet to be delivered
 * [Console] Improved mass delivery of AlimTalk/FriendTalk
     - With [Proceed after Inspect], notification mail is sent, unless Send is clicked.
-      + Email receiving targets: All project members
-      + Mail delivery condition: Click [Proceed after Inspect], and send two times in total, including one time after a day, and another in 6 days
+        + Email receiving targets: All project members
+        + Mail delivery condition: Click [Proceed after Inspect], and send two times in total, including one time after a day, and another in 6 days
     - For mass scheduled delivery, Proceed after Inspect is not available.
 * [Console] Improved Search of Plus Friends
     - To search for a Plus Friend, search by conditions has been added.
@@ -425,7 +448,7 @@
     - Added a feature of split delivery over a specific number of times in a specific interval.
 * [Console] Separated the <b>alternative delivery settings</b> of AlimTalk/FriendTalk
     - Added a feature that configures the alternative delivery for each Plus friend on AlimTalk/FriendTalk.
-	<br>For example,) when only AlimTalk is set to deliver alternatively for the same Plus friend, FriendTalk will not use the alternative delivery even if it fails to deliver.
+      <br>For example,) when only AlimTalk is set to deliver alternatively for the same Plus friend, FriendTalk will not use the alternative delivery even if it fails to deliver.
 * [Console] Introduced the <b>business verification feature</b> when adding a Plus friend
     - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [[Related notice:](https://center-pf.kakao.com/notices/311)]
 * [Console] Added the Like search feature in the template selection modal window
