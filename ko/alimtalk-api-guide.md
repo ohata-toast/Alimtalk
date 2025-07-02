@@ -186,11 +186,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 | message                 | Object  |    X     | 본문 영역        |
 | - requestId             | String  |    X     | 요청 아이디       |
 | - senderGroupingKey     | String  |    X     | 발신 그룹핑 키     |
-| - sendResults           | Object  |    X     | 발송 요청 결과     |
-| -- recipientSeq         | Integer |    X     | 수신자 시퀀스 번호   |
+| - sendResults           | Object  |    O     | 발송 요청 결과     |
+| -- recipientSeq         | Integer |    O     | 수신자 시퀀스 번호   |
 | -- recipientNo          | String  |    X     | 수신 번호        |
-| -- resultCode           | Integer |    X     | 발송 요청 결과 코드  |
-| -- resultMessage        | String  |    X     | 발송 요청 결과 메시지 |
+| -- resultCode           | Integer |    O     | 발송 요청 결과 코드  |
+| -- resultMessage        | String  |    O     | 발송 요청 결과 메시지 |
 | -- recipientGroupingKey | String  |    X     | 수신자 그룹핑 키    |
 
 ### 메시지 전문 발송 요청
@@ -416,18 +416,18 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 
 | 이름                      | 타입      | Not Null | 설명           |
 |-------------------------|---------|:--------:|--------------|
-| header                  | Object  |    X     | 헤더 영역        |
-| - resultCode            | Integer |    X     | 결과 코드        |
-| - resultMessage         | String  |    X     | 결과 메시지       |
-| - isSuccessful          | Boolean |    X     | 성공 여부        |
+| header                  | Object  |    O     | 헤더 영역        |
+| - resultCode            | Integer |    O     | 결과 코드        |
+| - resultMessage         | String  |    O     | 결과 메시지       |
+| - isSuccessful          | Boolean |    O     | 성공 여부        |
 | message                 | Object  |    X     | 본문 영역        |
 | - requestId             | String  |    X     | 요청 아이디       |
 | - senderGroupingKey     | String  |    X     | 발신 그룹핑 키     |
-| - sendResults           | Object  |    X     | 발송 요청 결과     |
-| -- recipientSeq         | Integer |    X     | 수신자 시퀀스 번호   |
+| - sendResults           | Object  |    O     | 발송 요청 결과     |
+| -- recipientSeq         | Integer |    O     | 수신자 시퀀스 번호   |
 | -- recipientNo          | String  |    X     | 수신 번호        |
-| -- resultCode           | Integer |    X     | 발송 요청 결과 코드  |
-| -- resultMessage        | String  |    X     | 발송 요청 결과 메시지 |
+| -- resultCode           | Integer |    O     | 발송 요청 결과 코드  |
+| -- resultMessage        | String  |    O     | 발송 요청 결과 메시지 |
 | -- recipientGroupingKey | String  |    X     | 수신자 그룹핑 키    |
 
 ### 메시지 리스트 조회
@@ -521,25 +521,25 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름                          | 타입      | Not Null | 설명                                                                                                                                                                     |
 |-----------------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header                      | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode                | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage             | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful              | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header                      | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode                | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage             | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful              | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | messageSearchResultResponse | Object  |    X     | 본문 영역                                                                                                                                                                  |
-| - messages                  | List    |    X     | 메시지 리스트                                                                                                                                                                |
-| -- requestId                | String  |    X     | 요청 아이디                                                                                                                                                                 |
-| -- recipientSeq             | Integer |    X     | 수신자 시퀀스 번호                                                                                                                                                             |
-| -- plusFriendId             | String  |    X     | 플러스친구 ID                                                                                                                                                               |
-| -- senderKey                | String  |    X     | 발신 키                                                                                                                                                                   |
-| -- templateCode             | String  |    X     | 템플릿 코드                                                                                                                                                                 |
-| -- recipientNo              | String  |    X     | 수신 번호                                                                                                                                                                  |
+| - messages                  | List    |    O     | 메시지 리스트                                                                                                                                                                |
+| -- requestId                | String  |    O     | 요청 아이디                                                                                                                                                                 |
+| -- recipientSeq             | Integer |    O     | 수신자 시퀀스 번호                                                                                                                                                             |
+| -- plusFriendId             | String  |    O     | 플러스친구 ID                                                                                                                                                               |
+| -- senderKey                | String  |    O     | 발신 키                                                                                                                                                                   |
+| -- templateCode             | String  |    O     | 템플릿 코드                                                                                                                                                                 |
+| -- recipientNo              | String  |    O     | 수신 번호                                                                                                                                                                  |
 | -- content                  | String  |    X     | 본문                                                                                                                                                                     |
-| -- requestDate              | String  |    X     | 요청 일시                                                                                                                                                                  |
-| -- createDate               | String  |    X     | 등록 일시                                                                                                                                                                  |
+| -- requestDate              | String  |    O     | 요청 일시                                                                                                                                                                  |
+| -- createDate               | String  |    O     | 등록 일시                                                                                                                                                                  |
 | -- receiveDate              | String  |    X     | 수신 일시                                                                                                                                                                  |
-| -- resendStatus             | String  |    X     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
-| -- resendStatusName         | String  |    X     | 대체 발송 상태 코드명                                                                                                                                                           |
-| -- messageStatus            | String  |    X     | 요청 상태( COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                |
+| -- resendStatus             | String  |    O     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| -- resendStatusName         | String  |    O     | 대체 발송 상태 코드명                                                                                                                                                           |
+| -- messageStatus            | String  |    O     | 요청 상태( COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                |
 | -- createUser               | String  |    X     | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                            |
 | -- resultCode               | String  |    X     | 수신 결과 코드                                                                                                                                                               |
 | -- resultCodeName           | String  |    X     | 수신 결과 코드명                                                                                                                                                              |
@@ -692,16 +692,16 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 
 | 이름                      | 타입      | Not Null | 설명                                                                                                                                                                     |
 |-------------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header                  | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode            | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage         | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful          | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header                  | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode            | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage         | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful          | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | message                 | Object  |    X     | 메시지                                                                                                                                                                    |
-| - requestId             | String  |    X     | 요청 아이디                                                                                                                                                                 |
-| - recipientSeq          | Integer |    X     | 수신자 시퀀스 번호                                                                                                                                                             |
-| - plusFriendId          | String  |    X     | 플러스친구 ID                                                                                                                                                               |
-| - senderKey             | String  |    X     | 발신 키                                                                                                                                                                   |
-| - templateCode          | String  |    X     | 템플릿 코드                                                                                                                                                                 |
+| - requestId             | String  |    O     | 요청 아이디                                                                                                                                                                 |
+| - recipientSeq          | Integer |    O     | 수신자 시퀀스 번호                                                                                                                                                             |
+| - plusFriendId          | String  |    O     | 플러스친구 ID                                                                                                                                                               |
+| - senderKey             | String  |    O     | 발신 키                                                                                                                                                                   |
+| - templateCode          | String  |    O     | 템플릿 코드                                                                                                                                                                 |
 | - recipientNo           | String  |    X     | 수신 번호                                                                                                                                                                  |
 | - content               | String  |    X     | 본문                                                                                                                                                                     |
 | - templateTitle         | String  |    X     | 템플릿 제목                                                                                                                                                                 |
@@ -725,14 +725,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- linkPc               | String  |    X     | PC 웹 링크(최대 500자)                                                                                                                                                       |
 | -- schemeIos            | String  |    X     | iOS 앱 링크(최대 500자)                                                                                                                                                      |
 | -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(최대 500자)                                                                                                                                                    |
-| - requestDate           | String  |    X     | 요청 일시                                                                                                                                                                  |
+| - requestDate           | String  |    O     | 요청 일시                                                                                                                                                                  |
 | - receiveDate           | String  |    X     | 수신 일시                                                                                                                                                                  |
-| - createDate            | String  |    X     | 등록 일시                                                                                                                                                                  |
-| - resendStatus          | String  |    X     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
-| - resendStatusName      | String  |    X     | 대체 발송 상태 코드명                                                                                                                                                           |
+| - createDate            | String  |    O     | 등록 일시                                                                                                                                                                  |
+| - resendStatus          | String  |    O     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - resendStatusName      | String  |    O     | 대체 발송 상태 코드명                                                                                                                                                           |
 | - resendResultCode      | String  |    X     | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api)                                                                                 |
 | - resendRequestId       | String  |    X     | 대체 발송 SMS 요청 ID                                                                                                                                                        |
-| - messageStatus         | String  |    X     | 요청 상태( COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                |
+| - messageStatus         | String  |    O     | 요청 상태( COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                |
 | - resultCode            | String  |    X     | 수신 결과 코드                                                                                                                                                               |
 | - resultCodeName        | String  |    X     | 수신 결과 코드명                                                                                                                                                              |
 | - createUser            | String  |    X     | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                            |
@@ -970,10 +970,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 [예시]
 
@@ -1050,21 +1050,21 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름                 | 타입      | Not Null | 설명                                                                                                                                                                     |
 |--------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header             | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode       | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage    | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful     | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header             | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode       | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage    | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful     | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | messages           | List    |    X     | 메시지 리스트                                                                                                                                                                |
-| - requestId        | String  |    X     | 요청 ID                                                                                                                                                                  |
-| - recipientSeq     | Integer |    X     | 수신자 시퀀스 번호                                                                                                                                                             |
-| - requestDate      | String  |    X     | 요청 일시                                                                                                                                                                  |
-| - createDate       | String  |    X     | 생성 일시                                                                                                                                                                  |
+| - requestId        | String  |    O     | 요청 ID                                                                                                                                                                  |
+| - recipientSeq     | Integer |    O     | 수신자 시퀀스 번호                                                                                                                                                             |
+| - requestDate      | String  |    O     | 요청 일시                                                                                                                                                                  |
+| - createDate       | String  |    O     | 생성 일시                                                                                                                                                                  |
 | - receiveDate      | String  |    X     | 수신 일시                                                                                                                                                                  |
-| - resendStatus     | String  |    X     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
-| - resendStatusName | String  |    X     | 대체 발송 상태 코드명                                                                                                                                                           |
+| - resendStatus     | String  |    O     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - resendStatusName | String  |    O     | 대체 발송 상태 코드명                                                                                                                                                           |
 | - resendResultCode | String  |    X     | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api)                                                                                 |
 | - resendRequestId  | String  |    X     | 대체 발송 SMS 요청 ID                                                                                                                                                        |
-| - messageStatus    | String  |    X     | 요청 상태(COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                 |
+| - messageStatus    | String  |    O     | 요청 상태(COMPLETED -\> 성공, FAILED -\> 실패, CANCEL -\> 취소 )                                                                                                                 |
 | - resultCode       | String  |    X     | 수신 결과 코드                                                                                                                                                               |
 | - resultCodeName   | String  |    X     | 수신 결과 코드명                                                                                                                                                              |
 
@@ -1171,25 +1171,23 @@ curl -X GET \
 
 | 이름                  | 타입      | Not Null | 설명                                                                             |
 |---------------------|---------|:--------:|--------------------------------------------------------------------------------|
-| header              | Object  |    X     | 헤더 영역                                                                          |
-| - resultCode        | Integer |    X     | 결과 코드                                                                          |
-| - resultMessage     | String  |    X     | 결과 메시지                                                                         |
-| - isSuccessful      | Boolean |    X     | 성공 여부                                                                          |
+| header              | Object  |    O     | 헤더 영역                                                                          |
+| - resultCode        | Integer |    O     | 결과 코드                                                                          |
+| - resultMessage     | String  |    O     | 결과 메시지                                                                         |
+| - isSuccessful      | Boolean |    O     | 성공 여부                                                                          |
 | body                | Object  |    X     | 본문 영역                                                                          |
 | - messages          | Object  |    X     | 메시지 리스트                                                                        |
-| -- requestId        | String  |    X     | 요청 ID                                                                          |
-| -- requestDate      | String  |    X     | 요청 날짜                                                                          |
-| -- createDate       | String  |    X     | 생성 날짜                                                                          |
-| -- createUser       | String  |    X     | 생성 날짜                                                                          |
-| -- plusFriendId     | String  |    X     | 플러스 친구 ID                                                                      |
-| -- senderKey        | String  |    X     | 발신 키(40자)                                                                      |
-| -- masterStatusCode | String  |    X     | 대량 발송 상태 코드(WAIT, READY, SENDREADY, SENDWAIT, SENDING, COMPLETE, CANCEL, FAIL) |
+| -- requestId        | String  |    O     | 요청 ID                                                                          |
+| -- requestDate      | String  |    O     | 요청 날짜                                                                          |
+| -- plusFriendId     | String  |    O     | 플러스 친구 ID                                                                      |
+| -- senderKey        | String  |    O     | 발신 키(40자)                                                                      |
+| -- masterStatusCode | String  |    O     | 대량 발송 상태 코드(WAIT, READY, SENDREADY, SENDWAIT, SENDING, COMPLETE, CANCEL, FAIL) |
 | -- content          | String  |    X     | 내용                                                                             |
 | -- fileId           | String  |    X     | 첨부 파일 ID                                                                       |
-| -- templateCode     | String  |    X     | 템플릿 코드(최대 20자)                                                                 |
+| -- templateCode     | String  |    O     | 템플릿 코드(최대 20자)                                                                 |
 | -- autoSendYn       | String  |    X     | 자동 발송 여부                                                                       |
 | -- statsId          | String  |    X     | 통계 ID                                                                          |
-| -- createDate       | String  |    X     | 생성 날짜                                                                          |
+| -- createDate       | String  |    O     | 생성 날짜                                                                          |
 | -- createUser       | String  |    X     | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장)                                                 |
 | - totalCount        | Integer |    X     | 총개수                                                                            |
 
@@ -1271,21 +1269,21 @@ curl -X GET \
 
 | 이름                | 타입      | Not Null | 설명         |
 |-------------------|---------|:--------:|------------|
-| header            | Object  |    X     | 헤더 영역      |
-| - resultCode      | Integer |    X     | 결과 코드      |
-| - resultMessage   | String  |    X     | 결과 메시지     |
-| - isSuccessful    | Boolean |    X     | 성공 여부      |
+| header            | Object  |    O     | 헤더 영역      |
+| - resultCode      | Integer |    O     | 결과 코드      |
+| - resultMessage   | String  |    O     | 결과 메시지     |
+| - isSuccessful    | Boolean |    O     | 성공 여부      |
 | body              | Object  |    X     | 본문 영역      |
 | - messages        | Object  |    X     | 메시지 리스트    |
-| -- requestId      | String  |    X     | 요청 ID      |
-| -- recipientSeq   | String  |    X     | 수신자 시퀀스 번호 |
+| -- requestId      | String  |    O     | 요청 ID      |
+| -- recipientSeq   | String  |    O     | 수신자 시퀀스 번호 |
 | -- recipientNo    | String  |    X     | 수신 번호      |
-| -- requestDate    | String  |    X     | 요청 날짜      |
+| -- requestDate    | String  |    O     | 요청 날짜      |
 | -- receiveDate    | String  |    X     | 수신 날짜      |
-| -- messageStatus  | String  |    X     | 메시지 상태     |
+| -- messageStatus  | String  |    O     | 메시지 상태     |
 | -- resultCode     | String  |    X     | 결과 코드      |
 | -- resultCodeName | String  |    X     | 결과 코드 내용   |
-| - totalCount      | Integer |    X     | 총개수        |**
+| - totalCount      | Integer |    X     | 총개수        |
 
 ### 대량 발송 수신자 조회
 
@@ -1431,16 +1429,16 @@ curl -X GET \
 
 | 이름                      | 타입      | Not Null | 설명                                                                                                                                                                     |
 |-------------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header                  | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode            | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage         | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful          | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header                  | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode            | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage         | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful          | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | body                    | Object  |    X     | 본문 영역                                                                                                                                                                  |
-| - requestId             | String  |    X     | 요청 ID                                                                                                                                                                  |
-| - recipientSeq          | String  |    X     | 수신자 시퀀스 번호                                                                                                                                                             |
-| - plusFriendId          | String  |    X     | 플러스 친구 ID                                                                                                                                                              |
-| - senderKey             | String  |    X     | 전송자 ID                                                                                                                                                                 |
-| - templateCode          | String  |    X     | 템플릿 코드(최대 20자)                                                                                                                                                         |
+| - requestId             | String  |    O     | 요청 ID                                                                                                                                                                  |
+| - recipientSeq          | String  |    O     | 수신자 시퀀스 번호                                                                                                                                                             |
+| - plusFriendId          | String  |    O     | 플러스 친구 ID                                                                                                                                                              |
+| - senderKey             | String  |    O     | 전송자 ID                                                                                                                                                                 |
+| - templateCode          | String  |    O     | 템플릿 코드(최대 20자)                                                                                                                                                         |
 | - recipientNo           | String  |    X     | 수신 번호                                                                                                                                                                  |
 | - content               | String  |    X     | 내용                                                                                                                                                                     |
 | - tempalteTitle         | String  |    X     | 템플릿 제목(최대 50자, Android: 2줄, 23자 이상 말줄임 처리, IOS: 2줄, 27자 이상 말줄임 처리)                                                                                                     |
@@ -1464,14 +1462,14 @@ curl -X GET \
 | -- linkPc               | String  |    X     | PC 웹 링크(최대 500자)                                                                                                                                                       |
 | -- schemeIos            | String  |    X     | iOS 앱 링크(최대 500자)                                                                                                                                                      |
 | -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(최대 500자)                                                                                                                                                    |
-| - requestDate           | String  |    X     | 요청 날짜                                                                                                                                                                  |
+| - requestDate           | String  |    O     | 요청 날짜                                                                                                                                                                  |
 | - receiveDate           | String  |    X     | 수신 날짜                                                                                                                                                                  |
-| - createDate            | String  |    X     | 생성 날짜                                                                                                                                                                  |
-| - resendStatus          | String  |    X     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
-| - resendStatusName      | String  |    X     | 대체 발송 상태명                                                                                                                                                              |
-| - resendResultCode      | String  |    X     | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api)                                                                                 |
+| - createDate            | String  |    O     | 생성 날짜                                                                                                                                                                  |
+| - resendStatus          | String  |    O     | 대체 발송 상태 코드(RSC01, RSC02, RSC03, RSC04, RSC05)\<br\>([[아래 대체 발송 상태 표](http://docs.toast.com/ko/Notification/KakaoTalk%20Bizmessage/ko/alimtalk-api-guide/#smslms)] 참고) |
+| - resendStatusName      | String  |    O     | 대체 발송 상태명                                                                                                                                                              |
+| - resendResultCode      | String  |    O     | 대체 발송 결과 코드 [SMS 결과 코드](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api)                                                                                 |
 | - resendRequestId       | String  |    X     | 대체 발송 요청 ID                                                                                                                                                            |
-| - messageStatus         | String  |    X     | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL)                                                                                                                      |
+| - messageStatus         | String  |    O     | 대량 수신자 발송 상태 코드(READY, COMPLETED, FAILED, CANCEL)                                                                                                                      |
 | - resultCode            | String  |    X     | 결과 상태 코드                                                                                                                                                               |
 | - resultCodeName        | String  |    X     | 결과 상태명                                                                                                                                                                 |
 | - createUser            | String  |    X     | 생성 사용자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                         |
@@ -1562,10 +1560,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명                       |
 |-----------------|---------|:--------:|--------------------------|
-| header          | Object  |    X     | 헤더 영역                    |
-| - resultCode    | Integer |    X     | 결과 코드                    |
-| - resultMessage | String  |    X     | 결과 메시지                   |
-| - isSuccessful  | Boolean |    X     | 성공 여부                    |
+| header          | Object  |    O     | 헤더 영역                    |
+| - resultCode    | Integer |    O     | 결과 코드                    |
+| - resultMessage | String  |    O     | 결과 메시지                   |
+| - isSuccessful  | Boolean |    O     | 성공 여부                    |
 | categories      | List    |    X     | 카테고리 리스트                 |
 | - name          | String  |    X     | 카테고리 이름                  |
 | - subCategories | List    |    X     | 서브 카테고리 리스트              |
@@ -1740,10 +1738,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 수정
 
@@ -1909,10 +1907,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 삭제
 
@@ -1959,10 +1957,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 문의하기
 
@@ -2023,10 +2021,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 파일 첨부하여 템플릿 문의하기
 
@@ -2089,10 +2087,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 채널 추가형으로 변경
 
@@ -2141,10 +2139,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 리스트 조회
 
@@ -2304,18 +2302,18 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 
 | 이름                       | 타입      | Not Null | 설명                                                                                                                                                                     |
 |--------------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header                   | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode             | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage          | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful           | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header                   | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode             | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage          | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful           | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | templateListResponse     | Object  |    X     | 본문 영역                                                                                                                                                                  |
 | - templates              | List    |    X     | 템플릿 리스트                                                                                                                                                                |
-| -- plusFriendId          | String  |    X     | 카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                           |
-| -- senderKey             | String  |    X     | 발신 키                                                                                                                                                                   |
-| -- plusFriendType        | String  |    X     | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                |
-| -- templateCode          | String  |    X     | 템플릿 코드                                                                                                                                                                 |
-| -- kakaoTemplateCode     | String  |    X     | 원본 템플릿 코드                                                                                                                                                              |
-| -- templateName          | String  |    X     | 템플릿명                                                                                                                                                                   |
+| -- plusFriendId          | String  |    O     | 카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                           |
+| -- senderKey             | String  |    O     | 발신 키                                                                                                                                                                   |
+| -- plusFriendType        | String  |    O     | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                |
+| -- templateCode          | String  |    O     | 템플릿 코드                                                                                                                                                                 |
+| -- kakaoTemplateCode     | String  |    O     | 원본 템플릿 코드                                                                                                                                                              |
+| -- templateName          | String  |    O     | 템플릿명                                                                                                                                                                   |
 | -- templateMessageType   | String  |    X     | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형)                                                                                                                   |
 | -- templateEmphasizeType | String  |    X     | 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형)                                                                                                   |
 | -- templateContent       | String  |    X     | 템플릿 본문                                                                                                                                                                 |
@@ -2365,16 +2363,16 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- id                   | Integer |    X     | 문의 아이디                                                                                                                                                                 |
 | --- content              | String  |    X     | 문의 내용                                                                                                                                                                  |
 | --- userName             | String  |    X     | 작성자                                                                                                                                                                    |
-| --- createAt             | String  |    X     | 등록 날짜                                                                                                                                                                  |
+| --- createAt             | String  |    O     | 등록 날짜                                                                                                                                                                  |
 | --- attachment           | List    |    X     | 첨부 파일                                                                                                                                                                  |
 | ---- originalFileName    | String  |    X     | 첨부 파일명                                                                                                                                                                 |
 | ---- filePath            | String  |    X     | 첨부 파일 경로                                                                                                                                                               |
 | --- status               | String  |    X     | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중)                                                                                                                   |
-| -- status                | String  |    X     | 템플릿 상태                                                                                                                                                                 |
+| -- status                | String  |    O     | 템플릿 상태                                                                                                                                                                 |
 | -- statusName            | String  |    X     | 템플릿 상태명                                                                                                                                                                |
 | -- securityFlag          | Boolean |    X     | 보안 템플릿 여부                                                                                                                                                              |
 | -- categoryCode          | String  |    X     | 템플릿 카테고리 코드                                                                                                                                                            |
-| -- createDate            | String  |    X     | 생성일자                                                                                                                                                                   |
+| -- createDate            | String  |    O     | 생성일자                                                                                                                                                                   |
 | -- updateDate            | String  |    X     | 수정일자                                                                                                                                                                   |
 | - totalCount             | Integer |    X     | 총개수                                                                                                                                                                    |
 
@@ -2518,20 +2516,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 
 | 이름                            | 타입      | Not Null | 설명                                                                                                                                                                     |
 |-------------------------------|---------|:--------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| header                        | Object  |    X     | 헤더 영역                                                                                                                                                                  |
-| - resultCode                  | Integer |    X     | 결과 코드                                                                                                                                                                  |
-| - resultMessage               | String  |    X     | 결과 메시지                                                                                                                                                                 |
-| - isSuccessful                | Boolean |    X     | 성공 여부                                                                                                                                                                  |
+| header                        | Object  |    O     | 헤더 영역                                                                                                                                                                  |
+| - resultCode                  | Integer |    O     | 결과 코드                                                                                                                                                                  |
+| - resultMessage               | String  |    O     | 결과 메시지                                                                                                                                                                 |
+| - isSuccessful                | Boolean |    O     | 성공 여부                                                                                                                                                                  |
 | templateModificationsResponse | Object  |    X     | 본문 영역                                                                                                                                                                  |
 | - templates                   | List    |    X     | 템플릿 리스트                                                                                                                                                                |
-| -- plusFriendId               | String  |    X     | 카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                           |
-| -- senderKey                  | String  |    X     | 발신 키                                                                                                                                                                   |
-| -- plusFriendType             | String  |    X     | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                |
-| -- templateCode               | String  |    X     | 템플릿 코드                                                                                                                                                                 |
-| -- templateName               | String  |    X     | 템플릿명                                                                                                                                                                   |
+| -- plusFriendId               | String  |    O     | 카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                           |
+| -- senderKey                  | String  |    O     | 발신 키                                                                                                                                                                   |
+| -- plusFriendType             | String  |    O     | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                |
+| -- templateCode               | String  |    O     | 템플릿 코드                                                                                                                                                                 |
+| -- templateName               | String  |    O     | 템플릿명                                                                                                                                                                   |
 | -- templateMessageType        | String  |    X     | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형)                                                                                                                   |
 | -- templateEmphasizeType      | String  |    X     | 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, IMAGE: 이미지형, )                                                                                                                     |
-| -- templateContent            | String  |    X     | 템플릿 본문                                                                                                                                                                 |
+| -- templateContent            | String  |    O     | 템플릿 본문                                                                                                                                                                 |
 | -- templateExtra              | String  |    X     | 템플릿 부가 정보                                                                                                                                                              |
 | -- templateAd                 | String  |    X     | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구                                                                                                                                            |
 | -- tempalteTitle              | String  |    X     | 템플릿 제목                                                                                                                                                                 |
@@ -2576,17 +2574,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- id                        | Integer |    X     | 문의 아이디                                                                                                                                                                 |
 | --- content                   | String  |    X     | 문의 내용                                                                                                                                                                  |
 | --- userName                  | String  |    X     | 작성자                                                                                                                                                                    |
-| --- createAt                  | String  |    X     | 등록 날짜                                                                                                                                                                  |
+| --- createAt                  | String  |    O     | 등록 날짜                                                                                                                                                                  |
 | --- attachment                | List    |    X     | 첨부 파일                                                                                                                                                                  |
 | ---- originalFileName         | String  |    X     | 첨부 파일명                                                                                                                                                                 |
 | ---- filePath                 | String  |    X     | 첨부 파일 경로                                                                                                                                                               |
 | --- status                    | String  |    X     | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중)                                                                                                                   |
-| -- status                     | String  |    X     | 템플릿 상태                                                                                                                                                                 |
-| -- statusName                 | String  |    X     | 템플릿 상태명                                                                                                                                                                |
+| -- status                     | String  |    O     | 템플릿 상태                                                                                                                                                                 |
+| -- statusName                 | String  |    O     | 템플릿 상태명                                                                                                                                                                |
 | -- securityFlag               | Boolean |    X     | 보안 템플릿 여부                                                                                                                                                              |
 | -- categoryCode               | String  |    X     | 템플릿 카테고리 코드                                                                                                                                                            |
 | -- activated                  | Boolean |    X     | 활성화 여부                                                                                                                                                                 |
-| -- createDate                 | String  |    X     | 생성일자                                                                                                                                                                   |
+| -- createDate                 | String  |    O     | 생성일자                                                                                                                                                                   |
 | -- updateDate                 | String  |    X     | 수정일자                                                                                                                                                                   |
 | - totalCount                  | Integer |    X     | 총개수                                                                                                                                                                    |
 
@@ -2649,10 +2647,10 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 
 | 이름                  | 타입      | Not Null | 설명             |
 |---------------------|---------|:--------:|----------------|
-| header              | Object  |    X     | 헤더 영역          |
-| - resultCode        | Integer |    X     | 결과 코드          |
-| - resultMessage     | String  |    X     | 결과 메시지         |
-| - isSuccessful      | Boolean |    X     | 성공 여부          |
+| header              | Object  |    O     | 헤더 영역          |
+| - resultCode        | Integer |    O     | 결과 코드          |
+| - resultMessage     | String  |    O     | 결과 메시지         |
+| - isSuccessful      | Boolean |    O     | 성공 여부          |
 | templateImage       | Object  |    X     | 본문 영역          |
 | - templateImageName | String  |    X     | 이미지명(업로드한 파일명) |
 | - templateImageUrl  | String  |    X     | 이미지 URL        |
@@ -2716,10 +2714,10 @@ curl -X POST -H "Content-Type: multipart/form-data" -H "X-Secret-Key:{secretkey}
 
 | 이름                  | 타입      | Not Null | 설명             |
 |---------------------|---------|:--------:|----------------|
-| header              | Object  |    X     | 헤더 영역          |
-| - resultCode        | Integer |    X     | 결과 코드          |
-| - resultMessage     | String  |    X     | 결과 메시지         |
-| - isSuccessful      | Boolean |    X     | 성공 여부          |
+| header              | Object  |    O     | 헤더 영역          |
+| - resultCode        | Integer |    O     | 결과 코드          |
+| - resultMessage     | String  |    O     | 결과 메시지         |
+| - isSuccessful      | Boolean |    O     | 성공 여부          |
 | templateImage       | Object  |    X     | 본문 영역          |
 | - templateImageName | String  |    X     | 이미지명(업로드한 파일명) |
 | - templateImageUrl  | String  |    X     | 이미지 URL        |
@@ -2784,10 +2782,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 플러그인 수정
 
@@ -2848,10 +2846,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 플러그인 삭제
 
@@ -2898,10 +2896,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 템플릿 플러그인 조회
 
@@ -2958,10 +2956,10 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름               | 타입      | Not Null | 설명                                                         |
 |------------------|---------|:--------:|------------------------------------------------------------|
-| header           | Object  |    X     | 헤더 영역                                                      |
-| - resultCode     | Integer |    X     | 결과 코드                                                      |
-| - resultMessage  | String  |    X     | 결과 메시지                                                     |
-| - isSuccessful   | Boolean |    X     | 성공 여부                                                      |
+| header           | Object  |    O     | 헤더 영역                                                      |
+| - resultCode     | Integer |    O     | 결과 코드                                                      |
+| - resultMessage  | String  |    O     | 결과 메시지                                                     |
+| - isSuccessful   | Boolean |    O     | 성공 여부                                                      |
 | plugins          | List    |    X     | 플러그인 리스트                                                   |
 | - pluginId       | String  |    X     | 플러그인 아이디                                                   |
 | - pluginType     | String  |    X     | 플러그인 타입(SECURE_IMAGE: 보안 이미지 전송, ONE_TIME_PROFILE: 개인정보이용) |
@@ -3032,10 +3030,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
 
 ### 대체 발송 설정 등록
 
@@ -3101,7 +3099,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 
 | 이름              | 타입      | Not Null | 설명     |
 |-----------------|---------|:--------:|--------|
-| header          | Object  |    X     | 헤더 영역  |
-| - resultCode    | Integer |    X     | 결과 코드  |
-| - resultMessage | String  |    X     | 결과 메시지 |
-| - isSuccessful  | Boolean |    X     | 성공 여부  |
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
