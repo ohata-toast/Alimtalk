@@ -107,7 +107,7 @@ Webフック設定に定義されたURLでPOSTリクエストを作成する時�
 |値|	タイプ|	説明|
 |---|---|---|
 |hooks|	List\<Map\> | Webフックイベント発生時のデータ |
-|- kakaoMessageType|	String| カカオメッセージタイプ<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>FRIENDTALK_UPGRADE_NORMAL<br>FRIENDTALK_UPGRADE_MASS  |
+|- kakaoMessageType|	String| カカオメッセージタイプ<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>BRAND_MESSAGE_NORMAL<br>BRAND_MESSAGE_MASS  |
 |- requestId|	String| リクエストID |
 |- recipientSeq|	Integer| 受信者シーケンス番号 |
 |- requestDate|	String| リクエスト日 |
@@ -125,7 +125,7 @@ Webフック設定に定義されたURLでPOSTリクエストを作成する時�
 ```json
 "hooks": [
   {
-     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / FRIENDTALK_UPGRADE_NORMAL / FRIENDTALK_UPGRADE_MASS)",
+     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / BRAND_MESSAGE_NORMAL / BRAND_MESSAGE_MASS)",
     "requestId": "String",
      "recipientSeq": "Integer",
      "requestDate": "String",

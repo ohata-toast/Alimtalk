@@ -107,7 +107,7 @@ curl -X POST \
 |값|	타입| 	설명                                                                                                                                                             |
 |---|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                                 |
-|- kakaoMessageType|	String| 카카오 메시지 타입<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>FRIENDTALK_UPGRADE_NORMAL<br>FRIENDTALK_UPGRADE_MASS |
+|- kakaoMessageType|	String| 카카오 메시지 타입<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>BRAND_MESSAGE_NORMAL<br>BRAND_MESSAGE_MASS |
 |- requestId|	String| 요청 ID                                                                                                                                                           |
 |- recipientSeq|	Integer| 수신자 시퀀스 번호                                                                                                                                                      |
 |- requestDate|	String| 요청 일시                                                                                                                                                           |
@@ -125,7 +125,7 @@ curl -X POST \
 ```json
 "hooks": [
   {
-     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / FRIENDTALK_UPGRADE_NORMAL / FRIENDTALK_UPGRADE_MASS)",
+     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / BRAND_MESSAGE_NORMAL / BRAND_MESSAGE_MASS)",
     "requestId": "String",
      "recipientSeq": "Integer",
      "requestDate": "String",

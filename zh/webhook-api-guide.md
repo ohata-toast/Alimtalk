@@ -107,7 +107,7 @@ Hook data per event type when generating a POST request to the URL defined in th
 |Value|	Type|	Descriptions|
 |---|---|---|
 |hooks|	List<Map> | Data when a webhook event occurs |
-|- kakaoMessageType|	String| Kakao Message Types<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>FRIENDTALK_UPGRADE_NORMAL<br>FRIENDTALK_UPGRADE_MASS  |
+|- kakaoMessageType|	String| Kakao Message Types<br>ALIMTALK_NORMAL<br>ALIMTALK_AUTH<br>ALIMTALK_MASS<br>FRIENDTALK_NORMAL<br>FRIENDTALK_MASS<br>BRAND_MESSAGE_NORMAL<br>BRAND_MESSAGE_MASS  |
 |- requestId|	String| Request ID |
 |- recipientSeq|	Integer| Recipient sequence number |
 |- requestDate|	String| Date and time of request |
@@ -125,7 +125,7 @@ Hook data per event type when generating a POST request to the URL defined in th
 ```json
 "hooks": [
   {
-     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / FRIENDTALK_UPGRADE_NORMAL / FRIENDTALK_UPGRADE_MASS)",
+     "kakaoMessageType": "String(ALIMTALK_NORMAL / ALIMTALK_AUTH / ALIMTALK_MASS / FRIENDTALK_NORMAL / FRIENDTALK_MASS / BRAND_MESSAGE_NORMAL / BRAND_MESSAGE_MASS)",
     "requestId": "String",
      "recipientSeq": "Integer",
      "requestDate": "String",
