@@ -42,6 +42,18 @@
 |---|---|---|
 | appKey | String | 고유의 앱키 |
 
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름           | 타입     | 필수 | 설명               |
+|--------------|--------|----|------------------|
+| X-Secret-Key | String | O  | 콘솔에서 생성할 수 있습니다. |
+
 [Query parameter]
 
 | 이름 | 타입 | 최대 길이 | 필수 | 설명 |
@@ -50,7 +62,7 @@
 | from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 필수 | 통계 검색 종료 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | 옵션 | 통계 데이터 조회 시, 트리 형태로 제공할 지 설정 |
-| extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
+| extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK, BRAND_MESSAGE |
 | extra2s | List<String> | - | 옵션 | senderKey |
 | eventTypes | List<String> | - | 옵션 | 이벤트 종류<br/> REQUESTED, SENT, RECEIVED, SENT_FAILED, RESENT, RESENT_FAILED |
 | eventCategory | String | - | 옵션 | 이벤트 목록(현재 `MESSAGE`만 지원)<br/> MESSAGE |
@@ -116,7 +128,7 @@
 | from | String | - | 필수 | 통계 검색 시작 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | to | String | - | 필수 | 통계 검색 종료 날짜<br/>yyyy-MM-dd HH:mm:ss |
 | join | Boolean | - | 옵션 | 통계 데이터 조회 시, 트리 형태로 제공할 지 설정 |
-| extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK |
+| extra1s | List<String> | - | 옵션 | 하위 상품 구분<br/> ALIMTALK, ALIMTALK_AUTH, FRIENDTALK, BRAND_MESSAGE |
 | extra2s | List<String> | - | 옵션 | senderKey |
 | eventTypes | List<String> | - | 옵션 | 이벤트 종류<br/> REQUESTED, SENT, RECEIVED, SENT_FAILED, RESENT, RESENT_FAILED |
 | eventCategory | String | - | 옵션 | 이벤트 목록(현재 `MESSAGE`만 지원)<br/> MESSAGE |
