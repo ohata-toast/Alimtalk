@@ -1308,8 +1308,8 @@ Content-Type: application/json;charset=UTF-8
 | -- resendTitle      | String  | X  | LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 대체 발송됩니다.)                                                                                      |
 | -- resendContent    | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                         |
 | -- resendSendNo     | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                        |
-| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | createUser          | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                          |
 | statsId             | String  | X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                   |
 
