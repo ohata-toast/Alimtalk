@@ -171,6 +171,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "TEXT",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "content": String,
   "buttons": [
@@ -204,9 +207,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String, 
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -217,6 +226,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
@@ -245,6 +257,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -257,6 +275,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "IMAGE",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "content": String,
   "image": {
@@ -294,9 +315,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -307,6 +334,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
@@ -338,6 +368,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -350,6 +386,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "WIDE",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "content": String,
   "image": {
@@ -387,9 +426,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -400,6 +445,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
@@ -431,6 +479,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -443,6 +497,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "WIDE_ITEM_LIST",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "header": String,
   "item": {
@@ -504,9 +561,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -517,6 +580,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | header                 | String  | O  | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가)                                                                                                                                                                     |
 | item                   | Object  | O  | 와이드 리스트 요소 (WIDE_ITEM_LIST 타입에서만 사용 가능)                                                                                                                                                                                                                                       |
@@ -553,6 +619,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -565,6 +637,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "PREMIUM_VIDEO",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "content": String,
   "header": String,
@@ -603,9 +678,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -616,6 +697,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | X  | - TEXT 타입일 경우 최대 1,300자 (줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자 (줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자 (줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자 (줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | header                 | String  | X  | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자 (줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자 (줄바꿈: 불가)                                                                                                                                                                     |
@@ -648,6 +732,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -660,6 +750,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "COMMERCE",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "additionalContent": String,
   "image": {
@@ -704,9 +797,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -717,6 +816,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | additionalContent      | String  | X  | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능                                                                                                                                                                                                                                      |
 | commerce               | Object  | O  | 커머스(COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                                                                                    |
@@ -751,6 +853,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -763,6 +871,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "CAROUSEL_FEED",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "carousel": {
     "list": [
@@ -838,9 +949,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -851,6 +968,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey              | String  | O  | 발신 키(40자). 그룹 발신 키는 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType         | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | carousel               | Object  | O  | 캐러셀                                                                                                                                                                                                                                                                           |
 | - list                 | List    | O  | 캐러셀 리스트(최소 2개, 최대 6개)                                                                                                                                                                                                                                                        |
@@ -889,6 +1009,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -901,6 +1027,9 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "chatBubbleType": "CAROUSEL_COMMERCE",
   "pushAlarm": boolean,
+  "requestDate": String,
+  "unsubscribeNo": String,
+  "unsubscribeAuthNo": String,
   "adult": boolean,
   "carousel": {
     "head": {
@@ -964,9 +1093,15 @@ Content-Type: application/json;charset=UTF-8
           "resendContent": String,
           "resendSendNo": String,
           "resendUnsubscribeNo": String
-      }
+      },
+      "targeting": String,
+      "unsubscribeNo": String,
+      "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -977,6 +1112,9 @@ Content-Type: application/json;charset=UTF-8
 | senderKey            | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                                                                                                                                                                       |
 | chatBubbleType       | String  | O  | 메시지 타입 (TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm            | boolean | X  | 메시지 푸시 알람 발송 여부 (기본값: true)                                                                                                                                                                                                                                                   |
+| requestDate          | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
+| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | adult                | boolean | X  | 성인용 메시지 여부 (기본값: false)                                                                                                                                                                                                                                                       |
 | carousel             | Object  | O  | 캐러셀                                                                                                                                                                                                                                                                           |
 | - head               | Object  | X  | 캐러셀 인트로                                                                                                                                                                                                                                                                       |
@@ -1027,6 +1165,12 @@ Content-Type: application/json;charset=UTF-8
 | -- resendTitle       | String  | X  | LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 대체 발송됩니다.)                                                                                                                                                                                                                               |
 | -- resendContent     | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                                                                  |
 | -- resendSendNo      | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
+| - targeting         | String  | X  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
+| - unsubscribeNo       | String  | X  | 수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| senderGroupingKey    | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
+| resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser           | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId              | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                                                                                                                            |
 
@@ -1118,6 +1262,7 @@ Content-Type: application/json;charset=UTF-8
   "senderKey": String,
   "templateCode": String,
   "pushAlarm": boolean,
+  "requestDate": String,
   "unsubscribeNo": String,
   "unsubscribeAuthNo": String,
   "recipientList": [
@@ -1136,8 +1281,11 @@ Content-Type: application/json;charset=UTF-8
       },
       "unsubscribeNo": String,
       "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
@@ -1148,6 +1296,7 @@ Content-Type: application/json;charset=UTF-8
 | senderKey           | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                              |
 | templateCode        | String  | O  | 사용하려는 템플릿 코드                                                                                                                         |
 | pushAlarm           | boolean | X  | 메시지 푸시 알람 발송 여부 (기본값: true)                                                                                                          |
+| requestDate         | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
 | unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
 | recipientList       | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                    |
@@ -1163,8 +1312,11 @@ Content-Type: application/json;charset=UTF-8
 | -- resendTitle      | String  | X  | LMS 대체 발송 제목<br>(값이 없을 경우, 플러스친구 ID로 대체 발송됩니다.)                                                                                      |
 | -- resendContent    | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                         |
 | -- resendSendNo     | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                        |
-| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
+| - recipientGroupingKey | String  | X  | 수신자 그룹핑 키 (수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                   |
+| senderGroupingKey   | String  | X  | 발신자 그룹핑 키 (발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                   |
+| resellerCode         | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser          | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                          |
 | statsId             | String  | X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                   |
 
@@ -1304,7 +1456,7 @@ Content-Type: application/json;charset=UTF-8
 | -- templateCode             | String  | X        | 템플릿 코드                                                                |
 | -- recipientNo              | String  | O        | 수신 번호                                                                 |
 | -- targeting                | String  | O        | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) |
-| -- requestDate              | String  | O        | 요청 일시                                                                 |
+| -- requestDate              | String  | O        | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                 |
 | -- createDate               | String  | O        | 등록 일시                                                                 |
 | -- receiveDate              | String  | X        | 수신 일시                                                                 |
 | -- chatBubbleType           | String  | O        | 메시지 타입                                                                |
@@ -1507,7 +1659,7 @@ Content-Type: application/json;charset=UTF-8
 | - templateCode        | String  | X        | 템플릿 코드                                                                                           | 
 | - recipientNo         | String  | O        | 수신 번호 (message 객체 존재 시 Not Null)                                                                 | 
 | - targeting           | String  | O        | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저) (message 객체 존재 시 Not Null) | 
-| - requestDate         | String  | O        | 요청 일시 (message 객체 존재 시 Not Null)                                                                 | 
+| - requestDate         | String  | O        | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능 (message 객체 존재 시 Not Null)                                                                 | 
 | - createDate          | String  | O        | 등록 일시 (message 객체 존재 시 Not Null)                                                                 | 
 | - receiveDate         | String  | X        | 수신 일시                                                                                            | 
 | - chatBubbleType      | String  | O        | 메시지 타입 (message 객체 존재 시 Not Null)                                                                | 
