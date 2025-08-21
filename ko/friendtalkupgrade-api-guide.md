@@ -1759,6 +1759,69 @@ Content-Type: application/json;charset=UTF-8
 | - resendRequestId     | String  | X        | 대체 발송 요청 ID                                                                                      | 
 | - createUser          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                      |
 
+## 메시지 발송 취소
+
+#### 요청
+
+[URL]
+
+```
+DELETE  /brand-message/v1.0/appkeys/{appkey}/messages/{requestId}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름        | 	타입     | 	설명     |
+|-----------|---------|---------|
+| appkey    | 	String | 	고유의 앱키 |
+| requestId | String  | 요청 ID   |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름           | 	타입     | 	필수 | 	설명              |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | 	String | O   | 콘솔에서 생성할 수 있습니다. |
+
+[Query parameter]
+
+| 이름           | 	타입     | 	필수 | 	설명                                         |
+|--------------|---------|-----|---------------------------------------------|
+| recipientSeq | 	String | 	X  | 수신자 시퀀스 번호<br>(입력하지 않으면 요청 ID의 모든 발송 건을 취소) |
+
+#### 응답
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+---
+
+| 이름              | 타입      | Not Null | 설명     |
+|-----------------|---------|:--------:|--------|
+| header          | Object  |    X     | 헤더 영역  |
+| - resultCode    | Integer |    X     | 결과 코드  |
+| - resultMessage | String  |    X     | 결과 메시지 |
+| - isSuccessful  | Boolean |    X     | 성공 여부  |
+
+[예시]
+
+```
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
+```
+
 ## 템플릿 관리
 
 ### 템플릿 리스트 조회
