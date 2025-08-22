@@ -1143,7 +1143,6 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-<<<<<<< Updated upstream
 | 이름                  | 타입      | 필수 | 설명                                                                                                                                   |
 |---------------------|---------|----|--------------------------------------------------------------------------------------------------------------------------------------|
 | senderKey           | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                              |
@@ -1169,7 +1168,6 @@ Content-Type: application/json;charset=UTF-8
 | - targeting         | String  | O  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                         |
 | - templateParameter | Object  | X  | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수)                                                                                               |
 | - imageParameters   | List    | X  | 템플릿 이미지 필드 값을 변경할 수 있는 동적 파라미터, 캐러셀 타입은 현재 미지원(템플릿에 존재하는 이미지 갯수와 동일한 크기의 JSON 목록만 사용할 수 있음, 사용할 경우 변경하지 않을 이미지는 빈 JSON 객체를 입력해야 함) |
->>>>>>> Stashed changes
 | -- imageUrl         | String  | X  | 이미지 URL (image 객체 존재 시 Not Null)                                                                                                     |
 | -- imageLink        | String  | X  | 이미지 링크                                                                                                                               |
 | - resendParameter   | Object  | X  | 대체 발송 정보                                                                                                                             |
