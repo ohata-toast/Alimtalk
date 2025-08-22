@@ -1399,7 +1399,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus    | String | X         | 요청 상태(COMPLETED: 성공, FAILED: 실패) |
 | resultCode       | String | X         | 발송 결과(MRC01: 성공 MRC02: 실패 )      |
 | senderGroupingKey    | String   | X          | 발신 그룹핑 키                          |
-| recipientGroupingKey | 	String  | 	X         | 	수신자 그룹핑 키                        |
+| recipientGroupingKey | 	String  | 	X         | 수신자 그룹핑 키                        |
 | pageNum          | String | X         | 페이지 번호(Default: 1)               |
 | pageSize         | String | X         | 조회 건수(Default: 15, Max: 1000)    |
 
@@ -1474,6 +1474,8 @@ Content-Type: application/json;charset=UTF-8
 | -- resultCode               | String  | X        | 수신 결과 코드                                                              |
 | -- resultCodeName           | String  | X        | 수신 결과 코드명                                                             |
 | -- createUser               | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                           |
+| -- senderGroupingKey        | String  | X        | 발신 그룹핑 키                                                 |
+| -- recipientGroupingKey     | String  | X        | 수신자 그룹핑 키                                           |
 | - totalCount                | Integer | O        | 총 개수                                                                  |
 
 ## 발송 단건 조회
@@ -1644,7 +1646,9 @@ Content-Type: application/json;charset=UTF-8
     "resendStatusName": String,
     "resendResultCode": String,
     "resendRequestId": String,
-    "createUser": String
+    "createUser": String,
+    "senderGroupingKey": String,
+    "recipientGroupingKey": String
   }
 }
 ```
@@ -1762,6 +1766,8 @@ Content-Type: application/json;charset=UTF-8
 | - resendResultCode    | String  | X        | 대체 발송 결과 코드                                                                                      | 
 | - resendRequestId     | String  | X        | 대체 발송 요청 ID                                                                                      | 
 | - createUser          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                      |
+| - senderGroupingKey   | String  | X        | 발신 그룹핑 키                                                 |
+| - recipientGroupingKey | String  | X        | 수신자 그룹핑 키                                           |
 
 ## 메시지 발송 취소
 
