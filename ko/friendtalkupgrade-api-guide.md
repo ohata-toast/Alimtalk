@@ -1823,8 +1823,6 @@ Content-Type: application/json;charset=UTF-8
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brand-message/v1.0/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
 ```
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 ## 템플릿 관리
 
 ### 템플릿 리스트 조회
