@@ -1763,6 +1763,11 @@ Content-Type: application/json;charset=UTF-8
 | - resendRequestId     | String  | X        | 대체 발송 요청 ID                                                                                      | 
 | - createUser          | String  | X        | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                      |
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 ## 메시지 발송 취소
 
 #### 요청
@@ -1823,9 +1828,16 @@ Content-Type: application/json;charset=UTF-8
 [예시]
 
 ```
+<<<<<<< Updated upstream
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/friendtalk/v2.4/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
 ```
 
+=======
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brand-message/v1.0/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
+```
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 ## 템플릿 관리
 
 ### 템플릿 리스트 조회

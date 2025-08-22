@@ -356,7 +356,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 [URL]
 
 ```
-DELETE  /brandtalk/v2.2/appkeys/{appkey}/messages/{requestId}
+DELETE  /brandtalk/v1.0/appkeys/{appkey}/messages/{requestId}
 Content-Type: application/json;charset=UTF-8
 ```
 
