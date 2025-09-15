@@ -1307,7 +1307,7 @@ Content-Type: application/json;charset=UTF-8
 | - imageParameters      | List    | X  | 템플릿 이미지 필드 값을 변경할 수 있는 동적 파라미터 (템플릿에 존재하는 이미지 갯수와 동일한 크기의 JSON 목록만 사용할 수 있음, 사용할 경우 변경하지 않을 이미지는 빈 JSON 객체를 입력해야 함)          |
 | -- imageUrl            | String  | X  | 이미지 URL                                                                                                                      |
 | -- imageLink           | String  | X  | 이미지 링크                                                                                                                       |
-| - videoParameter       | List    | X  | 템플릿 비디오 필드 값을 변경할 수 있는 동적 파라미터                                                                                               |
+| - videoParameter       | Object    | X  | 템플릿 비디오 필드 값을 변경할 수 있는 동적 파라미터                                                                                               |
 | -- videoUrl            | String  | X  | 카카오TV 동영상 URL                                                                                                                             |
 | -- thumbnailUrl        | String  | X  | 동영상 썸네일용 이미지 URL                                                                                                                       |
 | - resendParameter      | Object  | X  | 대체 발송 정보                                                                                                                     |
