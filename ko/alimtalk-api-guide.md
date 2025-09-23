@@ -83,7 +83,8 @@ Content-Type: application/json;charset=UTF-8
             "relayId": String,
             "oneClickId": String,
             "productId": String,
-            "target": String
+            "target": String,
+            "telNumber": String
           }
         ],
         "quickReplies": [
@@ -128,6 +129,7 @@ Content-Type: application/json;charset=UTF-8
 | -- oneClickId          | 	String  | 	X  | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                      |
 | -- productId           | 	String  | 	X  | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                      |
 | -- target              | 	String  | 	X  | 	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송                                    |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | - quickReplies         | 	List    | 	X  | 바로연결 정보                                                                                       |
 | -- ordering            | Integer  | X   | 	바로연결 순서(바로연결이 있는 경우 필수)                                                                      |
 | -- chatExtra           | 	String  | 	X  | BC(상담톡 전환) / BT(봇 전환) 타입 시, 전달할 메타정보                                                          |
@@ -273,7 +275,8 @@ Content-Type: application/json;charset=UTF-8
                     "relayId": String,
                     "oneClickId": String,
                     "productId": String,
-                    "target": String
+                    "target": String,
+                    "telNumber": String
                 }
             ],
             "quickReplies": [
@@ -353,6 +356,7 @@ Content-Type: application/json;charset=UTF-8
 | -- oneClickId           | 	String  | 	X  | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                                                                                                   |
 | -- productId            | 	String  | 	X  | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                                                                                                   |
 | -- target               | 	String  | 	X  | 	웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송                                                                                                                 |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | - quickReplies          | 	List    | 	X  | 바로연결 리스트(최대 5개)                                                                                                                                                            |
 | -- ordering             | 	Integer | 	X  | 	바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                   |
 | -- type                 | String   | 	X  | 	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                   |
@@ -660,7 +664,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "relayId": String,
           "oneClickId": String,
           "productId": String,
-          "target": String
+          "target": String,
+          "telNumber": String
         }
       ],
       "quickReplies": [
@@ -762,6 +767,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                   |
 | -- pluginId             | String  |    X     | 플러그인 ID(최대 24자)                                                                                                                                                        |
 | -- target               | String  |    X     | 웹 링크 타입일 경우, "target":"out" 속성 추가 시 아웃 링크\<br\>기본 인앱 링크로 발송                                                                                                            |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | - messageOption         | Object  |    X     | 메시지 옵션                                                                                                                                                                 |
 | -- price                | Integer |    X     | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당)                                                                                                                            |
 | -- currencyType         | String  |    X     | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당)                                                                                         |
@@ -1405,7 +1411,8 @@ curl -X GET \
             "relayId": String,
             "oneClickId": String,
             "productId": String,
-            "target": String
+            "target": String,
+            "telNumber": String
           }
         ],
         "quickReplies": [
@@ -1489,6 +1496,7 @@ curl -X GET \
 | -- oneClickId           | String  |    X     | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                                                                                               |
 | -- productId            | String  |    X     | 원클릭 결제 플러그인에서 사용하는 결제 정보                                                                                                                                               |
 | -- target               | String  |    X     | 웹 링크 버튼일 경우, "target":"out" 속성 추가 시 아웃 링크\<br\>기본 인앱 링크로 발송                                                                                                            |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | - quickReplies          | List    |    X     | 바로연결 리스트(최대 5개)                                                                                                                                                        |
 | -- ordering             | Integer |    X     | 바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                |
 | -- type                 | String  |    X     | 바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                |
@@ -1651,7 +1659,8 @@ Content-Type: application/json;charset=UTF-8
       "schemeIos": String,
       "schemeAndroid": String
       "bizFormId": Integer,
-      "pluginId": String
+      "pluginId": String,
+      "telNumber": String
     }
   ],
   "quickReplies": [
@@ -1710,6 +1719,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid       | String   | X   | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                                                                                           |
 | - bizFormId           | 	Integer | 	X  | 	비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                                                                                         |
 | - pluginId            | 	String  | 	X  | 	플러그인 ID(최대 24자)                                                                                                                                                                                                                                |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | quickReplies          | 	List    | 	X  | 바로연결 리스트(최대 5개)                                                                                                                                                                                                                                 |
 | - ordering            | 	Integer | 	X  | 	바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                                                                                        |
 | - type                | String   | 	X  | 	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                                                                                        |
@@ -1821,7 +1831,8 @@ Content-Type: application/json;charset=UTF-8
       "schemeIos": String,
       "schemeAndroid": String
       "bizFormId": Integer,
-      "pluginId": String
+      "pluginId": String,
+      "telNumber": String
     }
   ],
   "quickReplies": [
@@ -1879,6 +1890,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid       | String   | X   | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                      |
 | - bizFormId           | 	Integer | 	X  | 	비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                    |
 | - pluginId            | 	String  | 	X  | 	플러그인 ID(최대 24자)                                                                                                                                                           |
+| -- telNumber           | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | quickReplies          | 	List    | 	X  | 바로연결 리스트(최대 5개)                                                                                                                                                            |
 | - ordering            | 	Integer | 	X  | 	바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                   |
 | - type                | String   | 	X  | 	바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                   |
@@ -2257,7 +2269,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                     "schemeIos": String,
                     "schemeAndroid": String,
                     "bizFormId": Integer,
-                    "pluginId": String
+                    "pluginId": String,
+                    "telNumber": String
                 }
               ],
               "quickReplies": [
@@ -2350,6 +2363,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                            |
 | --- bizFormId            | Integer |    X     | 비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                 |
 | --- pluginId             | String  |    X     | 플러그인 ID(최대 24자)                                                                                                                                                        |
+| --- telNumber            | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | -- quickReplies          | List    |    X     | 바로연결 리스트(최대 5개)                                                                                                                                                        |
 | --- ordering             | Integer |    X     | 바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                |
 | --- type                 | String  |    X     | 바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                |
@@ -2470,7 +2484,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                     "linkMo": String,
                     "linkPc": String,
                     "schemeIos": String,
-                    "schemeAndroid": String
+                    "schemeAndroid": String,
+                    "telNumber": String
                 }
               ],
               "quickReplies": [
@@ -2561,6 +2576,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- linkPc                    | String  |    X     | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                               |
 | --- schemeIos                 | String  |    X     | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                              |
 | --- schemeAndroid             | String  |    X     | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                            |
+| --- telNumber                 | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                    |
 | -- quickReplies               | List    |    X     | 바로연결 리스트(최대 5개)                                                                                                                                                        |
 | --- ordering                  | Integer |    X     | 바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                |
 | --- type                      | String  |    X     | 바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                |
