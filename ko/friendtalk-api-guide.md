@@ -217,13 +217,13 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink            | 	String  | 	X  | 	이미지 링크                                                                                                                                                       |
 | - buttons              | 	List    | 	X  | 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시 링크 버튼 최대 2개                                                                                                      |
 | -- ordering            | 	Integer | 	X  | 	버튼 순서(버튼이 있는 경우 필수)                                                                                                                                          |
-| -- type                | String   | 	X  | 	버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  
+| -- type                | String   | 	X  | 	버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | -- name                | String   | 	X  | 	버튼 이름(버튼이 있는 경우 필수)                                                                                                                                          |
 | -- linkMo              | String   | 	X  | 	모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                    |
 | -- linkPc              | String   | 	X  | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                      |
 | -- schemeIos           | String   | X   | 	iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                    |
 | -- schemeAndroid       | String   | X   | 	안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                  |
-| -- chatExtra           | 	String  | 	X  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시 전달할 메타정보                                                                                                                        
+| -- chatExtra           | 	String  | 	X  | BC(상담톡 전환) / BT(봇 전환) 타입 버튼 시 전달할 메타정보                                                                                                                        |
 | -- chatEvent           | 	String  | 	X  | BT(봇 전환) 타입 버튼 시 연결할 봇 이벤트명                                                                                                                                   |
 | -- bizFormKey          | 	String  | 	X  | BF(비즈니스 폼) 타입 버튼 시 비즈폼 키                                                                                                                                      |
 | -- target              | 	String  | 	X  | 	웹 링크 버튼일 경우 "target":"out" 속성 추가 시 아웃 링크<br>기본 인앱 링크로 발송                                                                                                     |
@@ -476,14 +476,14 @@ Content-Type: application/json;charset=UTF-8
 | createUser             | String  | X   | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                  |
 | recipientList          | List    | O   | 수신자 목록(최대 1,000명)                                                                                                                                            |
 | - recipientNo          | String  | O   | 수신 번호                                                                                                                                                        |
-| - carousel             | Object  | O   | 캐러셀                                                                                                                                                          
+| - carousel             | Object  | O   | 캐러셀                                                                                                                                                          |
 | -- list                | List    | O   | 캐러셀 리스트(최소 2개, 최대 10개)                                                                                                                                       | 
 | --- header             | String  | O   | 캐러셀 아이템 제목(최대 20자), 캐러셀 피드형에서만 사용 가능                                                                                                                         | 
 | --- message            | String  | O   | 캐러셀 아이템 메시지(최대 180자), 캐러셀 피드형에서만 사용 가능                                                                                                                       | 
 | --- attachment         | Object  | O   | 캐러셀 아이템 이미지, 버튼 정보                                                                                                                                           | 
 | ---- buttons           | List    | X   | 버튼 리스트(최대 2개)                                                                                                                                                | 
 | ----- name             | String  | X   | 버튼 이름(버튼이 있는 경우 필수, 최대 8자)                                                                                                                                   |
-| ----- type             | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  
+| ----- type             | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | ----- linkMo           | String  | X   | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                    |
 | ----- linkPc           | String  | X   | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                     |
 | ----- schemeIos        | String  | X   | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                    |
@@ -638,7 +638,7 @@ Content-Type: application/json;charset=UTF-8
 | createUser             | String  | X   | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                  |
 | recipientList          | List    | O   | 수신자 목록(최대 1,000명)                                                                                                                                            |
 | - recipientNo          | String  | 	O  | 수신 번호                                                                                                                                                        |
-| - carousel             | Object  | O   | 캐러셀                                                                                                                                                          
+| - carousel             | Object  | O   | 캐러셀                                                                                                                                                          |
 | -- head                | String  | X   | 캐러셀 인트로 정보 (캐러셀 커머스형에서만 사용 가능)                                                                                                                               | 
 | --- header             | String  | O   | 캐러셀 인트로 헤더(최대 20자)                                                                                                                                           |  
 | --- content            | String  | O   | 캐러셀 인트로 내용(최대 50자)                                                                                                                                           |
@@ -652,7 +652,7 @@ Content-Type: application/json;charset=UTF-8
 | --- attachment         | Object  | O   | 캐러셀 아이템 이미지, 버튼 정보                                                                                                                                           | 
 | ---- buttons           | List    | X   | 버튼 리스트(최대 2개)                                                                                                                                                | 
 | ----- name             | String  | X   | 버튼 이름(버튼이 있는 경우 필수, 최대 8자)                                                                                                                                   |
-| ----- type             | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  
+| ----- type             | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | ----- linkMo           | String  | X   | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                    |
 | ----- linkPc           | String  | X   | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                     |
 | ----- schemeIos        | String  | X   | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                    |
@@ -761,7 +761,7 @@ Content-Type: application/json;charset=UTF-8
 | - header               | String  | O   | 헤더(프리미엄 비디오 타입 사용 시, 선택, 최대 25자)                                                                                                                             |
 | - buttons              | List    | X   | 버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                     |
 | -- ordering            | Integer | X   | 버튼 순서(버튼이 있는 경우 필수)                                                                                                                                          |
-| -- type                | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  
+| -- type                | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | -- name                | String  | X   | 버튼 이름(버튼이 있는 경우 필수)                                                                                                                                          |
 | -- linkMo              | String  | X   | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                    |
 | -- linkPc              | String  | X   | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                     |
@@ -863,7 +863,7 @@ Content-Type: application/json;charset=UTF-8
 | - additionalContent    | String  | X   | 부가 정보(최대 34자), 커머스형에서만 사용 가능                                                                                                                                 |
 | - buttons              | List    | X   | 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                    |
 | -- ordering            | Integer | X   | 버튼 순서(버튼이 있는 경우 필수)                                                                                                                                          |
-| -- type                | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  
+| -- type                | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | -- name                | String  | X   | 버튼 이름(버튼이 있는 경우 필수)                                                                                                                                          |
 | -- linkMo              | String  | X   | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                    |
 | -- linkPc              | String  | X   | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                     |
