@@ -134,6 +134,7 @@ Content-Type: application/json;charset=UTF-8
 * OBT 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
     * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 
 #### 요청
 
@@ -1222,6 +1223,7 @@ Content-Type: application/json;charset=UTF-8
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
     * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
 * OBT 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 
 ### 사용시 주의사항
 
