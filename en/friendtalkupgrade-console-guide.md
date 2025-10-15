@@ -1,249 +1,267 @@
-## Notification > KakaoTalk Bizmessage > 브랜드 메시지 > 콘솔 사용 가이드
+## Notification > KakaoTalk Bizmessage > Brand Message > Console User Guide
 
-## 브랜드 메시지 발송
+## Brand Message sending
 
-### 일반 발송
+### Regular send
 
-발신 프로필을 설정하고 내용을 입력하여 브랜드 메시지 형태의 메시지를 발송할 수 있습니다.
-브랜드 메시지을 발송하려면 콘솔에서 **Notification > KakaoTalk Bizmessage > 브랜드 메시지**를 선택합니다.
+You can set up an outgoing profile and enter content to send messages in the form of brand message. To send a brand message, select Notification > KakaoTalk Bizmessage > Brand Message on the console.
 
-### 템플릿 사용 시
+### When using a template
 
 ![friendtalkupgrade_04_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_04_20250729.png)
 
-1. 발신 프로필을 선택합니다.
-   * 발신 프로필은 **Notification > KakaoTalk Bizmessage > 발신 프로필 관리** 탭에서 확인할 수 있습니다.
-2. 푸시 알람 여부를 선택합니다.
-   * 푸시 알람을 '사용 안 함'으로 선택할 경우, 메시지 푸시 알람이 발송되지 않습니다.
-3. 템플릿 사용 여부를 '사용'으로 선택한 뒤 발송 요청할 템플릿을 선택합니다.
-   * 템플릿은 <strong>Notification > KakaoTalk Bizmessage > 브랜드 메시지 > 템플릿 관리</strong> 탭에서 등록이 가능합니다.
-4. 대체 발송 메시지 설정 여부를 선택합니다.
-    * <b>080 수신거부 관리</b> 탭에서 대체 발송 여부를 '사용'으로 설정하고 SMS 서비스를 연동해야 대체 발송이 가능합니다
-5. 080 수신거부번호 설정 여부를 선택합니다.
-    * 080 수신거부번호 설정 여부를 '설정하지 않음(발신 프로필 설정으로 발송)'으로 선택할 경우, 발신 프로필에서 설정한 080 수신거부번호가 사용됩니다.
-    * '공통된 내용으로 설정' 또는 '사용자별 설정'을 선택할 경우 입력한 080 수신거부번호가 발송에 사용됩니다.
-    * <b>080 수신거부 관리</b> 탭에서 SMS 서비스를 이용할 경우 SMS 서비스에 등록된 080 수신거부번호만 사용할 수 있습니다.
-6. 수신자를 추가합니다.
-   * 수신자는 휴대폰 번호 형태로 작성할 수 있습니다.
-7. 수신자별로 타겟팅 유형을 선택합니다.
-   * 브랜드 메시지는 광고주의 마케팅 수신 동의(이하 마수동) 유저 및 채널 친구 유저를 대상으로 발송할 수 있는 광고성 메시지입니다.
-   * 타겟팅 유형에 따라 지정한 수신자의 메시지 수신 여부가 달라질 수 있습니다.
-      * M: 광고주 마수동 유저(카카오톡 수신 동의)
-         * 광고주의 마수동 유저(카카오톡 수신 동의) 대상으로 광고성 메시지를 발송 처리합니다.
-      * N: 광고주 마수동 유저(카카오톡 수신 동의) - 채널 친구
-         * 광고주의 마수동 유저(카카오톡 수신 동의)에서 채널 친구를 제외하고 광고성 메시지를 발송 처리합니다.
-      * I: 광고주 발송 요청 대상 ∩ 채널 친구
-         * 광고주 발송 요청 대상에서, 채널 친구인 경우에만 광고성 메시지를 발송 처리합니다.
-8. 입력을 완료한 뒤 **발송**을 클릭하여 전송합니다.
+1. Select an outgoing profile.
+   * You can check the outgoing profile from the Notification > KakaoTalk Bizmessage > Manage Outgoing Profiles tab.
+2. Select push notification status.
+   * If you select “Disable”, the push notification for messages is not sent.
+3. Select “Enable” for using template, then select the template you wish to request sending.
+   * The template can be registered from the <strong>Notification > KakaoTalk Bizmessage > Brand Message > Manage Templates</strong> tab.
+4. Select whether to set fallback messages.
+   * To enable fallback, you must set the fallback option to “Enable” in the <b>Manage 080 Opt Out</b> tab and integrate the SMS service.
+5. Select whether to set 080 opt-out number.
+   * If you select “Not Set (send using outgoing profile settings)” for the 080 opt-out number setting, the 080 opt-out number set in the outgoing profile will be used.
+   * If you select “Set as Common Content” or “Set by User”, the 080 opt-out number you entered will be used for sending.
+   * When using the SMS service from the <b>Manage 080 Opt Out</b> tab, only 080 opt-out numbers registered in the SMS service are available.
+6. Add a recipient.
+   * A recipient can be written in phone number format.
+7. Select a targeting type by recipient.
+   * Brand Message is an advertising message that can be sent to users who have agreed to receive marketing messages from advertisers (hereinafter referred to as "marketing consent") and channel friend users.
+   * Depending on the targeting type, whether the specified recipients receive your message may vary.
+     * M: Advertisers’ users with marketing consent
+       * Send advertising messages to Advertisers’ users with marketing consent (KakaoTalk message consent)
+     * N: Advertisers’ users with marketing consent- channel friend
+       * Send advertising messages to advertisers’ users with marketing consent (KakaoTalk message consent), except channel friends.
+     * I: Target of advertiser sending request ∩ Channel friend
+       * For advertiser sending requests, advertising messages are sent only to channel friends.
+8. After completing the input, click Send to send.
 
-### 템플릿 미사용 시
+### When not using a template
 
 ![friendtalkupgrade_05_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_05_20250729.png)
 
-1. 발신 프로필을 선택합니다.
-   * 발신 프로필은 **Notification > KakaoTalk Bizmessage > 발신 프로필 관리** 탭에서 확인할 수 있습니다.
-2. 푸시 알람 여부를 선택합니다.
-   * 푸시 알람을 '사용 안 함'으로 선택할 경우, 메시지 푸시 알람이 발송되지 않습니다.
-3. 성인용 메시지 여부를 선택합니다.
-   * 성인용 메시지의 경우 연령 인증 전까지 채팅방 메시지에 커버가 씌워지며 20세 이상만 내용을 확인할 수 있습니다.
-4. 메시지 타입을 선택합니다.
-   * 텍스트
-      * 한/영 구분 없이 띄어쓰기 포함 1,300자 텍스트+링크 버튼 최대 5개(세로 배열)
-   * 이미지
-      * 한/영 구분 없이 띄어쓰기 포함 400자 텍스트+이미지 1장+링크 버튼 최대 5개(세로 배열)
-   * 와이드 이미지
-      * 한/영 구분 없이 띄어쓰기 포함 76자 텍스트+이미지 1장+링크 버튼 최대 2개
-   * 와이드 아이템 리스트
-      * 1개의 타이틀에 3~4개의 리스트(이미지+아이템)를 추가할 수 있는 광고 타입의 상품입니다.
-      * 한/영 구분 없이 띄어쓰기 포함 텍스트 첫 번째 아이템 제목 25자, 2~4번째 아이템 제목 30자+이미지 아이템 3~4개+링크 버튼 최대 2개(가로 정렬)
-   * 캐러셀 피드
-      * 최대 10개의 이미지와 다양한 텍스트 정보를 담을 수 있는 광고 타입의 상품입니다.
-      * 한/영 구분 없이 띄어쓰기 포함 제목 20자 텍스트+문구 180자 텍스트+이미지+링크 버튼 2개(가로 정렬)로 구성된 아이템 최대 6개
-   * 프리미엄 동영상
-      * 첨부한 동영상이 말풍선에 자동으로 재생되는 유형입니다.
-      * 동영상 링크는 카카오TV에 업로드된 영상만 사용 가능합니다(예: [https://tv.kakao.com/v/#{숫자}](https://tv.kakao.com/v/#%7B%EC%88%AB%EC%9E%90%7D) / [https://tv.kakao.com/channel/#{숫자}/cliplink/#{숫자}](https://tv.kakao.com/channel/#%7B%EC%88%AB%EC%9E%90%7D/cliplink/#%7B%EC%88%AB%EC%9E%90%7D)).
-      * 한/영 구분 없이 띄어쓰기 포함 헤더 20자 텍스트+문구 76자 텍스트+카카오TV에 업로드된 영상 1개+링크 버튼 1개
-   * 커머스
-      * 상품의 가격 및 할인 정보를 강조하여 나타낼 수 있는 말풍선입니다.
-      * 한/영 구분 없이 띄어쓰기 포함 제목 20자 텍스트+부가 정보 34자 텍스트+링크 버튼 최대 2개(가로 정렬)
-   * 캐러셀 커머스
-      * 다양한 상품의 정보를 카탈로그 형태로 구성할 수 있는 말풍선입니다.
-      * 한/영 구분 없이 띄어쓰기 포함 제목 30자 텍스트+부가 정보 34자 텍스트+링크 버튼 최대 2개(가로 정렬)로 구성된 아이템 최대 6개
-      * 캐러셀 커머스에 사용되는 모든 이미지는 동일한 비율이어야 합니다.
-5. 이미지가 있을 경우 이미지를 선택합니다.
-   * 메시지에 이미지를 첨부하려면 먼저 **이미지 관리** 탭에서 이미지를 등록해야 합니다.
-   * 이미지 링크: 이미지 클릭 시 연결되는 링크를 입력합니다(http://, https://를 포함한 URL).
-   * 캐러셀 커머스에 사용되는 모든 이미지는 동일한 비율이어야 합니다.
-6. 웹 링크, 앱 링크, 봇 키워드, 메시지 전달, 상담톡 전환, 봇 전환, 비즈니스폼 버튼을 삽입할 수 있습니다.
-   * 기본형 최대 5개, 캐러셀/와이드 아이템 리스트 최대 2개
-7. 메시지에서 쿠폰을 강조해야 하는 경우 버튼을 사용하여 해당 버튼을 클릭하면 첨부한 쿠폰으로 이동하도록 할 수 있습니다.
-8. 대체 발송 메시지 설정 여부를 선택합니다.
-   * <b>080 수신거부 관리</b> 탭에서 대체 발송 여부를 '사용'으로 설정하고 SMS 서비스를 연동해야 대체 발송이 가능합니다
-9. 수신자는 휴대폰 번호 형태로 작성할 수 있습니다.
-10. 입력을 완료한 뒤 **발송**을 클릭하여 전송합니다.
+1. Select an outgoing profile.
+   * You can check the outgoing profile from the Notification > KakaoTalk Bizmessage > Manage Outgoing Profiles tab.
+2. Select push notification status.
+   * If you select “Disable”, the push notification for messages is not sent.
+3. Select whether the message is for adults or not.
+   * For adult messages, chat room messages will be covered until age verification is completed, and only those over 20 years of age can view the content.
+4. Select a message type.
+   * Text
+     * 1,300 characters of text including spaces, in both Korean and English + up to 5 link buttons (vertically arranged)
+   * Image
+     * 400 characters of text including spaces, in both Korean and English + one image + up to 5 link buttons (vertically arranged)
+   * Wide image
+     * 76 characters of text including spaces, in both Korean and English + one image + up to 2 link buttons
+   * Wide item list
+     * An ad-type product that allows you to add 3 to 4 lists (images + items) to one title.
+     * First item title 25 characters, including spaces, regardless of Korean/English, 24 + up to 2 link buttons (horizontally aligned)
+   * Carousel feed
+     * An ad-type product that can contain up to 10 images and various text information.
+     * Up to 6 items consisting of a title of 20 characters including spaces, a phrase of 180 characters, an image, and 2 link buttons (horizontally aligned), regardless of Korean/English
+   * Premium video
+     * This type of video is automatically played in a speech bubble.
+     * Video links can only be used for videos uploaded to Kakao TV (e.g. [https://tv.kakao.com/v/#{number}](https://tv.kakao.com/v/#%7B%EC%88%AB%EC%9E%90%7D) / [https://tv.kakao.com/channel/#{number}/cliplink/#{number}](https://tv.kakao.com/channel/#%7B%EC%88%AB%EC%9E%90%7D/cliplink/#%7B%EC%88%AB%EC%9E%90%7D)).
+     * 20-character header text including spaces, regardless of Korean/English, + 76-character text for the text + 1 video uploaded to Kakao TV + 1 link button
+   * Commerce
+     * A speech bubble that can highlight product prices and discount information.
+     * 20-character title text including spaces, regardless of Korean/English, 34-character text for additional information + 2 link buttons (horizontally aligned)
+   * Carousel commerce
+     * A speech bubble that can organize information on various products in a catalog format.
+     * Up to 6 items consisting of a title text of 30 characters including spaces, a phrase of 34 characters, and up to 2 link buttons (horizontally aligned), regardless of Korean/English
+     * Every image used for carousel commerce must have the same ratio.
+5. If you have an image, select it.
+   * To attach an image to a message, first register the image in the Manage Image tab.
+   * Image link: Enter the link you want to connect to when the image is clicked (URL including http://, https://).
+   * Every image used for carousel commerce must have the same ratio.
+6. You can insert web links, app links, bot keywords, message forwarding, chat conversion, bot conversion, and business form buttons.
+   * Up to 5 basic items, up to 2 carousel/wide item lists
+7. If you need to highlight a coupon in your message, you can use a button that takes users to the attached coupon when they click on it.
+8. Select whether to set fallback messages.
+   * To enable fallback, you must set the fallback option to “Enable” in the “080 Opt Out Management” tab and integrate the SMS service.
+9. Add a recipient.
+   * A recipient can be written in phone number format.
+10. Select a targeting type by recipient.
+    * Brand Message is an advertising message that can be sent to users who have agreed to receive marketing messages from advertisers (hereinafter referred to as "marketing consent"') and channel friend users.
+    * Depending on the targeting type, whether the specified recipients receive your message may vary.
+      * M: Advertisers’ users with marketing consent
+        * Send advertising messages to Advertisers’ users with marketing consent (KakaoTalk message consent)
+      * N: Advertisers’ users with marketing consent- channel friend
+        * Send advertising messages to advertisers’ users with marketing consent (KakaoTalk message consent), except channel friends.
+      * I: Target of advertiser sending request ∩ Channel friend
+        * For advertiser sending requests, advertising messages are sent only to channel friends.
+11. After completing the input, click Send to send.
 
-### 대량 발송
+### Mass Delivery
 
-Excel/CSV 포맷의 템플릿 파일을 통해 여러 수신 번호로 브랜드 메시지를 발송할 수 있는 기능입니다. 하단 탭에서 <b>대량 발송</b>을 선택합니다.
+This feature allows you to send brand messages to multiple recipient numbers using a template file in Excel/CSV format. Select <b>Mass Delivery</b> from the bottom tab.
 
 ![friendtalkupgrade_mass01.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade_mass01.png)
 
-* 내용에 템플릿 치환자를 '#{이름}' 형식으로 입력한 후, **템플릿 다운로드** 버튼을 클릭하면 템플릿 치환자가 포함된 CSV, XLSX 파일을 다운로드할 수 있습니다.
-* CSV 파일은 Excel로 열어 저장할 때 한글이 제대로 저장되지 않을 수 있습니다.
-* CSV, XLSX 파일만 업로드할 수 있습니다. 크기는 최대 30MB이며, 발송할 수 있는 최대 수신자는 1,000,000명입니다.
+* You can download a CSV or XLSX file containing the template placeholder by entering the template placeholder in the content in the format '#{name}' and clicking the **Download Template** button.
+* When opening and saving CSV files with Excel, Korean characters may not be saved properly.
+* Only CSV, XLSX files can be uploaded. The maximum size is 30MB, and the maximum number of recipients you can send to is 1,000,000.
 
 ![friendtalkupgrade_mass02.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade_mass02.png)
 
-* 각 수신자별, 개별 타겟팅 값과 템플릿 치환자의 값을 입력할 수 있습니다.
-   * 자유형 발송의 경우 M, N 타겟팅 값을 설정할 경우 발송에 실패하므로 주의가 필요합니다. 
-* 만약 템플릿 치환자가 없이 내용을 입력하면 같은 내용으로 모든 수신자에게 발송됩니다.
+* You can enter individual targeting values and template placeholders for each recipient.
+  * For free-form sending, be careful not to set M or N targeting values, as this will result in send failure.
+* If you enter content without template placeholders, the same content will be sent to all recipients.
 
-<b>발송</b> 버튼 클릭 시 <b>즉시 발송</b>을 선택할 수 있습니다.
+When clicking <b>Send</b> button, you can select <b>Immediate Send</b>.
 
-* 즉시 발송: 브랜드 메시지 수신자를 확인하지 않고 즉시 발송합니다. 발송 상태는 <b>대량 발송 조회</b> 탭에서 확인할 수 있습니다.
+* Immediate Send: Brand messages are sent immediately without confirming recipients. You can check the progress of your shipment in the <b>View Mass Delivery</b> tab.
 
-### 대체 발송
-브랜드 메시지 발송을 실패한 경우 해당 내용을 문자 메시지로 대체 발송할 수 있는 기능입니다.
-<b>공통된 내용으로 발송</b> 또는 <b>사용자별 다른 메시지 설정</b>을 선택해 발송할 수 있습니다.
+### Fallback
+
+A feature that allows you to replace a brand message with a text message if it fails to send. You can send it by selecting <b>Set as Common Content</b> or <b>Set by Different Messages per User</b>.
 
 ![friendtalkupgrade_06_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_06_20250729.png)
 
-* <b>080 수신거부 관리</b> 탭에서 대체 발송 여부를 '사용'으로 설정하고 SMS 서비스를 연동해야 대체 발송이 가능합니다
-* 대체 메시지를 발송하려면 발신 번호가 필요합니다. 대체 발송 여부나 발신 번호를 설정하지 않은 경우 <b>대체 발송 관리</b> 탭에서 지정한 기본 설정이 적용됩니다.
-* 카카오톡 발송 결과가 실패로 변경된 뒤 대체 발송되며, 문자 수신까지 최대 수십 초가 소요될 수 있습니다.
-* 메시지에 따라 버튼, 링크 등 일부 내용이 카카오톡 메시지와 다르게 보일 수 있습니다.
-* 메시지 길이에 따라 SMS/LMS로 대체 발송됩니다(각 타입별 문자 발송 시 별도의 이용료 부과).
+* To enable fallback, you must set the fallback option to “Enable” in the “Manage 080 Opt Out” tab and integrate the SMS service.
+* You must have an outgoing number to send a fallback. If you do not set a fallback option or a sending number, the default settings specified in the Manage Fallback tab will be applied.
+* Fallback is performed after changing to Kakao’s send failure, and it may take up to tens of seconds to receive a text message.
+* Depending on the message, some content, such as buttons and links, may appear differently from the KakaoTalk message.
+* Depending on the message length, it will be sent as SMS/LMS (separate fees apply for sending each type of text message).
 
-#### 공통된 내용으로 발송
+#### Set as Common Content
 
 ![friendtalkupgrade_resend01_20250729.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_resend01_20250729.png)
 
-* <b>발신 프로필</b>을 선택한 뒤 <b>공통된 내용으로 발송</b>을 클릭해 대체 발송 메시지를 설정합니다.
-* 대체 발송 메시지를 입력하지 않으면 [메시지 본문]으로 발송됩니다.
+* Set a fallback message by selecting <b>Outgoing Profile</b> and clicking <b>Set as Common Content</b>.
+* If you do not enter a fallback message, it will be sent as [Message Body].
 
-#### 사용자별 다른 메시지 설정
-* <b>발신 프로필</b>을 선택한 뒤 <b>사용자별 다른 메시지 설정</b>을 클릭해 하단의 <b>수신자 추가</b> 탭에서 대체 발송 메시지를 설정합니다.
-* 추가된 수신자 번호 옆의 [볼펜 아이콘]을 클릭하면 설정된 내용을 확인하고 수정할 수 있습니다.
+#### Set by Different Messages per User
 
-!!! danger "광고성 메시지 전송 시 유의 사항"
-    광고성 메시지란? 
-    전송자가 경제적 이득을 취할 목적으로 전송하는 정보나 재화, 서비스에 관한 메시지에 해당합니다.
-    
-    **[광고성 메시지 발송 가이드]**
-    1. 광고 표시
-        ① 광고성 내용이 포함된 메시지 맨 앞에 (광고)를 표시해야 합니다.
-        ② 광고성 메시지에 대한 판단 기준
-            a. 특가/할인 상품 안내
-            b. 상품 및 서비스 홍보를 위한 프로모션 또는 이벤트
-            c. 정보를 ‘주’로 나타내더라도 [위 a, b]의 내용이 혼재된 경우
-    2. 전송자의 연락처 표시 의무사항
-       ① 전송자 명칭, 전송자 연락처는 메시지 본문보다 상단에 작성되어야 합니다.
-       ② 전송자 명칭과 전송자 연락처의 경우, 채팅방 상단에 노출됩니다.
-       ③ 연락처의 경우 전화번호 또는 주소 중에서 하나를 선택하여 기입해야 합니다.
-    3. 수신거부 의사표시를 쉽게 할 수 있는 조치 및 방법 표시 의무사항
-       ① 메시지에 수신의 거부 및 수신 동의 철회의 의사표시를 쉽게 할 수 있는 조치 및 방법을 광고 본문에 표기하여 구체적으로 밝혀야 합니다.
-       ② 동 조치 및 방법으로 수신의 거부 또는 수신 동의 철회가 쉽게 이루어지지 않거나 불가능할 경우에는 이를 표기하지 않은 것으로 간주합니다.
-       ③ 전자우편을 수신 거부하기 위하여 웹사이트에 로그인하도록 하는 등 별도의 추가적인 조치를 거쳐야 하는 것은 수신의 거부 또는 수신 동의 철회를 어렵게 하는 것으로 법 위반에 해당합니다.
+* After selecting an <b>outgoing profile</b>, click <b>Set by Different Messages per User</b> and set an alternative sending message in the <b>Add Recipient</b> tab at the bottom.
+* You can check and modify the settings by clicking the [pen icon] next to the added recipient number.
 
-![\[그림 3\] 친구톡 광고 메시지](http://static.toastoven.net/prod_alimtalk/friendtalk_02.png)
+What is !!! danger "Notes for sending advertising messages" advertising message? It refers to messages about information, goods, or services that the sender transmits for the purpose of obtaining economic gain.
 
-## 발송 조회
+    **[Guide for Sending Advertising Message]**
+    1. Display ads
+        ① Messages containing advertising content must be marked with "(Advertisement)" at the very beginning.
+        ② Criteria for determining advertising messages
+            a. Information on special offers/discounts
+            b. Promotions or events to promote products and services
+            c. Even if information is presented as "Note," if the contents of [a and b above] are mixed
+    2. Mandatory display of sender's contact information
+       ① The sender's name and contact information must be written above the message body.
+       ② The sender's name and contact information will be displayed at the top of the chat room.
+       ③ For contact information, you must enter either a phone number or an address.
+    3. Mandatory display of measures and methods that facilitate the expression of intent to refuse receipt
+       ① The measures and methods that facilitate opting out or withdrawing consent must be clearly stated in the body of the advertisement.
+       ② If opting out or withdrawing consent is difficult or impossible due to these measures or methods, they will be deemed not to have been indicated.
+       ③ Requiring additional steps, such as logging into a website, to opt out of receiving emails makes opting out or withdrawing consent difficult and constitutes a violation of the law.
 
-### 발송 결과 조회
+![[Figure 3] FriendTalk advertising message](http://static.toastoven.net/prod_alimtalk/friendtalk_02.png)
+
+## View Send
+
+### View Send Result
 
 ![friendtalkupgrade_07_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_07_20250729.png)
 
-* 각 발송 메시지의 자세한 내용은 검색 결과 항목을 클릭해 **상세 보기** 화면에서 확인할 수 있습니다.
-* **요청 일시**는 최대 한 달 이내로 검색할 수 있습니다.
-* **요청 상태** 열에서 발송 요청에 대한 상태를 확인할 수 있습니다.
-* **발송 결과** 열에서 발송 처리에 대한 성공 여부를 확인할 수 있습니다.
+* You can view detailed information about each sent message by clicking on the search results item in the **View Details** screen.
+* **Request Date** can be searched for up to one month.
+* You can check the status of the sending request in the **Request Status** column.
+* You can check the sending process status in the **Send Result** column.
 
-## 대량 발송 조회
+### Cancel send
 
-### 발송 결과 조회
+Cancellation is possible for scheduled send with a sending request date set to the future during regular send.
+
+* When you view a scheduled send request, you can see a checkbox to the left of the request ID.
+* The checkbox only appears for reservation requests that have not been canceled.
+* Select the checkbox for the request you wish to cancel and click the Cancel Selected Schedule button at the top to cancel the schedule.
+* You can select or deselect the entire list by checking the checkboxes in the header of the list.
+
+## View Mass Delivery
+
+### View Send Result
 
 ![friendtalkupgrade_masssearch01_20250729.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_masssearch01_20250729.png)
 
-* 대량 발송 요청 건별로 선택해 수신자 발송 결과를 확인할 수 있습니다.
-* 각 발송 메시지의 자세한 내용은 검색 결과 항목을 클릭해 **상세 보기** 화면에서 확인할 수 있습니다.
-* **요청 일시**는 최대 한 달 이내로 검색할 수 있습니다.
-* **요청 상태** 열에서 발송 요청에 대한 상태를 확인할 수 있습니다.
-* **발송 결과** 열에서 발송 처리에 대한 성공 여부를 확인할 수 있습니다.
+* You can select each mass delivery request and check the recipient’s send results.
+* You can view detailed information about each sent message by clicking on the search results item in the **View Details** screen.
+* **Request Date** can be searched for up to one month.
+* You can check the status of the sending request in the **Request Status** column.
+* You can check the sending process status in the **Send Result** column.
 
-## 이미지 관리
+## Manage Image
 
 ![friendtalkupgradfriendtalkupgrade_07_20250729.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_8_20250616.png)
 
-브랜드 메시지에 사용할 이미지를 등록 또는 삭제하고 등록된 이미지의 정보를 확인할 수 있습니다.
+You can register or delete images to use in the brand message and check information about registered images.
 
-* 이미지를 (기본/와이드, 와이드 아이템 리스트형, 캐러셀 피드, 캐러셀 커머스, 비즈니스폼) 종류별로 선택하여 등록할 수 있습니다.
-* 이미지 삭제 시 이미지 사용이 불가합니다.
-* 파일 규격, 권장/제한 사이즈를 반드시 준수합니다.
-* 이미지 주소 URL을 복사할 수 있습니다. 해당 URL은 API 발송 시 활용됩니다.
-* 비즈니스폼은 카카오톡 사용자가 손쉽게 참여할 수 있는 예약, 설문, 응모 등의 이벤트 설계를 지원하는 비즈니스 도구로 비즈니스폼을 생성하여 해당 ID를 입력합니다.
-* [\[비즈니스폼 등록 바로 가기\]](https://business.kakao.com/talkbizform/)
-* [\[비즈니스폼 등록 가이드 바로 가기\]](https://kakaobusiness.gitbook.io/main/tool/bizform)
+* You can register images by selecting them by type (basic/wide, wide item list type, carousel feed, carousel commerce, business form).
+* When you delete an image, the image cannot be used.
+* Be sure to adhere to file specifications, recommended/limited sizes.
+* You can copy an image address URL. The URL is used when sending the API.
+* Business Form is a business tool that supports the design of events such as reservations, surveys, and applications that KakaoTalk users can easily participate in. Create a business form and enter the corresponding ID.
+* [\[Go to Business Form Registration\]](https://business.kakao.com/talkbizform/)
+* [\[Go to Business Form Registration Guide\]](https://kakaobusiness.gitbook.io/main/tool/bizform)
 
-#### 이미지 업로드 허용 범위
+#### Image upload allowance
 
-* 파일 형식: JPG, PNG
-* 각 이미지 업로드 API 사양을 확인하세요.
+* File format: JPG, PNG
+* Please check each image upload API specification.
 
-## 템플릿 관리
+## Manage Templates
 
 ![friendtalkupgrade_09_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_09_20250729.png)
 
-* 기존 알림톡과 유사한 방식으로 템플릿을 관리하고 발송에 사용할 수 있습니다.
-* 브랜드 메시지는 검수 과정이 없으며 생성, 수정, 삭제가 자유롭습니다.
-* 알림톡과 다르게 템플릿 코드를 사용자가 등록하는 방식이 아닌 카카오로부터 랜덤한 식별자를 부여받는 형태입니다.
+* You can manage templates and use them for sending in a similar way to existing AlimTalk messages.
+* ******Brand messages are free to create, edit, and delete, with no review process.******
+* Unlike AlimTalk, this is a method where users do not register a template code, but instead receive a random identifier from Kakao.
 
-## 080 수신거부 관리
+## 080 Opt-out management
 
-* 브랜드 메시지에서는 NHN Cloud의 SMS 서비스 연동을 통해 '080 수신거부 관리'와 '대체 발송' 기능을 하나의 smsAppkey로 통합 관리합니다.
+* In brand messages, the “080 opt-out management” and “fallback” features are integrated into a single smsAppkey through NHN Cloud's SMS service integration.
 
-### 080 수신거부번호 등록 및 관리
-* 브랜드 메시지 마수동 유저 발송의 경우 발신 프로필 친구를 맺지 않은 수신자에게 메시지를 발송할 수 있기 때문에 발신 프로필에 080 수신거부번호를 등록해야 합니다.
-   * 발신 프로필 080 수신거부번호는 동일 톡채널의 타 조직, 타 프로젝트, 타 딜러사의 발신 프로필 전체에 일괄 적용되는 데이터이기 때문에 신중하게 변경해야 합니다.
-* 발신 프로필에 080 수신거부번호를 등록하거나 수정이 필요할 경우 NHN Cloud 고객 센터에 문의해 주세요.
-* 080 수신거부번호를 등록한 경우 발신 프로필 소유자에게는 해당 번호를 통해 수신 거부 의사를 표시한 수신자에게 메시지가 발송되지 않도록 관리해야 하는 책임이 주어집니다.
-* NHN Cloud SMS 서비스와 연계하면 080 수신거부번호의 수신거부 관리를 편하게 할 수 있습니다.
-  ![sms 080](https://static.toastoven.net/prod_sms/SMS_14_20230818.png)
-* SMS 서비스를 통해서 080 수신거부번호를 관리하기 위해서는 우선 SMS 서비스를 활성화하여야 합니다.
-* 관리하고자 하는 080 수신거부번호를 SMS 서비스에 등록합니다.
-   * 만약 발신 프로필에 등록된 080 수신거부번호가 SMS 서비스에 등록되어 있지 않다면 발송 요청은 모두 실패하게 됩니다..
-* 자세한 사항은 [SMS 사용자 가이드](https://docs.nhncloud.com/ko/Notification/SMS/ko/console-guide/#080)를 참조하세요.
-  ![friendtalkupgrade_10_20250616.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_10_20250729.png)
-* 080 수신거부번호를 등록한 SMS 서비스의 앱키를 080 수신거부 탭에 입력하고 저장합니다.
-* 관리 대상으로 지정한 SMS 서비스에서 발신 프로필에 등록되어 있는 080 수신거부번호로 수신자 관리 가능 여부는 콘솔의 **080 수신거부 관리** 탭에서 해당 발신 프로필의 **SMS 프로젝트 080 번호 관리 여부** 항목을 통해 확인할 수 있습니다.
-* SMS 서비스 앱키를 비우고 저장한 경우
-   * 고객이 직접 수신거부 수신자를 관리해야 하며 브랜드 메시지 발송 과정에서 수신자에 대한 검증을 하지 않습니다.
+### Register and manage 080 opt-out numbers
 
-### 대체 발송 관리
-* 브랜드 메시지 발송을 실패할 경우 해당 내용을 문자 메시지로 대체 발송하도록 설정할 수 있습니다.
-* NHN Cloud SMS 서비스를 이용 중이어야 하며, 메시지 길이에 따라 SMS/LMS로 발송됩니다(각 타입별 문자 발송 시 별도의 이용료 부과).
-* SMS 앱키를 수정하면 모든 검색용 아이디의 채널은 대체 발송 설정이 초기화됩니다.
-* SMS 서비스로 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등).
-* 지정한 대체 발송 타입의 바이트 제한을 초과하는 대체 발송 제목이나 내용은 잘려서 대체 발송이 될 수 있습니다([[SMS API 가이드 > 주의 사항](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)] 참고).
-* 대체 발송 내용은 EUC-KR 기준으로 발송되며, 지원하지 않는 이모티콘은 대체 발송에 실패합니다.
-* 대체 발송 설정을 수정할 검색용 아이디의 채널은 <b>수정</b>을 클릭해 <b>대체 발송 여부</b> 및 <b>발신 번호</b>를 수정할 수 있습니다.
-* <b>대체 발송 여부</b>를 <b>사용 안 함</b>으로 설정할 경우 브랜드 메시지 발송 시 해당 검색용 아이디의 채널은 대체 발송이 불가합니다.
-* 브랜드 메시지 광고 메시지는 광고 SMS API로 대체 발송되므로, 반드시 080 수신 거부 번호를 등록해야 대체 발송됩니다.
-* 브랜드 메시지 광고 메시지의 resendContent 필드를 입력할 경우, SMS 광고 API의 <span style="color:red">광고 문구</span>를 필수로 입력해야 대체 발송됩니다. `(광고)내용[무료 수신거부]080XXXXXXX`
-* 브랜드 메시지 광고 메시지의 resendContent 필드가 없다면, 등록된 080 수신 거부 번호로 <span style="color:red">광고 문구</span>를 자동 생성해서 대체 발송됩니다.
+* When sending Brand Message marketing to users who have opted in, you must register a 080 number in your outgoing profile because messages can be sent to recipients who are not friends with your outgoing profile.
+  * The 080 opt-out number for the outgoing profile is data that is applied to all outgoing profiles of other organizations, projects, and dealers in the same talk channel, so it must be changed carefully.
+* If you need to register the 080 opt-out number on an outgoing profile or modify it, please contact the Customer Center.
+* If you register a 080 opt-out number, the outgoing profile owner is responsible for ensuring that messages are not sent to recipients who have indicated they wish to opt out of receiving calls through the number.
+* By linking with NHN Cloud SMS service, you can easily manage status of the 080 opt-out numbers. ![sms 080](https://static.toastoven.net/prod_sms/SMS_14_20230818.png)
+* To manage the 080 opt-out number with the SMS service, you need to enable the SMS service first.
+* Register the 080 opt-out number you wish to manage for the SMS service.
+  * If the 080 opt-out number registered in the outgoing profile is not registered with the SMS service, all sending requests will fail.
+* For more information, see [SMS User Guide](https://docs.nhncloud.com/ko/Notification/SMS/ko/console-guide/#080 "friendtalkupgrade_10_20250616.png"). ![](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_10_20250729.png)
+* Enter the app key of the SMS service that registered the 080 opt-out number in the 080 Opt Out tab and save it.
+* You can check whether recipient management is possible with the 080 opt-out number registered in the outgoing profile of the SMS service designated as the management target by checking the **SMS Project 080 Number Management Status** item of the outgoing profile in the **080 Opt-out Management** tab of the console.
+* If you empty and save the SMS service app key
+  * Customers must manage their own opt-out recipients, and there is no verification of recipients when sending brand messages.
 
-## 비친구 메시지 발송(타겟팅 M, N) 사용 신청
+### Manage Fallback
 
-* 비친구 메시지 발송(타겟팅 M, N) 사용을 원하시는 경우 사용 신청을 진행해야 합니다. 사용 신청을 하지 않는 경우 발송간 M/N 타입이 노출되지 않습니다.
-* 사용 신청은 아래의 조건을 만족할 경우 승인됩니다.
-    * 비즈니스 인증 채널
-    * 사업자번호 등록
-    * 채널 고객센터 전화번호 등록
-    * 채널 친구 수 5만 이상
-    * 3개월 내 알림톡 발송 성공 이력 보유
+* If a brand message fails to be sent, you can set it to be sent as a fallback message.
+* You must be using NHN Cloud SMS service, and messages will be sent via SMS/LMS depending on the message length (separate fees apply for sending each type of text message).
+* If you modify the SMS app key, the fallback settings for all channels for search IDs will be reset.
+* Since it is sent as a fallback through the SMS service, you must enter fields according to the SMS service's sending API specifications (such as outgoing number registered with the SMS service, various field length restrictions).
+* Fallback titles or contents that exceed the byte limit of the specified fallback type may be truncated and replaced (see [SMS API Guide > Caution]).
+* Fallback content is sent based on EUC-KR, and unsupported emoticons will fail to be sent as fallbacks.
+* You can change the <b>Fallback Status</b> and <b>Outgoing Number</b> by clicking <b>Modify</b> on the channel ID for the search.
+* If you set the <b>Fallback Status</b> to <b>Disable</b>, the channel for the search ID will not be able to send the brand message.
+* Brand Message advertising messages are sent as fallback messages using the advertising SMS API, so you must register a 080 opt-out number to receive fallback messages.
+* When entering the resendContent field of a brand message advertising message, you must enter the <span style="color:red">advertising text</span> from the SMS advertising API to send it as a replacement. `(ads) content [toll-free opt out]080XXXXXXX`
+* If there is no resendContent field in the brand message advertising message, the <span style="color:red">advertising text</span> will be automatically generated and sent to the registered 080 opt-out number.
 
-### 주의사항
-* 비즈니스 인증이 해제될 경우 비친구 메시지 발송(타겟팅 M, N) 사용 권한이 해제됩니다. 비즈니스 인증 재심사 이후 다시 사용 신청을 진행해야 합니다.
-* 광고성 정보 수신동의 증적자료 파일은 톡채널 단위로 저장되므로 변경시 동일 톡채널의 타 딜러사 발신 프로필에 일괄 적용됩니다.
-* 타딜러사에서 업로드한 파일이 이미 존재하는 경우 파일 업로드 과정을 생략하고 비친구 메시지 발송(타겟팅 M, N) 사용 신청이 가능합니다.
-      
+## Apply for using non-friend message sending (targeting M, N)
+
+* If you wish to use non-friend message sending (targeting M, N), you must apply for use. If you do not apply for use, the M/N type will not be displayed during send.
+* Applications for use will be approved if they meet the following conditions:
+  * Business verification channel
+  * Register a business registration number
+  * Register a channel customer service center phone number
+  * 50,000 or more channel friends
+  * Successfully send notification messages within the past three months
+
+### Cautions
+
+* If your business verification is canceled, the permission to send non-friend messages (targeting M, N) will be canceled. You will need to reapply for use after your business verification has been re-reviewed.
+* The consent evidence file for receiving advertising information is saved per Talk channel, so any changes will be applied to all profiles sent by other dealers in the same Talk channel.
+* If a file uploaded by a dealer already exists, you can skip the file upload process and apply to send non-friend messages (targeting M, N).
+
 ![friendtalkupgrade_11_20250715.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_11_20250729.png)
