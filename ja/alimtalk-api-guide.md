@@ -38,7 +38,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -67,19 +67,29 @@ Content-Type: application/json;charset=UTF-8
             String: String
         },
         "resendParameter": {
-          "isResend" : boolean,
-          "resendType" : String,
-          "resendTitle" : String,
-          "resendContent" : String,
-          "resendSendNo" : String
+          "isResend": boolean,
+          "resendType": String,
+          "resendTitle": String,
+          "resendContent": String,
+          "resendSendNo": String
         },
         "buttons": [
           {
             "ordering": Integer,
             "chatExtra": String,
             "chatEvent": String,
-            "target": String
+            "relayId": String,
+            "oneClickId": String,
+            "productId": String,
+            "target": String,
+            "telNumber": String
           }
+        ],
+        "quickReplies": [
+            "ordering": Integer,
+            "chatExtra": String,
+            "chatEvent": String,
+            "target": String
         ],
         "recipientGroupingKey": String
     }],
@@ -114,6 +124,7 @@ Content-Type: application/json;charset=UTF-8
 | -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
 | -- chatEvent           | String  | X    |	BT(Bot切替)タイプボタンの時、接続するBotイベント名 |
 | -- target              | String  | X    |	Webリンクボタンの場合、"target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| -- telNumber | String | X | TN(電話する)タイプのボタンの場合、伝達する電話番号 |
 | - recipientGroupingKey | String  | X    | 受信者グルーピングキー(最大100文字)                       |
 | messageOption          | Object  | X    |	メッセージオプション                                         |
 | - price                | Integer | X    |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
@@ -186,7 +197,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -203,15 +214,38 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 {
-    "plusFriendId": String,
+    "senderKey": String,
     "templateCode": String,
     "requestDate": String,
     "senderGroupingKey": String,
+    "createUser": String,
     "recipientList": [
         {
             "recipientNo": String,
             "content": String,
-            "templateTitle" : String,
+            "templateTitle": String,
+            "templateHeader": String,
+            "templateItem": {
+              "list": [{
+                "title": String,
+                "description": String
+              }],
+              "summary": {
+                "title": String,
+                "description": String
+              }
+            },
+            "templateItemHighlight": {
+              "title": String,
+              "description": String,
+              "imageUrl": String
+            },
+            "templateRepresentLink": {
+              "linkMo": String,
+              "linkPc": String,
+              "schemeIos": String,
+              "schemeAndroid": String,
+            },
             "buttons": [
                 {
                     "ordering": Integer,
@@ -223,15 +257,36 @@ Content-Type: application/json;charset=UTF-8
                     "schemeAndroid": String,
                     "chatExtra": String,
                     "chatEvent": String,
+                    "bizFormId": Integer,
+                    "pluginId": String,
+                    "relayId": String,
+                    "oneClickId": String,
+                    "productId": String,
+                    "target": String,
+                    "telNumber": String
+                }
+            ],
+            "quickReplies": [
+                {
+                    "ordering": Integer,
+                    "type": String,
+                    "name": String,
+                    "linkMo": String,
+                    "linkPc": String,
+                    "schemeIos": String,
+                    "schemeAndroid": String,
+                    "chatExtra": String,
+                    "chatEvent": String,
+                    "bizFormId": Integer,
                     "target": String
                 }
             ],
             "resendParameter": {
-              "isResend" : boolean,
-              "resendType" : String,
-              "resendTitle" : String,
-              "resendContent" : String,
-              "resendSendNo" : String
+              "isResend": boolean,
+              "resendType": String,
+              "resendTitle": String,
+              "resendContent": String,
+              "resendSendNo": String
             },
             "recipientGroupingKey": String
         }
@@ -265,6 +320,7 @@ Content-Type: application/json;charset=UTF-8
 | -- chatExtra           | String  | X    |	BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
 | -- chatEvent           | String  | X    |	BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
 | -- target              | String  | X    |	Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| -- telNumber | String | X | TN(電話する)タイプのボタンの場合、伝達する電話番号 |
 | - resendParameter      | Object  | X    | 代替発送情報 |
 | -- isResend            | boolean | X    | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。 |
 | -- resendType          | String  | X    | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。 |
@@ -346,7 +402,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -384,49 +440,35 @@ Content-Type: application/json;charset=UTF-8
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "messageSearchResultResponse" : {
-    "messages" : [
+  "messageSearchResultResponse": {
+    "messages": [
     {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
-        {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
-          "linkPc": String,
-          "schemeIos": String,
-          "schemeAndroid": String,
-          "chatExtra": String,
-          "chatEvent": String,
-          "target": String
-        }
-      ],
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
       "senderGroupingKey": String,
       "recipientGroupingKey": String
     }
     ],
-    "totalCount" :  Integer
+    "totalCount": Integer
   }
 }
 ```
@@ -466,6 +508,7 @@ Content-Type: application/json;charset=UTF-8
 | --- chatExtra               | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
 | --- chatEvent               | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
 | --- target                  | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| -- telNumber | String | X | TN(電話する)タイプのボタンの場合、伝達する電話番号 |
 | -- senderGroupingKey        | String  | 発信グルーピングキー                            |
 | -- recipientGroupingKey     | String  | 受信者グルーピングキー                           |
 | - totalCount                | Integer | 総個数                              |
@@ -499,7 +542,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------- | ---------- |
-| appkey       | String  | 固有のアプリケーションキー |
+| appkey       | String  | 固有のアプリキー |
 | requestId    | String  | リクエストID      |
 | recipientSeq | Integer | 受信者シーケンス番号 |
 
@@ -521,47 +564,90 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "receiveDate" : String,
-      "createDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
+  "message": {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "plusFriendId": String,
+      "senderKey": String,
+      "templateCode": String,
+      "recipientNo": String,
+      "content": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "templateHeader": String,
+      "templateItem": {
+        "list": [{
+          "title": String,
+          "description": String
+        }],
+        "summary": {
+          "title": String,
+          "description": String
+        }
+      },
+      "templateItemHighlight": {
+        "title": String,
+        "description": String,
+        "imageUrl": String
+      },
+      "templateRepresentLink": {
+        "linkMo": String,
+        "linkPc": String,
+        "schemeIos": String,
+        "schemeAndroid": String,
+      },
+      "requestDate": String,
+      "receiveDate": String,
+      "createDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String,
+      "createUser": String,
+      "buttons": [
         {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
           "linkPc": String,
           "schemeIos": String,
           "schemeAndroid": String,
           "chatExtra": String,
           "chatEvent": String,
-          "target": String
+          "bizFormId": Integer,
+          "pluginId": String,
+          "relayId": String,
+          "oneClickId": String,
+          "productId": String,
+          "target": String,
+          "telNumber": String
         }
+      ],
+      "quickReplies": [
+        {
+          "ordering": Integer,
+          "type": String,
+          "name": String,
+          "linkMo": String,
+          "linkPc": String,
+          "schemeIos": String,
+          "schemeAndroid": String,
+          "chatExtra": String,
+          "chatEvent": String,
+          "bizFormId": Integer,
+          "target": String
+          }
       ],
       "messageOption": {
         "price": Integer,
@@ -591,14 +677,34 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- templateSubtitle      | String  | テンプレートハイライトサブタイトル           |
 |- templateExtra         | String  | テンプレート付加情報                     |
 |- templateAd            | String  | テンプレート内の受信同意または簡単な広告文句   |
+| - templateHeader | String | X | テンプレートヘッダ(最大16文字) |
+| - templateItem | Object | X | アイテム |
+| -- list | List | X | アイテムリスト(最小2件、最大10件) |
+| --- title | String | X | タイトル(最大6文字) |
+| --- description | String | X | ディスクリプション(最大23文字) |
+| -- summary | Object | X | アイテム要約情報 |
+| --- title | String | X | タイトル(最大6文字) |
+| --- description | String | X | ディスクリプション(変数及び通貨単位、数字、カンマ、ピリオドのみ使用可能、最大14文字) |
+| - templateItemHighlight | Object  |    X     | アイテムハイライト                                                                                                                                                            |
+| --- title | String | X | タイトル(最大30文字、サムネイル画像がある場合は21文字) |
+| --- description | String | X | ディスクリプション(最大19文字、サムネイル画像がある場合は13文字) |
+| --- imageUrl            | String  |    X     | サムネイル画像アドレス                                                                                                                                                           |
+| - templateRepresentLink | Object  |    X     | 代表リンク                                                                                                                                                                |
+| -- linkMo               | String  |    X     | モバイルWebリンク(最大500文字)                                                                                                                                                      |
+| -- linkPc               | String  |    X     | PC Webリンク(最大500文字)                                                                                                                                                       |
+| -- schemeIos            | String  |    X     | iOSアプリリンク(最大500文字)                                                                                                                                                      |
+| -- schemeAndroid        | String  |    X     | Androidアプリリンク(最大500文字)                                                                                                                                                    |
 | - requestDate          | String  | リクエスト日時                             |
 | - receiveDate          | String  | 受信日時                             |
 | - createDate           | String  | 登録日時                            |
 | - resendStatus         | String  | 再送信ステータスコード                         |
 | - resendStatusName     | String  | 再送信ステータスコード名                          |
+| - resendResultCode      | String  |    X     | 代替送信結果コード[SMS結果コード](https://docs.toast.com/ko/Notification/SMS/ko/error-code/#api)                                                                                 |
+| - resendRequestId       | String  |    X     | 代替送信SMSリクエストID                                                                                                                                                        |
 | - messageStatus        | String  | リクエストステータス(COMPLETED -> 成功、FAILED -> 失敗、CANCEL -> キャンセル) |
 | - resultCode           | String  | 受信結果コード                          |
 | - resultCodeName       | String  | 受信結果コード名                           |
+| - createUser | String | X | 登録者(コンソールから送信した場合、ユーザーUUIDで保存) |
 | - buttons              | List    | ボタンリスト                             |
 | -- ordering            | Integer | ボタン順序                             |
 | -- type                | String  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、DS：配送照会、BK：Botキーワード、MD：メッセージ伝達、BC：相談トーク転換、BT：Bot転換、AC：チャンネル追加) |
@@ -609,7 +715,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- schemeAndroid       | String  | Androidアプリリンク(ALタイプの場合は必須フィールド)            |
 | -- chatExtra           | String  | BC(相談トークに切替) / BT(Botに切替)タイプボタンの時、伝達するメタ情報 |
 | -- chatEvent           | String  | BT(Botに切替)タイプボタンの時、接続するBotイベント名 |
+| -- bizFormId | Integer | X | ビジネスフォームID(BFタイプの場合、必須) |
+| -- pluginId             | String  |    X     | プラグインID(最大24文字)                                                                                                                                                        |
+| -- relayId | String | X | プラグイン実行の際、X-Kakao-Plugin-Relay-Idヘッダを介して受け取る値 |
+| -- oneClickId | String | X | ワンクリック決済プラグインで使用する決済情報 |
+| -- productId | String | X | ワンクリック決済プラグインで使用する決済情報 |
 | -- target              | String  | Webリンクボタンの場合、 "target":"out"プロパティ追加時のアウトリンク<br>基本インアプリリンクで送信 |
+| - quickReplies | List | X | クイック返信リスト(最大5件) |
+| -- ordering | Integer | X | クイック返信の順序(クイック返信がある場合、必須) |
+| -- type | String | X | クイック返信タイプ(WL: Webリンク、AL:アプリリンク、BK: ボットキーワード、BC:相談トーク切り替え、BT: ボット切り替え、BF:ビジネスフォーム) |
+| -- name | String | X | クイック返信名(クイック返信がある場合、必須、最大14文字) |
+| -- linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド、最大500文字) |
+| -- linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド、最大500文字) |
+| -- schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド、最大500文字) |
+| -- schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド、最大500文字) |
+| -- pluginId             | String  |    X     | プラグインID(最大24文字)                                                                                                                                                        |
+| -- target | String | X | Webリンクタイプの場合、「"target":"out"」属性を追加すると外部リンク<br>デフォルトではアプリ内リンクとして送信 |
+| -- telNumber | String | X | TN(電話する)タイプのボタンの場合、伝達する電話番号 |
 | - messageOption        | Object  |	メッセージオプション                                         |
 | -- price               | Integer |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
 | -- currencyType        | String  |	message(ユーザーに伝達されるメッセージ)内に含まれた価格/金額/決済金額(モーメント広告に該当) |
@@ -642,7 +764,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -736,23 +858,26 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
 ```
 {
   "header": {
-    "resultCode": Integer,
-    "resultMessage": String,
-    "isSuccessful": boolean
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
   },
-  "message": {
-    "requestId": String,
-    "senderGroupingKey": String,
-    "sendResults": [
-      {
-        "recipientSeq": Integer,
-        "recipientNo": String,
-        "resultCode": Integer,
-        "resultMessage": String,
-        "recipientGroupingKey": String
-      }
-    ]
-  }
+  "messages": [
+    {
+      "requestId": String,
+      "recipientSeq": Integer,
+      "requestDate": String,
+      "createDate": String,
+      "receiveDate": String,
+      "resendStatus": String,
+      "resendStatusName": String,
+      "resendResultCode": String,
+      "resendRequestId": String,
+      "messageStatus": String,
+      "resultCode": String,
+      "resultCodeName": String
+    }
+  ]
 }
 ```
 
@@ -785,7 +910,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -895,18 +1020,24 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:
     "resultMessage": String,
     "isSuccessful": boolean
   },
-  "message": {
-    "requestId": String,
-    "senderGroupingKey": String,
-    "sendResults": [
+  "body": {
+    "messages": [
       {
-        "recipientSeq": Integer,
-        "recipientNo": String,
-        "resultCode": Integer,
-        "resultMessage": String,
-        "recipientGroupingKey": String
+        "requestId": String,
+        "requestDate": String,
+        "plusFriendId": String,
+        "senderKey": String,
+        "templateCode": String,
+        "masterStatusCode": String,
+        "content": String,
+        "fileId": String,
+        "autoSendYn": String,
+        "statsId": String,
+        "createDate": String,
+        "createUser": String
       }
-    ]
+    ],
+    "totalCount": Integer
   }
 }
 ```
@@ -942,7 +1073,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -1095,7 +1226,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------- | ---------- |
-| appkey       | String  | 固有のアプリケーションキー |
+| appkey       | String  | 固有のアプリキー |
 | requestId    | String  | リクエストID      |
 | recipientSeq | Integer | 受信者シーケンス番号 |
 
@@ -1117,55 +1248,26 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 #### レスポンス
 ```
 {
-  "header" : {
-      "resultCode" :  Integer,
-      "resultMessage" :  String,
-      "isSuccessful" :  boolean
-  },
-  "message" : {
-      "requestId" :  String,
-      "recipientSeq" : Integer,
-      "plusFriendId" :  String,
-      "senderKey"    :  String,
-      "templateCode" :  String,
-      "recipientNo" :  String,
-      "content" :  String,
-      "templateTitle" : String,
-      "templateSubtitle" : String,
-      "templateExtra" : String,
-      "templateAd" : String,
-      "requestDate" :  String,
-      "createDate" : String,
-      "receiveDate" : String,
-      "resendStatus" :  String,
-      "resendStatusName" :  String,
-      "resendResultCode" : String,
-      "resendRequestId" : String,
-      "messageStatus" :  String,
-      "resultCode" :  String,
-      "resultCodeName" : String,
-      "createUser" : String,
-      "buttons" : [
-        {
-          "ordering" :  Integer,
-          "type" :  String,
-          "name" :  String,
-          "linkMo" :  String,
-          "linkPc": String,
-          "schemeIos": String,
-          "schemeAndroid": String,
-          "chatExtra": String,
-          "chatEvent": String,
-          "target": String
-        }
-      ],
-      "messageOption": {
-        "price": Integer,
-        "currencyType": String
-      },
-      "senderGroupingKey": String,
-      "recipientGroupingKey": String
-  }
+    "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+    },
+    "body": {
+        "recipients": [
+            {
+                "requestId": String,
+                "recipientSeq": Integer,
+                "recipientNo": String,
+                "requestDate": String,
+                "receiveDate": String,
+                "messageStatus": String,
+                "resultCode": String,
+                "resultCodeName": String
+            }
+        ],
+        "totalCount": Integer
+    }
 }
 ```
 
@@ -1231,7 +1333,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | --------- | ------ | ------ |
-| appkey    | String | 固有のアプリケーションキー |
+| appkey    | String | 固有のアプリキー |
 | requestId | String | リクエストID  |
 
 [Header]
@@ -1290,7 +1392,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -1378,7 +1480,7 @@ Content-Type: application/json;charset=UTF-8
 
 |値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	固有のアプリケーションキー|
+|appKey|	String|	固有のアプリキー|
 
 [Header]
 
@@ -1514,7 +1616,7 @@ Content-Type: application/json;charset=UTF-8
 
 |値|	タイプ|	説明|
 |---|---|---|
-| appKey |	String |	固有のアプリケーションキー |
+| appKey |	String |	固有のアプリキー |
 | requestId |	String |	リクエストID |
 
 [Header]
@@ -1605,7 +1707,7 @@ Content-Type: application/json;charset=UTF-8
 
 |値|	タイプ|	説明|
 |---|---|---|
-| appKey |	String | 固有のアプリケーションキー |
+| appKey |	String | 固有のアプリキー |
 | requestId |	String | リクエストID |
 | recipientSeq | String | 受信者の順序 |
 
@@ -1683,6 +1785,8 @@ https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appKey}/'"${APP_KEY}
                 "chatExtra": String,
                 "chatEvent": String
                 "target": String
+	      "pluginId": String,
+	      "telNumber": String                
             }
         ],
         "messageOption": {
@@ -1753,7 +1857,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -1819,7 +1923,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 | senderKey | String | 発信キー |
 
 [Header]
@@ -1916,7 +2020,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 | senderKey | String | 発信キー |
 | templateCode | String | テンプレートコード |
 
@@ -2012,7 +2116,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 | plusFriendId | String | 発信キー |
 | templateCode | String | テンプレートコード |
 
@@ -2059,7 +2163,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 | plusFriendId | String | 発信キー |
 | templateCode | String | テンプレートコード |
 
@@ -2181,7 +2285,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 | ------ | ------ | ------ |
-| appkey | String | 固有のアプリケーションキー |
+| appkey | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -2380,7 +2484,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値 | タイプ | 説明 |
 |---|---|---|
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 | plusFriendId | String | プラスフレンドID |
 | templateCode | String | テンプレートコード |
 
@@ -2516,7 +2620,7 @@ Content-Type: multipart/form-data
 
 | 値 | タイプ | 説明 |
 |---|---|---|
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -2578,7 +2682,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -2634,7 +2738,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 値    | タイプ | 説明 |
 | ------------ | ------ | -------- |
-| appkey       | String | 固有のアプリケーションキー |
+| appkey       | String | 固有のアプリキー |
 
 [Header]
 ```
@@ -2646,7 +2750,6 @@ Content-Type: application/json;charset=UTF-8
 | 値    | タイプ | 必須 | 説明                               |
 | ------------ | ------ | ---- | ---------------------------------------- |
 | X-Secret-Key | String | O    | コンソールで作成できます。 |
-
 
 [Request body]
 

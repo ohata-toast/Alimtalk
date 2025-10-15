@@ -879,7 +879,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -906,7 +906,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -1271,6 +1271,7 @@ Content-Type: application/json;charset=UTF-8
       "targeting": String,
       "templateParameter": Object,
       "imageParameters": List,
+      "videoParameter": Object,
       "resendParameter": {
           "isResend": boolean,
           "resendType": String,
@@ -2815,7 +2816,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -2842,7 +2843,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [

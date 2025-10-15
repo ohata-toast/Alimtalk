@@ -768,7 +768,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -795,7 +795,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -1126,6 +1126,7 @@ Content-Type: application/json;charset=UTF-8
       "targeting": String,
       "templateParameter": Object,
       "imageParameters": List,
+      "videoParameter": Object,
       "resendParameter": {
           "isResend": boolean,
           "resendType": String,
@@ -1136,40 +1137,34 @@ Content-Type: application/json;charset=UTF-8
       },
       "unsubscribeNo": String,
       "unsubscribeAuthNo": String,
+      "recipientGroupingKey": String
     }
   ],
+  "senderGroupingKey": String,
+  "resellerCode": String,
   "createUser": String,
   "statsId": String
 }
 ```
 
-| 이름                  | 타입      | 필수 | 설명                                                                                                                                   |
-|---------------------|---------|----|--------------------------------------------------------------------------------------------------------------------------------------|
-| senderKey           | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                              |
-| templateCode        | String  | O  | 사용하려는 템플릿 코드                                                                                                                         |
-| pushAlarm           | boolean | X  | 메시지 푸시 알람 발송 여부 (기본값: true)                                                                                                          |
-| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234        |
-| recipientList       | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                    |
-| - recipientNo       | String  | O  | 수신 번호                                                                                                                                |
-| - targeting         | String  | O  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                                |
-| - templateParameter | Object  | X  | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수)                                                                                                      |
-| - imageParameters   | List    | X  | 템플릿 이미지 필드 값을 변경할 수 있는 동적 파라미터, 캐러셀 타입은 아직 미지원 (템플릿에 존재하는 이미지 갯수와 동일한 크기의 JSON 리스트만 사용할 수 있음, 사용할 경우 변경하지 않을 이미지는 빈 json 객체를 입력해야 함) |
-=======
-| 이름                  | 타입      | 필수 | 설명                                                                                                                            |
-|---------------------|---------|----|-------------------------------------------------------------------------------------------------------------------------------|
-| senderKey           | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                       |
-| templateCode        | String  | O  | 사용하려는 템플릿 코드                                                                                                                  |
-| pushAlarm           | boolean | X  | 메시지 푸시 알람 발송 여부 (기본값: true)                                                                                                   |
-| unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호 (둘다 미입력시 발신프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx  |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호 (둘다 미입력시 발신프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234 |
-| recipientList       | List    | O  | 수신자 목록(최대 1,000명)                                                                                                             |
-| - recipientNo       | String  | O  | 수신 번호                                                                                                                         |
-| - targeting         | String  | O  | 메시지 대상의 타입 (M - 마케팅 수신 동의 유저, N - 친구가 아닌 마케팅 수신 동의 유저에게만, I - 친구인 유저)                                                         |
-| - templateParameter | Object  | X  | 템플릿 파라미터 (템플릿에 치환할 변수 포함 시, 필수)                                                                                               |
-| - imageParameters   | List    | X  | 템플릿 이미지 필드 값을 변경할 수 있는 동적 파라미터, 캐러셀 타입은 현재 미지원(템플릿에 존재하는 이미지 갯수와 동일한 크기의 JSON 목록만 사용할 수 있음, 사용할 경우 변경하지 않을 이미지는 빈 JSON 객체를 입력해야 함) |
-| -- imageUrl         | String  | X  | 이미지 URL (image 객체 존재 시 Not Null)                                                                                                     |
-| -- imageLink        | String  | X  | 이미지 링크                                                                                                                               |
+| 이름                     | 타입      | 필수 | 설명                                                                                                                           |
+|------------------------|---------|----|------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String  | O  | 발신 키(40자), 그룹 발신키 사용 불가                                                                                                      |
+| templateCode           | String  | O  | 사용하려는 템플릿 코드                                                                                                                 |
+| pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                   |
+| requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                           |
+| unsubscribeNo          | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx |
+| unsubscribeAuthNo      | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>ex) 1234 |
+| recipientList          | List    | O  | 수신자 목록(최대 1,000명)                                                                                                            |
+| - recipientNo          | String  | O  | 수신 번호                                                                                                                        |
+| - targeting            | String  | O  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                            |
+| - templateParameter    | Object  | X  | 템플릿 파라미터(템플릿에 치환할 변수 포함 시, 필수)                                                                                               |
+| - imageParameters      | List    | X  | 템플릿 이미지 필드 값을 변경할 수 있는 동적 파라미터 (템플릿에 존재하는 이미지 갯수와 동일한 크기의 JSON 목록만 사용할 수 있음, 사용할 경우 변경하지 않을 이미지는 빈 JSON 객체를 입력해야 함)          |
+| -- imageUrl            | String  | X  | 이미지 URL                                                                                                                      |
+| -- imageLink           | String  | X  | 이미지 링크                                                                                                                       |
+| - videoParameter       | List    | X  | 템플릿 비디오 필드 값을 변경할 수 있는 동적 파라미터                                                                                               |
+| -- videoUrl            | String  | X  | 카카오TV 동영상 URL                                                                                                                             |
+| -- thumbnailUrl        | String  | X  | 동영상 썸네일용 이미지 URL                                                                                                                       |
 | - resendParameter   | Object  | X  | 대체 발송 정보                                                                                                                             |
 | -- isResend         | boolean | X  | 발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시, 기본으로 대체 발송됩니다.                                                                              |
 | -- resendType       | String  | X  | 대체 발송 타입(SMS,LMS)<br>값이 없을 경우, 템플릿 본문 길이에 따라 타입이 구분됩니다.                                                                              |
@@ -2605,7 +2600,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -2632,7 +2627,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
