@@ -1,5 +1,14 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### October 28, 2025
+* [API, Console] Changed the validity of the AlimTalk template
+    * The maximum character limit for the AlimTalk template has been increased from 1,000 to 1,300 characters, allowing you to send longer messages.
+
+* [API, Console] Brand message nighttime advertising resending feature
+    * You can use the nightly resend feature in your brand messages.
+    * If you send an advertising message at night (8:50 PM - 8:00 AM), it will automatically be resent at 8:00 AM the next day.
+    * You can configure the nightly resend feature in the console.
+
 ### September 23, 2025
 
 * [API] Added a personalization feature for brand message video parameter

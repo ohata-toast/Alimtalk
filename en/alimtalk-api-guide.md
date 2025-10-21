@@ -315,7 +315,7 @@ Content-Type: application/json;charset=UTF-8
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList|	List|	O|	List of recipients(up to 1,000 persons) |
 |- recipientNo|	String|	O|	Recipient number(up to 15 characters) |
-|- content|	String|	O|	Message(up to 1000 characters) |
+|- content|	String|	O|	Message(up to 1,300 characters) |
 |- templateTitle| String| X| Title(up to 50 characters) |
 |- templateHeader| String| X| Template header(up to 16 characters) |
 |- templateItem | Object | X| Item |
@@ -336,7 +336,7 @@ Content-Type: application/json;charset=UTF-8
 |-- schemeAndroid | String | X |	Android app link(up to 500 characters) |
 |- buttons|	List |	X | List of buttons(up to 5) |
 |-- ordering|	Integer|	X |	Button sequence(required, if there is a button)|
-|-- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|-- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |-- name| String |	X |	Button name(required if there is a button, up to 14 characters)|
 |-- linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 |-- linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -724,7 +724,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createUser | String | Registrant(saved as user UUID when sending from console)                                                                                                                                                           |
 |- buttons | List | 	List of buttons                                                                                                                                                                                                   |
 |-- ordering | Integer | 	Button sequence                                                                                                                                                                                                   |
-|-- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|-- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |-- name | String | 	Button name                                                                                                                                                                                                       |
 |-- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                         |
 |-- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                             |
@@ -1434,7 +1434,7 @@ curl -X GET \
 | - createUser | String | User who created the request(saved as user UUID when sending from console)                                                                                                                                        |
 | - buttons | List | 	List of buttons                                                                                                                                                                                                  |
 | -- ordering | Integer | 	Button sequence                                                                                                                                                                                                  |
-| -- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| -- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | -- name | String | 	Button name                                                                                                                                                                                                      |
 | -- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                        |
 | -- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                            |
@@ -1627,7 +1627,7 @@ Content-Type: application/json;charset=UTF-8
 |-----------------------|---|---|---|
 | templateCode          |	String |	O | Template code(up to 20 characters) |
 | templateName          |	String |	O | Template name(up to 150 characters) |
-| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateContent       |	String |	O | Template body(up to 1,300 characters) |
 | templateMessageType   | String | X |Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 | templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: item list type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: at least one of the following is required: image, header, item highlight, or item list.|
 | templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
@@ -1656,7 +1656,7 @@ Content-Type: application/json;charset=UTF-8
 | categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
 | buttons               |	List |	X | List of buttons(up to 5) |
 | -ordering             |	Integer |	X | Button sequence(1~5) |
-| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
 | - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 | - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -1794,7 +1794,7 @@ Content-Type: application/json;charset=UTF-8
 | Name                  |	Type|	Required|	Description|
 |-----------------------|---|---|---|
 | templateName          |	String |	O | Template name(up to 150 characters) |
-| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateContent       |	String |	O | Template body(up to 1,300 characters) |
 | templateMessageType   | String | X | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 | templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required|
 | templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
@@ -1823,7 +1823,7 @@ Content-Type: application/json;charset=UTF-8
 | categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
 | buttons               |	List |	X | List of buttons(up to 5) |
 | - ordering            |	Integer |	X | Button sequence(1~5) |
-| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
 | - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 | - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -2266,7 +2266,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateImageUrl      | String | 	Image URL                                                                                                                                                                                                                                                                                             |
 | -- buttons               | List | 	List of buttons                                                                                                                                                                                                                                                                                       |
 | --- ordering             | Integer | 	Button sequence(1~5)                                                                                                                                                                                                                                                                                  |
-| --- type                 | String | 	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| --- type                 | String | 	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | --- name                 | String | 	Button name                                                                                                                                                                                                                                                                                           |
 | --- linkMo               | String | 	Mobile web link(required for the WL type)                                                                                                                                                                                                                                                             |
 | --- linkPc               | String | 	PC web link(optional for the WL type)                                                                                                                                                                                                                                                                 |
@@ -2462,7 +2462,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateImageUrl | String |	Image URL |
 |-- buttons | List |	List of buttons |
 |--- ordering | Integer |	Button sequence(1~5) |
-|--- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|--- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |--- name | String |	Button name |
 |--- linkMo | String |	Mobile web link(required for the WL type) |
 |--- linkPc | String |	PC web link(optional for the WL type) |

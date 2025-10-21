@@ -38,7 +38,7 @@
 | Common| false| -2005| If a specific field value is not within a limited range|
 | Common| false| -2017| Non-existent sender profile|
 | Common| false| -2018| Invalid button parameter|
-| Common| false| -2019| Failed since because the template body exceeds 1,000 characters|
+| Common| false| -2019| Failed since because the template body exceeds 1,300 characters|
 | Common| false| -2023| If the body of a FriendTalk message exceeds 400 characters (with an image attached)|
 | Common| false| -2024| If the body of a FriendTalk message exceeds 1,000 characters|
 | Common| false| -2025| If the scheduled date is in the past|
@@ -53,7 +53,7 @@
 | Common| false| -2034| If the template item highlight parameter is invalid|
 | Common| false| -2035| If the template header exceeds 16 characters|
 | Common| false| -2036| If TemplateRepresentLink parameter is invalid|
-| Common| false| -2037| When registering a template including an item list, if the number of characters in the message body exceeds 700|
+| Common| false| -2037| When registering a template including an item list, if the number of characters in the message body exceeds 1,000|
 | Common| false| -2500| If you can't find your mass delivery request|
 | Common| false| -2501| If there is no message requested or there is no message that can be canceled|
 | Common| false| -2502| If the sending failure setting is not set and a fallback is requested,|
