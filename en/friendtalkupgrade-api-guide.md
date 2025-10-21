@@ -126,14 +126,18 @@ Content-Type: application/json;charset=UTF-8
 
 ## Request to send a free-form message
 
-* Marketing consent members cannot be sent in a free format.
+* You can send a marketing consent.
+  * You can specify the type of message target by specifying the targeting field.
+      * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
+      * N: Users who agree to receive advertising information from the client company - Channel friend
+      * I: Target of customer sending request ∩ Channel friend
 * You can use all 8 message types of the existing FriendTalk.
 * You can use BC, BT button types.
 * You cannot use Add Channel (AC) button.
 * When using the BF button, you can use it by entering the business form ID issued by Kakao.
-* During OBT, there may be a delay of approximately 100 seconds in sending from Kakao.
 * Fallback can be set via resendParameter for each recipient.
   * When using fallback, you need to register the SMS Appkey and set its sending through the fallback management API.
+  * <b>Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)</b>
 
 #### Requested
 
@@ -1215,13 +1219,17 @@ Content-Type: application/json;charset=UTF-8
 
 * A sending using a template.
 * You can use the marketing consent sending.
-  * The current marketing consent sending supports 5 message types: TEXT, IMAGE, WIDE, CAROUSEL_FEED, PREMIUM_VIDEO.
+  * You can specify the type of message target by specifying the targeting field.
+      * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
+      * N: Users who agree to receive advertising information from the client company - Channel friend
+      * I: Target of customer sending request ∩ Channel friend
+* You can use all 8 message types of the existing FriendTalk.
 * You cannot use BC, BT button types.
 * You can use Add Channel (AC) button.
 * When using the BF button, you can upload the Business Form ID issued by Kakao and receive and use a BizForm key.
 * Fallback can be set via resendParameter for each recipient.
   * When using fallback, you need to register the SMS Appkey and set its send through the fallback management API.
-* During OBT, there may be a delay of approximately 100 seconds in sending from Kakao.
+* <b>Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)</b>
 
 ### Cautions for use
 
