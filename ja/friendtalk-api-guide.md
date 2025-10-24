@@ -216,12 +216,12 @@ Content-Type: application/json;charset=UTF-8
 | - buttons              |	List|	X| 	ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
 | -- ordering            |	Integer|	X | 	ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
 | -- type                | String |	X | 	ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF：ビジネスフォーム)
-| -- name                | String |	X | 	ボタン名(ボタンがある場合は必須）                                                                                                                                         |
+| -- name                | String |	X | 	ボタン名(ボタンがある場合は必須）                            |                                                                                                             |
 | -- linkMo              | String |	X | 	モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
 | -- linkPc              | String |	X | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                     |
 | -- schemeIos           | String | X | 	iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
 | -- schemeAndroid       | String | X | 	Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
-| -- chatExtra           |	String|	X| BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 
+| -- chatExtra           |	String|	X| BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報 |
 | -- chatEvent           |	String|	X| BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                                           |
 | -- bizFormKey          |	String|	X| BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                               |
 | -- target              |	String|	X | 	Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                             |
