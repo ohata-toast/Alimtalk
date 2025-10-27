@@ -1,78 +1,123 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
-### 2025. 07. 29.
-* [API, Console] 친구톡 Upgrade -> 브랜드 메시지 이름 변경
-    * 브랜드 메시지 서비스가 브랜드 메시지로 이름이 변경되었습니다.
-    * 기존 브랜드 메시지 API는 브랜드 메시지 API로 변경되어 사용됩니다.
+### October 28, 2025
+* [API, Console] Changed the validity of the AlimTalk template
+    * The maximum character limit for the AlimTalk template has been increased from 1,000 to 1,300 characters, allowing you to send longer messages.
 
-* [Console] 백업 기능 추가
-    * 브랜드 메시지 발송 이력 백업 기능이 추가되었습니다.
+* [API, Console] Brand message nighttime advertising resending feature
+    * You can use the nightly resend feature in your brand messages.
+    * If you send an advertising message at night (8:50 PM - 8:00 AM), it will automatically be resent at 8:00 AM the next day.
+    * You can configure the nightly resend feature in the console.
 
-* [API, Console] 브랜드 메시지 M/N 타겟팅 사용 신청 기능 추가
-    * M/N 타겟팅 발송을 위해 마케팅 수신동의 증적자료 업로드 및 사용 신청 기능이 추가되었습니다.
-    * 브랜드 메시지 M/N 타겟팅은 아래 조건을 만족할 경우 발송할 수 있습니다.
-        * 비즈니스 인증 채널
-        * 사업자번호 등록
-        * 채널 고객센터 전화번호 등록
-        * 채널 친구 수 5만 이상
-        * 3개월 내 알림톡 발송 성공 이력 보유
+### September 23, 2025
 
-* [API, Console] 발신 프로필 080 무료수신거부 정보 등록 API 신규 추가
-    * 브랜드 메시지 발송 시 사용되는 발신 프로필의 080 무료수신거부 정보를 등록할 수 있습니다.
-    * 080 무료수신거부 정보 등록 시 수정은 가능하나 빈 값으로 초기화가 불가능합니다.
+* [API] Added a personalization feature for brand message video parameter
+    * Added a feature to dynamically change the video value of a template and send it through the videoParameter field when sending a brand message.
+    * Now personalized messages can be sent by specifying differnet videos by recipients.
 
-* [Console] 브랜드 메시지 080 수신거부관리 초기화 버그 수정
-    * SMS 서비스 앱키를 등록한 경우 초기화가 안되는 버그를 수정하였습니다.
-    * SMS 서비스 앱키 초기화 시 기존에 등록한 대체발송 설정이 삭제됩니다.
+* [API] Applied brand message carousel image personalization
+    * Due to a bug fix on Kakao's side, applied the image personalization feature now to carousel feed and carousel commerce types.
+    * You can also specify different images for each recipient in carousel-type messages.
 
-### 2025. 06. 24.
-* [API, Console] 브랜드 메시지 웹훅 기능 추가
-    * 발송 결과 업데이트 시, 웹훅 기능이 추가되었습니다.
-* [API, Console] 브랜드 메시지 대체 발송 기능 추가
-    * 브랜드 메시지 발송 시 대체 발송 기능이 추가되었습니다.
-    * '발송 설정'에서 SMS 서비스 앱키를 등록하면, 브랜드 메시지 발송 시 대체 발송이 가능합니다.
-        * 입력한 발신 번호가 SMS 상품에 등록된 발신번호가 아닐 경우, 대체 발송이 실패할 수 있습니다.
-* [API] 브랜드 메시지 타입 중 텍스트형 유효성 변경
-    * 텍스트형 본문 길이 제한 기준이 변경되었습니다.
-    * 변경 사항
-        * 본문 길이 제한: 1000자 -> 1300자
-        * 줄바꿈: 33줄 -> 99줄
-* [API, Console] 브랜드 메시지 템플릿 발송 타겟팅 기능 개선
-    * 브랜드 메시지 템플릿 발송 시, 전체 메시지 유형에 대해 M, N 타입 발송이 가능하도록 개선됩니다.
-* [API, Console] 브랜드 메시지 템플릿 발송 080 수신거부번호 필드 추가
-    * 브랜드 메시지 템플릿 발송 시, 080 수신거부번호 필드가 추가됩니다(unsubscribeNo, unsubscribeAuthNo).
-    * 해당 필드 입력 시 발신 프로필에 등록된 080 수신거부번호 대신 해당 번호로 발송됩니다.
-    * 입력하지 않는 경우 발신 프로필에 등록된 080 수신거부번호로 발송됩니다.
-* [API] 브랜드 메시지 발신 프로필 조회 API 오류 수정
-    * 브랜드 메시지 발신 프로필 조회 API 조회 시 브랜드 메시지 응답 중 일부 필드가 누락되어 있던 오류가 수정되었습니다.
-        * 발신 프로필 조회 API에서 브랜드 메시지 설정 정보가 누락되어 있던 오류가 수정되었습니다.
-        * 발신 프로필 조회 API에서 알림톡, 친구톡 설정 정보를 더 이상 제공하지 않습니다.
+* [API] Added AlimTalk call button type
+    * Added a call button to the AlimTalk template.
+    * Provide a feature for users to make a call directly with the click of a button.
 
-### 2025. 05. 13.
-* [API] 브랜드 메시지 서비스 베타 출시
-    * 브랜드 메시지 기본형 M,N그룹(마케팅수신동의 회원 타겟) 발송 가능 대상** : 아래 조건에 부합하는 경우 화이트리스트 등록 후 발송 가능 (kakao 승인 필요)
-        * **발송 가능 조건**: 카카오톡 비즈니스 채널 친구 수 5만 이상 보유 + 알림톡 발송 이력 보유(최근 3개월) + 마케팅 수신 동의 증적 자료 제출 + 수신거부 번호 등록
-        * 화이트리스트 요청 시 필수 기재 내용은 추후 카카오에서 제공 받아 공지 예정
-            * 화이트리스트 요청: [고객센터](https://www.nhncloud.com/kr/support/inquiry) 또는 영업담당자에게 요청
+* [Console] Added a feature to download brand message in Excel format
+    * Added an Excel download feature to the brand Message sending results inquiry screen.
+    * You can manage the sending history by downloading it in Excel format.
 
-### 2025. 04. 29.
+### August 26, 2025
 
-* [API] 알림톡 발송 API 전체 수신자 실패 응답 개선
-    * 알림톡 발송 API에서 전체 수신자 발송 실패 시 응답이 변경됩니다.
-        * 변경 전: 성공 응답, requestId 응답
-        * 변경 후: 실패 응답, requestId를 null로 응답
-    * 친구톡 발송 API에서 전체 수신자 발송 실패 시 응답이 변경됩니다.
-        * 변경 전: 성공 응답, requestId 응답
-        * 변경 후: 실패 응답, requestId를 null로 응답
-    * 모든 수신자에게 발송이 실패하더라도, 대체 발송 가능한 수신자가 있으면 기존과 마찬가지로 성공 응답을 반환합니다.
+* [API, Console] Brand message - Supported free-form sending M/N type function
+  * Added a feature to enable sending free-form messages of M/N type in brand messages.
+  * In addition to the existing basic type, you can send your brand message more flexibly with the free-form M/N type.
 
-* [Console] 알림톡 조회 조건 변경
-    * 발송 결과 조회, 대량 발송 조회 조건에서 '등록 일시'가 삭제됩니다.
-    * 기존에 등록 일시로 조회한 경우, '요청 일시'를 사용하여 조회하세요.
+* [API] Brand message - Added API field for sending reseller identification code
+  * Added a field to the Brand Message Sending API to allow you to specify a reseller identification code.
+  * A feature is provided to manage message sending by resellers separately.
 
-* [Console] 친구톡 조회 조건 변경
-    * 발송 결과 조회, 대량 발송 조회 조건에서 '등록 일시'가 삭제됩니다.
-    * 기존에 등록 일시로 조회한 경우, '요청 일시'를 사용하여 조회하세요.
+* [API, Console] Added a brand message feature - scheduled send
+  * Added a reservation sending feature to the Brand Message upgrade service.
+  * You can schedule and send a Brand Message upgrade message at any time you want.
+
+* [API] Brand message - added senderGroupingKey, recipientGroupingKey
+  * Sender grouping key and recipient grouping key fields are added to the brand message sending API.
+  * You can manage message sending requests by group to efficiently track sending results.
+
+### July 29, 2025
+* [API, Console] FriendTalk Upgrade -> Changed brand message name
+    * The brand message service has been renamed to brand message.
+    * The existing brand message API will be changed to brand message API.
+
+* [Console] Added backup feature
+    * Added a feature to back up brand message sending history.
+
+* [API, Console] Added a feature to apply for brand message M/N targeting
+    * A feature to upload and use marketing consent evidence for M/N targeting has been added.
+    * Brand message M/N targeting can be sent when the following conditions are met:
+        * Business authentication channel
+        * Register business registration number
+        * Register channel customer service phone number
+        * Have at least 50,000 channel friends
+        * Have a history of successfully sending AlimTalk messages within the past three months
+
+* [API, Console] Added new API for registering free call rejection information for the 080 caller profile
+    * You can register 080 free call rejection information in the sender profile used when sending brand messages.
+    * When registering 080 free reception refusal information, modifications are possible, but initialization to a blank value is not possible.
+
+* [Console] Fix a bug in rejection management reset for Brand Message 080
+    * Fixed a bug that prevented initialization when registering an SMS service app key.
+    * When you initialize the SMS service app key, any previously registered alternative sending settings will be deleted.
+
+### June 24, 2025
+* [API, Console] Added brand message webhook feature
+    * Added webhook feature when updating the sending result.
+* [API, Console] Added the feature to send alternative brand messages
+    * Added the alternative sending feature when sending brand messages.
+    * If you register the SMS service app key in "Sending Settings", you can use alternative sending when sending brand messages.
+        * If the sender number you entered is not the one registered with the SMS product, the replacement transmission may fail.
+* [API] Changed the text validity of brand message's message types
+    * The text body length limit criteria has been changed.
+    * Changes
+        * Body length limit: 1,000 char. -> 1,300 char.
+        * Line breaks: 33 lines -> 99 lines
+* [API, Console] Improved targeting of brand message templates
+    * When sending a brand message template, improved to enable sending M and N types for all message types.
+* [API, Console] Added a 080 rejection number field to the brand message template.
+    * When sending a brand message template, the 080 rejection number field is added. (unsubscribeNo, unsubscribeAuthNo).
+    * When you enter the field, the message will be sent to that number instead of the 080 rejection number registered in the sender's profile.
+    * If not entered, it will be sent to the 080 rejection number registered in the sender's profile.
+* [API] Fixed an issue in the brand message sending profile inquiry API
+    * Fixed an issue where some fields were missing from the brand message response when querying the brand message sender profile inquiry API.
+        * Fixed an issue where brand message settings information was missing from the sender profile lookup API.
+        * The sender profile inquiry API no longer provides AlimTalk and FriendTalk setting information.
+
+### May 13, 2025
+* [API] Brand messaging service beta launch
+    * Brand message basic type M,N group (targeting members who have agreed to receive marketing) can be sent to** : if the conditions below are met, you can send after registering on the whitelist (requires Kakao approval)
+        * **Conditions for sending**: Have more than 50,000 KakaoTalk business channel friends + have a history of sending AlimTalk messages (last 3 months) + submit evidence of consent to receive marketing messages + register a number to opt out of receiving messages
+        * Required information for whitelist requests will be provided by Kakao and announced at a later date.
+            * Request a whitelist: Contact [Customer Center](https://www.nhncloud.com/kr/support/inquiry) or a sales representative.
+
+### April 29, 2025
+
+* [API] Improved failure response for all recipients in the AlimTalk sending API
+    * Changed the response when sending to all recipients fails in the AlimTalk sending API.
+        * Previous: success response, requestId response
+        * Current: Failed response, response with requestId as null
+    * Changed the response when sending to all recipients fails in the Friend Talk sending API.
+        * Previous: success response, requestId response
+        * Current: Failed response, response with requestId as null
+    * Even if sending fails to all recipients, if there are alternative recipients available, a success response is returned as before.
+
+* [Console] Changed AlimTalk search conditions
+    * "Registration date" is deleted from the conditions for sending result inquiry and bulk sending inquiry.
+    * If you previously searched by registration date, search using "Request date".
+
+* [Console] Changed FriendTalk search conditions
+    * "Registration date" is deleted from the conditions for sending result inquiry and bulk sending inquiry.
+    * If you previously searched by registration date, search using "Request date".
 
 ### January 14, 2025
 * [API] Scheduled to segment the respose code (3018) that was bounced back when KakaoTalk could not send a message as follows

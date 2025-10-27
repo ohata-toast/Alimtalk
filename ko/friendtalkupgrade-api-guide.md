@@ -126,14 +126,18 @@ Content-Type: application/json;charset=UTF-8
 
 ## 메시지 자유형 발송 요청
 
-* 마수동 회원 발송은 자유형 발송으로 발송할 수 없습니다.
+* 마수동 발송을 사용할 수 있습니다.
+  * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
+      * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
+      * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
+      * I: 고객사의 발송 요청 대상 ∩ 채널 친구
 * 기존 친구톡의 8가지 메시지 유형을 전부 사용할 수 있습니다.
 * BC, BT 버튼 타입을 사용할 수 있습니다.
 * AC(채널 추가)버튼은 사용할 수 없습니다.
 * BF 버튼 사용 시 카카오에서 발급받은 비즈니스폼 ID를 넣어서 사용할 수 있습니다.
-* OBT 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
     * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 
 #### 요청
 
@@ -879,7 +883,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -906,7 +910,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -1215,13 +1219,17 @@ Content-Type: application/json;charset=UTF-8
 
 * 템플릿을 이용한 발송입니다.
 * 마수동 발송을 사용할 수 있습니다.
-    * 현재 마수동 발송의 경우 5가지 메시지 유형(TEXT, IMAGE, WIDE, CAROUSEL_FEED, PREMIUM_VIDEO)만 지원합니다.
+  * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
+      * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
+      * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
+      * I: 고객사의 발송 요청 대상 ∩ 채널 친구
+* 기존 친구톡의 8가지 메시지 유형을 전부 사용할 수 있습니다.
 * BC, BT 버튼 타입을 사용할 수 없습니다.
 * AC(채널 추가)버튼을 사용할 수 있습니다.
 * BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 업로드하여 비즈폼키를 발급받아 사용할 수 있습니다.
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
     * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
-* OBT 기간 동안 카카오 측에서 발송 지연이 적은 빈도로 100초 정도 있을 수 있습니다.
+* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
 
 ### 사용시 주의사항
 
@@ -2878,7 +2886,7 @@ Content-Type: application/json;charset=UTF-8
     "list": [
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [
@@ -2905,7 +2913,7 @@ Content-Type: application/json;charset=UTF-8
       },
       {
         "header": String,
-        "content": String,
+        "message": String,
         "imageUrl": String,
         "imageLink": String,
         "buttons": [

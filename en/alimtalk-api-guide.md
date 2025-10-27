@@ -81,7 +81,8 @@ Content-Type: application/json;charset=UTF-8
             "relayId": String,
             "oneClickId": String,
             "productId": String,
-            "target": String
+            "target": String,
+            "telNumber": String
           }
         ],
         "quickReplies": [
@@ -126,6 +127,7 @@ Content-Type: application/json;charset=UTF-8
 |-- oneClickId|	String|	X| Payment information used in the one click payment plugin |
 |-- productId|	String|	X| Payment information used in the one click payment plugin |
 |-- target|	String|	X |	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+| -- telNumber           | 	String  | 	X  | When you press the TN (call) type button, the phone number to be transferred                                                                    |
 |- quickReplies|	List|	X| Quick reply information |
 |-- ordering            | Integer  | X        |	Quick reply order(required when quick reply exists)|
 |-- chatExtra|	String|	X| Meta information to send for BC(Bot for Consultation) or BT(Bot Transfer) type |
@@ -146,7 +148,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/messages -d '{"senderKey":"{발신 키}","templateCode":"{템플릿 코드}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{수신번호}","templateParameter":{"{치환자 필드}":"{치환 데이터}"}}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/messages -d '{"senderKey":"{outgoing key}","templateCode":"{template code}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{incoming number}","templateParameter":{"{replacer field}":"{replacement data}"}}]}'
 ```
 
 #### Response
@@ -267,7 +269,8 @@ Content-Type: application/json;charset=UTF-8
                     "relayId": String,
                     "oneClickId": String,
                     "productId": String,
-                    "target": String
+                    "target": String,
+                    "telNumber": String
                 }
             ],
             "quickReplies" : [
@@ -312,7 +315,7 @@ Content-Type: application/json;charset=UTF-8
 |createUser| String | X| Registrant(saved as user UUID when sending from console)|
 |recipientList|	List|	O|	List of recipients(up to 1,000 persons) |
 |- recipientNo|	String|	O|	Recipient number(up to 15 characters) |
-|- content|	String|	O|	Message(up to 1000 characters) |
+|- content|	String|	O|	Message(up to 1,300 characters) |
 |- templateTitle| String| X| Title(up to 50 characters) |
 |- templateHeader| String| X| Template header(up to 16 characters) |
 |- templateItem | Object | X| Item |
@@ -333,7 +336,7 @@ Content-Type: application/json;charset=UTF-8
 |-- schemeAndroid | String | X |	Android app link(up to 500 characters) |
 |- buttons|	List |	X | List of buttons(up to 5) |
 |-- ordering|	Integer|	X |	Button sequence(required, if there is a button)|
-|-- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|-- type| String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |-- name| String |	X |	Button name(required if there is a button, up to 14 characters)|
 |-- linkMo| String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 |-- linkPc | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -347,6 +350,7 @@ Content-Type: application/json;charset=UTF-8
 |-- oneClickId|	String|	X| Payment information used in the one click payment plugin |
 |-- productId|	String|	X| Payment information used in the one click payment plugin |
 |-- target|	String|	X |	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+| -- telNumber           | 	String  | 	X  | When you press the TN (call) button, the phone number to be transferred                                                                    |
 |- quickReplies|	List |	X | Quick reply list(up to 5) |
 |-- ordering|	Integer|	X |	Quick reply order(required  when quick reply exists)|
 |-- type| String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
@@ -377,7 +381,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/raw-messages -d '{"senderKey":"{발신 키}","templateCode":"{템플릿 코드}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{수신번호}","content":"{내용}","buttons":[{"ordering":"{버튼 순서}","type":"{버튼 타입}","name":"{버튼 이름}","linkMo":"{모바일 웹 링크}"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/raw-messages -d '{"senderKey":"{outgoing key}","templateCode":"{template code}","requestDate":"2018-10-01 00:00","recipientList":[{"recipientNo":"{incoming number}","content":"{content}","buttons":[{"ordering":"{button sequence}","type":"{button type}","name":"{button name}","linkMo":"{mobile web link}"}]}]}'
 ```
 
 #### Response
@@ -643,7 +647,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
           "relayId": String,
           "oneClickId": String,
           "productId": String,
-          "target": String
+          "target": String,
+          "telNumber": String
         }
       ],
       "quickReplies" : [
@@ -719,7 +724,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |- createUser | String | Registrant(saved as user UUID when sending from console)                                                                                                                                                           |
 |- buttons | List | 	List of buttons                                                                                                                                                                                                   |
 |-- ordering | Integer | 	Button sequence                                                                                                                                                                                                   |
-|-- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|-- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |-- name | String | 	Button name                                                                                                                                                                                                       |
 |-- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                         |
 |-- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                             |
@@ -743,6 +748,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- schemeAndroid | String |	Android app link(required for the AL type, for up to 500 characters) |
 |-- pluginId|	String| 	Plugin ID(up to 24 characters) |
 |-- target|	String| 	In the case of a web link type, out link used when adding "target":"out" attribute<br>Send with the default in-app link |
+| -- telNumber           | 	String  | 	X  | When you press the TN (call) button, the phone number to be transferred                                                                   |
 |- messageOption | Object | 	Message Option                                                                                                                                                                                                    |
 |-- price | Integer | 	Price/amount/payment amount included in message(message to be delivered to user)(related to moment advertisement)                                                                                                 |
 |-- currencyType | String | 	Use of international currency codes such as KRW, USD, EUR, which is the currency unit of the price/amount/payment amount included in the message(message to be delivered to the user)(related to moment advertisement) |
@@ -756,7 +762,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 
 | Category  | Authentication Words |
 | --- | --- |
-| Authentication Messages | auth, password, verif, にんしょう, 認証, 비밀번호, 인증 |
+| Authentication Messages | auth, password, verif, にんしょう, 認証, password, authentication |
 
 - Example 1-1) Delivery shall fail if the full text(including template replacement) does not include authentication words, in the request of Authentication Messages API(for emergency)
 - Example 1-2) Validity for English words shall be checked regardless of small or capital letters
@@ -1357,7 +1363,8 @@ curl -X GET \
             "relayId": String,
             "oneClickId": String,
             "productId": String,
-            "target": String
+            "target": String,
+            "telNumber": String
           }
         ],
         "quickReplies" : [
@@ -1427,7 +1434,7 @@ curl -X GET \
 | - createUser | String | User who created the request(saved as user UUID when sending from console)                                                                                                                                        |
 | - buttons | List | 	List of buttons                                                                                                                                                                                                  |
 | -- ordering | Integer | 	Button sequence                                                                                                                                                                                                  |
-| -- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| -- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | -- name | String | 	Button name                                                                                                                                                                                                      |
 | -- linkMo | String | 	Mobile web link(required for the WL type)                                                                                                                                                                        |
 | -- linkPc | String | 	PC web link(optional for the WL type)                                                                                                                                                                            |
@@ -1441,6 +1448,7 @@ curl -X GET \
 | -- oneClickId|	String| Payment information used in the one click payment plugin                                                                                                                                                          |
 | -- productId|	String| Payment information used in the one click payment plugin                                                                                                                                                          |
 | -- target|	String| 	In the case of a web link button, out link used when adding "target":"out" attribute<br>Send with the default in-app link                                                                                        |
+| -- telNumber           | 	String  | 	X  | When you press the TN (call) button, the phone number to be transferred                                                                  |
 | - quickReplies|	List | Quick reply list(up to 5)                                                                                                                                                                                         |
 | -- ordering|	Integer| 	Quick reply order(required  when quick reply exists)                                                                                                                                                             |
 | -- type| String | 	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form)                                                                                     |
@@ -1594,7 +1602,8 @@ Content-Type: application/json;charset=UTF-8
       "schemeIos" : String,
       "schemeAndroid" : String
       "bizFormId" : Integer,
-      "pluginId" : String
+      "pluginId": String,
+      "telNumber": String      
     }
   ],
   "quickReplies" : [
@@ -1607,6 +1616,8 @@ Content-Type: application/json;charset=UTF-8
       "schemeIos" : String,
       "schemeAndroid" : String
       "bizFormId" : Integer
+      "pluginId": String,
+      "telNumber": String
     }
   ]
 }
@@ -1616,9 +1627,9 @@ Content-Type: application/json;charset=UTF-8
 |-----------------------|---|---|---|
 | templateCode          |	String |	O | Template code(up to 20 characters) |
 | templateName          |	String |	O | Template name(up to 150 characters) |
-| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateContent       |	String |	O | Template body(up to 1,300 characters) |
 | templateMessageType   | String | X |Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
-| templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: 아이템리스트형, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: 이미지, 헤더, 아이템 하이라이트, 아이템 리스트 중 1개 이상 필수|
+| templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, ITEM_LIST: item list type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required <br>ITEM_LIST: at least one of the following is required: image, header, item highlight, or item list.|
 | templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
 | tempalteTitle         | String | X| Template title(No more than 50 characters, Android: To be abbreviated if it exceeds 2 lines with more than 23 characters, iOS: To be abbreviated if it exceeds 2 lines with more than 27 characters) |
 | templateSubtitle      | String | X| Auxiliary template phrase(No more than 50 characters, Android: To be abbreviated if it exceeds 18 characters, iOS: To be abbreviated if it exceeds 21 characters) |
@@ -1645,7 +1656,7 @@ Content-Type: application/json;charset=UTF-8
 | categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
 | buttons               |	List |	X | List of buttons(up to 5) |
 | -ordering             |	Integer |	X | Button sequence(1~5) |
-| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
 | - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 | - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -1653,6 +1664,7 @@ Content-Type: application/json;charset=UTF-8
 | - schemeAndroid       | String | X |	Android app link(required for the AL type, up to 500 characters) |
 | - bizFormId           |	Integer|	X |	Business form ID(required for BF type) |
 | - pluginId            |	String|	X |	Plugin ID(up to 24 characters) |
+| -- telNumber           | 	String  | 	X  | When you press the TN (call) button, the phone number to be transferred                                                                    |
 | quickReplies          |	List |	X | Quick reply list(up to 5) |
 | - ordering            |	Integer|	X |	Quick reply order(required  when quick reply exists)|
 | - type                | String |	X |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
@@ -1760,7 +1772,8 @@ Content-Type: application/json;charset=UTF-8
       "schemeIos" : String,
       "schemeAndroid" : String
       "bizFormId" : Integer,
-      "pluginId" : String
+      "pluginId": String,
+      "telNumber": String
     }
   ],
   "quickReplies" : [
@@ -1781,7 +1794,7 @@ Content-Type: application/json;charset=UTF-8
 | Name                  |	Type|	Required|	Description|
 |-----------------------|---|---|---|
 | templateName          |	String |	O | Template name(up to 150 characters) |
-| templateContent       |	String |	O | Template body(up to 1000 characters) |
+| templateContent       |	String |	O | Template body(up to 1,300 characters) |
 | templateMessageType   | String | X | Types of template message(BA: Basic, EX: Extra Information, AD: Ad Included, MI: Mixed Purposes, default: Basic) |
 | templateEmphasizeType | String| X| Types of emphasized template(NONE: Basic, TEXT: Emphasized, IMAGE: Image type, default:NONE)<br>- TEXT: templateTitle and templateSubtitle fields are required<br>IMAGE: templateImageName and templateImageUrl fields are required|
 | templateExtra         | String | X | Additional template information(Required, if template message type is[Ad Included/Mixed Purposes]) |
@@ -1810,7 +1823,7 @@ Content-Type: application/json;charset=UTF-8
 | categoryCode          | String | X | Template category code(Refer to API to View Template Category, default: 999999)<br>For other categories, screened by the lowest priority. |
 | buttons               |	List |	X | List of buttons(up to 5) |
 | - ordering            |	Integer |	X | Button sequence(1~5) |
-| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| - type                | String |	X |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | - name                | String |	X |	Button name(required, if there's a button, up to 14 characters)|
 | - linkMo              | String |	X |	Mobile web link(required for the WL type, up to 500 characters)|
 | - linkPc              | String |	X |PC web link(optional for the WL type, up to 500 characters) |
@@ -2110,7 +2123,7 @@ Content-Type: application/json;charset=UTF-8
 
 [Example]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates?templateStatus={템플릿 상태 코드}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates?templateStatus={template status code}"
 ```
 
 #### Response
@@ -2169,7 +2182,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
                     "linkMo": String,
                     "linkPc": String,
                     "schemeIos": String,
-                    "schemeAndroid": String
+                    "schemeAndroid": String,
+                    "telNumber": String
                 }
               ],
               "quickReplies" : [
@@ -2252,7 +2266,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- templateImageUrl      | String | 	Image URL                                                                                                                                                                                                                                                                                             |
 | -- buttons               | List | 	List of buttons                                                                                                                                                                                                                                                                                       |
 | --- ordering             | Integer | 	Button sequence(1~5)                                                                                                                                                                                                                                                                                  |
-| --- type                 | String | 	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+| --- type                 | String | 	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 | --- name                 | String | 	Button name                                                                                                                                                                                                                                                                                           |
 | --- linkMo               | String | 	Mobile web link(required for the WL type)                                                                                                                                                                                                                                                             |
 | --- linkPc               | String | 	PC web link(optional for the WL type)                                                                                                                                                                                                                                                                 |
@@ -2260,6 +2274,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- schemeAndroid        | String | 	Android app link(required for the AL type)                                                                                                                                                                                                                                                            |
 | --- bizFormId            |	Integer| 	X                                                                                                                                                                                                                                                                                                     |	Business form ID(required for BF type) |
 | --- pluginId             |	String| 	X                                                                                                                                                                                                                                                                                                     |	Plugin ID(up to 24 characters) |
+| --- telNumber            | 	String  | 	X  | When you press the TN (call) button, the phone number to be transferred                                                                    |
 | -- quickReplies          |	List | 	X                                                                                                                                                                                                                                                                                                     | Quick reply list(up to 5) |
 | --- ordering             |	Integer| 	X                                                                                                                                                                                                                                                                                                     |	Quick reply order(required  when quick reply exists)|
 | --- type                 | String | 	X                                                                                                                                                                                                                                                                                                     |	Qucik reply type(WL: Web link, AL: App link, BK: Bot keyword, BC: Bot for Consultation, BT: Bot Transfer, BF: Business form) |
@@ -2447,7 +2462,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 |-- templateImageUrl | String |	Image URL |
 |-- buttons | List |	List of buttons |
 |--- ordering | Integer |	Button sequence(1~5) |
-|--- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID) |
+|--- type| String |	Button type(WL: Web link, AL: App link, DS: Delivery search, BK: Bot keyword, MD: Message delivery, BC: Bot for Consultation, BT: Bot Transfer, AC: Add channel, BF: Business form, P1: Image secure transmission plugin ID, P2: Personal information use plugin ID, P3: One-click payment plugin ID, TN: Call) |
 |--- name | String |	Button name |
 |--- linkMo | String |	Mobile web link(required for the WL type) |
 |--- linkPc | String |	PC web link(optional for the WL type) |

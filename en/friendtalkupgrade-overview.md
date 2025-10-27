@@ -1,95 +1,94 @@
-## Notification > KakaoTalk Bizmessage > 브랜드 메시지 > 개요
+## Notification > KakaoTalk Bizmessage > Brand Message > Overview
 
-브랜드 메시지는 광고주(고객사)의 마케팅 수신 동의 회원(이하 마수동)을 대상으로 카카오톡 채널 친구 여부와 관계없이 광고성 메시지를 발송할 수 있는 메시지 상품입니다.
+Brand Message is a message product that allows advertisers (clients) to send advertising messages to members who have agreed to receive marketing messages (hereinafter referred to as “marketing consent”), regardless of whether they are KakaoTalk channel friends.
 
-손쉬운 연동을 위한 RESTful API를 제공합니다.
+The service provides RESTful API for easy integration.
 
-## 특징
+## Features
 
-* 친구를 맺은 이용자를 대상으로 광고성 메시지를 포함한 다양한 홍보 메시지를 발송할 수 있습니다.
-* 친구를 맺지 않은 사용자의 경우에도 광고주의 마케팅 수신동의(이하 마수동) 유저 대상으로 광고성 메시지를 발송할 수 있습니다.
-* 마수동 발송을 위해서 발신 채널에 080 수신거부 정보를 등록해야 합니다.
-* 마수동 발송은 기본형(템플릿) 으로만 발송 가능합니다.
-* 브랜드 메시지는 광고성 메시지 발송이기 때문에 정보통신망법에 의거해 20:50부터 다음 날 08:00까지 발송 제한됩니다.
-* LMS/MMS보다 저렴한 비용으로 텍스트 및 이미지를 첨부하여 발송할 수 있습니다.
-* 템플릿 및 자유형 발송이 가능합니다.
-* 브랜드 메시지 발송 실패 시 문자 메시지로 대체 발송 가능합니다.
+* Allow you to send various promotional messages including advertising messages for users who have become friends.
+* Even for users who have not become friends, allow you to send advertising messages to users with marketing consent.
+* To send a marketing consent, need to 080 opt-out information on the send channel.
+* Sending a marketing consent is possible only in the basic type (template).
+* Since Brand Message is an advertising messages, it is restricted from being sent between 8:50 PM and 08:00 AM the next day in accordance with the Information and Communications Network Act.
+* Allow you to send text and images at a lower cost than LMS/MMS.
+* Template and free-form sending are possible.
+* If a brand message fails to be sent, it can be replaced with a text message.
 
-## 주요 기능
+## Main features
 
-* 메시지 발송, 조회, 이미지 관리 RESTful API를 제공합니다.
-* 콘솔에서는 메시지 발송, 조회, 이미지 관리 내역을 조회할 수 있습니다.
-* SMS 서비스와 연계하여 080 수신거부를 관리할 수 있습니다.
-* SMS 서비스와 연계하여 대체발송 기능을 제공합니다.
+* Provide RESTful API for sending messages, viewing, and managing images.
+* Allow you to view the history of sending messages, viewing, and managing images on the console.
+* Allow you to manage 080 opt out by linking with SMS service.
+* Provide fallback feature by linking with SMS service.
 
-## 브랜드 메시지 타겟팅
+## Brand Message targeting
 
 ![friendtalkupgrade_1_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_1_20250508.png)
 
-### M: 광고주 마수동 유저(카카오톡 수신 동의)
+### M: Advertisers’ users with marketing consent
 
-* 광고주의 마수동 유저(카카오톡 수신 동의) 대상으로 광고성 메시지를 발송 처리합니다.
-* 수신자가 발송 채널의 친구가 아닌 경우, 무료수신거부 정보가 포함된 N타입의 채널 메시지로 발송 처리됩니다.
-* 무료수신거부 정보는 발송 채널의 발신 프로필에서 등록 및 관리하실 수 있습니다.
+* Send advertising messages to Advertisers’ users with marketing consent (KakaoTalk message consent)
+* If the recipient is not a friend of the send channel, the message will be sent as an N-type channel message containing free opt-out information.
+* The free opt-out information can be registered and managed from a sender profile of the send channel.
 
 ![friendtalkupgrade_02_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_2_20250508.png)
 
-### N: 광고주 마수동 유저(카카오톡 수신 동의) - 채널 친구
+### N: Advertisers’ users with marketing consent- channel friend
 
-* 광고주의 마수동 유저(카카오톡 수신 동의)에서 채널 친구를 제외하고 광고성 메시지를 발송 처리합니다.
-* 수신자가 발송 채널의 친구가 아님으로, 무료수신거부 정보가 포함된 N타입의 채널 메시지로 발송 처리됩니다.
-* 무료수신거부 정보는 발송 채널의 발신 프로필에서 등록 및 관리하실 수 있습니다.
+* Send advertising messages to advertisers’ users with marketing consent (KakaoTalk message consent), except channel friends.
+* As the recipient is not a friend of the send channel, the message will be sent as an N-type channel message containing free opt-out information.
+* The free opt-out information can be registered and managed from a sender profile of the send channel.
 
 ![friendtalkupgrade_03_20250508.png](https://static.toastoven.net/prod_alimtalk/friendtalkupgrade/friendtalkupgrade_3_20250508.png)
 
-### I: 광고주 발송 요청 대상 ∩ 채널 친구
+### I: Target of advertiser sending request ∩ Channel friend
 
-* 광고주 발송 요청 대상에서, 채널 친구인 경우에만 광고성 메시지를 발송 처리합니다.
+* For advertiser sending requests, advertising messages are sent only to channel friends.
 
-## 브랜드 메시지 발송 지원 타입
+## Brand message sending support type
 
-- **기본형(템플릿)으로 등록 시, 모든 발송 지원 타입에 대해 '마수동' 유저를 대상으로 타겟팅 옵션 M과 N을 사용하여 발송할 수 있습니다.**<br>
-    - 채널 친구 대상으로 발송을 원하실 경우 타겟팅 옵션 I를 사용해야 합니다.
-- 자유형 발송은 '마수동' 유저를 대상으로 타겟팅 옵션 M과 N을 사용할 수 없습니다.
+- **When registering as a basic type (template), you can use targeting options M and N to target users with “marketing consent” for all sending support types.**<br>
+  - If you want to send to channel friends, you must use the targeting option I.
+- Free form sending cannot use targeting options M and N for users with “marketing consent”.
 
-| 구분              | 설명                                                                                                                                                                                                                                                                                                                                                            | 카카오 이미지 업로드 규격                                                                                                                                                                                                |
-|:----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **텍스트**         | - 텍스트 타입의 경우 "메시지 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 메시지 필드는 필수이며, 최대 1,300자까지 등록 가능합니다. 버튼 및 쿠폰 필드는 선택입니다.<br>-`chat_bubble_type: "TEXT"`이 이에 해당합니다.                                                                                                                                                                                                               | 이미지 없음                                                                                                                                                                                                        |
-| **이미지**         | - 이미지 타입의 경우 "이미지 + 메시지 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 이미지와 메시지 필드는 필수이며, 메시지는 최대 400자까지 등록 가능합니다. 버튼 및 쿠폰 필드는 선택입니다.<br>- 이미지의 경우, 일반 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>-`chat_bubble_type: "IMAGE"`이 이에 해당합니다.                                                                                                                                              | 권장 사이즈: 800 X 400px (가로 500px 이상)<br>가로 세로 비율: 2:1 이상, 3:4 이하<br>파일 형식 및 용량 제한: JPG, PNG / 최대 5MB                                                                                                             |
-| **와이드 이미지**     | - 와이드 이미지 타입의 경우 "와이드 이미지 + 메시지 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 와이드 이미지와 메시지 필드는 필수이며, 메시지는 최대 76자까지 등록 가능합니다. 버튼 및 쿠폰 필드는 선택입니다.<br>- 와이드 이미지의 경우, 와이드 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>-`chat_bubble_type: "WIDE"`이 이에 해당합니다.                                                                                                                               | 권장 사이즈: 800 X 600px(가로 500px 이상)<br>가로 세로 비율: 2:1 이상, 1:1 이하<br>파일 형식 및 용량 제한: JPG, PNG / 최대 5MB                                                                                                              |
-| **와이드 아이템 리스트** | - 와이드 리스트 타입의 경우 "헤더 + 1,2,3,4 아이템 리스트 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 헤더 필드와 아이템 리스트(최소: 3, 최대: 4)는 필수이며, 버튼 및 쿠폰 필드는 선택입니다.<br>- 아이템 이미지의 경우, 첫 번째 와이드 아이템 이미지 업로드 API 또는 일반 와이드 아이템 리스트 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>- `chat_bubble_type: "WIDE_ITEM_LIST"`이 이에 해당합니다.                                                                                 | **첫번째 이미지**<br>  - 제한 사이즈: 가로 500px 이상<br>  - 가로 세로 비율: 2:1<br>  - 파일 형식 및 용량 제한: JPG, PNG / 최대 5MB<br> **이 외 이미지**<br>  - 제한 사이즈: 가로 500px 이상<br>  - 가로 세로 비율: 1:1<br>  - 파일 형식 및 크기: JPG, PNG / 각 파일 최대 5MB |
-| **캐러셀 피드**      | - 캐러셀 피드 타입의 경우 "1~6 캐러셀 리스트 + 더보기"로 구성되어 있습니다.<br>- 캐러셀 리스트(최소: 2, 최대:6)는 필수이며, 더보기는 선택입니다.<br>- 캐러셀 리스트 이미지의 경우, 캐러셀 피드 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>- `chat_bubble_type: "CAROUSEL_FEED"`이 이에 해당합니다.                                                                                                                                                | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br>가로 세로 비율: 2:1 이상, 3:4 이하<br>파일 형식 및 용량 제한: JPG, PNG / 최대 5MB                                                                                              |
-| **프리미엄 동영상**    | - 프리미엄 동영상 타입의 경우 "비디오 + 헤더 + 메시지 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 비디오 필드는 필수이며, 헤더, 메시지, 버튼, 쿠폰 필드는 선택입니다.<br>- 비디오 링크는 카카오TV에 업로드된 영상만 사용 가능합니다. (`https://tv.kakao.com/v/#{숫자}` / `https://tv.kakao.com/channel/#{숫자}/cliplink/#{숫자}`)<br>-`chat_bubble_type: "PREMIUM_VIDEO"`이 이에 해당합니다.                                                                      | 이미지 없음                                                                                                                                                                                                        |
-| **커머스**         | - 커머스 타입의 경우 "커머스 이미지 + 커머스 요소 + 부가 정보 + 버튼 + 쿠폰"으로 구성되어 있습니다.<br>- 커머스 이미지와 커머스 요소는 필수이며, 부가 정보, 버튼, 쿠폰 필드는 선택입니다.<br>- 커머스 요소에서, 상품 제목(`title`) 및 정상 가격(`regular_price`) 값은 필수입니다.<br>- 커머스 이미지의 경우, 일반 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>- `chat_bubble_type: "COMMERCE"`이 이에 해당합니다.                                                                     | 권장 사이즈: 800 X 400px(가로 500px 이상)<br>가로 세로 비율: 2:1 이상, 3:4 이하<br>파일 형식 및 용량 제한: JPG, PNG / 최대 5MB                                                                                                              |
-| **캐러셀 커머스**     | - 캐러셀 커머스 타입의 경우 "캐러셀 인트로 + 1~6 캐러셀 리스트 + 더보기"로 구성되어 있습니다.<br>- 캐러셀 리스트는 필수이며, 캐러셀 인트로와 더보기는 선택입니다.<br>- 캐러셀 인트로를 사용하는 경우, 캐러셀 리스트는 최소 1개 이상 최대 5개 이하로 구성해야 합니다.<br>- 캐러셀 인트로를 사용하지 않은 경우, 캐러셀 리스트는 최소 2개 이상 최대 6개 이하로 구성해야 합니다.<br>- 캐러셀 인트로 및 리스트 이미지의 경우, 캐러셀 커머스 이미지 업로드 API로 업로드한 이미지를 사용해야 합니다.<br>- `chat_bubble_type: "CAROUSEL_COMMERCE"`이 이에 해당합니다. | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br>가로 세로 비율: 2:1 이상, 3:4 이하 (전체 이미지 비율이 동일)<br>파일 형식 및 용량 제한: JPG, PNG / 최대 5MB                                                                              |
+| Category| Description| Kakao image upload specifications|
+|:----------|:----------|:----------|
+| **Text**| \- Text types consist of “message + button + coupon”.<br>- Message field is required and can contain up to 1,300 characters. The button and coupon fields are optional.<br>-`chat_bubble_type: "TEXT"` is applicable for this.| No image|
+| **Image**| \- Image types consist of “image + message + button + coupon”.<br>- Image and message fields are required, and messages can contain up to 400 characters. The button and coupon fields are optional.<br>- For images, you must use images uploaded using the general image upload API.<br>-`chat_bubble_type: "IMAGE"` is applicable for this.| Recommended size: 800 X 400px (500px or more in width)<br>Aspect ratio: 2:1 or more, 3:4 or less<br>file format and capacity limit: JPG, PNG / up to 5MB|
+| **Wide image**| \- Wide image types consist of “wide image + message + button + coupon”.<br>- Wide image and message fields are required, and messages can contain up to 76 characters. The button and coupon fields are optional.<br>- For wide images, you must use images uploaded using the wide image upload API.<br>-`chat_bubble_type: "WIDE"` is applicable for this.| Recommended size: 800 X 600px (500px or more in width)<br>Aspect ratio: 2:1 or more, 1:1 or less<br>file format and capacity limit: JPG, PNG / up to 5MB|
+| **Wide item list**| \- Wide list type consists of "header + 1,2,3,4 item list + button + coupon".<br>- Header field and item list (minimum: 3, maximum: 4\) are required, and the button and coupon fields are optional.<br>- For item images, you must use images uploaded using the first wide item image upload API or the general wide item list image upload API..<br>- `chat_bubble_type: "WIDE_ITEM_LIST"` is applicable for this.| **First image**<br>  - Limited size: 500px or more in width<br>  - Aspect ratio: 2:1<br>  - File format and capacity limit: JPG, PNG / up to 5MB<br> **Other images**<br>  - Limited size: 500px or more in width<br>  - Aspect ratio: 1:1<br>  - File format and size: JPG, PNG / up to 5MB for each file|
+| **Carousel feed**| \- Carousel feed consists of “1 to 6 carousel list + more”.<br>- Carousel list (minimum: 2, maximum:6) is required, and More is optional.<br>- For carousel list images, you must use images uploaded using the carousel feed image upload API.<br>- `chat_bubble_type: "CAROUSEL_FEED"` is applicable for this.| Recommended size: 800 X 600px or 800 X 400px (500px or more in width)<br>Aspect ratio: 2:1 or more, 3:4 or less<br>file format and capacity limit: JPG, PNG / up to 5MB|
+| **Premium video**| \- Premium video consists of “video + header + message + button + coupon”.<br>- Video field is required, and header, message, button, coupon fields are optional.<br>- Video links can only be used for videos uploaded to Kakao TV. (`https://tv.kakao.com/v/#{숫자}` / `https://tv.kakao.com/channel/#{숫자}/cliplink/#{숫자}`)<br>-`chat_bubble_type: "PREMIUM_VIDEO"` is applicable for this.| No image|
+| **Commerce**| \- Commerce type consists of "commerce image + commerce element + additional information + button + coupon".<br>- Commerce images and commerce elements are required, while additional information, buttons, and coupon fields are optional.<br>- In commerce element, product title (`title`) and regular price (`regular_price`) values are required.<br>- For commerce images, you must use images uploaded using the general image upload API.<br>- `chat_bubble_type: "COMMERCE"` is applicable for this.| Recommended size: 800 X 400px (500px or more in width)<br>Aspect ratio: 2:1 or more, 3:4 or less<br>file format and capacity limit: JPG, PNG / up to 5MB|
+| **Carousel commerce**| \- Carousel commerce type consists of "carousel intro + 1 to 6 carousel list + more".<br>- Carousel list is required, and carousel intro and more are optional.<br>- When using a carousel intro, the carousel list must consist of at least 1 and no more than 5 items.<br>- If you do not use a carousel intro, your carousel list must consist of at least 2 and no more than 6 items.<br>- For carousel intro and list images, you must use images uploaded using the carousel commerce image upload API.<br>- `chat_bubble_type: "CAROUSEL_COMMERCE"` is applicable for this.| Recommended size: 800 X 600px or 800 X 400px (500px or more in width)<br>Aspect ratio: 2:1 or more, 3:4 or less (same aspect ratio for the entire image) <br>File format and capacity limit: JPG, PNG / up to 5MB|
 
-## 발송 전 유의사항
+## Precautions before sending
 
-비친구 메시지 발송(타겟팅 M, N)은 아래 조건을 모두 만족할 경우 발송할 수 있습니다.
+Non-friend message sending (targeting M, N) can be sent if all the conditions below are met:
 
-- 비즈니스 인증 채널
-- 사업자번호 등록
-- 채널 고객센터 전화번호 등록
-- 채널 친구 수 5만 이상
-- 3개월 내 알림톡 발송 성공 이력 보유
+- Business verification channel
+- Register a business registration number
+- Register a channel customer service center phone number
+- 50,000 or more channel friends
+- Successfully send notification messages within the past three months
 
-재판매사는 메시지 신고 시 KISA로 전달될 재판매사 코드를 추가 등록해야 합니다.
+Resellers must additionally register a reseller code to be transmitted to KISA when reporting messages.
 
-- 재판매사 코드 추가가 필요 경우 [[고객 센터 > 1:1 문의]](https://www.nhncloud.com/kr/support/inquiry)를 통해 요청하세요.
+- If you need to add a reseller code, please request one through [Customer Center > 1:1 Inquiry].
 
-## 개인정보 수탁사 고지 안내
+## Notice of personal information consignee
 
-고객사에서 NHN Cloud > Notification > KakaoTalk Bizmessage 서비스 이용 시, 고객사와 당사 간 개인정보 처리에 관한 업무 위수탁 관계가 발생하는 바 정보통신망법 및 개인정보보호법에 따라 위탁자인 고객사는 개인정보 처리방침을 통해 당사에 개인정보를
-위탁한 현황(수탁자 및 업무의 내용)을 공개해야 합니다.
+When a customer uses NHN Cloud > Notification > KakaoTalk Bizmessage service, a business entrustment relationship regarding the processing of personal information occurs between the customer and our company. Therefore, in accordance with the Information and Communications Network Act and the Personal Information Protection Act, the customer, as the consignor, must disclose the status of the personal information entrusted to us (the trustee and the details of the work) through the personal information processing policy.
 
-이에, 당사에서는 고객사가 NHN Cloud의 KakaoTalk Bizmessage 서비스를 이용함에 있어 관련 법령을 준수하고, 위탁 현황 미공개로 인하여 과태료 등의 불이익을 받지 않도록 아래와 같이 가이드할 수 있습니다.
+Accordingly, our company can guide our customer companies as follows to comply with relevant laws and regulations when using NHN Cloud's KakaoTalk Bizmessage service and to avoid penalties and other disadvantages due to failure to disclose the status of the entrustment.
 
-(예시)
+(Example)
 
-[개인정보 수탁사 고지 안내]
+\[Notice of personal information consignee]
 
-KakaoTalk Bizmessage 서비스 이용 시 고객사에서 운영하는 '개인정보 처리 방침 > 위탁 현황'에 다음의 내용을 표기하십시오.
+When using the KakaoTalk Bizmessage service, please indicate the following in the “Personal Information Processing Policy > Consignment Status” operated by the client company.
 
-수탁사: 엔에이치엔클라우드(주)
+Trustee: NHN Cloud Co., Ltd.
 
-업무의 내용: 카카오톡 비즈 메시지 발송 대행
+Task description: KakaoTalk Bizmessage send service
