@@ -1,5 +1,12 @@
 ## Notification > KakaoTalk Bizmessage > 친구톡 > 개요
 
+## 친구톡 서비스 종료 안내
+* 2025-12-30(화) 친구톡 서비스 지원을 종료합니다.
+* 기존에 이용 중이신 고객께는 브랜드 메시지로 전환하실 것을 권장드립니다.
+* 자세한 사항은 [브랜드메시지 전환 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/friendtalk-compatible-api-guide)를 참고해주시기 바랍니다.
+
+---
+
 친구톡은 휴대폰 번호를 기반으로 내 카카오 채널의 친구 추가된 고객에게 이벤트, 행사 등 광고성 메시지를 포함한 다양한 메시지를 발송할 수 있는 서비스입니다.
 손쉬운 연동을 위한 RESTful API를 제공합니다.
 
