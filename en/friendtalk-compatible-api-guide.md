@@ -52,11 +52,11 @@ To support a smooth migration to Brand Message, we provide two options:
 * The compatibility send is provided **regardless of API version**.
 
 [Header]
-
-    {
-      "X-Convert-To-Brand-Message": Boolean
-    }
-
+```
+{
+  "X-Convert-To-Brand-Message": Boolean
+}
+```
 | Name | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | X-Convert-To-Brand-Message | Boolean | X | Request header for FriendTalk compatibility send. *(From **December 30, 2025**, requests **without** `X-Convert-To-Brand-Message: true` will be rejected at the request stage.)* |

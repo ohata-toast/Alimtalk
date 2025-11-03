@@ -52,10 +52,11 @@
 * 互換送信は **API バージョンに依存せず** 利用できます。
 
 [Header]
-
-    {
-      "X-Convert-To-Brand-Message": Boolean
-    }
+```
+{
+  "X-Convert-To-Brand-Message": Boolean
+}
+```
 
 | 名前 | 型 | 必須 | 説明 |
 | :--- | :--- | :--- | :--- |

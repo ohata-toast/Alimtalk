@@ -52,10 +52,11 @@ To support a smooth migration to Brand Message, we provide two options:
 * The compatibility send is provided **regardless of API version**.
 
 [Header]
-
-    {
-      "X-Convert-To-Brand-Message": Boolean
-    }
+```
+{
+  "X-Convert-To-Brand-Message": Boolean
+}
+```
 
 | Name | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
