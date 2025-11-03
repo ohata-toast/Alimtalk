@@ -3,7 +3,7 @@
 ## Overview
 
 * Kakao’s **FriendTalk service** will end on **Wednesday, December 31, 2025**.*  
-* Accordingly, **NHN Cloud** will discontinue FriendTalk on **Tuesday, December 30, 2025**.*
+* Accordingly, **NHN Cloud** will discontinue FriendTalk on **Wednesday, December 31, 2025**.*
 
 |  | Details |
 | :--- | :--- |
