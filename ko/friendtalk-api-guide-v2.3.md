@@ -157,7 +157,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String   | X   | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우 대체 발송에 실패할 수 있습니다.)</span>                                                    |
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                              |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                            |
 
 #### 이미지형 / 와이드 이미지형 발송 요청
 
@@ -251,7 +251,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String   | X   | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우 대체 발송에 실패할 수 있습니다.)</span>                                                    |
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                              |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                            |
 
 #### 와이드 아이템 리스트형 발송 요청
 
@@ -377,7 +377,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String   | X   | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우 대체 발송에 실패할 수 있습니다.)</span>                                                    |
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                              |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                            |
 
 #### 캐러셀 피드형 발송 요청
 
@@ -516,7 +516,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String   | X   | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우 대체 발송에 실패할 수 있습니다.)</span>                                                   |
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                             |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                          |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 [예시]
 

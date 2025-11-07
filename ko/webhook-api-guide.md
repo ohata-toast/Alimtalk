@@ -56,24 +56,24 @@ curl -X POST \
 ### 이벤트 유형별 hooks 정의
 웹훅 설정에 정의된 URL로 POST 요청을 생성할 때 이벤트 타입별 훅(hook) 데이터입니다.
 #### 템플릿 상태/문의 업데이트
-|값|	타입|	설명|
-|---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
-|- senderKey|	String|	발신 키 |
-|- templateCode|	String| 템플릿 코드 |
-|- kakaoTemplateCode|	String| 원본 템플릿 코드 |
-|- status|	String| 템플릿 상태(TSC01: 요청, TSC02: 검수 중, TSC03: 승인, TSC04: 반려) |
-|- comments|	List| 검수 결과 |
-|-- id|	String| 문의 아이디|
-|-- content|	String|문의 내용 |
-|-- userName|	String|작성자 |
-|-- createdAt|	String|등록 날짜 |
-|-- attachment|	List|첨부 파일 |
-|--- originalFileName|	String|첨부 파일명 |
-|--- filePath|	String|첨부 파일 경로 |
-|-- status|	String| 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변) |
-|- updateDate|	String| 수정 일자 |
+|값| 	타입          | 	설명                                                   |
+|---|--------------|-------------------------------------------------------|
+|hooks| 	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                       |
+|- hookId| 	String      | 서비스에서 이벤트가 발생할 때 생성되는 고유 ID                           |
+|- senderKey| 	String      | 	발신 키                                                 |
+|- templateCode| 	String      | 템플릿 코드                                                |
+|- kakaoTemplateCode| 	String      | 원본 템플릿 코드                                             |
+|- status| 	String      | 템플릿 상태(TSC01: 요청, TSC02: 검수 중, TSC03: 승인, TSC04: 반려)  |
+|- comments| 	List        | 검수 결과                                                 |
+|-- id| 	Integer     | 문의 아이디                                                |
+|-- content| 	String      | 문의 내용                                                 |
+|-- userName| 	String      | 작성자                                                   |
+|-- createdAt| 	String      | 등록 날짜                                                 |
+|-- attachment| 	List        | 첨부 파일                                                 |
+|--- originalFileName| 	String      | 첨부 파일명                                                |
+|--- filePath| 	String      | 첨부 파일 경로                                              |
+|-- status| 	String      | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중) |
+|- updateDate| 	String      | 수정 일자                                                 |
 
 ```json
 "hooks": [
