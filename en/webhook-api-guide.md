@@ -57,7 +57,7 @@ curl -X POST \
 Hook data per event type when generating a POST request to the URL defined in the webhook settings.
 #### Update template status/questions
 |Value|	Type|	Descriptions|
-|---|---|---|
+|---|--------------|-------------------------------------------------------|
 |hooks|	List<Map> | Data when a webhook event occurs |
 |- hookId|	String| A unique ID created when an event occurs in a service |
 |- senderKey|	String|	Sender Key |
@@ -65,14 +65,14 @@ Hook data per event type when generating a POST request to the URL defined in th
 |- kakaoTemplateCode|	String| Original template code |
 |- status|	String| Template status (TSC01: Requested, TSC02: Reviewing, TSC03: Approved, TSC04: Rejected) |
 |- comments|	List| Inspection result |
-|-- id|	String| Inquiry ID|
+|-- id|	Integer     | Inquiry ID|
 |-- content|	String|Inquiries |
 |-- userName|	String|Creator |
 |-- createdAt|	String|Date of registration |
 |-- attachment|	List|Attachment |
 |--- originalFileName|	String|Attachment file name |
 |--- filePath|	String|Attachment file path |
-|-- status|	String| Comment status (INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied) |
+|-- status|	String| Comment status (INQ: Inquired, APR: Approved, REJ: Rejected, REP: Replied, REQ: Reviewing) |
 |- updateDate|	String| Modification date |
 
 ```json

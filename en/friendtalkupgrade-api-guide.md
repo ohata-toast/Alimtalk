@@ -1313,7 +1313,7 @@ Content-Type: application/json;charset=UTF-8
 | \- targeting| String| O| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- templateParameter| Object| X| Template parameter (required if including variables to be replaced in the template)|
 | \- imageParameters| List| X| Dynamic parameters that can change the template image field value, carousel type is currently not supported (only JSON list with the same size as the number of images in the template can be used. If used, images that do not want to be changed must be entered as an empty JSON object)|
-| \-- imageUrl| String| X| Image URL (Not Null if image object exists)|
+| \-- imageUrl| String| O| Image URL |
 | \-- imageLink| String| X| Image link|
 | \- resendParameter| Object| X| Fallback Information|
 | \-- isResend| boolean| X| Fallback text status if sending fails<br>When setting up fallbacks in the console, fallbacks will be sent by default.|
@@ -1777,67 +1777,6 @@ Content-Type: application/json;charset=UTF-8
 | \- createUser| String| X| Registrant (stored as user UUID when sent from console)|
 | \- senderGroupingKey| String| X| Outgoing grouping key|
 | \- recipientGroupingKey| String| X| Recipient grouping key|
-
-## Cancel message sending
-
-#### Requested
-
-\[URL]
-
-```
-DELETE  /brand-message/v1.0/appkeys/{appkey}/messages/{requestId}
-Content-Type: application/json;charset=UTF-8
-```
-
-\[Path parameter]
-
-| Name| Type| Description|
-|----------|----------|----------|
-| appkey| String| Unique appkey|
-| requestId| String| Request ID|
-
-\[Header]
-
-```
-{
-  "X-Secret-Key": String
-}
-```
-
-| Name| Type| Required| Description|
-|----------|----------|----------|----------|
-| X-Secret-Key| String| O| Available to create from the console.|
-
-\[Query parameter]
-
-| Name| Type| Required| Description|
-|----------|----------|----------|----------|
-| recipientSeq| String| X| Recipient sequence number<br>(If you do not enter any information, all requests for that request ID will be canceled)|
-
-#### Response
-
-```
-{
-  "header": {
-      "resultCode": Integer,
-      "resultMessage": String,
-      "isSuccessful": boolean
-  }
-}
-```
-
-| Name| Type| Not Null| Description|
-|----------|----------|:----------:|----------|
-| header| Object| X| Header zone|
-| \- resultCode| Integer| X| Result code|
-| \- resultMessage| String| X| Result message|
-| \- isSuccessful| Boolean| X| Success status|
-
-\[Example]
-
-```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brand-message/v1.0/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
-```
 
 ## Manage Templates
 
@@ -2448,18 +2387,18 @@ Content-Type: application/json;charset=UTF-8
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type<br>No placeholders available|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register image type template
 
@@ -2505,22 +2444,22 @@ Content-Type: application/json;charset=UTF-8
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally, 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
 | \- imageUrl| String| O| Image URL, use an image URL uploaded as a general image<br>No placeholders available|
-| \- imageLink| String| X| URL to go to when the image is clicked, limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
+| \- imageLink| String| O| URL to go to when the image is clicked, limited to 500 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register wide image type template
 
@@ -2566,22 +2505,22 @@ Content-Type: application/json;charset=UTF-8
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally, 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
 | \- imageUrl| String| O| Image URL, use an image URL uploaded as a wide image<br>No placeholders available|
-| \- imageLink| String| X| URL to go to when the image is clicked, limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
+| \- imageLink| String| O| URL to go to when the image is clicked, limited to 500 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register wide item list type template
 
@@ -2653,25 +2592,25 @@ Content-Type: application/json;charset=UTF-8
 | \- list| List| O| Wide list (minimum: 3, maximum 4)|
 | \-- title| String| O| Item title<br>- The first item is limited to up to 25 characters (linebreak: up to 1; for the first item, title is not required)<br>- For the first item, title field is not required<br>- 2 to 4th items are limited to up to 30 characters (linebreak: up 1 item)|
 | \-- imageUrl| String| O| Item image URL<br>- The first item uses the image URL uploaded as the first wide item list image.<br>- 2 to 4th items use the image URL uploaded as a general wide item list image<br>Placeholders unavailable|
-| \-- linkMo| String| O| Mobile web link, limited to 1,000 characters|
-| \-- linkPc| String| X| PC web link, limited to 1,000 characters|
-| \-- schemeAndroid| String| X| Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X| IOS app link, limited to 1,000 characters|
+| \-- linkMo| String| O| Mobile web link, limited to 500 characters|
+| \-- linkPc| String| X| PC web link, limited to 500 characters|
+| \-- schemeAndroid| String| X| Android app link, limited to 500 characters|
+| \-- schemeIos| String| X| IOS app link, limited to 500 characters|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register premium video type template
 
@@ -2723,18 +2662,18 @@ Content-Type: application/json;charset=UTF-8
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register commerce type template
 
@@ -2788,7 +2727,7 @@ Content-Type: application/json;charset=UTF-8
 | additionalContent| String| X| Additional information (up to 34 characters, linebreak: up to 1), available only for commerce type|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
 | \- imageUrl| String| O| Image URL, use an image URL uploaded as a general image<br>No placeholders available|
-| \- imageLink| String| X| URL to go to when the image is clicked, limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
+| \- imageLink| String| O| URL to go to when the image is clicked, limited to 500 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
 | commerce| Object| O| Commerce (available only for COMMERCE type)|
 | title| String| O| Product title (up to 30 characters, linebreak: unavailable)|
 | regularPrice| Integer| O| Regular price (0 to 99,999,999)<br>Cannot customize placeholders, stored as a fixed placeholder `#{regular price}` if the value is left blank|
@@ -2798,18 +2737,18 @@ Content-Type: application/json;charset=UTF-8
 | buttons| List| O| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register carousel feed type template
 
@@ -2896,27 +2835,27 @@ Content-Type: application/json;charset=UTF-8
 | \-- header| String| O| Carousel item title (up to 20 characters), available only for carousel feed type|
 | \-- message| String| O| Carousel item title (up to 20 characters), carousel item message (up to 180 characters), available only for carousel feed type|
 | \-- imageUrl| String| O| Image URL (use an image uploaded as a carousel feed type image<br>No placeholders available|
-| \-- imageLink| String| O| Image link, limited to 1,000 characters<br>No placeholders available|
+| \-- imageLink| String| O| Image link, limited to 500 characters<br>No placeholders available|
 | \-- buttons| List| O| Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \--- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \--- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \--- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \--- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \--- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \--- bizFormKey| String| X| BizForm key when the button is BF type|
 | \-- coupon| Object| X| Coupon elements|
 | \--- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \--- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X| More button information|
-| \-- linkMo| String| O| Mobile web link, limited to 1,000 characters<br>No placeholders available|
-| \-- linkPc| String| X| PC web link, limited to 1,000 characters<br>No placeholders available|
-| \-- schemeAndroid| String| X| Android app link, limited to 1,000 characters<br>No placeholders available|
-| \-- schemeIos| String| X| IOS app link, limited to 1,000 characters<br>No placeholders available|
+| \-- linkMo| String| O| Mobile web link, limited to 500 characters<br>No placeholders available|
+| \-- linkPc| String| X| PC web link, limited to 500 characters<br>No placeholders available|
+| \-- schemeAndroid| String| X| Android app link, limited to 500 characters<br>No placeholders available|
+| \-- schemeIos| String| X| IOS app link, limited to 500 characters<br>No placeholders available|
 | recipientList| List| O| Recipient list (up to 1,000)|
 | \- recipientNo| String| O| Incoming number|
 | createUser| String| X| Registrant (stored as user UUID when sent from console)|
@@ -2994,14 +2933,14 @@ Content-Type: application/json;charset=UTF-8
 | \-- header| String| O| Carousel intro header (up to 20 characters)|
 | \-- content| String| O| Carousel intro content (up to 50 characters)|
 | \-- imageUrl| String| O| Carousel intro image address (use an image uploaded as a carousel commerce type image; the used image should have the same image and ratio of the carousel.)<br>No placeholders available|
-| \-- linkMo| String| X| Mobile web link (linkMo is required if one of the linkMo, linkPc, schemeAndroid, schemeIos will be used), limited to up to 1,000 characters|
-| \-- linkPc| String| X| PC web link, limited to 1,000 characters|
-| \-- schemeAndroid| String| X| Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X| IOS app link, limited to 1,000 characters|
+| \-- linkMo| String| X| Mobile web link (linkMo is required if one of the linkMo, linkPc, schemeAndroid, schemeIos will be used), limited to up to 500 characters|
+| \-- linkPc| String| X| PC web link, limited to 500 characters|
+| \-- schemeAndroid| String| X| Android app link, limited to 500 characters|
+| \-- schemeIos| String| X| IOS app link, limited to 500 characters|
 | \- list| List| O| Carousel list (If head exists, minimum 1, maximum 5 / otherwise minimum 2, maximum 6)|
 | \-- additionalContent| String| O| Additional info (up to 34 characters), available only for carousel commerce|
 | \-- imageUrl| String| O| Image URL(use an image uploaded as a carousel commerce type image<br>No placeholders available|
-| \-- imageLink| String| O| Image link, limited to 1,000 characters<br>No placeholders available|
+| \-- imageLink| String| O| Image link, limited to 500 characters<br>No placeholders available|
 | \-- commerce| Object| O| Commerce (available only for CAROUSEL_COMMERCE type)|
 | \--- title| String| O| Product title (up to 30 characters, linebreak: unavailable)|
 | \--- regularPrice| Integer| O| Regular price (0 to 99,999,999)<br>Cannot customize placeholders, stored as a fixed placeholder `#{regular price}` if the value is left blank|
@@ -3011,23 +2950,23 @@ Content-Type: application/json;charset=UTF-8
 | \-- buttons| List| O| Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \--- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
-| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
-| \--- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
-| \--- schemeIos| String| X| IOS app link (required for AL type), limited to 1,000 characters|
+| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
+| \--- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
+| \--- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
 | \--- bizFormKey| String| X| BizForm key when the button is BF type|
 | \-- coupon| Object| X| Coupon elements|
 | \--- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
 | \--- description| String| O| Coupon details<br>- For WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO type, up to 18, linebreak: unavailable<br>- For other types, up to 12 characters, linebreak: unavailable|
-| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
-| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X| IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
+| \--- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X| More button information|
-| \-- linkMo| String| O| Mobile web link, limited to 1,000 characters<br>No placeholders available|
-| \-- linkPc| String| X| PC web link, limited to 1,000 characters<br>No placeholders available|
-| \-- schemeAndroid| String| X| Android app link, limited to 1,000 characters<br>No placeholders available|
-| \-- schemeIos| String| X| IOS app link, limited to 1,000 characters<br>No placeholders available|
+| \-- linkMo| String| O| Mobile web link, limited to 500 characters<br>No placeholders available|
+| \-- linkPc| String| X| PC web link, limited to 500 characters<br>No placeholders available|
+| \-- schemeAndroid| String| X| Android app link, limited to 500 characters<br>No placeholders available|
+| \-- schemeIos| String| X| IOS app link, limited to 500 characters<br>No placeholders available|
 
 #### Response
 
