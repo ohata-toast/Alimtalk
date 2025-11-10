@@ -107,9 +107,10 @@ This feature allows you to send brand messages to multiple recipient numbers usi
   * For free-form sending, be careful not to set M or N targeting values, as this will result in send failure.
 * If you enter content without template placeholders, the same content will be sent to all recipients.
 
-When clicking <b>Send</b> button, you can select <b>Immediate Send</b>.
+When clicking <b>Send</b> button, you can select <b>Proceed after Review</b> or <b>Immediate Send</b>.
 
-* Immediate Send: Brand messages are sent immediately without confirming recipients. You can check the progress of your shipment in the <b>View Mass Delivery</b> tab.
+* Proceed after Review: after confirming the recipient of the email within 7 days in the <b>View Mass Delivery</b> tab, a notification message will be sent. (unsupported for scheduled send.)
+* Immediate Send: AlimTalks are sent immediately without confirming the recipient. You can check the progress of your shipment in the <b>View Mass Delivery</b> tab.
 
 ### Fallback
 
