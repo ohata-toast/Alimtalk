@@ -56,24 +56,24 @@ curl -X POST \
 ### イベントタイプ別hooks定義
 Webフック設定に定義されたURLでPOSTリクエストを作成する時、イベントタイプ別フック(hook)データです。
 #### テンプレート状態/お問い合わせのアップデート
-|値|	タイプ|	説明|
-|---|---|---|
-|hooks|	List\<Map\> | Webフックイベント発生時のデータ |
-|- hookId|	String| サービスでイベントが発生した時に作成される固有のID |
-|- senderKey|	String|	発信キー |
-|- templateCode|	String| テンプレートコード |
-|- kakaoTemplateCode|	String| 原本テンプレートコード |
-|- status|	String| テンプレート状態(TSC01:リクエスト、 TSC02:検収中、 TSC03:承認、 TSC04: 否認) |
-|- comments|	List| 検収結果 |
-|-- id|	String| お問い合わせID|
-|-- content|	String|お問い合わせ内容 |
-|-- userName|	String|作成者 |
-|-- createdAt|	String|登録日 |
-|-- attachment|	List|添付ファイル |
-|--- originalFileName|	String|添付ファイル名 |
-|--- filePath|	String|添付ファイルのパス |
-|-- status|	String| コメント状態(INQ:お問い合わせ、 APR:承認、 REJ: 否認、REP: 回答) |
-|- updateDate|	String| 修正日 |
+|値| 	タイプ         | 	説明                                                  |
+|---|--------------|-------------------------------------------------------|
+|hooks| 	List\<Map\> | ウェブフックイベント発生時のデータ                                      |
+|- hookId| 	String      | サービスでイベントが発生した際に生成される固有ID                           |
+|- senderKey| 	String      | 	送信キー                                                |
+|- templateCode| 	String      | テンプレートコード                                               |
+|- kakaoTemplateCode| 	String      | 原本テンプレートコード                                            |
+|- status| 	String      | テンプレートステータス(TSC01:リクエスト、TSC02:検収中、TSC03:承認、TSC04: 差し戻し)  |
+|- comments| 	List        | 検収結果                                                |
+|-- id| 	Integer     | お問い合わせID                                                |
+|-- content| 	String      | お問い合わせ内容                                                |
+|-- userName| 	String      | 作成者                                                  |
+|-- createdAt| 	String      | 登録日                                                |
+|-- attachment| 	List        | 添付ファイル                                                |
+|--- originalFileName| 	String      | 添付ファイル名                                               |
+|--- filePath| 	String      | 添付ファイルパス                                             |
+|-- status| 	String      | コメントステータス(INQ:お問い合わせ、APR:承認、REJ: 差し戻し、REP: 回答, REQ:検収中) |
+|- updateDate| 	String      | 修正日                                                |
 
 ```json
 "hooks": [

@@ -1042,6 +1042,70 @@ Content-Type: application/json;charset=UTF-8
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
 ```
 
+### Query the Number of Message Result Updates
+
+#### Request
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/message-results/count
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| Name     | 	Type     | 	Description     |
+|--------|---------|---------|
+| appkey | 	String | 	Unique appkey |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| Name           | 	Type     | 	Required | 	Description              |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | 	String | O   | Create it in the console. |
+
+[Query parameter]
+
+| Name                  | 	Type      | 	Required | 	Description                                 |
+|---------------------|----------|-----|-------------------------------------|
+| startUpdateDate     | 	String  | 	O  | Result update query start time (yyyy-MM-dd HH:mm)  |
+| endUpdateDate       | 	String  | O   | 	Result update query end time (yyyy-MM-dd HH:mm) |
+| alimtalkMessageType | 	String  | X   | 	AlimTalk message type (NORMAL, AUTH)           |
+
+#### Response
+
+```
+{
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "totalCount": Integer
+}
+```
+
+| Name              | Type      | Not Null | Description     |
+|-----------------|---------|:--------:|--------|
+| header          | Object  |    O     | Header area  |
+| - resultCode    | Integer |    O     | Result code  |
+| - resultMessage | String  |    O     | Result message |
+| - isSuccessful  | Boolean |    O     | Successful or not  |
+| totalCount      | Integer |    O     | Total cases   |
+
+[Example]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/message-results/count?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
+```
+
 ### Status Code of SMS/LMS Resending
 | Name |	Description|
 |---|---|
