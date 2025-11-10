@@ -1778,6 +1778,67 @@ Content-Type: application/json;charset=UTF-8
 | \- senderGroupingKey| String| X| Outgoing grouping key|
 | \- recipientGroupingKey| String| X| Recipient grouping key|
 
+## Cancel message sending
+
+#### Requested
+
+\[URL]
+
+```
+DELETE  /brand-message/v1.0/appkeys/{appkey}/messages/{requestId}
+Content-Type: application/json;charset=UTF-8
+```
+
+\[Path parameter]
+
+| Name| Type| Description|
+|----------|----------|----------|
+| appkey| String| Unique appkey|
+| requestId| String| Request ID|
+
+\[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| Name| Type| Required| Description|
+|----------|----------|----------|----------|
+| X-Secret-Key| String| O| Available to create from the console.|
+
+\[Query parameter]
+
+| Name| Type| Required| Description|
+|----------|----------|----------|----------|
+| recipientSeq| String| X| Recipient sequence number<br>(If you do not enter any information, all requests for that request ID will be canceled)|
+
+#### Response
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  }
+}
+```
+
+| Name| Type| Not Null| Description|
+|----------|----------|:----------:|----------|
+| header| Object| X| Header zone|
+| \- resultCode| Integer| X| Result code|
+| \- resultMessage| String| X| Result message|
+| \- isSuccessful| Boolean| X| Success status|
+
+\[Example]
+
+```
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/brand-message/v1.0/appkeys/{appkey}/messages/{requestId}?recipientSeq=1,2,3"
+```
+
 ## Manage Templates
 
 ### View template list
