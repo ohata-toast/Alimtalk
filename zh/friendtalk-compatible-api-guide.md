@@ -7,7 +7,7 @@
 
 |  | Details |
 | :--- | :--- |
-| **Service End Date** | After the regular **Notification** maintenance on Tuesday, December 30, 2025 |
+| **Service End Date** | After the regular **Notification** maintenance on Wednesday, December 31, 2025 |
 | **Impact Scope** | *All FriendTalk features, including message sending, will be discontinued.* |
 | **Exception (Temporary Support)** | Only a **FriendTalk Compatibility Send** will be provided temporarily<br>(Send API, Send Query API, and result query via Console) |
 
