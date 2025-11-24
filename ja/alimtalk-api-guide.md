@@ -1202,6 +1202,70 @@ Content-Type: application/json;charset=UTF-8
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/auth/messages?startRequestDate=2018-05-01%20:00&endRequestDate=2018-05-30%20:59"
 ```
 
+### メッセージ結果アップデート件数の照会
+
+#### リクエスト
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/message-results/count
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 名前    | 	タイプ    | 	説明    |
+|--------|---------|---------|
+| appkey | 	String | 	固有のアプリキー |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 名前          | 	タイプ    | 	必須 | 	説明             |
+|--------------|---------|-----|------------------|
+| X-Secret-Key |	String | O | コンソールで作成できます。 |
+
+[Query parameter]
+
+| 名前                 | 	タイプ     | 	必須 | 	説明                                |
+|---------------------|----------|-----|-------------------------------------|
+| startUpdateDate     | 	String  | 	O  | 結果アップデート照会開始時間(yyyy-MM-dd HH:mm)  |
+| endUpdateDate       | 	String  | O   | 	結果アップデート照会終了時間(yyyy-MM-dd HH:mm) |
+| alimtalkMessageType | 	String  | X   | 	お知らせトークのメッセージタイプ(NORMAL, AUTH)           |
+
+#### レスポンス
+
+```
+{
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "totalCount": Integer
+}
+```
+
+| 名前             | タイプ     | Not Null | 説明    |
+|-----------------|---------|:--------:|--------|
+| header          | Object  |    O     | ヘッダ領域 |
+| - resultCode    | Integer |    O     | 結果コード |
+| - resultMessage | String  |    O     | 結果メッセージ |
+| - isSuccessful  | Boolean |    O     | 成否 |
+| totalCount      | Integer |    O     | 総件数  |
+
+[例]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/message-results/count?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
+```
+
 #### SMS/LMS再送信ステータス
 | 値 | 説明                      |
 | ----- | ------------------------------- |

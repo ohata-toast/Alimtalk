@@ -1,7 +1,7 @@
 ## Notification > KakaoTalk Bizmessage > 친구톡 > API v2.2 가이드
 
 ## 친구톡 서비스 종료 안내
-* 2025-12-30(화) 친구톡 서비스 지원을 종료합니다.
+* 2025-12-31(수) 친구톡 서비스 지원을 종료합니다.
 * 기존에 이용 중이신 고객께는 브랜드 메시지로 전환하실 것을 권장드립니다.
 * 자세한 사항은 [브랜드메시지 전환 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/friendtalk-compatible-api-guide)를 참고해주시기 바랍니다.
 
@@ -129,7 +129,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resendUnsubscribeNo | String| X| 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
 |- isAd | Boolean | X |	광고 여부(기본값 true) |
 |- recipientGroupingKey|	String|	X|	수신자 그룹핑 키(최대 100자) |
-| statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자) |
+| statsId | String |	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자) |
 
 * <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>야간 발송 제한(20:50~다음 날 08:00)</b>

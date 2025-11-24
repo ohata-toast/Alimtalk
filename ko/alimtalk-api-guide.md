@@ -139,7 +139,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption          | Object   | 	X  | 메시지 옵션                                                                                        |
 | - price                | Integer  | 	X  | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당)                                                   |
 | - currencyType         | String   | 	X  | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당)                |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                            |
 
 * <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
 * <b>SMS 서비스에서 대체 발송되므로, SMS 서비스의 발송 API 명세에 따라 필드를 입력해야 합니다.(SMS 서비스에 등록된 발신 번호, 각종 필드 길이 제한 등)</b>
@@ -377,7 +377,7 @@ Content-Type: application/json;charset=UTF-8
 | messageOption           | Object   | 	X  | 메시지 옵션                                                                                                                                                                     |
 | - price                 | Integer  | 	X  | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액(모먼트 광고에 해당)                                                                                                                                |
 | - currencyType          | String   | 	X  | 사용자에게 전달될 메시지 내 포함된 가격/금액/결제 금액의 통화 단위 KRW, USD, EUR 등 국제 통화 코드 사용(모먼트 광고에 해당)                                                                                             |
-| statsId                 | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                                         |
+| statsId                 | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                         |
 
 * <b>본문과 버튼에 치환이 완성된 데이터를 넣어주세요.</b>
 * <b>요청 일시는 호출하는 시점부터 60일 후까지 설정 가능합니다.</b>
@@ -1078,6 +1078,70 @@ Content-Type: application/json;charset=UTF-8
 
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/message-results?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
+```
+
+### 메시지 결과 업데이트 건수 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/message-results/count
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름     | 	타입     | 	설명     |
+|--------|---------|---------|
+| appkey | 	String | 	고유의 앱키 |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름           | 	타입     | 	필수 | 	설명              |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | 	String | O   | 콘솔에서 생성할 수 있습니다. |
+
+[Query parameter]
+
+| 이름                  | 	타입      | 	필수 | 	설명                                 |
+|---------------------|----------|-----|-------------------------------------|
+| startUpdateDate     | 	String  | 	O  | 결과 업데이트 조회 시작 시간(yyyy-MM-dd HH:mm)  |
+| endUpdateDate       | 	String  | O   | 	결과 업데이트 조회 종료 시간(yyyy-MM-dd HH:mm) |
+| alimtalkMessageType | 	String  | X   | 	알림톡 메시지 타입(NORMAL, AUTH)           |
+
+#### 응답
+
+```
+{
+  "header": {
+    "resultCode": Integer,
+    "resultMessage": String,
+    "isSuccessful": boolean
+  },
+  "totalCount": Integer
+}
+```
+
+| 이름              | 타입      | Not Null | 설명     |
+|-----------------|---------|:--------:|--------|
+| header          | Object  |    O     | 헤더 영역  |
+| - resultCode    | Integer |    O     | 결과 코드  |
+| - resultMessage | String  |    O     | 결과 메시지 |
+| - isSuccessful  | Boolean |    O     | 성공 여부  |
+| totalCount      | Integer |    O     | 총 건수   |
+
+[예시]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/message-results/count?startUpdateDate=2018-05-01%20:00&endUpdateDate=2018-05-30%20:59"
 ```
 
 ### SMS/LMS 대체 발송 상태 코드

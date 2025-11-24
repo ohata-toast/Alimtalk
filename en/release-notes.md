@@ -1,5 +1,29 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### November 25, 2025
+
+* [Console] Added the feature to send after confirming brand messages
+    * A feature has been added to allow pre-shipment confirmation when sending brand messages in bulk.
+    * Final confirmation is now possible before mass sending through the pre-shipment confirmation feature.
+
+* [Console] Improved image personalization field input for mass brand message delivery
+    * The format of the image personalization field in the recipient upload file for mass brand message sending has been improved.
+    * Previously downloaded recipient uploads Excel and CSV files may not be valid.
+
+* [API, Console] Improved validation of brand message personalization fields
+    * Validation of brand message personalization fields has been improved to meet Kakao specifications.
+    * More accurate validation of personalization field input prevents delivery failures.
+
+* [Console] Changed brand message link field specification changes
+    * The link field specification for free-form brand messages has been changed to 1,000 characters, and the template link field specification has been changed to 500 characters, aligning with Kakao specifications.
+    * You can send messages by setting the link field to the updated specifications.
+
+* [API] Improved brand message fallback action
+    * When sending a brand message, if the resendParameter is not entered, fallback will now occur according to default settings.
+
+* [API] Added API for AlimTalk Result Query Count
+* An API that responds with the same conditions as the Result Query API has been added.
+
 ### October 28, 2025
 * [API, Console] Changed the validity of the AlimTalk template
     * The maximum character limit for the AlimTalk template has been increased from 1,000 to 1,300 characters, allowing you to send longer messages.

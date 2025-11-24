@@ -1,7 +1,7 @@
 ## Notification > KakaoTalk Bizmessage > 친구톡 > API v2.4 가이드
 
 ## 친구톡 서비스 종료 안내
-* 2025-12-30(화) 친구톡 서비스 지원을 종료합니다.
+* 2025-12-31(수) 친구톡 서비스 지원을 종료합니다.
 * 기존에 이용 중이신 고객께는 브랜드 메시지로 전환하실 것을 권장드립니다.
 * 자세한 사항은 [브랜드메시지 전환 가이드](https://docs.nhncloud.com/ko/Notification/KakaoTalk%20Bizmessage/ko/friendtalk-compatible-api-guide)를 참고해주시기 바랍니다.
 
@@ -155,7 +155,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String   | X   | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신 거부 번호가 아닐 경우 대체 발송에 실패할 수 있습니다.)</span>                                                    |
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                              |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                            |
 
 #### 이미지형 / 와이드 이미지형 발송 요청
 
@@ -251,7 +251,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean  | X   | 	광고 여부(기본값 true)                                                                                                                                              |
 | - adult                | Boolean  | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                         |
 | - recipientGroupingKey | 	String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                            |
+| statsId                | String   | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                            |
 
 #### 와이드 아이템 리스트형 발송 요청
 
@@ -379,7 +379,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | X   | 광고 여부(기본값 true)                                                                                                                                              |
 | - adult                | Boolean | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                        |
 | - recipientGroupingKey | String  | 	X  | 수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String  | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String  | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 #### 캐러셀 피드형 발송 요청
 
@@ -520,7 +520,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | O   | 광고 여부(캐러셀 피드형은 광고 타입만 발송 가능)                                                                                                                                 |
 | - adult                | Boolean | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                        |
 | - recipientGroupingKey | String  | X   | 수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 #### 캐러셀 커머스형 발송 요청
 
@@ -650,10 +650,10 @@ Content-Type: application/json;charset=UTF-8
 | --- header             | String  | O   | 캐러셀 인트로 헤더(최대 20자)                                                                                                                                           |  
 | --- content            | String  | O   | 캐러셀 인트로 내용(최대 50자)                                                                                                                                           |
 | --- imageUrl           | String  | O   | 캐러셀 인트로 이미지 주소(사용되는 이미지는 캐러셀의 이미지와 비율이 동일해야 합니다.)                                                                                                            |
-| --- linkMo             | String  | X   | 모바일 환경에서 인트로 클릭시 이동할 웹 링크                                                                                                                                    |
-| --- linkPc             | String  | X   | PC 환경에서 인트로 클릭시 이동할 웹 링크                                                                                                                                     |
-| --- schemeIos          | String  | X   | 	iOS 환경에서 인트로 클릭시 이동할 앱 링크                                                                                                                                   |
-| --- schemeAndroid      | String  | X   | 	안드로이드 환경에서 인트로 클릭시 이동할 앱 링크                                                                                                                                 |
+| --- linkMo             | String  | X   | 모바일 환경에서 인트로 클릭 시 이동할 웹 링크                                                                                                                                    |
+| --- linkPc             | String  | X   | PC 환경에서 인트로 클릭 시 이동할 웹 링크                                                                                                                                     |
+| --- schemeIos          | String  | X   | 	iOS 환경에서 인트로 클릭 시 이동할 앱 링크                                                                                                                                   |
+| --- schemeAndroid      | String  | X   | 	안드로이드 환경에서 인트로 클릭 시 이동할 앱 링크                                                                                                                                 |
 | -- list                | List    | O   | 캐러셀 리스트(최소 2개, 최대 10개)                                                                                                                                       | 
 | --- additionalContent  | String  | X   | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능                                                                                                                             |  
 | --- attachment         | Object  | O   | 캐러셀 아이템 이미지, 버튼 정보                                                                                                                                           | 
@@ -695,7 +695,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | O   | 광고 여부(캐러셀 커머스형은 광고 타입만 발송 가능)                                                                                                                                |
 | - adult                | Boolean | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                        |
 | - recipientGroupingKey | 	String | X   | 	수신자 그룹핑 키(최대 100자)                                                                                                                                          |
-| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 * 캐러셀 커머스에 사용되는 모든 이미지는 동일한 비율이어야 합니다.
 
@@ -787,7 +787,7 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeAndroid       | String  | X   | 안드로이드 앱 링크                                                                                                                                                   |
 | - video                | Object  | O   | 비디오                                                                                                                                                          | 
 | -- videoUrl            | String  | O   | 카카오TV 동영상 URL (카카오TV에 업로드된 동영상 주소만 사용 가능)                                                                                                                    |
-| -- thumbnailUrl        | String  | X   | 동영상 썸네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능, 없는 경우 카카오TV 동영상 기본 썸네일 사용                                                                                         |
+| -- thumbnailUrl        | String  | X   | 동영상 섬네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능, 없는 경우 카카오TV 동영상 기본 섬네일 사용                                                                                         |
 | - resendParameter      | Object  | X   | 대체 발송 정보                                                                                                                                                     |
 | -- isResend            | boolean | X   | 발송 실패 시 문자 대체 발송 여부<br>콘솔에서 대체 발송 설정 시 기본으로 재발송됩니다.                                                                                                          |
 | -- resendType          | String  | X   | 대체 발송 타입(SMS, LMS)<br>값이 없을 경우 템플릿 본문 길이에 따라 타입이 구분됩니다.                                                                                                      |
@@ -798,7 +798,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | X   | 광고 여부(기본값 true)                                                                                                                                              |
 | - adult                | Boolean | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                        |
 | - recipientGroupingKey | 	String | X   | 수신자 그룹핑 키(최대 100자)                                                                                                                                           |
-| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String  | X   | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 #### 커머스형 발송 요청
 
@@ -903,7 +903,7 @@ Content-Type: application/json;charset=UTF-8
 | - isAd                 | Boolean | X   | 	광고 여부(기본값 true)                                                                                                                                             |
 | - adult                | Boolean | X   | 성인용 메시지 여부(기본값 false)                                                                                                                                        |
 | - recipientGroupingKey | String  | 	X  | 	수신자 그룹핑 키(최대 100자)                                                                                                                                          |
-| statsId                | String  | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다, 최대 8자)                                                                                                                           |
+| statsId                | String  | 	X  | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                           |
 
 [예시]
 
@@ -1325,10 +1325,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | --- header             | String  |    X     | 캐러셀 인트로 헤더(최대 20자)                                          |
 | --- content            | String  |    X     | 캐러셀 인트로 내용(최대 50자)                                          |
 | --- imageUrl           | String  |    X     | 캐러셀 인트로 이미지 주소                                              |
-| --- linkMo             | String  |    X     | 모바일 환경에서 인트로 클릭시 이동할 웹 링크                                   |
-| --- linkPc             | String  |    X     | PC 환경에서 인트로 클릭시 이동할 웹 링크                                    |
-| --- schemeIos          | String  |    X     | iOS 환경에서 인트로 클릭시 이동할 앱 링크                                   |
-| --- schemeAndroid      | String  |    X     | 안드로이드 환경에서 인트로 클릭시 이동할 앱 링크                                 |
+| --- linkMo             | String  |    X     | 모바일 환경에서 인트로 클릭 시 이동할 웹 링크                                   |
+| --- linkPc             | String  |    X     | PC 환경에서 인트로 클릭 시 이동할 웹 링크                                    |
+| --- schemeIos          | String  |    X     | iOS 환경에서 인트로 클릭 시 이동할 앱 링크                                   |
+| --- schemeAndroid      | String  |    X     | 안드로이드 환경에서 인트로 클릭 시 이동할 앱 링크                                 |
 | -- list                | List    |    X     | 캐러셀 리스트(최소 2개, 최대 10개)                                      |
 | --- header             | String  |    X     | 캐러셀 아이템 제목(최대 20자)                                          |
 | --- message            | String  |    X     | 캐러셀 아이템 메시지(최대 180자)                                        |
@@ -1371,7 +1371,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | -- schemeAndroid       | String  |    X     | 안드로이드 앱 링크                                                  |
 | - video                | Object  |    X     | 비디오                                                         |
 | -- videoUrl            | String  |    X     | 카카오TV 동영상 URL                                               |
-| -- thumbnailUrl        | String  |    X     | 동영상 썸네일용 이미지 URL                                            |
+| -- thumbnailUrl        | String  |    X     | 동영상 섬네일용 이미지 URL                                            |
 | - commerce             | Object  |    X     | 커머스                                                         |
 | -- title               | String  |    X     | 상품 제목(최대 30자)                                               |
 | -- regularPrice        | Integer |    X     | 정상가격(0 \~ 99,999,999)                                       |
@@ -1993,10 +1993,10 @@ curl -X GET \
 | --- header            | String  |    X     | 캐러셀 인트로 헤더(최대 20자)                                                                                                                                                       |
 | --- content           | String  |    X     | 캐러셀 인트로 내용(최대 50자)                                                                                                                                                       |
 | --- imageUrl          | String  |    X     | 캐러셀 인트로 이미지 주소                                                                                                                                                           |
-| --- linkMo            | String  |    X     | 모바일 환경에서 인트로 클릭시 이동할 웹 링크                                                                                                                                                |
-| --- linkPc            | String  |    X     | PC 환경에서 인트로 클릭시 이동할 웹 링크                                                                                                                                                 |
-| --- schemeIos         | String  |    X     | iOS 환경에서 인트로 클릭시 이동할 앱 링크                                                                                                                                                |
-| --- schemeAndroid     | String  |    X     | 안드로이드 환경에서 인트로 클릭시 이동할 앱 링크                                                                                                                                              |
+| --- linkMo            | String  |    X     | 모바일 환경에서 인트로 클릭 시 이동할 웹 링크                                                                                                                                                |
+| --- linkPc            | String  |    X     | PC 환경에서 인트로 클릭 시 이동할 웹 링크                                                                                                                                                 |
+| --- schemeIos         | String  |    X     | iOS 환경에서 인트로 클릭 시 이동할 앱 링크                                                                                                                                                |
+| --- schemeAndroid     | String  |    X     | 안드로이드 환경에서 인트로 클릭 시 이동할 앱 링크                                                                                                                                              |
 | -- list               | List    |    X     | 캐러셀 리스트(최소 2개, 최대 10개)                                                                                                                                                   |
 | --- header            | String  |    X     | 캐러셀 아이템 제목(최대 20자)                                                                                                                                                       |
 | --- message           | String  |    X     | 캐러셀 아이템 메시지(최대 180자)                                                                                                                                                     |
@@ -2039,7 +2039,7 @@ curl -X GET \
 | -- schemeAndroid      | String  |    X     | 안드로이드 앱 링크                                                                                                                                                               |
 | - video               | Object  |    X     | 비디오                                                                                                                                                                      |
 | -- videoUrl           | String  |    X     | 카카오TV 동영상 URL                                                                                                                                                            |
-| -- thumbnailUrl       | String  |    X     | 동영상 썸네일용 이미지 URL                                                                                                                                                         |
+| -- thumbnailUrl       | String  |    X     | 동영상 섬네일용 이미지 URL                                                                                                                                                         |
 | - commerce            | Object  |    X     | 커머스                                                                                                                                                                      |
 | -- title              | String  |    X     | 상품 제목(최대 30자)                                                                                                                                                            |
 | -- regularPrice       | Integer |    X     | 정상가격(0 \~ 99,999,999)                                                                                                                                                    |
