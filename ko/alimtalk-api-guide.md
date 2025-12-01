@@ -2220,6 +2220,229 @@ Content-Type: application/json;charset=UTF-8
 | - resultMessage | String  |    O     | 결과 메시지 |
 | - isSuccessful  | Boolean |    O     | 성공 여부  |
 
+### 템플릿 단건 조회
+
+#### 요청
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 이름           | 	타입     | 	설명     |
+|--------------|---------|---------|
+| appkey       | 	String | 	고유의 앱키 |
+| senderKey    | 	String | 	발신 키   |
+| templateCode | String  | 템플릿 코드  |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 이름           | 	타입     | 	필수 | 	설명              |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | 	String | O   | 콘솔에서 생성할 수 있습니다. |
+
+| 템플릿 상태 코드 | 설명   |
+|-----------|------|
+| TSC01     | 요청   |
+| TSC02     | 검수 중 |
+| TSC03     | 승인   |
+| TSC04     | 반려   |
+
+[예시]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}"
+```
+
+#### 응답
+
+```
+
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "templates": {
+      "plusFriendId": String,
+      "senderKey": String,
+      "plusFriendType": String,
+      "templateCode": String,
+      "kakaoTemplateCode": String,
+      "templateName": String,
+      "templateMessageType": String,
+      "templateEmphasizeType": String,
+      "templateContent": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateHeader": String,
+      "templateItem": {
+        "list": [{
+          "title": String,
+          "description": String
+        }],
+        "summary": {
+          "title": String,
+          "description": String
+        }
+      },
+      "templateItemHighlight": {
+        "title": String,
+        "description": String,
+        "imageUrl": String
+      },
+      "templateRepresentLink": {
+        "linkMo": String,
+        "linkPc": String,
+        "schemeIos": String,
+        "schemeAndroid": String,
+      },
+      "templateImageName": String,
+      "templateImageUrl": String,
+      "buttons": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer,
+            "pluginId": String,
+            "telNumber": String
+        }
+      ],
+      "quickReplies": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer
+        }
+      ],
+      "comments": [
+          {
+              "id": Integer,
+              "content": String,
+              "userName": String,
+              "createdAt": String,
+              "attachment": [{
+                "originalFileName": String,
+                "filePath": String
+              }],
+              "status": String
+          }  
+      ],
+      "status": String,
+      "statusName": String,
+      "securityFlag": Boolean,
+      "categoryCode": String,
+      "block": Boolean,
+      "dormant": Boolean,
+      "createDate": String,
+      "updateDate": String
+  }
+}
+```
+
+---
+
+| 이름                      | 타입      | Not Null | 설명                                                                                                                                                                               |
+|-------------------------|---------|:--------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header                  | Object  |    O     | 헤더 영역                                                                                                                                                                            |
+| - resultCode            | Integer |    O     | 결과 코드                                                                                                                                                                            |
+| - resultMessage         | String  |    O     | 결과 메시지                                                                                                                                                                           |
+| - isSuccessful          | Boolean |    O     | 성공 여부                                                                                                                                                                            |
+| templates               | Object    |    X     | 템플릿 리스트                                                                                                                                                                          |
+| - plusFriendId          | String  |    O     | 카카오톡 채널 검색용 ID 또는 발신 프로필 그룹명                                                                                                                                                     |
+| - senderKey             | String  |    O     | 발신 키                                                                                                                                                                             |
+| - plusFriendType        | String  |    O     | 플러스친구 타입(NORMAL, GROUP)                                                                                                                                                          |
+| - templateCode          | String  |    O     | 템플릿 코드                                                                                                                                                                           |
+| - kakaoTemplateCode     | String  |    O     | 원본 템플릿 코드                                                                                                                                                                        |
+| - templateName          | String  |    O     | 템플릿명                                                                                                                                                                             |
+| - templateMessageType   | String  |    X     | 템플릿 메시지 유형(BA: 기본형, EX: 부가 정보형, AD: 채널 추가형, MI: 복합형)                                                                                                                             |
+| - templateEmphasizeType | String  |    X     | 템플릿 강조 표시 타입(NONE: 기본, TEXT: 강조 표시, IMAGE: 이미지형, ITEM_LIST: 아이템리스트형)                                                                                                             |
+| - templateContent       | String  |    X     | 템플릿 본문                                                                                                                                                                           |
+| - templateExtra         | String  |    X     | 템플릿 부가 정보                                                                                                                                                                        |
+| - templateAd            | String  |    X     | 템플릿 내 수신 동의 요청 또는 간단한 광고 문구                                                                                                                                                      |
+| - tempalteTitle         | String  |    X     | 템플릿 제목                                                                                                                                                                           |
+| - templateSubtitle      | String  |    X     | 템플릿 보조 문구                                                                                                                                                                        |
+| - templateHeader        | String  |    X     | 템플릿 헤더(최대 16자)                                                                                                                                                                   |
+| - templateItem          | Object  |    X     | 아이템                                                                                                                                                                              |
+| -- list                 | List    |    X     | 아이템 리스트(최소 2개, 최대 10개)                                                                                                                                                           |
+| --- title               | String  |    X     | 타이틀(최대 6자)                                                                                                                                                                       |
+| --- description         | String  |    X     | 디스크립션(최대 23자)                                                                                                                                                                    |
+| -- summary              | Object  |    X     | 아이템 요약 정보                                                                                                                                                                        |
+| --- title               | String  |    X     | 타이틀(최대 6자)                                                                                                                                                                       |
+| --- description         | String  |    X     | 디스크립션(변수 및 화폐 단위, 숫자, 쉼표, 마침표만 사용 가능, 최대 14자)                                                                                                                                    |
+| - templateItemHighlight | Object  |    X     | 아이템 하이라이트                                                                                                                                                                        |
+| -- title                | String  |    X     | 타이틀(최대 30자, 섬네일 이미지가 있을 경우 21자)                                                                                                                                                  |
+| -- description          | String  |    X     | 디스크립션(최대 19자, 섬네일 이미지가 있을 경우 13자)                                                                                                                                                |
+| -- imageUrl             | String  |    X     | 섬네일 이미지 주소                                                                                                                                                                       |
+| - templateRepresentLink | Object  |    X     | 대표 링크                                                                                                                                                                            |
+| -- linkMo               | String  |    X     | 모바일 웹 링크(최대 500자)                                                                                                                                                                |
+| -- linkPc               | String  |    X     | PC 웹 링크(최대 500자)                                                                                                                                                                 |
+| -- schemeIos            | String  |    X     | iOS 앱 링크(최대 500자)                                                                                                                                                                |
+| -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(최대 500자)                                                                                                                                                              |
+| - templateImageName     | String  |    X     | 이미지명(업로드한 파일명)                                                                                                                                                                   |
+| - templateImageUrl      | String  |    X     | 이미지 URL                                                                                                                                                                          |
+| - buttons               | List    |    X     | 버튼 리스트                                                                                                                                                                           |
+| -- ordering             | Integer |    X     | 버튼 순서(1~5)                                                                                                                                                                       |
+| -- type                 | String  |    X     | 버튼 타입(WL: 웹 링크, AL: 앱 링크, DS: 배송 조회, BK: 봇 키워드, MD: 메시지 전달, BC: 상담톡 전환, BT: 봇 전환, AC: 채널 추가, BF: 비지니스폼, P1: 이미지 보안 전송 플러그인 ID, P2: 개인정보이용 플러그인 ID, P3: 원클릭 결제 플러그인 ID, TN: 전화하기) |
+| -- name                 | String  |    X     | 버튼 이름                                                                                                                                                                            |
+| -- linkMo               | String  |    X     | 모바일 웹 링크(WL 타입일 경우 필수 필드)                                                                                                                                                        |
+| -- linkPc               | String  |    X     | PC 웹 링크(WL 타입일 경우 선택 필드)                                                                                                                                                         |
+| -- schemeIos            | String  |    X     | iOS 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                                        |
+| -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(AL 타입일 경우 필수 필드)                                                                                                                                                      |
+| -- bizFormId            | Integer |    X     | 비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                           |
+| -- pluginId             | String  |    X     | 플러그인 ID(최대 24자)                                                                                                                                                                  |
+| -- telNumber            | 	String  | 	X  | TN(전화하기) 타입 버튼 시, 전달할 전화번호                                                                                                                                                       |
+| - quickReplies          | List    |    X     | 바로연결 리스트(최대 5개)                                                                                                                                                                  |
+| -- ordering             | Integer |    X     | 바로연결 순서(바로연결이 있는 경우 필수)                                                                                                                                                          |
+| -- type                 | String  |    X     | 바로연결 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, BC: 상담톡 전환, BT: 봇 전환, BF: 비지니스폼)                                                                                                          |
+| -- name                 | String  |    X     | 바로연결 이름(바로연결이 있는 경우 필수, 최대 14자)                                                                                                                                                  |
+| -- linkMo               | String  |    X     | 모바일 웹 링크(WL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                               |
+| -- linkPc               | String  |    X     | PC 웹 링크(WL 타입일 경우 선택 필드, 최대 500자)                                                                                                                                                |
+| -- schemeIos            | String  |    X     | iOS 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                               |
+| -- schemeAndroid        | String  |    X     | 안드로이드 앱 링크(AL 타입일 경우 필수 필드, 최대 500자)                                                                                                                                             |
+| -- bizFormId            | Integer |    X     | 비즈니스폼 ID(BF 타입일 경우 필수)                                                                                                                                                           |
+| - comments              | List    |    X     | 검수 결과                                                                                                                                                                            |
+| -- id                   | Integer |    X     | 문의 아이디                                                                                                                                                                           |
+| -- content              | String  |    X     | 문의 내용                                                                                                                                                                            |
+| -- userName             | String  |    X     | 작성자                                                                                                                                                                              |
+| -- createAt             | String  |    O     | 등록 날짜                                                                                                                                                                            |
+| -- attachment           | List    |    X     | 첨부 파일                                                                                                                                                                            |
+| --- originalFileName    | String  |    X     | 첨부 파일명                                                                                                                                                                           |
+| --- filePath            | String  |    X     | 첨부 파일 경로                                                                                                                                                                         |
+| -- status               | String  |    X     | 댓글 상태(INQ: 문의, APR: 승인, REJ: 반려, REP: 답변, REQ: 검수 중)                                                                                                                             |
+| - status                | String  |    O     | 템플릿 상태                                                                                                                                                                           |
+| - statusName            | String  |    X     | 템플릿 상태명                                                                                                                                                                          |
+| - securityFlag          | Boolean |    X     | 보안 템플릿 여부                                                                                                                                                                        |
+| - categoryCode          | String  |    X     | 템플릿 카테고리 코드                                                                                                                                                                      |
+| - block                 | Boolean |    X     | 차단 여부                                                                                                                                                                            |
+| - dormant               | Boolean |    X     | 휴면 여부                                                                                                                                                                            |
+| - createDate            | String  |    O     | 생성일자                                                                                                                                                                             |
+| - updateDate            | String  |    X     | 수정일자                                                                                                                                                                             |
+
+
 ### 템플릿 리스트 조회
 
 #### 요청
