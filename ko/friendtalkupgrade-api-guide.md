@@ -825,6 +825,9 @@ Content-Type: application/json;charset=UTF-8
 | unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | additionalContent      | String  | X  | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능                                                                                                                                                                                                                                      |
+| image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
+| - imageUrl             | String  | O  | 이미지 URL. 일반 이미지로 업로드된 이미지 URL 사용                                                                                                                                                                                                                                              |
+| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1000자 제한<br>미 설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
 | commerce               | Object  | O  | 커머스(COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                                                                                    |
 | title                  | String  | O  | 상품 제목(최대 30자, 줄바꿈: 불가)                                                                                                                                                                                                                                                       |
 | regularPrice           | Integer | O  | 정상 가격(0~99,999,999)                                                                                                                                                                                                                                                        |
@@ -3224,6 +3227,16 @@ Content-Type: multipart/form-data
 | - imageSeq      | Integer | O        | 이미지 시퀀스 |
 | - imageUrl      | String  | O        | 이미지 URL |
 | - imageName     | String  | X        | 이미지명    |
+
+#### 업로드 이미지 규격
+| 이미지 타입                     | 사용처                                                     | 업로드 이미지 규격                                                                                                                              |
+|:---------------------------|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+| IMAGE                      | 이미지형 이미지, 커머스형 이미지, 프리미엄 비디오형 썸네일                       | 권장 사이즈: 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                |
+| WIDE_IMAGE                 | 와이드 이미지형 이미지                                            | 권장 사이즈: 800 X 600px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1<br>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                     |
+| MAIN_WIDE_ITEMLIST_IMAGE   | 와이드 아이템 리스트형 첫번째 아이템 이미지                                | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 0.5<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                                      |
+| NORMAL_WIDE_ITEMLIST_IMAGE | 와이드 아이템 리스트형 2~4번쨰 아이템 이미지                              | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 1<br/>파일형식 및 크기 : jpg, png / 각 파일 최대 5MB                                                      |
+| CAROUSEL_FEED_IMAGE        | 캐러셀 피드형 셀별 이미지                                          | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                 |
+| CAROUSEL_COMMERCE_IMAGE    | 캐러셀 커머스형 인트로 이미지, 캐러셀 커머스형 셀별 이미지 | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                 |
 
 ### 이미지 조회
 

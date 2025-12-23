@@ -868,7 +868,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList          | List    | 	O  | 수신자 목록(최대 1,000명)                                                                                                                                            |
 | - recipientNo          | String  | O   | 수신 번호                                                                                                                                                        |
 | - additionalContent    | String  | X   | 부가 정보(최대 34자), 커머스형에서만 사용 가능                                                                                                                                 |
-| - buttons              | List    | X   | 	버튼(최대 5개, 쿠폰이 포함될 경우 최대 4개)<br>와이드 이미지 발송 시, 링크 버튼 최대 2개                                                                                                    |
+| - buttons              | List    | O   | 와이드 이미지, 커머스 타입 발송 시, 링크 버튼 최대 2개                                                                                             |
 | -- ordering            | Integer | X   | 버튼 순서(버튼이 있는 경우 필수)                                                                                                                                          |
 | -- type                | String  | X   | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, BF: 비즈니스폼)                                                                                                  |
 | -- name                | String  | X   | 버튼 이름(버튼이 있는 경우 필수)                                                                                                                                          |

@@ -825,6 +825,9 @@ Content-Type: application/json;charset=UTF-8
 | unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | additionalContent| String| X| Additional information (up to 34 characters, linebreak: up to 1), available only for commerce type|
+| image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
+| \- imageUrl| String| O| Image URL. Use an image URL uploaded as a general image|
+| \- imageLink| String| X| URL to go to when the image is clicked. Limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk|
 | commerce| Object| O| Commerce (available only for COMMERCE type)|
 | title| String| O| Product title (up to 30 characters, linebreak: unavailable)|
 | regularPrice| Integer| O| Regular price (0 to 99,999,999)|
@@ -3222,6 +3225,17 @@ Content-Type: multipart/form-data
 | \- imageSeq| Integer| O| Image sequence|
 | \- imageUrl| String| O| Image URL|
 | \- imageName| String| X| Image Name|
+
+#### Upload Image Specifications
+| Image Type                 | Usage                                                                   | Upload Image Specifications                                                                                                                                                      |
+| :------------------------- | :---------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IMAGE                      | Image-type image, Commerce-type image, Premium video-type thumbnail     | **Recommended size:** 800 × 400 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1.333<br/>**File format & size limit:** JPG, PNG / up to 5 MB                 |
+| WIDE_IMAGE                 | Wide image-type image                                                   | **Recommended size:** 800 × 600 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1<br/>**File format & size limit:** JPG, PNG / up to 5 MB                     |
+| MAIN_WIDE_ITEMLIST_IMAGE   | First item image in a wide item list                                    | **Minimum size:** width ≥ 500 px<br/>**Aspect ratio:** (height ÷ width) = 0.5<br/>**File format & size limit:** JPG, PNG / up to 5 MB                                            |
+| NORMAL_WIDE_ITEMLIST_IMAGE | Item images #2–#4 in a wide item list                                   | **Minimum size:** width ≥ 500 px<br/>**Aspect ratio:** (height ÷ width) = 1<br/>**File format & size limit:** JPG, PNG / up to 5 MB each                                         |
+| CAROUSEL_FEED_IMAGE        | Per-cell image in a carousel feed                                       | **Recommended size:** 800 × 600 px or 800 × 400 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1.333<br/>**File format & size limit:** JPG, PNG / up to 5 MB |
+| CAROUSEL_COMMERCE_IMAGE    | Intro image for carousel commerce, per-cell image for carousel commerce | **Recommended size:** 800 × 600 px or 800 × 400 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1.333<br/>**File format & size limit:** JPG, PNG / up to 5 MB |
+
 
 ### View image
 
