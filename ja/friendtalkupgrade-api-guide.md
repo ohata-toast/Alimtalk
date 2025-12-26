@@ -723,6 +723,9 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm | boolean | X | メッセージプッシュ通知の送信有無(デフォルト: true) |
 | adult                  | boolean | X  | 成人向けメッセージの有無(デフォルト値：false)                                                                                                                                                                                                                                                       |
 | additionalContent | String | X | 付加情報(最大34文字、改行:最大1回)、コマース形式でのみ使用可能 |
+| image | Object | O | 画像要素<br>- IMAGE、WIDE、COMMERCEタイプの場合、必須フィールド |
+| - imageUrl | String | O | 画像URL。一般画像としてアップロードされた画像URLを使用 |
+| - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | commerce | Object | O | コマース(COMMERCEタイプでのみ使用可能) |
 | title | String | O | 商品名(最大30文字、改行:不可) |
 | regularPrice | Integer | O | 通常価格(0～99,999,999) |
@@ -978,47 +981,47 @@ Content-Type: application/json;charset=UTF-8
 
 | 名前                 | タイプ    | 必須 | 説明                                                                                                                                                                                                                                                                          |
 |----------------------|---------|----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| senderKey | String | O | 送信キー(40文字)、グループ送信キーは使用不可 |
-| chatBubbleType | String | O | メッセージタイプ(TEXT、IMAGE、WIDE、WIDE_ITEM_LIST、PREMIUM_VIDEO、COMMERCE、CAROUSEL_FEED、CAROUSEL_COMMERCE) |
-| pushAlarm | boolean | X | メッセージプッシュ通知の送信有無(デフォルト: true) |
+| senderKey | String | O  | 送信キー(40文字)、グループ送信キーは使用不可 |
+| chatBubbleType | String | O  | メッセージタイプ(TEXT、IMAGE、WIDE、WIDE_ITEM_LIST、PREMIUM_VIDEO、COMMERCE、CAROUSEL_FEED、CAROUSEL_COMMERCE) |
+| pushAlarm | boolean | X  | メッセージプッシュ通知の送信有無(デフォルト: true) |
 | adult                | boolean | X  | 成人向けメッセージの有無(デフォルト値：false)                                                                                                                                                                                                                                                       |
 | carousel             | Object  | O  | カルーセル                                                                                                                                                                                                                                                                         |
 | - head               | Object  | X  | カルーセルイントロ                                                                                                                                                                                                                                                                     |
 | -- header            | String  | O  | カルーセルイントロヘッダ(最大20文字)                                                                                                                                                                                                                                                            |
 | -- content           | String  | O  | カルーセルイントロ内容(最大50文字)                                                                                                                                                                                                                                                            |
-| -- imageUrl | String | O | カルーセルイントロ画像アドレス(カルーセルコマース形式の画像としてアップロードされた画像を使用、使用される画像はカルーセルの画像と比率が同じである必要があります) |
-| -- linkMo | String | X | モバイルWebリンク(linkMo、linkPc、schemeAndroid、schemeIosのいずれかを使用する場合、linkMoは必須値)、1,000文字制限 |
+| -- imageUrl | String | O  | カルーセルイントロ画像アドレス(カルーセルコマース形式の画像としてアップロードされた画像を使用、使用される画像はカルーセルの画像と比率が同じである必要があります) |
+| -- linkMo | String | X  | モバイルWebリンク(linkMo、linkPc、schemeAndroid、schemeIosのいずれかを使用する場合、linkMoは必須値)、1,000文字制限 |
 | -- linkPc            | String  | X  | PC Webリンク、1,000文字制限                                                                                                                                                                                                                                                         |
 | -- schemeAndroid     | String  | X  | Androidアプリリンク、1,000文字制限                                                                                                                                                                                                                                                       |
 | -- schemeIos         | String  | X  | iOSアプリリンク、1,000文字制限                                                                                                                                                                                                                                                         |
-| - list | List | O | カルーセルリスト(headが存在する場合、最小1件、最大5件 / それ以外は最小2件、最大6件) |
-| -- additionalContent | String | O | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能 |
-| -- imageUrl | String | O | 画像URL (カルーセルコマース形式の画像としてアップロードされた画像を使用) |
+| - list | List | O  | カルーセルリスト(headが存在する場合、最小1件、最大5件 / それ以外は最小2件、最大6件) |
+| -- additionalContent | String | X  | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能 |
+| -- imageUrl | String | O  | 画像URL (カルーセルコマース形式の画像としてアップロードされた画像を使用) |
 | -- imageLink         | String  | O  | 画像リンク、1000文字制限                                                                                                                                                                                                                                                            |
-| -- commerce | Object | O | コマース(CAROUSEL_COMMERCEタイプでのみ使用可能) |
+| -- commerce | Object | O  | コマース(CAROUSEL_COMMERCEタイプでのみ使用可能) |
 | --- title            | String  | O  | 商品名(最大30文字、改行:不可)                                                                                                                                                                                                                                                       |
-| --- regularPrice | Integer | O | 通常価格(0～99,999,999) |
-| --- discountPrice | Integer | X | 割引価格(0 ～ 99,999,999) |
-| --- discountRate | Integer | X | 割引率(0 ～ 100)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
-| --- discountFixed | Integer | X | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
+| --- regularPrice | Integer | O  | 通常価格(0～99,999,999) |
+| --- discountPrice | Integer | X  | 割引価格(0 ～ 99,999,999) |
+| --- discountRate | Integer | X  | 割引率(0 ～ 100)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
+| --- discountFixed | Integer | X  | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
 | -- buttons           | List    | O  | カルーセルリストボタンリスト最小1件、最大2件                                                                                                                                                                                                                                                  |
-| --- name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合は最大14文字<br>- それ以外のタイプの場合は最大8文字 |
-| --- type | String | O | ボタンのタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、BC：チャット相談への切り替え、BT：チャットボットへの切り替え、BF：ビジネスフォーム)<br>- BCタイプはチャット相談を利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには次の3つの文言のみ使用可能<br> - トークで予約する<br> - トークでアンケートに答える<br> - トークで応募する |
-| --- linkMo | String | X | モバイルWebリンク(WLタイプの場合は必須フィールド)、1,000文字制限 |
-| --- linkPc | String | X | PC Webリンク(WLタイプの場合は任意フィールド)、1,000文字制限 |
-| --- schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
-| --- schemeIos | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
-| --- chatExtra | String | X | BC / BTタイプのボタンの場合に転送するメタ情報 |
-| --- chatEvent | String | X | BTタイプのボタンの場合に接続するボットのイベント名 |
-| --- bizFormKey | String | X | BFタイプのボタンの場合のビズフォームキー |
+| --- name | String | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合は最大14文字<br>- それ以外のタイプの場合は最大8文字 |
+| --- type | String | O  | ボタンのタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、BC：チャット相談への切り替え、BT：チャットボットへの切り替え、BF：ビジネスフォーム)<br>- BCタイプはチャット相談を利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには次の3つの文言のみ使用可能<br> - トークで予約する<br> - トークでアンケートに答える<br> - トークで応募する |
+| --- linkMo | String | X  | モバイルWebリンク(WLタイプの場合は必須フィールド)、1,000文字制限 |
+| --- linkPc | String | X  | PC Webリンク(WLタイプの場合は任意フィールド)、1,000文字制限 |
+| --- schemeAndroid | String | X  | Androidアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
+| --- schemeIos | String | X  | iOSアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
+| --- chatExtra | String | X  | BC / BTタイプのボタンの場合に転送するメタ情報 |
+| --- chatEvent | String | X  | BTタイプのボタンの場合に接続するボットのイベント名 |
+| --- bizFormKey | String | X  | BFタイプのボタンの場合のビズフォームキー |
 | -- coupon            | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
-| --- title | String | O | titleは5つの形式に制限されます<br>- 「${数字}KRW割引クーポン」数字は1以上99,999,999以下<br>- 「${数字}%割引クーポン」数字は1以上100以下<br>- 「送料割引クーポン」<br>- 「${7文字以内}無料クーポン」<br>- 「${7文字以内}UPクーポン」 |
-| --- description | String | O | クーポンの詳細説明<br>- WIDE、WIDE_ITEM_LIST、PREMIUM_VIDEOタイプの場合は最大18文字、改行：不可<br>- それ以外のタイプの場合は最大12文字、改行：不可 |
-| --- linkMo | String | X | モバイルWebリンク(WLタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
-| --- linkPc | String | X | PC Webリンク(WLタイプの場合は任意フィールド)、1,000文字制限 |
-| --- schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
-| --- schemeIos | String | X | iOSアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
-| - tail | Object | X | もっと見るボタンの情報 |
+| --- title | String | O  | titleは5つの形式に制限されます<br>- 「${数字}KRW割引クーポン」数字は1以上99,999,999以下<br>- 「${数字}%割引クーポン」数字は1以上100以下<br>- 「送料割引クーポン」<br>- 「${7文字以内}無料クーポン」<br>- 「${7文字以内}UPクーポン」 |
+| --- description | String | O  | クーポンの詳細説明<br>- WIDE、WIDE_ITEM_LIST、PREMIUM_VIDEOタイプの場合は最大18文字、改行：不可<br>- それ以外のタイプの場合は最大12文字、改行：不可 |
+| --- linkMo | String | X  | モバイルWebリンク(WLタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
+| --- linkPc | String | X  | PC Webリンク(WLタイプの場合は任意フィールド)、1,000文字制限 |
+| --- schemeAndroid | String | X  | Androidアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
+| --- schemeIos | String | X  | iOSアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限<br>クーポンにlinkMoフィールドを入力する場合、残りのフィールドは選択事項(オプション)となり、<br>scheme_androidまたはscheme_iosフィールドにチャンネルクーポンURL(形式：alimtalk=coupon://)を入力する場合、残りのフィールドが選択事項(オプション)になります。 |
+| - tail | Object | X  | もっと見るボタンの情報 |
 | -- linkMo            | String  | O  | モバイルWebリンク、1,000文字制限                                                                                                                                                                                                                                                         |
 | -- linkPc            | String  | X  | PC Webリンク、1,000文字制限                                                                                                                                                                                                                                                          |
 | -- schemeAndroid     | String  | X  | Androidアプリリンク、1,000文字制限                                                                                                                                                                                                                                                       |
@@ -1026,13 +1029,13 @@ Content-Type: application/json;charset=UTF-8
 | recipientList        | List    | O  | 受信者リスト(最大1,000人)                                                                                                                                                                                                                                                             |
 | - recipientNo        | String  | O  | 受信番号                                                                                                                                                                                                                                                                       |
 | - resendParameter    | Object  | X  | 代替送信情報                                                                                                                                                                                                                                                                    |
-| -- isResend | boolean | X | 送信失敗時に、テキストメッセージで代替送信するかどうか<br>コンソールで代替送信を設定した場合、デフォルトで代替送信されます。 |
-| -- resendType | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合、テンプレートの本文の長さに応じてタイプが区別されます。 |
-| -- resendTitle | String | X | LMS代替送信の件名<br>(値がない場合、プラスフレンドIDで代替送信されます。) |
-| -- resendContent | String | X | 代替送信の内容<br>(値がない場合、[メッセージ本文]で代替送信されます。) |
-| -- resendSendNo | String | X | 代替送信の送信者番号<br><span style="color:red">(SMSサービスに登録された送信者番号でない場合、代替送信に失敗することがあります。)</span> |
-| createUser | String | X | 登録者(コンソールで送信時にユーザーUUIDとして保存) |
-| statsId | String | X | 統計ID(送信検索条件には含まれません、最大8文字) |
+| -- isResend | boolean | X  | 送信失敗時に、テキストメッセージで代替送信するかどうか<br>コンソールで代替送信を設定した場合、デフォルトで代替送信されます。 |
+| -- resendType | String | X  | 代替送信タイプ(SMS、LMS)<br>値がない場合、テンプレートの本文の長さに応じてタイプが区別されます。 |
+| -- resendTitle | String | X  | LMS代替送信の件名<br>(値がない場合、プラスフレンドIDで代替送信されます。) |
+| -- resendContent | String | X  | 代替送信の内容<br>(値がない場合、[メッセージ本文]で代替送信されます。) |
+| -- resendSendNo | String | X  | 代替送信の送信者番号<br><span style="color:red">(SMSサービスに登録された送信者番号でない場合、代替送信に失敗することがあります。)</span> |
+| createUser | String | X  | 登録者(コンソールで送信時にユーザーUUIDとして保存) |
+| statsId | String | X  | 統計ID(送信検索条件には含まれません、最大8文字) |
 
 #### レスポンス
 
@@ -2783,7 +2786,7 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeAndroid     | String  | X  | Androidアプリリンク、500文字制限                                                                                                                                                                                                           |
 | -- schemeIos         | String  | X  | iOSアプリリンク、500文字制限                                                                                                                                                                                                             |
 | - list               | List    | O  | カルーセルリスト(headが存在する場合、最小1件、最大5件 / それ以外は最小2件、最大6件)                                                                                                                                                                          |
-| -- additionalContent | String  | O  | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能                                                                                                                                                                                                 |
+| -- additionalContent | String  | X  | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能                                                                                                                                                                                                 |
 | -- imageUrl          | String  | O  | 画像URL (カルーセルコマース型の画像としてアップロードされた画像を使用)<br>プレースホルダーは使用不可。                                                                                                                                                                                 |
 | -- imageLink         | String  | O  | 画像リンク、1000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
 | -- commerce          | Object  | O  | コマース(CAROUSEL_COMMERCEタイプでのみ使用可能)                                                                                                                                                                                               |
@@ -3006,6 +3009,17 @@ Content-Type: multipart/form-data
 | - imageSeq      | Integer | O        | 画像シーケンス |
 | - imageUrl      | String  | O        | 画像のURL |
 | - imageName     | String  | X        | 画像名   |
+
+#### アップロード画像規格
+| 画像タイプ                      | 使用先                                                 | アップロード画像規格                                                                                                         |
+| :------------------------- | :-------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| IMAGE                      | 画像形式の送信リクエスト、コマース形式の送信リクエスト、プレミアム動画形式の送信リクエストのサムネイル | **推奨サイズ：**800 × 400px（横500px以上）<br/>**画像比率：**0.5 ≤ 縦 ÷ 横 ≤ 1.333<br/>**ファイル形式／容量制限：**jpg、png／最大5MB                 |
+| WIDE_IMAGE                 | ワイド画像形式の送信リクエスト                                     | **推奨サイズ：**800 × 600px（横500px以上）<br/>**画像比率：**0.5 ≤ 縦 ÷ 横 ≤ 1<br/>**ファイル形式／容量制限：**jpg、png／最大5MB                     |
+| MAIN_WIDE_ITEMLIST_IMAGE   | ワイドアイテムリスト形式の送信リクエストの1番目アイテム画像                      | **制限サイズ：**横500px以上<br/>**画像比率：**縦 ÷ 横 = 0.5<br/>**ファイル形式／容量制限：**jpg、png／最大5MB                                      |
+| NORMAL_WIDE_ITEMLIST_IMAGE | ワイドアイテムリスト形式の送信リクエストの2〜4番目アイテム画像                    | **制限サイズ：**横500px以上<br/>**画像比率：**縦 ÷ 横 = 1<br/>**ファイル形式／容量制限：**jpg、png／各ファイル最大5MB                                   |
+| CAROUSEL_FEED_IMAGE        | カルーセルフィード形式の送信リクエストのセル別画像                           | **推奨サイズ：**800 × 600px または 800 × 400px（横500px以上）<br/>**画像比率：**0.5 ≤ 縦 ÷ 横 ≤ 1.333<br/>**ファイル形式／容量制限：**jpg、png／最大5MB |
+| CAROUSEL_COMMERCE_IMAGE    | コマース形式の送信リクエスト（カルーセルコマース形式）のイントロ画像、セル別画像            | **推奨サイズ：**800 × 600px または 800 × 400px（横500px以上）<br/>**画像比率：**0.5 ≤ 縦 ÷ 横 ≤ 1.333<br/>**ファイル形式／容量制限：**jpg、png／最大5MB |
+
 
 ### 画像照会
 

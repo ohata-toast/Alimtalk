@@ -849,22 +849,22 @@ Content-Type: application/json;charset=UTF-8
 |----------------------|------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | senderKey            | String | O   | 発信キー(40文字)                                                                                                                                                   |
 | requestDate          | String | X   | リクエスト日時(yyyy-MM-dd HH:mm)、フィールドを送信しない場合、即時送信                                                                                                         |
-| senderGroupingKey    | String | X   | 発信グルーピングキー(最大100文字)                                                                                                                                           |
-| createUser           | String | X   | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                 |
+| senderGroupingKey    | String | X   | 発信グルーピングキー(最大100文字)                                                                                                                                          |
+| createUser           | String | X   | 登録者(コンソールから送信する場合、ユーザーUUIDとして保存)                                                                                                                                |
 | recipientList        | List | 	O  | 受信者リスト(最大1,000人)                                                                                                                                            |
 | - recipientNo        | String | O   | 受信番号                                                                                                                                                 |
 | - additionalContent | String | X   | 付加情報(最大34文字)、コマース型でのみ使用可能                                                                                                                      |
-| - buttons            | List | X   | 	ボタン(最大5個、クーポンが含まれる場合は最大4個)<br>ワイド画像送信時はリンクボタン最大2個                                                                                                              |
+| - buttons            | List | O   | 	リンクボタン最大2個                                                                                                              |
 | -- ordering          | Integer | X   | ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
 | -- type              | String | X   | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
 | -- name              | String | X   | ボタン名(ボタンがある場合は必須）                                                                                                                                         |
-| -- linkMo            | String | X   | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                   |
-| -- linkPc            | String | X   | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                    |
-| -- schemeIos         | String | X   | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                   |
-| -- schemeAndroid     | String | X   | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                 |
+| -- linkMo            | String | X   | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                  |
+| -- linkPc            | String | X   | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                   |
+| -- schemeIos         | String | X   | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                  |
+| -- schemeAndroid     | String | X   | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                |
 | -- chatExtra         | String | X   | BC(相談トーク切り替え) / BT(Bot切り替え)タイプボタンの場合に伝達するメタ情報                                                                                                               |
 | -- chatEvent         | String | X   | BT(Bot切り替え)タイプボタンの場合に接続するBotイベント名                                                                                                                          |
-| -- bizFormKey        | String | X   | | BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                              |
+| -- bizFormKey        | String | X   | BF(ビジネスフォーム)タイプボタンの場合、Bizフォームキー                                                                                                                              |
 | -- target            | String | X   | Webリンクボタンの場合、"target":"out"属性を追加すると、アウトリンク<br>デフォルトアプリ内リンクで送信                                                                                             |
 | - coupon             | Object | X   | クーポン                                                                                                                                                    | 
 | -- title             | String | X   | titleの場合、5つの形式に制限される<br>"${数字}KRW割引クーポン"数字は1以上99,999,999以下<br>"${数字}%割引クーポン"数字は1以上100以下<br>"送料割引クーポン"<br><br>"${7文字以内}無料クーポン"<br>"${7文字以内} UPクーポン" |
@@ -874,21 +874,21 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeIos         | String | X   | iOSアプリリンク                                                                                                                                              |
 | -- schemeAndroid     | String | X   | Androidアプリリンク                                                                                                                                            |
 | - commerce           | Object | O   | コマース(コマース型でのみ使用可能)                                                                                                                                          | 
-| -- title             | String | O   | 商品タイトル(最大30文字)                                                                                                                                                |
+| -- title             | String | O   | 商品タイトル(最大30文字)                                                                                                                                               |
 | -- regularPrice      | Integer | O   | 正常価格(0 ～ 99,999,999)                                                                                                                                        |
 | -- discountPrice     | Integer | X   | 割引価格(0 ～ 99,999,999)                                                                                                                                        |
 | -- discountRate      | Integer | X   | 割引率(0 ～ 100)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                           |
 | -- discountFixed     | Integer | X   | 定額割引価格(0 ～ 999,999)、割引価格が存在する時は割引率、定額割引価格のいずれかが必須                                                                                                    |
 | - resendParameter    | Object | X   | 代替送信情報                                                                                                                                              |
-| -- isResend          | boolean | X   | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                       |
+| -- isResend          | boolean | X   | 送信失敗時、代替送信するかどうか<br>コンソールで送信失敗設定をした時、デフォルト設定は再送信になっています。                                                                                                      |
 | -- resendType        | String | X   | 代替送信タイプ(SMS、LMS)<br>値がない場合は、テンプレート本文の長さに応じてタイプが決まります。                                                                                                     |
 | -- resendTitle       | String | X   | LMS代替送信タイトル<br>(値がない場合は、プラスフレンドIDで再送信されます。)                                                                                                               |
 | -- resendContent     | String | X   | 代替送信内容<br>(値がない場合は、テンプレートの内容で再送信されます。)                                                                                         |
 | -- resendSendNo      | String | X   | 代替送信発信番号<br><span style="color:red">(SMSサービスに登録された発信番号ではない場合、代替送信が失敗することがあります。)</span>                                                               |
 | -- resendUnsubscribeNo | String | X   | 代代替080受信拒否番号<br><span style="color:red">(SMSサービスに登録された080の受信拒否番号がない場合、代替の転送が失敗することがあります。)</span>                                                 |
-| - isAd               | Boolean | X   | 	広告かどうか(デフォルト値true)                                                                                                                                            |
-| - adult              | Boolean | X   | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                       |
-| - recipientGroupingKey | String | 	X  | 	受信者グルーピングキー(最大100文字)                                                                                                                                         |
+| - isAd               | Boolean | X   | 	広告かどうか(デフォルト値true)                                                                                                                                           |
+| - adult              | Boolean | X   | 成人向けのメッセージかどうか(デフォルト値false)                                                                                                                                      |
+| - recipientGroupingKey | String | 	X  | 	受信者グルーピングキー(最大100文字)                                                                                                                                        |
 | statsId              | String | 	X  | 統計ID(発信検索条件には含まれません、最大8文字)                                                                                                                          |
 
 [例]
