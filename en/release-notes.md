@@ -1,5 +1,15 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### December 31, 2025
+* [API, Console] End of FriendTalk service
+    * Friend Talk service will be terminated on Wednesday, December 31, 2025.
+    * FriendTalk API temporarily supports brand message conversion through compatible header settings.
+    * FriendTalk console only supports the Send Result Inquiry, Image Management, and Alternative Send Management tabs.
+
+* [API] Added API for single query of AlimTalk template
+    * Added API to allow you to query specific templates individually.
+    * The response includes a field that allows you to check whether the template is blocked or inactive.
+
 ### November 25, 2025
 
 * [Console] Added the feature to send after confirming brand messages
