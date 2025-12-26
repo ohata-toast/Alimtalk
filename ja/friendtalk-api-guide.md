@@ -51,7 +51,7 @@ Content-Type: application/json;charset=UTF-8
 |X-NC-API-IDEMPOTENCY-KEY|	String| X | 重複メッセージ送信要求基準key<br>10分間同じkeyで要求すると、その要求を失敗処理します。 |
 
 * <b>リクエスト日時は呼び出した時点から60日後まで設定可能です。</b>
-* <b>夜間送信制限(20:50~翌日08:00)</b>
+* <b>夜間送信制限(20:50～翌日08:00)</b>
 * <b>SMSサービスで代替送信されるため、SMSサービスの送信API仕様に従ってフィールドを入力する必要があります。(SMSサービスに登録された発信番号、 080受信拒否番号、各種フィールドの長さ制限など)</b>
 * <b>指定した代替送信タイプのバイト制限を超える代替送信のタイトルや内容は切り捨てられ、代替送信される場合があります。([[SMS注意事項](https://docs.toast.com/ko/Notification/SMS/ko/api-guide/#_1)]参考)</b>
 * <b>カカともへのメッセージ広告メッセージは広告SMS APIで代替送信されるため、必ず080受信拒否番号を登録する必要があります。</b>
@@ -854,7 +854,7 @@ Content-Type: application/json;charset=UTF-8
 | recipientList        | List | 	O  | 受信者リスト(最大1,000人)                                                                                                                                            |
 | - recipientNo        | String | O   | 受信番号                                                                                                                                                 |
 | - additionalContent | String | X   | 付加情報(最大34文字)、コマース型でのみ使用可能                                                                                                                      |
-| - buttons            | List | O   | 	リンクボタン最大2個                                                                                                              |
+| - buttons              | List    | O   | ワイド画像、コマースタイプ送信時、リンクボタン最大2個                                                                                            |
 | -- ordering          | Integer | X   | ボタン順序(ボタンがある場合は必須)                                                                                                                                         |
 | -- type              | String | X   | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：Botキーワード、MD：メッセージ伝達、 BF:ビジネスフォーム)                                                                                          |
 | -- name              | String | X   | ボタン名(ボタンがある場合は必須）                                                                                                                                         |
