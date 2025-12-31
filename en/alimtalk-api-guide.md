@@ -2140,6 +2140,228 @@ Content-Type: application/json;charset=UTF-8
 |- resultMessage|	String| Result message|
 |- isSuccessful|	Boolean| Successful or not|
 
+### Single Query for Template
+
+#### Request
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| Name | Type | Description |
+|--------------|---------|---------|
+| appkey | String | Unique app key |
+| senderKey | String | Sender key |
+| templateCode | String | Template code |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| Name | Type | Required | Description |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | String | O | Can be generated from the console. |
+
+| Template Status Code | Description |
+|-----------|------|
+| TSC01 | Requested |
+| TSC02 | Reviewing |
+| TSC03 | Approved |
+| TSC04 | Rejected |
+
+[Example]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}"
+```
+
+#### Response
+
+```
+
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "templates": {
+      "plusFriendId": String,
+      "senderKey": String,
+      "plusFriendType": String,
+      "templateCode": String,
+      "kakaoTemplateCode": String,
+      "templateName": String,
+      "templateMessageType": String,
+      "templateEmphasizeType": String,
+      "templateContent": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateHeader": String,
+      "templateItem": {
+        "list": [{
+          "title": String,
+          "description": String
+        }],
+        "summary": {
+          "title": String,
+          "description": String
+        }
+      },
+      "templateItemHighlight": {
+        "title": String,
+        "description": String,
+        "imageUrl": String
+      },
+      "templateRepresentLink": {
+        "linkMo": String,
+        "linkPc": String,
+        "schemeIos": String,
+        "schemeAndroid": String,
+      },
+      "templateImageName": String,
+      "templateImageUrl": String,
+      "buttons": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer,
+            "pluginId": String,
+            "telNumber": String
+        }
+      ],
+      "quickReplies": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer
+        }
+      ],
+      "comments": [
+          {
+              "id": Integer,
+              "content": String,
+              "userName": String,
+              "createdAt": String,
+              "attachment": [{
+                "originalFileName": String,
+                "filePath": String
+              }],
+              "status": String
+          }  
+      ],
+      "status": String,
+      "statusName": String,
+      "securityFlag": Boolean,
+      "categoryCode": String,
+      "block": Boolean,
+      "dormant": Boolean,
+      "createDate": String,
+      "updateDate": String
+  }
+}
+```
+
+---
+
+| Name | Type | Not Null | Description |
+|----------------------------------------|---------|:--------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header | Object | O | Header area |
+| - resultCode | Integer | O | Result code |
+| - resultMessage | String | O | Result message |
+| - isSuccessful | Boolean | O | Success status |
+| templates | Object | X | Template list |
+| - plusFriendId | String | O | KakaoTalk channel search ID or sender profile group name |
+| - senderKey | String | O | Sender key |
+| - plusFriendType | String | O | Plus Friend type (NORMAL, GROUP) |
+| - templateCode | String | O | Template code |
+| - kakaoTemplateCode | String | O | Original template code |
+| - templateName | String | O | Template name |
+| - templateMessageType | String | X | Template message type (BA: basic, EX: additional information, AD: channel addition, MI: complex) |
+| - templateEmphasizeType | String | X | Template highlight type (NONE: basic, TEXT: highlight, IMAGE: image, ITEM_LIST: item list) |
+| - templateContent | String | X | Template body |
+| - templateExtra | String | X | Template additional information |
+| - templateAd | String | X | Request for opt-in or simple advertising text within the template |
+| - templateTitle | String | X | Template title |
+| - templateSubtitle | String | X | Template additional text |
+| - templateHeader | String | X | Template header (maximum 16 characters) |
+| - templateItem | Object | X | Item |
+| -- list | List | X | List of items (minimum 2, maximum 10) |
+| --- title | String | X | Title (maximum 6 characters) |
+| --- description | String | X | Description (maximum 23 characters) |
+| -- summary | Object | X | Item summary information |
+| --- title | String | X | Title (maximum 6 characters) |
+| --- description | String | X | Description (variables, currency units, numbers, commas, and periods only, up to 14 characters) |
+| - templateItemHighlight | Object | X | Item highlight |
+| -- title | String | X | Title (up to 30 characters, 21 characters if thumbnail image available) |
+| -- description | String | X | Description (up to 19 characters, 13 characters if thumbnail image available) |
+| -- imageUrl | String | X | Thumbnail image address |
+| - templateRepresentLink | Object | X | Representative link |
+| -- linkMo | String | X | Mobile web link (up to 500 characters) |
+| -- linkPc | String | X | PC web link (up to 500 characters) |
+| -- schemeIos | String | X | iOS app link (up to 500 characters) |
+| -- schemeAndroid | String | X | Android app link (up to 500 characters) |
+| - templateImageName | String | X | Image name (uploaded file name) |
+| - templateImageUrl | String | X | Image URL |
+| - buttons | List | X | Button list |
+| -- ordering | Integer | X | Button order (1 to 5) |
+| -- type | String | X | Button type (WL: Web Link, AL: App Link, DS: Delivery Tracking, BK: Bot Keyword, MD: Message Forwarding, BC: Chat Conversion, BT: Bot Conversion, AC: Add Channel, BF: Business Form, P1: Image Security Transmission Plugin ID, P2: Personal Information Use Plugin ID, P3: One-Click Payment Plugin ID, TN: Call) |
+| -- name | String | X | Button name |
+| -- linkMo | String | X | Mobile web link (required field for WL type) |
+| -- linkPc | String | X | PC web link (optional field for WL type) |
+| -- schemeIos | String | X | iOS app link (required field for AL type) |
+| -- schemeAndroid | String | X | Android app link (required field for AL type) |
+| -- bizFormId | Integer | X | Business form ID (required for BF type) |
+| -- pluginId | String | X | Plugin ID (up to 24 characters) |
+| -- telNumber | String | X | Phone number to be sent when TN (Call) type button is pressed |
+| - quickReplies | List | X | Quick link list (up to 5) |
+| -- ordering | Integer | X | Quick link order (required if there is a quick link) |
+| -- type | String | X | Direct link type (WL: Web link, AL: App link, BK: Bot keyword, BC: Conversion to consultation chat, BT: Conversion to bot, BF: Business form) |
+| -- name | String | X | Direct link name (required if direct link is available, up to 14 characters) |
+| -- linkMo | String | X | Mobile web link (required field for WL type, up to 500 characters) |
+| -- linkPc | String | X | PC web link (optional field for WL type, up to 500 characters) |
+| -- schemeIos | String | X | iOS app link (required field for AL type, up to 500 characters) |
+| -- schemeAndroid | String | X | Android app link (required field for AL type, up to 500 characters) |
+| -- bizFormId | Integer | X | Business Form ID (required for BF type) |
+| - comments | List | X | Review result |
+| -- id | Integer | X | Inquiry ID |
+| -- content | String | X | Inquiry content |
+| -- userName | String | X | Author |
+| -- createAt | String | O | Registration date |
+| -- attachment | List | X | Attachment |
+| --- originalFileName | String | X | Attached file name |
+| --- filePath | String | X | Attached file path |
+| -- status | String | X | Comment status (INQ: Inquiry, APR: Approved, REJ: Rejected, REP: Reply, REQ: Under Review) |
+| - status | String | O | Template status |
+| - statusName | String | X | Template status name |
+| - securityFlag | Boolean | X | Secure template |
+| - categoryCode | String | X | Template category code |
+| - block | Boolean | X | Blocked |
+| - dormant | Boolean | X | Dormant |
+| - createDate | String | O | Created at |
+| - updateDate | String | X | Modified at |
+
 ### List Templates
 
 #### Request

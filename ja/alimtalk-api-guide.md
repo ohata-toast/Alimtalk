@@ -681,13 +681,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{
 | - templateItem | Object | X | アイテム |
 | -- list | List | X | アイテムリスト(最小2件、最大10件) |
 | --- title | String | X | タイトル(最大6文字) |
-| --- description | String | X | ディスクリプション(最大23文字) |
+| --- description | String | X | 説明(最大23文字) |
 | -- summary | Object | X | アイテム要約情報 |
 | --- title | String | X | タイトル(最大6文字) |
-| --- description | String | X | ディスクリプション(変数及び通貨単位、数字、カンマ、ピリオドのみ使用可能、最大14文字) |
+| --- description | String | X | 説明(変数及び通貨単位、数字、カンマ、ピリオドのみ使用可能、最大14文字) |
 | - templateItemHighlight | Object  |    X     | アイテムハイライト                                                                                                                                                            |
 | --- title | String | X | タイトル(最大30文字、サムネイル画像がある場合は21文字) |
-| --- description | String | X | ディスクリプション(最大19文字、サムネイル画像がある場合は13文字) |
+| --- description | String | X | 説明(最大19文字、サムネイル画像がある場合は13文字) |
 | --- imageUrl            | String  |    X     | サムネイル画像アドレス                                                                                                                                                           |
 | - templateRepresentLink | Object  |    X     | 代表リンク                                                                                                                                                                |
 | -- linkMo               | String  |    X     | モバイルWebリンク(最大500文字)                                                                                                                                                      |
@@ -2333,6 +2333,228 @@ Content-Type: application/json;charset=UTF-8
 |- resultCode|	Integer|	結果コード|
 |- resultMessage|	String| 結果メッセージ|
 |- isSuccessful|	Boolean| 成否|
+
+### テンプレート個別照会
+
+#### リクエスト
+
+[URL]
+
+```
+GET  /alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}
+Content-Type: application/json;charset=UTF-8
+```
+
+[Path parameter]
+
+| 名前          | 	タイプ    | 	説明    |
+|--------------|---------|---------|
+| appkey       | 	String | 	固有のアプリキー |
+| senderKey    | 	String | 	発信キー  |
+| templateCode | String  | テンプレートコード |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+| 名前          | 	タイプ    | 	必須 | 	説明             |
+|--------------|---------|-----|------------------|
+| X-Secret-Key | 	String | O   | コンソールで作成できます。 |
+
+| テンプレートステータスコード | 説明  |
+|-----------|------|
+| TSC01     | 申請   |
+| TSC02     | 審査中 |
+| TSC03     | 承認  |
+| TSC04     | 却下   |
+
+[例]
+
+```
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" -H "X-Secret-Key:{secretkey}" "https://api-alimtalk.cloud.toast.com/alimtalk/v2.3/appkeys/{appkey}/senders/{senderKey}/templates/{templateCode}"
+```
+
+#### レスポンス
+
+```
+{
+  "header": {
+      "resultCode": Integer,
+      "resultMessage": String,
+      "isSuccessful": boolean
+  },
+  "templates": {
+      "plusFriendId": String,
+      "senderKey": String,
+      "plusFriendType": String,
+      "templateCode": String,
+      "kakaoTemplateCode": String,
+      "templateName": String,
+      "templateMessageType": String,
+      "templateEmphasizeType": String,
+      "templateContent": String,
+      "templateExtra": String,
+      "templateAd": String,
+      "templateTitle": String,
+      "templateSubtitle": String,
+      "templateHeader": String,
+      "templateItem": {
+        "list": [{
+          "title": String,
+          "description": String
+        }],
+        "summary": {
+          "title": String,
+          "description": String
+        }
+      },
+      "templateItemHighlight": {
+        "title": String,
+        "description": String,
+        "imageUrl": String
+      },
+      "templateRepresentLink": {
+        "linkMo": String,
+        "linkPc": String,
+        "schemeIos": String,
+        "schemeAndroid": String,
+      },
+      "templateImageName": String,
+      "templateImageUrl": String,
+      "buttons": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer,
+            "pluginId": String,
+            "telNumber": String
+        }
+      ],
+      "quickReplies": [
+        {
+            "ordering": Integer,
+            "type": String,
+            "name": String,
+            "linkMo": String,
+            "linkPc": String,
+            "schemeIos": String,
+            "schemeAndroid": String,
+            "bizFormId": Integer
+        }
+      ],
+      "comments": [
+          {
+              "id": Integer,
+              "content": String,
+              "userName": String,
+              "createdAt": String,
+              "attachment": [{
+                "originalFileName": String,
+                "filePath": String
+              }],
+              "status": String
+          }  
+      ],
+      "status": String,
+      "statusName": String,
+      "securityFlag": Boolean,
+      "categoryCode": String,
+      "block": Boolean,
+      "dormant": Boolean,
+      "createDate": String,
+      "updateDate": String
+  }
+}
+```
+
+---
+
+| 名前                     | タイプ     | Not Null | 説明                                                                                                                                                                              |
+|-------------------------|---------|:--------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| header                  | Object  |    O     | ヘッダ領域                                                                                                                                                                           |
+| - resultCode            | Integer |    O     | 結果コード                                                                                                                                                                           |
+| - resultMessage         | String  |    O     | 結果メッセージ                                                                                                                                                                          |
+| - isSuccessful          | Boolean |    O     | 成否                                                                                                                                                                           |
+| templates               | Object    |    X     | テンプレートリスト                                                                                                                                                                         |
+| - plusFriendId          | String  |    O     | カカオトークチャンネル検索用IDまたは発信プロフィールグループ名                                                                                                                                                 |
+| - senderKey             | String  |    O     | 発信キー                                                                                                                                                                            |
+| - plusFriendType        | String  |    O     | プラスフレンドタイプ(NORMAL, GROUP)                                                                                                                                                          |
+| - templateCode          | String  |    O     | テンプレートコード                                                                                                                                                                          |
+| - kakaoTemplateCode     | String  |    O     | オリジナルテンプレートコード                                                                                                                                                                        |
+| - templateName          | String  |    O     | テンプレート名                                                                                                                                                                            |
+| - templateMessageType   | String  |    X     | テンプレートメッセージタイプ(BA:基本型, EX: 付加情報型, AD:チャンネル追加型, MI:複合型)                                                                                                                             |
+| - templateEmphasizeType | String  |    X     | テンプレート強調表示タイプ(NONE:基本、 TEXT:強調 表示、IMAGE:画像型、 ITEM_LIST:アイテムリスト型)                                                                                                             |
+| - templateContent       | String  |    X     | テンプレート本文                                                                                                                                                                          |
+| - templateExtra         | String  |    X     | テンプレート付加情報                                                                                                                                                                          |
+| - templateAd            | String  |    X     | テンプレート内の受信同意リクエストまたは簡単な広告文言                                                                                                                                                        |
+| - tempalteTitle         | String  |    X     | テンプレートタイトル                                                                                                                                                                          |
+| - templateSubtitle      | String  |    X     | テンプレート補助文言                                                                                                                                                                            |
+| - templateHeader        | String  |    X     | テンプレートヘッダ(最大16文字)                                                                                                                                                                   |
+| - templateItem          | Object  |    X     | アイテム                                                                                                                                                                             |
+| -- list                 | List    |    X     | アイテムリスト(最小2個、最大10個)                                                                                                                                                           |
+| --- title               | String  |    X     | タイトル(最大6文字)                                                                                                                                                                       |
+| --- description         | String  |    X     | 説明(最大23文字)                                                                                                                                                                    |
+| -- summary              | Object  |    X     | アイテム要約情報                                                                                                                                                                       |
+| --- title               | String  |    X     | タイトル(最大6文字)                                                                                                                                                                       |
+| --- description         | String  |    X     | 説明(変数及び通貨単位、数字、カンマ、ピリオドのみ使用可能、最大14文字)                                                                                                                                    |
+| - templateItemHighlight | Object  |    X     | アイテムハイライト                                                                                                                                                                       |
+| -- title                | String  |    X     | タイトル(最大30文字、サムネイル画像がある場合は21文字)                                                                                                                                                   |
+| -- description          | String  |    X     | 説明(最大19文字、サムネイル画像がある場合は13文字)                                                                                                                                                    |
+| -- imageUrl             | String  |    X     | サムネイル画像アドレス                                                                                                                                                                      |
+| - templateRepresentLink | Object  |    X     | 代表リンク                                                                                                                                                                           |
+| -- linkMo               | String  |    X     | モバイルWebリンク(最大500文字)                                                                                                                                                                |
+| -- linkPc               | String  |    X     | PC Webリンク(最大500文字)                                                                                                                                                                 |
+| -- schemeIos            | String  |    X     | iOSアプリリンク(最大500文字)                                                                                                                                                                |
+| -- schemeAndroid        | String  |    X     | Androidアプリリンク(最大500文字)                                                                                                                                                              |
+| - templateImageName     | String  |    X     | 画像名(アップロードしたファイル名)                                                                                                                                                                   |
+| - templateImageUrl      | String  |    X     | 画像URL                                                                                                                                                                            |
+| - buttons               | List    |    X     | ボタンリスト                                                                                                                                                                          |
+| -- ordering             | Integer |    X     | ボタン順序(1～5)                                                                                                                                                                       |
+| -- type                 | String  |    X     | ボタンタイプ(WL: Webリンク, AL: アプリリンク, DS: 配送照会, BK: ボットキーワード, MD: メッセージ転送, BC: 相談トーク切替, BT: ボット切替, AC: チャンネル追加, BF: ビジネスフォーム, P1: 画像セキュリティ転送プラグインID, P2: 個人情報利用プラグインID, P3: ワンクリック決済プラグインID, TN: 電話発信) |
+| -- name                 | String  |    X     | ボタン名                                                                                                                                                                           |
+| -- linkMo               | String  |    X     | モバイルWebリンク(WLタイプの場合は必須フィールド)                                                                                                                                                        |
+| -- linkPc               | String  |    X     | PC Webリンク(WLタイプの場合は任意フィールド)                                                                                                                                                         |
+| -- schemeIos            | String  |    X     | iOSアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                                        |
+| -- schemeAndroid        | String  |    X     | Androidアプリリンク(ALタイプの場合は必須フィールド)                                                                                                                                                      |
+| -- bizFormId            | Integer |    X     | ビジネスフォーム ID(BFタイプの場合は必須)                                                                                                                                                           |
+| -- pluginId             | String  |    X     | プラグインID(最大24文字)                                                                                                                                                                  |
+| -- telNumber            | 	String  | 	X  | TN(電話発信)タイプボタンの場合、伝達する電話番号                                                                                                                                                       |
+| - quickReplies          | List    |    X     | クイックリプライリスト(最大5個)                                                                                                                                                                  |
+| -- ordering             | Integer |    X     | クイックリプライ順序(クイックリプライがある場合は必須)                                                                                                                                                            |
+| -- type                 | String  |    X     | クイックリプライタイプ(WL: Webリンク, AL: アプリリンク, BK: ボットキーワード, BC: 相談トーク切替, BT: ボット切替, BF: ビジネスフォーム)                                                                                                          |
+| -- name                 | String  |    X     | クイックリプライ名(クイックリプライがある場合は必須、最大14文字)                                                                                                                                                    |
+| -- linkMo               | String  |    X     | モバイルWebリンク(WLタイプの場合は必須フィールド、最大500文字)                                                                                                                                               |
+| -- linkPc               | String  |    X     | PC Webリンク(WLタイプの場合は任意フィールド、最大500文字)                                                                                                                                                  |
+| -- schemeIos            | String  |    X     | iOSアプリリンク(ALタイプの場合は必須フィールド、最大500文字)                                                                                                                                               |
+| -- schemeAndroid        | String  |    X     | Androidアプリリンク(ALタイプの場合は必須フィールド、最大500文字)                                                                                                                                             |
+| -- bizFormId            | Integer |    X     | ビジネスフォーム ID(BFタイプの場合は必須)                                                                                                                                                           |
+| - comments              | List    |    X     | 審査結果                                                                                                                                                                                    |
+| -- id                   | Integer |    X     | お問い合わせID                                                                                                                                                                           |
+| -- content              | String  |    X     | お問い合わせ内容                                                                                                                                                                           |
+| -- userName             | String  |    X     | 作成者                                                                                                                                                                             |
+| -- createAt             | String  |    O     | 登録日                                                                                                                                                                           |
+| -- attachment           | List    |    X     | 添付ファイル                                                                                                                                                                           |
+| --- originalFileName    | String  |    X     | 添付ファイル名                                                                                                                                                                          |
+| --- filePath            | String  |    X     | 添付ファイルパス                                                                                                                                                                        |
+| -- status               | String  |    X     | コメントステータス(INQ: 問い合わせ, APR: 承認, REJ: 却下, REP: 回答, REQ: 審査中)                                                                                                                             |
+| - status                | String  |    O     | テンプレートステータス                                                                                                                                                                           |
+| - statusName            | String  |    X     | テンプレートステータス名                                                                                                                                                                          |
+| - securityFlag          | Boolean |    X     | セキュリティテンプレート区分                                                                                                                                                                        |
+| - categoryCode          | String  |    X     | テンプレートカテゴリーコード                                                                                                                                                                     |
+| - block                 | Boolean |    X     | ブロック可否                                                                                                                                                                              |
+| - dormant               | Boolean |    X     | 休止可否                                                                                                                                                                            |
+| - createDate            | String  |    O     | 作成日                                                                                                                                                                           |
+| - updateDate            | String  |    X     | 修正日                                                                                                                                                                           |
+
 
 ### テンプレートリストの照会
 
