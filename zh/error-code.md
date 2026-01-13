@@ -216,7 +216,7 @@
 | 공통      | false     | -9998      | 존재하지 않는 API                                                                                                                                                                                                                                                   |
 | 공통      | false     | -9999      | 시스템 오류                                                                                                                                                                                                                                                        |
 
-## 알림톡/친구톡 발송 결과 코드
+## 발송 결과 코드
 
 <table class="table table-striped table-hover">
 <thead>
