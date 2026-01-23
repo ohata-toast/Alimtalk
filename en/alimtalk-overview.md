@@ -19,7 +19,7 @@ The service provides RESTful APIs for easy integration.
 * You can also send, inquire about delivery history, and manage templates from the console.
 
 ## AlimTalk Template Precautions
-AlimTalk is an informational message that can be sent to users who have not added KakaoTalk channel.<br/> Among the exceptions to commercial information for commercial purposes in the Information and Communication Network Act guide to prevent illegal spam, only templates that have been judged to be suitable for the protection of KakaoTalk users can be sent. [[Guidance on compliance with informational messages (AlimTalk)]](https://cs.kakao.com/helps?articleId=1073203715&service=159&category=503&device=1871&locale=ko)
+AlimTalk is an informational message that can be sent to users who have not added KakaoTalk channel.<br/> Among the exceptions to commercial information for commercial purposes in the Information and Communication Network Act guide to prevent illegal spam, only templates that have been judged to be suitable for the protection of KakaoTalk users can be sent. [[Guidance on compliance with informational messages (AlimTalk)]](https://kakaobusiness.gitbook.io/main/ad/infotalk/operations)
 
 #### Alert Talk Message Maximum Character Guide
 Please refer to the following two additional contents based on the maximum number of characters in Alim Talk message, which is largely basic and up to 1,000 characters in image/item list 700 characters for each message type.
@@ -54,7 +54,7 @@ Please refer to the following two additional contents based on the maximum numbe
 ## Template Inspection and Creation Guide
 * [[AlimTalk Creation Guide]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide)
 * [[AlimTalk Inspection Guide]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit)
-* [[AlimTalk Image Creation Guide]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide/image)
+* [[AlimTalk Image Creation Guide]](https://kakaobusiness.gitbook.io/main/ad/infotalk/audit#id-3)
   
 
 

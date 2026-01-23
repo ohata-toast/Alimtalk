@@ -19,7 +19,7 @@
 * コンソールでも送信、送信履歴の照会、テンプレートの管理ができます。
 
 ## お知らせトークテンプレートの注意事項
-お知らせトークは、カカオトークチャンネルを追加せずにユーザーにも送信可能な情報性メッセージです。<br/>不法スパム防止のための情報通信網法案内書にある営利目的の広告性情報の例外のうち、カカオトークユーザー保護の観点に適していると審査されたテンプレートに限り送信可能です。[[情報性メッセージ(お知らせトーク)の遵守事項案内]](https://cs.kakao.com/helps?articleId=1073203715&service=159&category=503&device=1871&locale=ko)
+お知らせトークは、カカオトークチャンネルを追加せずにユーザーにも送信可能な情報性メッセージです。<br/>不法スパム防止のための情報通信網法案内書にある営利目的の広告性情報の例外のうち、カカオトークユーザー保護の観点に適していると審査されたテンプレートに限り送信可能です。[[情報性メッセージ(お知らせトーク)の遵守事項案内]](https://kakaobusiness.gitbook.io/main/ad/infotalk/operations)
 
 #### お知らせトークメッセージの最大文字数ガイド
 お知らせトークメッセージの最大文字数は、メッセージタイプごとに基本および画像1,000文字/アイテムリスト700文字まで可能であり、次の2点を追加でご参照ください。
@@ -54,4 +54,4 @@
 ## テンプレート検収および作成ガイド
 * [[お知らせトークの作成ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide)
 * [[お知らせトークの審査ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit)
-* [[お知らせトークのイメージ作成ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide/image)
+* [[お知らせトークのイメージ作成ガイド]](https://kakaobusiness.gitbook.io/main/ad/infotalk/audit#id-3)

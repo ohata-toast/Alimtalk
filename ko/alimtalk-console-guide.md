@@ -114,7 +114,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 여러 수신 번호로 알림톡
 
 ### 템플릿 등록
 * 카카오 알림톡 가이드
-    * [[알림톡 제작가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide), [[알림톡 심사가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit), [[알림톡 화이트리스트]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit/white-list), [[알림톡 블랙리스트]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit/black-list)
+    * [[알림톡 제작가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide), [[알림톡 심사가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit), [[알림톡 유의사항]](https://kakaobusiness.gitbook.io/main/ad/infotalk/operations)
 * 발신프로필 / 그룹
     * 템플릿을 등록할 발신 프로필 또는 발신 프로필 그룹을 선택합니다. 그룹에 등록할 경우 그룹에 포함된 모든 발신 프로필이 해당 템플릿을 사용할 수 있습니다.
     * 발신프로필/그룹에 동일한 템플릿코드가 존재할 경우 발신프로필에 등록된 템플릿이 우선 발송됩니다.
