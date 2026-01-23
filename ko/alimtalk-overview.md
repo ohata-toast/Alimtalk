@@ -19,7 +19,7 @@
 * 콘솔에서도 발송, 발송 내역 조회, 템플릿 관리를 할 수 있습니다.
 
 ## 알림톡 템플릿 유의 사항
-알림톡은 카카오톡 채널을 추가하지 않은 이용자에게도 발송 가능한 정보성 메시지입니다.<br/> 불법스팸 방지를 위한 정보통신망법 안내서의 영리목적의 광고성 정보의 예외 중 카카오톡 이용자 보호 차원에서 적합하다고 심사된 템플릿에 한하여 발송 가능합니다. [[정보성 메시지(알림톡) 준수사항 안내]](https://cs.kakao.com/helps?articleId=1073203715&service=159&category=503&device=1871&locale=ko)
+알림톡은 카카오톡 채널을 추가하지 않은 이용자에게도 발송 가능한 정보성 메시지입니다.<br/> 불법스팸 방지를 위한 정보통신망법 안내서의 영리목적의 광고성 정보의 예외 중 카카오톡 이용자 보호 차원에서 적합하다고 심사된 템플릿에 한하여 발송 가능합니다. [[정보성 메시지(알림톡) 준수사항 안내]](https://kakaobusiness.gitbook.io/main/ad/infotalk/operations)
 
 #### 알림톡 메시지 최대 글자수 가이드
 알림톡 메시지 최대 글자수는 메시지 유형별로 크게 기본 및 이미지 1,000자 / 아이템리스트 700자까지 가능한 기준으로 아래 2가지 내용을 추가 참고 부탁 드립니다.
@@ -54,7 +54,7 @@
 ## 템플릿 검수 및 작성 가이드
 * [[알림톡 제작 가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide)
 * [[알림톡 심사 가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit)
-* [[알림톡 이미지 제작 가이드]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide/image)
+* [[알림톡 이미지 제작 가이드]](https://kakaobusiness.gitbook.io/main/ad/infotalk/audit#id-3)
   
 
 
