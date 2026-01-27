@@ -1,5 +1,9 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### January 27, 2026
+* [API] Added webhook API link for send result inquiry to scheduled delivery and bulk delivery result webhooks
+    * An API link for send result inquiry has been added to the webhooks for scheduled delivery and bulk delivery results.
+
 ### December 31, 2025
 * [API, Console] End of FriendTalk service
     * Friend Talk service will be terminated on Wednesday, December 31, 2025.

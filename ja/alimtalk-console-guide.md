@@ -114,7 +114,7 @@ Excel/CSVフォーマットのテンプレートファイルを通じて、複�
 
 ### テンプレート登録
 * カカオお知らせトークガイド
-    * [[お知らせトーク作成ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide)、[[お知らせトーク審査ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit)、[[お知らせトークホワイトリスト]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit/white-list)、[[お知らせトークブラックリスト]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit/black-list)
+    * [[お知らせトーク作成ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/content-guide)、[[お知らせトーク審査ガイド]](https://kakaobusiness.gitbook.io/main/ad/bizmessage/notice-friend/audit)、[[お知らせトーク注意事項]](https://kakaobusiness.gitbook.io/main/ad/infotalk/operations)
 * 発信プロフィール / グループ
     * テンプレートを登録する発信プロフィールまたは、発信プロフィールグループを選択します。グループに登録した場合、グループに含まれるすべての発信プロフィールが該当テンプレートを使用できます。
     * 発信プロフィール/グループに同じテンプレートコードが存在する場合、発信プロフィールに登録されたテンプレートが優先的に送信されます。
