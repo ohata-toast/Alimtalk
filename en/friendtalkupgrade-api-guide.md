@@ -132,9 +132,16 @@ Content-Type: application/json;charset=UTF-8
       * N: Users who agree to receive advertising information from the client company - Channel friend
       * I: Target of customer sending request ∩ Channel friend
 * You can use all 8 message types of the existing FriendTalk.
-* You can use BC, BT button types.
-* You cannot use Add Channel (AC) button.
-* When using the BF button, you can use it by entering the business form ID issued by Kakao.
+* You can use BT, AC button types.
+* Note the following constraints when using the AC (Add Channel) button:
+    * Display as a highlighted button (Yellow).
+    * Place the button in the designated position when multiple buttons are present:
+        * TEXT, IMAGE: Must be the furst button (Top position)
+        * Other types: Must be the second button (Right position)
+    * Set the button name (name) exclusively to "Add Channel".
+    * Limit usage to a maximum of one AC button across the entire carousel.
+    * Allow only targeting types M and N..
+* Support for the BF button by providing a Business Form ID issued by Kakao.
 * Fallback can be set via resendParameter for each recipient.
   * When using fallback, you need to register the SMS Appkey and set its sending through the fallback management API.
   * <b>Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)</b>
@@ -237,12 +244,12 @@ Content-Type: application/json;charset=UTF-8
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally. Up 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -348,12 +355,12 @@ Content-Type: application/json;charset=UTF-8
 | \- imageLink| String| X| URL to go to when the image is clicked. Limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -459,12 +466,12 @@ Content-Type: application/json;charset=UTF-8
 | \- imageLink| String| X| URL to go to when the image is clicked. Limited to 1,000 characters<br>If not set, use the image viewer in KakaoTalk|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -599,12 +606,12 @@ Content-Type: application/json;charset=UTF-8
 | \-- schemeIos| String| X| IOS app link, limited to 1,000 characters|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -712,12 +719,12 @@ Content-Type: application/json;charset=UTF-8
 | \- thumbnailUrl| String| X| Image URL for video thumbnail, only URLs uploaded as general images available (if none is available, the default KakaoTV video thumbnail is used). Limited to up to 500 characters.|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -836,12 +843,12 @@ Content-Type: application/json;charset=UTF-8
 | discountFixed| Integer| X| Fixed discount price (0 to 999,999), discount rate when a discount price exists., One of the fixed discount prices is required|
 | buttons| List| O| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 1,000 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 1,000 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 1,000 characters|
 | \- schemeIos| String| X| iOS app link (required for AL type), limited to 1,000 characters|
-| \- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \- chatExtra| String| X| Meta information to send when the button is BT type|
 | \- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
@@ -870,6 +877,26 @@ Content-Type: application/json;charset=UTF-8
 | statsId| String| X| Statistics ID (not included in the outgoing search conditions. Up 8 characters)|
 
 #### Request to send carousel feed type
+##### Carousel fixed placeholders (path-based template parameter)
+
+Allow unique placeholder values for each item in a carousel-type template.
+
+* **Usage format**: `key@$.carousel.list[index]`(e.g. `productName@$.carousel.list[0]`)
+* If a carousel intro (head) is present, it occupies `list[0]`, while actual content items begin from `list[1]`.
+* If no value is matched using the path-based key, it will fall back to the standard key.
+
+| Category | Replaceable fields | path format |
+|------|--------------|----------|
+| Carousel intro (head) | header, content, linkMo, linkPc, schemeAndroid, schemeIos | `key@$.carousel.list[0]`(if head exists) |
+| Carousel item | header, message, additionalContent | `key@$.carousel.list[index]` |
+| Carousel item button | linkMo, linkPc, schemeAndroid, schemeIos | `key@$.carousel.list[index]` |
+| Carousel item coupon | title, description, linkMo, linkPc, schemeAndroid, schemeIos | `key@$.carousel.list[index]` |
+| Carousel item commerce | title | `key@$.carousel.list[index]` |
+
+* **Tail**: Placeholders are not supported
+* Button indices are not included in the path. All buttons within the same item are replaced using the same path value.
+
+> **Caution** The @ character cannot be used in placeholder keys (#{key}). The @ character is reserved as a path delimiter within the system.
 
 \[Request body]
 
@@ -987,12 +1014,12 @@ Content-Type: application/json;charset=UTF-8
 | \-- imageLink| String| X        | Image link, limited to 1,000 characters|
 | \-- buttons| List| O        | Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
 | \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 1,000 characters|
-| \--- chatExtra| String| X        | Meta information to send when the button is BC/BT type|
+| \--- chatExtra| String| X        | Meta information to send when the button is BT type|
 | \--- chatEvent| String| X        | Bot event name to connect when the button is BT type|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
 | \-- coupon| Object| X        | Coupon elements|
@@ -1144,12 +1171,12 @@ Content-Type: application/json;charset=UTF-8
 | \--- discountFixed| Integer| X        | Fixed discount price (0 to 999,999), discount rate when a discount price exists., One of the fixed discount prices is required|
 | \-- buttons| List| O        | Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
-| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, BC: chat consultation conversion, BT: chatbot conversion, BF: Business form)<br>- BC type is available only in the KakaoTalk channel using chat consultation<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
+| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
 | \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 1,000 characters|
-| \--- chatExtra| String| X        | Meta information to send when the button is BC/BT type|
+| \--- chatExtra| String| X        | Meta information to send when the button is BT type|
 | \--- chatEvent| String| X        | Bot event name to connect when the button is BT type|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
 | \-- coupon| Object| X        | Coupon elements|
@@ -1227,7 +1254,7 @@ Content-Type: application/json;charset=UTF-8
       * N: Users who agree to receive advertising information from the client company - Channel friend
       * I: Target of customer sending request ∩ Channel friend
 * You can use all 8 message types of the existing FriendTalk.
-* You cannot use BC, BT button types.
+* You cannot use BT button types.
 * You can use Add Channel (AC) button.
 * When using the BF button, you can upload the Business Form ID issued by Kakao and receive and use a BizForm key.
 * Fallback can be set via resendParameter for each recipient.
@@ -1304,18 +1331,18 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 | Name| Type| Required| Description|
-|----------|----------|----------|----------|
+|----------|----------|----------|--------------------------------------------------------------------------------------------------------------------|
 | senderKey| String| O| Outgoing key (40 characters), group outgoing key unavailable|
 | templateCode| String| O| Template code to use|
 | pushAlarm| boolean| X| Sending status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
-| unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                 |
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234                                                                                 |
 | recipientList| List| O| Recipient list (up to 1,000)|
 | \- recipientNo| String| O| Incoming number|
 | \- targeting| String| O| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
-| \- templateParameter| Object| X| Template parameter (required if including variables to be replaced in the template)|
-| \- imageParameters| List| X| Dynamic parameters that can change the template image field value, carousel type is currently not supported (only JSON list with the same size as the number of images in the template can be used. If used, images that do not want to be changed must be entered as an empty JSON object)|
+| \- templateParameter| Object| X| Template parameter (required if including variables to be replaced in the template)<br>- carousel type: Use `key@$.carousel.list[Index]` to apply unique placeholder values per item (e.g., `productName@$.carousel.list[0]`)<br>- If a head is present, it occupies list[0]; actual items start from list[1]<br>- `@` character is prohibited in placeholder keys<br>- Max 1,300 characters each for key and value|
+| \- imageParameters| List| X| Dynamic parameters that can change the template image field value, carousel type is currently not supported (only JSON list with the same size as the number of images in the template can be used. If used, images that do not want to be changed must be entered as an empty JSON object)                                                 |
 | \-- imageUrl| String| O| Image URL |
 | \-- imageLink| String| X| Image link|
 | \- resendParameter| Object| X| Fallback Information|
@@ -1324,8 +1351,8 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendTitle| String| X| LMS fallback title<br>(if no value exists, it will be replaced with PlusFriend ID.)|
 | \-- resendContent| String| X| Fallback title<br>(if no value exists, it will be replaced with [message body].)|
 | \-- resendSendNo| String| X| Fallback number<br><span style="color:red">(if the outgoing number is not registered with the SMS service, the fallback may fail.)</span>|
-| \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                   |
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234                                                                                   |
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -1359,7 +1386,7 @@ Content-Type: application/json;charset=UTF-8
 |:----------|:----------|:----------|:----------|
 | header| Object| O| Response header info|
 | \- isSuccessful| boolean| O| Successful API call status|
-| \- resultCode| Integer| O| API call result code (success: 0, error code for failure)|
+| \- resultCode| Integer| O| API call result code (success: 200, error code for failure)|
 | \- resultMessage| String| O| API call result message ("success" or a related success message on success, detailed message on failure, cause on failure)|
 | message| Object| X| Message sending result information (exists only if there is a sending request)|
 | \- requestId| String| X| Sending request ID (an ID that uniquely identifies each sending request)|
@@ -1697,7 +1724,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- linkPc| String| X| PC web link|
 | \-- schemeIos| String| X| IOS app link|
 | \-- schemeAndroid| String| X| Android app link|
-| \-- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \-- chatExtra| String| X| Meta information to send when the button is BT type|
 | \-- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \-- bizFormKey| String| X| BizForm key when the button is BF type|
 | \- item| Object| X| Wide list elements|
@@ -1752,7 +1779,7 @@ Content-Type: application/json;charset=UTF-8
 | \---- linkPc| String| X| PC web link|
 | \---- schemeAndroid| String| X| Android app link|
 | \---- schemeIos| String| X| IOS app link|
-| \---- chatExtra| String| X| Meta information to send when the button is BC/BT type|
+| \---- chatExtra| String| X| Meta information to send when the button is BT type|
 | \---- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \---- bizFormKey| String| X| BizForm key when the button is BF type|
 | \--- coupon| Object| X| Coupon (within carousel)|
@@ -2450,7 +2477,7 @@ Content-Type: application/json;charset=UTF-8
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally, 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
@@ -2511,7 +2538,7 @@ Content-Type: application/json;charset=UTF-8
 | \- imageLink| String| X        | URL to go to when the image is clicked, limited to 500 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
 | buttons| List| X        | Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
@@ -2572,7 +2599,7 @@ Content-Type: application/json;charset=UTF-8
 | \- imageLink| String| X        | URL to go to when the image is clicked, limited to 500 characters<br>If not set, use the image viewer in KakaoTalk<br>No placeholders available|
 | buttons| List| X        | Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
@@ -2662,7 +2689,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- schemeIos| String| X| IOS app link, limited to 500 characters|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
@@ -2725,7 +2752,7 @@ Content-Type: application/json;charset=UTF-8
 | \- thumbnailUrl| String| X| Image URL for video thumbnail. Only URLs uploaded as general images available (if none is available, the default KakaoTV video thumbnail is used). Limited to up to 500 characters<br>Placeholders unavailable|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
@@ -2800,7 +2827,7 @@ Content-Type: application/json;charset=UTF-8
 | discountFixed| Integer| X        | Fixed discount rate (0 to 999,999), discount rate when a discount price exists, one of the fixed discount prices required<br>Cannot customize placeholders, stored as a fixed placeholder `#{fixed discount price}` if the value is left blank|
 | buttons| List| O        | Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
@@ -2902,7 +2929,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- imageLink| String| X        | Image link, limited to 500 characters<br>No placeholders available|
 | \-- buttons| List| O        | Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates <br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
@@ -3013,7 +3040,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- discountFixed| Integer| X        | Fixed discount rate (0 to 999,999), discount rate when a discount price exists, one of the fixed discount prices required<br>Cannot customize placeholders, stored as a fixed placeholder `#{fixed discount price}` if the value is left blank|
 | \-- buttons| List| O        | Carousel list button list, minimum 1, maximum 2|
 | \--- name| String| O        | Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
-| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BC: chat consultation conversion, BT: chatbot conversion, BF: business form )<br>- BC type is not available in templates<br>- BT type <br>- BF type is not available in templates<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
+| \--- type| String| O        | Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
