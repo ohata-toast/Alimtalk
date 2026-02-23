@@ -1,5 +1,35 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### February 24, 2026
+* [API] Added Brand Message carousel fixed placeholder feature
+  * Enable unique placeholder values for each item within carousel-type templates.
+  * Allow per-item personalization using path-based parameters (`key@$.carousel.list[index]`).
+  * Restrict the use of the @ character in template placeholder keys.
+
+* [API] Added Brand Message template placeholder key validation
+  * Trigger an error if a placeholder key contains the '@' character during template registration or modification.
+
+* [API] Added Brand Message template parameter missing check
+  * Trigger an error if a placeholder key defined in the template is missing from templateParameter during a send request.
+
+* [API, Console] Brand Message BT button type support
+  * Support the BT (Bot Transfer) button type within Brand Messages.
+  * Enable template registration with the BT button type selected via the Console.
+
+* [API, Console] Added Brand Message AC button type
+  * Support the AC (Add Channel) button type for Brand Messages.
+  * Require the AC button name to be set exactly as 'Add Channel'.
+  * Restrict the use of AC buttons to a maximum of one across all carousel items.
+
+* [Console] Improved response message categorization for Alimtalk/Brand Message failover
+  * Categorize response messages for fallbacks to improve visibility.
+
+* [API] Added template parameter length limit
+  * Enforce a maximum length of 1,300 characters for each template parameter key and value.
+
+* [API] Added recipient grouping key length limit
+  * Restrict the maximum length of the recipientGroupingKey field to 100 characters.
+  
 ### January 27, 2026
 * [API] Added webhook API link for send result inquiry to scheduled delivery and bulk delivery result webhooks
     * An API link for send result inquiry has been added to the webhooks for scheduled delivery and bulk delivery results.
