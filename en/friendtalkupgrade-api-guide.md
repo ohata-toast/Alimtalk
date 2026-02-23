@@ -1208,7 +1208,7 @@ Content-Type: application/json;charset=UTF-8
 |:----------|:----------|:----------|:----------|
 | header| Object| O| Response header info|
 | \- isSuccessful| boolean| O| Successful API call status|
-| \- resultCode| Integer| O| API call result code (success: 200, error code for failure)|
+| \- resultCode| Integer| O| API call result code (success: 0, error code for failure)|
 | \- resultMessage| String| O| API call result message ("success" or a related success message on success, detailed message on failure, cause on failure)|
 | message| Object| X| message sending result information (exists only if there is a send request)|
 | \- requestId| String| X| Sending request ID (an ID that uniquely identifies each sending request)|
@@ -1359,7 +1359,7 @@ Content-Type: application/json;charset=UTF-8
 |:----------|:----------|:----------|:----------|
 | header| Object| O| Response header info|
 | \- isSuccessful| boolean| O| Successful API call status|
-| \- resultCode| Integer| O| API call result code (success: 200, error code for failure)|
+| \- resultCode| Integer| O| API call result code (success: 0, error code for failure)|
 | \- resultMessage| String| O| API call result message ("success" or a related success message on success, detailed message on failure, cause on failure)|
 | message| Object| X| Message sending result information (exists only if there is a sending request)|
 | \- requestId| String| X| Sending request ID (an ID that uniquely identifies each sending request)|

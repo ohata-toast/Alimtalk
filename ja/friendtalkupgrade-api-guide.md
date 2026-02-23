@@ -1064,7 +1064,7 @@ Content-Type: application/json;charset=UTF-8
 |:-----------------|:--------|:---------|:-------------------------------------------------------------|
 | header           | Object  | O        | レスポンスヘッダ情報                                                   |
 | - isSuccessful   | boolean | O        | API呼び出し成否                                               |
-| - resultCode | Integer | O | API呼び出し結果コード(成功：200、失敗時はエラーコード) |
+| - resultCode | Integer | O | API呼び出し結果コード(成功：0、失敗時はエラーコード) |
 | - resultMessage | String | O | API呼び出し結果メッセージ(成功時は「success」または関連する成功メッセージ、失敗時は失敗原因の詳細メッセージ) |
 | message | Object | X | メッセージ送信結果情報(送信リクエストがある場合にのみ存在) |
 | - requestId | String | X | 送信リクエストID(各送信リクエストを一意に識別するID) |
@@ -1214,7 +1214,7 @@ Content-Type: application/json;charset=UTF-8
 |:-----------------|:--------|:---------|:-------------------------------------------------------------|
 | header           | Object  | O        | レスポンスヘッダ情報                                                   |
 | - isSuccessful   | boolean | O        | API呼び出し成否                                               |
-| - resultCode | Integer | O | API呼び出し結果コード(成功：200、失敗時はエラーコード) |
+| - resultCode | Integer | O | API呼び出し結果コード(成功：0、失敗時はエラーコード) |
 | - resultMessage | String | O | API呼び出し結果メッセージ(成功時は「success」または関連する成功メッセージ、失敗時は失敗原因の詳細メッセージ) |
 | message | Object | X | メッセージ送信結果情報(送信リクエストがある場合にのみ存在) |
 | - requestId | String | X | 送信リクエストID(各送信リクエストを一意に識別するID) |
