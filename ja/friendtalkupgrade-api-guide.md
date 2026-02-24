@@ -132,9 +132,16 @@ Content-Type: application/json;charset=UTF-8
       * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
       * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
 * 従来のカカともへのメッセージの8つのメッセージタイプを全て使用できます。
-* BC、BTボタンタイプを使用できます。
-* AC(チャンネル追加)ボタンは使用できません。
-* BFボタンを使用する場合、カカオから発行されたビジネスフォームIDを入力して使用できます。
+* BT、ACボタンタイプを使用できます。
+* AC(チャンネル追加)ボタンの使用時、以下の制約事項があります。
+    * 強調型ボタン(黄色)で表記されます。
+    * ボタンが複数ある場合、指定された位置で使用する必要があります。
+        * TEXT、IMAGE：最初のボタン(最上段)
+        * その他：2番目のボタン(右側)
+    * ボタン名(name)は「チャンネル追加」に固定されます。
+    * カルーセル型は、カルーセル全体を通して1つのみ使用可能です。
+    * ターゲティングM、Nのみ使用可能です。
+* BFボタンの使用時、カカオから発行されたビジネスフォームIDを入力して使用できます。
 * 代替送信は、受信者ごとにresendParameterを介して設定できます。
 * 代替送信をご利用になる場合、代替送信管理APIを介してSMS Appkeyの登録及び送信設定が必要です。
 * <b>夜間送信制限(20:50～翌日08:00)</b>
@@ -225,12 +232,12 @@ Content-Type: application/json;charset=UTF-8
 | content | String | O | - TEXTタイプの場合、最大1,300文字(改行:最大99個、URL形式の入力が可能)<br>- IMAGEタイプの場合、最大400文字(改行:最大29回、URL形式の入力が可能)<br>- WIDEタイプの場合、最大76文字(改行:最大1回)<br>- PREMIUM_VIDEOタイプの場合、このフィールドをオプションとして使用可能。最大76文字(改行:最大1回)<br>- その他のタイプの場合、このフィールドは使用しません |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -318,12 +325,12 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -411,12 +418,12 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -533,12 +540,12 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeIos           | String  | X  | iOSアプリリンク、1,000文字制限                                                                                                                                                                                                                                                         |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -628,12 +635,12 @@ Content-Type: application/json;charset=UTF-8
 | - thumbnailUrl | String | X | 動画サムネイル用画像URL、一般画像としてアップロードされたURLのみ使用可能(ない場合、カカオTV動画の基本サムネイルを使用) 、最大500文字制限 |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -734,12 +741,12 @@ Content-Type: application/json;charset=UTF-8
 | discountFixed | Integer | X | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
 | buttons | List | O | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| - type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | - linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | - linkPc | String | X | PCWebリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | - schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | - schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| - chatExtra | String | X | BC/BTタイプのボタンの場合、伝達するメタ情報 |
+| - chatExtra | String | X | BTタイプのボタンの場合、伝達するメタ情報 |
 | - chatEvent | String | X | BTタイプのボタンの場合、連携するボットイベント名 |
 | - bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | coupon                 | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -867,12 +874,12 @@ Content-Type: application/json;charset=UTF-8
 | -- imageLink           | String  | X  | 画像リンク、1000文字制限                                                                                                                                                                                                                                                            |
 | -- buttons | List | O | カルーセルリストのボタンリスト最小1件、最大2件 |
 | --- name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
-| --- type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
+| --- type | String | O | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | --- linkMo | String | X | モバイルWebリンク(WLタイプの場合、必須フィールド)、1,000文字制限 |
 | --- linkPc | String | X | PC Webリンク(WLタイプの場合、任意フィールド)、1,000文字制限 |
 | --- schemeAndroid | String | X | Androidアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
 | --- schemeIos | String | X | iOSアプリリンク(ALタイプの場合、必須フィールド)、1,000文字制限 |
-| --- chatExtra          | String  | X  | BC / BTタイプのボタンの場合、伝達するメタ情報                                                                                                                                                                                                                                                 |
+| --- chatExtra          | String  | X  | BTタイプのボタンの場合、伝達するメタ情報                                                                                                                                                                                                                                                 |
 | --- chatEvent          | String  | X  | BTタイプのボタンの場合、接続するボットイベント名                                                                                                                                                                                                                                                     |
 | --- bizFormKey | String | X | BFタイプのボタンの場合、ビズフォームキー |
 | -- coupon              | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -900,6 +907,27 @@ Content-Type: application/json;charset=UTF-8
 | statsId                | String  | 	X | 統計ID(発信検索条件には含まれません。最大8文字)                                                                                                                                                                                                                                            |
 
 #### カルーセルコマース形式の送信リクエスト
+
+##### カルーセル固定置換パラメータ(pathベースのテンプレートパラメータ)
+
+カルーセルタイプにおいて、各アイテムに異なる置換パラメータ値を適用できます。
+
+* **使用形式**：`キー@$.carousel.list[インデックス]`(例：`productName@$.carousel.list[0]`)
+* head(カルーセルイントロ)がある場合、headが`list[0]`を占め、実際のアイテムは`list[1]`から開始します。
+* pathベースのキーで値が見つからない場合、一般的なキーにフォールバックされます。
+
+| 区分 | 置換可能なフィールド | path形式 |
+|------|--------------|----------|
+| カルーセルイントロ(head) | header, content, linkMo, linkPc, schemeAndroid, schemeIos | `キー@$.carousel.list[0]`(head存在時) |
+| カルーセルアイテム | header, message, additionalContent | `キー@$.carousel.list[インデックス]` |
+| カルーセルアイテムのボタン | linkMo, linkPc, schemeAndroid, schemeIos | `キー@$.carousel.list[インデックス]` |
+| カルーセルアイテムのクーポン | title, description, linkMo, linkPc, schemeAndroid, schemeIos | `キー@$.carousel.list[インデックス]` |
+| カルーセルアイテムのコマース | title | `キー@$.carousel.list[インデックス]` |
+
+* **Tail**：置換パラメータ使用不可
+* ボタンのインデックスはpathに含まれません。同じアイテム内のボタンは同じpath値で置換されます。
+
+> **注意** 置換パラメータのキー(`#{key}`)には`@`文字を使用できません。`@`はシステムでpathの区切り文字として使用されます。
 
 [Request body]
 
@@ -1006,12 +1034,12 @@ Content-Type: application/json;charset=UTF-8
 | --- discountFixed | Integer | X  | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須 |
 | -- buttons           | List    | O  | カルーセルリストボタンリスト最小1件、最大2件                                                                                                                                                                                                                                                  |
 | --- name | String | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合は最大14文字<br>- それ以外のタイプの場合は最大8文字 |
-| --- type | String | O  | ボタンのタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、BC：チャット相談への切り替え、BT：チャットボットへの切り替え、BF：ビジネスフォーム)<br>- BCタイプはチャット相談を利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには次の3つの文言のみ使用可能<br> - トークで予約する<br> - トークでアンケートに答える<br> - トークで応募する |
+| --- type | String | O  | ボタンのタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには次の3つの文言のみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
 | --- linkMo | String | X  | モバイルWebリンク(WLタイプの場合は必須フィールド)、1,000文字制限 |
 | --- linkPc | String | X  | PC Webリンク(WLタイプの場合は任意フィールド)、1,000文字制限 |
 | --- schemeAndroid | String | X  | Androidアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
 | --- schemeIos | String | X  | iOSアプリリンク(ALタイプの場合は必須フィールド)、1,000文字制限 |
-| --- chatExtra | String | X  | BC / BTタイプのボタンの場合に転送するメタ情報 |
+| --- chatExtra | String | X  | BTタイプのボタンの場合に転送するメタ情報 |
 | --- chatEvent | String | X  | BTタイプのボタンの場合に接続するボットのイベント名 |
 | --- bizFormKey | String | X  | BFタイプのボタンの場合のビズフォームキー |
 | -- coupon            | Object  | X  | クーポン要素                                                                                                                                                                                                                                                                       |
@@ -1083,7 +1111,7 @@ Content-Type: application/json;charset=UTF-8
       * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
       * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
 * 既存カカともへのメッセージの8つのメッセージタイプを全て使用できます。
-* BC、BTボタンタイプは使用できません。
+* BTボタンタイプは使用できません。
 * AC(チャンネル追加)ボタンを使用できます。
 * BFボタンを使用する場合、カカオから発行されたビジネスフォームIDをアップロードしてビズフォームキーを発行して使用できます。
 * 代替送信は、受信者ごとにresendParameterを介して設定できます。
@@ -1158,34 +1186,37 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-| 名前                   | タイプ    | 必須 | 説明                                                                                                                         |
-|------------------------|---------|----|------------------------------------------------------------------------------------------------------------------------------|
-| senderKey | String | O | 送信キー(40文字)、グループ送信キーは使用不可 |
-| templateCode | String | O | 使用するテンプレートコード |
-| pushAlarm | boolean | X | メッセージプッシュ通知を送信するかどうか(デフォルト値：true) |
-| requestDate | String | X | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>最大60日後まで予約可能 |
-| unsubscribeNo | String | X | 080無料受信拒否電話番号(全て未入力の場合、送信プロフィールに登録された無料受信拒否情報で送信されます)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx |
-| unsubscribeAuthNo | String | X | 080無料受信拒否認証番号(全て未入力の場合、送信プロフィールに登録された無料受信拒否情報で送信されます)<br>unsubscribe_phone_numberなしでunsubscribe_auth_numberのみの入力は不可<br>ex) 1234 |
-| recipientList          | List    | O  | 受信者リスト(最大1,000人)                                                                                                            |
-| - recipientNo          | String  | O  | 受信番号                                                                                                                      |
-| - targeting | String | O | メッセージ対象のタイプ(M：マーケティング受信同意ユーザー、N：友だちではないマーケティング受信同意ユーザーにのみ、I：友だちであるユーザー) |
-| - templateParameter | Object | X | テンプレートパラメータ(テンプレートに置換する変数を含む場合、必須) |
-| - imageParameters | List | X | テンプレートの画像フィールド値を変更できる動的パラメータ(テンプレートに存在する画像の数と同じサイズのJSONリストのみ使用できます。使用する場合、変更しない画像は空のJSONオブジェクトを入力する必要があります) |
-| -- imageUrl | String | O | 画像のURL |
-| -- imageLink | String | X | 画像のリンク |
-| - videoParameter | List | X | テンプレートのビデオフィールド値を変更できる動的パラメータ |
-| -- videoUrl | String | O | カカオTVの動画URL |
-| -- thumbnailUrl | String | X | 動画のサムネイル用画像のURL |
-| - resendParameter   | Object  | X  | 代替送信情報                                                                                                                           |
-| -- isResend | boolean | X | 送信失敗時に、テキストメッセージで代替送信するかどうか<br>コンソールで代替送信を設定した場合、デフォルトで代替送信されます。 |
-| -- resendType | String | X | 代替送信タイプ(SMS、LMS)<br>値がない場合、テンプレートの本文の長さに応じてタイプが区別されます。 |
-| -- resendTitle | String | X | LMS代替送信の件名<br>(値がない場合、プラスフレンドIDで代替送信されます。) |
-| -- resendContent | String | X | 代替送信の内容<br>(値がない場合、[メッセージ本文]で代替送信されます。) |
-| -- resendSendNo | String | X | 代替送信の送信者番号<br><span style="color:red">(SMSサービスに登録された送信者番号でない場合、代替送信に失敗することがあります。)</span> |
-| unsubscribeNo | String | X | 080無料受信拒否電話番号(両方とも未入力の場合、送信プロフィールに登録された無料受信拒否情報で送信されます)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx |
-| unsubscribeAuthNo | String | X | 080無料受信拒否認証番号(両方とも未入力の場合、送信プロフィールに登録された無料受信拒否情報で送信されます)<br>unsubscribe_phone_numberなしでunsubscribe_auth_numberのみの入力は不可<br>ex) 1234 |
-| createUser | String | X | 登録者(コンソールで送信時にユーザーUUIDとして保存) |
-| statsId | String | X | 統計ID(送信検索条件には含まれません、最大8文字) |
+| 名前                     | タイプ      | 必須 | 説明                                                                                                                                                                                                                                     |
+|------------------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| senderKey              | String  | O  | 送信キー(40文字)、グループ送信キーは使用不可                                                                                                                                                                                                                |
+| templateCode           | String  | O  | 使用するテンプレートコード                                                                                                                                                                                                                           |
+| pushAlarm              | boolean | X  | メッセージのプッシュ通知送信有無(デフォルト値：true)                                                                                                                                                                                                              |
+| requestDate            | String  | X  | リクエスト日時(yyyy-MM-dd HH:mm)<br>(入力しない場合は即時送信)<br>最大60日後まで予約可能                                                                                                                                                                     |
+| unsubscribeNo          | String  | X  | 080無料受信拒否電話番号(全て未入力の場合は送信プロファイルに登録された無料受信拒否情報で送信される)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                                           |
+| unsubscribeAuthNo      | String  | X  | 080無料受信拒否認証番号(全て未入力の場合は送信プロファイルに登録された無料受信拒否情報で送信される)<br>unsubscribe_phone_numberなしでunsubscribe_auth_numberのみの入力は不可<br>例：1234                                                                                                           |
+| recipientList          | List    | O  | 受信者一覧(最大1,000名)                                                                                                                                                                                                                       |
+| - recipientNo          | String  | O  | 受信番号                                                                                                                                                                                                                                  |
+| - targeting            | String  | O  | メッセージ対象のタイプ(M：マーケティング受信同意ユーザー、N：友だちではないマーケティング受信同意ユーザーのみ、I：友だちのユーザー)                                                                                                                                                                       |
+| - templateParameter    | Object  | X  | テンプレートパラメータ(テンプレートに置換する変数が含まれる場合は必須)<br>- カルーセルタイプ：アイテムごとに異なる置換パラメータ値を適用する場合は`キー@$.carousel.list[インデックス]`形式を使用(例：`productName@$.carousel.list[0]`)<br>- headがある場合はheadがlist[0]を占め、実際のアイテムはlist[1]から開始<br>- 置換パラメータのキーに`@`文字は使用不可<br>- キー/値はそれぞれ最大1,300文字 |
+| - imageParameters      | List    | X  | テンプレートの画像フィールド値を変更できる動的パラメータ(テンプレートに存在する画像数と同じサイズのJSONリストのみ使用可能。使用する場合、変更しない画像には空のJSONオブジェクトを入力する必要がある)                                                                                                                       |
+| -- imageUrl            | String  | O  | 画像URL                                                                                                                                                                                                                                 |
+| -- imageLink           | String  | X  | 画像リンク                                                                                                                                                                                                                                 |
+| - videoParameter       | Object  | X  | テンプレートの動画フィールド値を変更できる動的パラメータ                                                                                                                                                                                                         |
+| -- videoUrl            | String  | O  | カカオTV動画URL                                                                                                                                                                                                                           |
+| -- thumbnailUrl        | String  | X  | 動画サムネイル用の画像URL                                                                                                                                                                                                                        |
+| - resendParameter      | Object  | X  | 代替送信情報                                                                                                                                                                                                                               |
+| -- isResend            | boolean | X  | 送信失敗時、メッセージの代替送信有無<br>コンソールで代替送信を設定した場合、デフォルトで代替送信されます。                                                                                                                                                                                 |
+| -- resendType          | String  | X  | 代替送信タイプ(SMS、LMS)<br>値がない場合、テンプレートの本文の長さに応じてタイプが区別されます。                                                                                                                                                                                 |
+| -- resendTitle         | String  | X  | LMS代替送信のタイトル<br>(値がない場合、プラス友だちIDで代替送信されます。)                                                                                                                                                                                         |
+| -- resendContent       | String  | X  | 代替送信の内容<br>(値がない場合、[メッセージ本文]で代替送信されます。)                                                                                                                                                                                            |
+| -- resendSendNo        | String  | X  | 代替送信の送信番号<br><span style="color:red">(SMSサービスに登録された送信番号ではない場合、代替送信に失敗する可能性があります。)</span>                                                                                                                                           |
+| - unsubscribeNo        | String  | X  | 080無料受信拒否電話番号(全て未入力の場合は送信プロファイルに登録された無料受信拒否情報で送信される)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                                           |
+| - unsubscribeAuthNo    | String  | X  | 080無料受信拒否認証番号(全て未入力の場合は送信プロファイルに登録された無料受信拒否情報で送信される)<br>unsubscribe_phone_numberなしでunsubscribe_auth_numberのみの入力は不可<br>例：1234                                                                                                           |
+| - recipientGroupingKey | String | X | 受信者グルーピングキー(受信者ごとにグルーピングキーを指定できます。最大100文字) |
+| senderGroupingKey | String | X | 送信者グルーピングキー(送信者ごとにグルーピングキーを指定できます。最大100文字) |
+| resellerCode | String | X | リセラーコード(リセラーが送信時に使用) |
+| createUser | String | X | 登録者(コンソールから送信時、ユーザーUUIDとして保存) |
+| statsId | String | X | 統計ID(送信検索条件には含まれません。最大8文字) |
 
 #### レスポンス
 
@@ -1544,7 +1575,7 @@ Content-Type: application/json;charset=UTF-8
 | -- linkPc             | String  | X        | PC Webリンク                                                                                        | 
 | -- schemeIos          | String  | X        | iOSアプリリンク                                                                                       | 
 | -- schemeAndroid      | String  | X        | Androidアプリリンク                                                                                     | 
-| --- chatExtra | String | X | BC / BTタイプのボタンの場合に転送するメタ情報 |
+| --- chatExtra | String | X | BTタイプのボタンの場合に転送するメタ情報 |
 | --- chatEvent | String | X | BTタイプのボタンの場合に接続するボットのイベント名 |
 | --- bizFormKey | String | X | BFタイプのボタンの場合のビズフォームキー |
 | - item                | Object  | X        | ワイドリスト要素                                                                                     | 
@@ -1599,7 +1630,7 @@ Content-Type: application/json;charset=UTF-8
 | ---- linkPc           | String  | X        | PC Webリンク                                                                                        | 
 | ---- schemeAndroid    | String  | X        | Androidアプリリンク                                                                                     | 
 | ---- schemeIos        | String  | X        | iOSアプリリンク                                                                                       | 
-| ---- chatExtra | String | X | BC / BTタイプのボタンの場合に転送するメタ情報 |
+| ---- chatExtra | String | X | BTタイプのボタンの場合に転送するメタ情報 |
 | ---- chatEvent | String | X | BTタイプのボタンの場合に接続するボットのイベント名 |
 | ---- bizFormKey | String | X | BFタイプのボタンの場合のビズフォームキー |
 | --- coupon | Object | X | クーポン(カルーセル内) |
@@ -2295,7 +2326,7 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink     | String  | X  | 画像をクリックした際に移動するURL、500文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用<br>プレースホルダー使用不可                                                                                                                                                                                   |
 | buttons         | List    | X  | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件                                                                                      |
 | - name          | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダー使用不可                                                                                                                                                                           |
-| - type          | String  | O  | ボタンタイプ(WL: Webリンク、 AL:アプリリンク、 BK:ボットキーワード、 MD:メッセージ伝達、 AC:チャンネル追加、 BC:トーク相談転換、 BT:チャットボット転換、 BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプはTEXT、IMAGEの場合、最初のボタンとして、その他のメッセージタイプの場合は最後のボタンとして登録する必要があります                  |
+| - type          | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある             |
 | - linkMo        | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                              |
 | - linkPc        | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                                               |
 | - schemeAndroid | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                            |
@@ -2356,7 +2387,7 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink     | String  | X  | 画像をクリックした際に移動するURL、500文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用<br>プレースホルダー使用不可                                                                                                                                                                                   |
 | buttons         | List    | X  | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件                                                                                      |
 | - name          | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダー使用不可                                                                                                                                                                           |
-| - type          | String  | O  | ボタンタイプ(WL: Webリンク、 AL:アプリリンク、 BK:ボットキーワード、 MD:メッセージ伝達、 AC:チャンネル追加、 BC:トーク相談転換、 BT:チャットボット転換、 BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプはTEXT、IMAGEの場合、最初のボタンとして、その他のメッセージタイプの場合は最後のボタンとして登録する必要があります                  |
+| - type          | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある                   |
 | - linkMo        | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                              |
 | - linkPc        | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                                               |
 | - schemeAndroid | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                            |
@@ -2446,7 +2477,7 @@ Content-Type: application/json;charset=UTF-8
 | -- schemeIos     | String  | X  | iOSアプリリンク、500文字制限                                                                                                                                                                                                             |
 | buttons          | List    | X  | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件                                                                    |
 | - name           | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダー使用不可                                                                                                                                                         |
-| - type           | String  | O  | ボタンタイプ(WL: Webリンク、 AL:アプリリンク、 BK:ボットキーワード、 MD:メッセージ伝達、 AC:チャンネル追加、 BC:トーク相談転換、 BT:チャットボット転換、 BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプはTEXT、IMAGEの場合、最初のボタンとして、その他のメッセージタイプの場合は最後のボタンとして登録する必要があります |
+| - type          | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある                   |
 | - linkMo         | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                            |
 | - linkPc         | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                             |
 | - schemeAndroid  | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                          |
@@ -2509,7 +2540,7 @@ Content-Type: application/json;charset=UTF-8
 | - thumbnailUrl  | String  | X  | 動画サムネイル用画像URL。一般画像としてアップロードされたURLのみ使用可能(ない場合はカカオTV動画の基本サムネイルを使用)、最大500文字制限<br>プレースホルダー使用不可                                                                                                                                                    |
 | buttons         | List    | X  | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件                                                                                      |
 | - name          | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダー使用不可                                                                                                                                                                           |
-| - type          | String  | O  | ボタンタイプ(WL: Webリンク、 AL:アプリリンク、 BK:ボットキーワード、 MD:メッセージ伝達、 AC:チャンネル追加、 BC:トーク相談転換、 BT:チャットボット転換、 BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプはTEXT、IMAGEの場合、最初のボタンとして、その他のメッセージタイプの場合は最後のボタンとして登録する必要があります                  |
+| - type           | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある |
 | - linkMo        | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                              |
 | - linkPc        | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                                               |
 | - schemeAndroid | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                                            |
@@ -2584,7 +2615,7 @@ Content-Type: application/json;charset=UTF-8
 | discountFixed     | Integer | X  | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須<br>プレースホルダーのユーザー指定は不可能、値を空にすると固定プレースホルダー`#{定額割引価格}`で保存されます                                                                                                                           |
 | buttons           | List    | O  | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件                                                                    |
 | - name            | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダー使用不可                                                                                                                                                         |
-| - type            | String  | O  | ボタンタイプ(WL: Webリンク、 AL:アプリリンク、 BK:ボットキーワード、 MD:メッセージ伝達、 AC:チャンネル追加、 BC:トーク相談転換、 BT:チャットボット転換、 BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプはTEXT、IMAGEの場合、最初のボタンとして、その他のメッセージタイプの場合は最後のボタンとして登録する必要があります |
+| - type          | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある                   |
 | - linkMo          | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                            |
 | - linkPc          | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                             |
 | - schemeAndroid   | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                          |
@@ -2686,7 +2717,7 @@ Content-Type: application/json;charset=UTF-8
 | -- imageLink      | String  | X  | 画像リンク、1000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
 | -- buttons        | List    | O  | カルーセルリストのボタンリスト最小1件、最大2件                                                                                                                                                                                                       |
 | --- name          | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダーは使用不可。                                                                                                                                                          |
-| --- type          | String  | O  | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、AC:チャネル追加、BC:トーク相談切り替え、BT:チャットボット切り替え、BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプは、TEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要があります。 |
+| - type            | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある |
 | --- linkMo        | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                            |
 | --- linkPc        | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                             |
 | --- schemeAndroid | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                          |
@@ -2797,7 +2828,7 @@ Content-Type: application/json;charset=UTF-8
 | --- discountFixed    | Integer | X  | 定額割引価格(0 ～ 999,999)、割引価格が存在する場合、割引率、定額割引価格のいずれかは必須<br>プレースホルダーのユーザー指定は不可能、値を空にすると固定プレースホルダー`#{定額割引価格}`で保存されます                                                                                                                           |
 | -- buttons           | List    | O  | カルーセルリストのボタンリスト最小1件、最大2件                                                                                                                                                                                                       |
 | --- name             | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダーは使用不可。                                                                                                                                                          |
-| --- type             | String  | O  | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、AC:チャネル追加、BC:トーク相談切り替え、BT:チャットボット切り替え、BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプは、TEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要があります。 |
+| --- type             | String  | O  | ボタンタイプ(WL：Webリンク、AL：アプリリンク、BK：ボットキーワード、MD：メッセージ転送、AC：チャンネル追加、BT：チャットボット転換、BF：ビジネスフォーム)<br>- ACタイプはTEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要がある |
 | --- linkMo           | String  | X  | モバイルWebリンク(WLタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                            |
 | --- linkPc           | String  | X  | PC Webリンク(WLタイプの場合、任意フィールド)、500文字制限                                                                                                                                                                                             |
 | --- schemeAndroid    | String  | X  | Androidアプリリンク(ALタイプの場合、必須フィールド)、500文字制限                                                                                                                                                                                          |
