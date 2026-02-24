@@ -73,7 +73,7 @@ You can set up an outgoing profile and enter content to send messages in the for
    * To attach an image to a message, first register the image in the Manage Image tab.
    * Image link: Enter the link you want to connect to when the image is clicked (URL including http://, https://).
    * Every image used for carousel commerce must have the same ratio.
-6. You can insert web links, app links, bot keywords, message forwarding, chat conversion, bot conversion, and business form buttons.
+6. You can insert web links, app links, bot keywords, message forwarding, add channel, chat conversion, bot conversion, and business form buttons.
    * Up to 5 basic items, up to 2 carousel/wide item lists
 7. If you need to highlight a coupon in your message, you can use a button that takes users to the attached coupon when they click on it.
 8. Select whether to set fallback messages.

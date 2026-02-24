@@ -1208,7 +1208,7 @@ Content-Type: application/json;charset=UTF-8
 |:-----------------|:--------|:---------|:-------------------------------------------------------------|
 | header           | Object  | O        | 응답 헤더 정보                                                     |
 | - isSuccessful   | boolean | O        | API 호출 성공 여부                                                 |
-| - resultCode     | Integer | O        | API 호출 결과 코드(성공: 200, 실패 시 오류 코드)                           |
+| - resultCode     | Integer | O        | API 호출 결과 코드(성공: 0, 실패 시 오류 코드)                           |
 | - resultMessage  | String  | O        | API 호출 결과 메시지(성공 시 "success" 또는 관련 성공 메시지, 실패 시 실패 원인 상세 메시지)  |
 | message          | Object  | X        | 메시지 발송 결과 정보(발송 요청이 있는 경우에만 존재)                             |
 | - requestId      | String  | X        | 발송 요청 ID(각 발송 요청을 고유하게 식별하는 ID)                             |
@@ -1362,7 +1362,7 @@ Content-Type: application/json;charset=UTF-8
 |:-----------------|:--------|:---------|:-------------------------------------------------------------|
 | header           | Object  | O        | 응답 헤더 정보                                                     |
 | - isSuccessful   | boolean | O        | API 호출 성공 여부                                                 |
-| - resultCode     | Integer | O        | API 호출 결과 코드(성공: 200, 실패 시 오류 코드)                           |
+| - resultCode     | Integer | O        | API 호출 결과 코드(성공: 0, 실패 시 오류 코드)                           |
 | - resultMessage  | String  | O        | API 호출 결과 메시지(성공 시 "success" 또는 관련 성공 메시지, 실패 시 실패 원인 상세 메시지)  |
 | message          | Object  | X        | 메시지 발송 결과 정보(발송 요청이 있는 경우에만 존재)                             |
 | - requestId      | String  | X        | 발송 요청 ID(각 발송 요청을 고유하게 식별하는 ID)                             |
