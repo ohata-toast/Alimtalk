@@ -127,10 +127,10 @@ Content-Type: application/json;charset=UTF-8
 ## 메시지 자유형 발송 요청
 
 * 마수동 발송을 사용할 수 있습니다.
-  * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
-      * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
-      * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
-      * I: 고객사의 발송 요청 대상 ∩ 채널 친구
+    * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
+        * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
+        * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
+        * I: 고객사의 발송 요청 대상 ∩ 채널 친구
 * 기존 친구톡의 8가지 메시지 유형을 전부 사용할 수 있습니다.
 * BT, AC 버튼 타입을 사용할 수 있습니다.
 * AC(채널 추가) 버튼 사용 시 다음 제약 사항이 있습니다.
@@ -141,10 +141,10 @@ Content-Type: application/json;charset=UTF-8
     * 버튼명(name)은 "채널 추가"로 고정됩니다.
     * 캐러셀형은 전체 캐러셀을 통틀어 1개만 사용 가능합니다.
     * 타겟팅 M, N만 사용 가능합니다.
-* BF 버튼 사용 시 카카오에서 발급 받은 비즈니스 폼 ID를 넣어 사용할 수 있습니다.
+* BF 버튼 사용 시 카카오에서 발급받은 비즈니스폼 ID를 넣어 사용할 수 있습니다.
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
-    * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
-* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
+    * 대체 발송을 이용할 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
+* **야간 발송 제한(20:50~다음 날 08:00)**
 
 #### 요청
 
@@ -239,12 +239,12 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -270,7 +270,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -347,15 +347,15 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
 | - imageUrl             | String  | O  | 이미지 URL. 일반 이미지로 업로드된 이미지 URL 사용                                                                                                                                                                                                                                              |
-| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
+| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1,000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -381,7 +381,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -458,15 +458,15 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음. 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
 | - imageUrl             | String  | O  | 이미지 URL, 와이드 이미지로 업로드된 이미지 URL 사용                                                                                                                                                                                                                                             |
-| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
+| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1,000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -492,14 +492,14 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
 | createUser             | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                                                                   |
 | statsId                | String  | 	X | 통계 ID(발신 검색 조건에는 포함되지 않습니다. 최대 8자)                                                                                                                                                                                                                                            |
 
-#### 와이드 아이템 리스트형 발송 요청
+#### 와이드 아이템리스트형 발송 요청
 
 [Request body]
 
@@ -593,20 +593,20 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | header                 | String  | O  | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자(줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자(줄바꿈: 불가)                                                                                                                                                                     |
 | item                   | Object  | O  | 와이드 리스트 요소(WIDE_ITEM_LIST 타입에서만 사용 가능)                                                                                                                                                                                                                                       |
 | - list                 | List    | O  | 와이드 리스트(최소: 3, 최대 4)                                                                                                                                                                                                                                                         |
-| -- title               | String  | O  | 아이템 제목<br>- 1번째 아이템은 최대 25자 제한(줄바꿈: 최대 1개, 1번째 아이템의 경우 title이 필수 값이 아님)<br>- 2~4번째 아이템 최대 30자 제한(줄바꿈: 최대 1개)                                                                                                                                                                |
-| -- imageUrl            | String  | O  | 아이템 이미지 URL<br>- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용                                                                                                                                                             |
+| -- title               | String  | O  | 아이템 제목<br>- 첫 번째 아이템은 최대 25자 제한(줄바꿈: 최대 1개, 첫 번째 아이템의 경우 title이 필수 값이 아님)<br>- 2~4번째 아이템 최대 30자 제한(줄바꿈: 최대 1개)                                                                                                                                                                |
+| -- imageUrl            | String  | O  | 아이템 이미지 URL<br>- 첫 번째 아이템에는 첫 번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용                                                                                                                                                             |
 | -- linkMo              | String  | O  | 모바일 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | -- linkPc              | String  | X  | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                            |
 | -- schemeAndroid       | String  | X  | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                         |
-| -- schemeIos           | String  | X  | IOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
+| -- schemeIos           | String  | X  | iOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -632,7 +632,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -710,7 +710,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | content                | String  | X  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈 : 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음                           |
 | header                 | String  | X  | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자(줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자(줄바꿈: 불가)                                                                                                                                                                     |
@@ -719,7 +719,7 @@ Content-Type: application/json;charset=UTF-8
 | - thumbnailUrl         | String  | X  | 동영상 섬네일용 이미지 URL, 일반 이미지로 업로드된 url만 사용 가능(없는 경우 카카오TV 동영상 기본 섬네일 사용), 최대 500자 제한                                                                                                                                                                                            |
 | buttons                | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개, 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -745,7 +745,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -829,21 +829,21 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | additionalContent      | String  | X  | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능                                                                                                                                                                                                                                      |
 | image                  | Object  | O  | 이미지 요소<br>- IMAGE, WIDE, COMMERCE 타입일 경우 필수 필드                                                                                                                                                                                                                                |
 | - imageUrl             | String  | O  | 이미지 URL. 일반 이미지로 업로드된 이미지 URL 사용                                                                                                                                                                                                                                              |
-| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
+| - imageLink            | String  | X  | 이미지 클릭 시 이동할 URL. 1,000자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용                                                                                                                                                                                                                            |
 | commerce               | Object  | O  | 커머스(COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                                                                                    |
 | title                  | String  | O  | 상품 제목(최대 30자, 줄바꿈: 불가)                                                                                                                                                                                                                                                       |
 | regularPrice           | Integer | O  | 정상 가격(0~99,999,999)                                                                                                                                                                                                                                                        |
-| discountPrice          | Integer | X  | 할인가격(0~99,999,999)                                                                                                                                                                                                                                                          |
-| discountRate           | Integer | X  | 할인율(0~100), 할인가격 존재 시 할인율. 정액할인가격 중 하나는 필수                                                                                                                                                                                                                                   |
-| discountFixed          | Integer | X  | 정액 할인 가격(0 ~ 999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                            |
+| discountPrice          | Integer | X  | 할인 가격(0~99,999,999)                                                                                                                                                                                                                                                          |
+| discountRate           | Integer | X  | 할인율(0~100), 할인 가격 존재 시 할인율. 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                                   |
+| discountFixed          | Integer | X  | 정액 할인 가격(0~999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                            |
 | buttons                | List    | O  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                                                                 |
 | - name                 | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| - type                 | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | - linkMo               | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | - linkPc               | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | - schemeAndroid        | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
@@ -869,7 +869,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -1005,21 +1005,21 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                  | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | carousel               | Object  | O  | 캐러셀                                                                                                                                                                                                                                                                           |
 | - list                 | List    | O  | 캐러셀 리스트(최소 2개, 최대 6개)                                                                                                                                                                                                                                                        |
 | -- header              | String  | O  | 캐러셀 아이템 제목(최대 20자). 캐러셀 피드형에서만 사용 가능                                                                                                                                                                                                                                          |
 | -- message             | String  | O  | 캐러셀 아이템 제목(최대 20자), 캐러셀 아이템 메시지(최대 180자). 캐러셀 피드형에서만 사용 가능                                                                                                                                                                                                                    |
 | -- imageUrl            | String  | O  | 이미지 URL(캐러셀 피드형 이미지로 업로드된 이미지만 사용 가능)                                                                                                                                                                                                                                        |
-| -- imageLink           | String  | X  | 이미지 링크, 1000자 제한                                                                                                                                                                                                                                                              |
+| -- imageLink           | String  | X  | 이미지 링크, 1,000자 제한                                                                                                                                                                                                                                                              |
 | -- buttons             | List    | O  | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개                                                                                                                                                                                                                                                    |
 | --- name               | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| --- type               | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| --- type               | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | --- linkMo             | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | --- linkPc             | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | --- schemeAndroid      | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
-| --- schemeIos          | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
+| --- schemeIos          | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | --- chatExtra          | String  | X  | BT 타입 버튼일 경우 전달할 메타 정보                                                                                                                                                                                                                                                   |
 | --- chatEvent          | String  | X  | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                                                                                                                                                                                                                       |
 | --- bizFormKey         | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                                                            |
@@ -1029,12 +1029,12 @@ Content-Type: application/json;charset=UTF-8
 | --- linkMo             | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
 | --- linkPc             | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | --- schemeAndroid      | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                 |
-| --- schemeIos          | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
+| --- schemeIos          | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
 | - tail                 | Object  | X  | 더보기 버튼 정보                                                                                                                                                                                                                                                                     |
 | -- linkMo              | String  | O  | 모바일 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | -- linkPc              | String  | X  | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                            |
 | -- schemeAndroid       | String  | X  | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                         |
-| -- schemeIos           | String  | X  | IOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
+| -- schemeIos           | String  | X  | iOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | recipientList          | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo          | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | - resendParameter      | Object  | X  | 대체 발송 정보                                                                                                                                                                                                                                                                      |
@@ -1046,7 +1046,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendUnsubscribeNo | String  | X  | 대체 발송 080 수신거부번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                       |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -1149,7 +1149,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm            | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                                                                   |
 | requestDate          | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                                                                                                   |
 | unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | adult                | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                                                                       |
 | carousel             | Object  | O  | 캐러셀                                                                                                                                                                                                                                                                           |
 | - head               | Object  | X  | 캐러셀 인트로                                                                                                                                                                                                                                                                       |
@@ -1159,24 +1159,24 @@ Content-Type: application/json;charset=UTF-8
 | -- linkMo            | String  | X  | 모바일 웹 링크(linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수 값), 1,000자 제한                                                                                                                                                                                    |
 | -- linkPc            | String  | X  | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | -- schemeAndroid     | String  | X  | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                         |
-| -- schemeIos         | String  | X  | IOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
+| -- schemeIos         | String  | X  | iOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | - list               | List    | O  | 캐러셀 리스트(head가 존재할 경우 최소 1개, 최대 5개 / 그 외에는 최소 2개, 최대 6개)                                                                                                                                                                                                                      |
 | -- additionalContent | String  | X  | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능                                                                                                                                                                                                                                              |
 | -- imageUrl          | String  | O  | 이미지 URL(캐러셀 커머스형 이미지로 업로드된 이미지 사용)                                                                                                                                                                                                                                           |
-| -- imageLink         | String  | X  | 이미지 링크, 1000자 제한                                                                                                                                                                                                                                                              |
+| -- imageLink         | String  | X  | 이미지 링크, 1,000자 제한                                                                                                                                                                                                                                                              |
 | -- commerce          | Object  | O  | 커머스(CAROUSEL_COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                                                                           |
 | --- title            | String  | O  | 상품 제목(최대 30자, 줄바꿈: 불가)                                                                                                                                                                                                                                                       |
 | --- regularPrice     | Integer | O  | 정상 가격(0~99,999,999)                                                                                                                                                                                                                                                        |
-| --- discountPrice    | Integer | X  | 할인가격(0 ~ 99,999,999)                                                                                                                                                                                                                                                          |
-| --- discountRate     | Integer | X  | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수                                                                                                                                                                                                                                   |
-| --- discountFixed    | Integer | X  | 정액 할인 가격(0 ~ 999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                            |
+| --- discountPrice    | Integer | X  | 할인 가격(0~99,999,999)                                                                                                                                                                                                                                                          |
+| --- discountRate     | Integer | X  | 할인율(0~100), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                                   |
+| --- discountFixed    | Integer | X  | 정액 할인 가격(0~999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수                                                                                                                                                                                                                            |
 | -- buttons           | List    | O  | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개                                                                                                                                                                                                                                                    |
 | --- name             | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자                                                                                                                                                                                                                    |
-| --- type             | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
+| --- type             | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- BT 타입은 카카오 오픈 빌더의 챗봇을 사용하는 채널만 이용 가능<br>- BF 타입은 첫 번째 버튼으로만 사용할 수 있으며, name에는 다음 3가지 문구만 사용 가능<br>  - 톡에서 예약하기<br>  - 톡에서 설문하기<br>  - 톡에서 응모하기 |
 | --- linkMo           | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | --- linkPc           | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | --- schemeAndroid    | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                       |
-| --- schemeIos        | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
+| --- schemeIos        | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                                                         |
 | --- chatExtra        | String  | X  | BT 타입 버튼일 경우 전달할 메타 정보                                                                                                                                                                                                                                                   |
 | --- chatEvent        | String  | X  | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                                                                                                                                                                                                                       |
 | --- bizFormKey       | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                                                            |
@@ -1186,12 +1186,12 @@ Content-Type: application/json;charset=UTF-8
 | --- linkMo           | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
 | --- linkPc           | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 1,000자 제한                                                                                                                                                                                                                                          |
 | --- schemeAndroid    | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                 |
-| --- schemeIos        | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
+| --- schemeIos        | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                                                   |
 | - tail               | Object  | X  | 더보기 버튼 정보                                                                                                                                                                                                                                                                     |
 | -- linkMo            | String  | O  | 모바일 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | -- linkPc            | String  | X  | PC 웹 링크, 1,000자 제한                                                                                                                                                                                                                                                            |
 | -- schemeAndroid     | String  | X  | 안드로이드 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                         |
-| -- schemeIos         | String  | X  | IOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
+| -- schemeIos         | String  | X  | iOS 앱 링크, 1,000자 제한                                                                                                                                                                                                                                                           |
 | recipientList        | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                                                             |
 | - recipientNo        | String  | O  | 수신 번호                                                                                                                                                                                                                                                                         |
 | - resendParameter    | Object  | X  | 대체 발송 정보                                                                                                                                                                                                                                                                      |
@@ -1202,7 +1202,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendSendNo      | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                                                                 |
 | - targeting         | String  | X  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                |
 | - unsubscribeNo       | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx         |
-| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234        |
+| - unsubscribeAuthNo   | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234        |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | senderGroupingKey    | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                                                   |
 | resellerCode          | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                                                       |
@@ -1250,19 +1250,19 @@ Content-Type: application/json;charset=UTF-8
 
 * 템플릿을 이용한 발송입니다.
 * 마수동 발송을 사용할 수 있습니다.
-  * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
-      * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
-      * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
-      * I: 고객사의 발송 요청 대상 ∩ 채널 친구
+    * targeting 필드를 지정해 메시지 대상의 타입을 지정할 수 있습니다.
+        * M: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의)
+        * N: 고객사의 광고성 정보 수신동의 유저(카카오톡 수신 동의) - 채널 친구
+        * I: 고객사의 발송 요청 대상 ∩ 채널 친구
 * 기존 친구톡의 8가지 메시지 유형을 전부 사용할 수 있습니다.
 * BT 버튼 타입을 사용할 수 없습니다.
 * AC(채널 추가)버튼을 사용할 수 있습니다.
-* BF 버튼을 사용시 카카오에서 발급받은 비즈니스폼 ID를 업로드하여 비즈폼키를 발급받아 사용할 수 있습니다.
+* BF 버튼을 사용 시 카카오에서 발급받은 비즈니스폼 ID를 업로드하여 비즈폼 키를 발급받아 사용할 수 있습니다.
 * 대체 발송은 수신자별 resendParameter를 통해 설정할 수 있습니다.
-    * 대체 발송을 이용하실 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
-* <b>야간 발송 제한(20:50~다음 날 08:00)</b>
+    * 대체 발송을 이용할 경우 대체 발송 관리 API를 통해 SMS Appkey 등록 및 발송 설정이 필요합니다.
+* **야간 발송 제한(20:50~다음 날 08:00)**
 
-### 사용시 주의사항
+### 사용 시 주의사항
 
 - unsubscribeNo, unsubscribeAuthNo는 080 무료수신거부 전화번호와 인증번호로, 둘 중 하나라도 입력하지 않으면 발신 프로필에 등록된 무료수신거부 정보로 발송됩니다.
 - 발송 간 unsubscribeNo, unsubscribeAuthNo를 입력할 경우 발신 프로필에 등록된 무료수신거부 정보가 아닌 입력한 값으로 발송됩니다.
@@ -1338,7 +1338,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm              | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                              |
 | requestDate            | String  | X  | 요청 일시(yyyy-MM-dd HH:mm)<br>(입력하지 않을 경우 즉시 발송)<br>최대 60일 이후까지 예약 가능                                                                                                                                                                      |
 | unsubscribeNo          | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                                           |
-| unsubscribeAuthNo      | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234                                                                                                           |
+| unsubscribeAuthNo      | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234                                                                                                           |
 | recipientList          | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                       |
 | - recipientNo          | String  | O  | 수신 번호                                                                                                                                                                                                                                   |
 | - targeting            | String  | O  | 메시지 대상의 타입(M: 마케팅 수신 동의 유저, N: 친구가 아닌 마케팅 수신 동의 유저에게만, I: 친구인 유저)                                                                                                                                                                       |
@@ -1356,7 +1356,7 @@ Content-Type: application/json;charset=UTF-8
 | -- resendContent       | String  | X  | 대체 발송 내용<br>(값이 없을 경우, [메시지 본문]으로 대체 발송됩니다.)                                                                                                                                                                                            |
 | -- resendSendNo        | String  | X  | 대체 발송 발신 번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                                                                                                                                           |
 | - unsubscribeNo        | String  | X  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                                           |
-| - unsubscribeAuthNo    | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234                                                                                                           |
+| - unsubscribeAuthNo    | String  | X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234                                                                                                           |
 | - recipientGroupingKey | String  | X  | 수신자 그룹핑 키(수신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                             |
 | senderGroupingKey      | String  | X  | 발신자 그룹핑 키(발신자별로 그룹핑 키를 지정할 수 있습니다. 최대 100자)                                                                                                                                                                                             |
 | resellerCode           | String  | X  | 리셀러 코드(리셀러가 발송 시 사용)                                                                                                                                                                                                                    |
@@ -1726,7 +1726,7 @@ Content-Type: application/json;charset=UTF-8
 | -- type               | String  | O        | 버튼 타입(buttons 배열 항목 존재 시 Not Null)                                                              | 
 | -- linkMo             | String  | X        | 모바일 웹 링크                                                                                         | 
 | -- linkPc             | String  | X        | PC 웹 링크                                                                                          | 
-| -- schemeIos          | String  | X        | IOS 앱 링크                                                                                         | 
+| -- schemeIos          | String  | X        | iOS 앱 링크                                                                                         | 
 | -- schemeAndroid      | String  | X        | 안드로이드 앱 링크                                                                                       | 
 | -- chatExtra          | String  | X        | BT 타입 버튼일 경우 전달할 메타 정보                                                                      | 
 | -- chatEvent          | String  | X        | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                                          | 
@@ -1737,7 +1737,7 @@ Content-Type: application/json;charset=UTF-8
 | --- imageUrl          | String  | O        | 아이템 이미지 URL(item.list 항목 존재 시 Not Null)                                                         | 
 | --- linkMo            | String  | O        | 모바일 웹 링크(item.list 항목 존재 시 Not Null)                                                            | 
 | --- linkPc            | String  | X        | PC 웹 링크                                                                                          | 
-| --- schemeIos         | String  | X        | IOS 앱 링크                                                                                         | 
+| --- schemeIos         | String  | X        | iOS 앱 링크                                                                                         | 
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                                       | 
 | - coupon              | Object  | X        | 쿠폰 요소                                                                                            | 
 | -- title              | String  | O        | 쿠폰 제목(coupon 객체 존재 시 Not Null)                                                                  | 
@@ -1745,13 +1745,13 @@ Content-Type: application/json;charset=UTF-8
 | -- linkMo             | String  | X        | 모바일 웹 링크                                                                                         | 
 | -- linkPc             | String  | X        | PC 웹 링크                                                                                          | 
 | -- schemeAndroid      | String  | X        | 안드로이드 앱 링크                                                                                       | 
-| -- schemeIos          | String  | X        | IOS 앱 링크                                                                                         | 
+| -- schemeIos          | String  | X        | iOS 앱 링크                                                                                         | 
 | - commerce            | Object  | X        | 커머스 요소                                                                                           | 
 | -- title              | String  | O        | 상품 제목(commerce 객체 존재 시 Not Null)                                                                | 
 | -- regularPrice       | Integer | X        | 정상 가격                                                                                            | 
-| -- discountPrice      | Integer | X        | 할인가격                                                                                             | 
+| -- discountPrice      | Integer | X        | 할인 가격                                                                                             | 
 | -- discountRate       | Integer | X        | 할인율                                                                                              | 
-| -- discountFixed      | Integer | X        | 정액할인가격                                                                                           | 
+| -- discountFixed      | Integer | X        | 정액 할인 가격                                                                                           | 
 | - video               | Object  | X        | 동영상 요소                                                                                           | 
 | -- videoUrl           | String  | O        | 카카오TV 동영상 URL(video 객체 존재 시 Not Null)                                                           | 
 | -- thumbnailUrl       | String  | X        | 동영상 섬네일용 이미지 URL                                                                                 | 
@@ -1762,7 +1762,7 @@ Content-Type: application/json;charset=UTF-8
 | --- imageUrl          | String  | O        | 캐러셀 인트로 이미지 주소(head 객체 존재 시 Not Null)                                                           | 
 | --- linkMo            | String  | X        | 모바일 웹 링크                                                                                         | 
 | --- linkPc            | String  | X        | PC 웹 링크                                                                                          | 
-| --- schemeIos         | String  | X        | IOS 앱 링크                                                                                         | 
+| --- schemeIos         | String  | X        | iOS 앱 링크                                                                                         | 
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                                       | 
 | -- list               | Array   | O        | 캐러셀 리스트(carousel 객체 존재 시 Not Null)                                                              | 
 | --- header            | String  | X        | 캐러셀 아이템 헤더                                                                                       | 
@@ -1773,16 +1773,16 @@ Content-Type: application/json;charset=UTF-8
 | --- commerce          | Object  | X        | 커머스(캐러셀 내)                                                                                      | 
 | ---- title            | String  | O        | 상품 제목(carousel.list.commerce 존재 시 Not Null)                                                     | 
 | ---- regularPrice     | Integer | X        | 정상 가격                                                                                            | 
-| ---- discountPrice    | Integer | X        | 할인가격                                                                                             | 
+| ---- discountPrice    | Integer | X        | 할인 가격                                                                                             | 
 | ---- discountRate     | Integer | X        | 할인율                                                                                              | 
-| ---- discountFixed    | Integer | X        | 정액할인가격                                                                                           | 
+| ---- discountFixed    | Integer | X        | 정액 할인 가격                                                                                           | 
 | --- buttons           | Array   | X        | 버튼 목록(캐러셀 내)                                                                                    | 
 | ---- name             | String  | O        | 버튼 제목(carousel.list.buttons 항목 존재 시 Not Null)                                                   | 
 | ---- type             | String  | O        | 버튼 타입(carousel.list.buttons 항목 존재 시 Not Null)                                                   | 
 | ---- linkMo           | String  | X        | 모바일 웹 링크                                                                                         | 
 | ---- linkPc           | String  | X        | PC 웹 링크                                                                                          | 
 | ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                                       | 
-| ---- schemeIos        | String  | X        | IOS 앱 링크                                                                                         | 
+| ---- schemeIos        | String  | X        | iOS 앱 링크                                                                                         | 
 | ---- chatExtra        | String  | X        | BT 타입 버튼일 경우 전달할 메타 정보                                                                      | 
 | ---- chatEvent        | String  | X        | BT 타입 버튼일 경우 연결할 봇 이벤트명                                                                          | 
 | ---- bizFormKey       | String  | X        | BF 타입 버튼일 경우 비즈폼 키                                                                               | 
@@ -1792,14 +1792,14 @@ Content-Type: application/json;charset=UTF-8
 | ---- linkMo           | String  | X        | 모바일 웹 링크                                                                                         | 
 | ---- linkPc           | String  | X        | PC 웹 링크                                                                                          | 
 | ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크                                                                                       | 
-| ---- schemeIos        | String  | X        | IOS 앱 링크                                                                                         | 
+| ---- schemeIos        | String  | X        | iOS 앱 링크                                                                                         | 
 | -- tail               | Object  | X        | 더보기 버튼 정보(carousel 객체 존재 시 Nullable)                                                            | 
 | --- linkMo            | String  | O        | 모바일 웹 링크(tail 객체 존재 시 Not Null)                                                                 | 
 | --- linkPc            | String  | X        | PC 웹 링크                                                                                          | 
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크                                                                                       | 
-| --- schemeIos         | String  | X        | IOS 앱 링크                                                                                         | 
+| --- schemeIos         | String  | X        | iOS 앱 링크                                                                                         | 
 | - templateParameter   | String  | X        | 템플릿 파라미터                                                                                         | 
-| - pushAlarm           | boolean | O        | 푸시 알림 여부(message 객체 존재 시 Not Null)                                                              | 
+| - pushAlarm           | boolean | O        | 푸시 알람 여부(message 객체 존재 시 Not Null)                                                              | 
 | - messageStatus       | String  | O        | 요청 상태(COMPLETED: 성공, FAILED: 실패)(message 객체 존재 시 Not Null)                                     | 
 | - isAddedChannel      | boolean | O        | 채널 친구 여부(message 객체 존재 시 Not Null)                                                              | 
 | - resultCode          | String  | X        | 수신 결과 코드(메시지 내)                                                                                 | 
@@ -2054,7 +2054,7 @@ Content-Type: application/json;charset=UTF-8
 | -- plusFriendId         | String  | O        | 발신 프로필 ID                              |
 | -- plusFriendType       | String  | O        | 발신 프로필 타입                              |
 | -- templateCode         | String  | O        | 템플릿 코드                                 |
-| -- templateName         | String  | O        | 템플릿 명                                  |
+| -- templateName         | String  | O        | 템플릿명                                  |
 | -- chatBubbleType       | String  | O        | 메시지 타입                                 |
 | -- content              | String  | X        | 메시지 내용                                 |
 | -- header               | String  | X        | 헤더                                     |
@@ -2068,7 +2068,7 @@ Content-Type: application/json;charset=UTF-8
 | --- type                | String  | O        | 버튼 타입                                  |
 | --- linkMo              | String  | X        | 모바일 웹 링크                               |
 | --- linkPc              | String  | X        | PC 웹 링크                                |
-| --- schemeIos           | String  | X        | IOS 앱 링크                               |
+| --- schemeIos           | String  | X        | iOS 앱 링크                               |
 | --- schemeAndroid       | String  | X        | 안드로이드 앱 링크                             |
 | --- bizFormId           | Integer | X        | 비즈폼 ID(JSON 기준)                       |
 | -- item                 | Object  | X        | 와이드 리스트 요소                             |
@@ -2078,20 +2078,20 @@ Content-Type: application/json;charset=UTF-8
 | ---- linkMo             | String  | O        | 모바일 웹 링크                               |
 | ---- linkPc             | String  | X        | PC 웹 링크                                |
 | ---- schemeAndroid      | String  | X        | 안드로이드 앱 링크                             |
-| ---- schemeIos          | String  | X        | IOS 앱 링크                               |
+| ---- schemeIos          | String  | X        | iOS 앱 링크                               |
 | -- coupon               | Object  | X        | 쿠폰 요소                                  |
 | --- title               | String  | O        | 쿠폰 제목                                  |
 | --- description         | String  | O        | 쿠폰 상세 설명                               |
 | --- linkMo              | String  | X        | 모바일 웹 링크                               |
 | --- linkPc              | String  | X        | PC 웹 링크                                |
 | --- schemeAndroid       | String  | X        | 안드로이드 앱 링크                             |
-| --- schemeIos           | String  | X        | IOS 앱 링크                               |
+| --- schemeIos           | String  | X        | iOS 앱 링크                               |
 | -- commerce             | Object  | X        | 커머스 요소                                 |
 | --- title               | String  | O        | 상품 제목                                  |
 | --- regularPrice        | Integer | X        | 정상 가격                                  |
-| --- discountPrice       | Integer | X        | 할인가격                                   |
+| --- discountPrice       | Integer | X        | 할인 가격                                   |
 | --- discountRate        | Integer | X        | 할인율                                    |
-| --- discountFixed       | Integer | X        | 정액할인가격                                 |
+| --- discountFixed       | Integer | X        | 정액 할인 가격                                 |
 | -- video                | Object  | X        | 동영상 요소                                 |
 | --- videoUrl            | String  | O        | 카카오TV 동영상 URL                          |
 | --- thumbnailUrl        | String  | X        | 동영상 섬네일용 이미지 URL                       |
@@ -2103,7 +2103,7 @@ Content-Type: application/json;charset=UTF-8
 | ---- linkMo             | String  | X        | 모바일 웹 링크                               |
 | ---- linkPc             | String  | X        | PC 웹 링크                                |
 | ----- schemeAndroid     | String  | X        | 안드로이드 앱 링크                             |
-| ----- schemeIos         | String  | X        | IOS 앱 링크                               |
+| ----- schemeIos         | String  | X        | iOS 앱 링크                               |
 | ---- list               | Array   | O        | 캐러셀 리스트                                |
 | ----- header            | String  | O        | 캐러셀 아이템 헤더                             |
 | ----- message           | String  | O        | 캐러셀 아이템 메시지(Not Null 리스트의 content 매핑) |
@@ -2113,15 +2113,15 @@ Content-Type: application/json;charset=UTF-8
 | ----- commerce          | Object  | O        | 커머스(캐러셀 아이템 내)                        |
 | ------ title            | String  | O        | 상품 제목                                  |
 | ------ regularPrice     | Integer | X        | 정상 가격                                  |
-| ------ discountPrice    | Integer | X        | 할인가격                                   |
+| ------ discountPrice    | Integer | X        | 할인 가격                                   |
 | ------ discountRate     | Integer | X        | 할인율                                    |
-| ------ discountFixed    | Integer | X        | 정액할인가격                                 |
+| ------ discountFixed    | Integer | X        | 정액 할인 가격                                 |
 | ----- buttons           | Array   | O        | 캐러셀 리스트 버튼 목록                          |
 | ------ name             | String  | O        | 버튼 제목                                  |
 | ------ type             | String  | O        | 버튼 타입                                  |
 | ------ linkMo           | String  | X        | 모바일 웹 링크                               |
 | ------ linkPc           | String  | X        | PC 웹 링크                                |
-| ------ schemeIos        | String  | X        | IOS 앱 링크                               |
+| ------ schemeIos        | String  | X        | iOS 앱 링크                               |
 | ------ schemeAndroid    | String  | X        | 안드로이드 앱 링크                             |
 | ------ bizFormId        | Integer | X        | 비즈폼 ID(JSON 기준)                       |
 | ----- coupon            | Object  | X        | 쿠폰 요소(캐러셀 아이템 내)                      |
@@ -2130,12 +2130,12 @@ Content-Type: application/json;charset=UTF-8
 | ------ linkMo           | String  | X        | 모바일 웹 링크                               |
 | ------ linkPc           | String  | X        | PC 웹 링크                                |
 | ------ schemeAndroid    | String  | X        | 안드로이드 앱 링크                             |
-| ------ schemeIos        | String  | X        | IOS 앱 링크                               |
+| ------ schemeIos        | String  | X        | iOS 앱 링크                               |
 | ---- tail               | Object  | X        | 더보기 버튼 정보                              |
 | ----- linkMo            | String  | O        | 모바일 웹 링크                               |
 | ----- linkPc            | String  | X        | PC 웹 링크                                |
 | ----- schemeAndroid     | String  | X        | 안드로이드 앱 링크                             |
-| ----- schemeIos         | String  | X        | IOS 앱 링크                               |
+| ----- schemeIos         | String  | X        | iOS 앱 링크                               |
 | --- status              | String  | O        | 템플릿 상태(A: 등록, S: 차단)                   |
 | --- createDate          | String  | O        | 등록 일시                                  |
 | --- updateDate          | String  | X        | 수정 일시                                  |
@@ -2169,6 +2169,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름           | 타입     | 필수 | 설명               |
 |--------------|--------|----|------------------|
 | X-Secret-Key | String | O  | 콘솔에서 생성할 수 있습니다. |
+|X-NC-API-IDEMPOTENCY-KEY|	String| X | 중복 메시지 발송 요청 기준 key<br>10분간 동일한 key로 요청 시 해당 요청을 실패 처리합니다. |
 
 #### 응답
 
@@ -2304,9 +2305,9 @@ Content-Type: application/json;charset=UTF-8
 | - plusFriendId        | String  | O        | 발신 프로필 ID            |
 | - plusFriendType      | String  | O        | 발신 프로필 타입            |
 | - templateCode        | String  | O        | 템플릿 코드               |
-| - templateName        | String  | O        | 템플릿 명                |
+| - templateName        | String  | O        | 템플릿명                |
 | - chatBubbleType      | String  | O        | 메시지 타입               |
-| - pushAlarm           | boolean | X        | 푸시 알림 여부             |
+| - pushAlarm           | boolean | X        | 푸시 알람 여부             |
 | - content             | String  | X        | 메시지 내용               |
 | - adult               | boolean | O        | 성인용 메시지 여부           |
 | - header              | String  | X        | 헤더(템플릿 내)           |
@@ -2319,7 +2320,7 @@ Content-Type: application/json;charset=UTF-8
 | -- type               | String  | O        | 버튼 타입                |
 | -- linkMo             | String  | X        | 모바일 웹 링크             |
 | -- linkPc             | String  | X        | PC 웹 링크              |
-| -- schemeIos          | String  | X        | IOS 앱 링크             |
+| -- schemeIos          | String  | X        | iOS 앱 링크             |
 | -- schemeAndroid      | String  | X        | 안드로이드 앱 링크           |
 | -- bizFormId          | Integer | X        | 비즈폼 ID(JSON 기준)     |
 | - item                | Object  | X        | 와이드 리스트 요소           |
@@ -2328,21 +2329,21 @@ Content-Type: application/json;charset=UTF-8
 | --- imageUrl          | String  | O        | 아이템 이미지 URL          |
 | --- linkMo            | String  | O        | 모바일 웹 링크             |
 | --- linkPc            | String  | X        | PC 웹 링크              |
-| --- schemeIos         | String  | X        | IOS 앱 링크             |
+| --- schemeIos         | String  | X        | iOS 앱 링크             |
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크           |
 | - coupon              | Object  | X        | 쿠폰 요소                |
 | -- title              | String  | O        | 쿠폰 제목                |
 | -- description        | String  | O        | 쿠폰 상세 설명             |
 | -- linkMo             | String  | X        | 모바일 웹 링크             |
 | -- linkPc             | String  | X        | PC 웹 링크              |
-| -- schemeIos          | String  | X        | IOS 앱 링크             |
+| -- schemeIos          | String  | X        | iOS 앱 링크             |
 | -- schemeAndroid      | String  | X        | 안드로이드 앱 링크           |
 | - commerce            | Object  | X        | 커머스 요소               |
 | -- title              | String  | O        | 상품 제목                |
 | -- regularPrice       | Integer | X        | 정상 가격                |
-| -- discountPrice      | Integer | X        | 할인가격                 |
+| -- discountPrice      | Integer | X        | 할인 가격                 |
 | -- discountRate       | Integer | X        | 할인율                  |
-| -- discountFixed      | Integer | X        | 정액할인가격               |
+| -- discountFixed      | Integer | X        | 정액 할인 가격               |
 | - video               | Object  | X        | 동영상 요소               |
 | -- videoUrl           | String  | O        | 카카오TV 동영상 URL        |
 | -- thumbnailUrl       | String  | X        | 동영상 섬네일용 이미지 URL     |
@@ -2353,7 +2354,7 @@ Content-Type: application/json;charset=UTF-8
 | --- imageUrl          | String  | O        | 캐러셀 인트로 이미지 주소       |
 | --- linkMo            | String  | X        | 모바일 웹 링크             |
 | --- linkPc            | String  | X        | PC 웹 링크              |
-| --- schemeIos         | String  | X        | IOS 앱 링크             |
+| --- schemeIos         | String  | X        | iOS 앱 링크             |
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크           |
 | -- list               | Array   | O        | 캐러셀 리스트              |
 | --- header            | String  | O        | 캐러셀 아이템 헤더           |
@@ -2364,15 +2365,15 @@ Content-Type: application/json;charset=UTF-8
 | --- commerce          | Object  | O        | 커머스(캐러셀 아이템 내)      |
 | ---- title            | String  | O        | 상품 제목                |
 | ---- regularPrice     | Integer | X        | 정상 가격                |
-| ---- discountPrice    | Integer | X        | 할인가격                 |
+| ---- discountPrice    | Integer | X        | 할인 가격                 |
 | ---- discountRate     | Integer | X        | 할인율                  |
-| ---- discountFixed    | Integer | X        | 정액할인가격               |
+| ---- discountFixed    | Integer | X        | 정액 할인 가격               |
 | --- buttons           | Array   | O        | 캐러셀 리스트 버튼 목록        |
 | ---- name             | String  | O        | 버튼 제목                |
 | ---- type             | String  | O        | 버튼 타입                |
 | ---- linkMo           | String  | X        | 모바일 웹 링크             |
 | ---- linkPc           | String  | X        | PC 웹 링크              |
-| ---- schemeIos        | String  | X        | IOS 앱 링크             |
+| ---- schemeIos        | String  | X        | iOS 앱 링크             |
 | ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크           |
 | ---- bizFormId        | Integer | X        | 비즈폼 ID(JSON 기준)     |
 | --- coupon            | Object  | X        | 쿠폰 요소(캐러셀 아이템 내)    |
@@ -2380,12 +2381,12 @@ Content-Type: application/json;charset=UTF-8
 | ---- description      | String  | X        | 쿠폰 상세 설명             |
 | ---- linkMo           | String  | X        | 모바일 웹 링크             |
 | ---- linkPc           | String  | X        | PC 웹 링크              |
-| ---- schemeIos        | String  | X        | IOS 앱 링크             |
+| ---- schemeIos        | String  | X        | iOS 앱 링크             |
 | ---- schemeAndroid    | String  | X        | 안드로이드 앱 링크           |
 | -- tail               | Object  | X        | 더보기 버튼 정보            |
 | --- linkMo            | String  | O        | 모바일 웹 링크             |
 | --- linkPc            | String  | X        | PC 웹 링크              |
-| --- schemeIos         | String  | X        | IOS 앱 링크             |
+| --- schemeIos         | String  | X        | iOS 앱 링크             |
 | --- schemeAndroid     | String  | X        | 안드로이드 앱 링크           |
 | - status              | String  | O        | 템플릿 상태(A: 등록, S: 차단) |
 | - createDate          | String  | O        | 등록 일시                |
@@ -2480,11 +2481,11 @@ Content-Type: application/json;charset=UTF-8
 | content         | String  | O  | - TEXT 타입일 경우 최대 1,300자(줄바꿈: 최대 99개, URL 형식 입력 가능)<br>- IMAGE 타입일 경우 최대 400자(줄바꿈: 최대 29개, URL 형식 입력 가능)<br>- WIDE 타입일 경우 최대 76자(줄바꿈: 최대 1개)<br>- PREMIUM_VIDEO 타입일 경우 해당 필드를 옵셔널하게 사용할 수 있음, 최대 76자(줄바꿈: 최대 1개)<br>- 이외의 타입일 경우 해당 필드를 사용하지 않음 |
 | buttons         | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                                  |
 | - name          | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                                       |
-| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함             |
+| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함             |
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                             |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                            |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                         |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                           |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                           |
 | - bizFormKey    | String  | X  | BF 타입 버튼일 경우 비즈폼 키<br>치환자 사용 불가능                                                                                                                                                                                                               |
 | coupon          | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                                          |
 | - title         | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                             |
@@ -2492,7 +2493,7 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                     |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                            |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                   |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                     |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                     |
 
 #### 이미지형 템플릿 등록 요청
 
@@ -2541,11 +2542,11 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink     | String  | X  | 이미지 클릭 시 이동할 URL, 500자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능                                                                                                                                                                                    |
 | buttons         | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                                       |
 | - name          | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                                            |
-| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
+| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                             |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - bizFormKey    | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                                  |
 | coupon          | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                                               |
 | - title         | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                                  |
@@ -2553,7 +2554,7 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
 #### 와이드 이미지형 템플릿 등록 요청
 
@@ -2602,11 +2603,11 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink     | String  | X  | 이미지 클릭 시 이동할 URL, 500자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능                                                                                                                                                                                    |
 | buttons         | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                                       |
 | - name          | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                                            |
-| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
+| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                             |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - bizFormKey    | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                                  |
 | coupon          | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                                               |
 | - title         | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                                  |
@@ -2614,9 +2615,9 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
-#### 와이드 아이템 리스트형 템플릿 등록 요청
+#### 와이드 아이템리스트형 템플릿 등록 요청
 
 [Request body]
 
@@ -2678,25 +2679,25 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름               | 타입      | 필수 | 설명                                                                                                                                                                                                                                |
 |------------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| templateName     | String  | O  | 템플릿 명(최대 200자)                                                                                                                                                                                                                   |
+| templateName     | String  | O  | 템플릿명(최대 200자)                                                                                                                                                                                                                   |
 | chatBubbleType   | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                             |
 | adult            | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                           |
 | header           | String  | O  | 헤더<br>- WIDE_ITEM_LIST 타입일 경우 필수 필드이고 최대 20자(줄바꿈: 불가)<br>- PREMIUM_VIDEO 타입일 경우 선택 필드이고 최대 20자(줄바꿈: 불가)                                                                                                                         |
 | item             | Object  | O  | 와이드 리스트 요소(WIDE_ITEM_LIST 타입에서만 사용 가능)                                                                                                                                                                                           |
 | - list           | List    | O  | 와이드 리스트(최소: 3, 최대 4)                                                                                                                                                                                                             |
-| -- title         | String  | O  | 아이템 제목<br>- 1번째 아이템은 최대 25자 제한(줄바꿈: 최대 1개, 1번째 아이템의 경우 title이 필수 값이 아님)<br>- 1번째 아이템은 title이 필수 필드가 아님<br>- 2~4번째 아이템 최대 30자 제한(줄바꿈: 최대 1개)                                                                                     |
-| -- imageUrl      | String  | O  | 아이템 이미지 URL<br>- 1번째 아이템에는 첫번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능                                                                                                   |
+| -- title         | String  | O  | 아이템 제목<br>- 첫 번째 아이템은 최대 25자 제한(줄바꿈: 최대 1개, 첫 번째 아이템의 경우 title이 필수 값이 아님)<br>- 첫 번째 아이템은 title이 필수 필드가 아님<br>- 2~4번째 아이템 최대 30자 제한(줄바꿈: 최대 1개)                                                                                     |
+| -- imageUrl      | String  | O  | 아이템 이미지 URL<br>- 첫 번째 아이템에는 첫 번째 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>- 2~4번째 아이템은 일반 와이드 아이템리스트 이미지로 업로드된 이미지 URL 사용<br>치환자 사용 불가능                                                                                                   |
 | -- linkMo        | String  | O  | 모바일 웹 링크, 500자 제한                                                                                                                                                                                                               |
 | -- linkPc        | String  | X  | PC 웹 링크, 500자 제한                                                                                                                                                                                                                |
 | -- schemeAndroid | String  | X  | 안드로이드 앱 링크, 500자 제한                                                                                                                                                                                                             |
-| -- schemeIos     | String  | X  | IOS 앱 링크, 500자 제한                                                                                                                                                                                                               |
+| -- schemeIos     | String  | X  | iOS 앱 링크, 500자 제한                                                                                                                                                                                                               |
 | buttons          | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                     |
 | - name           | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                          |
-| - type           | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
+| - type           | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
 | - linkMo         | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | - linkPc         | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | - schemeAndroid  | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                           |
-| - schemeIos      | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
+| - schemeIos      | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | - bizFormKey     | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                |
 | coupon           | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                             |
 | - title          | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                |
@@ -2704,7 +2705,7 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo         | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | - linkPc         | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | - schemeAndroid  | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
-| - schemeIos      | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
+| - schemeIos      | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 
 #### 프리미엄 동영상형 템플릿 등록 요청
 
@@ -2755,11 +2756,11 @@ Content-Type: application/json;charset=UTF-8
 | - thumbnailUrl  | String  | X  | 동영상 섬네일용 이미지 URL. 일반 이미지로 업로드된 URL만 사용 가능(없는 경우 카카오TV 동영상 기본 섬네일 사용), 최대 500자 제한<br>치환자 사용 불가능                                                                                                                                                    |
 | buttons         | List    | X  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                                       |
 | - name          | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                                            |
-| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
+| - type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함                   |
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 1,000자 제한                                                                                                                                                                                                             |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                                               |
 | - bizFormKey    | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                                  |
 | coupon          | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                                               |
 | - title         | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                                  |
@@ -2767,7 +2768,7 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 | - linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                                                |
 | - schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                       |
-| - schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
+| - schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                                         |
 
 #### 커머스형 템플릿 등록 요청
 
@@ -2815,7 +2816,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름                | 타입      | 필수 | 설명                                                                                                                                                                                                                                |
 |-------------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| templateName      | String  | O  | 템플릿 명(최대 200자)                                                                                                                                                                                                                   |
+| templateName      | String  | O  | 템플릿명(최대 200자)                                                                                                                                                                                                                   |
 | chatBubbleType    | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                             |
 | adult             | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                           |
 | additionalContent | String  | X  | 부가 정보(최대 34자, 줄바꿈: 최대 1개), 커머스형에서만 사용 가능                                                                                                                                                                                          |
@@ -2824,17 +2825,17 @@ Content-Type: application/json;charset=UTF-8
 | - imageLink       | String  | X  | 이미지 클릭 시 이동할 URL, 500자 제한<br>미설정 시 카카오톡 내 이미지 뷰어 사용<br>치환자 사용 불가능                                                                                                                                                                  |
 | commerce          | Object  | O  | 커머스(COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                                        |
 | title             | String  | O  | 상품 제목(최대 30자, 줄바꿈: 불가)                                                                                                                                                                                                           |
-| regularPrice      | Integer | O  | 정상 가격(0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨                                                                                                                                                          |
-| discountPrice     | Integer | X  | 할인가격(0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨                                                                                                                                                            |
-| discountRate      | Integer | X  | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨                                                                                                                                      |
-| discountFixed     | Integer | X  | 정액할인가격(0 ~ 999,999), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨                                                                                                                            |
+| regularPrice      | Integer | O  | 정상 가격(0~99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨                                                                                                                                                          |
+| discountPrice     | Integer | X  | 할인 가격(0~99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨                                                                                                                                                            |
+| discountRate      | Integer | X  | 할인율(0~100), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨                                                                                                                                      |
+| discountFixed     | Integer | X  | 정액 할인 가격(0~999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨                                                                                                                            |
 | buttons           | List    | O  | 버튼 목록<br>- TEXT, IMAGE 타입일 경우 쿠폰 적용 시 최대 4개, 그 외 최대 5개<br>- WIDE, WIDE_ITEM_LIST 타입일 경우 최대 2개<br>- PREMIUM_VIDEO 타입일 경우 최대 1개<br>- COMMERCE 타입일 경우 최소 1개 최대 2개                                                                     |
 | - name            | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                          |
-| - type            | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
+| - type            | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
 | - linkMo          | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | - linkPc          | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | - schemeAndroid   | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                           |
-| - schemeIos       | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
+| - schemeIos       | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | - bizFormKey      | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                |
 | coupon            | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                             |
 | - title           | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                |
@@ -2842,7 +2843,7 @@ Content-Type: application/json;charset=UTF-8
 | - linkMo          | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | - linkPc          | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | - schemeAndroid   | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
-| - schemeIos       | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
+| - schemeIos       | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 
 #### 캐러셀 피드형 템플릿 등록 요청
 
@@ -2920,7 +2921,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름                | 타입      | 필수 | 설명                                                                                                                                                                                                                                |
 |-------------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| templateName      | String  | O  | 템플릿 명(최대 200자)                                                                                                                                                                                                                   |
+| templateName      | String  | O  | 템플릿명(최대 200자)                                                                                                                                                                                                                   |
 | chatBubbleType    | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                             |
 | pushAlarm         | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                       |
 | adult             | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                           |
@@ -2932,11 +2933,11 @@ Content-Type: application/json;charset=UTF-8
 | -- imageLink      | String  | X  | 이미지 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                    |
 | -- buttons        | List    | O  | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개                                                                                                                                                                                                        |
 | --- name          | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                          |
-| --- type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
+| --- type          | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
 | --- linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | --- linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | --- schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                           |
-| --- schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
+| --- schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | --- bizFormKey    | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                |
 | -- coupon         | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                             |
 | --- title         | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                |
@@ -2944,12 +2945,12 @@ Content-Type: application/json;charset=UTF-8
 | --- linkMo        | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | --- linkPc        | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | --- schemeAndroid | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
-| --- schemeIos     | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
+| --- schemeIos     | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | - tail            | Object  | X  | 더보기 버튼 정보                                                                                                                                                                                                                         |
 | -- linkMo         | String  | O  | 모바일 웹 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
 | -- linkPc         | String  | X  | PC 웹 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                  |
 | -- schemeAndroid  | String  | X  | 안드로이드 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                               |
-| -- schemeIos      | String  | X  | IOS 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
+| -- schemeIos      | String  | X  | iOS 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
 | recipientList     | List    | O  | 수신자 목록(최대 1,000명)                                                                                                                                                                                                                 |
 | - recipientNo     | String  | O  | 수신 번호                                                                                                                                                                                                                             |
 | createUser        | String  | X  | 등록자(콘솔에서 발송 시 사용자 UUID로 저장)                                                                                                                                                                                                       |
@@ -3018,7 +3019,7 @@ Content-Type: application/json;charset=UTF-8
 
 | 이름                   | 타입      | 필수 | 설명                                                                                                                                                                                                                                |
 |----------------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| templateName         | String  | O  | 템플릿 명(최대 200자)                                                                                                                                                                                                                   |
+| templateName         | String  | O  | 템플릿명(최대 200자)                                                                                                                                                                                                                   |
 | chatBubbleType       | String  | O  | 메시지 타입(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                             |
 | pushAlarm            | boolean | X  | 메시지 푸시 알람 발송 여부(기본값: true)                                                                                                                                                                                                       |
 | adult                | boolean | X  | 성인용 메시지 여부(기본값: false)                                                                                                                                                                                                           |
@@ -3030,7 +3031,7 @@ Content-Type: application/json;charset=UTF-8
 | -- linkMo            | String  | X  | 모바일 웹 링크(linkMo, linkPc, schemeAndroid, schemeIos 중 하나라도 사용하려는 경우 linkMo은 필수 값), 500자 제한                                                                                                                                        |
 | -- linkPc            | String  | X  | PC 웹 링크, 500자 제한                                                                                                                                                                                                               |
 | -- schemeAndroid     | String  | X  | 안드로이드 앱 링크, 500자 제한                                                                                                                                                                                                             |
-| -- schemeIos         | String  | X  | IOS 앱 링크, 500자 제한                                                                                                                                                                                                               |
+| -- schemeIos         | String  | X  | iOS 앱 링크, 500자 제한                                                                                                                                                                                                               |
 | - list               | List    | O  | 캐러셀 리스트(head가 존재할 경우 최소 1개, 최대 5개 / 그 외에는 최소 2개, 최대 6개)                                                                                                                                                                          |
 | -- additionalContent | String  | X  | 부가 정보(최대 34자), 캐러셀 커머스형에서만 사용 가능                                                                                                                                                                                                  |
 | -- imageUrl          | String  | O  | 이미지 URL(캐러셀 커머스형 이미지로 업로드된 이미지 사용)<br>치환자 사용 불가능                                                                                                                                                                                 |
@@ -3038,16 +3039,16 @@ Content-Type: application/json;charset=UTF-8
 | -- commerce          | Object  | O  | 커머스(CAROUSEL_COMMERCE 타입에서만 사용 가능)                                                                                                                                                                                               |
 | --- title            | String  | O  | 상품 제목(최대 30자, 줄바꿈: 불가)                                                                                                                                                                                                           |
 | --- regularPrice     | Integer | O  | 정상 가격(0~99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정상가격}`으로 저장됨                                                                                                                                                          |
-| --- discountPrice    | Integer | X  | 할인가격(0 ~ 99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨                                                                                                                                                            |
-| --- discountRate     | Integer | X  | 할인율(0 ~ 100), 할인가격 존재시 할인율, 정액할인가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨                                                                                                                                      |
-| --- discountFixed    | Integer | X  | 정액 할인 가격(0 ~ 999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨                                                                                                                            |
+| --- discountPrice    | Integer | X  | 할인 가격(0~99,999,999)<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인가격}`으로 저장됨                                                                                                                                                            |
+| --- discountRate     | Integer | X  | 할인율(0~100), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{할인율}`으로 저장됨                                                                                                                                      |
+| --- discountFixed    | Integer | X  | 정액 할인 가격(0~999,999), 할인 가격 존재 시 할인율, 정액 할인 가격 중 하나는 필수<br>치환자 사용자 지정 불가능, 값을 비워두면 고정 치환자 `#{정액할인가격}`으로 저장됨                                                                                                                            |
 | -- buttons           | List    | O  | 캐러셀 리스트 버튼 목록 최소 1개, 최대 2개                                                                                                                                                                                                        |
 | --- name             | String  | O  | 버튼 제목<br>- TEXT, IMAGE 타입일 경우 최대 14자<br>- 이외의 타입일 경우 최대 8자<br>치환자 사용 불가능                                                                                                                                                          |
-| --- type             | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스 폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
+| --- type             | String  | O  | 버튼 타입(WL: 웹 링크, AL: 앱 링크, BK: 봇 키워드, MD: 메시지 전달, AC: 채널 추가, BT: 챗봇 전환, BF: 비즈니스폼)<br>- AC 타입은 TEXT, IMAGE의 경우 첫 번째 버튼으로, 그 외 메시지 타입의 경우 마지막 버튼으로 등록해야 함 |
 | --- linkMo           | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | --- linkPc           | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | --- schemeAndroid    | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                           |
-| --- schemeIos        | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
+| --- schemeIos        | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한                                                                                                                                                                                             |
 | --- bizFormKey       | String  | X  | BF 타입 버튼일 경우 비즈폼 키                                                                                                                                                                                                                |
 | -- coupon            | Object  | X  | 쿠폰 요소                                                                                                                                                                                                                             |
 | --- title            | String  | O  | title의 경우 5가지 형식으로 제한됨<br>- "${숫자}원 할인 쿠폰" 숫자는 1 이상 99,999,999 이하<br>- "${숫자}% 할인 쿠폰" 숫자는 1 이상 100 이하<br>- "배송비 할인 쿠폰"<br>- "${7자 이내} 무료 쿠폰"<br>- "${7자 이내} UP 쿠폰"                                                                |
@@ -3055,12 +3056,12 @@ Content-Type: application/json;charset=UTF-8
 | --- linkMo           | String  | X  | 모바일 웹 링크(WL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | --- linkPc           | String  | X  | PC 웹 링크(WL 타입일 경우 선택 필드), 500자 제한                                                                                                                                                                                              |
 | --- schemeAndroid    | String  | X  | 안드로이드 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                     |
-| --- schemeIos        | String  | X  | IOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
+| --- schemeIos        | String  | X  | iOS 앱 링크(AL 타입일 경우 필수 필드), 500자 제한<br>쿠폰에 linkMo 필드를 입력할 경우 나머지 필드는 선택 사항(옵션)이 되며,<br>scheme_android 또는 scheme_ios 필드에 채널 쿠폰 URL(형식: alimtalk=coupon://)을 입력할 경우 나머지 필드가 선택 사항(옵션)이 됩니다.                                       |
 | - tail               | Object  | X  | 더보기 버튼 정보                                                                                                                                                                                                                         |
 | -- linkMo            | String  | O  | 모바일 웹 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
 | -- linkPc            | String  | X  | PC 웹 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                  |
 | -- schemeAndroid     | String  | X  | 안드로이드 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                               |
-| -- schemeIos         | String  | X  | IOS 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
+| -- schemeIos         | String  | X  | iOS 앱 링크, 500자 제한<br>치환자 사용 불가능                                                                                                                                                                                                 |
 
 #### 응답
 
@@ -3259,12 +3260,14 @@ Content-Type: multipart/form-data
 #### 업로드 이미지 규격
 | 이미지 타입                     | 사용처                                                     | 업로드 이미지 규격                                                                                                                              |
 |:---------------------------|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
-| IMAGE                      | 이미지형 이미지, 커머스형 이미지, 프리미엄 비디오형 썸네일                       | 권장 사이즈: 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                |
+| IMAGE                      | 이미지형 이미지, 커머스형 이미지, 프리미엄 동영상형 썸네일                       | 권장 사이즈: 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                |
 | WIDE_IMAGE                 | 와이드 이미지형 이미지                                            | 권장 사이즈: 800 X 600px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1<br>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                     |
-| MAIN_WIDE_ITEMLIST_IMAGE   | 와이드 아이템 리스트형 첫번째 아이템 이미지                                | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 0.5<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                                      |
-| NORMAL_WIDE_ITEMLIST_IMAGE | 와이드 아이템 리스트형 2~4번쨰 아이템 이미지                              | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 1<br/>파일형식 및 크기 : jpg, png / 각 파일 최대 5MB                                                      |
+| MAIN_WIDE_ITEMLIST_IMAGE   | 와이드 아이템리스트형 첫 번째 아이템 이미지                                | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 0.5<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                                                      |
+| NORMAL_WIDE_ITEMLIST_IMAGE | 와이드 아이템리스트형 2~4번째 아이템 이미지                              | 제한 사이즈: 가로 500px 이상<br/>이미지 비율: 세로 ÷ 가로 = 1<br/>파일 형식 및 크기 : jpg, png / 각 파일 최대 5MB                                                      |
 | CAROUSEL_FEED_IMAGE        | 캐러셀 피드형 셀별 이미지                                          | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                 |
 | CAROUSEL_COMMERCE_IMAGE    | 캐러셀 커머스형 인트로 이미지, 캐러셀 커머스형 셀별 이미지 | 권장 사이즈: 800 X 600px 또는 800 X 400px (가로 500px 이상)<br/>이미지 비율: 0.5 ≤ 세로 ÷ 가로 ≤ 1.333<br/>파일 형식 및 용량 제한: jpg, png / 최대 5MB                 |
+
+* 업로드된 이미지를 참조하는 템플릿이 모두 삭제되거나 다른 이미지로 변경되면 카카오 CDN에서 해당 이미지가 삭제되어 URL이 유효하지 않게 됩니다. 이미지 조회 API에서는 이미지 정보가 유지되지만, 실제 이미지에는 접근할 수 없으므로 원본 파일은 자체 서버에 별도로 보관하는 것을 권장합니다.
 
 ### 이미지 조회
 
@@ -3579,7 +3582,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름                | 	타입     | 	필수 | 	설명                                                                                                                           |
 |-------------------|---------|-----|-------------------------------------------------------------------------------------------------------------------------------|
 | unsubscribeNo     | 	String | 	O  | 080 무료수신거부 전화번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx  |
-| unsubscribeAuthNo | 	String | 	X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribe_phone_number 없이 unsubscribe_auth_number만 입력 불가<br>예: 1234 |
+| unsubscribeAuthNo | 	String | 	X  | 080 무료수신거부 인증번호(모두 미입력 시 발신 프로필에 등록된 무료수신거부 정보로 발송됨)<br>unsubscribeNo 없이 unsubscribeAuthNo만 입력 불가<br>예: 1234 |
 
 #### 응답
 
@@ -3701,7 +3704,7 @@ Content-Type: application/json;charset=UTF-8
 | 이름                  | 	타입      | 	필수 | 	설명                                                                                                        |
 |---------------------|----------|-----|------------------------------------------------------------------------------------------------------------|
 | senderKey           | 	String  | 	O  | 발신 키                                                                                                       |
-| isResend            | 	Boolean | 	O  | 발송 실패 시, 문자 대체발송 여부<br>Console에서 대체 발송 설정 시, default로 대체 발송 됩니다.                                           |
+| isResend            | 	Boolean | 	O  | 발송 실패 시, 문자 대체 발송 여부<br>콘솔에서 대체 발송을 설정하면 기본값으로 대체 발송됩니다.                                           |
 | resendSendNo        | 	String  | 	X  | 대체 발송 발신번호<br><span style="color:red">(SMS 서비스에 등록된 발신 번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span>                  |
 | resendUnsubscribeNo | 	String  | 	X  | 대체 발송 080 수신 거부 번호<br><span style="color:red">(SMS 서비스에 등록된 080 수신거부번호가 아닐 경우, 대체 발송에 실패할 수 있습니다.)</span> |
 
