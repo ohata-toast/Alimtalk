@@ -2,33 +2,33 @@
 
 ### February 24, 2026
 * [API] Added Brand Message carousel fixed placeholder feature
-  * Enable unique placeholder values for each item within carousel-type templates.
-  * Allow per-item personalization using path-based parameters (`key@$.carousel.list[index]`).
-  * Restrict the use of the @ character in template placeholder keys.
+    * Enable unique placeholder values for each item within carousel-type templates.
+    * Allow per-item personalization using path-based parameters (`key@$.carousel.list[index]`).
+    * Restrict the use of the @ character in template placeholder keys.
 
 * [API] Added Brand Message template placeholder key validation
-  * Trigger an error if a placeholder key contains the '@' character during template registration or modification.
+    * Trigger an error if a placeholder key contains the '@' character during template registration or modification.
 
 * [API] Added Brand Message template parameter missing check
-  * Trigger an error if a placeholder key defined in the template is missing from templateParameter during a send request.
+    * Trigger an error if a placeholder key defined in the template is missing from templateParameter during a send request.
 
 * [API, Console] Brand Message BT button type support
-  * Support the BT (Bot Transfer) button type within Brand Messages.
-  * Enable template registration with the BT button type selected via the Console.
+    * Support the BT (Bot Transfer) button type within Brand Messages.
+    * Enable template registration with the BT button type selected via the Console.
 
 * [API, Console] Added Brand Message AC button type
-  * Support the AC (Add Channel) button type for Brand Messages.
-  * Require the AC button name to be set exactly as 'Add Channel'.
-  * Restrict the use of AC buttons to a maximum of one across all carousel items.
+    * Support the AC (Add Channel) button type for Brand Messages.
+    * Require the AC button name to be set exactly as 'Add Channel'.
+    * Restrict the use of AC buttons to a maximum of one across all carousel items.
 
 * [Console] Improved response message categorization for Alimtalk/Brand Message failover
-  * Categorize response messages for fallbacks to improve visibility.
+    * Categorize response messages for fallbacks to improve visibility.
 
 * [API] Added template parameter length limit
-  * Enforce a maximum length of 1,300 characters for each template parameter key and value.
+    * Enforce a maximum length of 1,300 characters for each template parameter key and value.
 
 * [API] Added recipient grouping key length limit
-  * Restrict the maximum length of the recipientGroupingKey field to 100 characters.
+    * Restrict the maximum length of the recipientGroupingKey field to 100 characters.
   
 ### January 27, 2026
 * [API] Added webhook API link for send result inquiry to scheduled delivery and bulk delivery result webhooks
@@ -66,7 +66,7 @@
     * When sending a brand message, if the resendParameter is not entered, fallback will now occur according to default settings.
 
 * [API] Added API for AlimTalk Result Query Count
-* An API that responds with the same conditions as the Result Query API has been added.
+    * An API that responds with the same conditions as the Result Query API has been added.
 
 ### October 28, 2025
 * [API, Console] Changed the validity of the AlimTalk template
@@ -98,20 +98,20 @@
 ### August 26, 2025
 
 * [API, Console] Brand message - Supported free-form sending M/N type function
-  * Added a feature to enable sending free-form messages of M/N type in brand messages.
-  * In addition to the existing basic type, you can send your brand message more flexibly with the free-form M/N type.
+    * Added a feature to enable sending free-form messages of M/N type in brand messages.
+    * In addition to the existing basic type, you can send your brand message more flexibly with the free-form M/N type.
 
 * [API] Brand message - Added API field for sending reseller identification code
-  * Added a field to the Brand Message Sending API to allow you to specify a reseller identification code.
-  * A feature is provided to manage message sending by resellers separately.
+    * Added a field to the Brand Message Sending API to allow you to specify a reseller identification code.
+    * A feature is provided to manage message sending by resellers separately.
 
 * [API, Console] Added a brand message feature - scheduled send
-  * Added a reservation sending feature to the Brand Message upgrade service.
-  * You can schedule and send a Brand Message upgrade message at any time you want.
+    * Added a reservation sending feature to the Brand Message upgrade service.
+    * You can schedule and send a Brand Message upgrade message at any time you want.
 
 * [API] Brand message - added senderGroupingKey, recipientGroupingKey
-  * Sender grouping key and recipient grouping key fields are added to the brand message sending API.
-  * You can manage message sending requests by group to efficiently track sending results.
+    * Sender grouping key and recipient grouping key fields are added to the brand message sending API.
+    * You can manage message sending requests by group to efficiently track sending results.
 
 ### July 29, 2025
 * [API, Console] FriendTalk Upgrade -> Changed brand message name
