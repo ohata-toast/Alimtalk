@@ -1,5 +1,26 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### April 28, 2026
+* [API] Automatic cleanup of sender profiles and template data deleted after dormancy
+    * Synchronizes and automatically cleans up sender profiles and template data that were deleted by Kakao after remaining dormant for over 1 year.
+* [API] Added channel add button (AC type) support for free-form brand message delivery
+    * Expanded the channel add button for free-form delivery to be available for all targeting options.
+    * If the recipient is a friend, the delivery will not fail, but the channel add button will not be displayed.
+
+### March 24, 2026
+    * Added a feature to retrieve statistics data for AlimTalk and brand messages provided by KakaoBizCenter.
+
+* [Console] Added KakaoBizCenter group tag management feature
+    * Added a feature to manage group tags provided by KakaoBizCenter.
+
+* [Console]
+    * Sends a notification email with the results when message delivery history is backed up.
+    * Recipients can be configured in Project Dashboard > Notification Management tab.
+
+* [Console] Added notification for message delivery history backup results
+    * You can receive result notifications when configuring backup settings for message delivery history that has exceeded the retention period.
+    * This can be configured in **Project Dashboard > Notification Management**.
+    
 ### February 24, 2026
 * [API] Added Brand Message carousel fixed placeholder feature
     * Enable unique placeholder values for each item within carousel-type templates.
