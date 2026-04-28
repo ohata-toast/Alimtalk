@@ -128,16 +128,16 @@ Content-Type: application/json;charset=UTF-8
 
 * マーケティング受信同意ユーザーへの送信を利用できます。
   * targetingフィールドを指定して、メッセージ対象のタイプを指定できます。
-      * M: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意)
-      * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
-      * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
+        * M: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意)
+        * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
+        * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
 * 従来のカカともへのメッセージの8つのメッセージタイプを全て使用できます。
 * BC、BTボタンタイプを使用できます。
 * AC(チャンネル追加)ボタンは使用できません。
 * BFボタンを使用する場合、カカオから発行されたビジネスフォームIDを入力して使用できます。
 * 代替送信は、受信者ごとにresendParameterを介して設定できます。
 * 代替送信をご利用になる場合、代替送信管理APIを介してSMS Appkeyの登録及び送信設定が必要です。
-* <b>夜間送信制限(20:50～翌日08:00)</b>
+* **夜間送信制限(20:50～翌日08:00)**
 
 #### リクエスト
 
@@ -222,6 +222,7 @@ Content-Type: application/json;charset=UTF-8
 | chatBubbleType         | String  | O  | メッセージタイプ(TEXT, IMAGE, WIDE, WIDE_ITEM_LIST, PREMIUM_VIDEO, COMMERCE, CAROUSEL_FEED, CAROUSEL_COMMERCE)                                                                                                                                                                         |
 | pushAlarm | boolean | X | メッセージプッシュ通知の送信有無(デフォルト: true) |
 | adult                  | boolean | X  | 成人向けメッセージの有無(デフォルト値：false)                                                                                                                                                                                                                                                       |
+| unsubscribeAuthNo | String | X | 080無料受信拒否の認証番号(全て未入力の場合は送信プロフィールに登録された無料受信拒否情報で送信されます)<br>unsubscribeNoなしでunsubscribeAuthNoのみの入力不可<br>例: 1234 |
 | content | String | O | - TEXTタイプの場合、最大1,300文字(改行:最大99個、URL形式の入力が可能)<br>- IMAGEタイプの場合、最大400文字(改行:最大29回、URL形式の入力が可能)<br>- WIDEタイプの場合、最大76文字(改行:最大1回)<br>- PREMIUM_VIDEOタイプの場合、このフィールドをオプションとして使用可能。最大76文字(改行:最大1回)<br>- その他のタイプの場合、このフィールドは使用しません |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
@@ -315,7 +316,7 @@ Content-Type: application/json;charset=UTF-8
 | content | String | O | - TEXTタイプの場合、最大1,300文字(改行:最大99個、URL形式の入力が可能)<br>- IMAGEタイプの場合、最大400文字(改行:最大29回、URL形式の入力が可能)<br>- WIDEタイプの場合、最大76文字(改行:最大1回)<br>- PREMIUM_VIDEOタイプの場合、このフィールドをオプションとして使用可能。最大76文字(改行:最大1回)<br>- その他のタイプの場合、このフィールドは使用しません |
 | image | Object | O | 画像要素<br>- IMAGE、WIDE、COMMERCEタイプの場合、必須フィールド |
 | - imageUrl | String | O | 画像URL。一般画像としてアップロードされた画像URLを使用 |
-| - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
+| - imageLink | String | X | 画像をクリックしたときに移動するURL。1,000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
 | - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
@@ -408,7 +409,7 @@ Content-Type: application/json;charset=UTF-8
 | content | String | O | - TEXTタイプの場合、最大1,300文字(改行:最大99個、URL形式の入力が可能)<br>- IMAGEタイプの場合、最大400文字(改行:最大29回、URL形式の入力が可能)<br>- WIDEタイプの場合、最大76文字(改行:最大1回)<br>- PREMIUM_VIDEOタイプの場合、このフィールドをオプションとして使用可能。最大76文字(改行:最大1回)<br>- その他のタイプの場合、このフィールドは使用しません |
 | image | Object | O | 画像要素<br>- IMAGE、WIDE、COMMERCEタイプの場合、必須フィールド |
 | - imageUrl | String | O | 画像URL、ワイド画像としてアップロードされた画像URLを使用 |
-| - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
+| - imageLink | String | X | 画像をクリックしたときに移動するURL。1,000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | buttons | List | X | ボタンリスト<br>- TEXT、IMAGEタイプの場合、クーポン適用時は最大4件、それ以外は最大5件<br>- WIDE、WIDE_ITEM_LISTタイプの場合、最大2件<br>- PREMIUM_VIDEOタイプの場合、最大1件<br>- COMMERCEタイプの場合、最小1件、最大2件 |
 | - name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
 | - type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
@@ -725,7 +726,7 @@ Content-Type: application/json;charset=UTF-8
 | additionalContent | String | X | 付加情報(最大34文字、改行:最大1回)、コマース形式でのみ使用可能 |
 | image | Object | O | 画像要素<br>- IMAGE、WIDE、COMMERCEタイプの場合、必須フィールド |
 | - imageUrl | String | O | 画像URL。一般画像としてアップロードされた画像URLを使用 |
-| - imageLink | String | X | 画像をクリックしたときに移動するURL。1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
+| - imageLink | String | X | 画像をクリックしたときに移動するURL。1,000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用 |
 | commerce | Object | O | コマース(COMMERCEタイプでのみ使用可能) |
 | title | String | O | 商品名(最大30文字、改行:不可) |
 | regularPrice | Integer | O | 通常価格(0～99,999,999) |
@@ -864,7 +865,7 @@ Content-Type: application/json;charset=UTF-8
 | -- header | String | O | カルーセルアイテムのタイトル(最大20文字)。カルーセルフィード形式でのみ使用可能 |
 | -- message | String | O | カルーセルアイテムのタイトル(最大20文字)、カルーセルアイテムのメッセージ(最大180文字)。カルーセルフィード形式でのみ使用可能 |
 | -- imageUrl | String | O | 画像URL(カルーセルフィード形式の画像としてアップロードされた画像のみ使用可能) |
-| -- imageLink           | String  | X  | 画像リンク、1000文字制限                                                                                                                                                                                                                                                            |
+| -- imageLink           | String  | X  | 画像リンク、1,000文字制限                                                                                                                                                                                                                                                            |
 | -- buttons | List | O | カルーセルリストのボタンリスト最小1件、最大2件 |
 | --- name | String | O | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字 |
 | --- type | String | O | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、BC:相談トーク転換、BT:チャットボット転換、BF:ビジネスフォーム)<br>- BCタイプは相談トークを利用するカカオトークチャンネルのみ利用可能<br>- BTタイプはカカオオープンビルダーのチャットボットを使用するチャンネルのみ利用可能<br>- BFタイプは最初のボタンとしてのみ使用でき、nameには以下の3つのフレーズのみ使用可能<br> - トークで予約する<br> - トークでアンケートする<br> - トークで応募する |
@@ -997,7 +998,7 @@ Content-Type: application/json;charset=UTF-8
 | - list | List | O  | カルーセルリスト(headが存在する場合、最小1件、最大5件 / それ以外は最小2件、最大6件) |
 | -- additionalContent | String | X  | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能 |
 | -- imageUrl | String | O  | 画像URL (カルーセルコマース形式の画像としてアップロードされた画像を使用) |
-| -- imageLink         | String  | X  | 画像リンク、1000文字制限                                                                                                                                                                                                                                                            |
+| -- imageLink         | String  | X  | 画像リンク、1,000文字制限                                                                                                                                                                                                                                                            |
 | -- commerce | Object | O  | コマース(CAROUSEL_COMMERCEタイプでのみ使用可能) |
 | --- title            | String  | O  | 商品名(最大30文字、改行:不可)                                                                                                                                                                                                                                                       |
 | --- regularPrice | Integer | O  | 通常価格(0～99,999,999) |
@@ -1078,17 +1079,17 @@ Content-Type: application/json;charset=UTF-8
 
 * テンプレートを利用した送信です。
 * 広告やプロモーション情報を受け取ることに同意したユーザーに対してメッセージ送信を使用できます。
-  * targetingフィールドを指定して、メッセージ対象のタイプを指定できます。
-      * M: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意)
-      * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
-      * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
+    * targetingフィールドを指定して、メッセージ対象のタイプを指定できます。
+        * M: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意)
+        * N: 顧客企業の広告性情報受信に同意したユーザー(カカオトークでの受信に同意) - チャネルの友だち
+        * I: 顧客企業の送信リクエスト対象 ∩ チャネルの友だち
 * 既存カカともへのメッセージの8つのメッセージタイプを全て使用できます。
 * BC、BTボタンタイプは使用できません。
 * AC(チャンネル追加)ボタンを使用できます。
 * BFボタンを使用する場合、カカオから発行されたビジネスフォームIDをアップロードしてビズフォームキーを発行して使用できます。
 * 代替送信は、受信者ごとにresendParameterを介して設定できます。
 * 代替送信をご利用になる場合、代替送信管理APIを介してSMS Appkeyの登録及び送信設定が必要です。
-* <b>夜間送信制限(20:50～翌日08:00)</b>
+* **夜間送信制限(20:50～翌日08:00)**
 
 ### 使用時の注意事項
 
@@ -1266,7 +1267,7 @@ Content-Type: application/json;charset=UTF-8
 | messageStatus | String | X | リクエストステータス(COMPLETED：成功、FAILED：失敗) |
 | resultCode       | String | X         | 送信結果(MRC01:成功MRC02:失敗)      |
 | pageNum          | String | X         | ページ番号(Default: 1)               |
-| pageSize | String | X | 照会件数(Default: 15、Max: 1000) |
+| pageSize | String | X | 照会件数(Default: 15、Max: 1,000) |
 
 #### レスポンス
 
@@ -1666,7 +1667,7 @@ Content-Type: application/json;charset=UTF-8
 | templateName | String  | X  | テンプレート名                      |
 | status       | String  | X  | テンプレートステータスコード                   |
 | pageNum      | Integer | X  | ページ番号(Default: 1)            |
-| pageSize     | Integer | X  | 照会件数(Default: 15, Max: 1000) |
+| pageSize     | Integer | X  | 照会件数(Default: 15, Max: 1,000) |
 
 #### レスポンス
 
@@ -1923,6 +1924,7 @@ Content-Type: application/json;charset=UTF-8
 | 名前         | タイプ   | 必須 | 説明             |
 |--------------|--------|----|------------------|
 | X-Secret-Key | String | O  | コンソールで作成できます。 |
+|X-NC-API-IDEMPOTENCY-KEY| String| X | 重複メッセージ送信リクエストの基準key<br>10分間同じkeyでリクエストした場合、該当リクエストは失敗として処理します。 |
 
 #### レスポンス
 
@@ -2575,7 +2577,7 @@ Content-Type: application/json;charset=UTF-8
 | additionalContent | String  | X  | 付加情報(最大34文字、改行:最大1回)、コマース形式でのみ使用可能                                                                                                                                                                                         |
 | image             | Object  | O  | 画像要素<br>- IMAGE、WIDE、COMMERCEタイプの場合、必須フィールド                                                                                                                                                                                   |
 | - imageUrl        | String  | O  | 画像URL、一般画像としてアップロードされた画像URLを使用<br>プレースホルダー使用不可                                                                                                                                                                                    |
-| - imageLink       | String  | X  | 画像をクリックした際に移動するURL、1000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用<br>プレースホルダー使用不可                                                                                                                                                                 |
+| - imageLink       | String  | X  | 画像をクリックした際に移動するURL、1,000文字制限<br>未設定の場合、カカオトーク内の画像ビューアを使用<br>プレースホルダー使用不可                                                                                                                                                                 |
 | commerce          | Object  | O  | コマース(COMMERCEタイプでのみ使用可能)                                                                                                                                                                                                        |
 | title             | String  | O  | 商品名(最大30文字、改行:不可)                                                                                                                                                                                                           |
 | regularPrice      | Integer | O  | 通常価格(0 ～ 99,999,999)<br>プレースホルダーのユーザー指定は不可能、値を空にすると固定プレースホルダー`#{通常価格}`で保存されます                                                                                                                                                         |
@@ -2683,7 +2685,7 @@ Content-Type: application/json;charset=UTF-8
 | -- header         | String  | O  | カルーセルアイテムのタイトル(最大20文字)、カルーセルフィード型でのみ使用可能                                                                                                                                                                                             |
 | -- message        | String  | O  | カルーセルアイテムのタイトル(最大20文字)、カルーセルアイテムのメッセージ(最大180文字)、カルーセルフィード型でのみ使用可能。                                                                                                                                                                        |
 | -- imageUrl       | String  | O  | 画像URL (カルーセルフィード型の画像としてアップロードされた画像のみ使用可能)<br>プレースホルダーは使用不可。                                                                                                                                                                              |
-| -- imageLink      | String  | X  | 画像リンク、1000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
+| -- imageLink      | String  | X  | 画像リンク、1,000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
 | -- buttons        | List    | O  | カルーセルリストのボタンリスト最小1件、最大2件                                                                                                                                                                                                       |
 | --- name          | String  | O  | ボタンのタイトル<br>- TEXT、IMAGEタイプの場合、最大14文字<br>- その他のタイプの場合、最大8文字<br>プレースホルダーは使用不可。                                                                                                                                                          |
 | --- type          | String  | O  | ボタンタイプ(WL: Webリンク、AL:アプリリンク、BK:ボットキーワード、MD:メッセージ伝達、AC:チャネル追加、BC:トーク相談切り替え、BT:チャットボット切り替え、BF:ビジネスフォーム)<br>- テンプレートではBCタイプは利用できません <br>- BTタイプ <br>- テンプレートではBFタイプは利用できません<br>- ACタイプは、TEXT、IMAGEの場合は最初のボタンとして、それ以外のメッセージタイプの場合は最後のボタンとして登録する必要があります。 |
@@ -2788,7 +2790,7 @@ Content-Type: application/json;charset=UTF-8
 | - list               | List    | O  | カルーセルリスト(headが存在する場合、最小1件、最大5件 / それ以外は最小2件、最大6件)                                                                                                                                                                          |
 | -- additionalContent | String  | X  | 付加情報(最大34文字)、カルーセルコマース形式でのみ使用可能                                                                                                                                                                                                 |
 | -- imageUrl          | String  | O  | 画像URL (カルーセルコマース型の画像としてアップロードされた画像を使用)<br>プレースホルダーは使用不可。                                                                                                                                                                                 |
-| -- imageLink         | String  | X  | 画像リンク、1000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
+| -- imageLink         | String  | X  | 画像リンク、1,000文字制限<br>プレースホルダーは使用不可。                                                                                                                                                                                                    |
 | -- commerce          | Object  | O  | コマース(CAROUSEL_COMMERCEタイプでのみ使用可能)                                                                                                                                                                                               |
 | --- title            | String  | O  | 商品名(最大30文字、改行:不可)                                                                                                                                                                                                           |
 | --- regularPrice     | Integer | O  | 通常価格(0～99,999,999)<br>プレースホルダーのユーザー指定は不可能、値を空にすると固定プレースホルダー`#{通常価格}`で保存されます                                                                                                                                                         |
@@ -3029,6 +3031,8 @@ Content-Type: multipart/form-data
 | NORMAL_WIDE_ITEMLIST_IMAGE | ワイドアイテムリスト型2～4番目のアイテム画像                              | 制限サイズ: 横500px以上<br/>画像比率: 縦 ÷ 横 = 1<br/>ファイル形式及びサイズ: jpg, png / 各ファイル最大5MB                                                      |
 | CAROUSEL_FEED_IMAGE        | カルーセルフィード型セル別画像                                          | 推奨サイズ: 800 X 600px または 800 X 400px (横500px以上)<br/>画像比率: 0.5 ≤ 縦 ÷ 横 ≤ 1.333<br/>ファイル形式及び容量制限: jpg, png / 最大5MB                 |
 | CAROUSEL_COMMERCE_IMAGE    | カルーセルコマース型イントロ画像、カルーセルコマース型セル別画像 | 推奨サイズ: 800 X 600px または 800 X 400px (横500px以上)<br/>画像比率: 0.5 ≤ 縦 ÷ 横 ≤ 1.333<br/>ファイル形式及び容量制限: jpg, png / 最大5MB                 |
+
+* アップロードされた画像を参照するテンプレートが全て削除されるか、別の画像に変更されると、Kakao CDNから該当の画像が削除され、URLが無効になります。画像照会APIでは画像情報が維持されますが、実際の画像にはアクセスできないため、オリジナルファイルは自社サーバーに別途保管することを推奨します。
 
 ### 画像照会
 
