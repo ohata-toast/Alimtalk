@@ -16,7 +16,7 @@
 </thead>
 <tbody>
 <tr>
-<td>https://api-alimtalk.cloud.toast.com</td>
+<td>https://kakaotalk-bizmessage.api.nhncloudservice.com</td>
 </tr>
 </tbody>
 </table>

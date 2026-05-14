@@ -1,34 +1,46 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+### March 24, 2026
+#### Added Features
+* [Console] KakaoBizCenter statistics
+  * Added a feature to retrieve statistics data for AlimTalk and brand messages provided by KakaoBizCenter.
+
+* [Console] KakaoBizCenter group tag management
+  * Added a feature to manage group tags provided by KakaoBizCenter.
+  
+* [Console]
+  * Added a notification email upon completion of delivery history backup.
+  * The recipient can be configured on the Project Dashboard > Notification Management tab.
+
 ### February 24, 2026
 * [API] Added Brand Message carousel fixed placeholder feature
-  * Enable unique placeholder values for each item within carousel-type templates.
-  * Allow per-item personalization using path-based parameters (`key@$.carousel.list[index]`).
-  * Restrict the use of the @ character in template placeholder keys.
+    * Enable unique placeholder values for each item within carousel-type templates.
+    * Allow per-item personalization using path-based parameters (`key@$.carousel.list[index]`).
+    * Restrict the use of the @ character in template placeholder keys.
 
 * [API] Added Brand Message template placeholder key validation
-  * Trigger an error if a placeholder key contains the '@' character during template registration or modification.
+    * Trigger an error if a placeholder key contains the '@' character during template registration or modification.
 
 * [API] Added Brand Message template parameter missing check
-  * Trigger an error if a placeholder key defined in the template is missing from templateParameter during a send request.
+    * Trigger an error if a placeholder key defined in the template is missing from templateParameter during a send request.
 
 * [API, Console] Brand Message BT button type support
-  * Support the BT (Bot Transfer) button type within Brand Messages.
-  * Enable template registration with the BT button type selected via the Console.
+    * Support the BT (Bot Transfer) button type within Brand Messages.
+    * Enable template registration with the BT button type selected via the Console.
 
 * [API, Console] Added Brand Message AC button type
-  * Support the AC (Add Channel) button type for Brand Messages.
-  * Require the AC button name to be set exactly as 'Add Channel'.
-  * Restrict the use of AC buttons to a maximum of one across all carousel items.
+    * Support the AC (Add Channel) button type for Brand Messages.
+    * Require the AC button name to be set exactly as 'Add Channel'.
+    * Restrict the use of AC buttons to a maximum of one across all carousel items.
 
 * [Console] Improved response message categorization for Alimtalk/Brand Message failover
-  * Categorize response messages for fallbacks to improve visibility.
+    * Categorize response messages for fallbacks to improve visibility.
 
 * [API] Added template parameter length limit
-  * Enforce a maximum length of 1,300 characters for each template parameter key and value.
+    * Enforce a maximum length of 1,300 characters for each template parameter key and value.
 
 * [API] Added recipient grouping key length limit
-  * Restrict the maximum length of the recipientGroupingKey field to 100 characters.
+    * Restrict the maximum length of the recipientGroupingKey field to 100 characters.
   
 ### January 27, 2026
 * [API] Added webhook API link for send result inquiry to scheduled delivery and bulk delivery result webhooks
@@ -66,7 +78,7 @@
     * When sending a brand message, if the resendParameter is not entered, fallback will now occur according to default settings.
 
 * [API] Added API for AlimTalk Result Query Count
-* An API that responds with the same conditions as the Result Query API has been added.
+    * An API that responds with the same conditions as the Result Query API has been added.
 
 ### October 28, 2025
 * [API, Console] Changed the validity of the AlimTalk template
@@ -98,20 +110,20 @@
 ### August 26, 2025
 
 * [API, Console] Brand message - Supported free-form sending M/N type function
-  * Added a feature to enable sending free-form messages of M/N type in brand messages.
-  * In addition to the existing basic type, you can send your brand message more flexibly with the free-form M/N type.
+    * Added a feature to enable sending free-form messages of M/N type in brand messages.
+    * In addition to the existing basic type, you can send your brand message more flexibly with the free-form M/N type.
 
 * [API] Brand message - Added API field for sending reseller identification code
-  * Added a field to the Brand Message Sending API to allow you to specify a reseller identification code.
-  * A feature is provided to manage message sending by resellers separately.
+    * Added a field to the Brand Message Sending API to allow you to specify a reseller identification code.
+    * A feature is provided to manage message sending by resellers separately.
 
 * [API, Console] Added a brand message feature - scheduled send
-  * Added a reservation sending feature to the Brand Message upgrade service.
-  * You can schedule and send a Brand Message upgrade message at any time you want.
+    * Added a reservation sending feature to the Brand Message upgrade service.
+    * You can schedule and send a Brand Message upgrade message at any time you want.
 
 * [API] Brand message - added senderGroupingKey, recipientGroupingKey
-  * Sender grouping key and recipient grouping key fields are added to the brand message sending API.
-  * You can manage message sending requests by group to efficiently track sending results.
+    * Sender grouping key and recipient grouping key fields are added to the brand message sending API.
+    * You can manage message sending requests by group to efficiently track sending results.
 
 ### July 29, 2025
 * [API, Console] FriendTalk Upgrade -> Changed brand message name
@@ -516,7 +528,7 @@
 ### October 29, 2019
 * [API] Tighter validity checks for the delivery of certification messages
     * Message delivery is unavailable when authentication message is not included
-    * For more details, see [[API User Guide](./alimtalk-api-guide/#precautions-authword)].
+    * For more details, see [API User Guide](./alimtalk-api-guide/#precautions-authword).
 
 ### September 24, 2019
 * [Console] Canceling Scheduled Delivery of AlimTalk/FriendTalk
@@ -552,7 +564,7 @@
 * [Console] Fixed bugs in messages
     - Fixed errors in messages for the status of Plus Friend, and deleting templates.
 * [Console] <b>Introduced business certification</b> when registering PlusFriend
-    - When registering PlusFriend, the PlusFriend <b>must be certified for business</b> [[Related announcement](https://center-pf.kakao.com/notices/311)]
+    - When registering PlusFriend, the PlusFriend <b>must be certified for business</b> [Related announcement](https://center-pf.kakao.com/notices/311)
 
 
 ### May 28, 2019
@@ -580,7 +592,7 @@
     - Added a feature that configures the alternative delivery for each Plus friend on AlimTalk/FriendTalk.
       <br>For example,) when only AlimTalk is set to deliver alternatively for the same Plus friend, FriendTalk will not use the alternative delivery even if it fails to deliver.
 * [Console] Introduced the <b>business verification feature</b> when adding a Plus friend
-    - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [[Related notice:](https://center-pf.kakao.com/notices/311)]
+    - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [Related notice:](https://center-pf.kakao.com/notices/311)
 * [Console] Added the Like search feature in the template selection modal window
     - Added the Like search feature to the template selection modal window so that templates can easily be selected.(Use template code and name to search templates)
 * [API] Improved the system so that advertisement FriendTalk and <b>advertisement SMS API</b> can be used for alternative delivery
@@ -653,7 +665,7 @@
 * [API] Added a feature that schedules AlimTalk delivery API
     - A message can be sent at any time using the schedule feature.
     - The scheduled message can be canceled at any time before it is sent.
-    - For more information, see [[AlimTalk delivery API](./alimtalk-api-guide/#_3)].
+    - For more information, see [AlimTalk delivery API](./alimtalk-api-guide/#_3).
 * [API] Advanced AlimTalk delivery API alternative delivery
     - Added the alternative delivery type(SMS/LMS), whether to use alternative delivery(true/false), alternative delivery content fields for delivery.
     - The alternative delivery can be used at scale using the fields.
@@ -673,10 +685,10 @@
 * [Console] Added a FriendTalk feature
     - FriendTalk targets users who became friends, and can be used to send advertisement messages.
     - The message delivery, view, image management, statistics features are provided on console.
-    - For more information, see [[FriendTalk overview ](./friendtalk-overview/)].
+    - For more information, see [FriendTalk overview ](./friendtalk-overview/).
 * [API] Added the FriendTalk API
     - The FriendTalk API supports the message delivery, list view, single item view, image management features.
-    - For more information, see [[FriendTalk API guide](./friendtalk-api-guide/)].
+    - For more information, see [FriendTalk API guide](./friendtalk-api-guide/).
 * [API] Added a limit to the number of AlimTalk and FriendTalk messages sent
     - Added a feature to limit the number of messages to 1,000 a day, which are sent to the Plus friends who became friends since the maintenance on July 24.
     - Delivery requests exceeding this limit will fail.
@@ -703,7 +715,7 @@ Delivery body text
 #### More Features
 * [API] Added the API that views a single delivery result
     - Added the API that views a specific delivery result.
-    - For more information, see [[AlimTalk API guide](./alimtalk-api-guide/#_14)].
+    - For more information, see [AlimTalk API guide](./alimtalk-api-guide/#_14).
 * [API] Added delivery result list view API v1.1
     - Added v1.1 API as the recipientSeq(Recipient sequence) field is added to response.
 
@@ -718,7 +730,7 @@ Delivery body text
     - Added new button types:(delivery view, web link, app link, bot keyword, and message forwarding)
 * [API] Added the API for viewing templates
     - Added the API that views templates.
-    - For more information, see [[ AlimTalk API guide ](./alimtalk-api-guide/#_46)].
+    - For more information, see [ AlimTalk API guide ](./alimtalk-api-guide/#_46).
 
 #### Feature Updates
 * [API] Edited the resending feature after a failed delivery
@@ -730,10 +742,10 @@ Delivery body text
 * [Console] Added a feature that is used to edit or delete templates and register queries
     - Added a feature that is used to edit or delete templates.
     - Added a feature that is used to register a query to reviewer.
-    - For more information, see [[AlimTalk console user guide ](./alimtalk-console-guide/#_12)].
+    - For more information, see [AlimTalk console user guide ](./alimtalk-console-guide/#_12).
 * [API] Added the API that is used to send full body text
     - Added the API that is used to send a message in full text, not in substituted data.
-    - For more information, see [[ AlimTalk API guide ](./alimtalk-api-guide/#_4)].
+    - For more information, see [ AlimTalk API guide ](./alimtalk-api-guide/#_4).
 
 ### February 22, 2018
 #### More Features
