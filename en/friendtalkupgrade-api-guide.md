@@ -127,10 +127,10 @@ Content-Type: application/json;charset=UTF-8
 ## Request to send a free-form message
 
 * You can send a marketing consent.
-  * You can specify the type of message target by specifying the targeting field.
-      * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
-      * N: Users who agree to receive advertising information from the client company - Channel friend
-      * I: Target of customer sending request ∩ Channel friend
+   * You can specify the type of message target by specifying the targeting field.
+       * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
+       * N: Users who agree to receive advertising information from the client company - Channel friend
+       * I: Target of customer sending request ∩ Channel friend
 * You can use all 8 message types of the existing FriendTalk.
 * You can use BT, AC button types.
 * Note the following constraints when using the AC (Add Channel) button:
@@ -144,7 +144,7 @@ Content-Type: application/json;charset=UTF-8
 * Support for the BF button by providing a Business Form ID issued by Kakao.
 * Fallback can be set via resendParameter for each recipient.
   * When using fallback, you need to register the SMS Appkey and set its sending through the fallback management API.
-  * <b>Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)</b>
+  * **Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)**
 
 #### Requested
 
@@ -239,7 +239,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally. Up 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
@@ -270,7 +270,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| Opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| Opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -347,7 +347,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally. Up 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
@@ -381,7 +381,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -458,7 +458,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | content| String| O| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally. Up 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
@@ -492,7 +492,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -593,7 +593,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | header| String| O| Header<br>- Required field for WIDE_ITEM_LIST type, up to 20 characters (linebreak: unavailable)<br>- Optional field for WIDE_ITEM_LIST type, up to 20 characters (linebreak: unavailable)|
 | item| Object| O| Wide list item (available only for WIDE_ITEM_LIST type)|
@@ -603,7 +603,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- linkMo| String| O| Mobile web link, limited to 1,000 characters|
 | \-- linkPc| String| X| PC web link, limited to 1,000 characters|
 | \-- schemeAndroid| String| X| Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X| IOS app link, limited to 1,000 characters|
+| \-- schemeIos| String| X| iOS app link, limited to 1,000 characters|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: message forwarding, AC: add channel, BT: chatbot conversion, BF: Business form)<br>- BT type is available only in the channel using the chatbot of Kakao i Open Builder<br>- BF type can only be used as the first button, and only the following three phrases can be used for names:<br>&nbsp;&nbsp;- Make a reservation via KakaoTalk<br>&nbsp;&nbsp;- Take a survey via KakaoTalk<br>&nbsp;&nbsp;- Apply via KakaoTalk|
@@ -632,7 +632,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -710,7 +710,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | content| String| X| \- For TEXT type, up to 1,300 characters (linebreak: up to 99, URL type available)<br>- For IMAGE type, up to 400 characters (linebreak: up to 29, URL type available)<br>- For WIDE type, up to 76 characters (linebreak: up to 1)<br>- For PREMIUM_VIDEO type, the field can be used optionally, 76 characters (linebreak: up to 1)<br>- For other types, the field is unavailable.|
 | header| String| X| Header<br>- Required field for WIDE_ITEM_LIST type, up to 20 characters (linebreak: unavailable)<br>- Optional field for WIDE_ITEM_LIST type, up to 20 characters (linebreak: unavailable)|
@@ -745,7 +745,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -829,7 +829,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Send status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X| Message status for adults (defaults: false)|
 | additionalContent| String| X| Additional information (up to 34 characters, linebreak: up to 1), available only for commerce type|
 | image| Object| O| Image elements<br>- Required fields for IMAGE, WIDE, COMMERCE types|
@@ -869,7 +869,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendUnsubscribeNo| String| X| Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -1004,7 +1004,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | pushAlarm| boolean| X        | Send status for message push notifications (defaults: true)|
 | requestDate| String| X        | Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X        | 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X        | Message status for adults (defaults: false)|
 | carousel| Object| O        | Carousel|
 | \- list| List| O        | Carousel list (minimum 2, maximum 6)|
@@ -1018,7 +1018,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
-| \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 1,000 characters|
+| \--- schemeIos| String| X        | iOS app link (required for AL type), limited to 1,000 characters|
 | \--- chatExtra| String| X        | Meta information to send when the button is BT type|
 | \--- chatEvent| String| X        | Bot event name to connect when the button is BT type|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
@@ -1028,12 +1028,12 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X        | iOS app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X        | More button information|
 | \-- linkMo| String| O        | Mobile web link, limited to 1,000 characters|
 | \-- linkPc| String| X        | PC web link, limited to 1,000 characters|
 | \-- schemeAndroid| String| X        | Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X        | IOS app link, limited to 1,000 characters|
+| \-- schemeIos| String| X        | iOS app link, limited to 1,000 characters|
 | recipientList| List| O        | Recipient list (up to 1,000)|
 | \- recipientNo| String| O        | Incoming number|
 | \- resendParameter| Object| X        | Fallback Information|
@@ -1045,7 +1045,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \-- resendUnsubscribeNo| String| X        | Fallback 080 opt-out number<br><span style="color:red">(if the 080 opt-out number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X        | Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X        | 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X        | Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X        | Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X        | Reseller code (used by resellers when sending)|
@@ -1148,7 +1148,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | pushAlarm| boolean| X        | Sending status for message push notifications (defaults: true)|
 | requestDate| String| X        | Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X        | 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | adult| boolean| X        | Message status for adults (defaults: false)|
 | carousel| Object| O        | Carousel|
 | \- head| Object| X        | Carousel intro|
@@ -1158,7 +1158,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \-- linkMo| String| X        | Mobile web link (linkMo is required if one of the linkMo, linkPc, schemeAndroid, schemeIos will be used), limited to up to 1,000 characters|
 | \-- linkPc| String| X        | PC web link, limited to 1,000 characters|
 | \-- schemeAndroid| String| X        | Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X        | IOS app link, limited to 1,000 characters|
+| \-- schemeIos| String| X        | iOS app link, limited to 1,000 characters|
 | \- list| List| O        | Carousel list (If head exists, minimum 1, maximum 5 / otherwise minimum 2, maximum 6)|
 | \-- additionalContent| String| X        | Additional info (up to 34 characters), available only for carousel commerce|
 | \-- imageUrl| String| O        | Image URL (Only images uploaded as carousel commerce type images are available)|
@@ -1175,7 +1175,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
-| \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 1,000 characters|
+| \--- schemeIos| String| X        | iOS app link (required for AL type), limited to 1,000 characters|
 | \--- chatExtra| String| X        | Meta information to send when the button is BT type|
 | \--- chatEvent| String| X        | Bot event name to connect when the button is BT type|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
@@ -1185,12 +1185,12 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 1,000 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X        | IOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X        | iOS app link (required field for AL type), limited to 1,000 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X        | More button information|
 | \-- linkMo| String| O        | Mobile web link, limited to 1,000 characters|
 | \-- linkPc| String| X        | PC web link, limited to 1,000 characters|
 | \-- schemeAndroid| String| X        | Android app link, limited to 1,000 characters|
-| \-- schemeIos| String| X        | IOS app link, limited to 1,000 characters|
+| \-- schemeIos| String| X        | iOS app link, limited to 1,000 characters|
 | recipientList| List| O        | Recipient list (up to 1,000)|
 | \- recipientNo| String| O        | Incoming number|
 | \- resendParameter| Object| X        | Fallback Information|
@@ -1201,7 +1201,7 @@ Allow unique placeholder values for each item in a carousel-type template.
 | \-- resendSendNo| String| X        | Fallback number<br><span style="color:red">(if the outgoing number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- targeting| String| X        | Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
 | \- unsubscribeNo| String| X        | 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| \- unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| \- unsubscribeAuthNo| String| X        | 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 | \- recipientGroupingKey| String| X        | Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X        | Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X        | Reseller code (used by resellers when sending)|
@@ -1249,17 +1249,17 @@ Allow unique placeholder values for each item in a carousel-type template.
 
 * A sending using a template.
 * You can use the marketing consent sending.
-  * You can specify the type of message target by specifying the targeting field.
-      * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
-      * N: Users who agree to receive advertising information from the client company - Channel friend
-      * I: Target of customer sending request ∩ Channel friend
+   * You can specify the type of message target by specifying the targeting field.
+       * M: Users who agree to receive advertising information from the client company (KakaoTalk message consent)
+       * N: Users who agree to receive advertising information from the client company - Channel friend
+       * I: Target of customer sending request ∩ Channel friend
 * You can use all 8 message types of the existing FriendTalk.
 * You cannot use BT button types.
 * You can use Add Channel (AC) button.
 * When using the BF button, you can upload the Business Form ID issued by Kakao and receive and use a BizForm key.
 * Fallback can be set via resendParameter for each recipient.
   * When using fallback, you need to register the SMS Appkey and set its send through the fallback management API.
-* <b>Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)</b>
+* **Nighttime delivery restrictions(8:50 PM - 8:00 AM the next day)**
 
 ### Cautions for use
 
@@ -1337,7 +1337,7 @@ Content-Type: application/json;charset=UTF-8
 | pushAlarm| boolean| X| Sending status for message push notifications (defaults: true)|
 | requestDate| String| X| Requested date (yyyy-MM-dd HH:mm)<br>(send immediately if not entered)<br>Available to schedule up to 60 days in advance|
 | unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                 |
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234                                                                                 |
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234                                                                                 |
 | recipientList| List| O| Recipient list (up to 1,000)|
 | \- recipientNo| String| O| Incoming number|
 | \- targeting| String| O| Type of message target (M: User with marketing consent, N: only users that agreed to marketing consent and are not friends, I: users who are friends)|
@@ -1352,7 +1352,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- resendContent| String| X| Fallback title<br>(if no value exists, it will be replaced with [message body].)|
 | \-- resendSendNo| String| X| Fallback number<br><span style="color:red">(if the outgoing number is not registered with the SMS service, the fallback may fail.)</span>|
 | \- unsubscribeNo| String| X| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx                                                                                   |
-| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234                                                                                   |
+| \- unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234                                                                                   |
 | \- recipientGroupingKey| String| X| Recipient grouping key (you can specify grouping keys by recipient. Up 100 characters)|
 | senderGroupingKey| String| X| Sender grouping key (you can specify grouping keys by sender. Up 100 characters)|
 | resellerCode| String| X| Reseller code (used by resellers when sending)|
@@ -1722,7 +1722,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- type| String| O| Button type (Not Null if button array item exists)|
 | \-- linkMo| String| X| Mobile web link|
 | \-- linkPc| String| X| PC web link|
-| \-- schemeIos| String| X| IOS app link|
+| \-- schemeIos| String| X| iOS app link|
 | \-- schemeAndroid| String| X| Android app link|
 | \-- chatExtra| String| X| Meta information to send when the button is BT type|
 | \-- chatEvent| String| X| Bot event name to connect when the button is BT type|
@@ -1733,7 +1733,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- imageUrl| String| O| Item image URL (Not Null if item.list item exists)|
 | \--- linkMo| String| O| Mobile web link (Not Null if item.list item exists)|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \- coupon| Object| X| Coupon elements|
 | \-- title| String| O| Coupon title (Not Null if coupon object exists)|
@@ -1741,7 +1741,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- linkMo| String| X| Mobile web link|
 | \-- linkPc| String| X| PC web link|
 | \-- schemeAndroid| String| X| Android app link|
-| \-- schemeIos| String| X| IOS app link|
+| \-- schemeIos| String| X| iOS app link|
 | \- commerce| Object| X| Commerce elements|
 | \-- title| String| O| Product title (Not Null if commerce object exists)|
 | \-- regularPrice| Integer| X| Regular price|
@@ -1758,7 +1758,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- imageUrl| String| O| Carousel intro image address (Not Null if header object exists)|
 | \--- linkMo| String| X| Mobile web link|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \-- list| Array| O| Carousel list (Not Null if carousel object exists)|
 | \--- header| String| X| Carousel item header|
@@ -1778,7 +1778,7 @@ Content-Type: application/json;charset=UTF-8
 | \---- linkMo| String| X| Mobile web link|
 | \---- linkPc| String| X| PC web link|
 | \---- schemeAndroid| String| X| Android app link|
-| \---- schemeIos| String| X| IOS app link|
+| \---- schemeIos| String| X| iOS app link|
 | \---- chatExtra| String| X| Meta information to send when the button is BT type|
 | \---- chatEvent| String| X| Bot event name to connect when the button is BT type|
 | \---- bizFormKey| String| X| BizForm key when the button is BF type|
@@ -1788,14 +1788,14 @@ Content-Type: application/json;charset=UTF-8
 | \---- linkMo| String| X| Mobile web link|
 | \---- linkPc| String| X| PC web link|
 | \---- schemeAndroid| String| X| Android app link|
-| \---- schemeIos| String| X| IOS app link|
+| \---- schemeIos| String| X| iOS app link|
 | \-- tail| Object| X| More button information (Nullable if carousel object exists)|
 | \--- linkMo| String| O| Mobile web link (Not Null if tail object exists)|
 | \--- linkPc| String| X| PC web link|
 | \--- schemeAndroid| String| X| Android app link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \- templateParameter| String| X| Template parameter|
-| \- pushAlarm| boolean| O| Push notification status (Not Null if message object exists)|
+| \- pushAlarm| boolean| O| Push alarm status (Not Null if message object exists)|
 | \- messageStatus| String| O| Request status (COMPLETED: success, FAILED: failure) (Not Null if message object exists)|
 | \- isAddedChannel| boolean| O| Channel friend status (Not Null if message object exists)|
 | \- resultCode| String| X| Received result code (within message)|
@@ -2065,7 +2065,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- type| String| O| Button type|
 | \--- linkMo| String| X| Mobile web link|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \--- bizFormId| Integer| X| BizForm ID (JSON based)|
 | \-- item| Object| X| Wide list elements|
@@ -2075,14 +2075,14 @@ Content-Type: application/json;charset=UTF-8
 | \---- linkMo| String| O| Mobile web link|
 | \---- linkPc| String| X| PC web link|
 | \---- schemeAndroid| String| X| Android app link|
-| \---- schemeIos| String| X| IOS app link|
+| \---- schemeIos| String| X| iOS app link|
 | \-- coupon| Object| X| Coupon elements|
 | \--- title| String| O| Coupon title|
 | \--- description| String| O| Coupon details|
 | \--- linkMo| String| X| Mobile web link|
 | \--- linkPc| String| X| PC web link|
 | \--- schemeAndroid| String| X| Android app link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \-- commerce| Object| X| Commerce elements|
 | \--- title| String| O| Product title|
 | \--- regularPrice| Integer| X| Regular price|
@@ -2100,7 +2100,7 @@ Content-Type: application/json;charset=UTF-8
 | \---- linkMo| String| X| Mobile web link|
 | \---- linkPc| String| X| PC web link|
 | \----- schemeAndroid| String| X| Android app link|
-| \----- schemeIos| String| X| IOS app link|
+| \----- schemeIos| String| X| iOS app link|
 | \---- list| Array| O| Carousel list|
 | \----- header| String| O| Carousel item header|
 | \----- message| String| O| Carousel item message (content mapping of Not Null list)|
@@ -2118,7 +2118,7 @@ Content-Type: application/json;charset=UTF-8
 | \------ type| String| O| Button type|
 | \------ linkMo| String| X| Mobile web link|
 | \------ linkPc| String| X| PC web link|
-| \------ schemeIos| String| X| IOS app link|
+| \------ schemeIos| String| X| iOS app link|
 | \------ schemeAndroid| String| X| Android app link|
 | \------ bizFormId| Integer| X| BizForm ID (JSON based)|
 | \----- coupon| Object| X| Coupon elements (within carousel items)|
@@ -2127,12 +2127,12 @@ Content-Type: application/json;charset=UTF-8
 | \------ linkMo| String| X| Mobile web link|
 | \------ linkPc| String| X| PC web link|
 | \------ schemeAndroid| String| X| Android app link|
-| \------ schemeIos| String| X| IOS app link|
+| \------ schemeIos| String| X| iOS app link|
 | \---- tail| Object| X| More button information|
 | \----- linkMo| String| O| Mobile web link|
 | \----- linkPc| String| X| PC web link|
 | \----- schemeAndroid| String| X| Android app link|
-| \----- schemeIos| String| X| IOS app link|
+| \----- schemeIos| String| X| iOS app link|
 | \--- status| String| O| Template status (A: registered, S: blocked)|
 | \--- createDate| String| O| Registered on|
 | \--- updateDate| String| X| Modified on|
@@ -2166,6 +2166,7 @@ Content-Type: application/json;charset=UTF-8
 | Name| Type| Required| Description|
 |----------|----------|----------|----------|
 | X-Secret-Key| String| O| Available to create from the console.|
+| X-NC-API-IDEMPOTENCY-KEY | String | X | Key used as the basis for duplicate message delivery request detection<br>If a request is made with the same key within 10 minutes, the request will be treated as failed. |
 
 #### Response
 
@@ -2303,7 +2304,7 @@ Content-Type: application/json;charset=UTF-8
 | \- templateCode| String| O| Template Code|
 | \- templateName| String| O| Template name|
 | \- chatBubbleType| String| O| Message type|
-| \- pushAlarm| boolean| X| Push notification status|
+| \- pushAlarm| boolean| X| Push alarm status|
 | \- content| String| X| Message Content|
 | \- adult| boolean| O| Message status for adults|
 | \- header| String| X| Header (within template)|
@@ -2316,7 +2317,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- type| String| O| Button type|
 | \-- linkMo| String| X| Mobile web link|
 | \-- linkPc| String| X| PC web link|
-| \-- schemeIos| String| X| IOS app link|
+| \-- schemeIos| String| X| iOS app link|
 | \-- schemeAndroid| String| X| Android app link|
 | \-- bizFormId| Integer| X| BizForm ID (JSON based)|
 | \- item| Object| X| Wide list elements|
@@ -2325,14 +2326,14 @@ Content-Type: application/json;charset=UTF-8
 | \--- imageUrl| String| O| Item image URL|
 | \--- linkMo| String| O| Mobile web link|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \- coupon| Object| X| Coupon elements|
 | \-- title| String| O| Coupon title|
 | \-- description| String| O| Coupon details|
 | \-- linkMo| String| X| Mobile web link|
 | \-- linkPc| String| X| PC web link|
-| \-- schemeIos| String| X| IOS app link|
+| \-- schemeIos| String| X| iOS app link|
 | \-- schemeAndroid| String| X| Android app link|
 | \- commerce| Object| X| Commerce elements|
 | \-- title| String| O| Product title|
@@ -2350,7 +2351,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- imageUrl| String| O| Carousel intro image address|
 | \--- linkMo| String| X| Mobile web link|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \-- list| Array| O| Carousel list|
 | \--- header| String| O| Carousel item header|
@@ -2369,7 +2370,7 @@ Content-Type: application/json;charset=UTF-8
 | \---- type| String| O| Button type|
 | \---- linkMo| String| X| Mobile web link|
 | \---- linkPc| String| X| PC web link|
-| \---- schemeIos| String| X| IOS app link|
+| \---- schemeIos| String| X| iOS app link|
 | \---- schemeAndroid| String| X| Android app link|
 | \---- bizFormId| Integer| X| BizForm ID (JSON based)|
 | \--- coupon| Object| X| Coupon elements (within carousel items)|
@@ -2377,12 +2378,12 @@ Content-Type: application/json;charset=UTF-8
 | \---- description| String| X| Coupon details|
 | \---- linkMo| String| X| Mobile web link|
 | \---- linkPc| String| X| PC web link|
-| \---- schemeIos| String| X| IOS app link|
+| \---- schemeIos| String| X| iOS app link|
 | \---- schemeAndroid| String| X| Android app link|
 | \-- tail| Object| X| More button information|
 | \--- linkMo| String| O| Mobile web link|
 | \--- linkPc| String| X| PC web link|
-| \--- schemeIos| String| X| IOS app link|
+| \--- schemeIos| String| X| iOS app link|
 | \--- schemeAndroid| String| X| Android app link|
 | \- status| String| O| Template status (A: registered, S: blocked)|
 | \- createDate| String| O| Registered on|
@@ -2481,7 +2482,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type<br>No placeholders available|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2489,7 +2490,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register image type template
 
@@ -2542,7 +2543,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
-| \- schemeIos| String| X        | IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X        | iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X        | BizForm key when the button is BF type|
 | coupon| Object| X        | Coupon elements|
 | \- title| String| O        | Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2550,7 +2551,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X        | IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X        | iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register wide image type template
 
@@ -2603,7 +2604,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
-| \- schemeIos| String| X        | IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X        | iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X        | BizForm key when the button is BF type|
 | coupon| Object| X        | Coupon elements|
 | \- title| String| O        | Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2611,7 +2612,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X        | IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X        | iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register wide item list type template
 
@@ -2686,14 +2687,14 @@ Content-Type: application/json;charset=UTF-8
 | \-- linkMo| String| O| Mobile web link, limited to 500 characters|
 | \-- linkPc| String| X| PC web link, limited to 500 characters|
 | \-- schemeAndroid| String| X| Android app link, limited to 500 characters|
-| \-- schemeIos| String| X| IOS app link, limited to 500 characters|
+| \-- schemeIos| String| X| iOS app link, limited to 500 characters|
 | buttons| List| X| Button list<br>- For TEXT, IMAGE type, up to 4 when applying a coupon; for others, up to 5<br>- For WIDE, WIDE_ITEM_LIST type, up to 2<br>- For PREMIUM_VIDEO type, up to 1<br>- For COMMERCE type, minimum 1 and up to 2|
 | \- name| String| O| Button title<br>- For TEXT, IMAGE type, up to 14 characters<br>- For other types, up to 8 characters<br>No placeholders available|
 | \- type| String| O| Button type (WL: web link, AL: app link, BK: bot keyword, MD: forward message, AC: add channel, BT: chatbot conversion, BF: business form)<br>- AC type must be registered as the first button for TEXT and IMAGE, and as the last button for other message types|
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2701,7 +2702,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register premium video type template
 
@@ -2756,7 +2757,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters|
-| \- schemeIos| String| X| IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X| iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X| BizForm key when the button is BF type|
 | coupon| Object| X| Coupon elements|
 | \- title| String| O| Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2764,7 +2765,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X| Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X| PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X| Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X| IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X| iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register commerce type template
 
@@ -2831,7 +2832,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 1,000 characters|
-| \- schemeIos| String| X        | IOS app link (required for AL type), limited to 500 characters|
+| \- schemeIos| String| X        | iOS app link (required for AL type), limited to 500 characters|
 | \- bizFormKey| String| X        | BizForm key when the button is BF type|
 | coupon| Object| X        | Coupon elements|
 | \- title| String| O        | Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2839,7 +2840,7 @@ Content-Type: application/json;charset=UTF-8
 | \- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \- schemeIos| String| X        | IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \- schemeIos| String| X        | iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 
 #### Request to register carousel feed type template
 
@@ -2933,7 +2934,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
-| \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 500 characters|
+| \--- schemeIos| String| X        | iOS app link (required for AL type), limited to 500 characters|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
 | \-- coupon| Object| X        | Coupon elements|
 | \--- title| String| O        | Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -2941,12 +2942,12 @@ Content-Type: application/json;charset=UTF-8
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X        | IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X        | iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X        | More button information|
 | \-- linkMo| String| O        | Mobile web link, limited to 500 characters<br>No placeholders available|
 | \-- linkPc| String| X        | PC web link, limited to 500 characters<br>No placeholders available|
 | \-- schemeAndroid| String| X        | Android app link, limited to 500 characters<br>No placeholders available|
-| \-- schemeIos| String| X        | IOS app link, limited to 500 characters<br>No placeholders available|
+| \-- schemeIos| String| X        | iOS app link, limited to 500 characters<br>No placeholders available|
 | recipientList| List| O        | Recipient list (up to 1,000)|
 | \- recipientNo| String| O        | Incoming number|
 | createUser| String| X        | Registrant (stored as user UUID when sent from console)|
@@ -3027,7 +3028,7 @@ Content-Type: application/json;charset=UTF-8
 | \-- linkMo| String| X        | Mobile web link (linkMo is required if one of the linkMo, linkPc, schemeAndroid, schemeIos will be used), limited to up to 500 characters|
 | \-- linkPc| String| X        | PC web link, limited to 500 characters|
 | \-- schemeAndroid| String| X        | Android app link, limited to 500 characters|
-| \-- schemeIos| String| X        | IOS app link, limited to 500 characters|
+| \-- schemeIos| String| X        | iOS app link, limited to 500 characters|
 | \- list| List| O        | Carousel list (If head exists, minimum 1, maximum 5 / otherwise minimum 2, maximum 6)|
 | \-- additionalContent| String| X        | Additional info (up to 34 characters), available only for carousel commerce|
 | \-- imageUrl| String| O        | Image URL(use an image uploaded as a carousel commerce type image<br>No placeholders available|
@@ -3044,7 +3045,7 @@ Content-Type: application/json;charset=UTF-8
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters|
-| \--- schemeIos| String| X        | IOS app link (required for AL type), limited to 500 characters|
+| \--- schemeIos| String| X        | iOS app link (required for AL type), limited to 500 characters|
 | \--- bizFormKey| String| X        | BizForm key when the button is BF type|
 | \-- coupon| Object| X        | Coupon elements|
 | \--- title| String| O        | Limited to 5 formats for titles<br>- "${number} won discount coupon" number is 1 or greater and 99,999,999 or less<br>- "${number}% discount coupon" number is 1 or greater and 100 or less<br>- "Shipping discount coupon"<br>- "${within 7 characters} free coupon"<br>- "${within 7 characters} UP coupon"|
@@ -3052,12 +3053,12 @@ Content-Type: application/json;charset=UTF-8
 | \--- linkMo| String| X        | Mobile web link (required for WL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \--- linkPc| String| X        | PC web link (optional for WL type), limited to 500 characters|
 | \--- schemeAndroid| String| X        | Android app link (required for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
-| \--- schemeIos| String| X        | IOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
+| \--- schemeIos| String| X        | iOS app link (required field for AL type), limited to 500 characters<br>If entering linkMo field in the coupon, the remaining fields become optional.<br>If entering the channel coupon URL (format: alimtalk=coupon://) in the scheme_android or scheme_ios field, the remaining fields become optional.|
 | \- tail| Object| X        | More button information|
 | \-- linkMo| String| O        | Mobile web link, limited to 500 characters<br>No placeholders available|
 | \-- linkPc| String| X        | PC web link, limited to 500 characters<br>No placeholders available|
 | \-- schemeAndroid| String| X        | Android app link, limited to 500 characters<br>No placeholders available|
-| \-- schemeIos| String| X        | IOS app link, limited to 500 characters<br>No placeholders available|
+| \-- schemeIos| String| X        | iOS app link, limited to 500 characters<br>No placeholders available|
 
 #### Response
 
@@ -3263,6 +3264,7 @@ Content-Type: multipart/form-data
 | CAROUSEL_FEED_IMAGE        | Per-cell image in a carousel feed                                       | **Recommended size:** 800 × 600 px or 800 × 400 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1.333<br/>**File format & size limit:** JPG, PNG / up to 5 MB |
 | CAROUSEL_COMMERCE_IMAGE    | Intro image for carousel commerce, per-cell image for carousel commerce | **Recommended size:** 800 × 600 px or 800 × 400 px (width ≥ 500 px)<br/>**Aspect ratio:** 0.5 ≤ (height ÷ width) ≤ 1.333<br/>**File format & size limit:** JPG, PNG / up to 5 MB |
 
+* If all templates referencing an uploaded image are deleted or changed to a different image, the image will be removed from the Kakao CDN, making the URL invalid. While image information is retained in the Image Retrieval API, the actual image cannot be accessed. It is recommended to store the original file separately on your own server.
 
 ### View image
 
@@ -3577,7 +3579,7 @@ Content-Type: application/json;charset=UTF-8
 | Name| Type| Required| Description|
 |----------|----------|----------|----------|
 | unsubscribeNo| String| O| 080 toll-free opt-out phone number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>- 080-xxx-xxxx <br>- 080-xxxx-xxxx <br>- 080xxxxxxx <br>- 080xxxxxxxx|
-| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribe_auth_number cannot be entered without unsubscribe_phone_number<br>ex) 1234|
+| unsubscribeAuthNo| String| X| 080 toll-free opt-out verification number (If not entered, the message will be sent using the free opt-out information registered in the outgoing profile)<br>unsubscribeAuthNo cannot be entered without unsubscribeNo<br>ex) 1234|
 
 #### Response
 
