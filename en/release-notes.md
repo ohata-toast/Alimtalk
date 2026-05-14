@@ -1,5 +1,27 @@
 ## Notification > KakaoTalk Bizmessage > Release Notes
 
+
+### April 28, 2026
+* [API] Automatic cleanup of sender profiles and template data deleted after dormancy
+    * Synchronizes and automatically cleans up sender profiles and template data that were deleted by Kakao after remaining dormant for over 1 year.
+* [API] Added channel add button (AC type) support for free-form brand message delivery
+    * Expanded the channel add button for free-form delivery to be available for all targeting options.
+    * If the recipient is a friend, the delivery will not fail, but the channel add button will not be displayed.
+
+### March 24, 2026
+    * Added a feature to retrieve statistics data for AlimTalk and brand messages provided by KakaoBizCenter.
+
+* [Console] Added KakaoBizCenter group tag management feature
+    * Added a feature to manage group tags provided by KakaoBizCenter.
+
+* [Console]
+    * Sends a notification email with the results when message delivery history is backed up.
+    * Recipients can be configured in Project Dashboard > Notification Management tab.
+
+* [Console] Added notification for message delivery history backup results
+    * You can receive result notifications when configuring backup settings for message delivery history that has exceeded the retention period.
+    * This can be configured in **Project Dashboard > Notification Management**.
+    
 ### February 24, 2026
 * [API] Added Brand Message carousel fixed placeholder feature
     * Enable unique placeholder values for each item within carousel-type templates.
@@ -516,7 +538,7 @@
 ### October 29, 2019
 * [API] Tighter validity checks for the delivery of certification messages
     * Message delivery is unavailable when authentication message is not included
-    * For more details, see [[API User Guide](./alimtalk-api-guide/#precautions-authword)].
+    * For more details, see [API User Guide](./alimtalk-api-guide/#precautions-authword).
 
 ### September 24, 2019
 * [Console] Canceling Scheduled Delivery of AlimTalk/FriendTalk
@@ -552,7 +574,7 @@
 * [Console] Fixed bugs in messages
     - Fixed errors in messages for the status of Plus Friend, and deleting templates.
 * [Console] <b>Introduced business certification</b> when registering PlusFriend
-    - When registering PlusFriend, the PlusFriend <b>must be certified for business</b> [[Related announcement](https://center-pf.kakao.com/notices/311)]
+    - When registering PlusFriend, the PlusFriend <b>must be certified for business</b> [Related announcement](https://center-pf.kakao.com/notices/311)
 
 
 ### May 28, 2019
@@ -580,7 +602,7 @@
     - Added a feature that configures the alternative delivery for each Plus friend on AlimTalk/FriendTalk.
       <br>For example,) when only AlimTalk is set to deliver alternatively for the same Plus friend, FriendTalk will not use the alternative delivery even if it fails to deliver.
 * [Console] Introduced the <b>business verification feature</b> when adding a Plus friend
-    - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [[Related notice:](https://center-pf.kakao.com/notices/311)]
+    - Only the friends whose <b>business is verified</b> can now be added as Plus friends. [Related notice:](https://center-pf.kakao.com/notices/311)
 * [Console] Added the Like search feature in the template selection modal window
     - Added the Like search feature to the template selection modal window so that templates can easily be selected.(Use template code and name to search templates)
 * [API] Improved the system so that advertisement FriendTalk and <b>advertisement SMS API</b> can be used for alternative delivery
@@ -653,7 +675,7 @@
 * [API] Added a feature that schedules AlimTalk delivery API
     - A message can be sent at any time using the schedule feature.
     - The scheduled message can be canceled at any time before it is sent.
-    - For more information, see [[AlimTalk delivery API](./alimtalk-api-guide/#_3)].
+    - For more information, see [AlimTalk delivery API](./alimtalk-api-guide/#_3).
 * [API] Advanced AlimTalk delivery API alternative delivery
     - Added the alternative delivery type(SMS/LMS), whether to use alternative delivery(true/false), alternative delivery content fields for delivery.
     - The alternative delivery can be used at scale using the fields.
@@ -673,10 +695,10 @@
 * [Console] Added a FriendTalk feature
     - FriendTalk targets users who became friends, and can be used to send advertisement messages.
     - The message delivery, view, image management, statistics features are provided on console.
-    - For more information, see [[FriendTalk overview ](./friendtalk-overview/)].
+    - For more information, see [FriendTalk overview ](./friendtalk-overview/).
 * [API] Added the FriendTalk API
     - The FriendTalk API supports the message delivery, list view, single item view, image management features.
-    - For more information, see [[FriendTalk API guide](./friendtalk-api-guide/)].
+    - For more information, see [FriendTalk API guide](./friendtalk-api-guide/).
 * [API] Added a limit to the number of AlimTalk and FriendTalk messages sent
     - Added a feature to limit the number of messages to 1,000 a day, which are sent to the Plus friends who became friends since the maintenance on July 24.
     - Delivery requests exceeding this limit will fail.
@@ -703,7 +725,7 @@ Delivery body text
 #### More Features
 * [API] Added the API that views a single delivery result
     - Added the API that views a specific delivery result.
-    - For more information, see [[AlimTalk API guide](./alimtalk-api-guide/#_14)].
+    - For more information, see [AlimTalk API guide](./alimtalk-api-guide/#_14).
 * [API] Added delivery result list view API v1.1
     - Added v1.1 API as the recipientSeq(Recipient sequence) field is added to response.
 
@@ -718,7 +740,7 @@ Delivery body text
     - Added new button types:(delivery view, web link, app link, bot keyword, and message forwarding)
 * [API] Added the API for viewing templates
     - Added the API that views templates.
-    - For more information, see [[ AlimTalk API guide ](./alimtalk-api-guide/#_46)].
+    - For more information, see [ AlimTalk API guide ](./alimtalk-api-guide/#_46).
 
 #### Feature Updates
 * [API] Edited the resending feature after a failed delivery
@@ -730,10 +752,10 @@ Delivery body text
 * [Console] Added a feature that is used to edit or delete templates and register queries
     - Added a feature that is used to edit or delete templates.
     - Added a feature that is used to register a query to reviewer.
-    - For more information, see [[AlimTalk console user guide ](./alimtalk-console-guide/#_12)].
+    - For more information, see [AlimTalk console user guide ](./alimtalk-console-guide/#_12).
 * [API] Added the API that is used to send full body text
     - Added the API that is used to send a message in full text, not in substituted data.
-    - For more information, see [[ AlimTalk API guide ](./alimtalk-api-guide/#_4)].
+    - For more information, see [ AlimTalk API guide ](./alimtalk-api-guide/#_4).
 
 ### February 22, 2018
 #### More Features
